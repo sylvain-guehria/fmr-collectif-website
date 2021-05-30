@@ -10,5 +10,9 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
+      - name: Type
+        run: npm run type-check
+      - name: lint
+        run: npm run lint
       - name: Test
         run: npm run test --watchAll=false
