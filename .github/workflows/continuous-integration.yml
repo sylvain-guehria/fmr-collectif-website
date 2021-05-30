@@ -1,0 +1,18 @@
+name: on pull request
+on: [pull_request]
+jobs:
+  buildAndTest:
+    name: Build and Test
+    runs-on: ubuntu-latest    
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install Dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Check typing
+        run: npm run type-check
+      - name: Run linter
+        run: npm run lint
+      - name: Run all test 
+        run: npm run test --watchAll=false
