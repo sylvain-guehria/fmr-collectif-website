@@ -47,7 +47,7 @@ export default function LoginPage() {
       <div
         className={classes.pageHeader}
         style={{
-          backgroundImage: "url('/img/bg7.jpg')",
+          backgroundImage: "url('https://images.unsplash.com/photo-1506869640319-fe1a24fd76dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')",
           backgroundSize: "cover",
           backgroundPosition: "top center",
         }}
@@ -58,7 +58,7 @@ export default function LoginPage() {
               <Card>
                 <form className={classes.form}>
                   <CardHeader
-                    color="primary"
+                    color="rose"
                     signup
                     className={classes.cardHeader}
                   >
@@ -121,11 +121,11 @@ export default function LoginPage() {
                     />
                   </CardBody>
                   <div className={classes.textCenter}>
-                    <Button simple color="primary" size="lg">
+                    <Button simple color="rose" size="lg">
                       <Fingerprint className={classes.dropdownIcons} /> Se connecter
                     </Button><br />
                     <Link href="/signup">
-                      <Button simple color="primary" size="lg">
+                      <Button simple color="rose" size="lg">
                         <PersonAdd className={classes.dropdownIcons} /> S'inscrire
                     </Button>
                     </Link>
@@ -135,63 +135,6 @@ export default function LoginPage() {
             </GridItem>
           </GridContainer>
         </div>
-        <Footer
-          className={classes.footer}
-          content={
-            <div>
-              <div className={classes.left}>
-                <List className={classes.list}>
-                  <ListItem className={classes.inlineBlock}>
-                    <a
-                      href="https://www.creative-tim.com/?ref=njsmkp-login"
-                      target="_blank"
-                      className={classes.block}
-                    >
-                      Creative Tim
-                    </a>
-                  </ListItem>
-                  <ListItem className={classes.inlineBlock}>
-                    <a
-                      href="https://www.creative-tim.com/presentation?ref=njsmkp-login"
-                      target="_blank"
-                      className={classes.block}
-                    >
-                      About us
-                    </a>
-                  </ListItem>
-                  <ListItem className={classes.inlineBlock}>
-                    <a
-                      href="http://blog.creative-tim.com/?ref=njsmkp-login"
-                      className={classes.block}
-                    >
-                      Blog
-                    </a>
-                  </ListItem>
-                  <ListItem className={classes.inlineBlock}>
-                    <a
-                      href="https://www.creative-tim.com/license?ref=njsmkp-login"
-                      target="_blank"
-                      className={classes.block}
-                    >
-                      Licenses
-                    </a>
-                  </ListItem>
-                </List>
-              </div>
-              <div className={classes.right}>
-                &copy; {1900 + new Date().getYear()} , made with{" "}
-                <Favorite className={classes.icon} /> by{" "}
-                <a
-                  href="https://www.creative-tim.com?ref=njsmkp-login"
-                  target="_blank"
-                >
-                  Creative Tim
-                </a>{" "}
-                for a better web
-              </div>
-            </div>
-          }
-        />
       </div>
     </div>
   );
