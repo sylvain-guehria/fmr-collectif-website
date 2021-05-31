@@ -1,5 +1,7 @@
 /*eslint-disable*/
 import React from "react";
+import Link from "next/link";
+
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -9,7 +11,9 @@ import Icon from "@material-ui/core/Icon";
 // @material-ui/icons
 import Email from "@material-ui/icons/Email";
 import Favorite from "@material-ui/icons/Favorite";
-import Face from "@material-ui/icons/Face";
+import Fingerprint from "@material-ui/icons/Fingerprint";
+import PersonAdd from "@material-ui/icons/PersonAdd";
+
 // core components
 import Header from "components/Header/Header.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
@@ -43,7 +47,7 @@ export default function LoginPage() {
       <div
         className={classes.pageHeader}
         style={{
-          backgroundImage: "url('/img/bg7.jpg')",
+          backgroundImage: "url('https://images.unsplash.com/photo-1506869640319-fe1a24fd76dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')",
           backgroundSize: "cover",
           backgroundPosition: "top center",
         }}
@@ -54,20 +58,12 @@ export default function LoginPage() {
               <Card>
                 <form className={classes.form}>
                   <CardHeader
-                    color="primary"
+                    color="rose"
                     signup
                     className={classes.cardHeader}
                   >
-                    <h4 className={classes.cardTitle}>Login</h4>
+                    <h4 className={classes.cardTitle}>Se connecter avec</h4>
                     <div className={classes.socialLine}>
-                      <Button
-                        justIcon
-                        color="transparent"
-                        className={classes.iconButtons}
-                        onClick={(e) => e.preventDefault()}
-                      >
-                        <i className="fab fa-twitter" />
-                      </Button>
                       <Button
                         justIcon
                         color="transparent"
@@ -87,24 +83,9 @@ export default function LoginPage() {
                     </div>
                   </CardHeader>
                   <p className={classes.description + " " + classes.textCenter}>
-                    Or Be Classical
+                    ou avec un email
                   </p>
                   <CardBody signup>
-                    <CustomInput
-                      id="first"
-                      formControlProps={{
-                        fullWidth: true,
-                      }}
-                      inputProps={{
-                        placeholder: "First Name...",
-                        type: "text",
-                        startAdornment: (
-                          <InputAdornment position="start">
-                            <Face className={classes.inputIconsColor} />
-                          </InputAdornment>
-                        ),
-                      }}
-                    />
                     <CustomInput
                       id="email"
                       formControlProps={{
@@ -140,72 +121,20 @@ export default function LoginPage() {
                     />
                   </CardBody>
                   <div className={classes.textCenter}>
-                    <Button simple color="primary" size="lg">
-                      Get started
+                    <Button simple color="rose" size="lg">
+                      <Fingerprint className={classes.dropdownIcons} /> Se connecter
+                    </Button><br />
+                    <Link href="/signup">
+                      <Button simple color="rose" size="lg">
+                        <PersonAdd className={classes.dropdownIcons} /> S'inscrire
                     </Button>
+                    </Link>
                   </div>
                 </form>
               </Card>
             </GridItem>
           </GridContainer>
         </div>
-        <Footer
-          className={classes.footer}
-          content={
-            <div>
-              <div className={classes.left}>
-                <List className={classes.list}>
-                  <ListItem className={classes.inlineBlock}>
-                    <a
-                      href="https://www.creative-tim.com/?ref=njsmkp-login"
-                      target="_blank"
-                      className={classes.block}
-                    >
-                      Creative Tim
-                    </a>
-                  </ListItem>
-                  <ListItem className={classes.inlineBlock}>
-                    <a
-                      href="https://www.creative-tim.com/presentation?ref=njsmkp-login"
-                      target="_blank"
-                      className={classes.block}
-                    >
-                      About us
-                    </a>
-                  </ListItem>
-                  <ListItem className={classes.inlineBlock}>
-                    <a
-                      href="http://blog.creative-tim.com/?ref=njsmkp-login"
-                      className={classes.block}
-                    >
-                      Blog
-                    </a>
-                  </ListItem>
-                  <ListItem className={classes.inlineBlock}>
-                    <a
-                      href="https://www.creative-tim.com/license?ref=njsmkp-login"
-                      target="_blank"
-                      className={classes.block}
-                    >
-                      Licenses
-                    </a>
-                  </ListItem>
-                </List>
-              </div>
-              <div className={classes.right}>
-                &copy; {1900 + new Date().getYear()} , made with{" "}
-                <Favorite className={classes.icon} /> by{" "}
-                <a
-                  href="https://www.creative-tim.com?ref=njsmkp-login"
-                  target="_blank"
-                >
-                  Creative Tim
-                </a>{" "}
-                for a better web
-              </div>
-            </div>
-          }
-        />
       </div>
     </div>
   );
