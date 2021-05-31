@@ -1,5 +1,7 @@
 /*eslint-disable*/
 import React from "react";
+import Link from "next/link";
+
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -9,7 +11,9 @@ import Icon from "@material-ui/core/Icon";
 // @material-ui/icons
 import Email from "@material-ui/icons/Email";
 import Favorite from "@material-ui/icons/Favorite";
-import Face from "@material-ui/icons/Face";
+import Fingerprint from "@material-ui/icons/Fingerprint";
+import PersonAdd from "@material-ui/icons/PersonAdd";
+
 // core components
 import Header from "components/Header/Header.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
@@ -58,16 +62,8 @@ export default function LoginPage() {
                     signup
                     className={classes.cardHeader}
                   >
-                    <h4 className={classes.cardTitle}>Login</h4>
+                    <h4 className={classes.cardTitle}>Se connecter avec</h4>
                     <div className={classes.socialLine}>
-                      <Button
-                        justIcon
-                        color="transparent"
-                        className={classes.iconButtons}
-                        onClick={(e) => e.preventDefault()}
-                      >
-                        <i className="fab fa-twitter" />
-                      </Button>
                       <Button
                         justIcon
                         color="transparent"
@@ -87,24 +83,9 @@ export default function LoginPage() {
                     </div>
                   </CardHeader>
                   <p className={classes.description + " " + classes.textCenter}>
-                    Or Be Classical
+                    ou avec un email
                   </p>
                   <CardBody signup>
-                    <CustomInput
-                      id="first"
-                      formControlProps={{
-                        fullWidth: true,
-                      }}
-                      inputProps={{
-                        placeholder: "First Name...",
-                        type: "text",
-                        startAdornment: (
-                          <InputAdornment position="start">
-                            <Face className={classes.inputIconsColor} />
-                          </InputAdornment>
-                        ),
-                      }}
-                    />
                     <CustomInput
                       id="email"
                       formControlProps={{
@@ -141,8 +122,13 @@ export default function LoginPage() {
                   </CardBody>
                   <div className={classes.textCenter}>
                     <Button simple color="primary" size="lg">
-                      Get started
+                      <Fingerprint className={classes.dropdownIcons} /> Se connecter
+                    </Button><br />
+                    <Link href="/signup">
+                      <Button simple color="primary" size="lg">
+                        <PersonAdd className={classes.dropdownIcons} /> S'inscrire
                     </Button>
+                    </Link>
                   </div>
                 </form>
               </Card>
