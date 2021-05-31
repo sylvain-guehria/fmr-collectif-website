@@ -351,3 +351,6 @@ MigrationBackup/
 
 #cache next
 .next/
+
+#husky
+.husky/
