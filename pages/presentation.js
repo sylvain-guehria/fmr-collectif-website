@@ -39,25 +39,25 @@ export default function PresentationPage() {
     <div>
       <Header
         brand="NextJS Material Kit PRO"
-        links={<HeaderLinks dropdownHoverColor="info" />}
+        links={<HeaderLinks dropdownHoverColor="light" />}
         fixed
         color="transparent"
         changeColorOnScroll={{
           height: 400,
-          color: "info",
+          color: "light",
         }}
       />
-      <Parallax image="/img/nextjs_header.jpg" className={classes.parallax}>
+      <Parallax image="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" className={classes.parallax}>
         <div className={classes.container}>
           <GridContainer>
             <GridItem>
               <div className={classes.brand}>
                 <h1>
-                  NextJS Material Kit
-                  <span className={classes.proBadge}>PRO</span>
+                  FMR collectif
+                  <span className={classes.proBadge}>Chambéry</span>
                 </h1>
                 <h3 className={classes.title}>
-                  A Badass Material-UI Kit based on Material Design.
+                  Tout faire pour une soirée inoubliable.
                 </h3>
               </div>
             </GridItem>

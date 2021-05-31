@@ -61,7 +61,7 @@ export default function SignUpPage({ ...rest }) {
       <div
         className={classes.pageHeader}
         style={{
-          backgroundImage: "url('/img/bg7.jpg')",
+          backgroundImage: "url('https://images.unsplash.com/photo-1456949037425-4b097bbcc0e8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2089&q=80')",
           backgroundSize: "cover",
           backgroundPosition: "top center",
         }}
@@ -98,12 +98,8 @@ export default function SignUpPage({ ...rest }) {
                     </GridItem>
                     <GridItem xs={12} sm={5} md={5}>
                       <div className={classes.textCenter}>
-                        <Button justIcon round color="twitter">
-                          <i className={classes.socials + " fab fa-twitter"} />
-                        </Button>
-                        {` `}
-                        <Button justIcon round color="dribbble">
-                          <i className={classes.socials + " fab fa-dribbble"} />
+                        <Button justIcon round color="google">
+                          <i className={classes.socials + " fab fa-google"} />
                         </Button>
                         {` `}
                         <Button justIcon round color="facebook">
@@ -112,7 +108,7 @@ export default function SignUpPage({ ...rest }) {
                           />
                         </Button>
                         {` `}
-                        <h4 className={classes.socialTitle}>or be classical</h4>
+                        <h4 className={classes.socialTitle}>ou avec votre email</h4>
                       </div>
                       <form className={classes.form}>
                         <CustomInput
