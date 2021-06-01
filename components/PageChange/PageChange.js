@@ -1,4 +1,5 @@
 import React from "react";
+import { string } from 'prop-types';
 
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -34,6 +35,10 @@ const useStyles = makeStyles({
     color: whiteColor,
   },
 });
+
+PageChange.propTypes = {
+  path: string,
+};
 
 export default function PageChange(props) {
   const classes = useStyles();
