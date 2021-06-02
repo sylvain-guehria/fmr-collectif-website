@@ -43,11 +43,18 @@ import Error from "@material-ui/icons/Error";
 import CustomDropdown from "components/CustomDropdown/CustomDropdown.js";
 import Button from "components/CustomButtons/Button.js";
 
+//auth
+import { useAuthUser } from 'next-firebase-auth'
+
 import styles from "styles/jss/nextjs-material-kit-pro/components/headerLinksStyle.js";
 
 const useStyles = makeStyles(styles);
 
 export default function HeaderLinks(props) {
+
+  const AuthUser = useAuthUser();
+  console.log('AuthUser from headerLink', AuthUser)
+
   const easeInOutQuad = (t, b, c, d) => {
     t /= d / 2;
     if (t < 1) return (c / 2) * t * t + b;
@@ -286,7 +293,7 @@ export default function HeaderLinks(props) {
           ]}
         />
       </ListItem>
-      <ListItem className={classes.listItem}>
+      { !AuthUser.email ? (<ListItem className={classes.listItem}>
         <Hidden mdDown>
           <Link href="/login">
             <a className={classes.dropdownLink}>
@@ -311,7 +318,19 @@ export default function HeaderLinks(props) {
             <Fingerprint className={classes.icons} /> Se connecter
           </Button>
         </Hidden>
-      </ListItem>
+      </ListItem>) : (<>
+        {/* delete me I am for test purpose */}
+        <p>Signed in as {AuthUser.email}</p>
+        <button
+          type="button"
+          onClick={() => {
+            AuthUser.signOut()
+          }}
+          style={styles.button}
+        >
+          Sign out
+        </button>
+      </>)}
     </List>
   );
 }

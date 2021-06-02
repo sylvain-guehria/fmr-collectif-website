@@ -28,9 +28,16 @@ import CustomInput from "components/CustomInput/CustomInput.js";
 
 import loginPageStyle from "styles/jss/nextjs-material-kit-pro/pages/loginPageStyle.js";
 
+//auth
+import { useAuthUser } from 'next-firebase-auth'
+
 const useStyles = makeStyles(loginPageStyle);
 
 export default function LoginPage() {
+
+  const AuthUser = useAuthUser()
+  console.log('AuthUser from login page', AuthUser)
+
   React.useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;

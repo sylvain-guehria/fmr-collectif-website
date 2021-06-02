@@ -19,6 +19,7 @@ import ReactDOM from "react-dom";
 import App from "next/app";
 import Head from "next/head";
 import Router from "next/router";
+import initAuth from '../auth/initAuth'
 
 import PageChange from "components/PageChange/PageChange.js";
 
@@ -44,6 +45,8 @@ Router.events.on("routeChangeError", () => {
   ReactDOM.unmountComponentAtNode(document.getElementById("page-transition"));
   document.body.classList.remove("body-page-transition");
 });
+
+initAuth()
 
 export default class MyApp extends App {
   componentDidMount() {
