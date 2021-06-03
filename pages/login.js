@@ -25,18 +25,16 @@ import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
+// import LoadingLayer from "components/LoadingLayer/LoadingLayer";
 
 import loginPageStyle from "styles/jss/nextjs-material-kit-pro/pages/loginPageStyle.js";
 
 //auth
-import { useAuthUser } from 'next-firebase-auth'
+// import { withAuthUser, AuthAction } from 'next-firebase-auth'
 
 const useStyles = makeStyles(loginPageStyle);
 
-export default function LoginPage() {
-
-  const AuthUser = useAuthUser()
-  console.log('AuthUser from login page', AuthUser)
+const LoginPage = () => {
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -146,3 +144,13 @@ export default function LoginPage() {
     </div>
   );
 }
+
+export default LoginPage
+
+//When I will need to redirect user when logged In
+// export default withAuthUser({
+//   whenAuthed: AuthAction.REDIRECT_TO_APP,
+//   whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
+//   whenUnauthedAfterInit: AuthAction.RENDER,
+//   LoaderComponent: LoadingLayer,
+// })(LoginPage)

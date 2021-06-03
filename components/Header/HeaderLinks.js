@@ -53,7 +53,6 @@ const useStyles = makeStyles(styles);
 export default function HeaderLinks(props) {
 
   const AuthUser = useAuthUser();
-  console.log('AuthUser from headerLink', AuthUser)
 
   const easeInOutQuad = (t, b, c, d) => {
     t /= d / 2;
@@ -348,5 +347,6 @@ HeaderLinks.propTypes = {
     "warning",
     "danger",
     "rose",
+    "light"
   ]),
 };

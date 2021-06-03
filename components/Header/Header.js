@@ -147,6 +147,7 @@ Header.propTypes = {
       "white",
       "rose",
       "dark",
+      "light"
     ]).isRequired,
   }),
 };
