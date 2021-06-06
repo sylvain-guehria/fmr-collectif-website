@@ -26,13 +26,15 @@ import Button from "components/CustomButtons/Button.js";
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import InfoArea from "components/InfoArea/InfoArea.js";
-import CustomInput from "components/CustomInput/CustomInput.js";
 
 import signupPageStyle from "styles/jss/nextjs-material-kit-pro/pages/signupPageStyle.js";
+
+import RegistrationForm from '../components/forms/RegistrationForm';
 
 const useStyles = makeStyles(signupPageStyle);
 
 export default function SignUpPage({ ...rest }) {
+
   const [checked, setChecked] = React.useState([1]);
   const handleToggle = (value) => {
     const currentIndex = checked.indexOf(value);
@@ -44,11 +46,14 @@ export default function SignUpPage({ ...rest }) {
     }
     setChecked(newChecked);
   };
+
   React.useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
   });
+
   const classes = useStyles();
+
   return (
     <div>
       <Header
@@ -101,101 +106,16 @@ export default function SignUpPage({ ...rest }) {
                         <Button justIcon round color="google">
                           <i className={classes.socials + " fab fa-google"} />
                         </Button>
-                        {` `}
                         <Button justIcon round color="facebook">
                           <i
                             className={classes.socials + " fab fa-facebook-f"}
                           />
                         </Button>
-                        {` `}
                         <h4 className={classes.socialTitle}>ou avec votre email</h4>
                       </div>
-                      <form className={classes.form}>
-                        <CustomInput
-                          formControlProps={{
-                            fullWidth: true,
-                            className: classes.customFormControlClasses,
-                          }}
-                          inputProps={{
-                            startAdornment: (
-                              <InputAdornment
-                                position="start"
-                                className={classes.inputAdornment}
-                              >
-                                <Face className={classes.inputAdornmentIcon} />
-                              </InputAdornment>
-                            ),
-                            placeholder: "First Name...",
-                          }}
-                        />
-                        <CustomInput
-                          formControlProps={{
-                            fullWidth: true,
-                            className: classes.customFormControlClasses,
-                          }}
-                          inputProps={{
-                            startAdornment: (
-                              <InputAdornment
-                                position="start"
-                                className={classes.inputAdornment}
-                              >
-                                <Email className={classes.inputAdornmentIcon} />
-                              </InputAdornment>
-                            ),
-                            placeholder: "Email...",
-                          }}
-                        />
-                        <CustomInput
-                          formControlProps={{
-                            fullWidth: true,
-                            className: classes.customFormControlClasses,
-                          }}
-                          inputProps={{
-                            startAdornment: (
-                              <InputAdornment
-                                position="start"
-                                className={classes.inputAdornment}
-                              >
-                                <Icon className={classes.inputAdornmentIcon}>
-                                  lock_outline
-                                </Icon>
-                              </InputAdornment>
-                            ),
-                            placeholder: "Password...",
-                          }}
-                        />
-                        <FormControlLabel
-                          classes={{
-                            label: classes.label,
-                          }}
-                          control={
-                            <Checkbox
-                              tabIndex={-1}
-                              onClick={() => handleToggle(1)}
-                              checkedIcon={
-                                <Check className={classes.checkedIcon} />
-                              }
-                              icon={<Check className={classes.uncheckedIcon} />}
-                              classes={{
-                                checked: classes.checked,
-                                root: classes.checkRoot,
-                              }}
-                              checked={checked.indexOf(1) !== -1 ? true : false}
-                            />
-                          }
-                          label={
-                            <span>
-                              I agree to the{" "}
-                              <a href="#pablo">terms and conditions</a>.
-                            </span>
-                          }
-                        />
-                        <div className={classes.textCenter}>
-                          <Button round color="primary">
-                            Get started
-                          </Button>
-                        </div>
-                      </form>
+
+                      <RegistrationForm />
+                      
                     </GridItem>
                   </GridContainer>
                 </CardBody>

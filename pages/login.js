@@ -31,10 +31,14 @@ import loginPageStyle from "styles/jss/nextjs-material-kit-pro/pages/loginPageSt
 
 //auth
 // import { withAuthUser, AuthAction } from 'next-firebase-auth'
+import { useAuthUser } from 'next-firebase-auth'
 
 const useStyles = makeStyles(loginPageStyle);
 
 const LoginPage = () => {
+
+  const AuthUser = useAuthUser();
+  console.log({AuthUser})
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
