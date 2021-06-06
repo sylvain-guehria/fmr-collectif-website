@@ -18,18 +18,17 @@ import styles from "styles/jss/nextjs-material-kit-pro/components/customInputSty
 
 const useStyles = makeStyles(styles);
 
-export default function CustomInput(props) {
-  const {
-    formControlProps,
-    labelText,
-    id,
-    labelProps,
-    inputProps,
-    error,
-    white,
-    inputRootCustomClasses,
-    success,
-  } = props;
+export default function CustomInput({
+  formControlProps,
+  labelText,
+  id,
+  labelProps,
+  inputProps,
+  error,
+  white,
+  inputRootCustomClasses,
+  success
+}) {
   const classes = useStyles();
   const labelClasses = classNames({
     [" " + classes.labelRootError]: error,

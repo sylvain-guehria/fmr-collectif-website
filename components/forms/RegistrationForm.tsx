@@ -29,7 +29,6 @@ const RegistrationForm = () => {
     const [checked, setChecked] = React.useState([1]);
 
     const handleToggle = (value: number) => {
-        console.log(value)
         const currentIndex = checked.indexOf(value);
         const newChecked = [...checked];
         if (currentIndex === -1) {
@@ -46,25 +45,23 @@ const RegistrationForm = () => {
         console.log(data)
     };
 
-    useEffect(() => {
         console.log({ errors })
-    },[errors])
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
             <Controller
                 name="firstName"
                 control={control}
-                defaultValue=""
                 rules={{ required: true }}
                 render={({ field }) => <CustomInput
                     formControlProps={{
                         fullWidth: true,
                         className: classes.customFormControlClasses,
                     }}
+                    error={errors.firstName?.message != '' ? true : null}
                     inputProps={{
                         field,
-                        // error: errors.firstName?.message,
+                        error: errors.firstName?.message,
                         startAdornment: (
                             <InputAdornment
                                 position='start'
@@ -80,16 +77,16 @@ const RegistrationForm = () => {
             <Controller
                 name="email"
                 control={control}
-                defaultValue=""
                 rules={{ required: true }}
                 render={({ field }) => <CustomInput
                     formControlProps={{
                         fullWidth: true,
                         className: classes.customFormControlClasses,
                     }}
+                    error={errors.email?.message != '' ? true : null}
                     inputProps={{
                         field,
-                        // error: errors.email?.message,
+                        error: errors.email?.message,
                         startAdornment: (
                             <InputAdornment
                                 position='start'
@@ -106,9 +103,9 @@ const RegistrationForm = () => {
             <Controller
                 name="password"
                 control={control}
-                defaultValue=""
                 rules={{ required: true }}
                 render={({ field }) => <CustomInput
+                error={errors.password?.message != '' ? true : null}
                     formControlProps={{
                         fullWidth: true,
                         className: classes.customFormControlClasses,
@@ -130,7 +127,7 @@ const RegistrationForm = () => {
                     }}
                 />}
             />
-            {/* <FormControlLabel
+            <FormControlLabel
                 classes={{
                     label: classes.label,
                 }}
@@ -155,7 +152,7 @@ const RegistrationForm = () => {
                         <a href='#pablo'>terms and conditions</a>.
                             </span>
                 }
-            /> */}
+            />
             <div className={classes.textCenter}>
                 {/* @ts-ignore */}
                 <Button round color='primary' type='submit'>
