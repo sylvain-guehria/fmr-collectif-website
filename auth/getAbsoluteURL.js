@@ -1,4 +1,3 @@
-/* globals window */
 
 const getAbsoluteURL = (url, req = null) => {
     let host

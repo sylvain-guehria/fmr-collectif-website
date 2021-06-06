@@ -18,7 +18,7 @@ import styles from "styles/jss/nextjs-material-kit-pro/components/customInputSty
 
 const useStyles = makeStyles(styles);
 
-export default function CustomInput({
+const CustomInput = ({
   formControlProps,
   labelText,
   id,
@@ -28,7 +28,7 @@ export default function CustomInput({
   white,
   inputRootCustomClasses,
   success
-}) {
+}) => {
   const classes = useStyles();
   const labelClasses = classNames({
     [" " + classes.labelRootError]: error,
@@ -56,7 +56,7 @@ export default function CustomInput({
   } else {
     formControlClasses = classes.formControl;
   }
-  return (
+  return (<>
     <FormControl {...formControlProps} className={formControlClasses}>
       {labelText !== undefined ? (
         <InputLabel
@@ -84,6 +84,15 @@ export default function CustomInput({
         <Check className={classes.feedback + " " + classes.labelRootSuccess} />
       ) : null}
     </FormControl>
+
+    {error ? (
+      <InputLabel
+        className={classes.labelRoot + " " + labelClasses}
+      >
+        {error}
+      </InputLabel>
+    ) : null}
+  </>
   );
 }
 
@@ -94,7 +103,9 @@ CustomInput.propTypes = {
   inputProps: PropTypes.object,
   formControlProps: PropTypes.object,
   inputRootCustomClasses: PropTypes.string,
-  error: PropTypes.bool,
+  error: PropTypes.string || null,
   success: PropTypes.bool,
   white: PropTypes.bool,
 };
+
+export default CustomInput;

@@ -49,9 +49,8 @@ Router.events.on("routeChangeError", () => {
 initAuth()
 
 export default class MyApp extends App {
-  componentDidMount() {
-    let comment = document.createComment(`
 
+  static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {};
 
     if (Component.getInitialProps) {
