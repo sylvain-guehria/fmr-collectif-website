@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { RegistrationFormData } from './RegistrationFormData';
 
@@ -46,7 +46,9 @@ const RegistrationForm = () => {
         console.log(data)
     };
 
-    console.log({ errors })
+    useEffect(() => {
+        console.log({ errors })
+    },[errors])
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
@@ -62,6 +64,7 @@ const RegistrationForm = () => {
                     }}
                     inputProps={{
                         field,
+                        // error: errors.firstName?.message,
                         startAdornment: (
                             <InputAdornment
                                 position='start'
@@ -72,8 +75,6 @@ const RegistrationForm = () => {
                         ),
                         placeholder: 'First Name...'
                     }}
-                // name='firstName'
-                // ref={register('firstName', { required: "Votre firstname est obligatoire" })}
                 />}
             />
             <Controller
@@ -88,6 +89,7 @@ const RegistrationForm = () => {
                     }}
                     inputProps={{
                         field,
+                        // error: errors.email?.message,
                         startAdornment: (
                             <InputAdornment
                                 position='start'
@@ -98,8 +100,6 @@ const RegistrationForm = () => {
                         ),
                         placeholder: 'Email...'
                     }}
-                // name='email'
-                // ref={register('email', { required: "Votre email est obligatoire" })}
                 />
                 }
             />
@@ -115,6 +115,7 @@ const RegistrationForm = () => {
                     }}
                     inputProps={{
                         field,
+                        // error: errors.password?.message,
                         startAdornment: (
                             <InputAdornment
                                 position='start'
@@ -127,11 +128,9 @@ const RegistrationForm = () => {
                         ),
                         placeholder: 'Password...'
                     }}
-                // name='password'
-                // ref={register('password', { required: "Votre password est obligatoire" })}
                 />}
             />
-            <FormControlLabel
+            {/* <FormControlLabel
                 classes={{
                     label: classes.label,
                 }}
@@ -156,11 +155,11 @@ const RegistrationForm = () => {
                         <a href='#pablo'>terms and conditions</a>.
                             </span>
                 }
-            />
+            /> */}
             <div className={classes.textCenter}>
                 {/* @ts-ignore */}
-                <Button round color='primary'>
-                    Get started
+                <Button round color='primary' type='submit'>
+                    S'inscrire
                           </Button>
             </div>
 

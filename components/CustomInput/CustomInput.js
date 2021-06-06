@@ -77,6 +77,7 @@ export default function CustomInput(props) {
         }}
         id={id}
         {...inputProps}
+        {...inputProps.field}
       />
       {error ? (
         <Clear className={classes.feedback + " " + classes.labelRootError} />
