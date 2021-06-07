@@ -1,5 +1,6 @@
 export interface RegistrationFormData {
-    email: string;
-    password: string;
-    firstName: string;
+  email: string;
+  password: string;
+  firstName: string;
+  acceptTerms: boolean;
 }
