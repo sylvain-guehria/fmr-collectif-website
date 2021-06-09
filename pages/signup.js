@@ -12,9 +12,7 @@ import Icon from "@material-ui/core/Icon";
 import Timeline from "@material-ui/icons/Timeline";
 import Code from "@material-ui/icons/Code";
 import Group from "@material-ui/icons/Group";
-import Face from "@material-ui/icons/Face";
 import Email from "@material-ui/icons/Email";
-import Check from "@material-ui/icons/Check";
 import Favorite from "@material-ui/icons/Favorite";
 // core components
 import Header from "components/Header/Header.js";
@@ -34,18 +32,6 @@ import RegistrationForm from '../components/forms/RegistrationForm';
 const useStyles = makeStyles(signupPageStyle);
 
 export default function SignUpPage({ ...rest }) {
-
-  const [checked, setChecked] = React.useState([1]);
-  const handleToggle = (value) => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-    setChecked(newChecked);
-  };
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -75,28 +61,28 @@ export default function SignUpPage({ ...rest }) {
           <GridContainer justify="center">
             <GridItem xs={12} sm={10} md={10}>
               <Card className={classes.cardSignup}>
-                <h2 className={classes.cardTitle}>Register</h2>
+                <h2 className={classes.cardTitle}>S'inscrire</h2>
                 <CardBody>
                   <GridContainer justify="center">
                     <GridItem xs={12} sm={5} md={5}>
                       <InfoArea
                         className={classes.infoArea}
-                        title="Marketing"
-                        description="We've created the marketing campaign of the website. It was a very interesting collaboration."
+                        title="Soirées"
+                        description="FMR vous propose des soirées dans des lieux variés..."
                         icon={Timeline}
                         iconColor="rose"
                       />
                       <InfoArea
                         className={classes.infoArea}
-                        title="Fully Coded in HTML5"
-                        description="We've developed the website with HTML5 and CSS3. The client has access to the code using GitHub."
+                        title="Vous retrouver"
+                        description="Les soirées sont accessibles à tous."
                         icon={Code}
                         iconColor="primary"
                       />
                       <InfoArea
                         className={classes.infoArea}
-                        title="Built Audience"
-                        description="There is also a Fully Customizable CMS Admin Dashboard for this product."
+                        title="Tarif préférentiels"
+                        description="Des boissons et entrées aux soirées à tarif réduit pour les membres"
                         icon={Group}
                         iconColor="info"
                       />
@@ -111,7 +97,12 @@ export default function SignUpPage({ ...rest }) {
                             className={classes.socials + " fab fa-facebook-f"}
                           />
                         </Button>
-                        <h4 className={classes.socialTitle}>ou avec votre email</h4>
+                        <InfoArea
+                        className={classes.infoArea}
+                        description="ou avec votre email"
+                        icon={Email}
+                        iconColor="rose"
+                      />
                       </div>
 
                       <RegistrationForm />

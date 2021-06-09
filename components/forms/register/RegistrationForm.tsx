@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { RegistrationFormData } from './RegistrationFormData';
 import { validationSchema } from './RegisterFormValidation';
 
-// @material-ui/core components
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { makeStyles } from '@material-ui/core/styles';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -12,19 +11,17 @@ import InputLabel from '@material-ui/core/InputLabel';
 
 import Face from '@material-ui/icons/Face';
 import Email from '@material-ui/icons/Email';
-import Check from '@material-ui/icons/Check';
 
-// core components
-import CustomInput from '../CustomInput/CustomInput.js';
-import Button from '../../components/CustomButtons/Button.js';
+import CustomInput from '../../CustomInput/CustomInput.js';
+import Button from '../../../components/CustomButtons/Button.js';
 
-//external libs
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import signupPageStyle from '../../styles/jss/nextjs-material-kit-pro/pages/signupPageStyle.js';
+import signupPageStyle from '../../../styles/jss/nextjs-material-kit-pro/pages/signupPageStyle.js';
 
-import { getError } from './formUtils';
+import { getError } from '../formUtils';
+import firebase from '../../../auth/firebase';
 
 const useStyles = makeStyles(signupPageStyle);
 
@@ -51,11 +48,11 @@ const RegistrationForm: React.FC = (): React.ReactElement => {
     formState: { errors },
   } = useForm<RegistrationFormData>(formOptions);
 
-  const onSubmit: SubmitHandler<RegistrationFormData> = (data: RegistrationFormData) => {
+  const onSubmit: SubmitHandler<RegistrationFormData> = async (data: RegistrationFormData) => {
     console.log(data);
+    const { email, password } = data;
+    await firebase.signUpEmail(email, password);
   };
-
-  console.log(errors);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
@@ -72,7 +69,7 @@ const RegistrationForm: React.FC = (): React.ReactElement => {
               <Face className={classes.inputAdornmentIcon} />
             </InputAdornment>
           ),
-          placeholder: 'First Name...',
+          placeholder: 'Nom et prénom...',
         }}
       />
       <CustomInput
@@ -104,7 +101,7 @@ const RegistrationForm: React.FC = (): React.ReactElement => {
               <Icon className={classes.inputAdornmentIcon}>lock_outline</Icon>
             </InputAdornment>
           ),
-          placeholder: 'Password...',
+          placeholder: 'Mot de passe...',
         }}
       />
       <CustomInput
@@ -120,7 +117,7 @@ const RegistrationForm: React.FC = (): React.ReactElement => {
               <Icon className={classes.inputAdornmentIcon}>lock_outline</Icon>
             </InputAdornment>
           ),
-          placeholder: 'confirm your assword...',
+          placeholder: 'confirmez votre mot de passe...',
         }}
       />
       <FormControlLabel
@@ -138,7 +135,7 @@ const RegistrationForm: React.FC = (): React.ReactElement => {
         }
         label={
           <span>
-            I agree to the <a href="#pablo">terms and conditions</a>.
+            J'accepte les <a href="#pablo">termes et conditions</a>.
           </span>
         }
       />
