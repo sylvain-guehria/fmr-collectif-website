@@ -1,7 +1,6 @@
-/*eslint-disable*/
 import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import Link from "next/link";
-
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -17,20 +16,27 @@ import PersonAdd from "@material-ui/icons/PersonAdd";
 // core components
 import Header from "components/Header/Header.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
-import Footer from "components/Footer/Footer.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Button from "components/CustomButtons/Button.js";
 import Card from "components/Card/Card.js";
-import CardBody from "components/Card/CardBody.js";
 import CardHeader from "components/Card/CardHeader.js";
-import CustomInput from "components/CustomInput/CustomInput.js";
+// import LoadingLayer from "components/LoadingLayer/LoadingLayer";
+import LoginWithEmailForm from '../components/forms/login/LoginWithEmailForm'
 
 import loginPageStyle from "styles/jss/nextjs-material-kit-pro/pages/loginPageStyle.js";
 
+//auth
+// import { withAuthUser, AuthAction } from 'next-firebase-auth'
+import { useAuthUser } from 'next-firebase-auth'
+
 const useStyles = makeStyles(loginPageStyle);
 
-export default function LoginPage() {
+const LoginPage = () => {
+
+  const AuthUser = useAuthUser();
+  console.log({AuthUser})
+
   React.useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
@@ -56,7 +62,7 @@ export default function LoginPage() {
           <GridContainer justify="center">
             <GridItem xs={12} sm={8} md={4}>
               <Card>
-                <form className={classes.form}>
+                <div className={classes.form}>
                   <CardHeader
                     color="rose"
                     signup
@@ -85,6 +91,10 @@ export default function LoginPage() {
                   <p className={classes.description + " " + classes.textCenter}>
                     ou avec un email
                   </p>
+
+                <LoginWithEmailForm />
+              
+                </div>
                   <CardBody signup>
                     <CustomInput
                       id="email"
@@ -130,7 +140,6 @@ export default function LoginPage() {
                     </Button>
                     </Link>
                   </div>
-                </form>
               </Card>
             </GridItem>
           </GridContainer>
@@ -139,3 +148,13 @@ export default function LoginPage() {
     </div>
   );
 }
+
+export default LoginPage
+
+//When I will need to redirect user when logged In
+// export default withAuthUser({
+//   whenAuthed: AuthAction.REDIRECT_TO_APP,
+//   whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
+//   whenUnauthedAfterInit: AuthAction.RENDER,
+//   LoaderComponent: LoadingLayer,
+// })(LoginPage)

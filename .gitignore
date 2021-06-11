@@ -354,3 +354,7 @@ MigrationBackup/
 
 #husky
 .husky/
+
+# local env files
+.env.local
+.env.development.local
