@@ -53,6 +53,7 @@ const useStyles = makeStyles(styles);
 export default function HeaderLinks(props) {
 
   const AuthUser = useAuthUser();
+  console.log('AuthUser from header', AuthUser)
 
   const easeInOutQuad = (t, b, c, d) => {
     t /= d / 2;

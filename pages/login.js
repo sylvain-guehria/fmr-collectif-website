@@ -1,31 +1,18 @@
-/*eslint-disable*/
 import React from "react";
-import Link from "next/link";
 
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import Icon from "@material-ui/core/Icon";
-// @material-ui/icons
-import Email from "@material-ui/icons/Email";
-import Favorite from "@material-ui/icons/Favorite";
-import Fingerprint from "@material-ui/icons/Fingerprint";
-import PersonAdd from "@material-ui/icons/PersonAdd";
 
 // core components
 import Header from "components/Header/Header.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
-import Footer from "components/Footer/Footer.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Button from "components/CustomButtons/Button.js";
 import Card from "components/Card/Card.js";
-import CardBody from "components/Card/CardBody.js";
 import CardHeader from "components/Card/CardHeader.js";
-import CustomInput from "components/CustomInput/CustomInput.js";
 // import LoadingLayer from "components/LoadingLayer/LoadingLayer";
+import LoginWithEmailForm from '../components/forms/login/LoginWithEmailForm'
 
 import loginPageStyle from "styles/jss/nextjs-material-kit-pro/pages/loginPageStyle.js";
 
@@ -65,7 +52,7 @@ const LoginPage = () => {
           <GridContainer justify="center">
             <GridItem xs={12} sm={8} md={4}>
               <Card>
-                <form className={classes.form}>
+                <div className={classes.form}>
                   <CardHeader
                     color="rose"
                     signup
@@ -94,52 +81,10 @@ const LoginPage = () => {
                   <p className={classes.description + " " + classes.textCenter}>
                     ou avec un email
                   </p>
-                  <CardBody signup>
-                    <CustomInput
-                      id="email"
-                      formControlProps={{
-                        fullWidth: true,
-                      }}
-                      inputProps={{
-                        placeholder: "Email...",
-                        type: "email",
-                        startAdornment: (
-                          <InputAdornment position="start">
-                            <Email className={classes.inputIconsColor} />
-                          </InputAdornment>
-                        ),
-                      }}
-                    />
-                    <CustomInput
-                      id="pass"
-                      formControlProps={{
-                        fullWidth: true,
-                      }}
-                      inputProps={{
-                        placeholder: "Password",
-                        type: "password",
-                        startAdornment: (
-                          <InputAdornment position="start">
-                            <Icon className={classes.inputIconsColor}>
-                              lock_utline
-                            </Icon>
-                          </InputAdornment>
-                        ),
-                        autoComplete: "off",
-                      }}
-                    />
-                  </CardBody>
-                  <div className={classes.textCenter}>
-                    <Button simple color="rose" size="lg">
-                      <Fingerprint className={classes.dropdownIcons} /> Se connecter
-                    </Button><br />
-                    <Link href="/signup">
-                      <Button simple color="rose" size="lg">
-                        <PersonAdd className={classes.dropdownIcons} /> S'inscrire
-                    </Button>
-                    </Link>
-                  </div>
-                </form>
+
+                <LoginWithEmailForm />
+              
+                </div>
               </Card>
             </GridItem>
           </GridContainer>

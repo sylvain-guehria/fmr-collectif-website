@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { RegistrationFormData } from './RegistrationFormData';
+import { RegistrationFormType } from './RegistrationFormType';
 import { validationSchema } from './RegisterFormValidation';
 
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -12,8 +12,8 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Face from '@material-ui/icons/Face';
 import Email from '@material-ui/icons/Email';
 
-import CustomInput from '../../CustomInput/CustomInput.js';
-import Button from '../../../components/CustomButtons/Button.js';
+import CustomInput from '../../CustomInput/CustomInput';
+import Button from '../../CustomButtons/Button';
 
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -46,9 +46,9 @@ const RegistrationForm: React.FC = (): React.ReactElement => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<RegistrationFormData>(formOptions);
+  } = useForm<RegistrationFormType>(formOptions);
 
-  const onSubmit: SubmitHandler<RegistrationFormData> = async (data: RegistrationFormData) => {
+  const onSubmit: SubmitHandler<RegistrationFormType> = async (data: RegistrationFormType) => {
     console.log(data);
     const { email, password } = data;
     await firebase.signUpEmail(email, password);

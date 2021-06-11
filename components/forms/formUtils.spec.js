@@ -1,6 +1,6 @@
 import {
   getError
-} from '../../formUtils';
+} from './formUtils';
 
 describe('#getError', () => {
   const errors = {

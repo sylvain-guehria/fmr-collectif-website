@@ -1,19 +1,16 @@
-/*eslint-disable*/
 import React from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import Checkbox from "@material-ui/core/Checkbox";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import Icon from "@material-ui/core/Icon";
+
 // @material-ui/icons
 import Timeline from "@material-ui/icons/Timeline";
 import Code from "@material-ui/icons/Code";
 import Group from "@material-ui/icons/Group";
 import Email from "@material-ui/icons/Email";
 import Favorite from "@material-ui/icons/Favorite";
+
 // core components
 import Header from "components/Header/Header.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
@@ -27,7 +24,7 @@ import InfoArea from "components/InfoArea/InfoArea.js";
 
 import signupPageStyle from "styles/jss/nextjs-material-kit-pro/pages/signupPageStyle.js";
 
-import RegistrationForm from '../components/forms/RegistrationForm';
+import RegistrationForm from '../components/forms/register/RegistrationForm';
 
 const useStyles = makeStyles(signupPageStyle);
 
@@ -123,7 +120,7 @@ export default function SignUpPage({ ...rest }) {
                     <a
                       href="https://www.creative-tim.com/?ref=njsmkp-signup"
                       target="_blank"
-                      className={classes.block}
+                      className={classes.block} rel="noreferrer"
                     >
                       Creative Tim
                     </a>
@@ -132,7 +129,7 @@ export default function SignUpPage({ ...rest }) {
                     <a
                       href="https://www.creative-tim.com/presentation?ref=njsmkp-signup"
                       target="_blank"
-                      className={classes.block}
+                      className={classes.block} rel="noreferrer"
                     >
                       About us
                     </a>
@@ -149,7 +146,7 @@ export default function SignUpPage({ ...rest }) {
                     <a
                       href="https://www.creative-tim.com/license?ref=njsmkp-signup"
                       target="_blank"
-                      className={classes.block}
+                      className={classes.block} rel="noreferrer"
                     >
                       Licenses
                     </a>
@@ -161,7 +158,7 @@ export default function SignUpPage({ ...rest }) {
                 <Favorite className={classes.icon} /> by{" "}
                 <a
                   href="https://www.creative-tim.com?ref=njsmkp-signup"
-                  target="_blank"
+                  target="_blank" rel="noreferrer"
                 >
                   Creative Tim
                 </a>{" "}

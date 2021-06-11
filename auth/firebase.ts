@@ -54,7 +54,7 @@ export default {
         console.log(error);
       });
   },
-  signUpEmail(email: string, password: string): Promise<{}> {
+  signUpEmail(email: string, password: string): Promise<Record<string, unknown>> {
     return new Promise((resolve, reject) => {
       firebase.default
         .auth()
@@ -78,7 +78,8 @@ export default {
       firebase.default
         .auth()
         .signInWithEmailAndPassword(email, password)
-        .then(() => {
+        .then((res) => {
+          console.log({ res });
           resolve({ success: true });
         })
         .catch((error) => {
