@@ -1,7 +1,17 @@
 import React from "react";
-
+import { makeStyles } from "@material-ui/core/styles";
+import Link from "next/link";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import Icon from "@material-ui/core/Icon";
+// @material-ui/icons
+import Email from "@material-ui/icons/Email";
+import Favorite from "@material-ui/icons/Favorite";
+import Fingerprint from "@material-ui/icons/Fingerprint";
+import PersonAdd from "@material-ui/icons/PersonAdd";
 
 // core components
 import Header from "components/Header/Header.js";
@@ -85,6 +95,51 @@ const LoginPage = () => {
                 <LoginWithEmailForm />
               
                 </div>
+                  <CardBody signup>
+                    <CustomInput
+                      id="email"
+                      formControlProps={{
+                        fullWidth: true,
+                      }}
+                      inputProps={{
+                        placeholder: "Email...",
+                        type: "email",
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <Email className={classes.inputIconsColor} />
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
+                    <CustomInput
+                      id="pass"
+                      formControlProps={{
+                        fullWidth: true,
+                      }}
+                      inputProps={{
+                        placeholder: "Password",
+                        type: "password",
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <Icon className={classes.inputIconsColor}>
+                              lock_utline
+                            </Icon>
+                          </InputAdornment>
+                        ),
+                        autoComplete: "off",
+                      }}
+                    />
+                  </CardBody>
+                  <div className={classes.textCenter}>
+                    <Button simple color="rose" size="lg">
+                      <Fingerprint className={classes.dropdownIcons} /> Se connecter
+                    </Button><br />
+                    <Link href="/signup">
+                      <Button simple color="rose" size="lg">
+                        <PersonAdd className={classes.dropdownIcons} /> S'inscrire
+                    </Button>
+                    </Link>
+                  </div>
               </Card>
             </GridItem>
           </GridContainer>
