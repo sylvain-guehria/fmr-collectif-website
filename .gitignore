@@ -351,3 +351,10 @@ MigrationBackup/
 
 #cache next
 .next/
+
+#husky
+.husky/
+
+# local env files
+.env.local
+.env.development.local

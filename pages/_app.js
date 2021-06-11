@@ -19,6 +19,7 @@ import ReactDOM from "react-dom";
 import App from "next/app";
 import Head from "next/head";
 import Router from "next/router";
+import initAuth from '../auth/initAuth'
 
 import PageChange from "components/PageChange/PageChange.js";
 
@@ -45,27 +46,11 @@ Router.events.on("routeChangeError", () => {
   document.body.classList.remove("body-page-transition");
 });
 
+initAuth()
+
 export default class MyApp extends App {
-  componentDidMount() {
-    let comment = document.createComment(`
 
-=========================================================
-* NextJS Material Kit PRO v1.2.0 based on Material Kit PRO - v2.0.2 (Bootstrap 4.0.0 Final Edition) and Material Kit PRO React v1.8.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/nextjs-material-kit-pro
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-`);
-    document.insertBefore(comment, document.documentElement);
-  }
-  static async getInitialProps({ Component, _router, ctx }) {
+  static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {};
 
     if (Component.getInitialProps) {
@@ -85,7 +70,7 @@ export default class MyApp extends App {
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
           <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-          <title>NextJS Material Kit by Creative Tim</title>
+          <title>Fmr-collectif</title>
         </Head>
         <Component {...pageProps} />
       </React.Fragment>

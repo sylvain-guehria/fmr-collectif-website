@@ -18,18 +18,17 @@ import styles from "styles/jss/nextjs-material-kit-pro/components/customInputSty
 
 const useStyles = makeStyles(styles);
 
-export default function CustomInput(props) {
-  const {
-    formControlProps,
-    labelText,
-    id,
-    labelProps,
-    inputProps,
-    error,
-    white,
-    inputRootCustomClasses,
-    success,
-  } = props;
+const CustomInput = ({
+  formControlProps,
+  labelText,
+  id,
+  labelProps,
+  inputProps,
+  error,
+  white,
+  inputRootCustomClasses,
+  success
+}) => {
   const classes = useStyles();
   const labelClasses = classNames({
     [" " + classes.labelRootError]: error,
@@ -57,7 +56,7 @@ export default function CustomInput(props) {
   } else {
     formControlClasses = classes.formControl;
   }
-  return (
+  return (<>
     <FormControl {...formControlProps} className={formControlClasses}>
       {labelText !== undefined ? (
         <InputLabel
@@ -77,6 +76,7 @@ export default function CustomInput(props) {
         }}
         id={id}
         {...inputProps}
+        {...inputProps.field}
       />
       {error ? (
         <Clear className={classes.feedback + " " + classes.labelRootError} />
@@ -84,6 +84,15 @@ export default function CustomInput(props) {
         <Check className={classes.feedback + " " + classes.labelRootSuccess} />
       ) : null}
     </FormControl>
+
+    {error ? (
+      <InputLabel
+        className={classes.labelRoot + " " + labelClasses}
+      >
+        {error}
+      </InputLabel>
+    ) : null}
+  </>
   );
 }
 
@@ -94,7 +103,9 @@ CustomInput.propTypes = {
   inputProps: PropTypes.object,
   formControlProps: PropTypes.object,
   inputRootCustomClasses: PropTypes.string,
-  error: PropTypes.bool,
+  error: PropTypes.string || null,
   success: PropTypes.bool,
   white: PropTypes.bool,
 };
+
+export default CustomInput;

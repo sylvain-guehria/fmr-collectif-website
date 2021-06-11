@@ -50,11 +50,10 @@ export default function SectionTeam() {
               </a>
             </CardAvatar>
             <CardBody plain>
-              <h4 className={classes.cardTitle}>Alec Thompson</h4>
-              <h6 className={classes.textMuted}>CEO / Co-Founder</h6>
+              <h4 className={classes.cardTitle}>Thbaut Gervasoni</h4>
+              <h6 className={classes.textMuted}>CEO</h6>
               <p className={classes.cardDescription}>
-                And I love you like Kanye loves Kanye. We need to restart the
-                human foundation.
+                Blablabla.
               </p>
             </CardBody>
             <CardFooter className={classes.justifyContent}>
@@ -82,11 +81,10 @@ export default function SectionTeam() {
               </a>
             </CardAvatar>
             <CardBody plain>
-              <h4 className={classes.cardTitle}>Tania Andrew</h4>
-              <h6 className={classes.textMuted}>DESIGNER</h6>
+              <h4 className={classes.cardTitle}>Joris Sandon</h4>
+              <h6 className={classes.textMuted}>???</h6>
               <p className={classes.cardDescription}>
-                Don{"'"}t be scared of the truth because we need to restart the
-                human foundation. And I love you like Kanye loves Kanye.
+               blablabla.
               </p>
             </CardBody>
             <CardFooter className={classes.justifyContent}>
@@ -114,11 +112,10 @@ export default function SectionTeam() {
               </a>
             </CardAvatar>
             <CardBody plain>
-              <h4 className={classes.cardTitle}>Christian Mike</h4>
-              <h6 className={classes.textMuted}>Web Developer</h6>
+              <h4 className={classes.cardTitle}>Maud Paviet</h4>
+              <h6 className={classes.textMuted}>Trésorière</h6>
               <p className={classes.cardDescription}>
-                I love you like Kanye loves Kanye. Don{"'"}t be scared of the
-                truth because we need to restart the human foundation.
+                blablabla
               </p>
             </CardBody>
             <CardFooter className={classes.justifyContent}>
@@ -143,11 +140,10 @@ export default function SectionTeam() {
               </a>
             </CardAvatar>
             <CardBody plain>
-              <h4 className={classes.cardTitle}>Rebecca Stormvile</h4>
-              <h6 className={classes.textMuted}>WEB DEVELOPER</h6>
+              <h4 className={classes.cardTitle}>Sylvain Guehria</h4>
+              <h6 className={classes.textMuted}>Software ingénieur</h6>
               <p className={classes.cardDescription}>
-                And I love you like Kanye loves Kanye. We really need to restart
-                the human foundation.
+                Blablabla
               </p>
             </CardBody>
             <CardFooter className={classes.justifyContent}>

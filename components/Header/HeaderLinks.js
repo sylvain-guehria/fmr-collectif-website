@@ -43,11 +43,18 @@ import Error from "@material-ui/icons/Error";
 import CustomDropdown from "components/CustomDropdown/CustomDropdown.js";
 import Button from "components/CustomButtons/Button.js";
 
+//auth
+import { useAuthUser } from 'next-firebase-auth'
+
 import styles from "styles/jss/nextjs-material-kit-pro/components/headerLinksStyle.js";
 
 const useStyles = makeStyles(styles);
 
 export default function HeaderLinks(props) {
+
+  const AuthUser = useAuthUser();
+  console.log('AuthUser from header', AuthUser)
+
   const easeInOutQuad = (t, b, c, d) => {
     t /= d / 2;
     if (t < 1) return (c / 2) * t * t + b;
@@ -286,30 +293,44 @@ export default function HeaderLinks(props) {
           ]}
         />
       </ListItem>
-      <ListItem className={classes.listItem}>
+      { !AuthUser.email ? (<ListItem className={classes.listItem}>
         <Hidden mdDown>
-          <Button
-            href="https://www.creative-tim.com/product/nextjs-material-kit-pro?ref=njsmkp-navbar"
-            color={"white"}
-            target="_blank"
-            className={classes.navButton}
-            round
-          >
-            <ShoppingCart className={classes.icons} /> buy now
+          <Link href="/login">
+            <a className={classes.dropdownLink}>
+              <Button
+                color={"white"}
+                target="_blank"
+                className={classes.navButton}
+                round
+              >
+                <Fingerprint className={classes.icons} /> Se connecter
           </Button>
+            </a>
+          </Link>
         </Hidden>
         <Hidden mdUp>
           <Button
-            href="https://www.creative-tim.com/product/nextjs-material-kit-pro?ref=njsmkp-navbar"
             color={"info"}
             target="_blank"
             className={classes.navButton}
             round
           >
-            <ShoppingCart className={classes.icons} /> buy now
+            <Fingerprint className={classes.icons} /> Se connecter
           </Button>
         </Hidden>
-      </ListItem>
+      </ListItem>) : (<>
+        {/* delete me I am for test purpose */}
+        <p>Signed in as {AuthUser.email}</p>
+        <button
+          type="button"
+          onClick={() => {
+            AuthUser.signOut()
+          }}
+          style={styles.button}
+        >
+          Sign out
+        </button>
+      </>)}
     </List>
   );
 }
@@ -327,5 +348,6 @@ HeaderLinks.propTypes = {
     "warning",
     "danger",
     "rose",
+    "light"
   ]),
 };

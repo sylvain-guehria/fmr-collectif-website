@@ -4,21 +4,26 @@ module.exports = {
     node: true,
     es6: true,
     browser: true,
-    jest: true
+    jest: true,
   },
   parser: 'babel-eslint',
   parserOptions: {
     ecmaVersion: 8,
     ecmaFeatures: {
-      jsx: true
-    }
+      jsx: true,
+    },
   },
-  ignorePatterns: ['node_modules/*', '.next/*', '.out/*', '!.prettierrc.js', 'Documentation/*', 'next.config.js'], // We don't want to lint generated files nor node_modules, but we want to lint .prettierrc.js (ignored by default by eslint)
-  extends: [
-    'eslint:recommended',
-    'plugin:react/recommended'],
+  ignorePatterns: [
+    'node_modules/*',
+    '.next/*',
+    '.out/*',
+    '!.prettierrc.js',
+    'Documentation/*',
+    'next.config.js',
+  ], // We don't want to lint generated files nor node_modules, but we want to lint .prettierrc.js (ignored by default by eslint)
+  extends: ['eslint:recommended', 'plugin:react/recommended'],
   rules: {
-    "no-unused-vars": [2, { "args": "after-used", "argsIgnorePattern": "^_" }]
+    'no-unused-vars': [2, { args: 'after-used', argsIgnorePattern: '^_' }],
   },
   overrides: [
     // This configuration will apply only to TypeScript files
@@ -36,7 +41,7 @@ module.exports = {
         'plugin:react/recommended', // React rules
         'plugin:react-hooks/recommended', // React hooks rules
         'plugin:jsx-a11y/recommended', // Accessibility rules,
-        'plugin:prettier/recommended' // Prettier plugin
+        'plugin:prettier/recommended', // Prettier plugin
       ],
       rules: {
         // We will use TypeScript's types for component props instead
@@ -49,7 +54,7 @@ module.exports = {
         'jsx-a11y/anchor-is-valid': 'off',
 
         // Why would you want unused vars?
-        '@typescript-eslint/no-unused-vars': [2, { "args": "after-used", "argsIgnorePattern": "^_" }],
+        '@typescript-eslint/no-unused-vars': [2, { args: 'after-used', argsIgnorePattern: '^_' }],
 
         // I suggest this setting for requiring return types on functions only where useful
         '@typescript-eslint/explicit-function-return-type': [
