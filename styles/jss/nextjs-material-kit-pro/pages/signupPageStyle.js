@@ -1,5 +1,4 @@
 import {
-  primaryColor,
   grayColor,
   container,
   cardTitle,

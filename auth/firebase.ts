@@ -1,6 +1,7 @@
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
+import { User } from '../modules/user/shared/userType';
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_PUBLIC_API_KEY,
@@ -22,113 +23,97 @@ if (!firebase.default.apps.length) {
 
 export const fs = firebaseApp.firestore();
 
-export default {
-  auth: firebase.default.auth(),
-  // loginGoogle(): void {
-  //   const provider = new firebase.default.auth.GoogleAuthProvider();
-  //   firebase.default
-  //     .auth()
-  //     .signInWithPopup(provider)
-  //     .then(function (response) {
-  //       const firstResponse = response;
+export const auth = firebase.default.auth();
 
-  //       checkIfUserExists(response.user.uid).then((response: { success: boolean }) => {
-  //         if (!response.success) {
-  //           const payload = {
-  //             uid: firstResponse.user.uid,
-  //             email: firstResponse.user.email,
-  //             roles: ['user'],
-  //           };
-  //         }
-  //       });
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // },
-  logout(): void {
-    firebase.default
-      .auth()
-      .signOut()
-      .catch(function (error) {
-        console.log(error);
-      });
-  },
-  signUpEmail(email: string, password: string): Promise<Record<string, unknown>> {
-    return new Promise((resolve, reject) => {
-      firebase.default
-        .auth()
-        .createUserWithEmailAndPassword(email, password)
-        .then((response) => {
-          const payload = {
-            uid: response.user?.uid,
-            email: response.user?.email,
-            roles: ['user'],
-          };
-          console.log({ payload });
-          resolve({ success: true });
-        })
-        .catch((error) => {
-          reject(error);
-        });
+export const loginGoogle = (): void => {
+  const provider = new firebase.default.auth.GoogleAuthProvider();
+  firebase.default
+    .auth()
+    .signInWithPopup(provider)
+    .then((response) => {
+      const user: User = {
+        uid: response.user?.uid,
+        email: response.user?.email,
+        roles: ['user'],
+      };
+      console.log('google log res:', response);
+
+      if (response.additionalUserInfo?.isNewUser) createUserInDatabase(user);
+    })
+    .catch(function (error) {
+      console.log(error);
     });
-  },
-  loginEmail(email: string, password: string): Promise<Record<string, unknown>> {
-    return new Promise((resolve, reject) => {
-      firebase.default
-        .auth()
-        .signInWithEmailAndPassword(email, password)
-        .then((res) => {
-          console.log({ res });
-          resolve({ success: true });
-        })
-        .catch((error) => {
-          reject(error);
-        });
-    });
-  },
-  sendResetPassEmail(emailAddress: string): Promise<Record<string, unknown>> {
-    return new Promise((resolve, reject) => {
-      firebase.default
-        .auth()
-        .sendPasswordResetEmail(emailAddress)
-        .then(() => {
-          resolve({ success: true });
-        })
-        .catch((error) => {
-          reject(error);
-        });
-    });
-  },
-  setAuthChange(): void {
-    // let user: User = {
-    //   loggedIn: false,
-    // };
-    // firebase.default.auth().onAuthStateChanged((userfb) => {
-    //   if (userfb) {
-    //     const uid: string = userfb.uid;
-    //   } else {
-    //     user = {
-    //       loggedIn: false,
-    //     };
-    //   }
-    // });
-  },
 };
 
-const checkIfUserExists = (userUid: string): Promise<Record<string, unknown>> => {
-  let exists: boolean;
+export const logout = (): void => {
+  firebase.default
+    .auth()
+    .signOut()
+    .catch(function (error) {
+      console.log(error);
+    });
+};
 
+export const signUpEmail = (email: string, password: string): Promise<Record<string, unknown>> => {
   return new Promise((resolve, reject) => {
-    fs.ref(`users/${userUid}`)
-      .once('value', function (snapshot) {
-        exists = snapshot.val() !== null;
-      })
-      .then(() => {
-        resolve({ success: exists });
+    firebase.default
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then((response) => {
+        const payload = {
+          uid: response.user?.uid,
+          email: response.user?.email,
+          roles: ['user'],
+        };
+        console.log({ payload });
+        resolve({ success: true });
       })
       .catch((error) => {
         reject(error);
       });
   });
+};
+
+export const loginEmail = (email: string, password: string): Promise<Record<string, unknown>> => {
+  return new Promise((resolve, reject) => {
+    firebase.default
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then((res) => {
+        console.log({ res });
+        resolve({ success: true });
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+};
+
+export const sendResetPassEmail = (emailAddress: string): Promise<Record<string, unknown>> => {
+  return new Promise((resolve, reject) => {
+    firebase.default
+      .auth()
+      .sendPasswordResetEmail(emailAddress)
+      .then(() => {
+        resolve({ success: true });
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+};
+
+export const setAuthChange = (): void => {
+  firebase.default.auth().onAuthStateChanged((userfb) => {
+    if (userfb) {
+      const user: User = {
+        uid: userfb.uid,
+      };
+      console.log('user connected', user);
+    }
+  });
+};
+
+const createUserInDatabase = (user: User): void => {
+  console.log('Create user in db: ', user);
 };

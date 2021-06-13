@@ -21,7 +21,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import signupPageStyle from '../../../styles/jss/nextjs-material-kit-pro/pages/signupPageStyle.js';
 
 import { getError } from '../formUtils';
-import firebase from '../../../auth/firebase';
+import { signUpEmail } from '../../../auth/firebase';
 
 const useStyles = makeStyles(signupPageStyle);
 
@@ -51,7 +51,7 @@ const RegistrationForm: React.FC = (): React.ReactElement => {
   const onSubmit: SubmitHandler<RegistrationFormType> = async (data: RegistrationFormType) => {
     console.log(data);
     const { email, password } = data;
-    await firebase.signUpEmail(email, password);
+    await signUpEmail(email, password);
   };
 
   return (
