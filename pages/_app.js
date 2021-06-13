@@ -50,7 +50,7 @@ initAuth()
 
 export default class MyApp extends App {
 
-  static async getInitialProps({ Component, router, ctx }) {
+  static async getInitialProps({ Component, _router, ctx }) {
     let pageProps = {};
 
     if (Component.getInitialProps) {

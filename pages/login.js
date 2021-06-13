@@ -18,24 +18,20 @@ import Header from "components/Header/Header.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import Button from "components/CustomButtons/Button.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 // import LoadingLayer from "components/LoadingLayer/LoadingLayer";
 import LoginWithEmailForm from '../components/forms/login/LoginWithEmailForm'
+import LoginWithOtherAccount from '../components/forms/login/LoginWithOtherAccount'
 
 import loginPageStyle from "styles/jss/nextjs-material-kit-pro/pages/loginPageStyle.js";
 
 //auth
 // import { withAuthUser, AuthAction } from 'next-firebase-auth'
-import { useAuthUser } from 'next-firebase-auth'
 
 const useStyles = makeStyles(loginPageStyle);
 
 const LoginPage = () => {
-
-  const AuthUser = useAuthUser();
-  console.log({AuthUser})
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -47,7 +43,7 @@ const LoginPage = () => {
       <Header
         absolute
         color="transparent"
-        brand="NextJS Material Kit PRO"
+        brand="Connectez vous et profitez de...?"
         links={<HeaderLinks dropdownHoverColor="info" />}
       />
       <div
@@ -69,31 +65,16 @@ const LoginPage = () => {
                     className={classes.cardHeader}
                   >
                     <h4 className={classes.cardTitle}>Se connecter avec</h4>
-                    <div className={classes.socialLine}>
-                      <Button
-                        justIcon
-                        color="transparent"
-                        className={classes.iconButtons}
-                        onClick={(e) => e.preventDefault()}
-                      >
-                        <i className="fab fa-facebook" />
-                      </Button>
-                      <Button
-                        justIcon
-                        color="transparent"
-                        className={classes.iconButtons}
-                        onClick={(e) => e.preventDefault()}
-                      >
-                        <i className="fab fa-google-plus-g" />
-                      </Button>
-                    </div>
+
+                    <LoginWithOtherAccount />
+
                   </CardHeader>
                   <p className={classes.description + " " + classes.textCenter}>
                     ou avec un email
                   </p>
 
-                <LoginWithEmailForm />
-              
+                  <LoginWithEmailForm />
+
                 </div>
                   <CardBody signup>
                     <CustomInput
