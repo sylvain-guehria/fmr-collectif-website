@@ -1,15 +1,15 @@
-import { title, mlAuto, mrAuto } from "styles/jss/nextjs-material-kit-pro.js";
+import { title, mlAuto, mrAuto } from 'styles/jss/nextjs-material-kit-pro.js';
 
 const featuresStyle = {
   featuresSection: {
-    padding: "80px 0px",
+    padding: '80px 0px'
   },
   textCenter: {
-    textAlign: "center",
+    textAlign: 'center'
   },
   title,
   mlAuto,
-  mrAuto,
+  mrAuto
 };
 
 export default featuresStyle;

@@ -1,21 +1,21 @@
-import React from "react";
+import React from 'react';
 // nodejs library that concatenates classes
-import classNames from "classnames";
+import classNames from 'classnames';
 // core components
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import Card from "components/Card/Card.js";
-import CardHeader from "components/Card/CardHeader.js";
-import CardBody from "components/Card/CardBody.js";
-import CardFooter from "components/Card/CardFooter.js";
-import Button from "components/CustomButtons/Button.js";
+import GridContainer from 'components/Grid/GridContainer.js';
+import GridItem from 'components/Grid/GridItem.js';
+import Card from 'components/Card/Card.js';
+import CardHeader from 'components/Card/CardHeader.js';
+import CardBody from 'components/Card/CardBody.js';
+import CardFooter from 'components/Card/CardFooter.js';
+import Button from 'components/CustomButtons/Button.js';
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-import Tooltip from "@material-ui/core/Tooltip";
+import { makeStyles } from '@material-ui/core/styles';
+import Tooltip from '@material-ui/core/Tooltip';
 // @material-ui icons
-import Favorite from "@material-ui/icons/Favorite";
+import Favorite from '@material-ui/icons/Favorite';
 
-import styles from "styles/jss/nextjs-material-kit-pro/pages/ecommerceSections/latestOffersStyle.js";
+import styles from 'styles/jss/nextjs-material-kit-pro/pages/ecommerceSections/latestOffersStyle.js';
 
 const useStyles = makeStyles(styles);
 
@@ -36,7 +36,7 @@ export default function SectionLatestOffers() {
                   className={classes.coloredShadow}
                   style={{
                     backgroundImage: "url('/img/examples/gucci.jpg')",
-                    opacity: 1,
+                    opacity: 1
                   }}
                 />
               </CardHeader>
@@ -51,11 +51,11 @@ export default function SectionLatestOffers() {
               <CardFooter plain>
                 <div className={classes.priceContainer}>
                   <span className={classNames(classes.price, classes.priceOld)}>
-                    {" "}
+                    {' '}
                     €1,430
                   </span>
                   <span className={classNames(classes.price, classes.priceNew)}>
-                    {" "}
+                    {' '}
                     €743
                   </span>
                 </div>
@@ -84,7 +84,7 @@ export default function SectionLatestOffers() {
                   className={classes.coloredShadow}
                   style={{
                     backgroundImage: "url('/img/examples/dolce.jpg')",
-                    opacity: 1,
+                    opacity: 1
                   }}
                 />
               </CardHeader>
@@ -99,11 +99,11 @@ export default function SectionLatestOffers() {
               <CardFooter plain>
                 <div className={classes.priceContainer}>
                   <span className={classNames(classes.price, classes.priceOld)}>
-                    {" "}
+                    {' '}
                     €1,430
                   </span>
                   <span className={classNames(classes.price, classes.priceNew)}>
-                    {" "}
+                    {' '}
                     €743
                   </span>
                 </div>
@@ -132,7 +132,7 @@ export default function SectionLatestOffers() {
                   className={classes.coloredShadow}
                   style={{
                     backgroundImage: "url('/img/examples/tom-ford.jpg')",
-                    opacity: 1,
+                    opacity: 1
                   }}
                 />
               </CardHeader>
@@ -147,11 +147,11 @@ export default function SectionLatestOffers() {
               <CardFooter plain>
                 <div className={classes.priceContainer}>
                   <span className={classNames(classes.price, classes.priceOld)}>
-                    {" "}
+                    {' '}
                     €1,430
                   </span>
                   <span className={classNames(classes.price, classes.priceNew)}>
-                    {" "}
+                    {' '}
                     €743
                   </span>
                 </div>

@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 // nodejs library to set properties for components
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 // @material-ui/icons
 // core components
 
-import styles from "styles/jss/nextjs-material-kit-pro/components/mediaStyle.js";
+import styles from 'styles/jss/nextjs-material-kit-pro/components/mediaStyle.js';
 
 const useStyles = makeStyles(styles);
 
@@ -46,8 +46,8 @@ export default function Media(props) {
 }
 
 Media.defaultProps = {
-  avatarLink: "#pablo",
-  avatarAlt: "...",
+  avatarLink: '#pablo',
+  avatarAlt: '...'
 };
 
 Media.propTypes = {
@@ -57,5 +57,5 @@ Media.propTypes = {
   title: PropTypes.node,
   body: PropTypes.node,
   footer: PropTypes.node,
-  innerMedias: PropTypes.arrayOf(PropTypes.object),
+  innerMedias: PropTypes.arrayOf(PropTypes.object)
 };

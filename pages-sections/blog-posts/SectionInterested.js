@@ -1,19 +1,19 @@
-import React from "react";
+import React from 'react';
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 // @material-ui/icons
-import TrendingUp from "@material-ui/icons/TrendingUp";
+import TrendingUp from '@material-ui/icons/TrendingUp';
 // core components
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import Card from "components/Card/Card.js";
-import CardBody from "components/Card/CardBody.js";
-import CardHeader from "components/Card/CardHeader.js";
-import Info from "components/Typography/Info.js";
-import Success from "components/Typography/Success.js";
-import Danger from "components/Typography/Danger.js";
+import GridContainer from 'components/Grid/GridContainer.js';
+import GridItem from 'components/Grid/GridItem.js';
+import Card from 'components/Card/Card.js';
+import CardBody from 'components/Card/CardBody.js';
+import CardHeader from 'components/Card/CardHeader.js';
+import Info from 'components/Typography/Info.js';
+import Success from 'components/Typography/Success.js';
+import Danger from 'components/Typography/Danger.js';
 
-import sectionInterestedStyle from "styles/jss/nextjs-material-kit-pro/pages/blogPostsSections/sectionInterestedStyle.js";
+import sectionInterestedStyle from 'styles/jss/nextjs-material-kit-pro/pages/blogPostsSections/sectionInterestedStyle.js';
 
 const useStyles = makeStyles(sectionInterestedStyle);
 
@@ -21,7 +21,7 @@ export default function SectionInterested() {
   const classes = useStyles();
   return (
     <div className={classes.section}>
-      <h3 className={classes.title + " " + classes.textCenter}>
+      <h3 className={classes.title + ' ' + classes.textCenter}>
         You may also be interested in
       </h3>
       <br />
@@ -36,7 +36,7 @@ export default function SectionInterested() {
                 className={classes.coloredShadow}
                 style={{
                   backgroundImage: "url('/img/bg5.jpg')",
-                  opacity: "1",
+                  opacity: '1'
                 }}
               />
             </CardHeader>
@@ -68,7 +68,7 @@ export default function SectionInterested() {
                 className={classes.coloredShadow}
                 style={{
                   backgroundImage: "url('/img/examples/blog5.jpg')",
-                  opacity: "1",
+                  opacity: '1'
                 }}
               />
             </CardHeader>
@@ -100,7 +100,7 @@ export default function SectionInterested() {
                 className={classes.coloredShadow}
                 style={{
                   backgroundImage: "url('/img/examples/blog6.jpg')",
-                  opacity: "1",
+                  opacity: '1'
                 }}
               />
             </CardHeader>

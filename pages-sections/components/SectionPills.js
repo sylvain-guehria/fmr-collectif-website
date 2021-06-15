@@ -1,18 +1,18 @@
-import React from "react";
+import React from 'react';
 
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 
 // @material-ui/icons
-import Dashboard from "@material-ui/icons/Dashboard";
-import Schedule from "@material-ui/icons/Schedule";
-import List from "@material-ui/icons/List";
+import Dashboard from '@material-ui/icons/Dashboard';
+import Schedule from '@material-ui/icons/Schedule';
+import List from '@material-ui/icons/List';
 
 // core components
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import NavPills from "components/NavPills/NavPills.js";
-import pillsStyle from "styles/jss/nextjs-material-kit-pro/pages/componentsSections/pillsStyle.js";
+import GridContainer from 'components/Grid/GridContainer.js';
+import GridItem from 'components/Grid/GridItem.js';
+import NavPills from 'components/NavPills/NavPills.js';
+import pillsStyle from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/pillsStyle.js';
 
 const useStyles = makeStyles(pillsStyle);
 
@@ -34,13 +34,13 @@ export default function SectionPills() {
                 color="rose"
                 tabs={[
                   {
-                    tabButton: "Profile",
+                    tabButton: 'Profile',
                     tabContent: (
                       <span>
                         <p>
                           Collaboratively administrate empowered markets via
                           plug-and-play networks. Dynamically procrastinate B2C
-                          users after installed base benefits.{" "}
+                          users after installed base benefits.{' '}
                         </p>
                         <br />
                         <p>
@@ -48,16 +48,16 @@ export default function SectionPills() {
                           without revolutionary ROI.
                         </p>
                       </span>
-                    ),
+                    )
                   },
                   {
-                    tabButton: "Settings",
+                    tabButton: 'Settings',
                     tabContent: (
                       <span>
                         <p>
                           Efficiently unleash cross-media information without
                           cross-media value. Quickly maximize timely
-                          deliverables for real-time schemas.{" "}
+                          deliverables for real-time schemas.{' '}
                         </p>
                         <br />
                         <p>
@@ -65,16 +65,16 @@ export default function SectionPills() {
                           without functional solutions.
                         </p>
                       </span>
-                    ),
+                    )
                   },
                   {
-                    tabButton: "Options",
+                    tabButton: 'Options',
                     tabContent: (
                       <span>
                         <p>
                           Completely synergize resource taxing relationships via
                           premier niche markets. Professionally cultivate
-                          one-to-one customer service with robust ideas.{" "}
+                          one-to-one customer service with robust ideas.{' '}
                         </p>
                         <br />
                         <p>
@@ -82,8 +82,8 @@ export default function SectionPills() {
                           service for state of the art customer service.
                         </p>
                       </span>
-                    ),
-                  },
+                    )
+                  }
                 ]}
               />
             </GridItem>
@@ -94,18 +94,18 @@ export default function SectionPills() {
               <NavPills
                 horizontal={{
                   tabsGrid: { xs: 12, sm: 4, md: 5 },
-                  contentGrid: { xs: 12, sm: 8, md: 7 },
+                  contentGrid: { xs: 12, sm: 8, md: 7 }
                 }}
                 color="rose"
                 tabs={[
                   {
-                    tabButton: "Profile",
+                    tabButton: 'Profile',
                     tabContent: (
                       <span>
                         <p>
                           Collaboratively administrate empowered markets via
                           plug-and-play networks. Dynamically procrastinate B2C
-                          users after installed base benefits.{" "}
+                          users after installed base benefits.{' '}
                         </p>
                         <br />
                         <p>
@@ -113,16 +113,16 @@ export default function SectionPills() {
                           without revolutionary ROI.
                         </p>
                       </span>
-                    ),
+                    )
                   },
                   {
-                    tabButton: "Settings",
+                    tabButton: 'Settings',
                     tabContent: (
                       <span>
                         <p>
                           Efficiently unleash cross-media information without
                           cross-media value. Quickly maximize timely
-                          deliverables for real-time schemas.{" "}
+                          deliverables for real-time schemas.{' '}
                         </p>
                         <br />
                         <p>
@@ -130,16 +130,16 @@ export default function SectionPills() {
                           without functional solutions.
                         </p>
                       </span>
-                    ),
+                    )
                   },
                   {
-                    tabButton: "Options",
+                    tabButton: 'Options',
                     tabContent: (
                       <span>
                         <p>
                           Completely synergize resource taxing relationships via
                           premier niche markets. Professionally cultivate
-                          one-to-one customer service with robust ideas.{" "}
+                          one-to-one customer service with robust ideas.{' '}
                         </p>
                         <br />
                         <p>
@@ -147,8 +147,8 @@ export default function SectionPills() {
                           service for state of the art customer service.
                         </p>
                       </span>
-                    ),
-                  },
+                    )
+                  }
                 ]}
               />
             </GridItem>
@@ -164,7 +164,7 @@ export default function SectionPills() {
                 color="primary"
                 tabs={[
                   {
-                    tabButton: "Dashboard",
+                    tabButton: 'Dashboard',
                     tabIcon: Dashboard,
                     tabContent: (
                       <span>
@@ -190,10 +190,10 @@ export default function SectionPills() {
                           installed base benefits.
                         </p>
                       </span>
-                    ),
+                    )
                   },
                   {
-                    tabButton: "Schedule",
+                    tabButton: 'Schedule',
                     tabIcon: Schedule,
                     tabContent: (
                       <span>
@@ -212,10 +212,10 @@ export default function SectionPills() {
                           B2C users after installed base benefits.
                         </p>
                       </span>
-                    ),
+                    )
                   },
                   {
-                    tabButton: "Tasks",
+                    tabButton: 'Tasks',
                     tabIcon: List,
                     tabContent: (
                       <span>
@@ -241,8 +241,8 @@ export default function SectionPills() {
                           installed base benefits.
                         </p>
                       </span>
-                    ),
-                  },
+                    )
+                  }
                 ]}
               />
             </GridItem>
@@ -251,11 +251,11 @@ export default function SectionPills() {
                 color="primary"
                 horizontal={{
                   tabsGrid: { xs: 12, sm: 3, md: 4 },
-                  contentGrid: { xs: 12, sm: 9, md: 8 },
+                  contentGrid: { xs: 12, sm: 9, md: 8 }
                 }}
                 tabs={[
                   {
-                    tabButton: "Dashboard",
+                    tabButton: 'Dashboard',
                     tabIcon: Dashboard,
                     tabContent: (
                       <span>
@@ -281,10 +281,10 @@ export default function SectionPills() {
                           installed base benefits.
                         </p>
                       </span>
-                    ),
+                    )
                   },
                   {
-                    tabButton: "Schedule",
+                    tabButton: 'Schedule',
                     tabIcon: Schedule,
                     tabContent: (
                       <span>
@@ -303,8 +303,8 @@ export default function SectionPills() {
                           B2C users after installed base benefits.
                         </p>
                       </span>
-                    ),
-                  },
+                    )
+                  }
                 ]}
               />
             </GridItem>

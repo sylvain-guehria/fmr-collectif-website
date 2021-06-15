@@ -6,5 +6,9 @@ module.exports = {
   singleQuote: true,
   printWidth: 100,
   tabWidth: 2,
-  useTabs: false
-}
+  useTabs: false,
+  parser: 'typescript',
+  bracketSpacing: true,
+  jsxBracketSameLine: true,
+  arrowParens: 'avoid'
+};

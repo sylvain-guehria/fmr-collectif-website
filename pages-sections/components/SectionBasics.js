@@ -1,73 +1,73 @@
-import React from "react";
+import React from 'react';
 // plugin that creates slider
-import Slider from "nouislider";
+import Slider from 'nouislider';
 // react component plugin for creating beatiful tags on an input
-import TagsInput from "react-tagsinput";
+import TagsInput from 'react-tagsinput';
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormControl from "@material-ui/core/FormControl";
-import Checkbox from "@material-ui/core/Checkbox";
-import Radio from "@material-ui/core/Radio";
-import Switch from "@material-ui/core/Switch";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
-import InputLabel from "@material-ui/core/InputLabel";
-import Hidden from "@material-ui/core/Hidden";
+import { makeStyles } from '@material-ui/core/styles';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import Checkbox from '@material-ui/core/Checkbox';
+import Radio from '@material-ui/core/Radio';
+import Switch from '@material-ui/core/Switch';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import InputLabel from '@material-ui/core/InputLabel';
+import Hidden from '@material-ui/core/Hidden';
 // @material-ui/icons
-import Favorite from "@material-ui/icons/Favorite";
-import People from "@material-ui/icons/People";
-import Check from "@material-ui/icons/Check";
-import FiberManualRecord from "@material-ui/icons/FiberManualRecord";
+import Favorite from '@material-ui/icons/Favorite';
+import People from '@material-ui/icons/People';
+import Check from '@material-ui/icons/Check';
+import FiberManualRecord from '@material-ui/icons/FiberManualRecord';
 // core components
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import Button from "components/CustomButtons/Button.js";
-import CustomInput from "components/CustomInput/CustomInput.js";
-import CustomLinearProgress from "components/CustomLinearProgress/CustomLinearProgress.js";
-import Paginations from "components/Pagination/Pagination.js";
-import Badge from "components/Badge/Badge.js";
-import CustomDropdown from "components/CustomDropdown/CustomDropdown.js";
+import GridContainer from 'components/Grid/GridContainer.js';
+import GridItem from 'components/Grid/GridItem.js';
+import Button from 'components/CustomButtons/Button.js';
+import CustomInput from 'components/CustomInput/CustomInput.js';
+import CustomLinearProgress from 'components/CustomLinearProgress/CustomLinearProgress.js';
+import Paginations from 'components/Pagination/Pagination.js';
+import Badge from 'components/Badge/Badge.js';
+import CustomDropdown from 'components/CustomDropdown/CustomDropdown.js';
 
-import basicsStyle from "styles/jss/nextjs-material-kit-pro/pages/componentsSections/basicsStyle.js";
+import basicsStyle from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/basicsStyle.js';
 
 const useStyles = makeStyles(basicsStyle);
 
 export default function SectionBasics() {
   const [checked, setChecked] = React.useState([24, 22]);
-  const [selectedEnabled, setSelectedEnabled] = React.useState("b");
+  const [selectedEnabled, setSelectedEnabled] = React.useState('b');
   const [checkedA, setCheckedA] = React.useState(true);
   const [checkedB, setCheckedB] = React.useState(false);
-  const [simpleSelect, setSimpleSelect] = React.useState("");
+  const [simpleSelect, setSimpleSelect] = React.useState('');
   const [multipleSelect, setMultipleSelect] = React.useState([]);
   const [tags, setTags] = React.useState([
-    "amsterdam",
-    "washington",
-    "sydney",
-    "beijing",
+    'amsterdam',
+    'washington',
+    'sydney',
+    'beijing'
   ]);
   React.useEffect(() => {
     if (
       !document
-        .getElementById("sliderRegular")
-        .classList.contains("noUi-target")
+        .getElementById('sliderRegular')
+        .classList.contains('noUi-target')
     ) {
-      Slider.create(document.getElementById("sliderRegular"), {
+      Slider.create(document.getElementById('sliderRegular'), {
         start: [40],
         connect: [true, false],
         step: 1,
-        range: { min: 0, max: 100 },
+        range: { min: 0, max: 100 }
       });
     }
     if (
-      !document.getElementById("sliderDouble").classList.contains("noUi-target")
+      !document.getElementById('sliderDouble').classList.contains('noUi-target')
     ) {
-      Slider.create(document.getElementById("sliderDouble"), {
+      Slider.create(document.getElementById('sliderDouble'), {
         start: [20, 60],
         connect: [false, true, false],
         step: 1,
-        range: { min: 0, max: 100 },
+        range: { min: 0, max: 100 }
       });
     }
     return function cleanup() {};
@@ -435,10 +435,10 @@ export default function SectionBasics() {
               <CustomInput
                 id="regular"
                 inputProps={{
-                  placeholder: "Regular",
+                  placeholder: 'Regular'
                 }}
                 formControlProps={{
-                  fullWidth: true,
+                  fullWidth: true
                 }}
               />
             </GridItem>
@@ -447,7 +447,7 @@ export default function SectionBasics() {
                 labelText="With floating label"
                 id="float"
                 formControlProps={{
-                  fullWidth: true,
+                  fullWidth: true
                 }}
               />
             </GridItem>
@@ -457,7 +457,7 @@ export default function SectionBasics() {
                 id="success"
                 success
                 formControlProps={{
-                  fullWidth: true,
+                  fullWidth: true
                 }}
               />
             </GridItem>
@@ -467,7 +467,7 @@ export default function SectionBasics() {
                 id="error"
                 error
                 formControlProps={{
-                  fullWidth: true,
+                  fullWidth: true
                 }}
               />
             </GridItem>
@@ -476,14 +476,14 @@ export default function SectionBasics() {
                 labelText="With material Icons"
                 id="material"
                 formControlProps={{
-                  fullWidth: true,
+                  fullWidth: true
                 }}
                 inputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
                       <People />
                     </InputAdornment>
-                  ),
+                  )
                 }}
               />
             </GridItem>
@@ -492,14 +492,14 @@ export default function SectionBasics() {
                 labelText="With Font Awesome Icons"
                 id="font-awesome"
                 formControlProps={{
-                  fullWidth: true,
+                  fullWidth: true
                 }}
                 inputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
                       <i className="fas fa-users" />
                     </InputAdornment>
-                  ),
+                  )
                 }}
               />
             </GridItem>
@@ -515,7 +515,7 @@ export default function SectionBasics() {
               <div
                 className={
                   classes.checkboxAndRadio +
-                  " " +
+                  ' ' +
                   classes.checkboxAndRadioHorizontal
                 }
               >
@@ -528,7 +528,7 @@ export default function SectionBasics() {
                       icon={<Check className={classes.uncheckedIcon} />}
                       classes={{
                         checked: classes.checked,
-                        root: classes.checkRoot,
+                        root: classes.checkRoot
                       }}
                     />
                   }
@@ -539,7 +539,7 @@ export default function SectionBasics() {
               <div
                 className={
                   classes.checkboxAndRadio +
-                  " " +
+                  ' ' +
                   classes.checkboxAndRadioHorizontal
                 }
               >
@@ -553,7 +553,7 @@ export default function SectionBasics() {
                       icon={<Check className={classes.uncheckedIcon} />}
                       classes={{
                         checked: classes.checked,
-                        root: classes.checkRoot,
+                        root: classes.checkRoot
                       }}
                     />
                   }
@@ -564,7 +564,7 @@ export default function SectionBasics() {
               <div
                 className={
                   classes.checkboxAndRadio +
-                  " " +
+                  ' ' +
                   classes.checkboxAndRadioHorizontal
                 }
               >
@@ -577,14 +577,14 @@ export default function SectionBasics() {
                       icon={<Check className={classes.uncheckedIcon} />}
                       classes={{
                         checked: classes.checked,
-                        root: classes.checkRoot,
+                        root: classes.checkRoot
                       }}
                     />
                   }
                   classes={{
                     label: classes.label,
                     disabled: classes.disabledCheckboxAndRadio,
-                    root: classes.labelRoot,
+                    root: classes.labelRoot
                   }}
                   label="Disabled Unchecked"
                 />
@@ -592,7 +592,7 @@ export default function SectionBasics() {
               <div
                 className={
                   classes.checkboxAndRadio +
-                  " " +
+                  ' ' +
                   classes.checkboxAndRadioHorizontal
                 }
               >
@@ -606,14 +606,14 @@ export default function SectionBasics() {
                       icon={<Check className={classes.uncheckedIcon} />}
                       classes={{
                         checked: classes.checked,
-                        root: classes.checkRoot,
+                        root: classes.checkRoot
                       }}
                     />
                   }
                   classes={{
                     label: classes.label,
                     disabled: classes.disabledCheckboxAndRadio,
-                    root: classes.labelRoot,
+                    root: classes.labelRoot
                   }}
                   label="Disabled Checked"
                 />
@@ -626,15 +626,15 @@ export default function SectionBasics() {
               <div
                 className={
                   classes.checkboxAndRadio +
-                  " " +
+                  ' ' +
                   classes.checkboxAndRadioHorizontal
                 }
               >
                 <FormControlLabel
                   control={
                     <Radio
-                      checked={selectedEnabled === "a"}
-                      onChange={() => setSelectedEnabled("a")}
+                      checked={selectedEnabled === 'a'}
+                      onChange={() => setSelectedEnabled('a')}
                       value="a"
                       name="radio button enabled"
                       aria-label="A"
@@ -646,13 +646,13 @@ export default function SectionBasics() {
                       }
                       classes={{
                         checked: classes.radio,
-                        root: classes.radioRoot,
+                        root: classes.radioRoot
                       }}
                     />
                   }
                   classes={{
                     label: classes.label,
-                    root: classes.labelRoot,
+                    root: classes.labelRoot
                   }}
                   label="First Radio"
                 />
@@ -660,15 +660,15 @@ export default function SectionBasics() {
               <div
                 className={
                   classes.checkboxAndRadio +
-                  " " +
+                  ' ' +
                   classes.checkboxAndRadioHorizontal
                 }
               >
                 <FormControlLabel
                   control={
                     <Radio
-                      checked={selectedEnabled === "b"}
-                      onChange={() => setSelectedEnabled("b")}
+                      checked={selectedEnabled === 'b'}
+                      onChange={() => setSelectedEnabled('b')}
                       value="b"
                       name="radio button enabled"
                       aria-label="B"
@@ -680,13 +680,13 @@ export default function SectionBasics() {
                       }
                       classes={{
                         checked: classes.radio,
-                        root: classes.radioRoot,
+                        root: classes.radioRoot
                       }}
                     />
                   }
                   classes={{
                     label: classes.label,
-                    root: classes.labelRoot,
+                    root: classes.labelRoot
                   }}
                   label="Second Radio"
                 />
@@ -694,7 +694,7 @@ export default function SectionBasics() {
               <div
                 className={
                   classes.checkboxAndRadio +
-                  " " +
+                  ' ' +
                   classes.checkboxAndRadioHorizontal
                 }
               >
@@ -715,13 +715,13 @@ export default function SectionBasics() {
                       classes={{
                         checked: classes.radio,
                         disabled: classes.disabledCheckboxAndRadio,
-                        root: classes.radioRoot,
+                        root: classes.radioRoot
                       }}
                     />
                   }
                   classes={{
                     label: classes.label,
-                    root: classes.labelRoot,
+                    root: classes.labelRoot
                   }}
                   label="Disabled Unchecked Radio"
                 />
@@ -729,7 +729,7 @@ export default function SectionBasics() {
               <div
                 className={
                   classes.checkboxAndRadio +
-                  " " +
+                  ' ' +
                   classes.checkboxAndRadioHorizontal
                 }
               >
@@ -750,7 +750,7 @@ export default function SectionBasics() {
                       classes={{
                         checked: classes.radio,
                         disabled: classes.disabledCheckboxAndRadio,
-                        root: classes.radioRoot,
+                        root: classes.radioRoot
                       }}
                     />
                   }
@@ -774,13 +774,13 @@ export default function SectionBasics() {
                         switchBase: classes.switchBase,
                         checked: classes.switchChecked,
                         thumb: classes.switchIcon,
-                        track: classes.switchBar,
+                        track: classes.switchBar
                       }}
                     />
                   }
                   classes={{
                     label: classes.label,
-                    root: classes.labelRoot,
+                    root: classes.labelRoot
                   }}
                   label="Toggle is on"
                 />
@@ -796,13 +796,13 @@ export default function SectionBasics() {
                         switchBase: classes.switchBase,
                         checked: classes.switchChecked,
                         thumb: classes.switchIcon,
-                        track: classes.switchBar,
+                        track: classes.switchBar
                       }}
                     />
                   }
                   classes={{
                     label: classes.label,
-                    root: classes.labelRoot,
+                    root: classes.labelRoot
                   }}
                   label="Toggle is off"
                 />
@@ -828,22 +828,22 @@ export default function SectionBasics() {
                     </InputLabel>
                     <Select
                       MenuProps={{
-                        className: classes.selectMenu,
+                        className: classes.selectMenu
                       }}
                       classes={{
-                        select: classes.select,
+                        select: classes.select
                       }}
                       value={simpleSelect}
                       onChange={handleSimple}
                       inputProps={{
-                        name: "simpleSelect",
-                        id: "simple-select",
+                        name: 'simpleSelect',
+                        id: 'simple-select'
                       }}
                     >
                       <MenuItem
                         disabled
                         classes={{
-                          root: classes.selectMenuItem,
+                          root: classes.selectMenuItem
                         }}
                       >
                         Single Select
@@ -851,7 +851,7 @@ export default function SectionBasics() {
                       <MenuItem
                         classes={{
                           root: classes.selectMenuItem,
-                          selected: classes.selectMenuItemSelected,
+                          selected: classes.selectMenuItemSelected
                         }}
                         value="2"
                       >
@@ -860,7 +860,7 @@ export default function SectionBasics() {
                       <MenuItem
                         classes={{
                           root: classes.selectMenuItem,
-                          selected: classes.selectMenuItemSelected,
+                          selected: classes.selectMenuItemSelected
                         }}
                         value="3"
                       >
@@ -869,7 +869,7 @@ export default function SectionBasics() {
                       <MenuItem
                         classes={{
                           root: classes.selectMenuItem,
-                          selected: classes.selectMenuItemSelected,
+                          selected: classes.selectMenuItemSelected
                         }}
                         value="4"
                       >
@@ -892,18 +892,18 @@ export default function SectionBasics() {
                       onChange={handleMultiple}
                       MenuProps={{
                         className: classes.selectMenu,
-                        classes: { paper: classes.selectPaper },
+                        classes: { paper: classes.selectPaper }
                       }}
                       classes={{ select: classes.select }}
                       inputProps={{
-                        name: "multipleSelect",
-                        id: "multiple-select",
+                        name: 'multipleSelect',
+                        id: 'multiple-select'
                       }}
                     >
                       <MenuItem
                         disabled
                         classes={{
-                          root: classes.selectMenuItem,
+                          root: classes.selectMenuItem
                         }}
                       >
                         Multiple Select
@@ -911,7 +911,7 @@ export default function SectionBasics() {
                       <MenuItem
                         classes={{
                           root: classes.selectMenuItem,
-                          selected: classes.selectMenuItemSelectedMultiple,
+                          selected: classes.selectMenuItemSelectedMultiple
                         }}
                         value="2"
                       >
@@ -920,7 +920,7 @@ export default function SectionBasics() {
                       <MenuItem
                         classes={{
                           root: classes.selectMenuItem,
-                          selected: classes.selectMenuItemSelectedMultiple,
+                          selected: classes.selectMenuItemSelectedMultiple
                         }}
                         value="3"
                       >
@@ -929,7 +929,7 @@ export default function SectionBasics() {
                       <MenuItem
                         classes={{
                           root: classes.selectMenuItem,
-                          selected: classes.selectMenuItemSelectedMultiple,
+                          selected: classes.selectMenuItemSelectedMultiple
                         }}
                         value="4"
                       >
@@ -952,17 +952,17 @@ export default function SectionBasics() {
                     buttonProps={{
                       round: true,
                       block: true,
-                      color: "info",
+                      color: 'info'
                     }}
                     dropPlacement="bottom"
                     dropdownList={[
-                      "Action",
-                      "Another action",
-                      "Something else here",
+                      'Action',
+                      'Another action',
+                      'Something else here',
                       { divider: true },
-                      "Separated link",
+                      'Separated link',
                       { divider: true },
-                      "One more separated link",
+                      'One more separated link',
                       <CustomDropdown
                         data-ref="multi"
                         key={96586}
@@ -970,28 +970,28 @@ export default function SectionBasics() {
                         buttonText="Submenu"
                         buttonProps={{
                           simple: true,
-                          block: true,
+                          block: true
                         }}
                         dropPlacement="right-start"
                         dropdownList={[
-                          "Submenu action",
-                          "Submenu action",
+                          'Submenu action',
+                          'Submenu action',
                           <CustomDropdown
                             data-ref="multi"
                             key={965816}
                             innerDropDown
                             buttonText="Second submenu"
                             buttonProps={{
-                              simple: true,
+                              simple: true
                             }}
                             dropPlacement="right-start"
                             dropdownList={[
-                              "Submenu action 1",
-                              "Submenu action 2",
+                              'Submenu action 1',
+                              'Submenu action 2'
                             ]}
-                          />,
+                          />
                         ]}
-                      />,
+                      />
                     ]}
                   />
                 </GridItem>
@@ -1004,16 +1004,16 @@ export default function SectionBasics() {
                     buttonProps={{
                       round: true,
                       block: true,
-                      color: "info",
+                      color: 'info'
                     }}
                     dropdownList={[
-                      "Action",
-                      "Another action",
-                      "Something else here",
+                      'Action',
+                      'Another action',
+                      'Something else here',
                       { divider: true },
-                      "Separated link",
+                      'Separated link',
                       { divider: true },
-                      "One more separated link",
+                      'One more separated link'
                     ]}
                   />
                 </GridItem>
@@ -1021,7 +1021,7 @@ export default function SectionBasics() {
                   sm={12}
                   md={8}
                   lg={6}
-                  className={classes.mlAuto + " " + classes.mrAuto}
+                  className={classes.mlAuto + ' ' + classes.mrAuto}
                 >
                   <CustomDropdown
                     dropdownHeader="Dropdown header"
@@ -1029,15 +1029,15 @@ export default function SectionBasics() {
                     buttonProps={{
                       round: true,
                       block: true,
-                      color: "info",
+                      color: 'info'
                     }}
                     dropPlacement="bottom"
                     dropdownList={[
-                      "Action",
-                      "Another action",
-                      "Sometjing else here",
+                      'Action',
+                      'Another action',
+                      'Sometjing else here',
                       { divider: true },
-                      "Separeted link",
+                      'Separeted link'
                     ]}
                   />
                 </GridItem>
@@ -1056,11 +1056,11 @@ export default function SectionBasics() {
                 labelText="You can write your text here..."
                 id="textarea-input"
                 formControlProps={{
-                  fullWidth: true,
+                  fullWidth: true
                 }}
                 inputProps={{
                   multiline: true,
-                  rows: 5,
+                  rows: 5
                 }}
               />
             </GridItem>
@@ -1071,7 +1071,7 @@ export default function SectionBasics() {
               <TagsInput
                 value={tags}
                 onChange={handleTags}
-                tagProps={{ className: "react-tagsinput-tag rose" }}
+                tagProps={{ className: 'react-tagsinput-tag rose' }}
               />
             </GridItem>
           </GridContainer>
@@ -1096,19 +1096,19 @@ export default function SectionBasics() {
                 variant="determinate"
                 color="success"
                 value={100}
-                style={{ width: "35%", display: "inline-block" }}
+                style={{ width: '35%', display: 'inline-block' }}
               />
               <CustomLinearProgress
                 variant="determinate"
                 color="warning"
                 value={100}
-                style={{ width: "20%", display: "inline-block" }}
+                style={{ width: '20%', display: 'inline-block' }}
               />
               <CustomLinearProgress
                 variant="determinate"
                 color="danger"
                 value={25}
-                style={{ width: "45%", display: "inline-block" }}
+                style={{ width: '45%', display: 'inline-block' }}
               />
             </GridItem>
             <GridItem xs={12} sm={6} md={6}>
@@ -1119,25 +1119,25 @@ export default function SectionBasics() {
                 <Paginations
                   pages={[
                     { text: 1 },
-                    { disabled: true, text: "..." },
+                    { disabled: true, text: '...' },
                     { text: 5 },
                     { text: 6 },
                     { active: true, text: 7 },
                     { text: 8 },
                     { text: 9 },
-                    { text: "..." },
-                    { text: 12 },
+                    { text: '...' },
+                    { text: 12 }
                   ]}
                 />
                 <Paginations
                   pages={[
-                    { text: "PREV" },
+                    { text: 'PREV' },
                     { text: 1 },
                     { text: 2 },
                     { active: true, text: 3 },
                     { text: 4 },
                     { text: 5 },
-                    { text: "NEXT" },
+                    { text: 'NEXT' }
                   ]}
                   color="info"
                 />
@@ -1146,11 +1146,11 @@ export default function SectionBasics() {
                 <Paginations
                   pages={[
                     { text: 1 },
-                    { disabled: true, text: "..." },
+                    { disabled: true, text: '...' },
                     { text: 6 },
                     { active: true, text: 7 },
                     { text: 8 },
-                    { text: "..." },
+                    { text: '...' }
                   ]}
                 />
                 <Paginations
@@ -1159,7 +1159,7 @@ export default function SectionBasics() {
                     { text: 2 },
                     { active: true, text: 3 },
                     { text: 4 },
-                    { text: 5 },
+                    { text: 5 }
                   ]}
                   color="info"
                 />

@@ -4,8 +4,8 @@ import {
   cardTitle,
   whiteColor,
   infoColor,
-  hexToRgb,
-} from "styles/jss/nextjs-material-kit-pro.js";
+  hexToRgb
+} from 'styles/jss/nextjs-material-kit-pro.js';
 
 const pricingStyle = {
   mrAuto,
@@ -13,20 +13,20 @@ const pricingStyle = {
   cardTitle,
   cardTitleWhite: {
     ...cardTitle,
-    color: whiteColor + " !important",
-    "& small": {
-      color: "rgba(" + hexToRgb(whiteColor) + ",0.8)!important",
-    },
+    color: whiteColor + ' !important',
+    '& small': {
+      color: 'rgba(' + hexToRgb(whiteColor) + ',0.8)!important'
+    }
   },
   textCenter: {
-    textAlign: "center",
+    textAlign: 'center'
   },
   pricingSection: {
-    padding: "80px 0px",
+    padding: '80px 0px'
   },
   textInfo: {
-    color: infoColor[0] + " !important",
-  },
+    color: infoColor[0] + ' !important'
+  }
 };
 
 export default pricingStyle;

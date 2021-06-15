@@ -1,22 +1,22 @@
-import React from "react";
+import React from 'react';
 // react component for creating beautiful carousel
-import Carousel from "react-slick";
+import Carousel from 'react-slick';
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 // @material-ui/icons
-import FormatQuote from "@material-ui/icons/FormatQuote";
-import Star from "@material-ui/icons/Star";
+import FormatQuote from '@material-ui/icons/FormatQuote';
+import Star from '@material-ui/icons/Star';
 // core components
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import Card from "components/Card/Card.js";
-import CardBody from "components/Card/CardBody.js";
-import CardFooter from "components/Card/CardFooter.js";
-import CardAvatar from "components/Card/CardAvatar.js";
-import Muted from "components/Typography/Muted.js";
-import Warning from "components/Typography/Warning.js";
+import GridContainer from 'components/Grid/GridContainer.js';
+import GridItem from 'components/Grid/GridItem.js';
+import Card from 'components/Card/Card.js';
+import CardBody from 'components/Card/CardBody.js';
+import CardFooter from 'components/Card/CardFooter.js';
+import CardAvatar from 'components/Card/CardAvatar.js';
+import Muted from 'components/Typography/Muted.js';
+import Warning from 'components/Typography/Warning.js';
 
-import testimonialsStyle from "styles/jss/nextjs-material-kit-pro/pages/sectionsSections/testimonialsStyle.js";
+import testimonialsStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsSections/testimonialsStyle.js';
 
 const useStyles = makeStyles(testimonialsStyle);
 
@@ -28,13 +28,13 @@ export default function SectionTestimonials({ ...rest }) {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: false
   };
   return (
     <div className="cd-section" {...rest}>
       {/* Testimonials 1 START */}
       <div
-        className={classes.testimonials + " " + classes.sectionImage}
+        className={classes.testimonials + ' ' + classes.sectionImage}
         style={{ backgroundImage: "url('/img/dg2.jpg')" }}
       >
         <div className={classes.container}>
@@ -44,7 +44,7 @@ export default function SectionTestimonials({ ...rest }) {
               sm={6}
               md={6}
               className={
-                classes.mlAuto + " " + classes.mrAuto + " " + classes.textCenter
+                classes.mlAuto + ' ' + classes.mrAuto + ' ' + classes.textCenter
               }
             >
               <h2 className={classes.title}>Our Clients Love Us</h2>
@@ -142,9 +142,9 @@ export default function SectionTestimonials({ ...rest }) {
       <div
         className={
           classes.testimonials +
-          " " +
+          ' ' +
           classes.sectionDark +
-          " " +
+          ' ' +
           classes.testimonial2
         }
       >
@@ -245,7 +245,7 @@ export default function SectionTestimonials({ ...rest }) {
               sm={6}
               md={6}
               className={
-                classes.mlAuto + " " + classes.mrAuto + " " + classes.textCenter
+                classes.mlAuto + ' ' + classes.mrAuto + ' ' + classes.textCenter
               }
             >
               <h2 className={classes.title}>What Clients Say</h2>

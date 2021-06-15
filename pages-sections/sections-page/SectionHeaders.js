@@ -1,25 +1,25 @@
-import React from "react";
+import React from 'react';
 // nodejs library that concatenates classes
-import classNames from "classnames";
+import classNames from 'classnames';
 // react component for creating beautiful carousel
-import Carousel from "react-slick";
+import Carousel from 'react-slick';
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
+import { makeStyles } from '@material-ui/core/styles';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
 // @material-ui/icons
-import Share from "@material-ui/icons/Share";
-import ShoppingCart from "@material-ui/icons/ShoppingCart";
+import Share from '@material-ui/icons/Share';
+import ShoppingCart from '@material-ui/icons/ShoppingCart';
 // core components
-import Header from "components/Header/Header.js";
-import Button from "components/CustomButtons/Button.js";
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import Card from "components/Card/Card.js";
-import CardBody from "components/Card/CardBody.js";
-import CustomInput from "components/CustomInput/CustomInput.js";
+import Header from 'components/Header/Header.js';
+import Button from 'components/CustomButtons/Button.js';
+import GridContainer from 'components/Grid/GridContainer.js';
+import GridItem from 'components/Grid/GridItem.js';
+import Card from 'components/Card/Card.js';
+import CardBody from 'components/Card/CardBody.js';
+import CustomInput from 'components/CustomInput/CustomInput.js';
 
-import headersStyle from "styles/jss/nextjs-material-kit-pro/pages/sectionsSections/headersStyle.js";
+import headersStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsSections/headersStyle.js';
 
 const useStyles = makeStyles(headersStyle);
 
@@ -31,7 +31,7 @@ export default function SectionHeaders({ ...rest }) {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: false
   };
   return (
     // we've set the className to cd-section so we can make smooth scroll to it
@@ -45,7 +45,7 @@ export default function SectionHeaders({ ...rest }) {
           color="transparent"
           links={
             <div className={classes.collapse}>
-              <List className={classes.list + " " + classes.mlAuto}>
+              <List className={classes.list + ' ' + classes.mlAuto}>
                 <ListItem className={classes.listItem}>
                   <Button
                     href="#pablo"
@@ -87,15 +87,15 @@ export default function SectionHeaders({ ...rest }) {
                   </Button>
                 </ListItem>
               </List>
-              <List className={classes.list + " " + classes.mlAuto}>
+              <List className={classes.list + ' ' + classes.mlAuto}>
                 <ListItem className={classes.listItem}>
                   <Button
                     color="transparent"
                     href="https://twitter.com/CreativeTim?ref=creativetim"
                     target="_blank"
-                    className={classes.navLink + " " + classes.navLinkJustIcon}
+                    className={classes.navLink + ' ' + classes.navLinkJustIcon}
                   >
-                    <i className={"fab fa-twitter"} />
+                    <i className={'fab fa-twitter'} />
                   </Button>
                 </ListItem>
                 <ListItem className={classes.listItem}>
@@ -103,9 +103,9 @@ export default function SectionHeaders({ ...rest }) {
                     color="transparent"
                     href="https://www.facebook.com/CreativeTim?ref=creativetim"
                     target="_blank"
-                    className={classes.navLink + " " + classes.navLinkJustIcon}
+                    className={classes.navLink + ' ' + classes.navLinkJustIcon}
                   >
-                    <i className={"fab fa-facebook"} />
+                    <i className={'fab fa-facebook'} />
                   </Button>
                 </ListItem>
                 <ListItem className={classes.listItem}>
@@ -113,9 +113,9 @@ export default function SectionHeaders({ ...rest }) {
                     color="transparent"
                     href="https://www.instagram.com/CreativeTimOfficial?ref=creativetim"
                     target="_blank"
-                    className={classes.navLink + " " + classes.navLinkJustIcon}
+                    className={classes.navLink + ' ' + classes.navLinkJustIcon}
                   >
-                    <i className={"fab fa-instagram"} />
+                    <i className={'fab fa-instagram'} />
                   </Button>
                 </ListItem>
               </List>
@@ -172,7 +172,7 @@ export default function SectionHeaders({ ...rest }) {
           color="transparent"
           links={
             <div className={classes.collapse}>
-              <List className={classes.list + " " + classes.mlAuto}>
+              <List className={classes.list + ' ' + classes.mlAuto}>
                 <ListItem className={classes.listItem}>
                   <Button
                     href="#pablo"
@@ -214,15 +214,15 @@ export default function SectionHeaders({ ...rest }) {
                   </Button>
                 </ListItem>
               </List>
-              <List className={classes.list + " " + classes.mlAuto}>
+              <List className={classes.list + ' ' + classes.mlAuto}>
                 <ListItem className={classes.listItem}>
                   <Button
                     color="transparent"
                     href="https://twitter.com/CreativeTim?ref=creativetim"
                     target="_blank"
-                    className={classes.navLink + " " + classes.navLinkJustIcon}
+                    className={classes.navLink + ' ' + classes.navLinkJustIcon}
                   >
-                    <i className={"fab fa-twitter"} />
+                    <i className={'fab fa-twitter'} />
                   </Button>
                 </ListItem>
                 <ListItem className={classes.listItem}>
@@ -230,9 +230,9 @@ export default function SectionHeaders({ ...rest }) {
                     color="transparent"
                     href="https://www.facebook.com/CreativeTim?ref=creativetim"
                     target="_blank"
-                    className={classes.navLink + " " + classes.navLinkJustIcon}
+                    className={classes.navLink + ' ' + classes.navLinkJustIcon}
                   >
-                    <i className={"fab fa-facebook"} />
+                    <i className={'fab fa-facebook'} />
                   </Button>
                 </ListItem>
                 <ListItem className={classes.listItem}>
@@ -240,9 +240,9 @@ export default function SectionHeaders({ ...rest }) {
                     color="transparent"
                     href="https://www.instagram.com/CreativeTimOfficial?ref=creativetim"
                     target="_blank"
-                    className={classes.navLink + " " + classes.navLinkJustIcon}
+                    className={classes.navLink + ' ' + classes.navLinkJustIcon}
                   >
-                    <i className={"fab fa-instagram"} />
+                    <i className={'fab fa-instagram'} />
                   </Button>
                 </ListItem>
               </List>
@@ -289,11 +289,11 @@ export default function SectionHeaders({ ...rest }) {
                           <CustomInput
                             id="name"
                             inputProps={{
-                              placeholder: "Company name",
+                              placeholder: 'Company name'
                             }}
                             formControlProps={{
                               fullWidth: true,
-                              className: classes.formControl,
+                              className: classes.formControl
                             }}
                           />
                         </GridItem>
@@ -301,11 +301,11 @@ export default function SectionHeaders({ ...rest }) {
                           <CustomInput
                             id="email"
                             inputProps={{
-                              placeholder: "Company email",
+                              placeholder: 'Company email'
                             }}
                             formControlProps={{
                               fullWidth: true,
-                              className: classes.formControl,
+                              className: classes.formControl
                             }}
                           />
                         </GridItem>
@@ -313,13 +313,13 @@ export default function SectionHeaders({ ...rest }) {
                           <CustomInput
                             id="password"
                             inputProps={{
-                              placeholder: "Company password",
-                              type: "password",
-                              autoComplete: "off",
+                              placeholder: 'Company password',
+                              type: 'password',
+                              autoComplete: 'off'
                             }}
                             formControlProps={{
                               fullWidth: true,
-                              className: classes.formControl,
+                              className: classes.formControl
                             }}
                           />
                         </GridItem>
@@ -349,7 +349,7 @@ export default function SectionHeaders({ ...rest }) {
           brand="Creative Tim"
           color="transparent"
           links={
-            <List className={classes.list + " " + classes.mlAuto}>
+            <List className={classes.list + ' ' + classes.mlAuto}>
               <ListItem className={classes.listItem}>
                 <Button
                   href="#pablo"

@@ -4,14 +4,14 @@ module.exports = {
     node: true,
     es6: true,
     browser: true,
-    jest: true,
+    jest: true
   },
   parser: 'babel-eslint',
   parserOptions: {
     ecmaVersion: 8,
     ecmaFeatures: {
-      jsx: true,
-    },
+      jsx: true
+    }
   },
   ignorePatterns: [
     'node_modules/*',
@@ -19,11 +19,31 @@ module.exports = {
     '.out/*',
     '!.prettierrc.js',
     'Documentation/*',
-    'next.config.js',
+    'next.config.js'
   ], // We don't want to lint generated files nor node_modules, but we want to lint .prettierrc.js (ignored by default by eslint)
   extends: ['eslint:recommended', 'plugin:react/recommended'],
   rules: {
     'no-unused-vars': [2, { args: 'after-used', argsIgnorePattern: '^_' }],
+    'react/prop-types': ['error'],
+    'quotes': ['error', 'single', { 'avoidEscape': true }],
+    'complexity': ['error', 14],
+    'max-statements': ['error', 40],
+    'max-lines': ['error', 400],
+    'max-params': ['error', 5],
+    'semi': ['error', 'always'],
+    'comma-spacing': ['error', { 'before': false, 'after': true }],
+    'comma-dangle': ['error', 'never'],
+    'no-trailing-spaces': 'error',
+    'no-irregular-whitespace': 'error',
+    'default-case': 'error',
+    'camelcase': ['warn', { 'properties': 'always' }],
+    'no-console': ['error'],
+    'no-empty': ['error', { 'allowEmptyCatch': true }],
+    'react/display-name': 'off',
+    'import/no-anonymous-default-export': ['error', {
+      'allowObject': true,
+      'allowArray': true
+    }]
   },
   overrides: [
     // This configuration will apply only to TypeScript files
@@ -33,7 +53,7 @@ module.exports = {
       env: {
         browser: true,
         node: true,
-        es6: true,
+        es6: true
       },
       extends: [
         'eslint:recommended',
@@ -41,31 +61,22 @@ module.exports = {
         'plugin:react/recommended', // React rules
         'plugin:react-hooks/recommended', // React hooks rules
         'plugin:jsx-a11y/recommended', // Accessibility rules,
-        'plugin:prettier/recommended', // Prettier plugin
+        'plugin:prettier/recommended' // Prettier plugin
       ],
       rules: {
-        // We will use TypeScript's types for component props instead
         'react/prop-types': 'off',
-
-        // No need to import React when using Next.js
         'react/react-in-jsx-scope': 'off',
-
-        // This rule is not compatible with Next.js's <Link /> components
         'jsx-a11y/anchor-is-valid': 'off',
-
-        // Why would you want unused vars?
         '@typescript-eslint/no-unused-vars': [2, { args: 'after-used', argsIgnorePattern: '^_' }],
-
-        // I suggest this setting for requiring return types on functions only where useful
         '@typescript-eslint/explicit-function-return-type': [
           'warn',
           {
             allowExpressions: true,
-            allowConciseArrowFunctionExpressionsStartingWithVoid: true,
-          },
+            allowConciseArrowFunctionExpressionsStartingWithVoid: true
+          }
         ],
-        'prettier/prettier': ['error', {}, { usePrettierrc: true }], // Includes .prettierrc.js rules
-      },
-    },
-  ],
-}
+        'prettier/prettier': ['error', {}, { usePrettierrc: true }] // Includes .prettierrc.js rules
+      }
+    }
+  ]
+};

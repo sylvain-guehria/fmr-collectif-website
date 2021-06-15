@@ -1,5 +1,5 @@
-import React from "react";
+import React from 'react';
 
-const LoadingComponent = () => { return <div>Loading...</div> }
+const LoadingComponent = () => { return <div>Loading...</div>; };
 
 export default LoadingComponent;

@@ -1,20 +1,20 @@
-import React from "react";
+import React from 'react';
 
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 
 // core components
-import Header from "components/Header/Header.js";
-import HeaderLinks from "components/Header/HeaderLinks.js";
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import Card from "components/Card/Card.js";
-import CardHeader from "components/Card/CardHeader.js";
+import Header from 'components/Header/Header.js';
+import HeaderLinks from 'components/Header/HeaderLinks.js';
+import GridContainer from 'components/Grid/GridContainer.js';
+import GridItem from 'components/Grid/GridItem.js';
+import Card from 'components/Card/Card.js';
+import CardHeader from 'components/Card/CardHeader.js';
 // import LoadingLayer from "components/LoadingLayer/LoadingLayer";
-import LoginWithEmailForm from '../components/forms/login/LoginWithEmailForm'
-import LoginWithOtherAccount from '../components/forms/login/LoginWithOtherAccount'
+import LoginWithEmailForm from '../components/forms/login/LoginWithEmailForm';
+import LoginWithOtherAccount from '../components/forms/login/LoginWithOtherAccount';
 
-import loginPageStyle from "styles/jss/nextjs-material-kit-pro/pages/loginPageStyle.js";
+import loginPageStyle from 'styles/jss/nextjs-material-kit-pro/pages/loginPageStyle.js';
 
 //auth
 // import { withAuthUser, AuthAction } from 'next-firebase-auth'
@@ -40,8 +40,8 @@ const LoginPage = () => {
         className={classes.pageHeader}
         style={{
           backgroundImage: "url('https://images.unsplash.com/photo-1506869640319-fe1a24fd76dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')",
-          backgroundSize: "cover",
-          backgroundPosition: "top center",
+          backgroundSize: 'cover',
+          backgroundPosition: 'top center'
         }}
       >
         <div className={classes.container}>
@@ -59,7 +59,7 @@ const LoginPage = () => {
                     <LoginWithOtherAccount />
 
                   </CardHeader>
-                  <p className={classes.description + " " + classes.textCenter}>
+                  <p className={classes.description + ' ' + classes.textCenter}>
                     ou avec un email
                   </p>
 
@@ -73,9 +73,9 @@ const LoginPage = () => {
       </div>
     </div>
   );
-}
+};
 
-export default LoginPage
+export default LoginPage;
 
 //When I will need to redirect user when logged In
 // export default withAuthUser({

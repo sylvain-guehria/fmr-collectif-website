@@ -30,7 +30,7 @@ export const loginGoogle = (): void => {
   firebase.default
     .auth()
     .signInWithPopup(provider)
-    .then((response) => {
+    .then(response => {
       const user: User = {
         uid: response.user?.uid,
         email: response.user?.email,
@@ -59,7 +59,7 @@ export const signUpEmail = (email: string, password: string): Promise<Record<str
     firebase.default
       .auth()
       .createUserWithEmailAndPassword(email, password)
-      .then((response) => {
+      .then(response => {
         const payload = {
           uid: response.user?.uid,
           email: response.user?.email,
@@ -68,7 +68,7 @@ export const signUpEmail = (email: string, password: string): Promise<Record<str
         console.log({ payload });
         resolve({ success: true });
       })
-      .catch((error) => {
+      .catch(error => {
         reject(error);
       });
   });
@@ -79,11 +79,11 @@ export const loginEmail = (email: string, password: string): Promise<Record<stri
     firebase.default
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then((res) => {
+      .then(res => {
         console.log({ res });
         resolve({ success: true });
       })
-      .catch((error) => {
+      .catch(error => {
         reject(error);
       });
   });
@@ -97,14 +97,14 @@ export const sendResetPassEmail = (emailAddress: string): Promise<Record<string,
       .then(() => {
         resolve({ success: true });
       })
-      .catch((error) => {
+      .catch(error => {
         reject(error);
       });
   });
 };
 
 export const setAuthChange = (): void => {
-  firebase.default.auth().onAuthStateChanged((userfb) => {
+  firebase.default.auth().onAuthStateChanged(userfb => {
     if (userfb) {
       const user: User = {
         uid: userfb.uid,
