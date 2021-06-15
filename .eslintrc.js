@@ -39,11 +39,7 @@ module.exports = {
     'camelcase': ['warn', { 'properties': 'always' }],
     'no-console': ['error'],
     'no-empty': ['error', { 'allowEmptyCatch': true }],
-    'react/display-name': 'off',
-    'import/no-anonymous-default-export': ['error', {
-      'allowObject': true,
-      'allowArray': true
-    }]
+    'react/display-name': 'off'
   },
   overrides: [
     // This configuration will apply only to TypeScript files
