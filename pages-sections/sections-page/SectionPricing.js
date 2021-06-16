@@ -1,25 +1,25 @@
-import React from "react";
+import React from 'react';
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 // @material-ui/icons
-import Weekend from "@material-ui/icons/Weekend";
-import Home from "@material-ui/icons/Home";
-import Business from "@material-ui/icons/Business";
-import AccountBalance from "@material-ui/icons/AccountBalance";
-import Check from "@material-ui/icons/Check";
-import Close from "@material-ui/icons/Close";
+import Weekend from '@material-ui/icons/Weekend';
+import Home from '@material-ui/icons/Home';
+import Business from '@material-ui/icons/Business';
+import AccountBalance from '@material-ui/icons/AccountBalance';
+import Check from '@material-ui/icons/Check';
+import Close from '@material-ui/icons/Close';
 // core components
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import Card from "components/Card/Card.js";
-import CardBody from "components/Card/CardBody.js";
-import CardFooter from "components/Card/CardFooter.js";
-import Button from "components/CustomButtons/Button.js";
-import NavPills from "components/NavPills/NavPills.js";
-import Success from "components/Typography/Success.js";
-import Danger from "components/Typography/Danger.js";
+import GridContainer from 'components/Grid/GridContainer.js';
+import GridItem from 'components/Grid/GridItem.js';
+import Card from 'components/Card/Card.js';
+import CardBody from 'components/Card/CardBody.js';
+import CardFooter from 'components/Card/CardFooter.js';
+import Button from 'components/CustomButtons/Button.js';
+import NavPills from 'components/NavPills/NavPills.js';
+import Success from 'components/Typography/Success.js';
+import Danger from 'components/Typography/Danger.js';
 
-import pricingStyle from "styles/jss/nextjs-material-kit-pro/pages/sectionsSections/pricingStyle.js";
+import pricingStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsSections/pricingStyle.js';
 
 const useStyles = makeStyles(pricingStyle);
 
@@ -30,7 +30,7 @@ export default function SectionPricing({ ...rest }) {
       {/* Pricing 1 START */}
       <div
         className={
-          classes.pricing + " " + classes.pricing1 + " " + classes.section
+          classes.pricing + ' ' + classes.pricing1 + ' ' + classes.section
         }
         style={{ backgroundImage: "url('/img/bg11.jpg')" }}
       >
@@ -41,7 +41,7 @@ export default function SectionPricing({ ...rest }) {
               sm={6}
               md={6}
               className={
-                classes.mlAuto + " " + classes.mrAuto + " " + classes.textCenter
+                classes.mlAuto + ' ' + classes.mrAuto + ' ' + classes.textCenter
               }
             >
               <h2 className={classes.title}>Pick the best plan for you</h2>
@@ -58,7 +58,7 @@ export default function SectionPricing({ ...rest }) {
                 <CardBody pricing plain>
                   <h6
                     className={
-                      classes.cardCategory + " " + classes.marginBottom20
+                      classes.cardCategory + ' ' + classes.marginBottom20
                     }
                   >
                     Freelancer
@@ -68,7 +68,7 @@ export default function SectionPricing({ ...rest }) {
                   </div>
                   <h3
                     className={
-                      classes.cardTitleWhite + " " + classes.marginTop30
+                      classes.cardTitleWhite + ' ' + classes.marginTop30
                     }
                   >
                     FREE
@@ -88,7 +88,7 @@ export default function SectionPricing({ ...rest }) {
                 <CardBody pricing>
                   <h6
                     className={
-                      classes.cardDescription + " " + classes.marginBottom20
+                      classes.cardDescription + ' ' + classes.marginBottom20
                     }
                   >
                     SMALL COMPANY
@@ -96,7 +96,7 @@ export default function SectionPricing({ ...rest }) {
                   <div className={classes.icon}>
                     <Home className={classes.iconRose} />
                   </div>
-                  <h3 className={classes.cardTitle + " " + classes.marginTop30}>
+                  <h3 className={classes.cardTitle + ' ' + classes.marginTop30}>
                     $29
                   </h3>
                   <p className={classes.cardDescription}>
@@ -114,7 +114,7 @@ export default function SectionPricing({ ...rest }) {
                 <CardBody pricing plain>
                   <h6
                     className={
-                      classes.cardCategory + " " + classes.marginBottom20
+                      classes.cardCategory + ' ' + classes.marginBottom20
                     }
                   >
                     MEDIUM COMPANY
@@ -124,7 +124,7 @@ export default function SectionPricing({ ...rest }) {
                   </div>
                   <h3
                     className={
-                      classes.cardTitleWhite + " " + classes.marginTop30
+                      classes.cardTitleWhite + ' ' + classes.marginTop30
                     }
                   >
                     $69
@@ -144,7 +144,7 @@ export default function SectionPricing({ ...rest }) {
                 <CardBody pricing plain>
                   <h6
                     className={
-                      classes.cardCategory + " " + classes.marginBottom20
+                      classes.cardCategory + ' ' + classes.marginBottom20
                     }
                   >
                     ENTERPRISE
@@ -154,7 +154,7 @@ export default function SectionPricing({ ...rest }) {
                   </div>
                   <h3
                     className={
-                      classes.cardTitleWhite + " " + classes.marginTop30
+                      classes.cardTitleWhite + ' ' + classes.marginTop30
                     }
                   >
                     $159
@@ -181,7 +181,7 @@ export default function SectionPricing({ ...rest }) {
               sm={6}
               md={6}
               className={
-                classes.mlAuto + " " + classes.mrAuto + " " + classes.textCenter
+                classes.mlAuto + ' ' + classes.mrAuto + ' ' + classes.textCenter
               }
             >
               <h2 className={classes.title}>Pick the best plan for you</h2>
@@ -190,13 +190,13 @@ export default function SectionPricing({ ...rest }) {
                 color="rose"
                 tabs={[
                   {
-                    tabButton: "Monthly",
-                    tabContent: "",
+                    tabButton: 'Monthly',
+                    tabContent: ''
                   },
                   {
-                    tabButton: "Yearly",
-                    tabContent: "",
-                  },
+                    tabButton: 'Yearly',
+                    tabContent: ''
+                  }
                 ]}
               />
               <div className={classes.sectionSpace} />
@@ -238,7 +238,7 @@ export default function SectionPricing({ ...rest }) {
                 raised
                 background
                 style={{
-                  backgroundImage: "url('/img/examples/card-blog3.jpg')",
+                  backgroundImage: "url('/img/examples/card-blog3.jpg')"
                 }}
               >
                 <CardBody pricing background>
@@ -303,7 +303,7 @@ export default function SectionPricing({ ...rest }) {
       {/* Pricing 2 END */}
       {/* Pricing 3 START */}
       <div
-        className={classes.pricing + " " + classes.section}
+        className={classes.pricing + ' ' + classes.section}
         style={{ backgroundImage: "url('/img/examples/city.jpg')" }}
       >
         <div className={classes.container}>
@@ -313,7 +313,7 @@ export default function SectionPricing({ ...rest }) {
               sm={6}
               md={6}
               className={
-                classes.mlAuto + " " + classes.mrAuto + " " + classes.textCenter
+                classes.mlAuto + ' ' + classes.mrAuto + ' ' + classes.textCenter
               }
             >
               <h2 className={classes.title}>Pick the best plan for you</h2>
@@ -359,7 +359,7 @@ export default function SectionPricing({ ...rest }) {
                 <CardBody pricing>
                   <h6
                     className={
-                      classes.cardCategory + " " + classes.marginBottom30
+                      classes.cardCategory + ' ' + classes.marginBottom30
                     }
                   >
                     PREMIUM
@@ -402,7 +402,7 @@ export default function SectionPricing({ ...rest }) {
               sm={6}
               md={6}
               className={
-                classes.mlAuto + " " + classes.mrAuto + " " + classes.textCenter
+                classes.mlAuto + ' ' + classes.mrAuto + ' ' + classes.textCenter
               }
             >
               <h2 className={classes.title}>Pick the best plan for you</h2>
@@ -425,25 +425,25 @@ export default function SectionPricing({ ...rest }) {
                     <li>
                       <Success>
                         <Check />
-                      </Success>{" "}
+                      </Success>{' '}
                       Sharing Tools
                     </li>
                     <li>
                       <Danger>
                         <Close />
-                      </Danger>{" "}
+                      </Danger>{' '}
                       Design Tools
                     </li>
                     <li>
                       <Danger>
                         <Close />
-                      </Danger>{" "}
+                      </Danger>{' '}
                       Private Messages
                     </li>
                     <li>
                       <Danger>
                         <Close />
-                      </Danger>{" "}
+                      </Danger>{' '}
                       Personal Brand
                     </li>
                   </ul>
@@ -495,25 +495,25 @@ export default function SectionPricing({ ...rest }) {
                     <li>
                       <Success>
                         <Check />
-                      </Success>{" "}
+                      </Success>{' '}
                       Sharing Tools
                     </li>
                     <li>
                       <Success>
                         <Check />
-                      </Success>{" "}
+                      </Success>{' '}
                       Design Tools
                     </li>
                     <li>
                       <Success>
                         <Check />
-                      </Success>{" "}
+                      </Success>{' '}
                       Private Messages
                     </li>
                     <li>
                       <Danger>
                         <Close />
-                      </Danger>{" "}
+                      </Danger>{' '}
                       Personal Brand
                     </li>
                   </ul>
@@ -536,25 +536,25 @@ export default function SectionPricing({ ...rest }) {
                     <li>
                       <Success>
                         <Check />
-                      </Success>{" "}
+                      </Success>{' '}
                       Sharing Tools
                     </li>
                     <li>
                       <Success>
                         <Check />
-                      </Success>{" "}
+                      </Success>{' '}
                       Design Tools
                     </li>
                     <li>
                       <Success>
                         <Check />
-                      </Success>{" "}
+                      </Success>{' '}
                       Private Messages
                     </li>
                     <li>
                       <Success>
                         <Check />
-                      </Success>{" "}
+                      </Success>{' '}
                       Personal Brand
                     </li>
                   </ul>
@@ -571,14 +571,14 @@ export default function SectionPricing({ ...rest }) {
       </div>
       {/* Pricing 4 END */}
       {/* Pricing 5 START */}
-      <div className={classes.pricing + " " + classes.sectionGray}>
+      <div className={classes.pricing + ' ' + classes.sectionGray}>
         <div className={classes.container}>
           <GridContainer>
             <GridItem
               xs={12}
               sm={4}
               md={4}
-              className={classes.mlAuto + " " + classes.mrAuto}
+              className={classes.mlAuto + ' ' + classes.mrAuto}
             >
               <h2 className={classes.title}>
                 Choose a plan for your next project
@@ -595,14 +595,14 @@ export default function SectionPricing({ ...rest }) {
               xs={12}
               sm={7}
               md={7}
-              className={classes.mlAuto + " " + classes.mrAuto}
+              className={classes.mlAuto + ' ' + classes.mrAuto}
             >
               <NavPills
                 alignCenter
                 color="primary"
                 tabs={[
                   {
-                    tabButton: "Personal",
+                    tabButton: 'Personal',
                     tabContent: (
                       <GridContainer>
                         <GridItem xs={12} sm={6} md={6}>
@@ -674,10 +674,10 @@ export default function SectionPricing({ ...rest }) {
                           </Card>
                         </GridItem>
                       </GridContainer>
-                    ),
+                    )
                   },
                   {
-                    tabButton: "Commercial",
+                    tabButton: 'Commercial',
                     tabContent: (
                       <GridContainer>
                         <GridItem xs={12} sm={6} md={6}>
@@ -749,8 +749,8 @@ export default function SectionPricing({ ...rest }) {
                           </Card>
                         </GridItem>
                       </GridContainer>
-                    ),
-                  },
+                    )
+                  }
                 ]}
               />
             </GridItem>

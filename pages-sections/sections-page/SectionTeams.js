@@ -1,20 +1,20 @@
-import React from "react";
+import React from 'react';
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 // @material-ui/icons
 // import  from "@material-ui/icons/";
 // core components
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import Card from "components/Card/Card.js";
-import CardAvatar from "components/Card/CardAvatar.js";
-import CardHeader from "components/Card/CardHeader.js";
-import CardBody from "components/Card/CardBody.js";
-import CardFooter from "components/Card/CardFooter.js";
-import Button from "components/CustomButtons/Button.js";
-import Muted from "components/Typography/Muted.js";
+import GridContainer from 'components/Grid/GridContainer.js';
+import GridItem from 'components/Grid/GridItem.js';
+import Card from 'components/Card/Card.js';
+import CardAvatar from 'components/Card/CardAvatar.js';
+import CardHeader from 'components/Card/CardHeader.js';
+import CardBody from 'components/Card/CardBody.js';
+import CardFooter from 'components/Card/CardFooter.js';
+import Button from 'components/CustomButtons/Button.js';
+import Muted from 'components/Typography/Muted.js';
 
-import teamsStyle from "styles/jss/nextjs-material-kit-pro/pages/sectionsSections/teamsStyle.js";
+import teamsStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsSections/teamsStyle.js';
 
 const useStyles = makeStyles(teamsStyle);
 
@@ -31,7 +31,7 @@ export default function SectionTeams({ ...rest }) {
               sm={8}
               md={8}
               className={
-                classes.mlAuto + " " + classes.mrAuto + " " + classes.textCenter
+                classes.mlAuto + ' ' + classes.mrAuto + ' ' + classes.textCenter
               }
             >
               <h2 className={classes.title}>Our Awesome Team 1</h2>
@@ -262,7 +262,7 @@ export default function SectionTeams({ ...rest }) {
               sm={8}
               md={8}
               className={
-                classes.mlAuto + " " + classes.mrAuto + " " + classes.textCenter
+                classes.mlAuto + ' ' + classes.mrAuto + ' ' + classes.textCenter
               }
             >
               <h2 className={classes.title}>The Executive Team 2</h2>
@@ -284,7 +284,7 @@ export default function SectionTeams({ ...rest }) {
                     className={classes.coloredShadow}
                     style={{
                       backgroundImage: "url('/img/examples/card-profile1.jpg')",
-                      opacity: "1",
+                      opacity: '1'
                     }}
                   />
                 </CardHeader>
@@ -317,7 +317,7 @@ export default function SectionTeams({ ...rest }) {
                     className={classes.coloredShadow}
                     style={{
                       backgroundImage: "url('/img/examples/card-profile2.jpg')",
-                      opacity: "1",
+                      opacity: '1'
                     }}
                   />
                 </CardHeader>
@@ -350,7 +350,7 @@ export default function SectionTeams({ ...rest }) {
                     className={classes.coloredShadow}
                     style={{
                       backgroundImage: "url('/img/examples/card-profile4.jpg')",
-                      opacity: "1",
+                      opacity: '1'
                     }}
                   />
                 </CardHeader>
@@ -383,7 +383,7 @@ export default function SectionTeams({ ...rest }) {
               sm={8}
               md={8}
               className={
-                classes.mlAuto + " " + classes.mrAuto + " " + classes.textCenter
+                classes.mlAuto + ' ' + classes.mrAuto + ' ' + classes.textCenter
               }
             >
               <h2 className={classes.title}>The Executive Team 3</h2>
@@ -411,7 +411,7 @@ export default function SectionTeams({ ...rest }) {
                         style={{
                           backgroundImage:
                             "url('/img/faces/card-profile1-square.jpg')",
-                          opacity: "1",
+                          opacity: '1'
                         }}
                       />
                     </CardHeader>
@@ -458,7 +458,7 @@ export default function SectionTeams({ ...rest }) {
                         style={{
                           backgroundImage:
                             "url('/img/faces/card-profile6-square.jpg')",
-                          opacity: "1",
+                          opacity: '1'
                         }}
                       />
                     </CardHeader>
@@ -510,7 +510,7 @@ export default function SectionTeams({ ...rest }) {
                         style={{
                           backgroundImage:
                             "url('/img/faces/card-profile4-square.jpg')",
-                          opacity: "1",
+                          opacity: '1'
                         }}
                       />
                     </CardHeader>
@@ -557,7 +557,7 @@ export default function SectionTeams({ ...rest }) {
                         style={{
                           backgroundImage:
                             "url('/img/faces/card-profile2-square.jpg')",
-                          opacity: "1",
+                          opacity: '1'
                         }}
                       />
                     </CardHeader>
@@ -594,7 +594,7 @@ export default function SectionTeams({ ...rest }) {
       {/* Team 3 END */}
       {/* Team 4 START */}
       <div
-        className={classes.team + " " + classes.section}
+        className={classes.team + ' ' + classes.section}
         style={{ backgroundImage: "url('/img/bg7.jpg')" }}
       >
         <div className={classes.container}>
@@ -604,7 +604,7 @@ export default function SectionTeams({ ...rest }) {
               sm={8}
               md={8}
               className={
-                classes.mlAuto + " " + classes.mrAuto + " " + classes.textCenter
+                classes.mlAuto + ' ' + classes.mrAuto + ' ' + classes.textCenter
               }
             >
               <h2 className={classes.title}>The Executive Team 4</h2>
@@ -712,7 +712,7 @@ export default function SectionTeams({ ...rest }) {
       {/* Team 4 END */}
       {/* Team 5 START */}
       <div
-        className={classes.team + " " + classes.section}
+        className={classes.team + ' ' + classes.section}
         style={{ backgroundImage: "url('/img/examples/city.jpg')" }}
       >
         <div className={classes.container}>
@@ -722,7 +722,7 @@ export default function SectionTeams({ ...rest }) {
               sm={8}
               md={8}
               className={
-                classes.mlAuto + " " + classes.mrAuto + " " + classes.textCenter
+                classes.mlAuto + ' ' + classes.mrAuto + ' ' + classes.textCenter
               }
             >
               <h2 className={classes.title}>The Executive Team 5</h2>

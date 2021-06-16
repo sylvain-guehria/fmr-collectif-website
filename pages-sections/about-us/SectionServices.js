@@ -1,17 +1,17 @@
-import React from "react";
+import React from 'react';
 // nodejs library that concatenates classes
-import classNames from "classnames";
+import classNames from 'classnames';
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 // @material-ui/icons
-import Gesture from "@material-ui/icons/Gesture";
-import Build from "@material-ui/icons/Build";
+import Gesture from '@material-ui/icons/Gesture';
+import Build from '@material-ui/icons/Build';
 // core components
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import InfoArea from "components/InfoArea/InfoArea.js";
+import GridContainer from 'components/Grid/GridContainer.js';
+import GridItem from 'components/Grid/GridItem.js';
+import InfoArea from 'components/InfoArea/InfoArea.js';
 
-import servicesStyle from "styles/jss/nextjs-material-kit-pro/pages/aboutUsSections/servicesStyle.js";
+import servicesStyle from 'styles/jss/nextjs-material-kit-pro/pages/aboutUsSections/servicesStyle.js';
 
 const useStyles = makeStyles(servicesStyle);
 
@@ -45,7 +45,7 @@ export default function SectionServices() {
                 <p>
                   The moment you use Material Kit, you know you’ve never felt
                   anything like it. With a single use, this powerfull UI Kit
-                  lets you do more than ever before.{" "}
+                  lets you do more than ever before.{' '}
                 </p>
                 <a href="#pablo">Find more...</a>
               </span>
@@ -62,7 +62,7 @@ export default function SectionServices() {
                 <p>
                   Divide details about your product or agency work into parts.
                   Write a few lines about each one. A paragraph describing a
-                  feature will be enough.{" "}
+                  feature will be enough.{' '}
                 </p>
                 <a href="#pablo">Find more...</a>
               </span>
@@ -79,7 +79,7 @@ export default function SectionServices() {
                 <p>
                   Divide details about your product or agency work into parts.
                   Write a few lines about each one. A paragraph describing a
-                  feature will be enough.{" "}
+                  feature will be enough.{' '}
                 </p>
                 <a href="#pablo">Find more...</a>
               </span>

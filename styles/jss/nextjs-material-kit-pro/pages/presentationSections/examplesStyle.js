@@ -7,41 +7,41 @@ import {
   title,
   whiteColor,
   description,
-  hexToRgb,
-} from "styles/jss/nextjs-material-kit-pro.js";
+  hexToRgb
+} from 'styles/jss/nextjs-material-kit-pro.js';
 
 const examplesStyle = {
   section: {
     ...section,
-    padding: "70px 0px",
+    padding: '70px 0px'
   },
   sectionDark: {
     ...sectionDark,
-    "& $title": {
-      color: whiteColor,
+    '& $title': {
+      color: whiteColor
     },
-    "& $description": {
-      color: "rgba(" + hexToRgb(whiteColor) + ",0.76)",
-    },
+    '& $description': {
+      color: 'rgba(' + hexToRgb(whiteColor) + ',0.76)'
+    }
   },
   container,
   mlAuto,
   mrAuto,
   sectionDescription: {
-    textAlign: "center",
-    marginBottom: "90px",
+    textAlign: 'center',
+    marginBottom: '90px'
   },
   title: {
     ...title,
-    textAlign: "center",
+    textAlign: 'center'
   },
   description,
   imgCardExtended: {
-    transition: "all .2s cubic-bezier(0.4,0,0.2,1)",
-    "&:hover": {
-      transform: "translate3d(0, -10px, 0)",
-    },
-  },
+    transition: 'all .2s cubic-bezier(0.4,0,0.2,1)',
+    '&:hover': {
+      transform: 'translate3d(0, -10px, 0)'
+    }
+  }
 };
 
 export default examplesStyle;

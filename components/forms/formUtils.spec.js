@@ -7,6 +7,6 @@ describe('#getError', () => {
     firstName: {
       message: 'firstName error'
     }
-  }
+  };
   expect(getError(errors, 'firstName')).toBe('firstName error');
 });

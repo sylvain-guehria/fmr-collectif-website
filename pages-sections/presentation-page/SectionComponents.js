@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 // core components
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
+import GridContainer from 'components/Grid/GridContainer.js';
+import GridItem from 'components/Grid/GridItem.js';
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 
-import componentsStyle from "styles/jss/nextjs-material-kit-pro/pages/presentationSections/componentsStyle.js";
+import componentsStyle from 'styles/jss/nextjs-material-kit-pro/pages/presentationSections/componentsStyle.js';
 
 const useStyles = makeStyles(componentsStyle);
 

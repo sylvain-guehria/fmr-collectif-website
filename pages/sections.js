@@ -1,47 +1,47 @@
-import React from "react";
+import React from 'react';
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 // @material-ui/icons
 // core components
-import Header from "components/Header/Header.js";
-import HeaderLinks from "components/Header/HeaderLinks.js";
+import Header from 'components/Header/Header.js';
+import HeaderLinks from 'components/Header/HeaderLinks.js';
 // sections of this Page
-import SectionHeaders from "pages-sections/sections-page/SectionHeaders.js";
-import SectionFeatures from "pages-sections/sections-page/SectionFeatures.js";
-import SectionBlogs from "pages-sections/sections-page/SectionBlogs.js";
-import SectionTeams from "pages-sections/sections-page/SectionTeams.js";
-import SectionProjects from "pages-sections/sections-page/SectionProjects.js";
-import SectionPricing from "pages-sections/sections-page/SectionPricing.js";
-import SectionTestimonials from "pages-sections/sections-page/SectionTestimonials.js";
-import SectionContacts from "pages-sections/sections-page/SectionContacts.js";
+import SectionHeaders from 'pages-sections/sections-page/SectionHeaders.js';
+import SectionFeatures from 'pages-sections/sections-page/SectionFeatures.js';
+import SectionBlogs from 'pages-sections/sections-page/SectionBlogs.js';
+import SectionTeams from 'pages-sections/sections-page/SectionTeams.js';
+import SectionProjects from 'pages-sections/sections-page/SectionProjects.js';
+import SectionPricing from 'pages-sections/sections-page/SectionPricing.js';
+import SectionTestimonials from 'pages-sections/sections-page/SectionTestimonials.js';
+import SectionContacts from 'pages-sections/sections-page/SectionContacts.js';
 
-import sectionsPageStyle from "styles/jss/nextjs-material-kit-pro/pages/sectionsPageStyle.js";
+import sectionsPageStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsPageStyle.js';
 
 const useStyles = makeStyles(sectionsPageStyle);
 
 export default function SectionsPage() {
   React.useEffect(() => {
     var href = window.location.href.substring(
-      window.location.href.lastIndexOf("#") + 1
+      window.location.href.lastIndexOf('#') + 1
     );
-    if (window.location.href.lastIndexOf("#") > 0) {
+    if (window.location.href.lastIndexOf('#') > 0) {
       document.getElementById(href).scrollIntoView();
     }
-    window.addEventListener("scroll", updateView);
+    window.addEventListener('scroll', updateView);
     updateView();
     return function cleanup() {
-      window.removeEventListener("scroll", updateView);
+      window.removeEventListener('scroll', updateView);
     };
   });
   const updateView = () => {
-    var contentSections = document.getElementsByClassName("cd-section");
+    var contentSections = document.getElementsByClassName('cd-section');
     var navigationItems = document
-      .getElementById("cd-vertical-nav")
-      .getElementsByTagName("a");
+      .getElementById('cd-vertical-nav')
+      .getElementsByTagName('a');
 
     for (let i = 0; i < contentSections.length; i++) {
       var activeSection =
-        parseInt(navigationItems[i].getAttribute("data-number"), 10) - 1;
+        parseInt(navigationItems[i].getAttribute('data-number'), 10) - 1;
       if (
         contentSections[i].offsetTop - window.innerHeight / 2 <
           window.pageYOffset &&
@@ -50,9 +50,9 @@ export default function SectionsPage() {
           window.innerHeight / 2 >
           window.pageYOffset
       ) {
-        navigationItems[activeSection].classList.add("is-selected");
+        navigationItems[activeSection].classList.add('is-selected');
       } else {
-        navigationItems[activeSection].classList.remove("is-selected");
+        navigationItems[activeSection].classList.remove('is-selected');
       }
     }
   };
@@ -116,7 +116,7 @@ export default function SectionsPage() {
                   // if we are on mobile device the scroll into view will be managed by the browser
                 } else {
                   e.preventDefault();
-                  smoothScroll("headers");
+                  smoothScroll('headers');
                 }
               }}
             >
@@ -137,7 +137,7 @@ export default function SectionsPage() {
                   // if we are on mobile device the scroll into view will be managed by the browser
                 } else {
                   e.preventDefault();
-                  smoothScroll("features");
+                  smoothScroll('features');
                 }
               }}
             >
@@ -158,7 +158,7 @@ export default function SectionsPage() {
                   // if we are on mobile device the scroll into view will be managed by the browser
                 } else {
                   e.preventDefault();
-                  smoothScroll("blogs");
+                  smoothScroll('blogs');
                 }
               }}
             >
@@ -179,7 +179,7 @@ export default function SectionsPage() {
                   // if we are on mobile device the scroll into view will be managed by the browser
                 } else {
                   e.preventDefault();
-                  smoothScroll("teams");
+                  smoothScroll('teams');
                 }
               }}
             >
@@ -200,7 +200,7 @@ export default function SectionsPage() {
                   // if we are on mobile device the scroll into view will be managed by the browser
                 } else {
                   e.preventDefault();
-                  smoothScroll("projects");
+                  smoothScroll('projects');
                 }
               }}
             >
@@ -221,7 +221,7 @@ export default function SectionsPage() {
                   // if we are on mobile device the scroll into view will be managed by the browser
                 } else {
                   e.preventDefault();
-                  smoothScroll("pricing");
+                  smoothScroll('pricing');
                 }
               }}
             >
@@ -242,7 +242,7 @@ export default function SectionsPage() {
                   // if we are on mobile device the scroll into view will be managed by the browser
                 } else {
                   e.preventDefault();
-                  smoothScroll("testimonials");
+                  smoothScroll('testimonials');
                 }
               }}
             >
@@ -263,7 +263,7 @@ export default function SectionsPage() {
                   // if we are on mobile device the scroll into view will be managed by the browser
                 } else {
                   e.preventDefault();
-                  smoothScroll("contacts");
+                  smoothScroll('contacts');
                 }
               }}
             >

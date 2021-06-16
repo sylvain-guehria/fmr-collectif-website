@@ -1,17 +1,17 @@
-import React from "react";
+import React from 'react';
 
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 
 // @material-ui/icons
-import Face from "@material-ui/icons/Face";
-import Chat from "@material-ui/icons/Chat";
-import Build from "@material-ui/icons/Build";
+import Face from '@material-ui/icons/Face';
+import Chat from '@material-ui/icons/Chat';
+import Build from '@material-ui/icons/Build';
 // core components
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import CustomTabs from "components/CustomTabs/CustomTabs.js";
-import tabsStyle from "styles/jss/nextjs-material-kit-pro/pages/componentsSections/tabsStyle.js";
+import GridContainer from 'components/Grid/GridContainer.js';
+import GridItem from 'components/Grid/GridItem.js';
+import CustomTabs from 'components/CustomTabs/CustomTabs.js';
+import tabsStyle from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/tabsStyle.js';
 
 const useStyles = makeStyles(tabsStyle);
 
@@ -31,7 +31,7 @@ export default function SectionTabs() {
                 headerColor="primary"
                 tabs={[
                   {
-                    tabName: "Profile",
+                    tabName: 'Profile',
                     tabIcon: Face,
                     tabContent: (
                       <p className={classes.textCenter}>
@@ -44,10 +44,10 @@ export default function SectionTabs() {
                         because I got the answers. I understand culture. I am
                         the nucleus.
                       </p>
-                    ),
+                    )
                   },
                   {
-                    tabName: "Messages",
+                    tabName: 'Messages',
                     tabIcon: Chat,
                     tabContent: (
                       <p className={classes.textCenter}>
@@ -60,10 +60,10 @@ export default function SectionTabs() {
                         possibilities, to show people, this is the level that
                         things could be at.
                       </p>
-                    ),
+                    )
                   },
                   {
-                    tabName: "Settings",
+                    tabName: 'Settings',
                     tabIcon: Build,
                     tabContent: (
                       <p className={classes.textCenter}>
@@ -76,8 +76,8 @@ export default function SectionTabs() {
                         because I got the answers. I understand culture. I am
                         the nucleus.
                       </p>
-                    ),
-                  },
+                    )
+                  }
                 ]}
               />
             </GridItem>
@@ -90,7 +90,7 @@ export default function SectionTabs() {
                 headerColor="danger"
                 tabs={[
                   {
-                    tabName: "Home",
+                    tabName: 'Home',
                     tabContent: (
                       <p className={classes.textCenter}>
                         I think that’s a responsibility that I have, to push
@@ -102,10 +102,10 @@ export default function SectionTabs() {
                         because I got the answers. I understand culture. I am
                         the nucleus.
                       </p>
-                    ),
+                    )
                   },
                   {
-                    tabName: "Updates",
+                    tabName: 'Updates',
                     tabContent: (
                       <p className={classes.textCenter}>
                         I think that’s a responsibility that I have, to push
@@ -117,10 +117,10 @@ export default function SectionTabs() {
                         possibilities, to show people, this is the level that
                         things could be at.
                       </p>
-                    ),
+                    )
                   },
                   {
-                    tabName: "History",
+                    tabName: 'History',
                     tabContent: (
                       <p className={classes.textCenter}>
                         think that’s a responsibility that I have, to push
@@ -132,8 +132,8 @@ export default function SectionTabs() {
                         because I got the answers. I understand culture. I am
                         the nucleus.
                       </p>
-                    ),
-                  },
+                    )
+                  }
                 ]}
               />
             </GridItem>

@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react';
 // nodejs library that concatenates classes
-import classNames from "classnames";
+import classNames from 'classnames';
 // core components
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import Card from "components/Card/Card.js";
-import CardHeader from "components/Card/CardHeader.js";
-import CardBody from "components/Card/CardBody.js";
+import GridContainer from 'components/Grid/GridContainer.js';
+import GridItem from 'components/Grid/GridItem.js';
+import Card from 'components/Card/Card.js';
+import CardHeader from 'components/Card/CardHeader.js';
+import CardBody from 'components/Card/CardBody.js';
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 
-import styles from "styles/jss/nextjs-material-kit-pro/pages/ecommerceSections/blogStyle.js";
+import styles from 'styles/jss/nextjs-material-kit-pro/pages/ecommerceSections/blogStyle.js';
 
 const useStyles = makeStyles(styles);
 
@@ -61,7 +61,7 @@ export default function SectionBlog() {
                   className={classes.coloredShadow}
                   style={{
                     backgroundImage: "url('/img/dg10.jpg')",
-                    opacity: 1,
+                    opacity: 1
                   }}
                 />
               </CardHeader>

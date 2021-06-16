@@ -1,20 +1,20 @@
-import React from "react";
+import React from 'react';
 // react components for routing our app without refresh
-import Link from "next/link";
+import Link from 'next/link';
 // nodejs library that concatenates classes
-import classNames from "classnames";
+import classNames from 'classnames';
 // core components
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
+import GridContainer from 'components/Grid/GridContainer.js';
+import GridItem from 'components/Grid/GridItem.js';
 // core components
-import Button from "components/CustomButtons/Button.js";
+import Button from 'components/CustomButtons/Button.js';
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 
-import sectionsStyle from "styles/jss/nextjs-material-kit-pro/pages/presentationSections/sectionsStyle.js";
+import sectionsStyle from 'styles/jss/nextjs-material-kit-pro/pages/presentationSections/sectionsStyle.js';
 
 // images array used in rendering a function for this section
-import imgs from "public/img/assets-for-demo/sections/imgs.js";
+import imgs from 'public/img/assets-for-demo/sections/imgs.js';
 
 const useStyles = makeStyles(sectionsStyle);
 
@@ -29,7 +29,7 @@ export default function SectionSections() {
                 md={3}
                 sm={3}
                 xs={12}
-                key={el + "_" + index}
+                key={el + '_' + index}
                 className={cssClass}
               >
                 <img
@@ -61,7 +61,7 @@ export default function SectionSections() {
                 pages. From headers to footers, you will be able to choose the
                 best combination for your project.
               </h5>
-              <Link href={"/sections"}>
+              <Link href={'/sections'}>
                 <Button
                   color="rose"
                   target="_blank"

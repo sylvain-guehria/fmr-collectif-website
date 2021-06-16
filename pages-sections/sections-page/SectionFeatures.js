@@ -1,28 +1,28 @@
-import React from "react";
+import React from 'react';
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 // @material-ui/icons
-import Chat from "@material-ui/icons/Chat";
-import VerifiedUser from "@material-ui/icons/VerifiedUser";
-import Fingerprint from "@material-ui/icons/Fingerprint";
-import GroupWork from "@material-ui/icons/GroupWork";
-import Airplay from "@material-ui/icons/Airplay";
-import LocationOn from "@material-ui/icons/LocationOn";
-import Extension from "@material-ui/icons/Extension";
-import ChildFriendly from "@material-ui/icons/ChildFriendly";
-import WatchLater from "@material-ui/icons/WatchLater";
-import Code from "@material-ui/icons/Code";
-import FormatPaint from "@material-ui/icons/FormatPaint";
-import Dashboard from "@material-ui/icons/Dashboard";
-import ViewCarousel from "@material-ui/icons/ViewCarousel";
-import AccessTime from "@material-ui/icons/AccessTime";
-import AttachMoney from "@material-ui/icons/AttachMoney";
+import Chat from '@material-ui/icons/Chat';
+import VerifiedUser from '@material-ui/icons/VerifiedUser';
+import Fingerprint from '@material-ui/icons/Fingerprint';
+import GroupWork from '@material-ui/icons/GroupWork';
+import Airplay from '@material-ui/icons/Airplay';
+import LocationOn from '@material-ui/icons/LocationOn';
+import Extension from '@material-ui/icons/Extension';
+import ChildFriendly from '@material-ui/icons/ChildFriendly';
+import WatchLater from '@material-ui/icons/WatchLater';
+import Code from '@material-ui/icons/Code';
+import FormatPaint from '@material-ui/icons/FormatPaint';
+import Dashboard from '@material-ui/icons/Dashboard';
+import ViewCarousel from '@material-ui/icons/ViewCarousel';
+import AccessTime from '@material-ui/icons/AccessTime';
+import AttachMoney from '@material-ui/icons/AttachMoney';
 // core components
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import InfoArea from "components/InfoArea/InfoArea.js";
+import GridContainer from 'components/Grid/GridContainer.js';
+import GridItem from 'components/Grid/GridItem.js';
+import InfoArea from 'components/InfoArea/InfoArea.js';
 
-import featuresStyle from "styles/jss/nextjs-material-kit-pro/pages/sectionsSections/featuresStyle.js";
+import featuresStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsSections/featuresStyle.js';
 
 const useStyles = makeStyles(featuresStyle);
 
@@ -38,7 +38,7 @@ export default function SectionFeatures({ ...rest }) {
               xs={12}
               sm={8}
               md={8}
-              className={classes.mlAuto + " " + classes.mrAuto}
+              className={classes.mlAuto + ' ' + classes.mrAuto}
             >
               <h2 className={classes.title}>Why our product is the best</h2>
               <h5 className={classes.description}>
@@ -89,7 +89,7 @@ export default function SectionFeatures({ ...rest }) {
               sm={8}
               md={8}
               className={
-                classes.mlAuto + " " + classes.mrAuto + " " + classes.textCenter
+                classes.mlAuto + ' ' + classes.mrAuto + ' ' + classes.textCenter
               }
             >
               <h2 className={classes.title}>Why our product is the best</h2>
@@ -204,7 +204,7 @@ export default function SectionFeatures({ ...rest }) {
               sm={8}
               md={8}
               className={
-                classes.mlAuto + " " + classes.mrAuto + " " + classes.textCenter
+                classes.mlAuto + ' ' + classes.mrAuto + ' ' + classes.textCenter
               }
             >
               <h2 className={classes.title}>Your life will be much easier</h2>
@@ -264,7 +264,7 @@ export default function SectionFeatures({ ...rest }) {
             sm={8}
             md={8}
             className={
-              classes.mlAuto + " " + classes.mrAuto + " " + classes.textCenter
+              classes.mlAuto + ' ' + classes.mrAuto + ' ' + classes.textCenter
             }
           >
             <h2 className={classes.title}>Your life will be much easier</h2>
@@ -272,7 +272,7 @@ export default function SectionFeatures({ ...rest }) {
           <div className={classes.container}>
             <GridContainer
               className={classes.gridContainer}
-              style={{ margin: "0!important" }}
+              style={{ margin: '0!important' }}
             >
               <GridItem xs={12} sm={4} className={classes.gridItem}>
                 <InfoArea
@@ -325,7 +325,7 @@ export default function SectionFeatures({ ...rest }) {
             </GridContainer>
             <GridContainer
               className={classes.gridContainer}
-              style={{ margin: "0!important" }}
+              style={{ margin: '0!important' }}
             >
               <GridItem xs={12} sm={4} className={classes.gridItem}>
                 <InfoArea
