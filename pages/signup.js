@@ -100,6 +100,7 @@ export default function SignUpPage({ ...rest }) {
                         icon={Email}
                         iconColor="rose"
                       />
+                        <h4 className={classes.socialTitle}>ou avec votre email</h4>
                       </div>
 
                       <RegistrationForm />
