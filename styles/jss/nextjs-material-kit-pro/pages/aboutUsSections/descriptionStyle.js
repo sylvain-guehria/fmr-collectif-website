@@ -2,20 +2,20 @@ import {
   container,
   mrAuto,
   mlAuto,
-  description,
-} from "styles/jss/nextjs-material-kit-pro.js";
+  description
+} from 'styles/jss/nextjs-material-kit-pro.js';
 
 const descriptionStyle = {
   container,
   textCenter: {
-    textAlign: "center",
+    textAlign: 'center'
   },
   aboutDescription: {
-    padding: "70px 0 0 0",
+    padding: '70px 0 0 0'
   },
   mrAuto,
   mlAuto,
-  description,
+  description
 };
 
 export default descriptionStyle;

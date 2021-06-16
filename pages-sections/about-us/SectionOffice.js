@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 // nodejs library that concatenates classes
-import classNames from "classnames";
+import classNames from 'classnames';
 // core components
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
+import GridContainer from 'components/Grid/GridContainer.js';
+import GridItem from 'components/Grid/GridItem.js';
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 
-import officeStyle from "styles/jss/nextjs-material-kit-pro/pages/aboutUsSections/officeStyle.js";
+import officeStyle from 'styles/jss/nextjs-material-kit-pro/pages/aboutUsSections/officeStyle.js';
 
 const useStyles = makeStyles(officeStyle);
 

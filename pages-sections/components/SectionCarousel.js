@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react';
 // react component for creating beautiful carousel
-import Carousel from "react-slick";
+import Carousel from 'react-slick';
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 // @material-ui/icons
-import LocationOn from "@material-ui/icons/LocationOn";
+import LocationOn from '@material-ui/icons/LocationOn';
 // core components
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import Card from "components/Card/Card.js";
+import GridContainer from 'components/Grid/GridContainer.js';
+import GridItem from 'components/Grid/GridItem.js';
+import Card from 'components/Card/Card.js';
 
-import carouselStyle from "styles/jss/nextjs-material-kit-pro/pages/componentsSections/carouselStyle.js";
+import carouselStyle from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/carouselStyle.js';
 
 const useStyles = makeStyles(carouselStyle);
 
@@ -22,7 +22,7 @@ export default function SectionCarousel() {
     speed: 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: true
   };
   return (
     <div className={classes.section} id="carousel">

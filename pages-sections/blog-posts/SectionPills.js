@@ -1,18 +1,18 @@
-import React from "react";
+import React from 'react';
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-import Tooltip from "@material-ui/core/Tooltip";
+import { makeStyles } from '@material-ui/core/styles';
+import Tooltip from '@material-ui/core/Tooltip';
 // @material-ui/icons
-import FormatAlignLeft from "@material-ui/icons/FormatAlignLeft";
+import FormatAlignLeft from '@material-ui/icons/FormatAlignLeft';
 // core components
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import NavPills from "components/NavPills/NavPills.js";
-import Card from "components/Card/Card.js";
-import CardBody from "components/Card/CardBody.js";
-import Button from "components/CustomButtons/Button.js";
+import GridContainer from 'components/Grid/GridContainer.js';
+import GridItem from 'components/Grid/GridItem.js';
+import NavPills from 'components/NavPills/NavPills.js';
+import Card from 'components/Card/Card.js';
+import CardBody from 'components/Card/CardBody.js';
+import Button from 'components/CustomButtons/Button.js';
 
-import sectionPillsStyle from "styles/jss/nextjs-material-kit-pro/pages/blogPostsSections/sectionPillsStyle.js";
+import sectionPillsStyle from 'styles/jss/nextjs-material-kit-pro/pages/blogPostsSections/sectionPillsStyle.js';
 
 const useStyles = makeStyles(sectionPillsStyle);
 
@@ -26,25 +26,25 @@ export default function SectionPills() {
             alignCenter
             tabs={[
               {
-                tabButton: "All",
-                tabContent: "",
+                tabButton: 'All',
+                tabContent: ''
               },
               {
-                tabButton: "World",
-                tabContent: "",
+                tabButton: 'World',
+                tabContent: ''
               },
               {
-                tabButton: "Arts",
-                tabContent: "",
+                tabButton: 'Arts',
+                tabContent: ''
               },
               {
-                tabButton: "Tech",
-                tabContent: "",
+                tabButton: 'Tech',
+                tabContent: ''
               },
               {
-                tabButton: "Business",
-                tabContent: "",
-              },
+                tabButton: 'Business',
+                tabContent: ''
+              }
             ]}
           />
           <div className={classes.tabSpace} />
@@ -104,7 +104,7 @@ export default function SectionPills() {
             raised
             background
             style={{
-              backgroundImage: "url('/img/examples/card-project6.jpg')",
+              backgroundImage: "url('/img/examples/card-project6.jpg')"
             }}
           >
             <CardBody background>

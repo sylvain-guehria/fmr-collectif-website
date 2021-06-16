@@ -1,22 +1,22 @@
-import React from "react";
+import React from 'react';
 // nodejs library that concatenates classes
-import classNames from "classnames";
+import classNames from 'classnames';
 // core components
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import InfoArea from "components/InfoArea/InfoArea.js";
-import Card from "components/Card/Card.js";
-import CardHeader from "components/Card/CardHeader.js";
-import CardBody from "components/Card/CardBody.js";
+import GridContainer from 'components/Grid/GridContainer.js';
+import GridItem from 'components/Grid/GridItem.js';
+import InfoArea from 'components/InfoArea/InfoArea.js';
+import Card from 'components/Card/Card.js';
+import CardHeader from 'components/Card/CardHeader.js';
+import CardBody from 'components/Card/CardBody.js';
 // @material-ui icons
-import Grid from "@material-ui/icons/GridOn";
-import PhoneLink from "@material-ui/icons/Phonelink";
-import AccessTime from "@material-ui/icons/AccessTime";
-import AttachMoney from "@material-ui/icons/AttachMoney";
+import Grid from '@material-ui/icons/GridOn';
+import PhoneLink from '@material-ui/icons/Phonelink';
+import AccessTime from '@material-ui/icons/AccessTime';
+import AttachMoney from '@material-ui/icons/AttachMoney';
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 
-import overviewStyle from "styles/jss/nextjs-material-kit-pro/pages/presentationSections/overviewStyle.js";
+import overviewStyle from 'styles/jss/nextjs-material-kit-pro/pages/presentationSections/overviewStyle.js';
 
 const useStyles = makeStyles(overviewStyle);
 
@@ -27,7 +27,7 @@ export default function SectionOverview() {
       <div
         className={classes.features5}
         style={{
-          backgroundImage: "url('/img/assets-for-demo/features-5.jpg')",
+          backgroundImage: "url('/img/assets-for-demo/features-5.jpg')"
         }}
       >
         <GridItem md={8} className={classNames(classes.mlAuto, classes.mrAuto)}>
@@ -109,7 +109,7 @@ export default function SectionOverview() {
               <h5 className={classes.description}>
                 The UI Kits, Templates and Dashboards that we{"'"}ve created are
                 used by
-                <b> 879,000+ web developers</b> in over{" "}
+                <b> 879,000+ web developers</b> in over{' '}
                 <b> 1.588.000 Web Projects</b>. This is what some of them think:
               </h5>
             </GridItem>
@@ -128,7 +128,7 @@ export default function SectionOverview() {
                         style={{
                           backgroundImage:
                             "url('/img/assets-for-demo/test1.jpg')",
-                          opacity: "1",
+                          opacity: '1'
                         }}
                       />
                       <div
@@ -136,7 +136,7 @@ export default function SectionOverview() {
                         style={{
                           backgroundImage:
                             "url('/img/assets-for-demo/test1.jpg')",
-                          opacity: "1",
+                          opacity: '1'
                         }}
                       />
                     </CardHeader>
@@ -167,7 +167,7 @@ export default function SectionOverview() {
                         style={{
                           backgroundImage:
                             "url('/img/assets-for-demo/test2.jpg')",
-                          opacity: "1",
+                          opacity: '1'
                         }}
                       />
                       <div
@@ -175,7 +175,7 @@ export default function SectionOverview() {
                         style={{
                           backgroundImage:
                             "url('/img/assets-for-demo/test2.jpg')",
-                          opacity: "1",
+                          opacity: '1'
                         }}
                       />
                     </CardHeader>
@@ -207,7 +207,7 @@ export default function SectionOverview() {
                         style={{
                           backgroundImage:
                             "url('/img/assets-for-demo/test3.jpg')",
-                          opacity: "1",
+                          opacity: '1'
                         }}
                       />
                       <div
@@ -215,7 +215,7 @@ export default function SectionOverview() {
                         style={{
                           backgroundImage:
                             "url('/img/assets-for-demo/test3.jpg')",
-                          opacity: "1",
+                          opacity: '1'
                         }}
                       />
                     </CardHeader>

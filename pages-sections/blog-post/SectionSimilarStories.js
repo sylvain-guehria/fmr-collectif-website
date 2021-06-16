@@ -1,19 +1,19 @@
-import React from "react";
+import React from 'react';
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 // @material-ui/icons
-import TrendingUp from "@material-ui/icons/TrendingUp";
+import TrendingUp from '@material-ui/icons/TrendingUp';
 // core components
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import Card from "components/Card/Card.js";
-import CardHeader from "components/Card/CardHeader.js";
-import CardBody from "components/Card/CardBody.js";
-import Info from "components/Typography/Info.js";
-import Success from "components/Typography/Success.js";
-import Danger from "components/Typography/Danger.js";
+import GridContainer from 'components/Grid/GridContainer.js';
+import GridItem from 'components/Grid/GridItem.js';
+import Card from 'components/Card/Card.js';
+import CardHeader from 'components/Card/CardHeader.js';
+import CardBody from 'components/Card/CardBody.js';
+import Info from 'components/Typography/Info.js';
+import Success from 'components/Typography/Success.js';
+import Danger from 'components/Typography/Danger.js';
 
-import sectionSimilarStoriesStyle from "styles/jss/nextjs-material-kit-pro/pages/blogPostSections/sectionSimilarStoriesStyle.js";
+import sectionSimilarStoriesStyle from 'styles/jss/nextjs-material-kit-pro/pages/blogPostSections/sectionSimilarStoriesStyle.js';
 
 const useStyles = makeStyles(sectionSimilarStoriesStyle);
 
@@ -24,7 +24,7 @@ export default function SectionSimilarStories() {
       <div className={classes.container}>
         <GridContainer>
           <GridItem md={12}>
-            <h2 className={classes.title + " " + classes.textCenter}>
+            <h2 className={classes.title + ' ' + classes.textCenter}>
               Similar Stories
             </h2>
             <br />
@@ -39,7 +39,7 @@ export default function SectionSimilarStories() {
                       className={classes.coloredShadow}
                       style={{
                         backgroundImage: "url('/img/examples/blog6.jpg')",
-                        opacity: "1",
+                        opacity: '1'
                       }}
                     />
                   </CardHeader>
@@ -72,7 +72,7 @@ export default function SectionSimilarStories() {
                       className={classes.coloredShadow}
                       style={{
                         backgroundImage: "url('/img/examples/blog8.jpg')",
-                        opacity: "1",
+                        opacity: '1'
                       }}
                     />
                   </CardHeader>
@@ -104,7 +104,7 @@ export default function SectionSimilarStories() {
                       className={classes.coloredShadow}
                       style={{
                         backgroundImage: "url('/img/examples/blog7.jpg')",
-                        opacity: "1",
+                        opacity: '1'
                       }}
                     />
                   </CardHeader>

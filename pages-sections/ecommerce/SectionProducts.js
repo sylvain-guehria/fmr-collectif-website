@@ -1,31 +1,32 @@
-import React from "react";
+/* eslint-disable max-lines */
+import React from 'react';
 // nodejs library that concatenates classes
-import classNames from "classnames";
+import classNames from 'classnames';
 // plugin that creates slider
-import Slider from "nouislider";
+import Slider from 'nouislider';
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-import Checkbox from "@material-ui/core/Checkbox";
-import Tooltip from "@material-ui/core/Tooltip";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
+import { makeStyles } from '@material-ui/core/styles';
+import Checkbox from '@material-ui/core/Checkbox';
+import Tooltip from '@material-ui/core/Tooltip';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 // @material-ui icons
-import Favorite from "@material-ui/icons/Favorite";
-import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
-import Cached from "@material-ui/icons/Cached";
-import Subject from "@material-ui/icons/Subject";
-import Check from "@material-ui/icons/Check";
+import Favorite from '@material-ui/icons/Favorite';
+import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
+import Cached from '@material-ui/icons/Cached';
+import Subject from '@material-ui/icons/Subject';
+import Check from '@material-ui/icons/Check';
 // core components
-import Accordion from "components/Accordion/Accordion.js";
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import Card from "components/Card/Card.js";
-import CardHeader from "components/Card/CardHeader.js";
-import CardBody from "components/Card/CardBody.js";
-import CardFooter from "components/Card/CardFooter.js";
-import Button from "components/CustomButtons/Button.js";
-import Clearfix from "components/Clearfix/Clearfix.js";
+import Accordion from 'components/Accordion/Accordion.js';
+import GridContainer from 'components/Grid/GridContainer.js';
+import GridItem from 'components/Grid/GridItem.js';
+import Card from 'components/Card/Card.js';
+import CardHeader from 'components/Card/CardHeader.js';
+import CardBody from 'components/Card/CardBody.js';
+import CardFooter from 'components/Card/CardFooter.js';
+import Button from 'components/CustomButtons/Button.js';
+import Clearfix from 'components/Clearfix/Clearfix.js';
 
-import styles from "styles/jss/nextjs-material-kit-pro/pages/ecommerceSections/productsStyle.js";
+import styles from 'styles/jss/nextjs-material-kit-pro/pages/ecommerceSections/productsStyle.js';
 
 const useStyles = makeStyles(styles);
 
@@ -35,15 +36,15 @@ export default function SectionProducts() {
   React.useEffect(() => {
     if (
       !document
-        .getElementById("sliderRegular")
-        .classList.contains("noUi-target")
+        .getElementById('sliderRegular')
+        .classList.contains('noUi-target')
     ) {
-      Slider.create(document.getElementById("sliderRegular"), {
+      Slider.create(document.getElementById('sliderRegular'), {
         start: priceRange,
         connect: true,
         range: { min: 30, max: 900 },
-        step: 1,
-      }).on("update", function (values) {
+        step: 1
+      }).on('update', function (values) {
         setPriceRange([Math.round(values[0]), Math.round(values[1])]);
       });
     }
@@ -68,7 +69,7 @@ export default function SectionProducts() {
           <GridItem md={3} sm={3}>
             <Card plain>
               <CardBody className={classes.cardBodyRefine}>
-                <h4 className={classes.cardTitle + " " + classes.textLeft}>
+                <h4 className={classes.cardTitle + ' ' + classes.textLeft}>
                   Refine
                   <Tooltip
                     id="tooltip-top"
@@ -80,7 +81,7 @@ export default function SectionProducts() {
                       link
                       justIcon
                       size="sm"
-                      className={classes.pullRight + " " + classes.refineButton}
+                      className={classes.pullRight + ' ' + classes.refineButton}
                     >
                       <Cached />
                     </Button>
@@ -92,7 +93,7 @@ export default function SectionProducts() {
                   activeColor="rose"
                   collapses={[
                     {
-                      title: "Price Range",
+                      title: 'Price Range',
                       content: (
                         <CardBody className={classes.cardBodyRefine}>
                           <span
@@ -115,16 +116,16 @@ export default function SectionProducts() {
                           <br />
                           <div id="sliderRegular" className="slider-rose" />
                         </CardBody>
-                      ),
+                      )
                     },
                     {
-                      title: "Clothing",
+                      title: 'Clothing',
                       content: (
                         <div className={classes.customExpandPanel}>
                           <div
                             className={
                               classes.checkboxAndRadio +
-                              " " +
+                              ' ' +
                               classes.checkboxAndRadioHorizontal
                             }
                           >
@@ -145,7 +146,7 @@ export default function SectionProducts() {
                                   }
                                   classes={{
                                     checked: classes.checked,
-                                    root: classes.checkRoot,
+                                    root: classes.checkRoot
                                   }}
                                 />
                               }
@@ -166,7 +167,7 @@ export default function SectionProducts() {
                                   }
                                   classes={{
                                     checked: classes.checked,
-                                    root: classes.checkRoot,
+                                    root: classes.checkRoot
                                   }}
                                 />
                               }
@@ -187,7 +188,7 @@ export default function SectionProducts() {
                                   }
                                   classes={{
                                     checked: classes.checked,
-                                    root: classes.checkRoot,
+                                    root: classes.checkRoot
                                   }}
                                 />
                               }
@@ -208,7 +209,7 @@ export default function SectionProducts() {
                                   }
                                   classes={{
                                     checked: classes.checked,
-                                    root: classes.checkRoot,
+                                    root: classes.checkRoot
                                   }}
                                 />
                               }
@@ -229,7 +230,7 @@ export default function SectionProducts() {
                                   }
                                   classes={{
                                     checked: classes.checked,
-                                    root: classes.checkRoot,
+                                    root: classes.checkRoot
                                   }}
                                 />
                               }
@@ -250,7 +251,7 @@ export default function SectionProducts() {
                                   }
                                   classes={{
                                     checked: classes.checked,
-                                    root: classes.checkRoot,
+                                    root: classes.checkRoot
                                   }}
                                 />
                               }
@@ -271,7 +272,7 @@ export default function SectionProducts() {
                                   }
                                   classes={{
                                     checked: classes.checked,
-                                    root: classes.checkRoot,
+                                    root: classes.checkRoot
                                   }}
                                 />
                               }
@@ -292,7 +293,7 @@ export default function SectionProducts() {
                                   }
                                   classes={{
                                     checked: classes.checked,
-                                    root: classes.checkRoot,
+                                    root: classes.checkRoot
                                   }}
                                 />
                               }
@@ -301,16 +302,16 @@ export default function SectionProducts() {
                             />
                           </div>
                         </div>
-                      ),
+                      )
                     },
                     {
-                      title: "Designer",
+                      title: 'Designer',
                       content: (
                         <div className={classes.customExpandPanel}>
                           <div
                             className={
                               classes.checkboxAndRadio +
-                              " " +
+                              ' ' +
                               classes.checkboxAndRadioHorizontal
                             }
                           >
@@ -331,7 +332,7 @@ export default function SectionProducts() {
                                   }
                                   classes={{
                                     checked: classes.checked,
-                                    root: classes.checkRoot,
+                                    root: classes.checkRoot
                                   }}
                                 />
                               }
@@ -352,7 +353,7 @@ export default function SectionProducts() {
                                   }
                                   classes={{
                                     checked: classes.checked,
-                                    root: classes.checkRoot,
+                                    root: classes.checkRoot
                                   }}
                                 />
                               }
@@ -373,7 +374,7 @@ export default function SectionProducts() {
                                   }
                                   classes={{
                                     checked: classes.checked,
-                                    root: classes.checkRoot,
+                                    root: classes.checkRoot
                                   }}
                                 />
                               }
@@ -394,7 +395,7 @@ export default function SectionProducts() {
                                   }
                                   classes={{
                                     checked: classes.checked,
-                                    root: classes.checkRoot,
+                                    root: classes.checkRoot
                                   }}
                                 />
                               }
@@ -415,7 +416,7 @@ export default function SectionProducts() {
                                   }
                                   classes={{
                                     checked: classes.checked,
-                                    root: classes.checkRoot,
+                                    root: classes.checkRoot
                                   }}
                                 />
                               }
@@ -436,7 +437,7 @@ export default function SectionProducts() {
                                   }
                                   classes={{
                                     checked: classes.checked,
-                                    root: classes.checkRoot,
+                                    root: classes.checkRoot
                                   }}
                                 />
                               }
@@ -457,7 +458,7 @@ export default function SectionProducts() {
                                   }
                                   classes={{
                                     checked: classes.checked,
-                                    root: classes.checkRoot,
+                                    root: classes.checkRoot
                                   }}
                                 />
                               }
@@ -478,7 +479,7 @@ export default function SectionProducts() {
                                   }
                                   classes={{
                                     checked: classes.checked,
-                                    root: classes.checkRoot,
+                                    root: classes.checkRoot
                                   }}
                                 />
                               }
@@ -499,7 +500,7 @@ export default function SectionProducts() {
                                   }
                                   classes={{
                                     checked: classes.checked,
-                                    root: classes.checkRoot,
+                                    root: classes.checkRoot
                                   }}
                                 />
                               }
@@ -520,7 +521,7 @@ export default function SectionProducts() {
                                   }
                                   classes={{
                                     checked: classes.checked,
-                                    root: classes.checkRoot,
+                                    root: classes.checkRoot
                                   }}
                                 />
                               }
@@ -541,7 +542,7 @@ export default function SectionProducts() {
                                   }
                                   classes={{
                                     checked: classes.checked,
-                                    root: classes.checkRoot,
+                                    root: classes.checkRoot
                                   }}
                                 />
                               }
@@ -562,7 +563,7 @@ export default function SectionProducts() {
                                   }
                                   classes={{
                                     checked: classes.checked,
-                                    root: classes.checkRoot,
+                                    root: classes.checkRoot
                                   }}
                                 />
                               }
@@ -583,7 +584,7 @@ export default function SectionProducts() {
                                   }
                                   classes={{
                                     checked: classes.checked,
-                                    root: classes.checkRoot,
+                                    root: classes.checkRoot
                                   }}
                                 />
                               }
@@ -604,7 +605,7 @@ export default function SectionProducts() {
                                   }
                                   classes={{
                                     checked: classes.checked,
-                                    root: classes.checkRoot,
+                                    root: classes.checkRoot
                                   }}
                                 />
                               }
@@ -625,7 +626,7 @@ export default function SectionProducts() {
                                   }
                                   classes={{
                                     checked: classes.checked,
-                                    root: classes.checkRoot,
+                                    root: classes.checkRoot
                                   }}
                                 />
                               }
@@ -646,7 +647,7 @@ export default function SectionProducts() {
                                   }
                                   classes={{
                                     checked: classes.checked,
-                                    root: classes.checkRoot,
+                                    root: classes.checkRoot
                                   }}
                                 />
                               }
@@ -667,7 +668,7 @@ export default function SectionProducts() {
                                   }
                                   classes={{
                                     checked: classes.checked,
-                                    root: classes.checkRoot,
+                                    root: classes.checkRoot
                                   }}
                                 />
                               }
@@ -688,7 +689,7 @@ export default function SectionProducts() {
                                   }
                                   classes={{
                                     checked: classes.checked,
-                                    root: classes.checkRoot,
+                                    root: classes.checkRoot
                                   }}
                                 />
                               }
@@ -697,16 +698,16 @@ export default function SectionProducts() {
                             />
                           </div>
                         </div>
-                      ),
+                      )
                     },
                     {
-                      title: "Colour",
+                      title: 'Colour',
                       content: (
                         <div className={classes.customExpandPanel}>
                           <div
                             className={
                               classes.checkboxAndRadio +
-                              " " +
+                              ' ' +
                               classes.checkboxAndRadioHorizontal
                             }
                           >
@@ -727,7 +728,7 @@ export default function SectionProducts() {
                                   }
                                   classes={{
                                     checked: classes.checked,
-                                    root: classes.checkRoot,
+                                    root: classes.checkRoot
                                   }}
                                 />
                               }
@@ -748,7 +749,7 @@ export default function SectionProducts() {
                                   }
                                   classes={{
                                     checked: classes.checked,
-                                    root: classes.checkRoot,
+                                    root: classes.checkRoot
                                   }}
                                 />
                               }
@@ -769,7 +770,7 @@ export default function SectionProducts() {
                                   }
                                   classes={{
                                     checked: classes.checked,
-                                    root: classes.checkRoot,
+                                    root: classes.checkRoot
                                   }}
                                 />
                               }
@@ -790,7 +791,7 @@ export default function SectionProducts() {
                                   }
                                   classes={{
                                     checked: classes.checked,
-                                    root: classes.checkRoot,
+                                    root: classes.checkRoot
                                   }}
                                 />
                               }
@@ -811,7 +812,7 @@ export default function SectionProducts() {
                                   }
                                   classes={{
                                     checked: classes.checked,
-                                    root: classes.checkRoot,
+                                    root: classes.checkRoot
                                   }}
                                 />
                               }
@@ -832,7 +833,7 @@ export default function SectionProducts() {
                                   }
                                   classes={{
                                     checked: classes.checked,
-                                    root: classes.checkRoot,
+                                    root: classes.checkRoot
                                   }}
                                 />
                               }
@@ -853,7 +854,7 @@ export default function SectionProducts() {
                                   }
                                   classes={{
                                     checked: classes.checked,
-                                    root: classes.checkRoot,
+                                    root: classes.checkRoot
                                   }}
                                 />
                               }
@@ -874,7 +875,7 @@ export default function SectionProducts() {
                                   }
                                   classes={{
                                     checked: classes.checked,
-                                    root: classes.checkRoot,
+                                    root: classes.checkRoot
                                   }}
                                 />
                               }
@@ -883,8 +884,8 @@ export default function SectionProducts() {
                             />
                           </div>
                         </div>
-                      ),
-                    },
+                      )
+                    }
                   ]}
                 />
               </CardBody>
@@ -1196,7 +1197,7 @@ export default function SectionProducts() {
                 </h6>
                 <a href="#pablo">
                   <h3 className={classes.cardTitle}>
-                    Learn how to use the new colors of{" "}
+                    Learn how to use the new colors of{' '}
                     {new Date().getFullYear()}
                   </h3>
                 </a>

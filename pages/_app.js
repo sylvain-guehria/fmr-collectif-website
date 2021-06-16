@@ -14,39 +14,42 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "next/app";
-import Head from "next/head";
-import Router from "next/router";
-import initAuth from '../auth/initAuth'
+import React from 'react';
+import logger from '../modules/logger/logger';
 
-import PageChange from "components/PageChange/PageChange.js";
+import ReactDOM from 'react-dom';
+import App from 'next/app';
+import Head from 'next/head';
+import Router from 'next/router';
+import initAuth from '../api/auth/initAuth';
 
-import "styles/scss/nextjs-material-kit-pro.scss?v=1.2.0";
+import PageChange from 'components/PageChange/PageChange.js';
 
-import "styles/css/react-demo.css";
+import 'styles/scss/nextjs-material-kit-pro.scss?v=1.2.0';
 
-import "animate.css/animate.min.css";
+import 'styles/css/react-demo.css';
 
-Router.events.on("routeChangeStart", (url) => {
-  console.log(`Loading: ${url}`);
-  document.body.classList.add("body-page-transition");
+import 'animate.css/animate.min.css';
+
+Router.events.on('routeChangeStart', (url) => {
+  logger.info(`Loading: ${url}`);
+
+  document.body.classList.add('body-page-transition');
   ReactDOM.render(
     <PageChange path={url} />,
-    document.getElementById("page-transition")
+    document.getElementById('page-transition')
   );
 });
-Router.events.on("routeChangeComplete", () => {
-  ReactDOM.unmountComponentAtNode(document.getElementById("page-transition"));
-  document.body.classList.remove("body-page-transition");
+Router.events.on('routeChangeComplete', () => {
+  ReactDOM.unmountComponentAtNode(document.getElementById('page-transition'));
+  document.body.classList.remove('body-page-transition');
 });
-Router.events.on("routeChangeError", () => {
-  ReactDOM.unmountComponentAtNode(document.getElementById("page-transition"));
-  document.body.classList.remove("body-page-transition");
+Router.events.on('routeChangeError', () => {
+  ReactDOM.unmountComponentAtNode(document.getElementById('page-transition'));
+  document.body.classList.remove('body-page-transition');
 });
 
-initAuth()
+initAuth();
 
 export default class MyApp extends App {
 

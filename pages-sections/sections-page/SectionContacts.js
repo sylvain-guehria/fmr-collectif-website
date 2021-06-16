@@ -1,24 +1,24 @@
-import React from "react";
+import React from 'react';
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-import Checkbox from "@material-ui/core/Checkbox";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
+import { makeStyles } from '@material-ui/core/styles';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 // @material-ui/icons
-import PinDrop from "@material-ui/icons/PinDrop";
-import Phone from "@material-ui/icons/Phone";
-import Check from "@material-ui/icons/Check";
+import PinDrop from '@material-ui/icons/PinDrop';
+import Phone from '@material-ui/icons/Phone';
+import Check from '@material-ui/icons/Check';
 // core components
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import InfoArea from "components/InfoArea/InfoArea.js";
-import Card from "components/Card/Card.js";
-import CardHeader from "components/Card/CardHeader.js";
-import CardBody from "components/Card/CardBody.js";
-import CardFooter from "components/Card/CardFooter.js";
-import CustomInput from "components/CustomInput/CustomInput.js";
-import Button from "components/CustomButtons/Button.js";
+import GridContainer from 'components/Grid/GridContainer.js';
+import GridItem from 'components/Grid/GridItem.js';
+import InfoArea from 'components/InfoArea/InfoArea.js';
+import Card from 'components/Card/Card.js';
+import CardHeader from 'components/Card/CardHeader.js';
+import CardBody from 'components/Card/CardBody.js';
+import CardFooter from 'components/Card/CardFooter.js';
+import CustomInput from 'components/CustomInput/CustomInput.js';
+import Button from 'components/CustomButtons/Button.js';
 
-import contactsStyle from "styles/jss/nextjs-material-kit-pro/pages/sectionsSections/contactsStyle.js";
+import contactsStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsSections/contactsStyle.js';
 
 const useStyles = makeStyles(contactsStyle);
 
@@ -27,8 +27,8 @@ const RegularMap = () => {
   React.useEffect(() => {
     let google = window.google;
     let map = mapRef.current;
-    let lat = "44.43353";
-    let lng = "26.093928";
+    let lat = '44.43353';
+    let lng = '26.093928';
     const myLatlng = new google.maps.LatLng(lat, lng);
     const mapOptions = {
       zoom: 14,
@@ -37,60 +37,60 @@ const RegularMap = () => {
       zoomControl: true,
       styles: [
         {
-          featureType: "water",
-          stylers: [{ saturation: 43 }, { lightness: -11 }, { hue: "#0088ff" }],
+          featureType: 'water',
+          stylers: [{ saturation: 43 }, { lightness: -11 }, { hue: '#0088ff' }]
         },
         {
-          featureType: "road",
-          elementType: "geometry.fill",
+          featureType: 'road',
+          elementType: 'geometry.fill',
           stylers: [
-            { hue: "#ff0000" },
+            { hue: '#ff0000' },
             { saturation: -100 },
-            { lightness: 99 },
-          ],
+            { lightness: 99 }
+          ]
         },
         {
-          featureType: "road",
-          elementType: "geometry.stroke",
-          stylers: [{ color: "#808080" }, { lightness: 54 }],
+          featureType: 'road',
+          elementType: 'geometry.stroke',
+          stylers: [{ color: '#808080' }, { lightness: 54 }]
         },
         {
-          featureType: "landscape.man_made",
-          elementType: "geometry.fill",
-          stylers: [{ color: "#ece2d9" }],
+          featureType: 'landscape.man_made',
+          elementType: 'geometry.fill',
+          stylers: [{ color: '#ece2d9' }]
         },
         {
-          featureType: "poi.park",
-          elementType: "geometry.fill",
-          stylers: [{ color: "#ccdca1" }],
+          featureType: 'poi.park',
+          elementType: 'geometry.fill',
+          stylers: [{ color: '#ccdca1' }]
         },
         {
-          featureType: "road",
-          elementType: "labels.text.fill",
-          stylers: [{ color: "#767676" }],
+          featureType: 'road',
+          elementType: 'labels.text.fill',
+          stylers: [{ color: '#767676' }]
         },
         {
-          featureType: "road",
-          elementType: "labels.text.stroke",
-          stylers: [{ color: "#ffffff" }],
+          featureType: 'road',
+          elementType: 'labels.text.stroke',
+          stylers: [{ color: '#ffffff' }]
         },
-        { featureType: "poi", stylers: [{ visibility: "off" }] },
+        { featureType: 'poi', stylers: [{ visibility: 'off' }] },
         {
-          featureType: "landscape.natural",
-          elementType: "geometry.fill",
-          stylers: [{ visibility: "on" }, { color: "#b8cb93" }],
+          featureType: 'landscape.natural',
+          elementType: 'geometry.fill',
+          stylers: [{ visibility: 'on' }, { color: '#b8cb93' }]
         },
-        { featureType: "poi.park", stylers: [{ visibility: "on" }] },
+        { featureType: 'poi.park', stylers: [{ visibility: 'on' }] },
         {
-          featureType: "poi.sports_complex",
-          stylers: [{ visibility: "on" }],
+          featureType: 'poi.sports_complex',
+          stylers: [{ visibility: 'on' }]
         },
-        { featureType: "poi.medical", stylers: [{ visibility: "on" }] },
+        { featureType: 'poi.medical', stylers: [{ visibility: 'on' }] },
         {
-          featureType: "poi.business",
-          stylers: [{ visibility: "simplified" }],
-        },
-      ],
+          featureType: 'poi.business',
+          stylers: [{ visibility: 'simplified' }]
+        }
+      ]
     };
 
     map = new google.maps.Map(map, mapOptions);
@@ -99,18 +99,18 @@ const RegularMap = () => {
       position: myLatlng,
       map: map,
       animation: google.maps.Animation.DROP,
-      title: "NextJS Material Kit PRO!",
+      title: 'NextJS Material Kit PRO!'
     });
 
     const contentString =
       '<div class="info-window-content"><h2>NextJS Material Kit PRO</h2>' +
-      "<p>A premium Admin for React, Material-UI, and React Hooks.</p></div>";
+      '<p>A premium Admin for React, Material-UI, and React Hooks.</p></div>';
 
     const infowindow = new google.maps.InfoWindow({
-      content: contentString,
+      content: contentString
     });
 
-    google.maps.event.addListener(marker, "click", function () {
+    google.maps.event.addListener(marker, 'click', function () {
       infowindow.open(map, marker);
     });
   });
@@ -118,9 +118,9 @@ const RegularMap = () => {
     <>
       <div
         style={{
-          height: `100%`,
-          borderRadius: "6px",
-          overflow: "hidden",
+          height: '100%',
+          borderRadius: '6px',
+          overflow: 'hidden'
         }}
         ref={mapRef}
       ></div>
@@ -145,7 +145,7 @@ export default function SectionContacts({ ...rest }) {
     <div className="cd-section" {...rest}>
       {/* Contact us 1 START */}
       <div
-        className={classes.contacts + " " + classes.section}
+        className={classes.contacts + ' ' + classes.section}
         style={{ backgroundImage: "url('/img/examples/city.jpg')" }}
       >
         <div className={classes.container}>
@@ -198,7 +198,7 @@ export default function SectionContacts({ ...rest }) {
                           labelText="First Name"
                           id="first"
                           formControlProps={{
-                            fullWidth: true,
+                            fullWidth: true
                           }}
                         />
                       </GridItem>
@@ -207,7 +207,7 @@ export default function SectionContacts({ ...rest }) {
                           labelText="Last Name"
                           id="last"
                           formControlProps={{
-                            fullWidth: true,
+                            fullWidth: true
                           }}
                         />
                       </GridItem>
@@ -216,18 +216,18 @@ export default function SectionContacts({ ...rest }) {
                       labelText="Email Address"
                       id="email-address"
                       formControlProps={{
-                        fullWidth: true,
+                        fullWidth: true
                       }}
                     />
                     <CustomInput
                       labelText="Your Message"
                       id="message"
                       formControlProps={{
-                        fullWidth: true,
+                        fullWidth: true
                       }}
                       inputProps={{
                         multiline: true,
-                        rows: 5,
+                        rows: 5
                       }}
                     />
                   </CardBody>
@@ -243,7 +243,7 @@ export default function SectionContacts({ ...rest }) {
                           icon={<Check className={classes.uncheckedIcon} />}
                           classes={{
                             checked: classes.checked,
-                            root: classes.checkRoot,
+                            root: classes.checkRoot
                           }}
                         />
                       }
@@ -311,7 +311,7 @@ export default function SectionContacts({ ...rest }) {
                       labelText="Full Name"
                       id="first2"
                       formControlProps={{
-                        fullWidth: true,
+                        fullWidth: true
                       }}
                     />
                   </GridItem>
@@ -320,7 +320,7 @@ export default function SectionContacts({ ...rest }) {
                       labelText="Email Address"
                       id="email-address2"
                       formControlProps={{
-                        fullWidth: true,
+                        fullWidth: true
                       }}
                     />
                   </GridItem>
@@ -329,11 +329,11 @@ export default function SectionContacts({ ...rest }) {
                   labelText="Your Message"
                   id="message2"
                   formControlProps={{
-                    fullWidth: true,
+                    fullWidth: true
                   }}
                   inputProps={{
                     multiline: true,
-                    rows: 5,
+                    rows: 5
                   }}
                 />
               </CardBody>
@@ -347,7 +347,7 @@ export default function SectionContacts({ ...rest }) {
                       icon={<Check className={classes.uncheckedIcon} />}
                       classes={{
                         checked: classes.checked,
-                        root: classes.checkRoot,
+                        root: classes.checkRoot
                       }}
                     />
                   }

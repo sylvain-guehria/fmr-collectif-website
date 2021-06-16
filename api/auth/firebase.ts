@@ -1,7 +1,8 @@
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
-import { User } from '../modules/user/shared/userType';
+import { User } from '../../modules/user/shared/userType';
+import logger from '../../modules/logger/logger';
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_PUBLIC_API_KEY,
@@ -30,18 +31,18 @@ export const loginGoogle = (): void => {
   firebase.default
     .auth()
     .signInWithPopup(provider)
-    .then((response) => {
+    .then(response => {
       const user: User = {
         uid: response.user?.uid,
         email: response.user?.email,
         roles: ['user'],
       };
-      console.log('google log res:', response);
+      logger.info('google log res:', response);
 
       if (response.additionalUserInfo?.isNewUser) createUserInDatabase(user);
     })
     .catch(function (error) {
-      console.log(error);
+      logger.info(error);
     });
 };
 
@@ -50,7 +51,7 @@ export const logout = (): void => {
     .auth()
     .signOut()
     .catch(function (error) {
-      console.log(error);
+      logger.info(error);
     });
 };
 
@@ -59,16 +60,16 @@ export const signUpEmail = (email: string, password: string): Promise<Record<str
     firebase.default
       .auth()
       .createUserWithEmailAndPassword(email, password)
-      .then((response) => {
+      .then(response => {
         const payload = {
           uid: response.user?.uid,
           email: response.user?.email,
           roles: ['user'],
         };
-        console.log({ payload });
+        logger.info({ payload });
         resolve({ success: true });
       })
-      .catch((error) => {
+      .catch(error => {
         reject(error);
       });
   });
@@ -79,11 +80,11 @@ export const loginEmail = (email: string, password: string): Promise<Record<stri
     firebase.default
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then((res) => {
-        console.log({ res });
+      .then(res => {
+        logger.info({ res });
         resolve({ success: true });
       })
-      .catch((error) => {
+      .catch(error => {
         reject(error);
       });
   });
@@ -97,23 +98,23 @@ export const sendResetPassEmail = (emailAddress: string): Promise<Record<string,
       .then(() => {
         resolve({ success: true });
       })
-      .catch((error) => {
+      .catch(error => {
         reject(error);
       });
   });
 };
 
 export const setAuthChange = (): void => {
-  firebase.default.auth().onAuthStateChanged((userfb) => {
+  firebase.default.auth().onAuthStateChanged(userfb => {
     if (userfb) {
       const user: User = {
         uid: userfb.uid,
       };
-      console.log('user connected', user);
+      logger.info('user connected', user);
     }
   });
 };
 
 const createUserInDatabase = (user: User): void => {
-  console.log('Create user in db: ', user);
+  logger.info('Create user in db: ', user);
 };

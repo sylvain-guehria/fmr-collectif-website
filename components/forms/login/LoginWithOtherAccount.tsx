@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '../../CustomButtons/Button.js';
 import { makeStyles } from '@material-ui/core/styles';
 import signupPageStyle from '../../../styles/jss/nextjs-material-kit-pro/pages/signupPageStyle.js';
-import { loginGoogle } from '../../../auth/firebase';
+import { loginGoogle } from '../../../api/auth/firebase';
 
 const useStyles = makeStyles(signupPageStyle);
 
@@ -16,8 +16,7 @@ const LoginWithOtherAccount: React.FC = (): React.ReactElement => {
         justIcon
         color="transparent"
         className={classes.iconButtons}
-        onClick={(e: Event) => e.preventDefault()}
-      >
+        onClick={(e: Event) => e.preventDefault()}>
         <i className="fab fa-facebook" />
       </Button>
       {/* @ts-ignore */}
@@ -25,8 +24,7 @@ const LoginWithOtherAccount: React.FC = (): React.ReactElement => {
         justIcon
         color="transparent"
         className={classes.iconButtons}
-        onClick={() => loginGoogle()}
-      >
+        onClick={() => loginGoogle()}>
         <i className="fab fa-google-plus-g" />
       </Button>
     </div>

@@ -1,28 +1,28 @@
-import React from "react";
+import React from 'react';
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
+import { makeStyles } from '@material-ui/core/styles';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
 
 // @material-ui/icons
-import Timeline from "@material-ui/icons/Timeline";
-import Code from "@material-ui/icons/Code";
-import Group from "@material-ui/icons/Group";
-import Email from "@material-ui/icons/Email";
-import Favorite from "@material-ui/icons/Favorite";
+import Timeline from '@material-ui/icons/Timeline';
+import Code from '@material-ui/icons/Code';
+import Group from '@material-ui/icons/Group';
+import Email from '@material-ui/icons/Email';
+import Favorite from '@material-ui/icons/Favorite';
 
 // core components
-import Header from "components/Header/Header.js";
-import HeaderLinks from "components/Header/HeaderLinks.js";
-import Footer from "components/Footer/Footer.js";
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import Button from "components/CustomButtons/Button.js";
-import Card from "components/Card/Card.js";
-import CardBody from "components/Card/CardBody.js";
-import InfoArea from "components/InfoArea/InfoArea.js";
+import Header from 'components/Header/Header.js';
+import HeaderLinks from 'components/Header/HeaderLinks.js';
+import Footer from 'components/Footer/Footer.js';
+import GridContainer from 'components/Grid/GridContainer.js';
+import GridItem from 'components/Grid/GridItem.js';
+import Button from 'components/CustomButtons/Button.js';
+import Card from 'components/Card/Card.js';
+import CardBody from 'components/Card/CardBody.js';
+import InfoArea from 'components/InfoArea/InfoArea.js';
 
-import signupPageStyle from "styles/jss/nextjs-material-kit-pro/pages/signupPageStyle.js";
+import signupPageStyle from 'styles/jss/nextjs-material-kit-pro/pages/signupPageStyle.js';
 
 import RegistrationForm from '../components/forms/register/RegistrationForm';
 
@@ -50,15 +50,15 @@ export default function SignUpPage({ ...rest }) {
         className={classes.pageHeader}
         style={{
           backgroundImage: "url('https://images.unsplash.com/photo-1456949037425-4b097bbcc0e8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2089&q=80')",
-          backgroundSize: "cover",
-          backgroundPosition: "top center",
+          backgroundSize: 'cover',
+          backgroundPosition: 'top center'
         }}
       >
         <div className={classes.container}>
           <GridContainer justify="center">
             <GridItem xs={12} sm={10} md={10}>
               <Card className={classes.cardSignup}>
-                <h2 className={classes.cardTitle}>S'inscrire</h2>
+                <h2 className={classes.cardTitle}>S&apos;inscrire</h2>
                 <CardBody>
                   <GridContainer justify="center">
                     <GridItem xs={12} sm={5} md={5}>
@@ -87,11 +87,11 @@ export default function SignUpPage({ ...rest }) {
                     <GridItem xs={12} sm={5} md={5}>
                       <div className={classes.textCenter}>
                         <Button justIcon round color="google">
-                          <i className={classes.socials + " fab fa-google"} />
+                          <i className={classes.socials + ' fab fa-google'} />
                         </Button>
                         <Button justIcon round color="facebook">
                           <i
-                            className={classes.socials + " fab fa-facebook-f"}
+                            className={classes.socials + ' fab fa-facebook-f'}
                           />
                         </Button>
                         <InfoArea
@@ -104,7 +104,7 @@ export default function SignUpPage({ ...rest }) {
                       </div>
 
                       <RegistrationForm />
-                      
+
                     </GridItem>
                   </GridContainer>
                 </CardBody>
@@ -155,14 +155,14 @@ export default function SignUpPage({ ...rest }) {
                 </List>
               </div>
               <div className={classes.right}>
-                &copy; {1900 + new Date().getYear()} , made with{" "}
-                <Favorite className={classes.icon} /> by{" "}
+                &copy; {1900 + new Date().getYear()} , made with{' '}
+                <Favorite className={classes.icon} /> by{' '}
                 <a
                   href="https://www.creative-tim.com?ref=njsmkp-signup"
                   target="_blank" rel="noreferrer"
                 >
                   Creative Tim
-                </a>{" "}
+                </a>{' '}
                 for a better web.
               </div>
             </div>

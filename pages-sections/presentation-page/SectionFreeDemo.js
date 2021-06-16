@@ -1,19 +1,19 @@
-import React from "react";
+import React from 'react';
 // nodejs library that concatenates classes
-import classNames from "classnames";
+import classNames from 'classnames';
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 // @material-ui icons
-import Close from "@material-ui/icons/Close";
-import Check from "@material-ui/icons/Check";
+import Close from '@material-ui/icons/Close';
+import Check from '@material-ui/icons/Check';
 // core components
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import Card from "components/Card/Card.js";
-import CardBody from "components/Card/CardBody.js";
-import Button from "components/CustomButtons/Button.js";
+import GridContainer from 'components/Grid/GridContainer.js';
+import GridItem from 'components/Grid/GridItem.js';
+import Card from 'components/Card/Card.js';
+import CardBody from 'components/Card/CardBody.js';
+import Button from 'components/CustomButtons/Button.js';
 
-import freeDemoStyle from "styles/jss/nextjs-material-kit-pro/pages/presentationSections/freeDemoStyle.js";
+import freeDemoStyle from 'styles/jss/nextjs-material-kit-pro/pages/presentationSections/freeDemoStyle.js';
 
 const useStyles = makeStyles(freeDemoStyle);
 
@@ -26,7 +26,7 @@ export default function SectionFreeDemo() {
           <GridItem
             md={5}
             sm={8}
-            className={classes.mlAuto + " " + classes.mrAuto}
+            className={classes.mlAuto + ' ' + classes.mrAuto}
           >
             <div className={classes.iconGithub}>
               <div className="fab fa-github" />
@@ -68,7 +68,7 @@ export default function SectionFreeDemo() {
                             classes.cardIcons,
                             classes.dangerColor
                           )}
-                        />{" "}
+                        />{' '}
                         Unconventional Cards
                       </li>
                       <li>
@@ -77,7 +77,7 @@ export default function SectionFreeDemo() {
                             classes.cardIcons,
                             classes.dangerColor
                           )}
-                        />{" "}
+                        />{' '}
                         Sections
                       </li>
                       <li>
@@ -86,7 +86,7 @@ export default function SectionFreeDemo() {
                             classes.cardIcons,
                             classes.dangerColor
                           )}
-                        />{" "}
+                        />{' '}
                         Photoshop for Prototype
                       </li>
                       <li>
@@ -95,7 +95,7 @@ export default function SectionFreeDemo() {
                             classes.cardIcons,
                             classes.dangerColor
                           )}
-                        />{" "}
+                        />{' '}
                         Premium Support
                       </li>
                     </ul>
@@ -119,7 +119,7 @@ export default function SectionFreeDemo() {
                             classes.cardIcons,
                             classes.successColor
                           )}
-                        />{" "}
+                        />{' '}
                         Unconventional Cards
                       </li>
                       <li>
@@ -128,7 +128,7 @@ export default function SectionFreeDemo() {
                             classes.cardIcons,
                             classes.successColor
                           )}
-                        />{" "}
+                        />{' '}
                         Sections
                       </li>
                       <li>
@@ -137,7 +137,7 @@ export default function SectionFreeDemo() {
                             classes.cardIcons,
                             classes.successColor
                           )}
-                        />{" "}
+                        />{' '}
                         Photoshop for Prototype
                       </li>
                       <li>
@@ -146,7 +146,7 @@ export default function SectionFreeDemo() {
                             classes.cardIcons,
                             classes.successColor
                           )}
-                        />{" "}
+                        />{' '}
                         Premium Support
                       </li>
                     </ul>

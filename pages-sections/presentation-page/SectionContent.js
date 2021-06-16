@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 // core components
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
+import GridContainer from 'components/Grid/GridContainer.js';
+import GridItem from 'components/Grid/GridItem.js';
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 // library used for cool animations
-import ScrollAnimation from "react-animate-on-scroll";
+import ScrollAnimation from 'react-animate-on-scroll';
 
-import contentStyle from "styles/jss/nextjs-material-kit-pro/pages/presentationSections/contentStyle.js";
+import contentStyle from 'styles/jss/nextjs-material-kit-pro/pages/presentationSections/contentStyle.js';
 
 const useStyles = makeStyles(contentStyle);
 
@@ -29,7 +29,7 @@ export default function SectionContent() {
                 into consideration multiple use cases and came up with some
                 specific elements that you will love to use. They{"'"}re
                 beautiful and easy to use for the end user navigating your
-                website.{" "}
+                website.{' '}
               </h5>
             </div>
           </GridItem>
