@@ -17,7 +17,7 @@ import HeaderLinks from 'components/Header/HeaderLinks.js';
 import Footer from 'components/Footer/Footer.js';
 import GridContainer from 'components/Grid/GridContainer.js';
 import GridItem from 'components/Grid/GridItem.js';
-import Button from 'components/CustomButtons/Button.js';
+import Button from 'components/CustomButtons/Button';
 import Card from 'components/Card/Card.js';
 import CardBody from 'components/Card/CardBody.js';
 import InfoArea from 'components/InfoArea/InfoArea.js';

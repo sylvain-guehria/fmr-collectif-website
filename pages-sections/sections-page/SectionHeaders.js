@@ -12,7 +12,7 @@ import Share from '@material-ui/icons/Share';
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 // core components
 import Header from 'components/Header/Header.js';
-import Button from 'components/CustomButtons/Button.js';
+import Button from 'components/CustomButtons/Button';
 import GridContainer from 'components/Grid/GridContainer.js';
 import GridItem from 'components/Grid/GridItem.js';
 import Card from 'components/Card/Card.js';

@@ -23,7 +23,7 @@ import Parallax from "components/Parallax/Parallax.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Footer from "components/Footer/Footer.js";
-import Button from "components/CustomButtons/Button.js";
+import Button from "components/CustomButtons/Button";
 import Accordion from "components/Accordion/Accordion.js";
 import InfoArea from "components/InfoArea/InfoArea.js";
 import Card from "components/Card/Card.js";
