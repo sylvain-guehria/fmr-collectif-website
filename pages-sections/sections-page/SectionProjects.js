@@ -18,7 +18,7 @@ import NavPills from "components/NavPills/NavPills.js";
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import CardHeader from "components/Card/CardHeader.js";
-import Button from "components/CustomButtons/Button.js";
+import Button from "components/CustomButtons/Button";
 import Muted from "components/Typography/Muted.js";
 import InfoArea from "components/InfoArea/InfoArea.js";
 import Badge from "components/Badge/Badge.js";

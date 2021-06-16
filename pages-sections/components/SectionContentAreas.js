@@ -18,7 +18,7 @@ import Favorite from '@material-ui/icons/Favorite';
 import GridContainer from 'components/Grid/GridContainer.js';
 import GridItem from 'components/Grid/GridItem.js';
 import Table from 'components/Table/Table.js';
-import Button from 'components/CustomButtons/Button.js';
+import Button from 'components/CustomButtons/Button';
 import Media from 'components/Media/Media.js';
 import CustomInput from 'components/CustomInput/CustomInput.js';
 import Paginations from 'components/Pagination/Pagination.js';

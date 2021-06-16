@@ -11,7 +11,7 @@ import GridContainer from 'components/Grid/GridContainer.js';
 import GridItem from 'components/Grid/GridItem.js';
 import Card from 'components/Card/Card.js';
 import CardBody from 'components/Card/CardBody.js';
-import Button from 'components/CustomButtons/Button.js';
+import Button from 'components/CustomButtons/Button';
 
 import freeDemoStyle from 'styles/jss/nextjs-material-kit-pro/pages/presentationSections/freeDemoStyle.js';
 

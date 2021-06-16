@@ -33,7 +33,7 @@ import Danger from 'components/Typography/Danger.js';
 import Success from 'components/Typography/Success.js';
 import Warning from 'components/Typography/Warning.js';
 import Rose from 'components/Typography/Rose.js';
-import Button from 'components/CustomButtons/Button.js';
+import Button from 'components/CustomButtons/Button';
 
 import styles from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/sectionCards.js';
 

@@ -42,7 +42,7 @@ import Error from "@material-ui/icons/Error";
 
 // core components
 import CustomDropdown from "components/CustomDropdown/CustomDropdown.js";
-import Button from "components/CustomButtons/Button.js";
+import Button from "components/CustomButtons/Button";
 
 //auth
 import { useAuthUser } from 'next-firebase-auth'

@@ -35,7 +35,7 @@ import Layers from "@material-ui/icons/Layers";
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import Button from "components/CustomButtons/Button.js";
+import Button from "components/CustomButtons/Button";
 import Instruction from "components/Instruction/Instruction.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";

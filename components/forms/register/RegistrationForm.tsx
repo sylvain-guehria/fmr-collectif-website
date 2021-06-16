@@ -147,7 +147,6 @@ const RegistrationForm: React.FC = (): React.ReactElement => {
       </InputLabel>
 
       <div className={classes.textCenter}>
-        {/* @ts-ignore */}
         <Button round color="primary" type="submit">
           {"S'inscrire"}
         </Button>

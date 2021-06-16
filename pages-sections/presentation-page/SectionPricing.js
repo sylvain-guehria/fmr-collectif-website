@@ -4,7 +4,7 @@ import classNames from 'classnames';
 // core components
 import GridContainer from 'components/Grid/GridContainer.js';
 import GridItem from 'components/Grid/GridItem.js';
-import Button from 'components/CustomButtons/Button.js';
+import Button from 'components/CustomButtons/Button';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
 // @material-ui/icons

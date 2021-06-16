@@ -11,7 +11,7 @@ import Icon from '@material-ui/core/Icon';
 import Email from '@material-ui/icons/Email';
 
 import CustomInput from '../../CustomInput/CustomInput.js';
-import Button from '../../CustomButtons/Button.js';
+import Button from '../../CustomButtons/Button';
 
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -87,15 +87,17 @@ const LoginWithEmailForm: React.FC = (): React.ReactElement => {
       </CardBody>
 
       <div className={classes.textCenter}>
-        {/* @ts-ignore */}
         <Button simple color="rose" size="lg" type="submit">
-          <Fingerprint className={classes.dropdownIcons} /> Se connecter
+          <>
+            <Fingerprint className={classes.dropdownIcons} /> Se connecter
+          </>
         </Button>
         <br />
         <Link href="/signup">
-          {/* @ts-ignore */}
           <Button simple color="rose" size="lg">
-            <PersonAdd className={classes.dropdownIcons} /> S&lsquo;inscrire
+            <>
+              <PersonAdd className={classes.dropdownIcons} /> S&lsquo;inscrire
+            </>
           </Button>
         </Link>
       </div>
