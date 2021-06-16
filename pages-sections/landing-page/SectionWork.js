@@ -8,7 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import GridContainer from 'components/Grid/GridContainer.js';
 import GridItem from 'components/Grid/GridItem.js';
 import CustomInput from 'components/CustomInput/CustomInput.js';
-import Button from 'components/CustomButtons/Button.js';
+import Button from 'components/CustomButtons/Button';
 
 import workStyle from 'styles/jss/nextjs-material-kit-pro/pages/landingPageSections/workStyle.js';
 

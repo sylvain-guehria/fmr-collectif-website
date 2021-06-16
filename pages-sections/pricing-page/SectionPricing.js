@@ -8,7 +8,7 @@ import GridItem from 'components/Grid/GridItem.js';
 import NavPills from 'components/NavPills/NavPills.js';// eslint-disable-line no-unused-vars
 import Card from 'components/Card/Card.js';// eslint-disable-line no-unused-vars
 import CardBody from 'components/Card/CardBody.js';// eslint-disable-line no-unused-vars
-import Button from 'components/CustomButtons/Button.js';
+import Button from 'components/CustomButtons/Button';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
 

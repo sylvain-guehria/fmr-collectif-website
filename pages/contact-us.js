@@ -18,7 +18,7 @@ import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import InfoArea from "components/InfoArea/InfoArea.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
-import Button from "components/CustomButtons/Button.js";
+import Button from "components/CustomButtons/Button";
 import Footer from "components/Footer/Footer.js";
 
 import contactUsStyle from "styles/jss/nextjs-material-kit-pro/pages/contactUsStyle.js";

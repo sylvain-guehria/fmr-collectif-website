@@ -2537,11 +2537,11 @@ button:active,
 button:focus,
 button:hover,
 button::-moz-focus-inner,
-input[type="reset"]::-moz-focus-inner,
-input[type="button"]::-moz-focus-inner,
-input[type="submit"]::-moz-focus-inner,
+input[="reset"]::-moz-focus-inner,
+input[="button"]::-moz-focus-inner,
+input[="submit"]::-moz-focus-inner,
 select::-moz-focus-inner,
-input[type="file"]>input[type="button"]::-moz-focus-inner {
+input[="file"]>input[="button"]::-moz-focus-inner {
     outline: 0 !important;
 }
 
@@ -2564,30 +2564,30 @@ output {
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
-    input[type="date"].form-control,
-    input[type="time"].form-control,
-    input[type="datetime-local"].form-control,
-    input[type="month"].form-control {
+    input[="date"].form-control,
+    input[="time"].form-control,
+    input[="datetime-local"].form-control,
+    input[="month"].form-control {
         line-height: 36px;
     }
-    input[type="date"].input-sm,
-    .input-group-sm input[type="date"],
-    input[type="time"].input-sm,
-    .input-group-sm input[type="time"],
-    input[type="datetime-local"].input-sm,
-    .input-group-sm input[type="datetime-local"],
-    input[type="month"].input-sm,
-    .input-group-sm input[type="month"] {
+    input[="date"].input-sm,
+    .input-group-sm input[="date"],
+    input[="time"].input-sm,
+    .input-group-sm input[="time"],
+    input[="datetime-local"].input-sm,
+    .input-group-sm input[="datetime-local"],
+    input[="month"].input-sm,
+    .input-group-sm input[="month"] {
         line-height: 24px;
     }
-    input[type="date"].input-lg,
-    .input-group-lg input[type="date"],
-    input[type="time"].input-lg,
-    .input-group-lg input[type="time"],
-    input[type="datetime-local"].input-lg,
-    .input-group-lg input[type="datetime-local"],
-    input[type="month"].input-lg,
-    .input-group-lg input[type="month"] {
+    input[="date"].input-lg,
+    .input-group-lg input[="date"],
+    input[="time"].input-lg,
+    .input-group-lg input[="time"],
+    input[="datetime-local"].input-lg,
+    .input-group-lg input[="datetime-local"],
+    input[="month"].input-lg,
+    .input-group-lg input[="month"] {
         line-height: 44px;
     }
 }
@@ -3236,7 +3236,7 @@ select.form-control[multiple],
     padding: 6px 15px 0px;
 }
 
-.form-group input[type=file] {
+.form-group input[=file] {
     opacity: 0;
     position: absolute;
     top: 0;
@@ -3516,7 +3516,7 @@ fieldset[disabled] .form-group.is-focused .checkbox label {
     color: rgba(0, 0, 0, 0.26);
 }
 
-.checkbox input[type=checkbox] {
+.checkbox input[=checkbox] {
     opacity: 0;
     position: absolute;
     margin: 0;
@@ -3587,15 +3587,15 @@ fieldset[disabled] .form-group.is-focused .checkbox label {
     animation: checkbox-off 0.3s forwards;
 }
 
-.checkbox input[type=checkbox]:focus+.checkbox-material .check:after {
+.checkbox input[=checkbox]:focus+.checkbox-material .check:after {
     opacity: 0.2;
 }
 
-.checkbox input[type=checkbox]:checked+.checkbox-material .check {
+.checkbox input[=checkbox]:checked+.checkbox-material .check {
     background: #9c27b0;
 }
 
-.checkbox input[type=checkbox]:checked+.checkbox-material .check:before {
+.checkbox input[=checkbox]:checked+.checkbox-material .check:before {
     color: #FFFFFF;
     box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0 0 20px, 0px 32px 0 20px, -5px 5px 0 10px, 20px -12px 0 11px;
     -webkit-animation: checkbox-on 0.3s forwards;
@@ -3605,7 +3605,7 @@ fieldset[disabled] .form-group.is-focused .checkbox label {
     animation: checkbox-on 0.3s forwards;
 }
 
-.checkbox input[type=checkbox]:checked+.checkbox-material:before {
+.checkbox input[=checkbox]:checked+.checkbox-material:before {
     -webkit-animation: rippleOn 500ms;
     -moz-animation: rippleOn 500ms;
     -o-animation: rippleOn 500ms;
@@ -3613,7 +3613,7 @@ fieldset[disabled] .form-group.is-focused .checkbox label {
     animation: rippleOn 500ms;
 }
 
-.checkbox input[type=checkbox]:checked+.checkbox-material .check:after {
+.checkbox input[=checkbox]:checked+.checkbox-material .check:after {
     -webkit-animation: rippleOn 500ms forwards;
     -moz-animation: rippleOn 500ms forwards;
     -o-animation: rippleOn 500ms forwards;
@@ -3621,7 +3621,7 @@ fieldset[disabled] .form-group.is-focused .checkbox label {
     animation: rippleOn 500ms forwards;
 }
 
-.checkbox input[type=checkbox]:not(:checked)+.checkbox-material:before {
+.checkbox input[=checkbox]:not(:checked)+.checkbox-material:before {
     -webkit-animation: rippleOff 500ms;
     -moz-animation: rippleOff 500ms;
     -o-animation: rippleOff 500ms;
@@ -3629,7 +3629,7 @@ fieldset[disabled] .form-group.is-focused .checkbox label {
     animation: rippleOff 500ms;
 }
 
-.checkbox input[type=checkbox]:not(:checked)+.checkbox-material .check:after {
+.checkbox input[=checkbox]:not(:checked)+.checkbox-material .check:after {
     -webkit-animation: rippleOff 500ms;
     -moz-animation: rippleOff 500ms;
     -o-animation: rippleOff 500ms;
@@ -3638,18 +3638,18 @@ fieldset[disabled] .form-group.is-focused .checkbox label {
 }
 
 fieldset[disabled] .checkbox,
-fieldset[disabled] .checkbox input[type=checkbox],
-.checkbox input[type=checkbox][disabled]~.checkbox-material .check,
-.checkbox input[type=checkbox][disabled]+.circle {
+fieldset[disabled] .checkbox input[=checkbox],
+.checkbox input[=checkbox][disabled]~.checkbox-material .check,
+.checkbox input[=checkbox][disabled]+.circle {
     opacity: 0.5;
 }
 
-.checkbox input[type=checkbox][disabled]~.checkbox-material .check {
+.checkbox input[=checkbox][disabled]~.checkbox-material .check {
     border-color: #000000;
     opacity: .26;
 }
 
-.checkbox input[type=checkbox][disabled]+.checkbox-material .check:after {
+.checkbox input[=checkbox][disabled]+.checkbox-material .check:after {
     background-color: rgba(0, 0, 0, 0.87);
     transform: rotate(-45deg);
 }
@@ -3749,48 +3749,48 @@ fieldset[disabled] .form-group.is-focused .radio label {
     transform: scale3d(1.5, 1.5, 1);
 }
 
-.radio label input[type=radio]:not(:checked)~.check:after {
+.radio label input[=radio]:not(:checked)~.check:after {
     animation: rippleOff 500ms;
 }
 
-.radio label input[type=radio]:checked~.check:after {
+.radio label input[=radio]:checked~.check:after {
     animation: rippleOn 500ms;
 }
 
-.radio input[type=radio] {
+.radio input[=radio] {
     opacity: 0;
     height: 0;
     width: 0;
     overflow: hidden;
 }
 
-.radio input[type=radio]:checked~.check,
-.radio input[type=radio]:checked~.circle {
+.radio input[=radio]:checked~.check,
+.radio input[=radio]:checked~.circle {
     opacity: 1;
 }
 
-.radio input[type=radio]:checked~.check {
+.radio input[=radio]:checked~.check {
     background-color: #9c27b0;
 }
 
-.radio input[type=radio]:checked~.circle {
+.radio input[=radio]:checked~.circle {
     border-color: #9c27b0;
 }
 
-.radio input[type=radio]:checked~.check {
+.radio input[=radio]:checked~.check {
     transform: scale3d(0.65, 0.65, 1);
 }
 
-.radio input[type=radio][disabled]~.check,
-.radio input[type=radio][disabled]~.circle {
+.radio input[=radio][disabled]~.check,
+.radio input[=radio][disabled]~.circle {
     opacity: 0.26;
 }
 
-.radio input[type=radio][disabled]~.check {
+.radio input[=radio][disabled]~.check {
     background-color: #000000;
 }
 
-.radio input[type=radio][disabled]~.circle {
+.radio input[=radio][disabled]~.circle {
     border-color: #000000;
 }
 
@@ -3847,7 +3847,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
     color: rgba(0, 0, 0, 0.26);
 }
 
-.togglebutton label input[type=checkbox] {
+.togglebutton label input[=checkbox] {
     opacity: 0;
     width: 0;
     height: 0;
@@ -3859,7 +3859,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .togglebutton label .toggle,
-.togglebutton label input[type=checkbox][disabled]+.toggle {
+.togglebutton label input[=checkbox][disabled]+.toggle {
     content: "";
     display: inline-block;
     width: 30px;
@@ -3886,29 +3886,29 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
     transition: left 0.3s ease, background 0.3s ease, box-shadow 0.1s ease;
 }
 
-.togglebutton label input[type=checkbox][disabled]+.toggle:after,
-.togglebutton label input[type=checkbox][disabled]:checked+.toggle:after {
+.togglebutton label input[=checkbox][disabled]+.toggle:after,
+.togglebutton label input[=checkbox][disabled]:checked+.toggle:after {
     background-color: #BDBDBD;
 }
 
-.togglebutton label input[type=checkbox]+.toggle:active:after,
-.togglebutton label input[type=checkbox][disabled]+.toggle:active:after {
+.togglebutton label input[=checkbox]+.toggle:active:after,
+.togglebutton label input[=checkbox][disabled]+.toggle:active:after {
     box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4), 0 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
-.togglebutton label input[type=checkbox]:checked+.toggle:after {
+.togglebutton label input[=checkbox]:checked+.toggle:after {
     left: 15px;
 }
 
-.togglebutton label input[type=checkbox]:checked+.toggle {
+.togglebutton label input[=checkbox]:checked+.toggle {
     background-color: rgba(156, 39, 176, 0.7);
 }
 
-.togglebutton label input[type=checkbox]:checked+.toggle:after {
+.togglebutton label input[=checkbox]:checked+.toggle:after {
     border-color: #9c27b0;
 }
 
-.togglebutton label input[type=checkbox]:checked+.toggle:active:after {
+.togglebutton label input[=checkbox]:checked+.toggle:active:after {
     box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4), 0 0 0 15px rgba(156, 39, 176, 0.1);
 }
 

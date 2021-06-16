@@ -14,7 +14,7 @@ import GridItem from 'components/Grid/GridItem.js';
 import Card from 'components/Card/Card.js';
 import CardBody from 'components/Card/CardBody.js';
 import CardFooter from 'components/Card/CardFooter.js';
-import Button from 'components/CustomButtons/Button.js';
+import Button from 'components/CustomButtons/Button';
 import NavPills from 'components/NavPills/NavPills.js';
 import Success from 'components/Typography/Success.js';
 import Danger from 'components/Typography/Danger.js';

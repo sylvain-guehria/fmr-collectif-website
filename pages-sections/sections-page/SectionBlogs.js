@@ -12,7 +12,7 @@ import CardHeader from 'components/Card/CardHeader.js';
 import Info from 'components/Typography/Info.js';
 import Danger from 'components/Typography/Danger.js';
 import Success from 'components/Typography/Success.js';
-import Button from 'components/CustomButtons/Button.js';
+import Button from 'components/CustomButtons/Button';
 
 import blogsStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsSections/blogsStyle.js';
 

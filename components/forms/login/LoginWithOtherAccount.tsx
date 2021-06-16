@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../../CustomButtons/Button.js';
+import Button from '../../CustomButtons/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import signupPageStyle from '../../../styles/jss/nextjs-material-kit-pro/pages/signupPageStyle.js';
 import { loginGoogle } from '../../../api/auth/firebase';
@@ -11,7 +11,6 @@ const LoginWithOtherAccount: React.FC = (): React.ReactElement => {
 
   return (
     <div className={classes.socialLine}>
-      {/* @ts-ignore */}
       <Button
         justIcon
         color="transparent"
@@ -19,7 +18,6 @@ const LoginWithOtherAccount: React.FC = (): React.ReactElement => {
         onClick={(e: Event) => e.preventDefault()}>
         <i className="fab fa-facebook" />
       </Button>
-      {/* @ts-ignore */}
       <Button
         justIcon
         color="transparent"

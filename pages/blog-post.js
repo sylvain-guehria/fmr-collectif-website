@@ -15,7 +15,7 @@ import Parallax from "components/Parallax/Parallax.js";
 import Footer from "components/Footer/Footer.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import Button from "components/CustomButtons/Button.js";
+import Button from "components/CustomButtons/Button";
 // sections for this page
 import SectionText from "pages-sections/blog-post/SectionText.js";
 import SectionBlogInfo from "pages-sections/blog-post/SectionBlogInfo.js";

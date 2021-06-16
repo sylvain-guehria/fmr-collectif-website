@@ -10,7 +10,7 @@ import GridItem from 'components/Grid/GridItem.js';
 import NavPills from 'components/NavPills/NavPills.js';
 import Card from 'components/Card/Card.js';
 import CardBody from 'components/Card/CardBody.js';
-import Button from 'components/CustomButtons/Button.js';
+import Button from 'components/CustomButtons/Button';
 
 import sectionPillsStyle from 'styles/jss/nextjs-material-kit-pro/pages/blogPostsSections/sectionPillsStyle.js';
 

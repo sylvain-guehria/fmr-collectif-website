@@ -27,7 +27,7 @@ import Badge from "components/Badge/Badge.js";
 import Muted from "components/Typography/Muted.js";
 import Parallax from "components/Parallax/Parallax.js";
 import Clearfix from "components/Clearfix/Clearfix.js";
-import Button from "components/CustomButtons/Button.js";
+import Button from "components/CustomButtons/Button";
 
 import profilePageStyle from "styles/jss/nextjs-material-kit-pro/pages/profilePageStyle.js";
 
