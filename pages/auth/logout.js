@@ -1,5 +1,6 @@
 import { unsetAuthCookies } from 'next-firebase-auth';
 import initAuth from '../../auth/initAuth';
+import logger from '../../modules/logger/logger';
 
 initAuth();
 
@@ -7,8 +8,7 @@ const handler = async (req, res) => {
   try {
     await unsetAuthCookies(req, res);
   } catch (e) {
-    // eslint-disable-next-line no-console
-    console.error(e);
+    logger.error(e);
     return res.status(500).json({ error: 'Unexpected error.' });
   }
   return res.status(200).json({ status: true });

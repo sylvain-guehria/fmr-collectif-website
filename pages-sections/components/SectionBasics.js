@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React from 'react';
 // plugin that creates slider
 import Slider from 'nouislider';

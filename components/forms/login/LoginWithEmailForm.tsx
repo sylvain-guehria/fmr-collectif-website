@@ -19,7 +19,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import signupPageStyle from '../../../styles/jss/nextjs-material-kit-pro/pages/signupPageStyle.js';
 
 import { getError } from '../formUtils';
-import { loginEmail } from '../../../auth/firebase';
+import { loginEmail } from '../../../api/auth/firebase';
 
 // @material-ui/icons
 import Fingerprint from '@material-ui/icons/Fingerprint';
@@ -95,7 +95,7 @@ const LoginWithEmailForm: React.FC = (): React.ReactElement => {
         <Link href="/signup">
           {/* @ts-ignore */}
           <Button simple color="rose" size="lg">
-            <PersonAdd className={classes.dropdownIcons} /> S&lsquo;'inscrire
+            <PersonAdd className={classes.dropdownIcons} /> S&lsquo;inscrire
           </Button>
         </Link>
       </div>

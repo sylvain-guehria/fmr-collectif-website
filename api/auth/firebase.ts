@@ -1,7 +1,8 @@
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
-import { User } from '../modules/user/shared/userType';
+import { User } from '../../modules/user/shared/userType';
+import logger from '../../modules/logger/logger';
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_PUBLIC_API_KEY,
@@ -36,12 +37,12 @@ export const loginGoogle = (): void => {
         email: response.user?.email,
         roles: ['user'],
       };
-      console.log('google log res:', response);
+      logger.info('google log res:', response);
 
       if (response.additionalUserInfo?.isNewUser) createUserInDatabase(user);
     })
     .catch(function (error) {
-      console.log(error);
+      logger.info(error);
     });
 };
 
@@ -50,7 +51,7 @@ export const logout = (): void => {
     .auth()
     .signOut()
     .catch(function (error) {
-      console.log(error);
+      logger.info(error);
     });
 };
 
@@ -65,7 +66,7 @@ export const signUpEmail = (email: string, password: string): Promise<Record<str
           email: response.user?.email,
           roles: ['user'],
         };
-        console.log({ payload });
+        logger.info({ payload });
         resolve({ success: true });
       })
       .catch(error => {
@@ -80,7 +81,7 @@ export const loginEmail = (email: string, password: string): Promise<Record<stri
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then(res => {
-        console.log({ res });
+        logger.info({ res });
         resolve({ success: true });
       })
       .catch(error => {
@@ -109,11 +110,11 @@ export const setAuthChange = (): void => {
       const user: User = {
         uid: userfb.uid,
       };
-      console.log('user connected', user);
+      logger.info('user connected', user);
     }
   });
 };
 
 const createUserInDatabase = (user: User): void => {
-  console.log('Create user in db: ', user);
+  logger.info('Create user in db: ', user);
 };

@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React from "react";
-// nodejs library to set properties for components
+import logger from '../../modules/logger/logger';
+
 import PropTypes from "prop-types";
 // react components for routing our app without refresh
 import Link from "next/link";
@@ -53,7 +54,7 @@ const useStyles = makeStyles(styles);
 export default function HeaderLinks(props) {
 
   const AuthUser = useAuthUser();
-  console.log('AuthUser from header', AuthUser)
+  logger.info('AuthUser from header', AuthUser)
 
   const easeInOutQuad = (t, b, c, d) => {
     t /= d / 2;

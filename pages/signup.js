@@ -58,7 +58,7 @@ export default function SignUpPage({ ...rest }) {
           <GridContainer justify="center">
             <GridItem xs={12} sm={10} md={10}>
               <Card className={classes.cardSignup}>
-                <h2 className={classes.cardTitle}>S'inscrire</h2>
+                <h2 className={classes.cardTitle}>S&apos;inscrire</h2>
                 <CardBody>
                   <GridContainer justify="center">
                     <GridItem xs={12} sm={5} md={5}>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import logger from '../../../modules/logger/logger';
 
 import { RegistrationFormType } from './RegistrationFormType';
 import { validationSchema } from './RegisterFormValidation';
@@ -21,7 +22,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import signupPageStyle from '../../../styles/jss/nextjs-material-kit-pro/pages/signupPageStyle.js';
 
 import { getError } from '../formUtils';
-import { signUpEmail } from '../../../auth/firebase';
+import { signUpEmail } from '../../../api/auth/firebase';
 
 const useStyles = makeStyles(signupPageStyle);
 
@@ -49,7 +50,7 @@ const RegistrationForm: React.FC = (): React.ReactElement => {
   } = useForm<RegistrationFormType>(formOptions);
 
   const onSubmit: SubmitHandler<RegistrationFormType> = async (data: RegistrationFormType) => {
-    console.log(data);
+    logger.info(data);
     const { email, password } = data;
     await signUpEmail(email, password);
   };
@@ -135,7 +136,7 @@ const RegistrationForm: React.FC = (): React.ReactElement => {
         }
         label={
           <span>
-            J'accepte les <a href="#pablo">termes et conditions</a>.
+            J&apos;accepte les <a href="#pablo">termes et conditions</a>.
           </span>
         }
       />

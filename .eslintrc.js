@@ -19,7 +19,8 @@ module.exports = {
     '.out/*',
     '!.prettierrc.js',
     'Documentation/*',
-    'next.config.js'
+    'next.config.js',
+    'styles/*'
   ], // We don't want to lint generated files nor node_modules, but we want to lint .prettierrc.js (ignored by default by eslint)
   extends: ['eslint:recommended', 'plugin:react/recommended'],
   rules: {
@@ -28,7 +29,7 @@ module.exports = {
     'quotes': ['error', 'single', { 'avoidEscape': true }],
     'complexity': ['error', 14],
     'max-statements': ['error', 40],
-    'max-lines': ['error', 400],
+    'max-lines': ['error', 999],
     'max-params': ['error', 5],
     'semi': ['error', 'always'],
     'comma-spacing': ['error', { 'before': false, 'after': true }],

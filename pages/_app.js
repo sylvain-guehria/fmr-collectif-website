@@ -15,11 +15,13 @@
 
 */
 import React from 'react';
+import logger from '../modules/logger/logger';
+
 import ReactDOM from 'react-dom';
 import App from 'next/app';
 import Head from 'next/head';
 import Router from 'next/router';
-import initAuth from '../auth/initAuth';
+import initAuth from '../api/auth/initAuth';
 
 import PageChange from 'components/PageChange/PageChange.js';
 
@@ -30,7 +32,8 @@ import 'styles/css/react-demo.css';
 import 'animate.css/animate.min.css';
 
 Router.events.on('routeChangeStart', (url) => {
-  console.log(`Loading: ${url}`);
+  logger.info(`Loading: ${url}`);
+
   document.body.classList.add('body-page-transition');
   ReactDOM.render(
     <PageChange path={url} />,

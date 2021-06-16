@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '../../CustomButtons/Button.js';
 import { makeStyles } from '@material-ui/core/styles';
 import signupPageStyle from '../../../styles/jss/nextjs-material-kit-pro/pages/signupPageStyle.js';
-import { loginGoogle } from '../../../auth/firebase';
+import { loginGoogle } from '../../../api/auth/firebase';
 
 const useStyles = makeStyles(signupPageStyle);
 

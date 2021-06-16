@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React from 'react';
 
 // @material-ui/core components
