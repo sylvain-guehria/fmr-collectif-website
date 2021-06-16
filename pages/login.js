@@ -63,51 +63,6 @@ const LoginPage = () => {
                   <LoginWithEmailForm />
 
                 </div>
-                  <CardBody signup>
-                    <CustomInput
-                      id="email"
-                      formControlProps={{
-                        fullWidth: true,
-                      }}
-                      inputProps={{
-                        placeholder: "Email...",
-                        type: "email",
-                        startAdornment: (
-                          <InputAdornment position="start">
-                            <Email className={classes.inputIconsColor} />
-                          </InputAdornment>
-                        ),
-                      }}
-                    />
-                    <CustomInput
-                      id="pass"
-                      formControlProps={{
-                        fullWidth: true,
-                      }}
-                      inputProps={{
-                        placeholder: "Password",
-                        type: "password",
-                        startAdornment: (
-                          <InputAdornment position="start">
-                            <Icon className={classes.inputIconsColor}>
-                              lock_utline
-                            </Icon>
-                          </InputAdornment>
-                        ),
-                        autoComplete: "off",
-                      }}
-                    />
-                  </CardBody>
-                  <div className={classes.textCenter}>
-                    <Button simple color="rose" size="lg">
-                      <Fingerprint className={classes.dropdownIcons} /> Se connecter
-                    </Button><br />
-                    <Link href="/signup">
-                      <Button simple color="rose" size="lg">
-                        <PersonAdd className={classes.dropdownIcons} /> S'inscrire
-                    </Button>
-                    </Link>
-                  </div>
               </Card>
             </GridItem>
           </GridContainer>

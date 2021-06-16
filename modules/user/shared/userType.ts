@@ -1,6 +1,6 @@
 export interface User {
   loggedIn?: boolean;
-  email?: string | null;
+  email?: string;
   pseudo?: string;
   roles?: string[];
   uid?: string;

@@ -33,8 +33,8 @@ export const loginGoogle = (): void => {
     .signInWithPopup(provider)
     .then(response => {
       const user: User = {
-        uid: response.user?.uid,
-        email: response.user?.email,
+        uid: response.user?.uid || '',
+        email: response.user?.email || '',
         roles: ['user'],
       };
       logger.info('google log res:', response);
