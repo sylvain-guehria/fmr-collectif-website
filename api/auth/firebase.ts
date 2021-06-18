@@ -23,13 +23,11 @@ if (!firebase.default.apps.length) {
 }
 
 export const fs = firebaseApp.firestore();
-
 export const auth = firebase.default.auth();
 
 export const loginGoogle = (): void => {
   const provider = new firebase.default.auth.GoogleAuthProvider();
-  firebase.default
-    .auth()
+  auth
     .signInWithPopup(provider)
     .then(response => {
       const user: User = {
@@ -42,6 +40,22 @@ export const loginGoogle = (): void => {
       if (response.additionalUserInfo?.isNewUser) createUserInDatabase(user);
     })
     .catch(function (error) {
+      logger.info(error);
+    });
+};
+
+export const loginFacebook = (): void => {
+  const facebookProvider = new firebase.default.auth.FacebookAuthProvider();
+  auth
+    .signInWithPopup(facebookProvider)
+    .then(result => {
+      /** @type {firebase.auth.OAuthCredential} */
+      const credential = result.credential;
+      const user = result.user;
+      logger.info(credential);
+      logger.info(user);
+    })
+    .catch(error => {
       logger.info(error);
     });
 };
