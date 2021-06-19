@@ -13,9 +13,6 @@ import LoginWithOtherAccount from '../components/forms/login/LoginWithOtherAccou
 
 import loginPageStyle from 'styles/jss/nextjs-material-kit-pro/pages/loginPageStyle.js';
 
-//auth
-// import { withAuthUser, AuthAction } from 'next-firebase-auth'
-
 const useStyles = makeStyles(loginPageStyle);
 
 const LoginPage = () => {
@@ -73,11 +70,3 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-
-//When I will need to redirect user when logged In
-// export default withAuthUser({
-//   whenAuthed: AuthAction.REDIRECT_TO_APP,
-//   whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
-//   whenUnauthedAfterInit: AuthAction.RENDER,
-//   LoaderComponent: LoadingLayer,
-// })(LoginPage)

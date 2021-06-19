@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import logger from '../../../modules/logger/logger';
 
-import { RegistrationFormType } from './RegistrationFormType';
 import { validationSchema } from './RegisterFormValidation';
 
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -22,13 +21,24 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import signupPageStyle from '../../../styles/jss/nextjs-material-kit-pro/pages/signupPageStyle.js';
 
 import { getError } from '../formUtils';
-import { signUpEmail } from '../../../api/auth/firebase';
+import { useAuth } from '../../../api/auth/useAuth';
+import { useRouter } from 'next/router';
 
 const useStyles = makeStyles(signupPageStyle);
+
+interface RegistrationFormType {
+  email: string;
+  password: string;
+  confirmPassword: string;
+  firstName: string;
+  acceptTerms: boolean;
+}
 
 const RegistrationForm: React.FC = (): React.ReactElement => {
   const classes = useStyles();
   const [checked, setChecked] = useState([0]);
+  const auth = useAuth();
+  const router = useRouter();
 
   const handleToggle = (value: number): void => {
     const currentIndex = checked.indexOf(value);
@@ -52,7 +62,9 @@ const RegistrationForm: React.FC = (): React.ReactElement => {
   const onSubmit: SubmitHandler<RegistrationFormType> = async (data: RegistrationFormType) => {
     logger.info(data);
     const { email, password } = data;
-    await signUpEmail(email, password);
+    await auth.signUpEmail(email, password).then(() => {
+      router.push('/');
+    });
   };
 
   return (

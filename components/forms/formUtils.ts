@@ -6,5 +6,5 @@ export const getError = (errors: FormErrors, inputName: string): string | undefi
 };
 
 type FormErrors = {
-  [key: string]: FieldError;
+  [key: string]: FieldError | undefined;
 };

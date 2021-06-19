@@ -76,7 +76,7 @@ const CustomInput = ({
         }}
         id={id}
         {...inputProps}
-        {...inputProps.field}
+        {...inputProps?.field}
       />
       {error ? (
         <Clear className={classes.feedback + ' ' + classes.labelRootError} />

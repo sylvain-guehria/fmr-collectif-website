@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 
-import { LoginFormType } from './LoginFormType';
 import { validationSchema } from './LoginFormValidation';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -19,20 +18,25 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import signupPageStyle from '../../../styles/jss/nextjs-material-kit-pro/pages/signupPageStyle.js';
 
 import { getError } from '../formUtils';
-import { loginEmail } from '../../../api/auth/firebase';
+import { useAuth } from '../../../api/auth/useAuth';
+import { useRouter } from 'next/router';
 
-// @material-ui/icons
 import Fingerprint from '@material-ui/icons/Fingerprint';
 import PersonAdd from '@material-ui/icons/PersonAdd';
-
-// core components
 import CardBody from '../../Card/CardBody';
 // import LoadingLayer from 'components/LoadingLayer/LoadingLayer';
 
 const useStyles = makeStyles(signupPageStyle);
 
+interface LoginFormType {
+  email: string;
+  password: string;
+}
+
 const LoginWithEmailForm: React.FC = (): React.ReactElement => {
   const classes = useStyles();
+  const auth = useAuth();
+  const router = useRouter();
 
   const formOptions = { resolver: yupResolver(validationSchema) };
 
@@ -42,9 +46,10 @@ const LoginWithEmailForm: React.FC = (): React.ReactElement => {
     formState: { errors },
   } = useForm<LoginFormType>(formOptions);
 
-  const onSubmit: SubmitHandler<LoginFormType> = async (data: LoginFormType) => {
-    const { email, password } = data;
-    await loginEmail(email, password);
+  const onSubmit: SubmitHandler<LoginFormType> = async ({ email, password }: LoginFormType) => {
+    auth.loginEmail(email, password).then(() => {
+      router.push('/');
+    });
   };
 
   return (
