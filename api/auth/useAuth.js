@@ -4,6 +4,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import logger from '../../modules/logger/logger';
+import axios from 'axios';
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_PUBLIC_API_KEY,
@@ -92,6 +93,7 @@ function useProvideAuth() {
           roles: ['user']
         };
         logger.info('createUserWithEmailAndPassword', { payload });
+        createUserInDatabase(payload);
       })
       .catch(error => {
         logger.info({ error });
@@ -153,6 +155,12 @@ function useProvideAuth() {
 //     return queryString.parse(window.location.search)[key];
 // };
 
-const createUserInDatabase = user => {
-  logger.info('Create user in db: ', user);
+const createUserInDatabase = async ({ uid, email, roles }) => {
+  logger.info('Create user in db: ', { uid, email, role: roles[0] });
+  const res = await axios.post('/api/entry', {
+    uid: uid,
+    email: email,
+    role: roles[0]
+  });
+  logger.info('Respons axios firestore: ', res);
 };
