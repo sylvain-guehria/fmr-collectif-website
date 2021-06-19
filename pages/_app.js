@@ -21,9 +21,9 @@ import ReactDOM from 'react-dom';
 import App from 'next/app';
 import Head from 'next/head';
 import Router from 'next/router';
-import initAuth from '../api/auth/initAuth';
 
 import PageChange from 'components/PageChange/PageChange.js';
+import { ProvideAuth } from '../api/auth/useAuth';
 
 import 'styles/scss/nextjs-material-kit-pro.scss?v=1.2.0';
 
@@ -49,8 +49,6 @@ Router.events.on('routeChangeError', () => {
   document.body.classList.remove('body-page-transition');
 });
 
-initAuth();
-
 export default class MyApp extends App {
 
   static async getInitialProps({ Component, _router, ctx }) {
@@ -67,15 +65,17 @@ export default class MyApp extends App {
 
     return (
       <React.Fragment>
-        <Head>
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-          />
-          <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-          <title>Fmr-collectif</title>
-        </Head>
-        <Component {...pageProps} />
+        <ProvideAuth>
+          <Head>
+            <meta
+              name="viewport"
+              content="width=device-width, initial-scale=1, shrink-to-fit=no"
+            />
+            <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+            <title>Fmr-collectif</title>
+          </Head>
+          <Component {...pageProps} />
+        </ProvideAuth>
       </React.Fragment>
     );
   }

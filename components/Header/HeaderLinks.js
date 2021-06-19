@@ -44,18 +44,12 @@ import Error from "@material-ui/icons/Error";
 import CustomDropdown from "components/CustomDropdown/CustomDropdown.js";
 import Button from "components/CustomButtons/Button";
 
-//auth
-import { useAuthUser } from 'next-firebase-auth'
-
 import styles from "styles/jss/nextjs-material-kit-pro/components/headerLinksStyle.js";
 
 const useStyles = makeStyles(styles);
 
 export default function HeaderLinks(props) {
-
-  const AuthUser = useAuthUser();
-  logger.info('AuthUser from header', AuthUser)
-
+  const AuthUser = {};
   const easeInOutQuad = (t, b, c, d) => {
     t /= d / 2;
     if (t < 1) return (c / 2) * t * t + b;
@@ -325,7 +319,7 @@ export default function HeaderLinks(props) {
         <button
           type="button"
           onClick={() => {
-            AuthUser.signOut()
+            // AuthUser.signOut()
           }}
           style={styles.button}
         >
