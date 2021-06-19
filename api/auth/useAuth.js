@@ -157,7 +157,7 @@ function useProvideAuth() {
 
 const createUserInDatabase = async ({ uid, email, roles }) => {
   logger.info('Create user in db: ', { uid, email, role: roles[0] });
-  const res = await axios.post('/api/entry', {
+  const res = await axios.post('/api/user', {
     uid: uid,
     email: email,
     role: roles[0]
