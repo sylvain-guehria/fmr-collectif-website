@@ -3,13 +3,13 @@ import db from '../../../api/firestore/index';
 export default async (req, res) => {
   try {
     const { slug } = req.body;
-    const entries = await db.collection('entries').get();
-    const entriesData = entries.docs.map(entry => entry.data());
+    const users = await db.collection('users').get();
+    const usersData = users.docs.map(user => user.data());
 
-    if (entriesData.some(entry => entry.slug === slug)) {
+    if (usersData.some(user => user.slug === slug)) {
       res.status(400).end();
     } else {
-      const { id } = await db.collection('entries').add({
+      const { id } = await db.collection('users').add({
         ...req.body,
         created: new Date().toISOString()
       });
