@@ -1,4 +1,4 @@
-import db from '../../../api/firestore/index';
+import db from '../../api/firestore/index';
 
 export default async (req, res) => {
   try {
