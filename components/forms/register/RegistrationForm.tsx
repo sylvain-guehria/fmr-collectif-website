@@ -21,7 +21,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import signupPageStyle from '../../../styles/jss/nextjs-material-kit-pro/pages/signupPageStyle.js';
 
 import { getError } from '../formUtils';
-import { useAuth } from '../../../api/auth/useAuth';
+import { useAuth } from '../../../aaapi/auth/useAuth';
 import { useRouter } from 'next/router';
 
 const useStyles = makeStyles(signupPageStyle);

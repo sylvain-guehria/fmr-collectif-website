@@ -358,3 +358,5 @@ MigrationBackup/
 # local env files
 .env.local
 .env.development.local
+
+aaapi/firestore/serviceAccountKey.json

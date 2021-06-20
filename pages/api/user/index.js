@@ -1,4 +1,4 @@
-import db from '../../../api/firestore/index';
+import db from '../../../aaapi/firestore/index';
 
 export default async (req, res) => {
   try {
@@ -7,6 +7,7 @@ export default async (req, res) => {
     const usersData = users.docs.map(user => user.data());
 
     if (usersData.some(user => user.slug === slug)) {
+      console.log('1');
       res.status(400).end();
     } else {
       const { id } = await db.collection('users').add({
@@ -16,6 +17,7 @@ export default async (req, res) => {
       res.status(200).json({ id });
     }
   } catch (e) {
+    console.log('2');
     res.status(400).end();
   }
 };

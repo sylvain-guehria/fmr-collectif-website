@@ -23,7 +23,7 @@ import Head from 'next/head';
 import Router from 'next/router';
 
 import PageChange from 'components/PageChange/PageChange.js';
-import { ProvideAuth } from '../api/auth/useAuth';
+import { ProvideAuth } from '../aaapi/auth/useAuth';
 
 import 'styles/scss/nextjs-material-kit-pro.scss?v=1.2.0';
 
