@@ -53,14 +53,11 @@ function useProvideAuth() {
     return auth
       .signInWithPopup(provider)
       .then(response => {
-        const user = {
+        return {
           uid: response.user?.uid || '',
           email: response.user?.email || '',
-          roles: ['user']
+          isNewUser: response.additionalUserInfo?.isNewUser
         };
-        logger.info('loginGoogle', { user });
-
-        if (response.additionalUserInfo?.isNewUser) createUserInDatabase(user);
       })
       .catch(function (error) {
         logger.info(error);

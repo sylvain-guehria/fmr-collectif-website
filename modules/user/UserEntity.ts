@@ -1,5 +1,4 @@
 /* eslint-disable complexity */
-import { uuid } from 'uuidv4';
 import { rolesEnum, User } from './userType';
 
 class UserEntity implements User {
@@ -19,7 +18,6 @@ class UserEntity implements User {
 
   static new({ ...arg }: { [x: string]: unknown }): UserEntity {
     return new UserEntity({
-      id: uuid(),
       creationDate: Date.now(),
       lastLogin: Date.now(),
       ...arg,
@@ -40,11 +38,6 @@ class UserEntity implements User {
     this.role = user.role || '';
     this.creationDate = user.creationDate || 0;
     this.lastLogin = user.lastLogin || 0;
-  }
-
-  generateId(): UserEntity {
-    this.id = uuid();
-    return this;
   }
 
   getId(): string {
