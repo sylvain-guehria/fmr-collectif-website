@@ -35,7 +35,7 @@ export default function BlogPostPage() {
   return (
     <div>
       <Header
-        brand="NextJS Material Kit PRO"
+        brand="Fmr collectif, organisateur d'événement"
         links={<HeaderLinks dropdownHoverColor="info" />}
         fixed
         color="transparent"

@@ -25,23 +25,36 @@ const LoginWithOtherAccount: React.FC = (): React.ReactElement => {
   };
 
   return (
-    <div className={classes.socialLine}>
+    <div className={classes.textCenter}>
       <Button
         justIcon
-        color="transparent"
+        round
+        color="facebook"
         className={classes.iconButtons}
         onClick={() => callLoginFacebook()}>
-        <i className="fab fa-facebook" />
+        <i className={classes.socials + ' fab fa-facebook-f'} />
       </Button>
       <Button
         justIcon
-        color="transparent"
+        round
+        color="google"
         className={classes.iconButtons}
         onClick={() => callLoginGoogle()}>
-        <i className="fab fa-google-plus-g" />
+        <i className={classes.socials + ' fab fa-google'} />
       </Button>
     </div>
   );
 };
 
 export default LoginWithOtherAccount;
+
+{
+  /* <Button justIcon round color="google">
+<i className={classes.socials + ' fab fa-google'} />
+</Button>
+<Button justIcon round color="facebook">
+<i
+  className={classes.socials + ' fab fa-facebook-f'}
+/>
+</Button> */
+}

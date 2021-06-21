@@ -92,14 +92,14 @@ const LoginWithEmailForm: React.FC = (): React.ReactElement => {
       </CardBody>
 
       <div className={classes.textCenter}>
-        <Button simple color="rose" size="lg" type="submit">
+        <Button simple color="danger" size="lg" type="submit">
           <>
             <Fingerprint className={classes.dropdownIcons} /> Se connecter
           </>
         </Button>
         <br />
         <Link href="/signup">
-          <Button simple color="rose" size="lg">
+          <Button simple color="danger" size="lg">
             <>
               <PersonAdd className={classes.dropdownIcons} /> S&lsquo;inscrire
             </>

@@ -35,13 +35,15 @@ const LoginButton: React.FC<unknown> = () => {
             </Link>
           </Hidden>
           <Hidden mdUp>
-            <Button color={'info'} target="_blank" className={classes.navButton} round>
-              {
-                <>
-                  <Fingerprint className={classes.icons} /> Se connecter{' '}
-                </>
-              }
-            </Button>
+            <Link href="/login">
+              <Button color={'github'} target="_blank" className={classes.navButton} round>
+                {
+                  <>
+                    <Fingerprint className={classes.icons} /> Se connecter{' '}
+                  </>
+                }
+              </Button>
+            </Link>
           </Hidden>
         </ListItem>
       ) : (
