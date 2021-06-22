@@ -54,13 +54,13 @@ function useProvideAuth() {
       .signInWithPopup(provider)
       .then(response => {
         return {
-          uid: response.user?.uid || '',
-          email: response.user?.email || '',
+          uid: response.user?.uid,
+          email: response.user?.email,
           isNewUser: response.additionalUserInfo?.isNewUser
         };
       })
       .catch(function (error) {
-        logger.info(error);
+        logger.error(error);
       });
   };
 

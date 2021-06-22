@@ -5,7 +5,7 @@ class UserEntity implements User {
   loggedIn;
   email;
   pseudo;
-  id;
+  uid;
   displayName;
   password;
   firstName;
@@ -28,7 +28,7 @@ class UserEntity implements User {
     this.loggedIn = user.loggedIn || false;
     this.email = user.email || '';
     this.pseudo = user.pseudo || '';
-    this.id = user.id || '';
+    this.uid = user.uid || '';
     this.displayName = user.displayName || '';
     this.password = user.password || '';
     this.firstName = user.firstName || '';
@@ -41,7 +41,7 @@ class UserEntity implements User {
   }
 
   getId(): string {
-    return this.id || '';
+    return this.uid || '';
   }
 
   setRole(role: string): UserEntity {

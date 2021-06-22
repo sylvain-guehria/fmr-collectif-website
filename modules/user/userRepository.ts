@@ -3,8 +3,8 @@ import UserEntity from './UserEntity';
 import { User } from './userType';
 
 class UserRepository {
-  async getById(id: string): Promise<User> {
-    throw methodMustBeImplemented(id);
+  async getById(uid: string): Promise<User> {
+    throw methodMustBeImplemented(uid);
   }
 
   async add(user: UserEntity): Promise<unknown> {

@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import signupPageStyle from '../../../styles/jss/nextjs-material-kit-pro/pages/signupPageStyle.js';
 import { useAuth } from '../../../api/auth/useAuth';
 import { useRouter } from 'next/router';
-import googleConnexionUseCase from '../../../api/auth/googleConnexionUseCase';
+import googleConnexionUseCase from '../../../usecases/googleConnexionUseCase';
 
 const useStyles = makeStyles(signupPageStyle);
 

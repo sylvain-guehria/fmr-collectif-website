@@ -2,7 +2,7 @@ export interface User {
   loggedIn?: boolean;
   email?: string;
   pseudo?: string;
-  id?: string;
+  uid?: string;
   displayName?: string;
   password?: string;
   firstName?: string;
@@ -25,7 +25,7 @@ export enum userEnum {
   MESSAGE = 'messages',
   PSEUDO = 'pseudo',
   ROLES = 'roles',
-  ID = 'id',
+  UID = 'uid',
   DISPLAYNAME = 'displayName',
   PASSWORD = 'password',
 }
