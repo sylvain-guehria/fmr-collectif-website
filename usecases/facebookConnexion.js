@@ -1,11 +1,12 @@
 import firebaseUserRepository from '../modules/user/firebaseUserRepository';
 import UserEntity from '../modules/user/UserEntity';
 
-const googleConnexionUseCase = async (auth, router) => {
+const facebookConnexion = async (auth, router) => {
 
   const userRepository = new firebaseUserRepository();
 
-  const { isNewUser, uid, email } = await auth.loginGoogle();
+  const response = await auth.loginFacebook() ||{};
+  const { isNewUser, uid, email } = response;
 
   if (isNewUser) {
     await userRepository.add(
@@ -18,4 +19,4 @@ const googleConnexionUseCase = async (auth, router) => {
   router.push('/');
 };
 
-export default googleConnexionUseCase;
+export default facebookConnexion;
