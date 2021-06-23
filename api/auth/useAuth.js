@@ -4,7 +4,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import logger from '../../modules/logger/logger';
-import axios from 'axios';
+import { useToasts } from 'react-toast-notifications';
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_PUBLIC_API_KEY,
@@ -40,11 +40,15 @@ export const useAuth = () => {
 
 function useProvideAuth() {
   const [user, setUser] = useState(null);
+  const { addToast } = useToasts();
+
 
   const loginEmail = (email, password) => {
     return auth.signInWithEmailAndPassword(email, password).then(response => {
       setUser(response.user);
       return response.user;
+    }).catch(e => {
+      addToast(e.message, { appearance: 'error', autoDismiss: true });
     });
   };
 
@@ -53,31 +57,31 @@ function useProvideAuth() {
     return auth
       .signInWithPopup(provider)
       .then(response => {
-        const user = {
-          uid: response.user?.uid || '',
-          email: response.user?.email || '',
-          roles: ['user']
+        return {
+          uid: response.user?.uid,
+          email: response.user?.email,
+          isNewUser: response.additionalUserInfo?.isNewUser
         };
-        logger.info('loginGoogle', { user });
-
-        if (response.additionalUserInfo?.isNewUser) createUserInDatabase(user);
       })
       .catch(function (error) {
-        logger.info(error);
+        addToast(error.message, { appearance: 'error', autoDismiss: true });
+        logger.error(error);
       });
   };
 
   const loginFacebook = () => {
     const facebookProvider = new firebase.default.auth.FacebookAuthProvider();
     return auth
-      .signInWithPopup(facebookProvider)
-      .then(result => {
-        /** @type {firebase.auth.OAuthCredential} */
-        const credential = result.credential;
-        const user = result.user;
-        logger.info('loginFacebook', { credential, user });
+      .signInWithPopup(facebookProvider).
+      then(response => {
+        return {
+          uid: response.user?.uid,
+          email: response.user?.email,
+          isNewUser: response.additionalUserInfo?.isNewUser
+        };
       })
       .catch(error => {
+        addToast(error.message, { appearance: 'error', autoDismiss: true });
         logger.info(error);
       });
   };
@@ -87,16 +91,15 @@ function useProvideAuth() {
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then(response => {
-        const payload = {
+        return {
           uid: response.user?.uid,
           email: response.user?.email,
           roles: ['user']
         };
-        logger.info('createUserWithEmailAndPassword', { payload });
-        createUserInDatabase(payload);
       })
       .catch(error => {
-        logger.info({ error });
+        addToast(error.message, { appearance: 'error', autoDismiss: true });
+        logger.error({ error });
       });
   };
 
@@ -107,7 +110,8 @@ function useProvideAuth() {
         setUser(false);
       })
       .catch(function (error) {
-        logger.info(error);
+        addToast(error.message, { appearance: 'error', autoDismiss: true });
+        logger.error(error);
       });
   };
 
@@ -154,13 +158,3 @@ function useProvideAuth() {
 // const getFromQueryString = (key) => {
 //     return queryString.parse(window.location.search)[key];
 // };
-
-const createUserInDatabase = async ({ uid, email, roles }) => {
-  logger.info('Create user in db: ', { uid, email, role: roles[0] });
-  const res = await axios.post('/api/user', {
-    uid: uid,
-    email: email,
-    role: roles[0]
-  });
-  logger.info('Respons axios firestore: ', res);
-};

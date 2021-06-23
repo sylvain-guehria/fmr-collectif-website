@@ -44,7 +44,7 @@ const LoginPage = () => {
               <Card>
                 <div className={classes.form}>
                   <CardHeader
-                    color="rose"
+                    color="gray"
                     signup
                     className={classes.cardHeader}
                   >

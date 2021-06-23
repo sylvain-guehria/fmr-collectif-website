@@ -1,5 +1,5 @@
 {
-  "name": "nextjs-material-kit-pro",
+  "name": "fmr-collectif-website",
   "version": "1.2.0",
   "private": true,
   "dependencies": {
@@ -51,6 +51,8 @@
     "react-image-gallery": "1.0.9",
     "react-slick": "0.28.1",
     "react-tagsinput": "3.19.0",
+    "react-toast-notifications": "^2.4.4",
+    "uuidv4": "^6.2.10",
     "webpack": "4.46.0",
     "yup": "^0.32.9"
   },

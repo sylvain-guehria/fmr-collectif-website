@@ -38,7 +38,7 @@ export default function PresentationPage() {
   return (
     <div>
       <Header
-        brand="NextJS Material Kit PRO"
+        brand="Fmr collectif, organisateur d'événement"
         links={<HeaderLinks dropdownHoverColor="light" />}
         fixed
         color="transparent"

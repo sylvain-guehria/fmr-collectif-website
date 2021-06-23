@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import logger from '../../../modules/logger/logger';
 
 import { validationSchema } from './RegisterFormValidation';
 
@@ -23,6 +22,7 @@ import signupPageStyle from '../../../styles/jss/nextjs-material-kit-pro/pages/s
 import { getError } from '../formUtils';
 import { useAuth } from '../../../api/auth/useAuth';
 import { useRouter } from 'next/router';
+import registerWithEmail from '../../../usecases/registerWithEmail';
 
 const useStyles = makeStyles(signupPageStyle);
 
@@ -60,11 +60,8 @@ const RegistrationForm: React.FC = (): React.ReactElement => {
   } = useForm<RegistrationFormType>(formOptions);
 
   const onSubmit: SubmitHandler<RegistrationFormType> = async (data: RegistrationFormType) => {
-    logger.info(data);
-    const { email, password } = data;
-    await auth.signUpEmail(email, password).then(() => {
-      router.push('/');
-    });
+    const { email, password, firstName } = data;
+    registerWithEmail(auth, router, { firstName, email, password });
   };
 
   return (

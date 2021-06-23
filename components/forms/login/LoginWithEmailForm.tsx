@@ -24,6 +24,8 @@ import { useRouter } from 'next/router';
 import Fingerprint from '@material-ui/icons/Fingerprint';
 import PersonAdd from '@material-ui/icons/PersonAdd';
 import CardBody from '../../Card/CardBody';
+import emailConnexionUseCase from '../../../usecases/emailConnexion';
+
 // import LoadingLayer from 'components/LoadingLayer/LoadingLayer';
 
 const useStyles = makeStyles(signupPageStyle);
@@ -47,9 +49,7 @@ const LoginWithEmailForm: React.FC = (): React.ReactElement => {
   } = useForm<LoginFormType>(formOptions);
 
   const onSubmit: SubmitHandler<LoginFormType> = async ({ email, password }: LoginFormType) => {
-    auth.loginEmail(email, password).then(() => {
-      router.push('/');
-    });
+    emailConnexionUseCase(auth, router, { email, password });
   };
 
   return (
@@ -92,14 +92,14 @@ const LoginWithEmailForm: React.FC = (): React.ReactElement => {
       </CardBody>
 
       <div className={classes.textCenter}>
-        <Button simple color="rose" size="lg" type="submit">
+        <Button simple color="danger" size="lg" type="submit">
           <>
             <Fingerprint className={classes.dropdownIcons} /> Se connecter
           </>
         </Button>
         <br />
         <Link href="/signup">
-          <Button simple color="rose" size="lg">
+          <Button simple color="danger" size="lg">
             <>
               <PersonAdd className={classes.dropdownIcons} /> S&lsquo;inscrire
             </>

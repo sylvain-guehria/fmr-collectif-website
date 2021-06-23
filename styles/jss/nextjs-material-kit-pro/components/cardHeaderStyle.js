@@ -5,6 +5,7 @@ import {
   infoCardHeader,
   primaryCardHeader,
   roseCardHeader,
+  grayCardHeader,
   blackColor,
   hexToRgb
 } from 'styles/jss/nextjs-material-kit-pro.js';
@@ -71,7 +72,8 @@ const cardHeaderStyle = {
   dangerCardHeader,
   infoCardHeader,
   primaryCardHeader,
-  roseCardHeader
+  roseCardHeader,
+  grayCardHeader
 };
 
 export default cardHeaderStyle;
