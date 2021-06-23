@@ -49,7 +49,7 @@ export default function ProfilePage({ ...rest }) {
     <div>
       <Header
         color="transparent"
-        brand="Fmr collectif, organisateur d'événement"
+        brand="Accueil Fmr"
         links={<HeaderLinks dropdownHoverColor="info" />}
         fixed
         changeColorOnScroll={{
@@ -514,7 +514,7 @@ export default function ProfilePage({ ...rest }) {
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
                   <a
-                    href="https://www.creative-tim.com/presentation?ref=njsmkp-profile"
+                    href="https://www.creative-tim.com/home?ref=njsmkp-profile"
                     target="_blank"
                     className={classes.block}
                   >

@@ -87,7 +87,7 @@ export default function SectionsPage() {
     <div>
       <Header
         color="info"
-        brand="Fmr collectif, organisateur d'événement"
+        brand="Accueil Fmr"
         links={<HeaderLinks dropdownHoverColor="info" />}
         fixed
       />

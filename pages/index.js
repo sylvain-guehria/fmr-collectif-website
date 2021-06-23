@@ -4,7 +4,7 @@ import Router from 'next/router';
 const Index = () => {
 
   useEffect(() => {
-    Router.push('/presentation');
+    Router.push('/home');
   });
 
   return <div />;

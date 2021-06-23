@@ -37,7 +37,7 @@ export default function LandingPage({ ...rest }) {
     <div>
       <Header
         color="transparent"
-        brand="Fmr collectif, organisateur d'événement"
+        brand="Accueil Fmr"
         links={<HeaderLinks dropdownHoverColor="info" />}
         fixed
         changeColorOnScroll={{
@@ -94,7 +94,7 @@ export default function LandingPage({ ...rest }) {
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
                   <a
-                    href="https://www.creative-tim.com/presentation?ref=njsmkp-landing"
+                    href="https://www.creative-tim.com/home?ref=njsmkp-landing"
                     target="_blank"
                     className={classes.block}
                   >

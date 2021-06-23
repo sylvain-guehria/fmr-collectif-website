@@ -38,7 +38,7 @@ export default function EcommercePage() {
   return (
     <div>
       <Header
-        brand="Fmr collectif, organisateur d'événement"
+        brand="Accueil Fmr"
         links={<HeaderLinks dropdownHoverColor="info" />}
         fixed
         color="transparent"
@@ -154,7 +154,7 @@ export default function EcommercePage() {
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
                   <a
-                    href="https://www.creative-tim.com/presentation?ref=njsmkp-e-ecommerce"
+                    href="https://www.creative-tim.com/home?ref=njsmkp-e-ecommerce"
                     target="_blank"
                     className={classes.block}
                   >

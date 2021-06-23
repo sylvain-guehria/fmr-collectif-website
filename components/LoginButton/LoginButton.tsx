@@ -27,7 +27,7 @@ const LoginButton: React.FC<unknown> = () => {
                 <Button color={'white'} target="_blank" className={classes.navButton} round>
                   {
                     <>
-                      <Fingerprint className={classes.icons} /> Se connecter
+                      <Fingerprint /> Se connecter
                     </>
                   }
                 </Button>
@@ -36,10 +36,10 @@ const LoginButton: React.FC<unknown> = () => {
           </Hidden>
           <Hidden mdUp>
             <Link href="/login">
-              <Button color={'github'} target="_blank" className={classes.navButton} round>
+              <Button color={'github'} round>
                 {
                   <>
-                    <Fingerprint className={classes.icons} /> Se connecter{' '}
+                    <Fingerprint /> Se connecter{' '}
                   </>
                 }
               </Button>
@@ -49,15 +49,13 @@ const LoginButton: React.FC<unknown> = () => {
       ) : (
         <Button
           color={'white'}
-          target="_blank"
-          className={classes.navButton}
           round
           onClick={() => {
             auth.signout();
           }}>
           {
             <>
-              <Fingerprint className={classes.icons} /> Se déconnecter{' '}
+              <Fingerprint /> Se déconnecter{' '}
             </>
           }
         </Button>

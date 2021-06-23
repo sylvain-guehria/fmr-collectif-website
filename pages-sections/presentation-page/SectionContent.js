@@ -55,7 +55,7 @@ export default function SectionContent() {
               </div>
               <img
                 className={classes.ipadImg}
-                src="/img/assets-for-demo/presentationViewSectionComponent/presentation-ipad.jpg"
+                src="/img/assets-for-demo/presentationViewSectionComponent/home-ipad.jpg"
                 alt="iPad"
               />
             </div>
