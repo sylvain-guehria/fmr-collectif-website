@@ -4,6 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import signupPageStyle from '../../../styles/jss/nextjs-material-kit-pro/pages/signupPageStyle.js';
 import { useAuth } from '../../../api/auth/useAuth';
 import { useRouter } from 'next/router';
+import googleConnexionUseCase from '../../../usecases/googleConnexion';
+import facebookConnexionUseCase from '../../../usecases/facebookConnexion';
 
 const useStyles = makeStyles(signupPageStyle);
 
@@ -12,33 +14,23 @@ const LoginWithOtherAccount: React.FC = (): React.ReactElement => {
   const auth = useAuth();
   const router = useRouter();
 
-  const callLoginFacebook = (): void => {
-    auth.loginFacebook().then(() => {
-      router.push('/');
-    });
-  };
-
-  const callLoginGoogle = (): void => {
-    auth.loginGoogle().then(() => {
-      router.push('/');
-    });
-  };
-
   return (
-    <div className={classes.socialLine}>
+    <div className={classes.textCenter}>
       <Button
         justIcon
-        color="transparent"
+        round
+        color="facebook"
         className={classes.iconButtons}
-        onClick={() => callLoginFacebook()}>
-        <i className="fab fa-facebook" />
+        onClick={() => facebookConnexionUseCase(auth, router)}>
+        <i className={classes.socials + ' fab fa-facebook-f'} />
       </Button>
       <Button
         justIcon
-        color="transparent"
+        round
+        color="google"
         className={classes.iconButtons}
-        onClick={() => callLoginGoogle()}>
-        <i className="fab fa-google-plus-g" />
+        onClick={() => googleConnexionUseCase(auth, router)}>
+        <i className={classes.socials + ' fab fa-google'} />
       </Button>
     </div>
   );

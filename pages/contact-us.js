@@ -140,7 +140,7 @@ export default function ContactUsPage() {
   return (
     <div>
       <Header
-        brand="NextJS Material Kit PRO"
+        brand="Fmr collectif, organisateur d'événement"
         links={<HeaderLinks dropdownHoverColor="dark" />}
         fixed
         color="dark"

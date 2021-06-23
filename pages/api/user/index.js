@@ -2,19 +2,45 @@ import db from '../../../api/firestore/index';
 
 export default async (req, res) => {
   try {
-    const { slug } = req.body;
-    const users = await db.collection('users').get();
-    const usersData = users.docs.map(user => user.data());
-
-    if (usersData.some(user => user.slug === slug)) {
-      res.status(400).end();
-    } else {
-      const { id } = await db.collection('users').add({
-        ...req.body,
-        created: new Date().toISOString()
-      });
-      res.status(200).json({ id });
+    const {
+      uid,
+      email,
+      pseudo,
+      firstName,
+      lastName,
+      language,
+      phoneNumber,
+      role,
+      creationDate,
+      lastLogin
     }
+      = req.body;
+    const users = await db.collection('users').get();
+    const usersIds = users.docs.map(user => user.data().uid);
+
+    if (!uid) {
+      res.statusMessage = `uid is ${uid}, cannot create new user`;
+      res.status(400).end();
+    }
+
+    if (usersIds.some(userId => userId === uid)) {
+      res.statusMessage = `a user already has this uid : ${uid}, cannot create new user`;
+      res.status(400).end();
+    }
+
+    const { id } = await db.collection('users').doc(uid).set({
+      uid,
+      email,
+      pseudo,
+      firstName,
+      lastName,
+      language,
+      phoneNumber,
+      role,
+      creationDate,
+      lastLogin
+    });
+    res.status(200).json({ id });
   } catch (e) {
     res.status(400).end();
   }

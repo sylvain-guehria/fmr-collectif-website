@@ -49,7 +49,7 @@ export default function ProfilePage({ ...rest }) {
     <div>
       <Header
         color="transparent"
-        brand="NextJS Material Kit PRO"
+        brand="Fmr collectif, organisateur d'événement"
         links={<HeaderLinks dropdownHoverColor="info" />}
         fixed
         changeColorOnScroll={{

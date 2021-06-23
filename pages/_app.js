@@ -16,6 +16,7 @@
 */
 import React from 'react';
 import logger from '../modules/logger/logger';
+import { ToastProvider } from 'react-toast-notifications';
 
 import ReactDOM from 'react-dom';
 import App from 'next/app';
@@ -65,17 +66,19 @@ export default class MyApp extends App {
 
     return (
       <React.Fragment>
-        <ProvideAuth>
-          <Head>
-            <meta
-              name="viewport"
-              content="width=device-width, initial-scale=1, shrink-to-fit=no"
-            />
-            <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-            <title>Fmr-collectif</title>
-          </Head>
-          <Component {...pageProps} />
-        </ProvideAuth>
+        <ToastProvider>
+          <ProvideAuth>
+            <Head>
+              <meta
+                name="viewport"
+                content="width=device-width, initial-scale=1, shrink-to-fit=no"
+              />
+              <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+              <title>Fmr-collectif</title>
+            </Head>
+            <Component {...pageProps} />
+          </ProvideAuth>
+        </ToastProvider>
       </React.Fragment>
     );
   }

@@ -87,7 +87,7 @@ export default function SectionsPage() {
     <div>
       <Header
         color="info"
-        brand="NextJS Material Kit PRO"
+        brand="Fmr collectif, organisateur d'événement"
         links={<HeaderLinks dropdownHoverColor="info" />}
         fixed
       />
