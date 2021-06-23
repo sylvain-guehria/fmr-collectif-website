@@ -4,6 +4,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import logger from '../../modules/logger/logger';
+import { useToasts } from 'react-toast-notifications';
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_PUBLIC_API_KEY,
@@ -39,11 +40,15 @@ export const useAuth = () => {
 
 function useProvideAuth() {
   const [user, setUser] = useState(null);
+  const { addToast } = useToasts();
+
 
   const loginEmail = (email, password) => {
     return auth.signInWithEmailAndPassword(email, password).then(response => {
       setUser(response.user);
       return response.user;
+    }).catch(e => {
+      addToast(e.message, { appearance: 'error', autoDismiss: true });
     });
   };
 
@@ -59,6 +64,7 @@ function useProvideAuth() {
         };
       })
       .catch(function (error) {
+        addToast(error.message, { appearance: 'error', autoDismiss: true });
         logger.error(error);
       });
   };
@@ -75,6 +81,7 @@ function useProvideAuth() {
         };
       })
       .catch(error => {
+        addToast(error.message, { appearance: 'error', autoDismiss: true });
         logger.info(error);
       });
   };
@@ -91,7 +98,8 @@ function useProvideAuth() {
         };
       })
       .catch(error => {
-        logger.info({ error });
+        addToast(error.message, { appearance: 'error', autoDismiss: true });
+        logger.error({ error });
       });
   };
 
@@ -102,7 +110,8 @@ function useProvideAuth() {
         setUser(false);
       })
       .catch(function (error) {
-        logger.info(error);
+        addToast(error.message, { appearance: 'error', autoDismiss: true });
+        logger.error(error);
       });
   };
 
