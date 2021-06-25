@@ -1,23 +1,32 @@
-/*eslint-disable*/
-import React from "react";
+/*eslint-disable*/ import React from "react";
+// nodejs library to set properties for components
+import PropTypes from "prop-types";
+// @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
+// @material-ui/icons
+import FormatAlignLeft from "@material-ui/icons/FormatAlignLeft";
 import Favorite from "@material-ui/icons/Favorite";
+// core components
 import Header from "components/Header/Header.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
+import Parallax from "components/Parallax/Parallax.js";
 import Footer from "components/Footer/Footer.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import Parallax from "components/Parallax/Parallax.js";
-import SectionImage from "pages-sections/blog-posts/SectionImage.js";
-import SectionBlogs from 'pages-sections/sections-page/SectionBlogs.js';
+import Button from "components/CustomButtons/Button";
+// sections for this page
+import SectionText from "pages-sections/blog-post/SectionText.js";
+import SectionBlogInfo from "pages-sections/blog-post/SectionBlogInfo.js";
+import SectionComments from "pages-sections/blog-post/SectionComments.js";
+import SectionSimilarStories from "pages-sections/blog-post/SectionSimilarStories.js";
 
-import blogPostsPageStyle from "styles/jss/nextjs-material-kit-pro/pages/blogPostsPageStyle.js";
+import blogPostPageStyle from "styles/jss/nextjs-material-kit-pro/pages/blogPostPageStyle.js";
 
-const useStyles = makeStyles(blogPostsPageStyle);
+const useStyles = makeStyles(blogPostPageStyle);
 
-export default function BlogPostsPage() {
+export default function Event() {
   React.useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
@@ -31,29 +40,37 @@ export default function BlogPostsPage() {
         fixed
         color="transparent"
         changeColorOnScroll={{
-          height: 400,
+          height: 300,
           color: "info",
         }}
       />
-      <Parallax image="/img/bg10.jpg" filter="dark" small>
+      <Parallax image="/img/bg5.jpg" filter="dark">
         <div className={classes.container}>
           <GridContainer justify="center">
-            <GridItem xs={12} sm={12} md={8} className={classes.textCenter}>
-              <h2 className={classes.title}>
-                A Place for Entrepreneurs to Share and Discover New Stories
-              </h2>
+            <GridItem md={8} className={classes.textCenter}>
+              <h1 className={classes.title}>
+                How We Built the Most Successful Castle Ever
+              </h1>
+              <h4 className={classes.subtitle}>
+                The last 48 hours of my life were total madness. This is what I
+                did.
+              </h4>
+              <br />
+              <Button color="rose" size="lg" round>
+                <FormatAlignLeft /> Read Article
+              </Button>
             </GridItem>
           </GridContainer>
         </div>
       </Parallax>
       <div className={classes.main}>
         <div className={classes.container}>
-
-        <SectionBlogs id="blogs" />
-
+          <SectionText />
+          <SectionBlogInfo />
+          <SectionComments />
         </div>
-        <SectionImage />
       </div>
+      <SectionSimilarStories />
       <Footer
         content={
           <div>
@@ -61,7 +78,7 @@ export default function BlogPostsPage() {
               <List className={classes.list}>
                 <ListItem className={classes.inlineBlock}>
                   <a
-                    href="https://www.creative-tim.com/?ref=njsmkp-blog-posts"
+                    href="https://www.creative-tim.com/?ref=njsmkp-blog-post"
                     target="_blank"
                     className={classes.block}
                   >
@@ -70,7 +87,7 @@ export default function BlogPostsPage() {
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
                   <a
-                    href="https://www.creative-tim.com/home?ref=njsmkp-blog-posts"
+                    href="https://www.creative-tim.com/home?ref=njsmkp-blog-post"
                     target="_blank"
                     className={classes.block}
                   >
@@ -79,7 +96,8 @@ export default function BlogPostsPage() {
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
                   <a
-                    href="http://blog.creative-tim.com/?ref=njsmkp-blog-posts"
+                    href="https://blog.creative-tim.com/?ref=njsmkp-blog-post"
+                    target="_blank"
                     className={classes.block}
                   >
                     Blog
@@ -87,7 +105,7 @@ export default function BlogPostsPage() {
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
                   <a
-                    href="https://www.creative-tim.com/license?ref=njsmkp-blog-posts"
+                    href="https://www.creative-tim.com/license?ref=njsmkp-blog-post"
                     target="_blank"
                     className={classes.block}
                   >
@@ -100,7 +118,7 @@ export default function BlogPostsPage() {
               &copy; {1900 + new Date().getYear()} , made with{" "}
               <Favorite className={classes.icon} /> by{" "}
               <a
-                href="https://www.creative-tim.com?ref=njsmkp-blog-posts"
+                href="https://www.creative-tim.com?ref=njsmkp-blog-post"
                 target="_blank"
               >
                 Creative Tim

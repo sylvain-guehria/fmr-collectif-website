@@ -11,13 +11,13 @@ import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Parallax from "components/Parallax/Parallax.js";
 import SectionImage from "pages-sections/blog-posts/SectionImage.js";
-import SectionBlogs from 'pages-sections/sections-page/SectionBlogs.js';
+import SectionEvents from 'pages-sections/sections-page/SectionEvents';
 
 import blogPostsPageStyle from "styles/jss/nextjs-material-kit-pro/pages/blogPostsPageStyle.js";
 
 const useStyles = makeStyles(blogPostsPageStyle);
 
-export default function BlogPostsPage() {
+export default function eventsPage() {
   React.useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
@@ -49,7 +49,7 @@ export default function BlogPostsPage() {
       <div className={classes.main}>
         <div className={classes.container}>
 
-        <SectionBlogs id="blogs" />
+        <SectionEvents id="events" />
 
         </div>
         <SectionImage />

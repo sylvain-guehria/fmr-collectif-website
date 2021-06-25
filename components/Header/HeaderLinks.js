@@ -115,7 +115,7 @@ export default function HeaderLinks(props) {
                    Devenir membre
                     </a>
             </Link>,
-             <Link href="/sections#contacts">
+             <Link href="/contactus">
              <a className={classes.dropdownLink}>
                <Call className={classes.dropdownIcons} />
                   Nous contacter
@@ -136,13 +136,13 @@ export default function HeaderLinks(props) {
           }}
           buttonIcon={Apps}
           dropdownList={[
-            <Link href="/sections#blogs">
+            <Link href="/blog-posts">
               <a className={classes.dropdownLink}>
                 <ArtTrack className={classes.dropdownIcons} /> Le blog
                 {/* cliquer un blog ouvre blog-post */}
               </a>
             </Link>,
-            <Link href="/sections#blogs">
+            <Link href="/events">
               <a className={classes.dropdownLink}>
                 {/* cliquer un event ouvre blog-post */}
                 <Dns className={classes.dropdownIcons} /> Les évènements
@@ -163,7 +163,7 @@ export default function HeaderLinks(props) {
           }}
           buttonIcon={Store}
           dropdownList={[
-            <Link href="/ecommerce">
+            <Link href="/ticketoffice">
               <a className={classes.dropdownLink}>
                 <LineStyle className={classes.dropdownIcons} />
                  Billeterie
@@ -197,7 +197,7 @@ export default function HeaderLinks(props) {
           }}
           buttonIcon={AccountCircle}
           dropdownList={[
-            <Link href="/ecommerce">
+            <Link href="/profile">
               <a className={classes.dropdownLink}>
                 <LineStyle className={classes.dropdownIcons} />
                  Mon compte

@@ -22,7 +22,6 @@ import CustomInput from "components/CustomInput/CustomInput.js";
 import Footer from "components/Footer/Footer.js";
 // sections for this page
 import SectionLatestOffers from "pages-sections/ecommerce/SectionLatestOffers.js";
-import SectionProducts from "pages-sections/ecommerce/SectionProducts.js";
 import SectionBlog from "pages-sections/ecommerce/SectionBlog.js";
 
 import styles from "styles/jss/nextjs-material-kit-pro/pages/ecommerceStyle.js";
@@ -73,7 +72,6 @@ export default function EcommercePage() {
 
       <div className={classNames(classes.main, classes.mainRaised)}>
         <SectionLatestOffers />
-        <SectionProducts />
       </div>
       <SectionBlog />
       <div
