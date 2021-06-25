@@ -38,7 +38,7 @@ export default function ShoppingCartPage() {
   return (
     <div>
       <Header
-        brand="Fmr collectif, organisateur d'événement"
+        brand="Accueil Fmr"
         links={<HeaderLinks dropdownHoverColor="info" />}
         fixed
         color="transparent"
@@ -312,7 +312,7 @@ export default function ShoppingCartPage() {
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
                   <a
-                    href="https://www.creative-tim.com/presentation?ref=njsmkp-shopping-cart"
+                    href="https://www.creative-tim.com/home?ref=njsmkp-shopping-cart"
                     target="_blank"
                     className={classes.block}
                   >

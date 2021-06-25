@@ -61,7 +61,7 @@ export default function ProductPage() {
   return (
     <div className={classes.productPage}>
       <Header
-        brand="Fmr collectif, organisateur d'événement"
+        brand="Accueil Fmr"
         links={<HeaderLinks dropdownHoverColor="rose" />}
         fixed
         color="transparent"
@@ -498,7 +498,7 @@ export default function ProductPage() {
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
                   <a
-                    href="https://www.creative-tim.com/presentation?ref=njsmkp-pricing"
+                    href="https://www.creative-tim.com/home?ref=njsmkp-pricing"
                     target="_blank"
                     className={classes.block}
                   >

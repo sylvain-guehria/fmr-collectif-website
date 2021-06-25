@@ -38,7 +38,7 @@ export default function PresentationPage() {
   return (
     <div>
       <Header
-        brand="Fmr collectif, organisateur d'événement"
+        brand="Accueil Fmr"
         links={<HeaderLinks dropdownHoverColor="light" />}
         fixed
         color="transparent"

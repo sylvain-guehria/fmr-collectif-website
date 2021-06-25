@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-key */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -8,33 +9,37 @@ import Link from 'next/link';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import Icon from '@material-ui/core/Icon';
 
 // @material-ui/icons
 import Apps from '@material-ui/icons/Apps';
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
-import ViewDay from '@material-ui/icons/ViewDay';
+import ShoppingBasket from '@material-ui/icons/ShoppingBasket';
+import LineStyle from '@material-ui/icons/LineStyle';
+import AccountBalance from '@material-ui/icons/AccountBalance';
+import ArtTrack from '@material-ui/icons/ArtTrack';
+import Store from '@material-ui/icons/Store';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import PersonAdd from '@material-ui/icons/PersonAdd';
+import Call from '@material-ui/icons/Call';
 import Dns from '@material-ui/icons/Dns';
+
+import ViewDay from '@material-ui/icons/ViewDay';
 import Build from '@material-ui/icons/Build';
 import ListIcon from '@material-ui/icons/List';
 import People from '@material-ui/icons/People';
 import Assignment from '@material-ui/icons/Assignment';
 import MonetizationOn from '@material-ui/icons/MonetizationOn';
 import Chat from '@material-ui/icons/Chat';
-import Call from '@material-ui/icons/Call';
 import ViewCarousel from '@material-ui/icons/ViewCarousel';
-import AccountBalance from '@material-ui/icons/AccountBalance';
-import ArtTrack from '@material-ui/icons/ArtTrack';
+
 import ViewQuilt from '@material-ui/icons/ViewQuilt';
 import LocationOn from '@material-ui/icons/LocationOn';
 import Fingerprint from '@material-ui/icons/Fingerprint';
 import AttachMoney from '@material-ui/icons/AttachMoney';
-import Store from '@material-ui/icons/Store';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import PersonAdd from '@material-ui/icons/PersonAdd';
+import Icon from '@material-ui/core/Icon';
+
 import Layers from '@material-ui/icons/Layers';
-import ShoppingBasket from '@material-ui/icons/ShoppingBasket';
-import LineStyle from '@material-ui/icons/LineStyle';
+
 import Error from '@material-ui/icons/Error';
 
 // core components
@@ -92,37 +97,123 @@ export default function HeaderLinks(props) {
           noLiPadding
           navDropdown
           hoverColor={dropdownHoverColor}
-          buttonText="Components"
+          buttonText="L'association"
+          buttonProps={{
+            className: classes.navLink,
+            color: 'transparent'
+          }}
+          buttonIcon={AccountBalance}
+          dropdownList={[
+            <Link href="/about-us">
+              <a className={classes.dropdownLink}>
+                <ArtTrack className={classes.dropdownIcons} /> Qui somme nous
+              </a>
+            </Link>,
+            <Link href="/pricing">
+              <a className={classes.dropdownLink}>
+                <PersonAdd className={classes.dropdownIcons} />
+                   Devenir membre
+                    </a>
+            </Link>,
+             <Link href="/sections#contacts">
+             <a className={classes.dropdownLink}>
+               <Call className={classes.dropdownIcons} />
+                  Nous contacter
+                   </a>
+           </Link>
+          ]}
+        />
+      </ListItem>
+      <ListItem className={classes.listItem}>
+        <CustomDropdown
+          noLiPadding
+          navDropdown
+          hoverColor={dropdownHoverColor}
+          buttonText="Evènements"
           buttonProps={{
             className: classes.navLink,
             color: 'transparent'
           }}
           buttonIcon={Apps}
           dropdownList={[
-            <Link href="/presentation">
+            <Link href="/sections#blogs">
               <a className={classes.dropdownLink}>
-                <LineStyle className={classes.dropdownIcons} /> Presentation
-                Page
+                <ArtTrack className={classes.dropdownIcons} /> Le blog
+                {/* cliquer un blog ouvre blog-post */}
               </a>
             </Link>,
-            <Link href="/components">
+            <Link href="/sections#blogs">
               <a className={classes.dropdownLink}>
-                <Layers className={classes.dropdownIcons} />
-                All components
+                {/* cliquer un event ouvre blog-post */}
+                <Dns className={classes.dropdownIcons} /> Les évènements
               </a>
-            </Link>,
-            <a
-              href="https://demos.creative-tim.com/nextjs-material-kit-pro/documentation/tutorial?ref=njsmkp-navbar"
-              target="_blank"
-              className={classes.dropdownLink} rel="noreferrer"
-            >
-              <Icon className={classes.dropdownIcons}>content_paste</Icon>
-              Documentation
-            </a>
+            </Link>
           ]}
         />
       </ListItem>
       <ListItem className={classes.listItem}>
+        <CustomDropdown
+          noLiPadding
+          navDropdown
+          hoverColor={dropdownHoverColor}
+          buttonText="Boutique"
+          buttonProps={{
+            className: classes.navLink,
+            color: 'transparent'
+          }}
+          buttonIcon={Store}
+          dropdownList={[
+            <Link href="/ecommerce">
+              <a className={classes.dropdownLink}>
+                <LineStyle className={classes.dropdownIcons} />
+                 Billeterie
+              </a>
+            </Link>,
+            <Link href="/ecommerce">
+              <a className={classes.dropdownLink}>
+                <ShoppingBasket className={classes.dropdownIcons} />
+                Shop
+              </a>
+            </Link>,
+              <Link href="/shopping-cart">
+              <a className={classes.dropdownLink}>
+                <ShoppingCart className={classes.dropdownIcons} />
+                Panier
+              </a>
+            </Link>
+          ]}
+        />
+      </ListItem>
+      {/* if connected */}
+      <ListItem className={classes.listItem}>
+        <CustomDropdown
+          noLiPadding
+          navDropdown
+          hoverColor={dropdownHoverColor}
+          buttonText="Compte"
+          buttonProps={{
+            className: classes.navLink,
+            color: 'transparent'
+          }}
+          buttonIcon={AccountCircle}
+          dropdownList={[
+            <Link href="/ecommerce">
+              <a className={classes.dropdownLink}>
+                <LineStyle className={classes.dropdownIcons} />
+                 Mon compte
+              </a>
+            </Link>,
+            <Link href="/ecommerce">
+              <a className={classes.dropdownLink}>
+                <ShoppingBasket className={classes.dropdownIcons} />
+                Billets / achats
+              </a>
+            </Link>
+          ]}
+        />
+      </ListItem>
+      {/* delete */}
+       {/* <ListItem className={classes.listItem}>
         <CustomDropdown
           noLiPadding
           navDropdown
@@ -281,10 +372,12 @@ export default function HeaderLinks(props) {
             </Link>
           ]}
         />
+      </ListItem> */}
+      {/* stop delete */}
+
+      <ListItem className={classes.listItem}>
+        <LoginButton />
       </ListItem>
-
-      <LoginButton />
-
     </List>
   );
 }

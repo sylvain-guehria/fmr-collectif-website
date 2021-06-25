@@ -28,7 +28,7 @@ export default function ErrorPage({ ...rest }) {
       <Header
         absolute
         color="transparent"
-        brand="Fmr collectif, organisateur d'événement"
+        brand="Accueil Fmr"
         links={<HeaderLinks dropdownHoverColor="dark" />}
         {...rest}
       />
@@ -70,7 +70,7 @@ export default function ErrorPage({ ...rest }) {
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
                   <a
-                    href="https://www.creative-tim.com/presentation/?ref=njsmkp-error"
+                    href="https://www.creative-tim.com/home/?ref=njsmkp-error"
                     target="_blank"
                     className={classes.block}
                   >

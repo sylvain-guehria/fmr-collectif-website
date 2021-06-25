@@ -32,7 +32,7 @@ export default function BlogPostsPage() {
   return (
     <div>
       <Header
-        brand="Fmr collectif, organisateur d'événement"
+        brand="Accueil Fmr"
         links={<HeaderLinks dropdownHoverColor="info" />}
         fixed
         color="transparent"
@@ -76,7 +76,7 @@ export default function BlogPostsPage() {
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
                   <a
-                    href="https://www.creative-tim.com/presentation?ref=njsmkp-blog-posts"
+                    href="https://www.creative-tim.com/home?ref=njsmkp-blog-posts"
                     target="_blank"
                     className={classes.block}
                   >

@@ -45,7 +45,7 @@ Each element is well presented in a very complex documentation. You can read mor
 
 If you want to get inspiration or just show something directly to your clients, you can jump start your development with our pre-built example pages. You will be able to quickly set up the basic structure for your web project.
 
-View [example pages here](https://demos.creative-tim.com/nextjs-material-kit-pro/presentation?ref=njsmkp-readme).
+View [example pages here](https://demos.creative-tim.com/nextjs-material-kit-pro/home?ref=njsmkp-readme).
 
 
 ## Table of Contents
@@ -82,7 +82,7 @@ View [example pages here](https://demos.creative-tim.com/nextjs-material-kit-pro
 
 ## Demo
 
-- [Index Page](https://demos.creative-tim.com/nextjs-material-kit-pro/presentation?ref=njsmkp-readme)
+- [Index Page](https://demos.creative-tim.com/nextjs-material-kit-pro/home?ref=njsmkp-readme)
 - [Buttons Section](https://demos.creative-tim.com/nextjs-material-kit-pro/components#buttons?ref=njsmkp-readme)
 - [Navigation Section](https://demos.creative-tim.com/nextjs-material-kit-pro/components#navigation?ref=njsmkp-readme)
 - [Notifications Section](https://demos.creative-tim.com/nextjs-material-kit-pro/components#notifications?ref=njsmkp-readme)
@@ -310,7 +310,7 @@ At present, we officially aim to support the last two versions of the following 
 
 
 ## Resources
-- Demo: <https://demos.creative-tim.com/nextjs-material-kit-pro/presentation?ref=njsmkp-readme>
+- Demo: <https://demos.creative-tim.com/nextjs-material-kit-pro/home?ref=njsmkp-readme>
 - Download Page: <https://www.creative-tim.com/product/nextjs-material-kit-pro?ref=njsmkp-readme>
 - Documentation: <https://demos.creative-tim.com/nextjs-material-kit-pro/documentation/tutorial?ref=njsmkp-readme>
 - License Agreement: <https://www.creative-tim.com/license?ref=njsmkp-readme>

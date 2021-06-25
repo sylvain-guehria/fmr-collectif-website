@@ -140,7 +140,7 @@ export default function ContactUsPage() {
   return (
     <div>
       <Header
-        brand="Fmr collectif, organisateur d'événement"
+        brand="Accueil Fmr"
         links={<HeaderLinks dropdownHoverColor="dark" />}
         fixed
         color="dark"
@@ -258,7 +258,7 @@ export default function ContactUsPage() {
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
                   <a
-                    href="https://www.creative-tim.com/presentation?ref=njsmkp-contact-us"
+                    href="https://www.creative-tim.com/home?ref=njsmkp-contact-us"
                     target="_blank"
                     className={classes.block}
                   >

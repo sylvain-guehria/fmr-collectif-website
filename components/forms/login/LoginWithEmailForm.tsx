@@ -24,7 +24,7 @@ import { useRouter } from 'next/router';
 import Fingerprint from '@material-ui/icons/Fingerprint';
 import PersonAdd from '@material-ui/icons/PersonAdd';
 import CardBody from '../../Card/CardBody';
-import emailConnexionUseCase from '../../../usecases/emailConnexion';
+import { emailConnexionUseCase } from '../../../usecases';
 
 // import LoadingLayer from 'components/LoadingLayer/LoadingLayer';
 

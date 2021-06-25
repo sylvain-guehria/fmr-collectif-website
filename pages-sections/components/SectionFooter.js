@@ -56,7 +56,7 @@ export default function SectionFooter() {
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href="https://www.creative-tim.com/presentation?ref=njsmkp-footer-components"
+                      href="https://www.creative-tim.com/home?ref=njsmkp-footer-components"
                       target="_blank"
                       className={classes.block}
                     >
@@ -140,7 +140,7 @@ export default function SectionFooter() {
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href="https://www.creative-tim.com/presentation?ref=njsmkp-footer-components"
+                      href="https://www.creative-tim.com/home?ref=njsmkp-footer-components"
                       target="_blank"
                       className={classes.block}
                     >
@@ -209,7 +209,7 @@ export default function SectionFooter() {
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href="https://www.creative-tim.com/presentation?ref=njsmkp-footer-components"
+                      href="https://www.creative-tim.com/home?ref=njsmkp-footer-components"
                       target="_blank"
                       className={classes.block}
                     >

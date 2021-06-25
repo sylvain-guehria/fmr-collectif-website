@@ -41,7 +41,7 @@ export default function SignUpPage({ ...rest }) {
       <Header
         absolute
         color="transparent"
-        brand="Fmr collectif, organisateur d'événement"
+        brand="Accueil Fmr"
         links={<HeaderLinks dropdownHoverColor="rose" />}
         {...rest}
       />
@@ -112,7 +112,7 @@ export default function SignUpPage({ ...rest }) {
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href="https://www.creative-tim.com/presentation?ref=njsmkp-signup"
+                      href="https://www.creative-tim.com/home?ref=njsmkp-signup"
                       target="_blank"
                       className={classes.block} rel="noreferrer"
                     >
