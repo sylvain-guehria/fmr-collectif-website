@@ -5,7 +5,7 @@ import signupPageStyle from '../../../styles/jss/nextjs-material-kit-pro/pages/s
 import { useAuth } from '../../../api/auth/useAuth';
 import { useRouter } from 'next/router';
 import { googleConnexionUseCase } from '../../../usecases';
-import facebookConnexionUseCase from '../../../usecases/facebookConnexion';
+import { facebookConnexionUseCase } from '../../../usecases';
 
 const useStyles = makeStyles(signupPageStyle);
 
