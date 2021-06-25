@@ -22,7 +22,7 @@ import signupPageStyle from '../../../styles/jss/nextjs-material-kit-pro/pages/s
 import { getError } from '../formUtils';
 import { useAuth } from '../../../api/auth/useAuth';
 import { useRouter } from 'next/router';
-import registerWithEmail from '../../../usecases/registerWithEmail';
+import { registerWithEmailUseCase } from '../../../usecases';
 
 const useStyles = makeStyles(signupPageStyle);
 
@@ -31,6 +31,7 @@ interface RegistrationFormType {
   password: string;
   confirmPassword: string;
   firstName: string;
+  lastName: string;
   acceptTerms: boolean;
 }
 
@@ -60,8 +61,8 @@ const RegistrationForm: React.FC = (): React.ReactElement => {
   } = useForm<RegistrationFormType>(formOptions);
 
   const onSubmit: SubmitHandler<RegistrationFormType> = async (data: RegistrationFormType) => {
-    const { email, password, firstName } = data;
-    registerWithEmail(auth, router, { firstName, email, password });
+    const { email, password, firstName, lastName } = data;
+    registerWithEmailUseCase(auth, router, { firstName, lastName, email, password });
   };
 
   return (
@@ -79,7 +80,23 @@ const RegistrationForm: React.FC = (): React.ReactElement => {
               <Face className={classes.inputAdornmentIcon} />
             </InputAdornment>
           ),
-          placeholder: 'Nom et prénom...',
+          placeholder: 'Prénom...',
+        }}
+      />
+      <CustomInput
+        formControlProps={{
+          fullWidth: true,
+          className: classes.customFormControlClasses,
+        }}
+        error={getError(errors, 'lastName')}
+        inputProps={{
+          ...register('lastName'),
+          startAdornment: (
+            <InputAdornment position="start" className={classes.inputAdornment}>
+              <Face className={classes.inputAdornmentIcon} />
+            </InputAdornment>
+          ),
+          placeholder: 'Nom...',
         }}
       />
       <CustomInput
