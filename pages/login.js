@@ -27,7 +27,7 @@ const LoginPage = () => {
       <Header
         absolute
         color="transparent"
-        brand="Connectez vous et profitez de...?"
+        brand="Accueil Fmr"
         links={<HeaderLinks dropdownHoverColor="info" />}
       />
       <div

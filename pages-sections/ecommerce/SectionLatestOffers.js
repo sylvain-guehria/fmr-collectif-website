@@ -14,6 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 // @material-ui icons
 import Favorite from '@material-ui/icons/Favorite';
+import Link from 'next/link';
 
 import styles from 'styles/jss/nextjs-material-kit-pro/pages/ecommerceSections/latestOffersStyle.js';
 
@@ -24,22 +25,24 @@ export default function SectionLatestOffers() {
   return (
     <div className={classes.section}>
       <div className={classes.container}>
-        <h2>Latest Offers</h2>
+        <h2>Nos t-shirts</h2>
         <GridContainer>
           <GridItem md={4} sm={4}>
             <Card product plain>
+            <Link href="/product">
               <CardHeader image plain>
                 <a href="#pablo">
-                  <img src="/img/examples/gucci.jpg" alt="..." />
+                  <img src="/img/examples/tshirt.jpg" alt="..." />
                 </a>
                 <div
                   className={classes.coloredShadow}
                   style={{
-                    backgroundImage: "url('/img/examples/gucci.jpg')",
+                    backgroundImage: "url('/img/examples/tshirt.jpg')",
                     opacity: 1
                   }}
                 />
               </CardHeader>
+          </Link>
               <CardBody className={classes.textCenter} plain>
                 <h4 className={classes.cardTitle}>Gucci</h4>
                 <p className={classes.cardDescription}>

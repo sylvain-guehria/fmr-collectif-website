@@ -13,6 +13,7 @@ import Info from 'components/Typography/Info.js';
 import Danger from 'components/Typography/Danger.js';
 import Success from 'components/Typography/Success.js';
 import Button from 'components/CustomButtons/Button';
+import Link from 'next/link';
 
 import blogsStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsSections/blogsStyle.js';
 
@@ -36,30 +37,31 @@ export default function SectionBlogs({ ...rest }) {
               <br />
               <Card plain blog className={classes.card}>
                 <GridContainer>
-                  <GridItem xs={12} sm={5} md={5}>
-                    <CardHeader image plain>
-                      <a href="#pablito" onClick={(e) => e.preventDefault()}>
-                        <img src="/img/examples/card-blog4.jpg" alt="..." />
-                      </a>
-                      <div
-                        className={classes.coloredShadow}
-                        style={{
-                          backgroundImage:
-                            "url('/img/examples/card-blog4.jpg')",
-                          opacity: '1'
-                        }}
-                      />
-                    </CardHeader>
-                  </GridItem>
+                    <GridItem xs={12} sm={5} md={5}>
+                      <CardHeader image plain>
+                          <img src="/img/examples/card-blog4.jpg" alt="..." />
+                        <div
+                          className={classes.coloredShadow}
+                          style={{
+                            backgroundImage:
+                              "url('/img/examples/card-blog4.jpg')",
+                            opacity: '1'
+                          }}
+                        />
+                      </CardHeader>
+                    </GridItem>
                   <GridItem xs={12} sm={7} md={7}>
                     <Info>
                       <h6 className={classes.cardCategory}>ENTERPRISE</h6>
                     </Info>
                     <h3 className={classes.cardTitle}>
-                      <a href="#pablo" onClick={(e) => e.preventDefault()}>
+                  <Link href="/blog-post">
+                      <a href="#pablo" >
                         Autodesk looks to future of 3D printing with Project
                         Escher
                       </a>
+                    </ Link>
+
                     </h3>
                     <p className={classes.description1}>
                       Like so many organizations these days, Autodesk is a
