@@ -212,6 +212,28 @@ export default function HeaderLinks(props) {
           ]}
         />
       </ListItem>
+        {/* if admin */}
+        <ListItem className={classes.listItem}>
+        <CustomDropdown
+          noLiPadding
+          navDropdown
+          hoverColor={dropdownHoverColor}
+          buttonText="Admin"
+          buttonProps={{
+            className: classes.navLink,
+            color: 'transparent'
+          }}
+          buttonIcon={Build}
+          dropdownList={[
+            <Link href="/users">
+              <a className={classes.dropdownLink}>
+                <People className={classes.dropdownIcons} />
+                 utlisateurs
+              </a>
+            </Link>
+          ]}
+        />
+      </ListItem>
       {/* delete */}
        {/* <ListItem className={classes.listItem}>
         <CustomDropdown

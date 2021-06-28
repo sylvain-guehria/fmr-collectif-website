@@ -39,7 +39,7 @@ class FirebaseUserRepository extends UserRepository {
     });
   }
 
-  async add(user: UserEntity): Promise<unknown> {
+  async add(user: User): Promise<unknown> {
     const res = await axios.post('/api/user', {
       uid: user.uid || uuidV4(),
       email: user.email,
@@ -53,6 +53,27 @@ class FirebaseUserRepository extends UserRepository {
       lastLogin: user.lastLogin,
     });
     return res;
+  }
+
+  async getAll(): Promise<User[]> {
+    logger.info('get all users in db');
+    const response = await axios.get('/api/user/getAll');
+
+    return response.data.map(
+      (user: UserEntity) =>
+        new UserEntity({
+          uid: user.uid,
+          email: user.email,
+          pseudo: user.pseudo,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          language: user.language,
+          phoneNumber: user.phoneNumber,
+          role: user.role,
+          creationDate: user.creationDate,
+          lastLogin: user.lastLogin,
+        })
+    );
   }
 }
 
