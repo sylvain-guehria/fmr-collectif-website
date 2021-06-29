@@ -5,9 +5,10 @@ import Close from '@material-ui/icons/Close';
 import Button from 'components/CustomButtons/Button';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
-import shoppingCartStyle from 'styles/jss/nextjs-material-kit-pro/pages/shoppingCartStyle.js';
+import adminStyle from 'styles/jss/nextjs-material-kit-pro/pages/adminStyle.js';
+import { formatTimeStamp } from '../../utils/utils';
 
-const useStyles = makeStyles(shoppingCartStyle);
+const useStyles = makeStyles(adminStyle);
 
 const userTableLine = ({ user }) => {
 
@@ -32,7 +33,7 @@ const userTableLine = ({ user }) => {
 
         <TableCell>
           <div className={classes.imgContainer} key={1}>
-            <img src="/img/product1.jpg" alt="..." className={classes.img} />
+            <img src="/img/defaultAvatar.png" alt="..." className={classes.img} />
           </div>
         </TableCell>
 
@@ -57,7 +58,7 @@ const userTableLine = ({ user }) => {
         <TableCell>
           <span key={1}>
             <a href="#jacket" className={classes.tdNameAnchor}>
-              {creationDate}
+              {formatTimeStamp(creationDate)}
       </a>
           </span>
         </TableCell>
@@ -65,7 +66,7 @@ const userTableLine = ({ user }) => {
         <TableCell>
         <span key={1}>
             <a href="#jacket" className={classes.tdNameAnchor}>
-              {lastLogin}
+              {formatTimeStamp(lastLogin)}
       </a>
           </span>
         </TableCell>

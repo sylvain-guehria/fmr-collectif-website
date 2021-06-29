@@ -11,13 +11,15 @@ export const facebookConnexion =
     router: NextRouter
   ): Promise<void> => {
     const response = (await auth.loginFacebook()) || {};
-    const { isNewUser, uid, email } = response;
+    const { isNewUser, uid, email, firstName, lastName } = response;
 
     if (isNewUser) {
       await userRepository.add(
         UserEntity.new({
           uid: uid,
           email: email,
+          firstName: firstName,
+          lastName: lastName,
         })
       );
     }
@@ -28,4 +30,6 @@ type authResponse = {
   uid: string | undefined;
   email: string | null | undefined;
   isNewUser: boolean | undefined;
+  firstName: string | undefined;
+  lastName: string | undefined;
 };

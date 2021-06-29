@@ -19,7 +19,7 @@ const LoginButton: React.FC<unknown> = () => {
 
   return (
     <>
-      {!AuthUser?.email ? (
+      {!AuthUser ? (
         <ListItem className={classes.listItem}>
           <Hidden mdDown>
             <Link href="/login">

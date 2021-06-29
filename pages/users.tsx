@@ -35,7 +35,7 @@ const Users: React.FC<UserPrpos> = () => {
   });
 
   useEffect(() => {
-    const fetchUsers: Promise<userType[]> = async () => {
+    const fetchUsers = async (): Promise<userType[]> => {
       return await userRepository.getAll();
     };
 
@@ -130,15 +130,8 @@ const Users: React.FC<UserPrpos> = () => {
               </List>
             </div>
             <div className={classes.right}>
-              &copy; {1900 + new Date().getYear()} , made with <Favorite className={classes.icon} />{' '}
-              by{' '}
-              <a
-                href="https://www.creative-tim.com?ref=njsmkp-shopping-cart"
-                target="_blank"
-                rel="noreferrer">
-                Creative Tim
-              </a>{' '}
-              for a better web.
+              &copy; {1900 + new Date().getDate()} , made with <Favorite className={classes.icon} />{' '}
+              by Sylvain
             </div>
           </div>
         }

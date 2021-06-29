@@ -60,7 +60,9 @@ function useProvideAuth() {
         return {
           uid: response.user?.uid,
           email: response.user?.email,
-          isNewUser: response.additionalUserInfo?.isNewUser
+          isNewUser: response.additionalUserInfo?.isNewUser,
+          firstName: response.additionalUserInfo?.profile?.given_name,
+          lastName: response.additionalUserInfo?.profile?.family_name
         };
       })
       .catch(function (error) {
@@ -77,7 +79,9 @@ function useProvideAuth() {
         return {
           uid: response.user?.uid,
           email: response.user?.email,
-          isNewUser: response.additionalUserInfo?.isNewUser
+          isNewUser: response.additionalUserInfo?.isNewUser,
+          firstName: response.additionalUserInfo?.profile?.given_name,
+          lastName: response.additionalUserInfo?.profile?.family_name
         };
       })
       .catch(error => {

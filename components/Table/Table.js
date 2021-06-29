@@ -127,30 +127,30 @@ export default function CustomTable(props) {
                 </TableRow>
               );
             }
-            // return (
-            //   <TableRow
-            //     key={key}
-            //     hover={hover}
-            //     className={classes.tableRow + ' ' + tableRowClasses}
-            //   >
-            //     {prop.map((prop, key) => {
-            //       const tableCellClasses =
-            //         classes.tableCell +
-            //         ' ' +
-            //         cx({
-            //           [classes[colorsColls[coloredColls.indexOf(key)]]]:
-            //             coloredColls.indexOf(key) !== -1,
-            //           [customCellClasses[customClassesForCells.indexOf(key)]]:
-            //             customClassesForCells.indexOf(key) !== -1
-            //         });
-            //       return (
-            //         <TableCell className={tableCellClasses} key={key}>
-            //           {prop}
-            //         </TableCell>
-            //       );
-            //     })}
-            //   </TableRow>
-            // );
+            return (
+              <TableRow
+                key={key}
+                hover={hover}
+                className={classes.tableRow + ' ' + tableRowClasses}
+              >
+                {prop.map((prop, key) => {
+                  const tableCellClasses =
+                    classes.tableCell +
+                    ' ' +
+                    cx({
+                      [classes[colorsColls[coloredColls.indexOf(key)]]]:
+                        coloredColls.indexOf(key) !== -1,
+                      [customCellClasses[customClassesForCells.indexOf(key)]]:
+                        customClassesForCells.indexOf(key) !== -1
+                    });
+                  return (
+                    <TableCell className={tableCellClasses} key={key}>
+                      {prop}
+                    </TableCell>
+                  );
+                })}
+              </TableRow>
+            );
           })}
         </TableBody>
       </Table>

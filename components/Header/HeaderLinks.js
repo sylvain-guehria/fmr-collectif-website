@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-key */
 import React from 'react';
+import { useAuth } from '../../api/auth/useAuth';
+
 import PropTypes from 'prop-types';
 // react components for routing our app without refresh
 import Link from 'next/link';
@@ -42,7 +44,6 @@ import Layers from '@material-ui/icons/Layers';
 
 import Error from '@material-ui/icons/Error';
 
-// core components
 import CustomDropdown from 'components/CustomDropdown/CustomDropdown.js';
 import LoginButton from '../LoginButton/LoginButton';
 
@@ -51,6 +52,10 @@ import styles from 'styles/jss/nextjs-material-kit-pro/components/headerLinksSty
 const useStyles = makeStyles(styles);
 
 export default function HeaderLinks(props) {
+
+  const auth = useAuth();
+  const AuthUser = auth.user;
+
   const easeInOutQuad = (t, b, c, d) => {
     t /= d / 2;
     if (t < 1) return (c / 2) * t * t + b;
@@ -184,8 +189,7 @@ export default function HeaderLinks(props) {
           ]}
         />
       </ListItem>
-      {/* if connected */}
-      <ListItem className={classes.listItem}>
+      {AuthUser && <ListItem className={classes.listItem}>
         <CustomDropdown
           noLiPadding
           navDropdown
@@ -211,9 +215,8 @@ export default function HeaderLinks(props) {
             </Link>
           ]}
         />
-      </ListItem>
-        {/* if admin */}
-        <ListItem className={classes.listItem}>
+      </ListItem>}
+      {AuthUser && <ListItem className={classes.listItem}>
         <CustomDropdown
           noLiPadding
           navDropdown
@@ -233,7 +236,7 @@ export default function HeaderLinks(props) {
             </Link>
           ]}
         />
-      </ListItem>
+      </ListItem>}
       {/* delete */}
        {/* <ListItem className={classes.listItem}>
         <CustomDropdown

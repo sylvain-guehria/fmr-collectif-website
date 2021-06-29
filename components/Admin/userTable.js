@@ -22,7 +22,7 @@ const userTable = ({ users }) => {
     'Coordonées',
     'Date inscription',
     'Dernière connexion',
-    'Actions',
+    '',
     ''
   ];
 

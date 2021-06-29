@@ -6,7 +6,6 @@ class UserEntity implements User {
   email;
   pseudo;
   uid;
-  displayName;
   password;
   firstName;
   lastName;
@@ -29,7 +28,6 @@ class UserEntity implements User {
     this.email = user.email || '';
     this.pseudo = user.pseudo || '';
     this.uid = user.uid || '';
-    this.displayName = user.displayName || '';
     this.password = user.password || '';
     this.firstName = user.firstName || '';
     this.lastName = user.lastName || '';
