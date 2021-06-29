@@ -216,7 +216,7 @@ export default function HeaderLinks(props) {
           ]}
         />
       </ListItem>}
-      {AuthUser && <ListItem className={classes.listItem}>
+      {(AuthUser && AuthUser.isAdmin())&& <ListItem className={classes.listItem}>
         <CustomDropdown
           noLiPadding
           navDropdown

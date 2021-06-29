@@ -5,6 +5,7 @@ import 'firebase/auth';
 import 'firebase/firestore';
 import logger from '../../modules/logger/logger';
 import { useToasts } from 'react-toast-notifications';
+import firebaseUserRepository from '../../modules/user/firebaseUserRepository';
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_PUBLIC_API_KEY,
@@ -27,6 +28,7 @@ if (!firebase.default.apps.length) {
 export const fs = firebaseApp.firestore();
 const authContext = createContext();
 export const auth = firebase.default.auth();
+const userRepository = new firebaseUserRepository();
 
 // eslint-disable-next-line react/prop-types
 export function ProvideAuth({ children }) {
@@ -45,7 +47,6 @@ function useProvideAuth() {
 
   const loginEmail = (email, password) => {
     return auth.signInWithEmailAndPassword(email, password).then(response => {
-      setUser(response.user);
       return response.user;
     }).catch(e => {
       addToast(e.message, { appearance: 'error', autoDismiss: true });
@@ -135,9 +136,14 @@ function useProvideAuth() {
   };
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(user => {
+    const fetchUserInformation = async (uid) => {
+      return await userRepository.getById(uid);
+    };
+
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
       if (user) {
-        setUser(user);
+        const fullUser = await fetchUserInformation(user.uid);
+        setUser(fullUser);
       } else {
         setUser(false);
       }
