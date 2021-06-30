@@ -6,6 +6,7 @@ import 'firebase/firestore';
 import logger from '../../modules/logger/logger';
 import { useToasts } from 'react-toast-notifications';
 import firebaseUserRepository from '../../modules/user/firebaseUserRepository';
+import UserEntity from '../../modules/user/UserEntity';
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_PUBLIC_API_KEY,
@@ -112,6 +113,7 @@ function useProvideAuth() {
     return auth
       .signOut()
       .then(() => {
+        addToast('Aurevoir =)', { appearance: 'info', autoDismiss: true });
         setUser(false);
       })
       .catch(function (error) {
@@ -143,7 +145,8 @@ function useProvideAuth() {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
       if (user) {
         const fullUser = await fetchUserInformation(user.uid);
-        setUser(fullUser);
+        setUser(fullUser.email ? fullUser : UserEntity.new({...user}));
+        addToast(`Bonjour ${fullUser?.firstName} =)`, { appearance: 'success', autoDismiss: true });
       } else {
         setUser(false);
       }

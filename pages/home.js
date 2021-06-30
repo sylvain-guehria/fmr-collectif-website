@@ -1,6 +1,6 @@
 /*eslint-disable*/
 import React from "react";
-// nodejs library that concatenates classes
+import Image from 'next/image';
 import classNames from "classnames";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -47,17 +47,15 @@ export default function PresentationPage() {
           color: "light",
         }}
       />
-      <Parallax image="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" className={classes.parallax}>
+      <Parallax image="https://images.unsplash.com/photo-1603397600992-a9734a72b69c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80" className={classes.parallax}>
         <div className={classes.container}>
           <GridContainer>
             <GridItem>
               <div className={classes.brand}>
-                <h1>
-                  FMR collectif
-                  <span className={classes.proBadge}>Chambéry</span>
-                </h1>
+              <Image src='/img/fmr-logo.webp' alt='fmr logo' width={225} height={178} />
+                  {/* <span className={classes.proBadge}>Collectif</span> */}
                 <h3 className={classes.title}>
-                  Tout faire pour une soirée inoubliable.
+                  Organisateur de soirée et d'évènement.
                 </h3>
               </div>
             </GridItem>

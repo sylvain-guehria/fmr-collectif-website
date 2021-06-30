@@ -40,6 +40,7 @@ class FirebaseUserRepository extends UserRepository {
   }
 
   async add(user: User): Promise<unknown> {
+    logger.info('add user in db with uid: ', user.uid);
     const res = await axios.post('/api/user', {
       uid: user.uid || uuidV4(),
       email: user.email,
