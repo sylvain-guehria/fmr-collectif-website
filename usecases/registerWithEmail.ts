@@ -12,9 +12,8 @@ export const registerWithEmail =
     { firstName, email, password, lastName }: registerInfo
   ): Promise<void> => {
     const response = (await auth.signUpEmail(email, password)) || {};
-    if (response?.uid) {
-      const { uid } = response;
-
+    const uid = response?.uid;
+    if (uid) {
       await userRepository.add(
         UserEntity.new({
           uid: uid,
@@ -23,7 +22,6 @@ export const registerWithEmail =
           lastName: lastName,
         })
       );
-
       router.push('/');
     }
   };
