@@ -3,7 +3,6 @@ export interface User {
   email?: string;
   pseudo?: string;
   uid?: string;
-  displayName?: string;
   password?: string;
   firstName?: string;
   lastName?: string;
@@ -26,7 +25,6 @@ export enum userEnum {
   PSEUDO = 'pseudo',
   ROLES = 'roles',
   UID = 'uid',
-  DISPLAYNAME = 'displayName',
   PASSWORD = 'password',
 }
 

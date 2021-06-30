@@ -59,7 +59,7 @@ const headerStyle = (theme) => ({
       ...defaultFont,
       minWidth: 'unset',
       lineHeight: '30px',
-      fontSize: '18px',
+      fontSize: '16px',
       borderRadius: '3px',
       textTransform: 'none',
       whiteSpace: 'nowrap',
@@ -69,6 +69,9 @@ const headerStyle = (theme) => ({
         background: 'transparent'
       }
     }
+  },
+  homeButton: {
+    position: 'absolute',
   },
   appResponsive: {
     margin: '20px 10px',

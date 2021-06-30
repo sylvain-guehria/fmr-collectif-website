@@ -19,12 +19,16 @@ const LoginButton: React.FC<unknown> = () => {
 
   return (
     <>
-      {!AuthUser?.email ? (
+      {!AuthUser ? (
         <ListItem className={classes.listItem}>
           <Hidden mdDown>
             <Link href="/login">
               <a className={classes.dropdownLink}>
-                <Button color={'white'} target="_blank" className={classes.navButton} round>
+                <Button
+                  color={'transparent'}
+                  target="_blank"
+                  className={classes.navButton}
+                  size={'sm'}>
                   {
                     <>
                       <Fingerprint /> Se connecter
@@ -36,29 +40,33 @@ const LoginButton: React.FC<unknown> = () => {
           </Hidden>
           <Hidden mdUp>
             <Link href="/login">
-              <Button color={'github'} round>
-                {
-                  <>
-                    <Fingerprint /> Se connecter{' '}
-                  </>
-                }
-              </Button>
+              <a className={classes.dropdownLink}>
+                <Button color={'transparent'} size={'sm'}>
+                  {
+                    <>
+                      <Fingerprint /> {'Se connecter'}
+                    </>
+                  }
+                </Button>
+              </a>
             </Link>
           </Hidden>
         </ListItem>
       ) : (
-        <Button
-          color={'white'}
-          round
-          onClick={() => {
-            auth.signout();
-          }}>
-          {
-            <>
-              <Fingerprint /> Se déconnecter{' '}
-            </>
-          }
-        </Button>
+        <a className={classes.dropdownLink}>
+          <Button
+            color={'transparent'}
+            size={'sm'}
+            onClick={() => {
+              auth.signout();
+            }}>
+            {
+              <>
+                <Fingerprint /> Se déconnecter{' '}
+              </>
+            }
+          </Button>
+        </a>
       )}
     </>
   );

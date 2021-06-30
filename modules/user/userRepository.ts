@@ -21,6 +21,10 @@ class UserRepository {
   async add(user: UserEntity): Promise<unknown> {
     throw methodMustBeImplemented(user);
   }
+
+  async getAll(): Promise<User[]> {
+    throw methodMustBeImplemented();
+  }
 }
 
 export default UserRepository;

@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-// nodejs library that concatenates classes
+// import Image from 'next/image';
 import classNames from 'classnames';
 // nodejs library to set properties for components
 import PropTypes from 'prop-types';
@@ -9,7 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import Button from '@material-ui/core/Button';
+import Button from '../../components/CustomButtons/Button';
 import Hidden from '@material-ui/core/Hidden';
 import Drawer from '@material-ui/core/Drawer';
 // @material-ui/icons
@@ -66,7 +66,16 @@ export default function Header(props) {
   return (
     <AppBar className={appBarClasses}>
       <Toolbar className={classes.container}>
-        <Button className={classes.title}>
+
+        {/* <Button className={classes.homeButton} size={'sm'} color={'transparent'}>
+      <Image src='/img/fmr-logo.webp' alt='fmr logo' width={225/4} height={178/4} />
+      </Button>
+
+        <Button className={classes.homeButton} size={'sm'} color={'transparent'}>
+      <Image src='/img/fmr-logo-black.webp' alt='fmr logo' width={225/4} height={178/4} />
+      </Button> */}
+
+        <Button className={classes.title} size={'sm'} color={'transparent'}>
           <Link href="/home">
             <a>{brand}</a>
           </Link>
