@@ -78,6 +78,7 @@ function useProvideAuth() {
     return auth
       .signInWithPopup(facebookProvider).
       then(response => {
+        logger.info('facebook respose: ', response);
         return {
           uid: response.user?.uid,
           email: response.user?.email,
