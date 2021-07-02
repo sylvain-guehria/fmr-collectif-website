@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-key */
 import React from 'react';
-import { useAuth } from '../../externalApi/auth/useAuth';
+import { useAuth } from '../../auth/useAuth';
 
 import PropTypes from 'prop-types';
 // react components for routing our app without refresh
@@ -55,9 +55,6 @@ export default function HeaderLinks(props) {
 
   const auth = useAuth();
   const AuthUser = auth.user;
-
-  // eslint-disable-next-line no-console
-  console.log('user in header', AuthUser);
 
   const easeInOutQuad = (t, b, c, d) => {
     t /= d / 2;

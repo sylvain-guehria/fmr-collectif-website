@@ -3,10 +3,10 @@ import React, { useState, useEffect, useContext, createContext } from 'react';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
-import logger from '../../modules/logger/logger';
+import logger from '../modules/logger/logger';
 import { useToasts } from 'react-toast-notifications';
-import firebaseUserRepository from '../../modules/user/firebaseUserRepository';
-import UserEntity from '../../modules/user/UserEntity';
+import firebaseUserRepository from '../modules/user/firebaseUserRepository';
+import UserEntity from '../modules/user/UserEntity';
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_PUBLIC_API_KEY,

@@ -18,7 +18,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import signupPageStyle from '../../../styles/jss/nextjs-material-kit-pro/pages/signupPageStyle.js';
 
 import { getError } from '../formUtils';
-import { useAuth } from '../../../externalApi/auth/useAuth';
+import { useAuth } from '../../../auth/useAuth';
 import { useRouter } from 'next/router';
 
 import Fingerprint from '@material-ui/icons/Fingerprint';
