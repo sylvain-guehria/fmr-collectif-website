@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useRouter } from 'next/router';
-import db from '../../api/firestore/index';
+import db from '../../externalApi/firestore/index';
 
 const Post = (props) => {
   const { entry } = props;
