@@ -1,4 +1,4 @@
-import db from '../../../api/firestore/index';
+import db from '../../../externalApi/firestore/index';
 
 export default async (req, res) => {
   const { id } = req.query;

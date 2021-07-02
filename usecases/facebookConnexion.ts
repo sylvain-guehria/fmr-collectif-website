@@ -11,11 +11,7 @@ export const facebookConnexion =
     router: NextRouter
   ): Promise<void> => {
     const response = (await auth.loginFacebook()) || {};
-    // eslint-disable-next-line no-console
-    console.log('facebook response: ', response);
-
     const { isNewUser, uid, email, firstName, lastName } = response;
-
     if (isNewUser) {
       await userRepository.add(
         UserEntity.new({
