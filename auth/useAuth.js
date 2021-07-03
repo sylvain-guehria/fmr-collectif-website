@@ -122,14 +122,11 @@ function useProvideAuth() {
       });
   };
 
-  const sendPasswordResetEmail = email => {
-    return auth.sendPasswordResetEmail(email).then(() => {
-      return true;
-    });
+  const sendPasswordResetEmail = async (email) => {
+    return await auth.sendPasswordResetEmail(email);
   };
 
   const confirmPasswordReset = (password, code) => {
-    // const resetCode = code || getFromQueryString('oobCode');
     const resetCode = code || '';
 
     return auth.confirmPasswordReset(resetCode, password).then(() => {
@@ -145,7 +142,7 @@ function useProvideAuth() {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
       if (user) {
         const fullUser = await fetchUserInformation(user.uid);
-        setUser(fullUser.email ? fullUser : UserEntity.new({...user}));
+        setUser(fullUser.email ? fullUser : UserEntity.new({ ...user }));
         addToast(`Bonjour ${fullUser?.firstName} =)`, { appearance: 'success', autoDismiss: true });
       } else {
         setUser(false);
@@ -167,7 +164,3 @@ function useProvideAuth() {
     confirmPasswordReset
   };
 }
-
-// const getFromQueryString = (key) => {
-//     return queryString.parse(window.location.search)[key];
-// };

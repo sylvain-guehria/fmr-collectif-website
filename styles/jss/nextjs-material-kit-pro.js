@@ -309,7 +309,7 @@ const roseCardHeader = {
 const grayCardHeader = {
   color: whiteColor,
   background:
-    'linear-gradient(90deg, ' + grayColor[22] + ', ' + grayColor[21] + ')',
+    'linear-gradient(90deg, ' + grayColor[21] + ', ' + grayColor[21] + ')',
   ...grayBoxShadow
 };
 

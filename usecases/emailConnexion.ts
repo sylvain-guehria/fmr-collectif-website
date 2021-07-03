@@ -8,11 +8,12 @@ export const emailConnexion =
     },
     router: NextRouter,
     { email, password }: emailConnexionInfo
-  ): Promise<void> => {
+  ): Promise<authResponse> => {
     const response = (await auth.loginEmail(email, password)) || {};
     if (response?.uid) {
       router.push('/');
     }
+    return response;
   };
 
 type emailConnexionInfo = {

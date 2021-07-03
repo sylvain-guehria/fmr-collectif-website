@@ -202,7 +202,7 @@ const headerLinksStyle = (theme) => ({
     lineHeight: '20px',
     textDecoration: 'none',
     margin: '0px',
-    opacity: 0.8
+    opacity: 0.7
   },
   ...tooltip,
   marginRight5: {

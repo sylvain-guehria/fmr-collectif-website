@@ -22,7 +22,7 @@ import InfoArea from 'components/InfoArea/InfoArea.js';
 
 import signupPageStyle from 'styles/jss/nextjs-material-kit-pro/pages/signupPageStyle.js';
 
-import RegistrationForm from '../components/forms/register/RegistrationForm';
+import RegisterForm from '../components/forms/register/RegisterForm';
 import LoginWithOtherAccount from '../components/forms/login/LoginWithOtherAccount';
 
 const useStyles = makeStyles(signupPageStyle);
@@ -64,7 +64,7 @@ export default function SignUpPage({ ...rest }) {
                 <CardBody>
                   <GridContainer justify="center">
                     <GridItem xs={12} sm={5} md={5}>
-                      <RegistrationForm />
+                      <RegisterForm />
 
                     </GridItem>
                     <GridItem xs={12} sm={5} md={5}>

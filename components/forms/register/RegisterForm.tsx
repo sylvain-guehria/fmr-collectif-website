@@ -26,7 +26,7 @@ import { registerWithEmailUseCase } from '../../../usecases';
 
 const useStyles = makeStyles(signupPageStyle);
 
-interface RegistrationFormType {
+interface RegisterFormType {
   email: string;
   password: string;
   confirmPassword: string;
@@ -35,7 +35,7 @@ interface RegistrationFormType {
   acceptTerms: boolean;
 }
 
-const RegistrationForm: React.FC = (): React.ReactElement => {
+const RegisterForm: React.FC = (): React.ReactElement => {
   const classes = useStyles();
   const [checked, setChecked] = useState([0]);
   const auth = useAuth();
@@ -58,9 +58,9 @@ const RegistrationForm: React.FC = (): React.ReactElement => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<RegistrationFormType>(formOptions);
+  } = useForm<RegisterFormType>(formOptions);
 
-  const onSubmit: SubmitHandler<RegistrationFormType> = async (data: RegistrationFormType) => {
+  const onSubmit: SubmitHandler<RegisterFormType> = async (data: RegisterFormType) => {
     const { email, password, firstName, lastName } = data;
     registerWithEmailUseCase(auth, router, { firstName, lastName, email, password });
   };
@@ -181,4 +181,4 @@ const RegistrationForm: React.FC = (): React.ReactElement => {
   );
 };
 
-export default RegistrationForm;
+export default RegisterForm;
