@@ -5,8 +5,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
 import Hidden from '@material-ui/core/Hidden';
 import Fingerprint from '@material-ui/icons/Fingerprint';
-import Button from '../../components/CustomButtons/Button';
-import { useAuth } from '../../externalApi/auth/useAuth';
+import Button from '../../components/lib/CustomButtons/Button';
+import { useAuth } from '../../auth/useAuth';
 
 import styles from 'styles/jss/nextjs-material-kit-pro/components/headerLinksStyle.js';
 
@@ -27,7 +27,7 @@ const LoginButton: React.FC<unknown> = () => {
                 <Button
                   color={'transparent'}
                   target="_blank"
-                  className={classes.navButton}
+                  className={classes.loginButton}
                   size={'sm'}>
                   {
                     <>
@@ -41,7 +41,7 @@ const LoginButton: React.FC<unknown> = () => {
           <Hidden mdUp>
             <Link href="/login">
               <a className={classes.dropdownLink}>
-                <Button color={'transparent'} size={'sm'}>
+                <Button color={'transparent'} size={'sm'} className={classes.loginButton}>
                   {
                     <>
                       <Fingerprint /> {'Se connecter'}
@@ -55,6 +55,7 @@ const LoginButton: React.FC<unknown> = () => {
       ) : (
         <a className={classes.dropdownLink}>
           <Button
+            className={classes.loginButton}
             color={'transparent'}
             size={'sm'}
             onClick={() => {

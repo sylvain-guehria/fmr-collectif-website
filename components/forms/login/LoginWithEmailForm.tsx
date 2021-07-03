@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 
 import { validationSchema } from './LoginFormValidation';
-
 import { makeStyles } from '@material-ui/core/styles';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Icon from '@material-ui/core/Icon';
-
 import Email from '@material-ui/icons/Email';
+import InputLabel from '@material-ui/core/InputLabel';
 
-import CustomInput from '../../CustomInput/CustomInput.js';
-import Button from '../../CustomButtons/Button';
+import CustomInput from '../../lib/CustomInput/CustomInput.js';
+import Button from '../../lib/CustomButtons/Button';
 
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -18,14 +17,14 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import signupPageStyle from '../../../styles/jss/nextjs-material-kit-pro/pages/signupPageStyle.js';
 
 import { getError } from '../formUtils';
-import { useAuth } from '../../../externalApi/auth/useAuth';
+import { useAuth } from '../../../auth/useAuth';
 import { useRouter } from 'next/router';
 
 import Fingerprint from '@material-ui/icons/Fingerprint';
 import PersonAdd from '@material-ui/icons/PersonAdd';
-import CardBody from '../../Card/CardBody';
+import CardBody from '../../lib/Card/CardBody';
 import { emailConnexionUseCase } from '../../../usecases';
-
+import ForgotPasswordButton from '../../modals/ForgotPasswordButton';
 // import LoadingLayer from 'components/LoadingLayer/LoadingLayer';
 
 const useStyles = makeStyles(signupPageStyle);
@@ -39,6 +38,7 @@ const LoginWithEmailForm: React.FC = (): React.ReactElement => {
   const classes = useStyles();
   const auth = useAuth();
   const router = useRouter();
+  const [showResetPassword, setShowResetPassword] = useState(false);
 
   const formOptions = { resolver: yupResolver(validationSchema) };
 
@@ -49,7 +49,11 @@ const LoginWithEmailForm: React.FC = (): React.ReactElement => {
   } = useForm<LoginFormType>(formOptions);
 
   const onSubmit: SubmitHandler<LoginFormType> = async ({ email, password }: LoginFormType) => {
-    emailConnexionUseCase(auth, router, { email, password });
+    const response = await emailConnexionUseCase(auth, router, { email, password });
+    // eslint-disable-next-line no-console
+    if (!response.email) {
+      setShowResetPassword(true);
+    }
   };
 
   return (
@@ -89,6 +93,13 @@ const LoginWithEmailForm: React.FC = (): React.ReactElement => {
             autoComplete: 'off',
           }}
         />
+
+        {showResetPassword && (
+          <InputLabel error>
+            <br />
+            <ForgotPasswordButton />
+          </InputLabel>
+        )}
       </CardBody>
 
       <div className={classes.textCenter}>

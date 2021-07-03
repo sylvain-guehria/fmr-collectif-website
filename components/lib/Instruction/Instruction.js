@@ -6,8 +6,8 @@ import cx from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
 
 // core components
-import GridContainer from 'components/Grid/GridContainer.js';
-import GridItem from 'components/Grid/GridItem';
+import GridContainer from 'components/lib/Grid/GridContainer.js';
+import GridItem from 'components/lib/Grid/GridItem';
 
 import styles from 'styles/jss/nextjs-material-kit-pro/components/instructionStyle.js';
 

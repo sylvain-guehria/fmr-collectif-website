@@ -10,10 +10,10 @@ import ListItem from "@material-ui/core/ListItem";
 import Mail from "@material-ui/icons/Mail";
 import Favorite from "@material-ui/icons/Favorite";
 // core components
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import Button from "components/CustomButtons/Button";
-import CustomInput from "components/CustomInput/CustomInput.js";
+import GridContainer from "components/lib/Grid/GridContainer.js";
+import GridItem from "components/lib/Grid/GridItem.js";
+import Button from "components/lib/CustomButtons/Button";
+import CustomInput from "components/lib/CustomInput/CustomInput.js";
 import Footer from "components/Footer/Footer.js";
 
 import styles from "styles/jss/nextjs-material-kit-pro/pages/componentsSections/footerStyle.js";

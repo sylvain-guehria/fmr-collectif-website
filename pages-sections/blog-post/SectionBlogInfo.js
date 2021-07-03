@@ -3,12 +3,12 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 // @material-ui/icons
 // core components
-import GridContainer from 'components/Grid/GridContainer.js';
-import GridItem from 'components/Grid/GridItem.js';
+import GridContainer from 'components/lib/Grid/GridContainer.js';
+import GridItem from 'components/lib/Grid/GridItem.js';
 import Badge from 'components/Badge/Badge.js';
-import Button from 'components/CustomButtons/Button';
-import Card from 'components/Card/Card.js';
-import CardAvatar from 'components/Card/CardAvatar.js';
+import Button from 'components/lib/CustomButtons/Button';
+import Card from 'components/lib/Card/Card.js';
+import CardAvatar from 'components/lib/Card/CardAvatar.js';
 
 import sectionBlogInfoStyle from 'styles/jss/nextjs-material-kit-pro/pages/blogPostSections/sectionBlogInfoStyle.js';
 

@@ -2,12 +2,12 @@ import React from 'react';
 // nodejs library that concatenates classes
 import classNames from 'classnames';
 // core components
-import GridContainer from 'components/Grid/GridContainer.js';
-import GridItem from 'components/Grid/GridItem.js';
-import InfoArea from 'components/InfoArea/InfoArea.js';
-import Card from 'components/Card/Card.js';
-import CardHeader from 'components/Card/CardHeader.js';
-import CardBody from 'components/Card/CardBody.js';
+import GridContainer from 'components/lib/Grid/GridContainer.js';
+import GridItem from 'components/lib/Grid/GridItem.js';
+import InfoArea from 'components/lib/InfoArea/InfoArea.js';
+import Card from 'components/lib/Card/Card.js';
+import CardHeader from 'components/lib/Card/CardHeader.js';
+import CardBody from 'components/lib/Card/CardBody.js';
 // @material-ui icons
 import Grid from '@material-ui/icons/GridOn';
 import PhoneLink from '@material-ui/icons/Phonelink';

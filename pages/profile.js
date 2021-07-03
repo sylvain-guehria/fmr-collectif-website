@@ -16,18 +16,18 @@ import Favorite from "@material-ui/icons/Favorite";
 // core components
 import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
+import GridContainer from "components/lib/Grid/GridContainer.js";
+import GridItem from "components/lib/Grid/GridItem.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
 import NavPills from "components/NavPills/NavPills.js";
-import Card from "components/Card/Card.js";
-import CardBody from "components/Card/CardBody.js";
-import CardHeader from "components/Card/CardHeader.js";
+import Card from "components/lib/Card/Card.js";
+import CardBody from "components/lib/Card/CardBody.js";
+import CardHeader from "components/lib/Card/CardHeader.js";
 import Badge from "components/Badge/Badge.js";
 import Muted from "components/Typography/Muted.js";
-import Parallax from "components/Parallax/Parallax.js";
+import Parallax from "components/lib/Parallax/Parallax.js";
 import Clearfix from "components/Clearfix/Clearfix.js";
-import Button from "components/CustomButtons/Button";
+import Button from "components/lib/CustomButtons/Button";
 
 import profilePageStyle from "styles/jss/nextjs-material-kit-pro/pages/profilePageStyle.js";
 

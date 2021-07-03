@@ -7,15 +7,15 @@ import PropTypes from 'prop-types';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
 // import Card from "@material-ui/core/Card";
-// import CardContent from "@material-ui/core/Card/CardContent";
-// import CardHeader from "@material-ui/core/Card/CardHeader";
+// import CardContent from "@material-ui/core/lib/Card/CardContent";
+// import CardHeader from "@material-ui/core/lib/Card/CardHeader";
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
 // core components
-import Card from 'components/Card/Card.js';
-import CardBody from 'components/Card/CardBody.js';
-import CardHeader from 'components/Card/CardHeader.js';
+import Card from 'components/lib/Card/Card.js';
+import CardBody from 'components/lib/Card/CardBody.js';
+import CardHeader from 'components/lib/Card/CardHeader.js';
 import styles from 'styles/jss/nextjs-material-kit-pro/components/customTabsStyle.js';
 
 const useStyles = makeStyles(styles);

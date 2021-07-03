@@ -10,8 +10,8 @@ import Favorite from "@material-ui/icons/Favorite";
 import Header from "components/Header/Header.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
 import Footer from "components/Footer/Footer.js";
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
+import GridContainer from "components/lib/Grid/GridContainer.js";
+import GridItem from "components/lib/Grid/GridItem.js";
 
 import errorPageStyle from "styles/jss/nextjs-material-kit-pro/pages/errorPageStyles.js";
 

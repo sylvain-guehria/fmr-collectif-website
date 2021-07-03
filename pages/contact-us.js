@@ -14,11 +14,11 @@ import BusinessCenter from "@material-ui/icons/BusinessCenter";
 // core components
 import Header from "components/Header/Header.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import InfoArea from "components/InfoArea/InfoArea.js";
-import CustomInput from "components/CustomInput/CustomInput.js";
-import Button from "components/CustomButtons/Button";
+import GridContainer from "components/lib/Grid/GridContainer.js";
+import GridItem from "components/lib/Grid/GridItem.js";
+import InfoArea from "components/lib/InfoArea/InfoArea.js";
+import CustomInput from "components/lib/CustomInput/CustomInput.js";
+import Button from "components/lib/CustomButtons/Button";
 import Footer from "components/Footer/Footer.js";
 
 import contactUsStyle from "styles/jss/nextjs-material-kit-pro/pages/contactUsStyle.js";

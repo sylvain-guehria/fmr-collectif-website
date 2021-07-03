@@ -3,10 +3,10 @@ import React, { useState, useEffect, useContext, createContext } from 'react';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
-import logger from '../../modules/logger/logger';
+import logger from '../modules/logger/logger';
 import { useToasts } from 'react-toast-notifications';
-import firebaseUserRepository from '../../modules/user/firebaseUserRepository';
-import UserEntity from '../../modules/user/UserEntity';
+import firebaseUserRepository from '../modules/user/firebaseUserRepository';
+import UserEntity from '../modules/user/UserEntity';
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_PUBLIC_API_KEY,
@@ -122,14 +122,17 @@ function useProvideAuth() {
       });
   };
 
-  const sendPasswordResetEmail = email => {
-    return auth.sendPasswordResetEmail(email).then(() => {
-      return true;
+  const sendPasswordResetEmail = async (email) => {
+    auth.sendPasswordResetEmail(email).then(() => {
+      addToast('Un email pour vient de vous être envoyer', { appearance: 'info', autoDismiss: true });
+    })
+    .catch(function (error) {
+      addToast(error.message, { appearance: 'error', autoDismiss: true });
+      logger.error(error);
     });
   };
 
   const confirmPasswordReset = (password, code) => {
-    // const resetCode = code || getFromQueryString('oobCode');
     const resetCode = code || '';
 
     return auth.confirmPasswordReset(resetCode, password).then(() => {
@@ -145,7 +148,7 @@ function useProvideAuth() {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
       if (user) {
         const fullUser = await fetchUserInformation(user.uid);
-        setUser(fullUser.email ? fullUser : UserEntity.new({...user}));
+        setUser(fullUser.email ? fullUser : UserEntity.new({ ...user }));
         addToast(`Bonjour ${fullUser?.firstName} =)`, { appearance: 'success', autoDismiss: true });
       } else {
         setUser(false);
@@ -167,7 +170,3 @@ function useProvideAuth() {
     confirmPasswordReset
   };
 }
-
-// const getFromQueryString = (key) => {
-//     return queryString.parse(window.location.search)[key];
-// };

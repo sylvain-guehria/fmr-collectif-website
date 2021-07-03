@@ -14,15 +14,15 @@ import Favorite from '@material-ui/icons/Favorite';
 import Header from 'components/Header/Header.js';
 import HeaderLinks from 'components/Header/HeaderLinks.js';
 import Footer from 'components/Footer/Footer.js';
-import GridContainer from 'components/Grid/GridContainer.js';
-import GridItem from 'components/Grid/GridItem.js';
-import Card from 'components/Card/Card.js';
-import CardBody from 'components/Card/CardBody.js';
-import InfoArea from 'components/InfoArea/InfoArea.js';
+import GridContainer from 'components/lib/Grid/GridContainer.js';
+import GridItem from 'components/lib/Grid/GridItem.js';
+import Card from 'components/lib/Card/Card.js';
+import CardBody from 'components/lib/Card/CardBody.js';
+import InfoArea from 'components/lib/InfoArea/InfoArea.js';
 
 import signupPageStyle from 'styles/jss/nextjs-material-kit-pro/pages/signupPageStyle.js';
 
-import RegistrationForm from '../components/forms/register/RegistrationForm';
+import RegisterForm from '../components/forms/register/RegisterForm';
 import LoginWithOtherAccount from '../components/forms/login/LoginWithOtherAccount';
 
 const useStyles = makeStyles(signupPageStyle);
@@ -64,7 +64,7 @@ export default function SignUpPage({ ...rest }) {
                 <CardBody>
                   <GridContainer justify="center">
                     <GridItem xs={12} sm={5} md={5}>
-                      <RegistrationForm />
+                      <RegisterForm />
 
                     </GridItem>
                     <GridItem xs={12} sm={5} md={5}>

@@ -1,3 +1,4 @@
+import { grey } from '@material-ui/core/colors';
 import {
   grayColor,
   whiteColor,
@@ -189,6 +190,19 @@ const headerLinksStyle = (theme) => ({
       display: 'flex',
       padding: '0.75rem 1.25rem 0.75rem 0.75rem'
     }
+  },
+  loginButton: {
+    borderRadius: '3px',
+    background: grey[200],
+    boxShadow: '0 5px 5px -2px rgba(' + hexToRgb(grayColor[3]) + ',.4)',
+    fontWeight: '400',
+    fontSize: '12px',
+    color: grey[900],
+    textTransform: 'uppercase',
+    lineHeight: '20px',
+    textDecoration: 'none',
+    margin: '0px',
+    opacity: 0.7
   },
   ...tooltip,
   marginRight5: {

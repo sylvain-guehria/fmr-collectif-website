@@ -7,9 +7,9 @@ import Chat from '@material-ui/icons/Chat';
 import VerifiedUser from '@material-ui/icons/VerifiedUser';
 import Fingerprint from '@material-ui/icons/Fingerprint';
 // core components
-import GridContainer from 'components/Grid/GridContainer.js';
-import GridItem from 'components/Grid/GridItem.js';
-import InfoArea from 'components/InfoArea/InfoArea.js';
+import GridContainer from 'components/lib/Grid/GridContainer.js';
+import GridItem from 'components/lib/Grid/GridItem.js';
+import InfoArea from 'components/lib/InfoArea/InfoArea.js';
 
 import productStyle from 'styles/jss/nextjs-material-kit-pro/pages/landingPageSections/productStyle.js';
 

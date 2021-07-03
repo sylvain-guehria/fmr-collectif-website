@@ -19,17 +19,17 @@ import Favorite from "@material-ui/icons/Favorite";
 // core components
 import Header from "components/Header/Header.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
-import Parallax from "components/Parallax/Parallax.js";
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
+import Parallax from "components/lib/Parallax/Parallax.js";
+import GridContainer from "components/lib/Grid/GridContainer.js";
+import GridItem from "components/lib/Grid/GridItem.js";
 import Footer from "components/Footer/Footer.js";
-import Button from "components/CustomButtons/Button";
+import Button from "components/lib/CustomButtons/Button";
 import Accordion from "components/Accordion/Accordion.js";
-import InfoArea from "components/InfoArea/InfoArea.js";
-import Card from "components/Card/Card.js";
-import CardHeader from "components/Card/CardHeader.js";
-import CardBody from "components/Card/CardBody.js";
-import CardFooter from "components/Card/CardFooter.js";
+import InfoArea from "components/lib/InfoArea/InfoArea.js";
+import Card from "components/lib/Card/Card.js";
+import CardHeader from "components/lib/Card/CardHeader.js";
+import CardBody from "components/lib/Card/CardBody.js";
+import CardFooter from "components/lib/Card/CardFooter.js";
 import Tooltip from "@material-ui/core/Tooltip";
 
 import productStyle from "styles/jss/nextjs-material-kit-pro/pages/productStyle.js";

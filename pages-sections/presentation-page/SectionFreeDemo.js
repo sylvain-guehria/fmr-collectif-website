@@ -7,11 +7,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import Close from '@material-ui/icons/Close';
 import Check from '@material-ui/icons/Check';
 // core components
-import GridContainer from 'components/Grid/GridContainer.js';
-import GridItem from 'components/Grid/GridItem.js';
-import Card from 'components/Card/Card.js';
-import CardBody from 'components/Card/CardBody.js';
-import Button from 'components/CustomButtons/Button';
+import GridContainer from 'components/lib/Grid/GridContainer.js';
+import GridItem from 'components/lib/Grid/GridItem.js';
+import Card from 'components/lib/Card/Card.js';
+import CardBody from 'components/lib/Card/CardBody.js';
+import Button from 'components/lib/CustomButtons/Button';
 
 import freeDemoStyle from 'styles/jss/nextjs-material-kit-pro/pages/presentationSections/freeDemoStyle.js';
 
