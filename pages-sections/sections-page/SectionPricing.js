@@ -15,9 +15,9 @@ import Card from 'components/lib/Card/Card.js';
 import CardBody from 'components/lib/Card/CardBody.js';
 import CardFooter from 'components/lib/Card/CardFooter.js';
 import Button from 'components/lib/CustomButtons/Button';
-import NavPills from 'components/NavPills/NavPills.js';
-import Success from 'components/Typography/Success.js';
-import Danger from 'components/Typography/Danger.js';
+import NavPills from 'components/lib/NavPills/NavPills.js';
+import Success from 'components/lib/Typography/Success.js';
+import Danger from 'components/lib/Typography/Danger.js';
 
 import pricingStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsSections/pricingStyle.js';
 

@@ -20,7 +20,7 @@ import Parallax from "components/lib/Parallax/Parallax.js";
 import GridContainer from "components/lib/Grid/GridContainer.js";
 import GridItem from "components/lib/Grid/GridItem.js";
 import Footer from "components/Footer/Footer.js";
-import Table from "components/Table/Table.js";
+import Table from "components/lib/Table/Table.js";
 import Button from "components/lib/CustomButtons/Button";
 import Card from "components/lib/Card/Card.js";
 import CardBody from "components/lib/Card/CardBody.js";

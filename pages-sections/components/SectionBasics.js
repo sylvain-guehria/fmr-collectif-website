@@ -26,9 +26,9 @@ import GridContainer from 'components/lib/Grid/GridContainer.js';
 import GridItem from 'components/lib/Grid/GridItem.js';
 import Button from 'components/lib/CustomButtons/Button';
 import CustomInput from 'components/lib/CustomInput/CustomInput.js';
-import CustomLinearProgress from 'components/CustomLinearProgress/CustomLinearProgress.js';
-import Paginations from 'components/Pagination/Pagination.js';
-import Badge from 'components/Badge/Badge.js';
+import CustomLinearProgress from 'components/lib/CustomLinearProgress/CustomLinearProgress.js';
+import Paginations from 'components/lib/Pagination/Pagination.js';
+import Badge from 'components/lib/Badge/Badge.js';
 import CustomDropdown from 'components/lib/CustomDropdown/CustomDropdown.js';
 
 import basicsStyle from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/basicsStyle.js';

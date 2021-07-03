@@ -14,14 +14,14 @@ import Group from "@material-ui/icons/Group";
 // core components
 import GridContainer from "components/lib/Grid/GridContainer.js";
 import GridItem from "components/lib/Grid/GridItem.js";
-import NavPills from "components/NavPills/NavPills.js";
+import NavPills from "components/lib/NavPills/NavPills.js";
 import Card from "components/lib/Card/Card.js";
 import CardBody from "components/lib/Card/CardBody.js";
 import CardHeader from "components/lib/Card/CardHeader.js";
 import Button from "components/lib/CustomButtons/Button";
-import Muted from "components/Typography/Muted.js";
+import Muted from "components/lib/Typography/Muted.js";
 import InfoArea from "components/lib/InfoArea/InfoArea.js";
-import Badge from "components/Badge/Badge.js";
+import Badge from "components/lib/Badge/Badge.js";
 
 import projectsStyle from "styles/jss/nextjs-material-kit-pro/pages/sectionsSections/projectsStyle.js";
 

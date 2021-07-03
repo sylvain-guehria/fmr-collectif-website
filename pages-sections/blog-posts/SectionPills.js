@@ -7,7 +7,7 @@ import FormatAlignLeft from '@material-ui/icons/FormatAlignLeft';
 // core components
 import GridContainer from 'components/lib/Grid/GridContainer.js';
 import GridItem from 'components/lib/Grid/GridItem.js';
-import NavPills from 'components/NavPills/NavPills.js';
+import NavPills from 'components/lib/NavPills/NavPills.js';
 import Card from 'components/lib/Card/Card.js';
 import CardBody from 'components/lib/Card/CardBody.js';
 import Button from 'components/lib/CustomButtons/Button';

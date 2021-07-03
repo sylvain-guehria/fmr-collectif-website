@@ -36,15 +36,15 @@ import Layers from "@material-ui/icons/Layers";
 import GridContainer from "components/lib/Grid/GridContainer.js";
 import GridItem from "components/lib/Grid/GridItem.js";
 import Button from "components/lib/CustomButtons/Button";
-import Instruction from "components/Instruction/Instruction.js";
+import Instruction from "components/lib/Instruction/Instruction.js";
 import Card from "components/lib/Card/Card.js";
 import CardHeader from "components/lib/Card/CardHeader.js";
 import CardBody from "components/lib/Card/CardBody.js";
 import CustomInput from "components/lib/CustomInput/CustomInput.js";
-import CustomFileInput from "components/CustomFileInput/CustomFileInput.js";
+import CustomFileInput from "components/lib/CustomFileInput/CustomFileInput.js";
 import InfoArea from "components/lib/InfoArea/InfoArea.js";
-import Accordion from "components/Accordion/Accordion.js";
-import ImageUpload from "components/CustomUpload/ImageUpload.js";
+import Accordion from "components/lib/Accordion/Accordion.js";
+import ImageUpload from "components/lib/CustomUpload/ImageUpload.js";
 
 import javascriptStyles from "styles/jss/nextjs-material-kit-pro/pages/componentsSections/javascriptStyles.js";
 

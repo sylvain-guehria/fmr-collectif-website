@@ -10,7 +10,7 @@ import Card from 'components/lib/Card/Card.js';
 import CardHeader from 'components/lib/Card/CardHeader.js';
 import CardBody from 'components/lib/Card/CardBody.js';
 import CardFooter from 'components/lib/Card/CardFooter.js';
-import Muted from 'components/Typography/Muted.js';
+import Muted from 'components/lib/Typography/Muted.js';
 import Button from 'components/lib/CustomButtons/Button';
 
 import teamsStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsSections/teamsStyle.js';

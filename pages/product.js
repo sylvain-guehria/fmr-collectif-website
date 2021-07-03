@@ -24,7 +24,7 @@ import GridContainer from "components/lib/Grid/GridContainer.js";
 import GridItem from "components/lib/Grid/GridItem.js";
 import Footer from "components/Footer/Footer.js";
 import Button from "components/lib/CustomButtons/Button";
-import Accordion from "components/Accordion/Accordion.js";
+import Accordion from "components/lib/Accordion/Accordion.js";
 import InfoArea from "components/lib/InfoArea/InfoArea.js";
 import Card from "components/lib/Card/Card.js";
 import CardHeader from "components/lib/Card/CardHeader.js";
