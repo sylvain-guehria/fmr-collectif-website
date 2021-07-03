@@ -19,14 +19,14 @@ import Footer from "components/Footer/Footer.js";
 import GridContainer from "components/lib/Grid/GridContainer.js";
 import GridItem from "components/lib/Grid/GridItem.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
-import NavPills from "components/NavPills/NavPills.js";
+import NavPills from "components/lib/NavPills/NavPills.js";
 import Card from "components/lib/Card/Card.js";
 import CardBody from "components/lib/Card/CardBody.js";
 import CardHeader from "components/lib/Card/CardHeader.js";
-import Badge from "components/Badge/Badge.js";
-import Muted from "components/Typography/Muted.js";
+import Badge from "components/lib/Badge/Badge.js";
+import Muted from "components/lib/Typography/Muted.js";
 import Parallax from "components/lib/Parallax/Parallax.js";
-import Clearfix from "components/Clearfix/Clearfix.js";
+import Clearfix from "components/lib/Clearfix/Clearfix.js";
 import Button from "components/lib/CustomButtons/Button";
 
 import profilePageStyle from "styles/jss/nextjs-material-kit-pro/pages/profilePageStyle.js";

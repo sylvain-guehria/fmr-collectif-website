@@ -28,11 +28,11 @@ import CardHeader from 'components/lib/Card/CardHeader.js';
 import CardBody from 'components/lib/Card/CardBody.js';
 import CardFooter from 'components/lib/Card/CardFooter.js';
 import CardAvatar from 'components/lib/Card/CardAvatar.js';
-import Info from 'components/Typography/Info.js';
-import Danger from 'components/Typography/Danger.js';
-import Success from 'components/Typography/Success.js';
-import Warning from 'components/Typography/Warning.js';
-import Rose from 'components/Typography/Rose.js';
+import Info from 'components/lib/Typography/Info.js';
+import Danger from 'components/lib/Typography/Danger.js';
+import Success from 'components/lib/Typography/Success.js';
+import Warning from 'components/lib/Typography/Warning.js';
+import Rose from 'components/lib/Typography/Rose.js';
 import Button from 'components/lib/CustomButtons/Button';
 
 import styles from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/sectionCards.js';

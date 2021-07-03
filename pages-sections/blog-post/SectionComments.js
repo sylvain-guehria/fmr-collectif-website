@@ -8,7 +8,7 @@ import Favorite from '@material-ui/icons/Favorite';
 // core components
 import GridContainer from 'components/lib/Grid/GridContainer.js';
 import GridItem from 'components/lib/Grid/GridItem.js';
-import Media from 'components/Media/Media.js';
+import Media from 'components/lib/Media/Media.js';
 import Button from 'components/lib/CustomButtons/Button';
 import CustomInput from 'components/lib/CustomInput/CustomInput.js';
 

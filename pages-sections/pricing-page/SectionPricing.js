@@ -5,7 +5,7 @@ import classNames from 'classnames';
 // core components
 import GridContainer from 'components/lib/Grid/GridContainer.js';
 import GridItem from 'components/lib/Grid/GridItem.js';
-import NavPills from 'components/NavPills/NavPills.js';// eslint-disable-line no-unused-vars
+import NavPills from 'components/lib/NavPills/NavPills.js';// eslint-disable-line no-unused-vars
 import Card from 'components/lib/Card/Card.js';// eslint-disable-line no-unused-vars
 import CardBody from 'components/lib/Card/CardBody.js';// eslint-disable-line no-unused-vars
 import Button from 'components/lib/CustomButtons/Button';

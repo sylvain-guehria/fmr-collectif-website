@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 // @material-ui/icons
 import GridContainer from 'components/lib/Grid/GridContainer.js';
 import GridItem from 'components/lib/Grid/GridItem.js';
-import Quote from 'components/Typography/Quote.js';
+import Quote from 'components/lib/Typography/Quote.js';
 // core components
 
 import sectionTextStyle from 'styles/jss/nextjs-material-kit-pro/pages/blogPostSections/sectionTextStyle.js';

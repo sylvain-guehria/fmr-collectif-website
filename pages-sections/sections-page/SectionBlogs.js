@@ -9,9 +9,9 @@ import GridItem from 'components/lib/Grid/GridItem.js';
 import Card from 'components/lib/Card/Card.js';
 import CardBody from 'components/lib/Card/CardBody.js';
 import CardHeader from 'components/lib/Card/CardHeader.js';
-import Info from 'components/Typography/Info.js';
-import Danger from 'components/Typography/Danger.js';
-import Success from 'components/Typography/Success.js';
+import Info from 'components/lib/Typography/Info.js';
+import Danger from 'components/lib/Typography/Danger.js';
+import Success from 'components/lib/Typography/Success.js';
 import Button from 'components/lib/CustomButtons/Button';
 import Link from 'next/link';
 

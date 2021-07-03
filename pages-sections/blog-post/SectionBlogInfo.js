@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 // core components
 import GridContainer from 'components/lib/Grid/GridContainer.js';
 import GridItem from 'components/lib/Grid/GridItem.js';
-import Badge from 'components/Badge/Badge.js';
+import Badge from 'components/lib/Badge/Badge.js';
 import Button from 'components/lib/CustomButtons/Button';
 import Card from 'components/lib/Card/Card.js';
 import CardAvatar from 'components/lib/Card/CardAvatar.js';
