@@ -1,37 +1,35 @@
 import React from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { useAuth } from '../../../auth/useAuth';
 
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Email from '@material-ui/icons/Email';
-
+import RotateLeftIcon from '@material-ui/icons/RotateLeft';
 import CustomInput from '../../lib/CustomInput/CustomInput.js';
 import Button from '../../lib/CustomButtons/Button';
-
-import { useForm, SubmitHandler } from 'react-hook-form';
-
-import { useAuth } from '../../../auth/useAuth';
-// import { useRouter } from 'next/router';
-
-import Fingerprint from '@material-ui/icons/Fingerprint';
 import CardBody from '../../lib/Card/CardBody';
 
 interface LoginFormType {
   email: string;
 }
 
-const ResetPasswordForm: React.FC = (): React.ReactElement => {
+interface Props {
+  closeModal: () => void;
+}
+
+const ResetPasswordForm: React.FC<Props> = ({ closeModal }): React.ReactElement => {
   const auth = useAuth();
-  // const router = useRouter();
 
   const onSubmit: SubmitHandler<LoginFormType> = async ({ email }: LoginFormType) => {
-    const response = await auth.sendPasswordResetEmail(email);
-    // eslint-disable-next-line no-console
-    console.log(response);
+    await auth.sendPasswordResetEmail(email);
+    closeModal();
   };
 
   const { register, handleSubmit } = useForm<LoginFormType>();
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form id={'resetPasswordForm'}>
+      Si votre email existe nous vous enverrons un email de réinitialisation du mot de passe
       <CardBody signup>
         <CustomInput
           formControlProps={{
@@ -49,10 +47,9 @@ const ResetPasswordForm: React.FC = (): React.ReactElement => {
           }}
         />
       </CardBody>
-
-      <Button simple color="danger" size="lg" type="submit">
+      <Button simple color="danger" size="lg" onClick={handleSubmit(onSubmit)}>
         <>
-          <Fingerprint /> réinitialiser mot de passe
+          <RotateLeftIcon /> réinitialiser mot de passe
         </>
       </Button>
     </form>

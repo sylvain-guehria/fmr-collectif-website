@@ -123,7 +123,13 @@ function useProvideAuth() {
   };
 
   const sendPasswordResetEmail = async (email) => {
-    return await auth.sendPasswordResetEmail(email);
+    auth.sendPasswordResetEmail(email).then(() => {
+      addToast('Un email pour vient de vous être envoyer', { appearance: 'info', autoDismiss: true });
+    })
+    .catch(function (error) {
+      addToast(error.message, { appearance: 'error', autoDismiss: true });
+      logger.error(error);
+    });
   };
 
   const confirmPasswordReset = (password, code) => {
