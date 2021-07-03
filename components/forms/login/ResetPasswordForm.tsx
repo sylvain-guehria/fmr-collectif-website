@@ -3,8 +3,8 @@ import React from 'react';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Email from '@material-ui/icons/Email';
 
-import CustomInput from '../../CustomInput/CustomInput.js';
-import Button from '../../CustomButtons/Button';
+import CustomInput from '../../lib/CustomInput/CustomInput.js';
+import Button from '../../lib/CustomButtons/Button';
 
 import { useForm, SubmitHandler } from 'react-hook-form';
 
@@ -12,7 +12,7 @@ import { useAuth } from '../../../auth/useAuth';
 // import { useRouter } from 'next/router';
 
 import Fingerprint from '@material-ui/icons/Fingerprint';
-import CardBody from '../../Card/CardBody';
+import CardBody from '../../lib/Card/CardBody';
 
 interface LoginFormType {
   email: string;

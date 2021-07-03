@@ -3,10 +3,10 @@ import { makeStyles } from '@material-ui/core/styles';
 // core components
 import Header from 'components/Header/Header.js';
 import HeaderLinks from 'components/Header/HeaderLinks.js';
-import GridContainer from 'components/Grid/GridContainer.js';
-import GridItem from 'components/Grid/GridItem.js';
-import Card from 'components/Card/Card.js';
-import CardHeader from 'components/Card/CardHeader.js';
+import GridContainer from 'components/lib/Grid/GridContainer.js';
+import GridItem from 'components/lib/Grid/GridItem.js';
+import Card from 'components/lib/Card/Card.js';
+import CardHeader from 'components/lib/Card/CardHeader.js';
 // import LoadingLayer from "components/LoadingLayer/LoadingLayer";
 import LoginWithEmailForm from '../components/forms/login/LoginWithEmailForm';
 import LoginWithOtherAccount from '../components/forms/login/LoginWithOtherAccount';

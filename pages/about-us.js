@@ -11,9 +11,9 @@ import Favorite from "@material-ui/icons/Favorite";
 // core components
 import Header from "components/Header/Header.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import Parallax from "components/Parallax/Parallax.js";
+import GridContainer from "components/lib/Grid/GridContainer.js";
+import GridItem from "components/lib/Grid/GridItem.js";
+import Parallax from "components/lib/Parallax/Parallax.js";
 import Footer from "components/Footer/Footer.js";
 // sections for this page
 import SectionDescription from "pages-sections/about-us/SectionDescription.js";

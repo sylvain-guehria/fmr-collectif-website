@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
 import Hidden from '@material-ui/core/Hidden';
 import Fingerprint from '@material-ui/icons/Fingerprint';
-import Button from '../../components/CustomButtons/Button';
+import Button from '../../components/lib/CustomButtons/Button';
 import { useAuth } from '../../auth/useAuth';
 
 import styles from 'styles/jss/nextjs-material-kit-pro/components/headerLinksStyle.js';

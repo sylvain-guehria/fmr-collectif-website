@@ -7,12 +7,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import FormatQuote from '@material-ui/icons/FormatQuote';
 import Star from '@material-ui/icons/Star';
 // core components
-import GridContainer from 'components/Grid/GridContainer.js';
-import GridItem from 'components/Grid/GridItem.js';
-import Card from 'components/Card/Card.js';
-import CardBody from 'components/Card/CardBody.js';
-import CardFooter from 'components/Card/CardFooter.js';
-import CardAvatar from 'components/Card/CardAvatar.js';
+import GridContainer from 'components/lib/Grid/GridContainer.js';
+import GridItem from 'components/lib/Grid/GridItem.js';
+import Card from 'components/lib/Card/Card.js';
+import CardBody from 'components/lib/Card/CardBody.js';
+import CardFooter from 'components/lib/Card/CardFooter.js';
+import CardAvatar from 'components/lib/Card/CardAvatar.js';
 import Muted from 'components/Typography/Muted.js';
 import Warning from 'components/Typography/Warning.js';
 

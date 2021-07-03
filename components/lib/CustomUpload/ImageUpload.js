@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // core components
-import Button from 'components/CustomButtons/Button';
+import Button from 'components/lib/CustomButtons/Button';
 
 export default function ImageUpload(props) {
   const [file, setFile] = React.useState(null);

@@ -6,9 +6,9 @@ import { makeStyles } from '@material-ui/core/styles';
 // @material-ui/icons
 import LocationOn from '@material-ui/icons/LocationOn';
 // core components
-import GridContainer from 'components/Grid/GridContainer.js';
-import GridItem from 'components/Grid/GridItem.js';
-import Card from 'components/Card/Card.js';
+import GridContainer from 'components/lib/Grid/GridContainer.js';
+import GridItem from 'components/lib/Grid/GridItem.js';
+import Card from 'components/lib/Card/Card.js';
 
 import carouselStyle from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/carouselStyle.js';
 

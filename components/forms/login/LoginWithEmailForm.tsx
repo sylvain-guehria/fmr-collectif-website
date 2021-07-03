@@ -10,8 +10,8 @@ import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import Email from '@material-ui/icons/Email';
 import InputLabel from '@material-ui/core/InputLabel';
 
-import CustomInput from '../../CustomInput/CustomInput.js';
-import Button from '../../CustomButtons/Button';
+import CustomInput from '../../lib/CustomInput/CustomInput.js';
+import Button from '../../lib/CustomButtons/Button';
 
 import ResetPasswordForm from './ResetPasswordForm';
 import { useForm, SubmitHandler } from 'react-hook-form';
@@ -25,7 +25,7 @@ import { useRouter } from 'next/router';
 
 import Fingerprint from '@material-ui/icons/Fingerprint';
 import PersonAdd from '@material-ui/icons/PersonAdd';
-import CardBody from '../../Card/CardBody';
+import CardBody from '../../lib/Card/CardBody';
 import { emailConnexionUseCase } from '../../../usecases';
 
 // import LoadingLayer from 'components/LoadingLayer/LoadingLayer';

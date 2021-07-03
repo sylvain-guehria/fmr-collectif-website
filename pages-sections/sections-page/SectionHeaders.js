@@ -12,12 +12,12 @@ import Share from '@material-ui/icons/Share';
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 // core components
 import Header from 'components/Header/Header.js';
-import Button from 'components/CustomButtons/Button';
-import GridContainer from 'components/Grid/GridContainer.js';
-import GridItem from 'components/Grid/GridItem.js';
-import Card from 'components/Card/Card.js';
-import CardBody from 'components/Card/CardBody.js';
-import CustomInput from 'components/CustomInput/CustomInput.js';
+import Button from 'components/lib/CustomButtons/Button';
+import GridContainer from 'components/lib/Grid/GridContainer.js';
+import GridItem from 'components/lib/Grid/GridItem.js';
+import Card from 'components/lib/Card/Card.js';
+import CardBody from 'components/lib/Card/CardBody.js';
+import CustomInput from 'components/lib/CustomInput/CustomInput.js';
 
 import headersStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsSections/headersStyle.js';
 

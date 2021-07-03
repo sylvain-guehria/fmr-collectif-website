@@ -11,8 +11,8 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Face from '@material-ui/icons/Face';
 import Email from '@material-ui/icons/Email';
 
-import CustomInput from '../../CustomInput/CustomInput';
-import Button from '../../CustomButtons/Button';
+import CustomInput from '../../lib/CustomInput/CustomInput';
+import Button from '../../lib/CustomButtons/Button';
 
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';

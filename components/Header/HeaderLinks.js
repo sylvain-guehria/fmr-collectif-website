@@ -44,7 +44,7 @@ import Layers from '@material-ui/icons/Layers';
 
 import Error from '@material-ui/icons/Error';
 
-import CustomDropdown from 'components/CustomDropdown/CustomDropdown.js';
+import CustomDropdown from 'components/lib/CustomDropdown/CustomDropdown.js';
 import LoginButton from '../LoginButton/LoginButton';
 
 import styles from 'styles/jss/nextjs-material-kit-pro/components/headerLinksStyle.js';

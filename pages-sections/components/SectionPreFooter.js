@@ -2,12 +2,12 @@ import React from 'react';
 // nodejs library that concatenates classes
 import classNames from 'classnames';
 // core components
-import GridContainer from 'components/Grid/GridContainer.js';
-import GridItem from 'components/Grid/GridItem.js';
-import Button from 'components/CustomButtons/Button';
-import Card from 'components/Card/Card.js';
-import CardBody from 'components/Card/CardBody.js';
-import CustomInput from 'components/CustomInput/CustomInput.js';
+import GridContainer from 'components/lib/Grid/GridContainer.js';
+import GridItem from 'components/lib/Grid/GridItem.js';
+import Button from 'components/lib/CustomButtons/Button';
+import Card from 'components/lib/Card/Card.js';
+import CardBody from 'components/lib/Card/CardBody.js';
+import CustomInput from 'components/lib/CustomInput/CustomInput.js';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
 import InputAdornment from '@material-ui/core/InputAdornment';

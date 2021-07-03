@@ -8,8 +8,8 @@ import Face from '@material-ui/icons/Face';
 import Chat from '@material-ui/icons/Chat';
 import Build from '@material-ui/icons/Build';
 // core components
-import GridContainer from 'components/Grid/GridContainer.js';
-import GridItem from 'components/Grid/GridItem.js';
+import GridContainer from 'components/lib/Grid/GridContainer.js';
+import GridItem from 'components/lib/Grid/GridItem.js';
 import CustomTabs from 'components/CustomTabs/CustomTabs.js';
 import tabsStyle from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/tabsStyle.js';
 

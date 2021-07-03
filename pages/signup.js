@@ -14,11 +14,11 @@ import Favorite from '@material-ui/icons/Favorite';
 import Header from 'components/Header/Header.js';
 import HeaderLinks from 'components/Header/HeaderLinks.js';
 import Footer from 'components/Footer/Footer.js';
-import GridContainer from 'components/Grid/GridContainer.js';
-import GridItem from 'components/Grid/GridItem.js';
-import Card from 'components/Card/Card.js';
-import CardBody from 'components/Card/CardBody.js';
-import InfoArea from 'components/InfoArea/InfoArea.js';
+import GridContainer from 'components/lib/Grid/GridContainer.js';
+import GridItem from 'components/lib/Grid/GridItem.js';
+import Card from 'components/lib/Card/Card.js';
+import CardBody from 'components/lib/Card/CardBody.js';
+import InfoArea from 'components/lib/InfoArea/InfoArea.js';
 
 import signupPageStyle from 'styles/jss/nextjs-material-kit-pro/pages/signupPageStyle.js';
 

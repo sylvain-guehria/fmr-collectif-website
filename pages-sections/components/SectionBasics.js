@@ -22,14 +22,14 @@ import People from '@material-ui/icons/People';
 import Check from '@material-ui/icons/Check';
 import FiberManualRecord from '@material-ui/icons/FiberManualRecord';
 // core components
-import GridContainer from 'components/Grid/GridContainer.js';
-import GridItem from 'components/Grid/GridItem.js';
-import Button from 'components/CustomButtons/Button';
-import CustomInput from 'components/CustomInput/CustomInput.js';
+import GridContainer from 'components/lib/Grid/GridContainer.js';
+import GridItem from 'components/lib/Grid/GridItem.js';
+import Button from 'components/lib/CustomButtons/Button';
+import CustomInput from 'components/lib/CustomInput/CustomInput.js';
 import CustomLinearProgress from 'components/CustomLinearProgress/CustomLinearProgress.js';
 import Paginations from 'components/Pagination/Pagination.js';
 import Badge from 'components/Badge/Badge.js';
-import CustomDropdown from 'components/CustomDropdown/CustomDropdown.js';
+import CustomDropdown from 'components/lib/CustomDropdown/CustomDropdown.js';
 
 import basicsStyle from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/basicsStyle.js';
 

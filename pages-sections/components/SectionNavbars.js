@@ -12,12 +12,12 @@ import Settings from '@material-ui/icons/Settings';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Explore from '@material-ui/icons/Explore';
 // core components
-import GridContainer from 'components/Grid/GridContainer.js';
-import GridItem from 'components/Grid/GridItem.js';
+import GridContainer from 'components/lib/Grid/GridContainer.js';
+import GridItem from 'components/lib/Grid/GridItem.js';
 import Header from 'components/Header/Header.js';
-import CustomInput from 'components/CustomInput/CustomInput.js';
-import CustomDropdown from 'components/CustomDropdown/CustomDropdown.js';
-import Button from 'components/CustomButtons/Button';
+import CustomInput from 'components/lib/CustomInput/CustomInput.js';
+import CustomDropdown from 'components/lib/CustomDropdown/CustomDropdown.js';
+import Button from 'components/lib/CustomButtons/Button';
 
 import navbarsStyle from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/navbarsStyle.js';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../../CustomButtons/Button';
+import Button from '../../lib/CustomButtons/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import signupPageStyle from '../../../styles/jss/nextjs-material-kit-pro/pages/signupPageStyle.js';
 import { useAuth } from '../../../auth/useAuth';

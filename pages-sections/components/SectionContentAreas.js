@@ -15,12 +15,12 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import Reply from '@material-ui/icons/Reply';
 import Favorite from '@material-ui/icons/Favorite';
 // core components
-import GridContainer from 'components/Grid/GridContainer.js';
-import GridItem from 'components/Grid/GridItem.js';
+import GridContainer from 'components/lib/Grid/GridContainer.js';
+import GridItem from 'components/lib/Grid/GridItem.js';
 import Table from 'components/Table/Table.js';
-import Button from 'components/CustomButtons/Button';
+import Button from 'components/lib/CustomButtons/Button';
 import Media from 'components/Media/Media.js';
-import CustomInput from 'components/CustomInput/CustomInput.js';
+import CustomInput from 'components/lib/CustomInput/CustomInput.js';
 import Paginations from 'components/Pagination/Pagination.js';
 
 import style from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/contentAreas.js';
