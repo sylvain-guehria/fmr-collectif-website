@@ -8,3 +8,7 @@ export const truncateText = (text: string, maxLength: number): string => {
 export const formatTimeStamp = (timeStamp: number): string => {
   return new Date(timeStamp).toLocaleDateString('fr');
 };
+
+export const isBrowser = (): boolean => {
+  return typeof window !== 'undefined';
+};

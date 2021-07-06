@@ -1,5 +1,5 @@
 import { methodMustBeImplemented } from '../../utils/abstract';
-import UserEntity from './UserEntity';
+import ItemEntity from './ItemEntity';
 
 /**
  * @abstract
@@ -13,15 +13,15 @@ class UserRepository {
     }
   }
 
-  async getById(uid: string): Promise<UserEntity> {
+  async getById(uid: string): Promise<ItemEntity> {
     throw methodMustBeImplemented(uid);
   }
 
-  async add(user: UserEntity): Promise<unknown> {
-    throw methodMustBeImplemented(user);
+  async add(item: ItemEntity): Promise<unknown> {
+    throw methodMustBeImplemented(item);
   }
 
-  async getAll(): Promise<UserEntity[]> {
+  async getAll(): Promise<ItemEntity[]> {
     throw methodMustBeImplemented();
   }
 }

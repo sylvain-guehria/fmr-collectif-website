@@ -10,9 +10,9 @@ class FirebaseUserRepository extends UserRepository {
     super();
   }
 
-  async getById(uid: string): Promise<User> {
+  async getById(uid: string): Promise<UserEntity> {
     logger.info('get user in db with uid: ', uid);
-    const response = await axios.get(`/api/user/${uid}`);
+    const response = await axios.get(`/user/${uid}`);
     const {
       email,
       pseudo,
@@ -41,7 +41,7 @@ class FirebaseUserRepository extends UserRepository {
 
   async add(user: User): Promise<unknown> {
     logger.info('add user in db with uid: ', user.uid);
-    const res = await axios.post('/api/user', {
+    const res = await axios.post('/user/save', {
       uid: user.uid || uuidV4(),
       email: user.email,
       pseudo: user.pseudo,
@@ -56,10 +56,9 @@ class FirebaseUserRepository extends UserRepository {
     return res;
   }
 
-  async getAll(): Promise<User[]> {
+  async getAll(): Promise<UserEntity[]> {
     logger.info('get all users in db');
-    const response = await axios.get('/api/user/getAll');
-
+    const response = await axios.get('/user/getAll');
     return response.data.map(
       (user: UserEntity) =>
         new UserEntity({
