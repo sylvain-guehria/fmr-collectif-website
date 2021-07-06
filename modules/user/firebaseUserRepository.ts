@@ -59,8 +59,6 @@ class FirebaseUserRepository extends UserRepository {
   async getAll(): Promise<UserEntity[]> {
     logger.info('get all users in db');
     const response = await axios.get('/user/getAll');
-    // eslint-disable-next-line no-console
-    console.log({ response });
     return response.data.map(
       (user: UserEntity) =>
         new UserEntity({

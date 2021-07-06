@@ -231,9 +231,15 @@ export default function HeaderLinks(props) {
             <Link href="/admin/users">
               <a className={classes.dropdownLink}>
                 <People className={classes.dropdownIcons} />
-                 utlisateurs
+                 Utilisateurs
               </a>
-            </Link>
+            </Link>,
+             <Link href="/admin/stocks">
+             <a className={classes.dropdownLink}>
+               <People className={classes.dropdownIcons} />
+                Stocks
+             </a>
+           </Link>
           ]}
         />
       </ListItem>}
