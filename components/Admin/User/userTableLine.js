@@ -6,7 +6,7 @@ import Button from 'components/lib/CustomButtons/Button';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import adminStyle from 'styles/jss/nextjs-material-kit-pro/pages/adminStyle.js';
-import { formatTimeStamp } from '../../utils/utils';
+import { formatTimeStamp } from '../../../utils/utils';
 
 const useStyles = makeStyles(adminStyle);
 

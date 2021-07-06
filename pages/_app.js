@@ -17,6 +17,8 @@
 import React from 'react';
 import logger from '../modules/logger/logger';
 import { ToastProvider } from 'react-toast-notifications';
+import Axios from 'axios';
+import { SWRConfig } from 'swr';
 
 import ReactDOM from 'react-dom';
 import App from 'next/app';
@@ -31,6 +33,19 @@ import 'styles/scss/nextjs-material-kit-pro.scss?v=1.2.0';
 import 'styles/css/react-demo.css';
 
 import 'animate.css/animate.min.css';
+
+Axios.defaults.baseURL = process.env.NEXT_PUBLIC_SERVER_BASE_URL + '/api';
+Axios.defaults.withCredentials = true;
+
+
+const fetcher = async (url) => {
+  try {
+    const res = await Axios.get(url);
+    return res.data;
+  } catch (err) {
+    throw err.response.data;
+  }
+};
 
 Router.events.on('routeChangeStart', (url) => {
   logger.info(`Loading: ${url}`);
@@ -66,20 +81,27 @@ export default class MyApp extends App {
 
     return (
       <React.Fragment>
-        <ToastProvider>
-          <ProvideAuth>
-            <Head>
-              <meta
-                name="viewport"
-                content="width=device-width, initial-scale=1, shrink-to-fit=no"
-              />
-              <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-              <title>Fmr-collectif</title>
-            </Head>
-            <Component {...pageProps} />
-          </ProvideAuth>
-        </ToastProvider>
-      </React.Fragment>
+        <SWRConfig
+          value={{
+            fetcher,
+            dedupingInterval: 10000
+          }}
+        >
+          <ToastProvider>
+            <ProvideAuth>
+              <Head>
+                <meta
+                  name="viewport"
+                  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+                />
+                <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+                <title>Fmr-collectif</title>
+              </Head>
+              <Component {...pageProps} />
+            </ProvideAuth>
+          </ToastProvider>
+        </SWRConfig>
+      </React.Fragment >
     );
   }
 }

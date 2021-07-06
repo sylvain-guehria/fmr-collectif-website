@@ -228,7 +228,7 @@ export default function HeaderLinks(props) {
           }}
           buttonIcon={Build}
           dropdownList={[
-            <Link href="/users">
+            <Link href="/admin/users">
               <a className={classes.dropdownLink}>
                 <People className={classes.dropdownIcons} />
                  utlisateurs

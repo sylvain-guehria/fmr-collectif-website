@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import classNames from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
@@ -12,42 +12,26 @@ import GridItem from 'components/lib/Grid/GridItem.js';
 import Footer from 'components/Footer/Footer.js';
 import Card from 'components/lib/Card/Card.js';
 import CardBody from 'components/lib/Card/CardBody.js';
-import UserTable from '../components/Admin/userTable';
+import UserTable from '../../components/Admin/User/userTable';
 import shoppingCartStyle from 'styles/jss/nextjs-material-kit-pro/pages/shoppingCartStyle.js';
-import firebaseUserRepository from '../modules/user/firebaseUserRepository';
-import { User as userType } from '../modules/user/userType';
-import logger from '../modules/logger/logger';
+import firebaseUserRepository from '../../modules/user/firebaseUserRepository';
+import UserEntity from '../../modules/user/UserEntity';
+import { GetStaticProps } from 'next';
+import useSWR from 'swr';
 
 const useStyles = makeStyles(shoppingCartStyle);
 
-type UserPrpos = {
-  user: userType;
-};
+interface Props {
+  users: UserEntity[];
+}
 
-const userRepository = new firebaseUserRepository();
-
-const Users: React.FC<UserPrpos> = () => {
-  const [users, setUsers] = useState<userType[]>([]);
+const Users: React.FC<Props> = ({ users }) => {
+  const { data } = useSWR('/categories', { initialData: users });
 
   useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
   });
-
-  useEffect(() => {
-    const fetchUsers = async (): Promise<userType[]> => {
-      return await userRepository.getAll();
-    };
-
-    (async () => {
-      try {
-        const users: userType[] = await fetchUsers();
-        setUsers(users);
-      } catch (e) {
-        logger.error(`error when fetching users ${e}`);
-      }
-    })();
-  }, []);
 
   const classes = useStyles();
 
@@ -79,10 +63,17 @@ const Users: React.FC<UserPrpos> = () => {
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
           <Card plain>
-            <CardBody plain>
-              <h3 className={classes.cardTitle}>Utilisateurs</h3>
-              {users && <UserTable users={users} />}
-            </CardBody>
+            <div>
+              {/*loop through category list using `data`    */}
+              {!data ? (
+                <div> Loading </div>
+              ) : (
+                <CardBody plain>
+                  <h3 className={classes.cardTitle}>Utilisateurs</h3>
+                  {data && data.length && <UserTable users={data} />}
+                </CardBody>
+              )}
+            </div>
           </Card>
         </div>
       </div>
@@ -138,6 +129,12 @@ const Users: React.FC<UserPrpos> = () => {
       />
     </div>
   );
+};
+
+export const getStaticProps: GetStaticProps = async (): Promise<{ props: Props }> => {
+  const userRepository = new firebaseUserRepository();
+  const users = await userRepository.getAll();
+  return { props: { users: JSON.parse(JSON.stringify(users)) } };
 };
 
 export default Users;

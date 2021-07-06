@@ -52,6 +52,7 @@
     "react-slick": "0.28.1",
     "react-tagsinput": "3.19.0",
     "react-toast-notifications": "^2.4.4",
+    "swr": "^0.5.6",
     "uuidv4": "^6.2.10",
     "webpack": "4.46.0",
     "yup": "^0.32.9"
