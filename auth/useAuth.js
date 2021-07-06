@@ -7,6 +7,7 @@ import logger from '../modules/logger/logger';
 import { useToasts } from 'react-toast-notifications';
 import firebaseUserRepository from '../modules/user/firebaseUserRepository';
 import UserEntity from '../modules/user/UserEntity';
+import { useRouter } from 'next/router';
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_PUBLIC_API_KEY,
@@ -44,7 +45,7 @@ export const useAuth = () => {
 function useProvideAuth() {
   const [user, setUser] = useState(null);
   const { addToast } = useToasts();
-
+  const router = useRouter();
 
   const loginEmail = (email, password) => {
     return auth.signInWithEmailAndPassword(email, password).then(response => {
@@ -115,6 +116,7 @@ function useProvideAuth() {
       .then(() => {
         addToast('Aurevoir =)', { appearance: 'info', autoDismiss: true });
         setUser(false);
+        router.push('/');
       })
       .catch(function (error) {
         addToast(error.message, { appearance: 'error', autoDismiss: true });

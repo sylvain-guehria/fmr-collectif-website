@@ -12,20 +12,20 @@ import GridItem from 'components/lib/Grid/GridItem.js';
 import Footer from 'components/Footer/Footer.js';
 import Card from 'components/lib/Card/Card.js';
 import CardBody from 'components/lib/Card/CardBody.js';
-import UserTable from '../../components/Admin/User/userTable';
 import shoppingCartStyle from 'styles/jss/nextjs-material-kit-pro/pages/shoppingCartStyle.js';
 import { GetStaticProps } from 'next';
 import useSWR from 'swr';
 import ItemEntity from '../../modules/item/ItemEntity';
+import firebaseItemRepository from '../../modules/item/firebaseItemRepository';
 
 const useStyles = makeStyles(shoppingCartStyle);
 
 interface Props {
-  stocks: ItemEntity[];
+  items: ItemEntity[];
 }
 
-const Stocks: React.FC<Props> = ({ stocks }) => {
-  const { data } = useSWR('/categories', { initialData: stocks });
+const Stocks: React.FC<Props> = ({ items }) => {
+  const { data } = useSWR('/items', { initialData: items });
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -63,13 +63,14 @@ const Stocks: React.FC<Props> = ({ stocks }) => {
         <div className={classes.container}>
           <Card plain>
             <div>
-              {/*loop through category list using `data`    */}
               {!data ? (
                 <div> Loading </div>
               ) : (
                 <CardBody plain>
-                  <h3 className={classes.cardTitle}>T-shirt</h3>
-                  {data && data.length && <UserTable users={data} />}
+                  <h3 className={classes.cardTitle}>Items</h3>
+                  {data &&
+                    data.length &&
+                    data.map((item: ItemEntity) => <div key={item.uid}>{item.uid}</div>)}
                 </CardBody>
               )}
             </div>
@@ -131,8 +132,9 @@ const Stocks: React.FC<Props> = ({ stocks }) => {
 };
 
 export const getStaticProps: GetStaticProps = async (): Promise<{ props: Props }> => {
-  const stocks = {};
-  return { props: { stocks: JSON.parse(JSON.stringify(stocks)) } };
+  const itemRepository = new firebaseItemRepository();
+  const items = await itemRepository.getAll();
+  return { props: { items: JSON.parse(JSON.stringify(items)) } };
 };
 
 export default Stocks;

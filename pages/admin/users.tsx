@@ -26,7 +26,7 @@ interface Props {
 }
 
 const Users: React.FC<Props> = ({ users }) => {
-  const { data } = useSWR('/categories', { initialData: users });
+  const { data } = useSWR('/users', { initialData: users });
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -64,7 +64,6 @@ const Users: React.FC<Props> = ({ users }) => {
         <div className={classes.container}>
           <Card plain>
             <div>
-              {/*loop through category list using `data`    */}
               {!data ? (
                 <div> Loading </div>
               ) : (
