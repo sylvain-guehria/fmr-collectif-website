@@ -16,17 +16,17 @@ import shoppingCartStyle from 'styles/jss/nextjs-material-kit-pro/pages/shopping
 import { GetStaticProps } from 'next';
 import useSWR from 'swr';
 import ItemEntity from '../../modules/item/ItemEntity';
-import firebaseUserRepository from '../../modules/user/firebaseUserRepository';
+import firebaseItemRepository from '../../modules/item/firebaseItemRepository';
 
 const useStyles = makeStyles(shoppingCartStyle);
-const userRepository = new firebaseUserRepository();
+const itemRepository = new firebaseItemRepository();
 
 interface Props {
   items: ItemEntity[];
 }
 
 const Stocks: React.FC<Props> = ({ items = [] }) => {
-  const { data } = useSWR('/item/getAll', { initialData: [] });
+  const { data } = useSWR('/item/getAll', { initialData: items });
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -133,7 +133,7 @@ const Stocks: React.FC<Props> = ({ items = [] }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const items = await userRepository.getAll();
+  const items = await itemRepository.getAll();
   return { props: { items: JSON.parse(JSON.stringify(items)) } };
 };
 
