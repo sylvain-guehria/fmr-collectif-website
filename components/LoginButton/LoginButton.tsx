@@ -15,7 +15,7 @@ const useStyles = makeStyles(styles);
 const LoginButton: React.FC<unknown> = () => {
   const auth = useAuth();
   const classes = useStyles();
-  const AuthUser = auth.user;
+  const AuthUser = auth?.user;
 
   return (
     <>

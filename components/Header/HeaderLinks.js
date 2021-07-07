@@ -54,7 +54,7 @@ const useStyles = makeStyles(styles);
 export default function HeaderLinks(props) {
 
   const auth = useAuth();
-  const AuthUser = auth.user;
+  const AuthUser = auth?.user;
 
   const easeInOutQuad = (t, b, c, d) => {
     t /= d / 2;

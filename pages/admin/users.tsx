@@ -20,12 +20,13 @@ import { GetStaticProps } from 'next';
 import useSWR from 'swr';
 
 const useStyles = makeStyles(shoppingCartStyle);
+const userRepository = new firebaseUserRepository();
 
 interface Props {
   users: UserEntity[];
 }
 
-const Users: React.FC<Props> = ({ users }) => {
+const Users: React.FC<Props> = ({ users = [] }) => {
   const { data } = useSWR('/users', { initialData: users });
 
   useEffect(() => {
@@ -130,8 +131,7 @@ const Users: React.FC<Props> = ({ users }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async (): Promise<{ props: Props }> => {
-  const userRepository = new firebaseUserRepository();
+export const getStaticProps: GetStaticProps = async () => {
   const users = await userRepository.getAll();
   return { props: { users: JSON.parse(JSON.stringify(users)) } };
 };
