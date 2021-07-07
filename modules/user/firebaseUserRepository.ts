@@ -43,15 +43,15 @@ class FirebaseUserRepository extends UserRepository {
     logger.info('add user in db with uid: ', user.uid);
     const res = await axios.post('/user/save', {
       uid: user.uid || uuidV4(),
-      email: user.email,
-      pseudo: user.pseudo,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      language: user.language,
-      phoneNumber: user.phoneNumber,
+      email: user.email || '',
+      pseudo: user.pseudo || '',
+      firstName: user.firstName || '',
+      lastName: user.lastName || '',
+      language: user.language || '',
+      phoneNumber: user.phoneNumber || '',
       role: user.role || rolesEnum.USER,
-      creationDate: user.creationDate,
-      lastLogin: user.lastLogin,
+      creationDate: Date.now(),
+      lastLogin: Date.now(),
     });
     return res;
   }

@@ -1,5 +1,4 @@
 import userRepository from '../modules/user/userRepository';
-import UserEntity from '../modules/user/UserEntity';
 import { NextRouter } from 'next/router';
 
 export const facebookConnexion =
@@ -13,22 +12,20 @@ export const facebookConnexion =
     const response = (await auth.loginFacebook()) || {};
     const { isNewUser, uid, email, firstName, lastName } = response;
     if (isNewUser) {
-      await userRepository.add(
-        UserEntity.new({
-          uid: uid,
-          email: email,
-          firstName: firstName,
-          lastName: lastName,
-        })
-      );
+      await userRepository.add({
+        uid: uid,
+        email: email,
+        firstName: firstName,
+        lastName: lastName,
+      });
     }
     if (uid) router.push('/');
   };
 
 type authResponse = {
-  uid: string | undefined;
-  email: string | null | undefined;
-  isNewUser: boolean | undefined;
-  firstName: string | undefined;
-  lastName: string | undefined;
+  uid: string;
+  email: string;
+  isNewUser: boolean;
+  firstName: string;
+  lastName: string;
 };
