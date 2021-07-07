@@ -27,7 +27,7 @@ interface Props {
 }
 
 const Users: React.FC<Props> = ({ users = [] }) => {
-  const { data } = useSWR('/users', { initialData: users });
+  const { data } = useSWR('/user/getAll', { initialData: users });
 
   useEffect(() => {
     window.scrollTo(0, 0);

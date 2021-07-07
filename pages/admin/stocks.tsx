@@ -26,7 +26,7 @@ interface Props {
 }
 
 const Stocks: React.FC<Props> = ({ items = [] }) => {
-  const { data } = useSWR('/items', { initialData: items });
+  const { data } = useSWR('/item/getAll', { initialData: items });
 
   useEffect(() => {
     window.scrollTo(0, 0);
