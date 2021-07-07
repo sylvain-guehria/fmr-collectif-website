@@ -19,13 +19,14 @@ import ItemEntity from '../../modules/item/ItemEntity';
 import firebaseItemRepository from '../../modules/item/firebaseItemRepository';
 
 const useStyles = makeStyles(shoppingCartStyle);
+const itemRepository = new firebaseItemRepository();
 
 interface Props {
   items: ItemEntity[];
 }
 
-const Stocks: React.FC<Props> = ({ items }) => {
-  const { data } = useSWR('/items', { initialData: items });
+const Stocks: React.FC<Props> = ({ items = [] }) => {
+  const { data } = useSWR('/item/getAll', { initialData: items });
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -131,8 +132,7 @@ const Stocks: React.FC<Props> = ({ items }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async (): Promise<{ props: Props }> => {
-  const itemRepository = new firebaseItemRepository();
+export const getStaticProps: GetStaticProps = async () => {
   const items = await itemRepository.getAll();
   return { props: { items: JSON.parse(JSON.stringify(items)) } };
 };
