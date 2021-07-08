@@ -15,11 +15,11 @@ class UserEntity implements User {
   creationDate;
   lastLogin;
 
-  static new({ ...arg }: { [x: string]: unknown }): UserEntity {
+  static new(user: User): UserEntity {
     return new UserEntity({
       creationDate: Date.now(),
       lastLogin: Date.now(),
-      ...arg,
+      ...user,
     });
   }
 
@@ -39,7 +39,7 @@ class UserEntity implements User {
   }
 
   getId(): string {
-    return this.uid || '';
+    return this.uid;
   }
 
   setRole(role: string): UserEntity {
@@ -48,7 +48,7 @@ class UserEntity implements User {
   }
 
   getRole(): string {
-    return this.role || '';
+    return this.role;
   }
 
   setFirstName(firstName: string): UserEntity {
@@ -57,7 +57,7 @@ class UserEntity implements User {
   }
 
   getFirstName(): string {
-    return this.firstName || '';
+    return this.firstName;
   }
 
   setLastName(lastName: string): UserEntity {
@@ -66,7 +66,7 @@ class UserEntity implements User {
   }
 
   getLastName(): string {
-    return this.lastName || '';
+    return this.lastName;
   }
 
   getFullName(): string {
@@ -96,7 +96,7 @@ class UserEntity implements User {
   }
 
   getPhoneNumber(): string {
-    return this.phoneNumber || '';
+    return this.phoneNumber;
   }
 
   initCreationDate(): UserEntity {
@@ -105,7 +105,7 @@ class UserEntity implements User {
   }
 
   getCreationDate(): number {
-    return this.creationDate || 0;
+    return this.creationDate;
   }
 
   isAdmin(): boolean {

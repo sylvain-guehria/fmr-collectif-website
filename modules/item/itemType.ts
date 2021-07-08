@@ -1,7 +1,13 @@
 export interface Item {
-  uid?: string;
-  creationDate?: number;
-  lastLogin?: number;
+  uid: string;
+  label: string;
+  size: string;
+  photoLink: string;
+  color: string;
+  quantity: number;
+  price: number;
+  numberTotalSell: number;
+  lastBuyDate: number;
 }
 
 export enum itemEnum {

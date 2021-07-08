@@ -1,5 +1,6 @@
 import { methodMustBeImplemented } from '../../utils/abstract';
 import ItemEntity from './ItemEntity';
+import { Item } from './itemType';
 
 /**
  * @abstract
@@ -17,7 +18,7 @@ class UserRepository {
     throw methodMustBeImplemented(uid);
   }
 
-  async add(item: ItemEntity): Promise<unknown> {
+  async add(item: Item): Promise<unknown> {
     throw methodMustBeImplemented(item);
   }
 

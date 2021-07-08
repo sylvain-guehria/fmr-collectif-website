@@ -2,34 +2,75 @@ import { Item } from './itemType';
 
 class ItemEntity implements Item {
   uid;
-  creationDate;
-  lastLogin;
+  label;
+  size;
+  photoLink;
+  color;
+  quantity;
+  price;
+  numberTotalSell;
+  lastBuyDate;
 
-  static new({ ...arg }: { [x: string]: unknown }): ItemEntity {
+  static new(item: Item): ItemEntity {
     return new ItemEntity({
-      creationDate: Date.now(),
-      lastLogin: Date.now(),
-      ...arg,
+      uid: item.uid,
+      label: item.label,
+      size: item.size,
+      photoLink: item.photoLink,
+      color: item.color,
+      quantity: item.quantity,
+      price: item.price,
+      numberTotalSell: item.numberTotalSell,
+      lastBuyDate: item.lastBuyDate,
     });
   }
 
   constructor(item: Item) {
     this.uid = item.uid || '';
-    this.creationDate = item.creationDate || 0;
-    this.lastLogin = item.lastLogin || 0;
+    this.label = item.label || '';
+    this.size = item.size || '';
+    this.photoLink = item.photoLink || '';
+    this.color = item.color || '';
+    this.quantity = item.quantity || 0;
+    this.price = item.price || 0;
+    this.numberTotalSell = item.numberTotalSell || 0;
+    this.lastBuyDate = item.lastBuyDate || 0;
   }
 
   getId(): string {
-    return this.uid || '';
+    return this.uid;
   }
 
-  initCreationDate(): ItemEntity {
-    this.creationDate = Date.now();
-    return this;
+  getLabel(): string {
+    return this.label;
   }
 
-  getCreationDate(): number {
-    return this.creationDate || 0;
+  getSize(): string {
+    return this.size;
+  }
+
+  getPhotoLink(): string {
+    return this.photoLink;
+  }
+
+  getColor(): string {
+    return this.color;
+  }
+
+  getQuantity(): number {
+    return this.quantity;
+  }
+
+  getPrice(): number {
+    return this.price;
+  }
+
+  getNumberTotalSell(): number {
+    return this.numberTotalSell;
+  }
+
+  getLastBuyDate(): number {
+    return this.lastBuyDate;
   }
 }
 

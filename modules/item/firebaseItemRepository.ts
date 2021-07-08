@@ -3,6 +3,7 @@ import axios from 'axios';
 import logger from '../logger/logger';
 import ItemEntity from './ItemEntity';
 import { v4 as uuidV4 } from 'uuid';
+import { Item } from './itemType';
 
 class FirebaseItemRepository extends ItemRepository {
   constructor() {
@@ -12,21 +13,34 @@ class FirebaseItemRepository extends ItemRepository {
   async getById(uid: string): Promise<ItemEntity> {
     logger.info('get item in db with uid: ', uid);
     const response = await axios.get(`/item/${uid}`);
-    const { creationDate, lastLogin } = response.data;
+    const { label, size, photoLink, color, quantity, price, numberTotalSell, lastBuyDate } =
+      response.data;
 
     return new ItemEntity({
       uid: uid,
-      creationDate: creationDate,
-      lastLogin: lastLogin,
+      label,
+      size,
+      photoLink,
+      color,
+      quantity,
+      price,
+      numberTotalSell,
+      lastBuyDate,
     });
   }
 
-  async add(item: ItemEntity): Promise<unknown> {
+  async add(item: Item): Promise<unknown> {
     logger.info('add item in db with uid: ', item.uid);
     const res = await axios.post('/item', {
       uid: item.uid || uuidV4(),
-      creationDate: item.creationDate,
-      lastLogin: item.lastLogin,
+      label: item.label || '',
+      size: item.size || '',
+      photoLink: item.photoLink || '',
+      color: item.color || '',
+      quantity: item.quantity || 0,
+      price: item.price || 0,
+      numberTotalSell: item.numberTotalSell || 0,
+      lastBuyDate: item.lastBuyDate || 0,
     });
     return res;
   }
@@ -38,8 +52,14 @@ class FirebaseItemRepository extends ItemRepository {
       (item: ItemEntity) =>
         new ItemEntity({
           uid: item.uid,
-          creationDate: item.creationDate,
-          lastLogin: item.lastLogin,
+          label: item.label,
+          size: item.size,
+          photoLink: item.photoLink,
+          color: item.color,
+          quantity: item.quantity,
+          price: item.price,
+          numberTotalSell: item.numberTotalSell,
+          lastBuyDate: item.lastBuyDate,
         })
     );
   }
