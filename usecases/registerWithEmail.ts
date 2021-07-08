@@ -1,5 +1,4 @@
 import userRepository from '../modules/user/userRepository';
-import UserEntity from '../modules/user/UserEntity';
 import { NextRouter } from 'next/router';
 
 export const registerWithEmail =
@@ -14,14 +13,12 @@ export const registerWithEmail =
     const response = (await auth.signUpEmail(email, password)) || {};
     const uid = response?.uid;
     if (uid) {
-      await userRepository.add(
-        UserEntity.new({
-          uid: uid,
-          email: email,
-          firstName: firstName,
-          lastName: lastName,
-        })
-      );
+      await userRepository.add({
+        uid: uid,
+        email: email,
+        firstName: firstName,
+        lastName: lastName,
+      });
       router.push('/');
     }
   };
