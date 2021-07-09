@@ -2,6 +2,7 @@ export interface User {
   loggedIn?: boolean;
   email?: string;
   pseudo?: string;
+  provider?: string;
   uid?: string;
   password?: string;
   firstName?: string;
@@ -28,8 +29,14 @@ export enum userEnum {
   PASSWORD = 'password',
 }
 
-export enum rolesEnum {
+export enum ROLES {
   SUPERADMIN = 'superadmin',
   ADMIN = 'admin',
   USER = 'user',
+}
+
+export enum PROVIDERS {
+  FACEBOOK = 'facebook',
+  GOOGLE = 'google',
+  EMAIL = 'email',
 }

@@ -64,16 +64,14 @@ const Users: React.FC<Props> = ({ users = [] }) => {
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
           <Card plain>
-            <div>
-              {!data ? (
-                <div> Loading </div>
-              ) : (
-                <CardBody plain>
-                  <h3 className={classes.cardTitle}>Utilisateurs</h3>
-                  {data && data.length && <UserTable users={data} />}
-                </CardBody>
-              )}
-            </div>
+            {!data ? (
+              <div> Loading </div>
+            ) : (
+              <CardBody plain>
+                <h3 className={classes.cardTitle}>Utilisateurs</h3>
+                {data && data.length && <UserTable users={data} />}
+              </CardBody>
+            )}
           </Card>
         </div>
       </div>

@@ -7,9 +7,9 @@ import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 
 import UserTableLine from './userTableLine';
-import shoppingCartStyle from 'styles/jss/nextjs-material-kit-pro/pages/shoppingCartStyle.js';
+import tableStyles from 'styles/jss/nextjs-material-kit-pro/components/tableStyle.js';
 
-const useStyles = makeStyles(shoppingCartStyle);
+const useStyles = makeStyles(tableStyles);
 
 const userTable = ({ users }) => {
   const classes = useStyles();

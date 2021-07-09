@@ -1,5 +1,5 @@
 import UserRepository from './userRepository';
-import { rolesEnum, User } from './userType';
+import { ROLES, User } from './userType';
 import axios from 'axios';
 import logger from '../logger/logger';
 import UserEntity from './UserEntity';
@@ -23,6 +23,7 @@ class FirebaseUserRepository extends UserRepository {
       role,
       creationDate,
       lastLogin,
+      provider,
     } = response.data;
 
     return new UserEntity({
@@ -36,6 +37,7 @@ class FirebaseUserRepository extends UserRepository {
       role: role,
       creationDate: creationDate,
       lastLogin: lastLogin,
+      provider: provider,
     });
   }
 
@@ -44,12 +46,13 @@ class FirebaseUserRepository extends UserRepository {
     const res = await axios.post('/user/save', {
       uid: user.uid || uuidV4(),
       email: user.email || '',
+      provider: user.provider || '',
       pseudo: user.pseudo || '',
       firstName: user.firstName || '',
       lastName: user.lastName || '',
       language: user.language || '',
       phoneNumber: user.phoneNumber || '',
-      role: user.role || rolesEnum.USER,
+      role: user.role || ROLES.USER,
       creationDate: Date.now(),
       lastLogin: Date.now(),
     });
@@ -64,6 +67,7 @@ class FirebaseUserRepository extends UserRepository {
         new UserEntity({
           uid: user.uid,
           email: user.email,
+          provider: user.provider,
           pseudo: user.pseudo,
           firstName: user.firstName,
           lastName: user.lastName,

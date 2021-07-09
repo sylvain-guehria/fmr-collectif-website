@@ -1,5 +1,5 @@
 /* eslint-disable complexity */
-import { rolesEnum, User } from './userType';
+import { ROLES, User } from './userType';
 
 class UserEntity implements User {
   loggedIn;
@@ -14,6 +14,7 @@ class UserEntity implements User {
   role;
   creationDate;
   lastLogin;
+  provider;
 
   static new(user: User): UserEntity {
     return new UserEntity({
@@ -26,6 +27,7 @@ class UserEntity implements User {
   constructor(user: User) {
     this.loggedIn = user.loggedIn || false;
     this.email = user.email || '';
+    this.provider = user.provider || '';
     this.pseudo = user.pseudo || '';
     this.uid = user.uid || '';
     this.password = user.password || '';
@@ -40,6 +42,10 @@ class UserEntity implements User {
 
   getId(): string {
     return this.uid;
+  }
+
+  getProvider(): string {
+    return this.provider;
   }
 
   setRole(role: string): UserEntity {
@@ -109,11 +115,11 @@ class UserEntity implements User {
   }
 
   isAdmin(): boolean {
-    return this.getRole() === rolesEnum.ADMIN;
+    return this.getRole() === ROLES.ADMIN;
   }
 
   isSuperAdmin(): boolean {
-    return this.getRole() === rolesEnum.SUPERADMIN;
+    return this.getRole() === ROLES.SUPERADMIN;
   }
 }
 
