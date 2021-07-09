@@ -79,6 +79,10 @@ class UserEntity implements User {
     return `${this.firstName} ${this.lastName}`;
   }
 
+  getLanguage(): string {
+    return this.language;
+  }
+
   setEmail(email: string): UserEntity {
     this.email = this._sanitizeEmail(email);
     return this;
@@ -93,7 +97,11 @@ class UserEntity implements User {
   }
 
   getEmail(): string {
-    return this.email || '';
+    return this.email;
+  }
+
+  getPseudo(): string {
+    return this.pseudo;
   }
 
   setPhoneNumber(phoneNumber: string): UserEntity {
@@ -112,6 +120,15 @@ class UserEntity implements User {
 
   getCreationDate(): number {
     return this.creationDate;
+  }
+
+  getLastLogin(): number {
+    return this.lastLogin;
+  }
+
+  updateLastLogin(): UserEntity {
+    this.lastLogin = Date.now();
+    return this;
   }
 
   isAdmin(): boolean {

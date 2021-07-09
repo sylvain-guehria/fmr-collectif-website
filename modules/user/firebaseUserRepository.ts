@@ -79,6 +79,23 @@ class FirebaseUserRepository extends UserRepository {
         })
     );
   }
+
+  async update(user: UserEntity): Promise<void> {
+    logger.info('update user uid: ', user.uid);
+    await axios.put(`/user/${user.uid}`, {
+      uid: user.getId(),
+      email: user.getEmail(),
+      provider: user.getProvider(),
+      pseudo: user.getPseudo(),
+      firstName: user.getFirstName(),
+      lastName: user.getLastName(),
+      language: user.getLanguage(),
+      phoneNumber: user.getPhoneNumber(),
+      role: user.getRole(),
+      creationDate: user.getCreationDate(),
+      lastLogin: user.getLastLogin(),
+    });
+  }
 }
 
 export default FirebaseUserRepository;

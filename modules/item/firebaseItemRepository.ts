@@ -63,6 +63,21 @@ class FirebaseItemRepository extends ItemRepository {
         })
     );
   }
+
+  async update(item: ItemEntity): Promise<void> {
+    logger.info('update item uid: ', item.uid);
+    await axios.put(`/item/${item.uid}`, {
+      uid: item.getId(),
+      label: item.getLabel(),
+      size: item.getSize(),
+      photoLink: item.getPhotoLink(),
+      color: item.getColor(),
+      quantity: item.getQuantity(),
+      price: item.getPrice(),
+      numberTotalSell: item.getNumberTotalSell(),
+      lastBuyDate: item.getLastBuyDate(),
+    });
+  }
 }
 
 export default FirebaseItemRepository;

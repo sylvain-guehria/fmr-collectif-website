@@ -147,9 +147,14 @@ function useProvideAuth() {
       return await userRepository.getById(uid);
     };
 
+    const updateLastConnected = async (user) => {
+      return await userRepository.update(user);
+    };
+
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
       if (user) {
         const fullUser = await fetchUserInformation(user.uid);
+        updateLastConnected(fullUser.updateLastLogin());
         setUser(fullUser.email ? fullUser : UserEntity.new({ ...user }));
         addToast(`Bonjour ${fullUser?.firstName} =)`, { appearance: 'success', autoDismiss: true });
       } else {
