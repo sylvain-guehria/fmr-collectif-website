@@ -2,16 +2,20 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 import Close from '@material-ui/icons/Close';
-import Button from 'components/lib/CustomButtons/Button';
+import Button from '../../lib/CustomButtons/Button';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import adminStyle from 'styles/jss/nextjs-material-kit-pro/pages/adminStyle.js';
 import { formatTimeStamp } from '../../../utils/utils';
+import UserEntity from '../../../modules/user/UserEntity';
 
 const useStyles = makeStyles(adminStyle);
 
-const userTableLine = ({ user }) => {
+interface Props {
+  user: UserEntity;
+}
 
+const userTableLine: React.FC<Props> = ({ user }) => {
   const {
     email,
     // pseudo,
@@ -22,13 +26,14 @@ const userTableLine = ({ user }) => {
     // role,
     creationDate,
     lastLogin,
-    uid
+    uid,
   } = user;
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const classes = useStyles();
   return (
     <>
-      <TableRow key={uid} >
+      <TableRow key={uid}>
         <TableCell />
 
         <TableCell>
@@ -41,7 +46,7 @@ const userTableLine = ({ user }) => {
           <span key={1}>
             <a href="#jacket" className={classes.tdNameAnchor}>
               {`${firstName} ${lastName}`}
-      </a>
+            </a>
           </span>
         </TableCell>
 
@@ -49,7 +54,7 @@ const userTableLine = ({ user }) => {
           <span key={1}>
             <a href="#jacket" className={classes.tdNameAnchor}>
               {email}
-      </a>
+            </a>
             <br />
             <small className={classes.tdNameSmall}>{phoneNumber}</small>
           </span>
@@ -59,15 +64,15 @@ const userTableLine = ({ user }) => {
           <span key={1}>
             <a href="#jacket" className={classes.tdNameAnchor}>
               {formatTimeStamp(creationDate)}
-      </a>
+            </a>
           </span>
         </TableCell>
 
         <TableCell>
-        <span key={1}>
+          <span key={1}>
             <a href="#jacket" className={classes.tdNameAnchor}>
               {formatTimeStamp(lastLogin)}
-      </a>
+            </a>
           </span>
         </TableCell>
 
@@ -84,11 +89,10 @@ const userTableLine = ({ user }) => {
           </Tooltip>
         </TableCell>
 
-
         <TableCell />
       </TableRow>
-
-    </>);
+    </>
+  );
 };
 
 export default userTableLine;

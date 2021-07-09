@@ -2,37 +2,33 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 import Close from '@material-ui/icons/Close';
-import Button from 'components/lib/CustomButtons/Button';
+import Button from '../../lib/CustomButtons/Button';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import adminStyle from 'styles/jss/nextjs-material-kit-pro/pages/adminStyle.js';
 import { formatTimeStamp } from '../../../utils/utils';
+import ItemEntity from '../../../modules/item/ItemEntity';
 
 const useStyles = makeStyles(adminStyle);
 
-const itemTableLine = ({ item }) => {
+interface Props {
+  item: ItemEntity;
+}
 
-  const {
-    uid,
-    label,
-    size,
-    photoLink,
-    color,
-    quantity,
-    price,
-    numberTotalSell,
-    lastBuyDate
-  } = item;
+const itemTableLine: React.FC<Props> = ({ item }) => {
+  const { uid, label, size, photoLink, color, quantity, price, numberTotalSell, lastBuyDate } =
+    item;
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const classes = useStyles();
   return (
     <>
-      <TableRow key={uid} >
+      <TableRow key={uid}>
         <TableCell />
 
         <TableCell>
           <div className={classes.imgContainer} key={1}>
-            <img src={photoLink ||'/img/defaultAvatar.png'} alt="..." className={classes.img} />
+            <img src={photoLink || '/img/defaultAvatar.png'} alt="..." className={classes.img} />
           </div>
         </TableCell>
 
@@ -40,7 +36,7 @@ const itemTableLine = ({ item }) => {
           <span key={1}>
             <a href="#jacket" className={classes.tdNameAnchor}>
               {`${label}`}
-      </a>
+            </a>
           </span>
         </TableCell>
 
@@ -48,7 +44,7 @@ const itemTableLine = ({ item }) => {
           <span key={1}>
             <a href="#jacket" className={classes.tdNameAnchor}>
               {size}
-      </a>
+            </a>
           </span>
         </TableCell>
 
@@ -56,7 +52,7 @@ const itemTableLine = ({ item }) => {
           <span key={1}>
             <a href="#jacket" className={classes.tdNameAnchor}>
               {color}
-      </a>
+            </a>
           </span>
         </TableCell>
 
@@ -64,7 +60,7 @@ const itemTableLine = ({ item }) => {
           <span key={1}>
             <a href="#jacket" className={classes.tdNameAnchor}>
               {price}
-      </a>
+            </a>
           </span>
         </TableCell>
 
@@ -72,7 +68,7 @@ const itemTableLine = ({ item }) => {
           <span key={1}>
             <a href="#jacket" className={classes.tdNameAnchor}>
               {quantity}
-      </a>
+            </a>
           </span>
         </TableCell>
 
@@ -80,7 +76,7 @@ const itemTableLine = ({ item }) => {
           <span key={1}>
             <a href="#jacket" className={classes.tdNameAnchor}>
               {numberTotalSell}
-      </a>
+            </a>
           </span>
         </TableCell>
 
@@ -88,7 +84,7 @@ const itemTableLine = ({ item }) => {
           <span key={1}>
             <a href="#jacket" className={classes.tdNameAnchor}>
               {lastBuyDate ? formatTimeStamp(lastBuyDate) : '-'}
-      </a>
+            </a>
           </span>
         </TableCell>
 
@@ -105,11 +101,10 @@ const itemTableLine = ({ item }) => {
           </Tooltip>
         </TableCell>
 
-
         <TableCell />
       </TableRow>
-
-    </>);
+    </>
+  );
 };
 
 export default itemTableLine;
