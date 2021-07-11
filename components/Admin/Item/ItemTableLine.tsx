@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 import Edit from '@material-ui/icons/Edit';
@@ -6,7 +6,7 @@ import Button from '../../lib/CustomButtons/Button';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import adminStyle from 'styles/jss/nextjs-material-kit-pro/pages/adminStyle.js';
-import { formatTimeStamp } from '../../../utils/utils';
+// import { formatTimeStamp } from '../../../utils/utils';
 import ItemEntity from '../../../modules/item/ItemEntity';
 import CustomInput from '../../lib/CustomInput/CustomInput';
 import { InputAdornment } from '@material-ui/core';
@@ -16,6 +16,7 @@ import { getError } from '../../forms/formUtils';
 // import { useToasts } from 'react-toast-notifications';
 import { validationSchema } from './ItemTableFormValidation';
 import { Item } from '../../../modules/item/itemType';
+import Image from 'next/image';
 
 const useStyles = makeStyles(adminStyle);
 
@@ -25,6 +26,13 @@ interface Props {
 
 interface ItemFormType {
   label: string;
+  size: string;
+  photoLink: string;
+  color: string;
+  quantity: number;
+  price: number;
+  numberTotalSell: number;
+  lastBuyDate: number;
 }
 
 const ItemTableLine: React.FC<Props> = ({ item }) => {
@@ -33,7 +41,7 @@ const ItemTableLine: React.FC<Props> = ({ item }) => {
 
   // eslint-disable-next-line no-console
   console.log({ item });
-  // const [isEditMode, setIsEditMode] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
   const formOptions = {
     resolver: yupResolver(validationSchema),
     defaultValues: {
@@ -61,7 +69,16 @@ const ItemTableLine: React.FC<Props> = ({ item }) => {
     console.log(item);
   };
 
-  const onSubmit: SubmitHandler<ItemFormType> = async ({ label }: ItemFormType) => {
+  const onSubmit: SubmitHandler<ItemFormType> = async ({
+    label,
+    size,
+    photoLink,
+    color,
+    quantity,
+    price,
+    numberTotalSell,
+    lastBuyDate,
+  }: ItemFormType) => {
     await editItem({
       label,
       size,
@@ -78,99 +95,158 @@ const ItemTableLine: React.FC<Props> = ({ item }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <TableRow key={uid}>
-        <TableCell />
+    <TableRow key={uid}>
+      <TableCell style={{ width: '100%' }} align="right">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div style={{ display: 'flex', border: 'solid red 1px' }}>
+            <Image
+              src={photoLink || '/img/defaultItem.jpg'}
+              alt="Picture of the author"
+              width="100%"
+              height="100%"
+            />
 
-        <TableCell>
-          <div className={classes.imgContainer} key={1}>
-            <img src={photoLink || '/img/defaultAvatar.png'} alt="..." className={classes.img} />
+            <CustomInput
+              formControlProps={{
+                fullWidth: true,
+              }}
+              error={getError(errors, 'label')}
+              inputProps={{
+                ...register('label'),
+                placeholder: 'label',
+                type: 'text',
+                disabled: !isEditMode,
+                startAdornment: isEditMode ? (
+                  <InputAdornment position="start">
+                    <Edit className={classes.inputIconsColor} />
+                  </InputAdornment>
+                ) : null,
+              }}
+            />
+            <CustomInput
+              formControlProps={{
+                fullWidth: true,
+              }}
+              error={getError(errors, 'size')}
+              inputProps={{
+                ...register('size'),
+                placeholder: 'size',
+                type: 'text',
+                disabled: !isEditMode,
+                startAdornment: isEditMode ? (
+                  <InputAdornment position="start">
+                    <Edit className={classes.inputIconsColor} />
+                  </InputAdornment>
+                ) : null,
+              }}
+            />
+
+            <CustomInput
+              formControlProps={{
+                fullWidth: true,
+              }}
+              error={getError(errors, 'color')}
+              inputProps={{
+                ...register('color'),
+                placeholder: 'color',
+                type: 'text',
+                disabled: !isEditMode,
+                startAdornment: isEditMode ? (
+                  <InputAdornment position="start">
+                    <Edit className={classes.inputIconsColor} />
+                  </InputAdornment>
+                ) : null,
+              }}
+            />
+
+            <CustomInput
+              formControlProps={{
+                fullWidth: true,
+              }}
+              error={getError(errors, 'price')}
+              inputProps={{
+                ...register('price'),
+                placeholder: 'price',
+                type: 'number',
+                disabled: !isEditMode,
+                startAdornment: isEditMode ? (
+                  <InputAdornment position="start">
+                    <Edit className={classes.inputIconsColor} />
+                  </InputAdornment>
+                ) : null,
+              }}
+            />
+
+            <CustomInput
+              formControlProps={{
+                fullWidth: true,
+              }}
+              error={getError(errors, 'quantity')}
+              inputProps={{
+                ...register('quantity'),
+                placeholder: 'quantity',
+                type: 'number',
+                disabled: !isEditMode,
+                startAdornment: isEditMode ? (
+                  <InputAdornment position="start">
+                    <Edit className={classes.inputIconsColor} />
+                  </InputAdornment>
+                ) : null,
+              }}
+            />
+
+            <CustomInput
+              formControlProps={{
+                fullWidth: true,
+              }}
+              error={getError(errors, 'numberTotalSell')}
+              inputProps={{
+                ...register('numberTotalSell'),
+                placeholder: 'numberTotalSell',
+                type: 'number',
+                disabled: !isEditMode,
+                startAdornment: isEditMode ? (
+                  <InputAdornment position="start">
+                    <Edit className={classes.inputIconsColor} />
+                  </InputAdornment>
+                ) : null,
+              }}
+            />
+            <CustomInput
+              formControlProps={{
+                fullWidth: true,
+              }}
+              error={getError(errors, 'lastBuyDate')}
+              inputProps={{
+                ...register('lastBuyDate'),
+                placeholder: 'lastBuyDate',
+                type: 'date',
+                disabled: !isEditMode,
+                startAdornment: isEditMode ? (
+                  <InputAdornment position="start">
+                    <Edit className={classes.inputIconsColor} />
+                  </InputAdornment>
+                ) : null,
+              }}
+            />
+
+            <Tooltip
+              key={1}
+              id="edit"
+              title="Modifier produit"
+              placement="left"
+              classes={{ tooltip: classes.tooltip }}>
+              <Button
+                link
+                className={classes.actionButton}
+                onClick={() => setIsEditMode(!isEditMode)}>
+                <Edit />
+              </Button>
+            </Tooltip>
           </div>
-        </TableCell>
-
-        <TableCell>
-          <CustomInput
-            formControlProps={{
-              fullWidth: true,
-            }}
-            error={getError(errors, 'label')}
-            inputProps={{
-              ...register('label'),
-              placeholder: 'label',
-              type: 'text',
-              startAdornment: (
-                <InputAdornment position="start">
-                  <Edit className={classes.inputIconsColor} />
-                </InputAdornment>
-              ),
-            }}
-          />
-        </TableCell>
-
-        <TableCell>
-          <span key={1}>
-            <a href="#jacket" className={classes.tdNameAnchor}>
-              {size}
-            </a>
-          </span>
-        </TableCell>
-
-        <TableCell>
-          <span key={1}>
-            <a href="#jacket" className={classes.tdNameAnchor}>
-              {color}
-            </a>
-          </span>
-        </TableCell>
-
-        <TableCell>
-          <span key={1}>
-            <a href="#jacket" className={classes.tdNameAnchor}>
-              {price}
-            </a>
-          </span>
-        </TableCell>
-
-        <TableCell>
-          <span key={1}>
-            <a href="#jacket" className={classes.tdNameAnchor}>
-              {quantity}
-            </a>
-          </span>
-        </TableCell>
-
-        <TableCell>
-          <span key={1}>
-            <a href="#jacket" className={classes.tdNameAnchor}>
-              {numberTotalSell}
-            </a>
-          </span>
-        </TableCell>
-
-        <TableCell>
-          <span key={1}>
-            <a href="#jacket" className={classes.tdNameAnchor}>
-              {lastBuyDate ? formatTimeStamp(lastBuyDate) : '-'}
-            </a>
-          </span>
-        </TableCell>
-
-        <TableCell>
-          <Tooltip
-            key={1}
-            id="close1"
-            title="Modifier produit"
-            placement="left"
-            classes={{ tooltip: classes.tooltip }}>
-            <Button link className={classes.actionButton}>
-              <Edit />
-            </Button>
-          </Tooltip>
-        </TableCell>
-
-        <TableCell />
-      </TableRow>
-    </form>
+        </form>
+      </TableCell>
+    </TableRow>
   );
 };
 
