@@ -1,13 +1,21 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
-import Close from '@material-ui/icons/Close';
+import Edit from '@material-ui/icons/Edit';
 import Button from '../../lib/CustomButtons/Button';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import adminStyle from 'styles/jss/nextjs-material-kit-pro/pages/adminStyle.js';
 import { formatTimeStamp } from '../../../utils/utils';
 import ItemEntity from '../../../modules/item/ItemEntity';
+import CustomInput from '../../lib/CustomInput/CustomInput';
+import { InputAdornment } from '@material-ui/core';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { getError } from '../../forms/formUtils';
+// import { useToasts } from 'react-toast-notifications';
+import { validationSchema } from './ItemTableFormValidation';
+import { Item } from '../../../modules/item/itemType';
 
 const useStyles = makeStyles(adminStyle);
 
@@ -15,14 +23,62 @@ interface Props {
   item: ItemEntity;
 }
 
-const itemTableLine: React.FC<Props> = ({ item }) => {
+interface ItemFormType {
+  label: string;
+}
+
+const ItemTableLine: React.FC<Props> = ({ item }) => {
   const { uid, label, size, photoLink, color, quantity, price, numberTotalSell, lastBuyDate } =
     item;
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+  // eslint-disable-next-line no-console
+  console.log({ item });
+  // const [isEditMode, setIsEditMode] = useState(false);
+  const formOptions = {
+    resolver: yupResolver(validationSchema),
+    defaultValues: {
+      label,
+      size,
+      photoLink,
+      color,
+      quantity,
+      price,
+      numberTotalSell,
+      lastBuyDate,
+    },
+  };
   const classes = useStyles();
+  // const { addToast } = useToasts();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ItemFormType>(formOptions);
+
+  const editItem = (item: Item): void => {
+    // eslint-disable-next-line no-console
+    console.log(item);
+  };
+
+  const onSubmit: SubmitHandler<ItemFormType> = async ({ label }: ItemFormType) => {
+    await editItem({
+      label,
+      size,
+      photoLink,
+      color,
+      quantity,
+      price,
+      numberTotalSell,
+      lastBuyDate,
+    });
+    // .catch((error: Error) => {
+    //   addToast(error.message, { appearance: 'error', autoDismiss: true });
+    // });
+  };
+
   return (
-    <>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <TableRow key={uid}>
         <TableCell />
 
@@ -33,11 +89,22 @@ const itemTableLine: React.FC<Props> = ({ item }) => {
         </TableCell>
 
         <TableCell>
-          <span key={1}>
-            <a href="#jacket" className={classes.tdNameAnchor}>
-              {`${label}`}
-            </a>
-          </span>
+          <CustomInput
+            formControlProps={{
+              fullWidth: true,
+            }}
+            error={getError(errors, 'label')}
+            inputProps={{
+              ...register('label'),
+              placeholder: 'label',
+              type: 'text',
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Edit className={classes.inputIconsColor} />
+                </InputAdornment>
+              ),
+            }}
+          />
         </TableCell>
 
         <TableCell>
@@ -92,19 +159,19 @@ const itemTableLine: React.FC<Props> = ({ item }) => {
           <Tooltip
             key={1}
             id="close1"
-            title="Supprimer utilisateur"
+            title="Modifier produit"
             placement="left"
             classes={{ tooltip: classes.tooltip }}>
             <Button link className={classes.actionButton}>
-              <Close />
+              <Edit />
             </Button>
           </Tooltip>
         </TableCell>
 
         <TableCell />
       </TableRow>
-    </>
+    </form>
   );
 };
 
-export default itemTableLine;
+export default ItemTableLine;

@@ -10,18 +10,11 @@ class ItemEntity implements Item {
   price;
   numberTotalSell;
   lastBuyDate;
+  isDeleted;
 
   static new(item: Item): ItemEntity {
     return new ItemEntity({
-      uid: item.uid,
-      label: item.label,
-      size: item.size,
-      photoLink: item.photoLink,
-      color: item.color,
-      quantity: item.quantity,
-      price: item.price,
-      numberTotalSell: item.numberTotalSell,
-      lastBuyDate: item.lastBuyDate,
+      ...item,
     });
   }
 
@@ -35,6 +28,7 @@ class ItemEntity implements Item {
     this.price = item.price || 0;
     this.numberTotalSell = item.numberTotalSell || 0;
     this.lastBuyDate = item.lastBuyDate || 0;
+    this.isDeleted = item.isDeleted || false;
   }
 
   getId(): string {
@@ -43,6 +37,10 @@ class ItemEntity implements Item {
 
   getLabel(): string {
     return this.label;
+  }
+
+  isItemDeleted(): boolean {
+    return this.isDeleted;
   }
 
   getSize(): string {

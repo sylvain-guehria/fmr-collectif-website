@@ -17,7 +17,7 @@ import { GetStaticProps } from 'next';
 import useSWR from 'swr';
 import ItemEntity from '../../modules/item/ItemEntity';
 import firebaseItemRepository from '../../modules/item/firebaseItemRepository';
-import ItemTable from '../../components/Admin/Item/itemTable';
+import ItemTable from '../../components/Admin/Item/ItemTable';
 
 const useStyles = makeStyles(shoppingCartStyle);
 const itemRepository = new firebaseItemRepository();
@@ -69,7 +69,7 @@ const Stocks: React.FC<Props> = ({ items = [] }) => {
                 <div> Loading </div>
               ) : (
                 <CardBody plain>
-                  <h3 className={classes.cardTitle}>Utilisateurs</h3>
+                  <h3 className={classes.cardTitle}>Produits</h3>
                   {data && data.length && <ItemTable items={data} />}
                 </CardBody>
               )}

@@ -12,7 +12,7 @@ import GridItem from 'components/lib/Grid/GridItem.js';
 import Footer from 'components/Footer/Footer.js';
 import Card from 'components/lib/Card/Card.js';
 import CardBody from 'components/lib/Card/CardBody.js';
-import UserTable from '../../components/Admin/User/userTable';
+import UserTable from '../../components/Admin/User/UserTable';
 import shoppingCartStyle from 'styles/jss/nextjs-material-kit-pro/pages/shoppingCartStyle.js';
 import firebaseUserRepository from '../../modules/user/firebaseUserRepository';
 import UserEntity from '../../modules/user/UserEntity';

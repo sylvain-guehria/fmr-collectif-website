@@ -15,7 +15,7 @@ interface Props {
   user: UserEntity;
 }
 
-const userTableLine: React.FC<Props> = ({ user }) => {
+const UserTableLine: React.FC<Props> = ({ user }) => {
   const {
     email,
     // pseudo,
@@ -29,7 +29,6 @@ const userTableLine: React.FC<Props> = ({ user }) => {
     uid,
   } = user;
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const classes = useStyles();
   return (
     <>
@@ -95,4 +94,4 @@ const userTableLine: React.FC<Props> = ({ user }) => {
   );
 };
 
-export default userTableLine;
+export default UserTableLine;

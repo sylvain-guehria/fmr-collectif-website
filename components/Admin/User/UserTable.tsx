@@ -6,31 +6,29 @@ import TableHead from '@material-ui/core/TableHead';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 
-import ItemTableLine from './itemTableLine';
+import UserTableLine from './UserTableLine';
 import tableStyles from 'styles/jss/nextjs-material-kit-pro/components/tableStyle.js';
-import ItemEntity from '../../../modules/item/ItemEntity';
+import UserEntity from '../../../modules/user/UserEntity';
+
+const useStyles = makeStyles(tableStyles);
 
 interface Props {
-  items: ItemEntity[];
+  users: UserEntity[];
 }
 
-const itemTable: React.FC<Props> = ({ items }) => {
+const UserTable: React.FC<Props> = ({ users }) => {
+  const classes = useStyles();
+
   const tableHead = [
     '',
-    'Photo',
-    'label',
-    'taille',
-    'couleur',
-    'quantité',
-    'prix',
-    'vendu',
-    'dernier achat le',
+    'Avatar',
+    'Nom',
+    'Coordonées',
+    'Date inscription',
+    'Dernière connexion',
     '',
     '',
   ];
-  const useStyles = makeStyles(tableStyles);
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const classes = useStyles();
 
   return (
     <div className={classes.tableResponsive}>
@@ -45,9 +43,9 @@ const itemTable: React.FC<Props> = ({ items }) => {
           </TableHead>
         ) : null}
         <TableBody>
-          {items &&
-            items.map((item: ItemEntity) => {
-              return item.uid && <ItemTableLine key={item.uid} item={item} />;
+          {users &&
+            users.map(user => {
+              return user.uid && <UserTableLine key={user.uid} user={user} />;
             })}
         </TableBody>
       </Table>
@@ -55,4 +53,4 @@ const itemTable: React.FC<Props> = ({ items }) => {
   );
 };
 
-export default itemTable;
+export default UserTable;
