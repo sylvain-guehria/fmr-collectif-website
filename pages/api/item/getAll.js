@@ -2,7 +2,7 @@ import db from '../../../auth/firestore/index';
 
 export default async (req, res) => {
   try {
-    const items = await db.collection('items').orderBy('creationDate').get();
+    const items = await db.collection('items').orderBy('label').get();
     const itemsData = items.docs.map(item => ({
       id: item.id,
       ...item.data()

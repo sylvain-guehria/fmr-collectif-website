@@ -1,12 +1,13 @@
 import { methodMustBeImplemented } from '../../utils/abstract';
 import ItemEntity from './ItemEntity';
+import { Item } from './itemType';
 
 /**
  * @abstract
  */
-class UserRepository {
+class ItemRepository {
   constructor() {
-    if (this.constructor === UserRepository) {
+    if (this.constructor === ItemRepository) {
       throw new TypeError(
         'Abstract class "ProfileRepository" cannot be instantiated, it can only be extended.'
       );
@@ -17,13 +18,17 @@ class UserRepository {
     throw methodMustBeImplemented(uid);
   }
 
-  async add(item: ItemEntity): Promise<unknown> {
+  async add(item: Item): Promise<ItemEntity> {
     throw methodMustBeImplemented(item);
   }
 
   async getAll(): Promise<ItemEntity[]> {
     throw methodMustBeImplemented();
   }
+
+  async update(item: ItemEntity): Promise<void> {
+    throw methodMustBeImplemented(item);
+  }
 }
 
-export default UserRepository;
+export default ItemRepository;

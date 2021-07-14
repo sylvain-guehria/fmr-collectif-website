@@ -1,5 +1,6 @@
 import userRepository from '../modules/user/userRepository';
 import { NextRouter } from 'next/router';
+import { PROVIDERS } from '../modules/user/userType';
 
 export const registerWithEmail =
   (userRepository: userRepository) =>
@@ -18,6 +19,7 @@ export const registerWithEmail =
         email: email,
         firstName: firstName,
         lastName: lastName,
+        provider: PROVIDERS.EMAIL,
       });
       router.push('/');
     }

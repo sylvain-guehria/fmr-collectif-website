@@ -12,7 +12,7 @@ import GridItem from 'components/lib/Grid/GridItem.js';
 import Footer from 'components/Footer/Footer.js';
 import Card from 'components/lib/Card/Card.js';
 import CardBody from 'components/lib/Card/CardBody.js';
-import UserTable from '../../components/Admin/User/userTable';
+import UserTable from '../../components/Admin/User/UserTable';
 import shoppingCartStyle from 'styles/jss/nextjs-material-kit-pro/pages/shoppingCartStyle.js';
 import firebaseUserRepository from '../../modules/user/firebaseUserRepository';
 import UserEntity from '../../modules/user/UserEntity';
@@ -64,16 +64,14 @@ const Users: React.FC<Props> = ({ users = [] }) => {
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
           <Card plain>
-            <div>
-              {!data ? (
-                <div> Loading </div>
-              ) : (
-                <CardBody plain>
-                  <h3 className={classes.cardTitle}>Utilisateurs</h3>
-                  {data && data.length && <UserTable users={data} />}
-                </CardBody>
-              )}
-            </div>
+            {!data ? (
+              <div> Loading </div>
+            ) : (
+              <CardBody plain>
+                <h3 className={classes.cardTitle}>Utilisateurs</h3>
+                {data && data.length && <UserTable users={data} />}
+              </CardBody>
+            )}
           </Card>
         </div>
       </div>

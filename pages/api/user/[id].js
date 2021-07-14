@@ -2,12 +2,10 @@ import db from '../../../auth/firestore/index';
 
 export default async (req, res) => {
   const { id } = req.query;
-
   try {
     if (req.method === 'PUT') {
       await db.collection('users').doc(id).update({
-        ...req.body,
-        updated: new Date().toISOString()
+        ...req.body
       });
     } else if (req.method === 'GET') {
       const doc = await db.collection('users').doc(id).get();
