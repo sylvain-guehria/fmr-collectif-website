@@ -8,5 +8,4 @@ export const validationSchema = Yup.object().shape({
   quantity: Yup.number().required('Veuillez entrer une quantité'),
   price: Yup.number().required('Veuillez entrer un prix'),
   numberTotalSell: Yup.number().required('Veuillez entrer le nombre total de vente'),
-  lastBuyDate: Yup.number().required('Veuillez entrer une date'),
 });

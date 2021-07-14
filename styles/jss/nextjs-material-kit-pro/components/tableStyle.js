@@ -115,7 +115,10 @@ const tableStyle = {
     '&:hover': {
       backgroundColor: infoColor[5]
     }
-  }
+  },
+  form: {
+    margin: '0'
+  },
 };
 
 export default tableStyle;

@@ -15,19 +15,7 @@ interface Props {
 }
 
 const ItemTable: React.FC<Props> = ({ items }) => {
-  const tableHead = [
-    '',
-    'Photo',
-    'label',
-    'taille',
-    'couleur',
-    'quantité',
-    'prix',
-    'vendu',
-    'dernier achat le',
-    '',
-    '',
-  ];
+  const tableHead = ['Photo', 'label', 'taille', 'couleur', 'prix', 'quantité', 'vendu'];
   const useStyles = makeStyles(tableStyles);
   const classes = useStyles();
 
@@ -35,10 +23,14 @@ const ItemTable: React.FC<Props> = ({ items }) => {
     <div className={classes.tableResponsive}>
       <Table className={classes.table}>
         {tableHead !== undefined ? (
-          <TableHead>
-            <TableRow className={classes.tableRow}>
+          <TableHead className={classes.tableHeadCell}>
+            <TableRow>
               {tableHead.map((prop, key) => {
-                return <TableCell key={key}>{prop}</TableCell>;
+                return (
+                  <TableCell align="left" key={key}>
+                    {prop}
+                  </TableCell>
+                );
               })}
             </TableRow>
           </TableHead>

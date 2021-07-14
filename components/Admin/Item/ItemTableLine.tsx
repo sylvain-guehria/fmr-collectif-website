@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 import Edit from '@material-ui/icons/Edit';
+import SaveAlt from '@material-ui/icons/SaveAlt';
 import Button from '../../lib/CustomButtons/Button';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
@@ -17,8 +18,10 @@ import { getError } from '../../forms/formUtils';
 import { validationSchema } from './ItemTableFormValidation';
 import { Item } from '../../../modules/item/itemType';
 import Image from 'next/image';
+import tableStyles from 'styles/jss/nextjs-material-kit-pro/components/tableStyle.js';
 
 const useStyles = makeStyles(adminStyle);
+const useTableStyles = makeStyles(tableStyles);
 
 interface Props {
   item: ItemEntity;
@@ -32,15 +35,12 @@ interface ItemFormType {
   quantity: number;
   price: number;
   numberTotalSell: number;
-  lastBuyDate: number;
+  lastBuyDate?: number;
 }
 
 const ItemTableLine: React.FC<Props> = ({ item }) => {
-  const { uid, label, size, photoLink, color, quantity, price, numberTotalSell, lastBuyDate } =
-    item;
+  const { uid, label, size, photoLink, color, quantity, price, numberTotalSell } = item;
 
-  // eslint-disable-next-line no-console
-  console.log({ item });
   const [isEditMode, setIsEditMode] = useState(false);
   const formOptions = {
     resolver: yupResolver(validationSchema),
@@ -52,19 +52,20 @@ const ItemTableLine: React.FC<Props> = ({ item }) => {
       quantity,
       price,
       numberTotalSell,
-      lastBuyDate,
     },
   };
   const classes = useStyles();
+  const tableClasses = useTableStyles();
   // const { addToast } = useToasts();
 
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<ItemFormType>(formOptions);
 
-  const editItem = (item: Item): void => {
+  const editItem = async (item: Item): Promise<void> => {
     // eslint-disable-next-line no-console
     console.log(item);
   };
@@ -77,7 +78,6 @@ const ItemTableLine: React.FC<Props> = ({ item }) => {
     quantity,
     price,
     numberTotalSell,
-    lastBuyDate,
   }: ItemFormType) => {
     await editItem({
       label,
@@ -87,7 +87,6 @@ const ItemTableLine: React.FC<Props> = ({ item }) => {
       quantity,
       price,
       numberTotalSell,
-      lastBuyDate,
     });
     // .catch((error: Error) => {
     //   addToast(error.message, { appearance: 'error', autoDismiss: true });
@@ -96,15 +95,40 @@ const ItemTableLine: React.FC<Props> = ({ item }) => {
 
   return (
     <TableRow key={uid}>
-      <TableCell style={{ width: '100%' }} align="right">
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div style={{ display: 'flex', border: 'solid red 1px' }}>
-            <Image
-              src={photoLink || '/img/defaultItem.jpg'}
-              alt="Picture of the author"
-              width="100%"
-              height="100%"
-            />
+      <TableCell className={tableClasses.tableCell} colSpan={8}>
+        <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
+          <div style={{ display: 'flex' }}>
+            {isEditMode ? (
+              <CustomInput
+                formControlProps={{
+                  fullWidth: true,
+                }}
+                error={getError(errors, 'photoLink')}
+                inputProps={{
+                  ...register('photoLink'),
+                  placeholder: 'photoLink',
+                  type: 'text',
+                  onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+                    setValue('photoLink', e?.target?.value),
+                  defaultValue: photoLink,
+                  disabled: !isEditMode,
+                  startAdornment: isEditMode ? (
+                    <InputAdornment position="start">
+                      <Edit fontSize="small" />
+                    </InputAdornment>
+                  ) : null,
+                }}
+              />
+            ) : (
+              <div style={{ width: '100%' }}>
+                <Image
+                  src={photoLink || '/img/defaultItem.jpg'}
+                  alt="Picture of the author"
+                  width="100%"
+                  height="100%"
+                />
+              </div>
+            )}
 
             <CustomInput
               formControlProps={{
@@ -115,10 +139,13 @@ const ItemTableLine: React.FC<Props> = ({ item }) => {
                 ...register('label'),
                 placeholder: 'label',
                 type: 'text',
+                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+                  setValue('label', e?.target?.value),
+                defaultValue: label,
                 disabled: !isEditMode,
                 startAdornment: isEditMode ? (
                   <InputAdornment position="start">
-                    <Edit className={classes.inputIconsColor} />
+                    <Edit fontSize="small" />
                   </InputAdornment>
                 ) : null,
               }}
@@ -132,10 +159,13 @@ const ItemTableLine: React.FC<Props> = ({ item }) => {
                 ...register('size'),
                 placeholder: 'size',
                 type: 'text',
+                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+                  setValue('size', e?.target?.value),
+                defaultValue: size,
                 disabled: !isEditMode,
                 startAdornment: isEditMode ? (
                   <InputAdornment position="start">
-                    <Edit className={classes.inputIconsColor} />
+                    <Edit fontSize="small" />
                   </InputAdornment>
                 ) : null,
               }}
@@ -150,10 +180,13 @@ const ItemTableLine: React.FC<Props> = ({ item }) => {
                 ...register('color'),
                 placeholder: 'color',
                 type: 'text',
+                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+                  setValue('color', e?.target?.value),
+                defaultValue: color,
                 disabled: !isEditMode,
                 startAdornment: isEditMode ? (
                   <InputAdornment position="start">
-                    <Edit className={classes.inputIconsColor} />
+                    <Edit fontSize="small" />
                   </InputAdornment>
                 ) : null,
               }}
@@ -168,10 +201,13 @@ const ItemTableLine: React.FC<Props> = ({ item }) => {
                 ...register('price'),
                 placeholder: 'price',
                 type: 'number',
+                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+                  setValue('price', Number(e?.target?.value)),
+                defaultValue: price,
                 disabled: !isEditMode,
                 startAdornment: isEditMode ? (
                   <InputAdornment position="start">
-                    <Edit className={classes.inputIconsColor} />
+                    <Edit fontSize="small" />
                   </InputAdornment>
                 ) : null,
               }}
@@ -186,10 +222,13 @@ const ItemTableLine: React.FC<Props> = ({ item }) => {
                 ...register('quantity'),
                 placeholder: 'quantity',
                 type: 'number',
+                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+                  setValue('quantity', Number(e?.target?.value)),
+                defaultValue: quantity,
                 disabled: !isEditMode,
                 startAdornment: isEditMode ? (
                   <InputAdornment position="start">
-                    <Edit className={classes.inputIconsColor} />
+                    <Edit fontSize="small" />
                   </InputAdornment>
                 ) : null,
               }}
@@ -202,50 +241,44 @@ const ItemTableLine: React.FC<Props> = ({ item }) => {
               error={getError(errors, 'numberTotalSell')}
               inputProps={{
                 ...register('numberTotalSell'),
-                placeholder: 'numberTotalSell',
+                placeholder: 'vendu',
                 type: 'number',
+                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+                  setValue('numberTotalSell', Number(e?.target?.value)),
+                defaultValue: numberTotalSell,
                 disabled: !isEditMode,
                 startAdornment: isEditMode ? (
                   <InputAdornment position="start">
-                    <Edit className={classes.inputIconsColor} />
+                    <Edit fontSize="small" />
                   </InputAdornment>
                 ) : null,
               }}
             />
-            <CustomInput
-              formControlProps={{
-                fullWidth: true,
-              }}
-              error={getError(errors, 'lastBuyDate')}
-              inputProps={{
-                ...register('lastBuyDate'),
-                placeholder: 'lastBuyDate',
-                type: 'date',
-                disabled: !isEditMode,
-                startAdornment: isEditMode ? (
-                  <InputAdornment position="start">
-                    <Edit className={classes.inputIconsColor} />
-                  </InputAdornment>
-                ) : null,
-              }}
-            />
-
-            <Tooltip
-              key={1}
-              id="edit"
-              title="Modifier produit"
-              placement="left"
-              classes={{ tooltip: classes.tooltip }}>
-              <Button
-                link
-                className={classes.actionButton}
-                onClick={() => setIsEditMode(!isEditMode)}>
-                <Edit />
-              </Button>
-            </Tooltip>
+            {isEditMode && (
+              <Tooltip
+                key={1}
+                id="edit"
+                title="Sauvegarder"
+                placement="left"
+                classes={{ tooltip: classes.tooltip }}>
+                <Button link className={classes.actionButton} type="submit">
+                  <SaveAlt />
+                </Button>
+              </Tooltip>
+            )}
           </div>
         </form>
       </TableCell>
+      <Tooltip
+        key={1}
+        id="edit"
+        title="Modifier produit"
+        placement="left"
+        classes={{ tooltip: classes.tooltip }}>
+        <Button link className={classes.actionButton} onClick={() => setIsEditMode(!isEditMode)}>
+          <Edit />
+        </Button>
+      </Tooltip>
     </TableRow>
   );
 };
