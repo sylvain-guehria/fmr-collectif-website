@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 import Edit from '@material-ui/icons/Edit';
+import Close from '@material-ui/icons/Close';
 import SaveAlt from '@material-ui/icons/SaveAlt';
 import Button from '../../lib/CustomButtons/Button';
 import TableCell from '@material-ui/core/TableCell';
@@ -14,11 +15,11 @@ import { InputAdornment } from '@material-ui/core';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { getError } from '../../forms/formUtils';
-// import { useToasts } from 'react-toast-notifications';
+import { useToasts } from 'react-toast-notifications';
 import { validationSchema } from './ItemTableFormValidation';
-import { Item } from '../../../modules/item/itemType';
 import Image from 'next/image';
 import tableStyles from 'styles/jss/nextjs-material-kit-pro/components/tableStyle.js';
+import { itemServiceDi } from '../../../di';
 
 const useStyles = makeStyles(adminStyle);
 const useTableStyles = makeStyles(tableStyles);
@@ -56,7 +57,7 @@ const ItemTableLine: React.FC<Props> = ({ item }) => {
   };
   const classes = useStyles();
   const tableClasses = useTableStyles();
-  // const { addToast } = useToasts();
+  const { addToast } = useToasts();
 
   const {
     register,
@@ -64,11 +65,6 @@ const ItemTableLine: React.FC<Props> = ({ item }) => {
     setValue,
     formState: { errors },
   } = useForm<ItemFormType>(formOptions);
-
-  const editItem = async (item: Item): Promise<void> => {
-    // eslint-disable-next-line no-console
-    console.log(item);
-  };
 
   const onSubmit: SubmitHandler<ItemFormType> = async ({
     label,
@@ -79,18 +75,25 @@ const ItemTableLine: React.FC<Props> = ({ item }) => {
     price,
     numberTotalSell,
   }: ItemFormType) => {
-    await editItem({
-      label,
-      size,
-      photoLink,
-      color,
-      quantity,
-      price,
-      numberTotalSell,
-    });
-    // .catch((error: Error) => {
-    //   addToast(error.message, { appearance: 'error', autoDismiss: true });
-    // });
+    await itemServiceDi
+      .editItem(
+        new ItemEntity({
+          uid,
+          label,
+          size,
+          photoLink,
+          color,
+          quantity,
+          price,
+          numberTotalSell,
+        })
+      )
+      .then(() => {
+        setIsEditMode(false);
+      })
+      .catch((error: Error) => {
+        addToast(error.message, { appearance: 'error', autoDismiss: true });
+      });
   };
 
   return (
@@ -106,7 +109,7 @@ const ItemTableLine: React.FC<Props> = ({ item }) => {
                 error={getError(errors, 'photoLink')}
                 inputProps={{
                   ...register('photoLink'),
-                  placeholder: 'photoLink',
+                  placeholder: 'Lien vers photo',
                   type: 'text',
                   onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
                     setValue('photoLink', e?.target?.value),
@@ -137,7 +140,7 @@ const ItemTableLine: React.FC<Props> = ({ item }) => {
               error={getError(errors, 'label')}
               inputProps={{
                 ...register('label'),
-                placeholder: 'label',
+                placeholder: 'Label',
                 type: 'text',
                 onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
                   setValue('label', e?.target?.value),
@@ -157,7 +160,7 @@ const ItemTableLine: React.FC<Props> = ({ item }) => {
               error={getError(errors, 'size')}
               inputProps={{
                 ...register('size'),
-                placeholder: 'size',
+                placeholder: 'Taille',
                 type: 'text',
                 onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
                   setValue('size', e?.target?.value),
@@ -178,7 +181,7 @@ const ItemTableLine: React.FC<Props> = ({ item }) => {
               error={getError(errors, 'color')}
               inputProps={{
                 ...register('color'),
-                placeholder: 'color',
+                placeholder: 'Couleur',
                 type: 'text',
                 onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
                   setValue('color', e?.target?.value),
@@ -199,7 +202,7 @@ const ItemTableLine: React.FC<Props> = ({ item }) => {
               error={getError(errors, 'price')}
               inputProps={{
                 ...register('price'),
-                placeholder: 'price',
+                placeholder: 'Prix',
                 type: 'number',
                 onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
                   setValue('price', Number(e?.target?.value)),
@@ -241,7 +244,7 @@ const ItemTableLine: React.FC<Props> = ({ item }) => {
               error={getError(errors, 'numberTotalSell')}
               inputProps={{
                 ...register('numberTotalSell'),
-                placeholder: 'vendu',
+                placeholder: 'Vendu',
                 type: 'number',
                 onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
                   setValue('numberTotalSell', Number(e?.target?.value)),
@@ -272,11 +275,11 @@ const ItemTableLine: React.FC<Props> = ({ item }) => {
       <Tooltip
         key={1}
         id="edit"
-        title="Modifier produit"
+        title={isEditMode ? 'Annuler' : 'Modifier produit'}
         placement="left"
         classes={{ tooltip: classes.tooltip }}>
         <Button link className={classes.actionButton} onClick={() => setIsEditMode(!isEditMode)}>
-          <Edit />
+          {isEditMode ? <Close /> : <Edit />}
         </Button>
       </Tooltip>
     </TableRow>

@@ -39,7 +39,7 @@ class FirebaseItemRepository extends ItemRepository {
     });
   }
 
-  async add(item: Item): Promise<unknown> {
+  async add(item: Item): Promise<ItemEntity> {
     logger.info('add item in db with uid: ', item.uid);
     const res = await axios.post('/item', {
       uid: item.uid || uuidV4(),
@@ -53,7 +53,7 @@ class FirebaseItemRepository extends ItemRepository {
       lastBuyDate: item.lastBuyDate || 0,
       isDeleted: item.isDeleted || false,
     });
-    return res;
+    return new ItemEntity(res.data);
   }
 
   async getAll(): Promise<ItemEntity[]> {
@@ -78,7 +78,7 @@ class FirebaseItemRepository extends ItemRepository {
 
   async update(item: ItemEntity): Promise<void> {
     logger.info('update item uid: ', item.uid);
-    await axios.put(`/item/${item.uid}`, {
+    return await axios.put(`/item/${item.uid}`, {
       uid: item.getId(),
       label: item.getLabel(),
       size: item.getSize(),
