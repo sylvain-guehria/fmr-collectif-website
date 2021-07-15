@@ -32,6 +32,12 @@ const ItemTable: React.FC<Props> = ({ items }) => {
     setItemList(updatedItemList);
   };
 
+  const deleteItemAndUpdateState = async (uid: string): Promise<void> => {
+    await itemServiceDi.deleteItem(uid);
+    const updatedItemList = itemList.filter(item => item.uid !== uid);
+    setItemList(updatedItemList);
+  };
+
   return (
     <div className={classes.tableResponsive}>
       <Table className={classes.table}>
@@ -51,7 +57,11 @@ const ItemTable: React.FC<Props> = ({ items }) => {
         <TableBody>
           {itemList &&
             itemList.map((item: ItemEntity) => {
-              return item.uid && <ItemTableLine key={item.uid} item={item} />;
+              return (
+                item.uid && (
+                  <ItemTableLine key={item.uid} item={item} deleteItem={deleteItemAndUpdateState} />
+                )
+              );
             })}
           <Button className={classes.warning} onClick={() => createItemAndUpdateState()}>
             Ajouter un produit
