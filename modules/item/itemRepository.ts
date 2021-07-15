@@ -18,6 +18,10 @@ class ItemRepository {
     throw methodMustBeImplemented(uid);
   }
 
+  async deleteById(uid: string): Promise<void> {
+    throw methodMustBeImplemented(uid);
+  }
+
   async add(item: Item): Promise<ItemEntity> {
     throw methodMustBeImplemented(item);
   }

@@ -1,7 +1,9 @@
+/* eslint-disable complexity */
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 import Edit from '@material-ui/icons/Edit';
+import Delete from '@material-ui/icons/Delete';
 import Close from '@material-ui/icons/Close';
 import SaveAlt from '@material-ui/icons/SaveAlt';
 import Button from '../../lib/CustomButtons/Button';
@@ -257,23 +259,10 @@ const ItemTableLine: React.FC<Props> = ({ item }) => {
                 ) : null,
               }}
             />
-            {isEditMode && (
-              <Tooltip
-                key={1}
-                id="edit"
-                title="Sauvegarder"
-                placement="left"
-                classes={{ tooltip: classes.tooltip }}>
-                <Button link className={classes.actionButton} type="submit">
-                  <SaveAlt />
-                </Button>
-              </Tooltip>
-            )}
           </div>
         </form>
       </TableCell>
       <Tooltip
-        key={1}
         id="edit"
         title={isEditMode ? 'Annuler' : 'Modifier produit'}
         placement="left"
@@ -282,6 +271,32 @@ const ItemTableLine: React.FC<Props> = ({ item }) => {
           {isEditMode ? <Close /> : <Edit />}
         </Button>
       </Tooltip>
+      {isEditMode && (
+        <div>
+          <Tooltip
+            key={1}
+            id="edit"
+            title="Sauvegarder"
+            placement="left"
+            classes={{ tooltip: classes.tooltip }}>
+            <Button link className={classes.actionButton} type="submit">
+              <SaveAlt />
+            </Button>
+          </Tooltip>
+          <Tooltip
+            id="delete"
+            title={'Supprimer produit'}
+            placement="left"
+            classes={{ tooltip: classes.tooltip }}>
+            <Button
+              link
+              className={classes.actionButton}
+              onClick={() => itemServiceDi.deleteItem(uid)}>
+              <Delete color={'error'} />
+            </Button>
+          </Tooltip>
+        </div>
+      )}
     </TableRow>
   );
 };
