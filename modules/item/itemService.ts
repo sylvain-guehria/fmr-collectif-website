@@ -1,5 +1,6 @@
 import ItemRepository from './itemRepository';
 import ItemEntity from './ItemEntity';
+import { Item } from './itemType';
 
 class itemService {
   itemRepository;
@@ -10,6 +11,14 @@ class itemService {
 
   async editItem(item: ItemEntity): Promise<void> {
     return await this.itemRepository.update(item);
+  }
+
+  async createItem(item: Item): Promise<ItemEntity> {
+    return await this.itemRepository.add(item);
+  }
+
+  async deleteItem(uid: string): Promise<void> {
+    return await this.itemRepository.deleteById(uid);
   }
 }
 

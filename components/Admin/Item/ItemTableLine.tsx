@@ -1,7 +1,9 @@
+/* eslint-disable complexity */
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 import Edit from '@material-ui/icons/Edit';
+import Delete from '@material-ui/icons/Delete';
 import Close from '@material-ui/icons/Close';
 import SaveAlt from '@material-ui/icons/SaveAlt';
 import Button from '../../lib/CustomButtons/Button';
@@ -20,12 +22,14 @@ import { validationSchema } from './ItemTableFormValidation';
 import Image from 'next/image';
 import tableStyles from 'styles/jss/nextjs-material-kit-pro/components/tableStyle.js';
 import { itemServiceDi } from '../../../di';
+import ConfirmDialog from '../../lib/ConfirmDialog/ConfirmDialog';
 
 const useStyles = makeStyles(adminStyle);
 const useTableStyles = makeStyles(tableStyles);
 
 interface Props {
   item: ItemEntity;
+  deleteItem: (uid: string) => Promise<void>;
 }
 
 interface ItemFormType {
@@ -39,7 +43,7 @@ interface ItemFormType {
   lastBuyDate?: number;
 }
 
-const ItemTableLine: React.FC<Props> = ({ item }) => {
+const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
   const { uid, label, size, photoLink, color, quantity, price, numberTotalSell } = item;
 
   const [isEditMode, setIsEditMode] = useState(false);
@@ -258,22 +262,48 @@ const ItemTableLine: React.FC<Props> = ({ item }) => {
               }}
             />
             {isEditMode && (
-              <Tooltip
-                key={1}
-                id="edit"
-                title="Sauvegarder"
-                placement="left"
-                classes={{ tooltip: classes.tooltip }}>
-                <Button link className={classes.actionButton} type="submit">
-                  <SaveAlt />
-                </Button>
-              </Tooltip>
+              <div>
+                <Tooltip
+                  key={1}
+                  id="edit"
+                  title="Sauvegarder"
+                  placement="left"
+                  classes={{ tooltip: classes.tooltip }}>
+                  <Button link className={classes.actionButton} type="submit">
+                    <SaveAlt />
+                  </Button>
+                </Tooltip>
+                {/* <Tooltip
+                  id="delete"
+                  title={'Supprimer produit'}
+                  placement="left"
+                  classes={{ tooltip: classes.tooltip }}>
+                  <Button link className={classes.actionButton} onClick={() => deleteItem(uid)}>
+                    <Delete color={'error'} />
+                  </Button>
+                </Tooltip> */}
+                <ConfirmDialog
+                  dialogTitle="Voulez-vous vraiment supprimer cet item ?"
+                  dialogMessage={label}
+                  onConfirm={() => deleteItem(uid)}
+                  childButton={
+                    <Tooltip
+                      id="delete"
+                      title={'Supprimer produit'}
+                      placement="left"
+                      classes={{ tooltip: classes.tooltip }}>
+                      <Button link className={classes.actionButton}>
+                        <Delete color={'error'} />
+                      </Button>
+                    </Tooltip>
+                  }
+                />
+              </div>
             )}
           </div>
         </form>
       </TableCell>
       <Tooltip
-        key={1}
         id="edit"
         title={isEditMode ? 'Annuler' : 'Modifier produit'}
         placement="left"
