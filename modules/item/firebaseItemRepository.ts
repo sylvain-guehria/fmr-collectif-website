@@ -39,9 +39,14 @@ class FirebaseItemRepository extends ItemRepository {
     });
   }
 
+  async deleteById(uid: string): Promise<void> {
+    logger.info('delete item in db with uid: ', uid);
+    await axios.delete(`/item/${uid}`);
+  }
+
   async add(item: Item): Promise<ItemEntity> {
     logger.info('add item in db with uid: ', item.uid);
-    const res = await axios.post('/item', {
+    const res = await axios.post('/item/save', {
       uid: item.uid || uuidV4(),
       label: item.label || '',
       size: item.size || '',
