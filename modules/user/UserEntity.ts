@@ -1,5 +1,5 @@
 /* eslint-disable complexity */
-import { rolesEnum, User } from './userType';
+import { ROLES, User } from './userType';
 
 class UserEntity implements User {
   loggedIn;
@@ -14,18 +14,20 @@ class UserEntity implements User {
   role;
   creationDate;
   lastLogin;
+  provider;
 
-  static new({ ...arg }: { [x: string]: unknown }): UserEntity {
+  static new(user: User): UserEntity {
     return new UserEntity({
       creationDate: Date.now(),
       lastLogin: Date.now(),
-      ...arg,
+      ...user,
     });
   }
 
   constructor(user: User) {
     this.loggedIn = user.loggedIn || false;
     this.email = user.email || '';
+    this.provider = user.provider || '';
     this.pseudo = user.pseudo || '';
     this.uid = user.uid || '';
     this.password = user.password || '';
@@ -39,7 +41,11 @@ class UserEntity implements User {
   }
 
   getId(): string {
-    return this.uid || '';
+    return this.uid;
+  }
+
+  getProvider(): string {
+    return this.provider;
   }
 
   setRole(role: string): UserEntity {
@@ -48,7 +54,7 @@ class UserEntity implements User {
   }
 
   getRole(): string {
-    return this.role || '';
+    return this.role;
   }
 
   setFirstName(firstName: string): UserEntity {
@@ -57,7 +63,7 @@ class UserEntity implements User {
   }
 
   getFirstName(): string {
-    return this.firstName || '';
+    return this.firstName;
   }
 
   setLastName(lastName: string): UserEntity {
@@ -66,11 +72,15 @@ class UserEntity implements User {
   }
 
   getLastName(): string {
-    return this.lastName || '';
+    return this.lastName;
   }
 
   getFullName(): string {
     return `${this.firstName} ${this.lastName}`;
+  }
+
+  getLanguage(): string {
+    return this.language;
   }
 
   setEmail(email: string): UserEntity {
@@ -87,7 +97,11 @@ class UserEntity implements User {
   }
 
   getEmail(): string {
-    return this.email || '';
+    return this.email;
+  }
+
+  getPseudo(): string {
+    return this.pseudo;
   }
 
   setPhoneNumber(phoneNumber: string): UserEntity {
@@ -96,7 +110,7 @@ class UserEntity implements User {
   }
 
   getPhoneNumber(): string {
-    return this.phoneNumber || '';
+    return this.phoneNumber;
   }
 
   initCreationDate(): UserEntity {
@@ -105,15 +119,24 @@ class UserEntity implements User {
   }
 
   getCreationDate(): number {
-    return this.creationDate || 0;
+    return this.creationDate;
+  }
+
+  getLastLogin(): number {
+    return this.lastLogin;
+  }
+
+  updateLastLogin(): UserEntity {
+    this.lastLogin = Date.now();
+    return this;
   }
 
   isAdmin(): boolean {
-    return this.getRole() === rolesEnum.ADMIN;
+    return this.getRole() === ROLES.ADMIN;
   }
 
   isSuperAdmin(): boolean {
-    return this.getRole() === rolesEnum.SUPERADMIN;
+    return this.getRole() === ROLES.SUPERADMIN;
   }
 }
 

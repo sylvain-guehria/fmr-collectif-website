@@ -1,5 +1,6 @@
 import userRepository from '../modules/user/userRepository';
 import { NextRouter } from 'next/router';
+import { PROVIDERS } from '../modules/user/userType';
 
 export const facebookConnexion =
   (userRepository: userRepository) =>
@@ -17,6 +18,7 @@ export const facebookConnexion =
         email: email,
         firstName: firstName,
         lastName: lastName,
+        provider: PROVIDERS.FACEBOOK,
       });
     }
     if (uid) router.push('/');

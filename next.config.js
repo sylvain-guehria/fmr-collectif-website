@@ -8,5 +8,8 @@ module.exports = withPlugins([[withImages]], {
     config.resolve.modules.push(path.resolve("./"));
     return config;
   },
-  future: { webpack5: true }
+  future: { webpack5: true },
+  images: {
+    domains: ['assets.vercel.com', 'images.unsplash.com'],
+  },
 });

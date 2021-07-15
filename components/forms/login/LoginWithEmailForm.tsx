@@ -50,7 +50,6 @@ const LoginWithEmailForm: React.FC = (): React.ReactElement => {
 
   const onSubmit: SubmitHandler<LoginFormType> = async ({ email, password }: LoginFormType) => {
     const response = await emailConnexionUseCase(auth, router, { email, password });
-    // eslint-disable-next-line no-console
     if (!response.email) {
       setShowResetPassword(true);
     }

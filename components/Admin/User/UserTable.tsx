@@ -6,14 +6,18 @@ import TableHead from '@material-ui/core/TableHead';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 
-import UserTableLine from './userTableLine';
-import shoppingCartStyle from 'styles/jss/nextjs-material-kit-pro/pages/shoppingCartStyle.js';
+import UserTableLine from './UserTableLine';
+import tableStyles from 'styles/jss/nextjs-material-kit-pro/components/tableStyle.js';
+import UserEntity from '../../../modules/user/UserEntity';
 
-const useStyles = makeStyles(shoppingCartStyle);
+const useStyles = makeStyles(tableStyles);
 
-const userTable = ({ users }) => {
+interface Props {
+  users: UserEntity[];
+}
+
+const UserTable: React.FC<Props> = ({ users }) => {
   const classes = useStyles();
-
 
   const tableHead = [
     '',
@@ -23,33 +27,30 @@ const userTable = ({ users }) => {
     'Date inscription',
     'Dernière connexion',
     '',
-    ''
+    '',
   ];
 
   return (
     <div className={classes.tableResponsive}>
       <Table className={classes.table}>
         {tableHead !== undefined ? (
-          <TableHead >
+          <TableHead>
             <TableRow className={classes.tableRow}>
               {tableHead.map((prop, key) => {
-                return (
-                  <TableCell key={key}>
-                    {prop}
-                  </TableCell>
-                );
+                return <TableCell key={key}>{prop}</TableCell>;
               })}
             </TableRow>
           </TableHead>
         ) : null}
         <TableBody>
-        {users &&
-                users.map(user => {
-                  return user.uid && <UserTableLine key={user.uid} user={user} />;
-                })}
+          {users &&
+            users.map(user => {
+              return user.uid && <UserTableLine key={user.uid} user={user} />;
+            })}
         </TableBody>
       </Table>
-    </div>);
+    </div>
+  );
 };
 
-export default userTable;
+export default UserTable;
