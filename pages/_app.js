@@ -1,42 +1,20 @@
-/*!
-
-=========================================================
-* NextJS Material Kit PRO v1.2.0 based on Material Kit PRO - v2.0.2 (Bootstrap 4.0.0 Final Edition) and Material Kit PRO React v1.8.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/ct-nextjs-material-kit-pro
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from 'react';
-import logger from '../modules/logger/logger';
 import { ToastProvider } from 'react-toast-notifications';
 import Axios from 'axios';
 import { SWRConfig } from 'swr';
+import LayoutComponent from '../components/Layouts/LayoutComponent';
 
-import ReactDOM from 'react-dom';
 import App from 'next/app';
 import Head from 'next/head';
-import Router from 'next/router';
-
-import PageChange from 'components/lib/PageChange/PageChange.js';
 import { ProvideAuth } from '../auth/useAuth';
 
 import 'styles/scss/nextjs-material-kit-pro.scss?v=1.2.0';
-
 import 'styles/css/react-demo.css';
-
 import 'animate.css/animate.min.css';
+import '../listeners/routerListeners' ;
 
 Axios.defaults.baseURL = process.env.NEXT_PUBLIC_SERVER_BASE_URL + '/api';
 Axios.defaults.withCredentials = true;
-
 
 const fetcher = async (url) => {
   try {
@@ -46,24 +24,6 @@ const fetcher = async (url) => {
     throw err.response.data;
   }
 };
-
-Router.events.on('routeChangeStart', (url) => {
-  logger.info(`Loading: ${url}`);
-
-  document.body.classList.add('body-page-transition');
-  ReactDOM.render(
-    <PageChange path={url} />,
-    document.getElementById('page-transition')
-  );
-});
-Router.events.on('routeChangeComplete', () => {
-  ReactDOM.unmountComponentAtNode(document.getElementById('page-transition'));
-  document.body.classList.remove('body-page-transition');
-});
-Router.events.on('routeChangeError', () => {
-  ReactDOM.unmountComponentAtNode(document.getElementById('page-transition'));
-  document.body.classList.remove('body-page-transition');
-});
 
 export default class MyApp extends App {
 
@@ -78,6 +38,7 @@ export default class MyApp extends App {
   }
   render() {
     const { Component, pageProps } = this.props;
+    const layoutProps = Component.getLayoutProps ? Component.getLayoutProps() : {};
 
     return (
       <React.Fragment>
@@ -97,7 +58,9 @@ export default class MyApp extends App {
                 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
                 <title>Fmr-collectif</title>
               </Head>
+              <LayoutComponent component={Component} layoutProps={layoutProps}>
               <Component {...pageProps} />
+              </LayoutComponent>
             </ProvideAuth>
           </ToastProvider>
         </SWRConfig>

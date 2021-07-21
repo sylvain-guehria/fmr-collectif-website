@@ -273,15 +273,6 @@ const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
                     <SaveAlt />
                   </Button>
                 </Tooltip>
-                {/* <Tooltip
-                  id="delete"
-                  title={'Supprimer produit'}
-                  placement="left"
-                  classes={{ tooltip: classes.tooltip }}>
-                  <Button link className={classes.actionButton} onClick={() => deleteItem(uid)}>
-                    <Delete color={'error'} />
-                  </Button>
-                </Tooltip> */}
                 <ConfirmDialog
                   dialogTitle="Voulez-vous vraiment supprimer cet item ?"
                   dialogMessage={label}

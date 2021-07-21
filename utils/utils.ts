@@ -9,6 +9,6 @@ export const formatTimeStamp = (timeStamp: number): string => {
   return new Date(timeStamp).toLocaleDateString('fr');
 };
 
-export const isBrowser = (): boolean => {
+export const isInBrowser = (): boolean => {
   return typeof window !== 'undefined';
 };

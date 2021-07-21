@@ -1,5 +1,6 @@
 import React from 'react';
 import { string } from 'prop-types';
+import Image from 'next/image';
 
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
@@ -40,17 +41,15 @@ PageChange.propTypes = {
   path: string
 };
 
-export default function PageChange(props) {
+export default function PageChange(_props) {
   const classes = useStyles();
   return (
     <div>
       <div className={classes.wrapperDiv}>
-        <div className={classes.iconWrapper}>
+        <div className={classes.iconWrapper} style={{display: 'flex'}}>
+        <Image src='/img/fmr-logo.webp' alt='fmr logo' width={225} height={178} />
           <CircularProgress className={classes.progress} />
         </div>
-        <h4 className={classes.title}>
-          Loading page contents for: {props.path}
-        </h4>
       </div>
     </div>
   );
