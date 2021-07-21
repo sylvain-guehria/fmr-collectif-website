@@ -167,7 +167,7 @@ export default function SectionFooter() {
                 </List>
               </div>
               <div className={classes.right}>
-                &copy; {1900 + new Date().getYear()} , made with{" "}
+                &copy; {1900 + new Date().getFullYear()} , made with{" "}
                 <Favorite className={classes.icon} /> by{" "}
                 <a
                   href="https://www.creative-tim.com?ref=njsmkp-footer-components"
@@ -341,7 +341,7 @@ export default function SectionFooter() {
                 </List>
               </div>
               <div className={classes.right}>
-                Copyright &copy; {1900 + new Date().getYear()}{" "}
+                Copyright &copy; {1900 + new Date().getFullYear()}{" "}
                 <a
                   href="https://www.creative-tim.com?ref=njsmkp-footer-components"
                   target="_blank"
@@ -472,7 +472,7 @@ export default function SectionFooter() {
           theme="white"
           content={
             <div className={classNames(classes.pullCenter, classes.copyRight)}>
-              Copyright &copy; {1900 + new Date().getYear()}{" "}
+              Copyright &copy; {1900 + new Date().getFullYear()}{" "}
               <a
                 href="https://www.creative-tim.com?ref=njsmkp-footer-components"
                 target="_blank"
@@ -625,7 +625,7 @@ export default function SectionFooter() {
               <div
                 className={classNames(classes.pullCenter, classes.copyRight)}
               >
-                Copyright &copy; {1900 + new Date().getYear()}{" "}
+                Copyright &copy; {1900 + new Date().getFullYear()}{" "}
                 <a
                   href="https://www.creative-tim.com?ref=njsmkp-footer-components"
                   target="_blank"
