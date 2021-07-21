@@ -8,7 +8,7 @@ import sectionsPageStyle from 'styles/jss/nextjs-material-kit-pro/pages/sections
 
 const useStyles = makeStyles(sectionsPageStyle);
 
-export default function Ticketoffice() {
+const Ticketoffice: React.FC = () => {
   React.useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
@@ -23,7 +23,7 @@ export default function Ticketoffice() {
         fixed
         changeColorOnScroll={{
           height: 300,
-          color: 'info'
+          color: 'info',
         }}
       />
       <div className={classes.main}>
@@ -31,4 +31,5 @@ export default function Ticketoffice() {
       </div>
     </div>
   );
-}
+};
+export default Ticketoffice;

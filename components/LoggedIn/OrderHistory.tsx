@@ -1,39 +1,33 @@
-/*eslint-disable*/
-import React from "react";
+import React from 'react';
 // nodejs library that concatenates classes
-import classNames from "classnames";
+import classNames from 'classnames';
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 // @material-ui/icons
-import Camera from "@material-ui/icons/Camera";
-import Palette from "@material-ui/icons/Palette";
-import People from "@material-ui/icons/People";
+import Camera from '@material-ui/icons/Camera';
+import Palette from '@material-ui/icons/Palette';
+import People from '@material-ui/icons/People';
 // core components
-import GridContainer from "components/lib/Grid/GridContainer.js";
-import GridItem from "components/lib/Grid/GridItem.js";
-import NavPills from "components/lib/NavPills/NavPills.js";
-import Card from "components/lib/Card/Card.js";
-import CardBody from "components/lib/Card/CardBody.js";
-import CardHeader from "components/lib/Card/CardHeader.js";
-import Badge from "components/lib/Badge/Badge.js";
-import Muted from "components/lib/Typography/Muted.js";
-import Clearfix from "components/lib/Clearfix/Clearfix.js";
+import GridContainer from 'components/lib/Grid/GridContainer.js';
+import GridItem from 'components/lib/Grid/GridItem.js';
+import NavPills from 'components/lib/NavPills/NavPills.js';
+import Card from 'components/lib/Card/Card.js';
+import CardBody from 'components/lib/Card/CardBody.js';
+import CardHeader from 'components/lib/Card/CardHeader.js';
+import Badge from 'components/lib/Badge/Badge.js';
+import Muted from 'components/lib/Typography/Muted.js';
+import Clearfix from 'components/lib/Clearfix/Clearfix.js';
 
-import profilePageStyle from "styles/jss/nextjs-material-kit-pro/pages/profilePageStyle.js";
+import profilePageStyle from 'styles/jss/nextjs-material-kit-pro/pages/profilePageStyle.js';
 
 const useStyles = makeStyles(profilePageStyle);
 
-const History: React.FC = ({ ...rest }) => {
+const History: React.FC = () => {
   React.useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
   });
   const classes = useStyles();
-  const imageClasses = classNames(
-    classes.imgRaised,
-    classes.imgRoundedCircle,
-    classes.imgFluid
-  );
   const navImageClasses = classNames(classes.imgRounded, classes.imgGallery);
   return (
     <div>
@@ -45,37 +39,25 @@ const History: React.FC = ({ ...rest }) => {
               color="primary"
               tabs={[
                 {
-                  tabButton: "Work",
+                  tabButton: 'Work',
                   tabIcon: Palette,
                   tabContent: (
                     <GridContainer>
-                      <GridItem
-                        xs={12}
-                        sm={12}
-                        md={7}
-                        className={classes.gridItem}
-                      >
+                      <GridItem xs={12} sm={12} md={7} className={classes.gridItem}>
                         <h4 className={classes.title}>Latest Collections</h4>
                         <GridContainer className={classes.collections}>
                           <GridItem xs={12} sm={12} md={6}>
                             <Card
                               background
                               style={{
-                                backgroundImage:
-                                  "url('/img/examples/mariya-georgieva.jpg')",
-                              }}
-                            >
+                                backgroundImage: "url('/img/examples/mariya-georgieva.jpg')",
+                              }}>
                               <CardBody background className={classes.cardBody}>
-                                <Badge
-                                  color="warning"
-                                  className={classes.badge}
-                                >
+                                <Badge color="warning" className={classes.badge}>
                                   Spring 2016
                                 </Badge>
                                 <a href="#pablo">
-                                  <h2 className={classes.cardTitleWhite}>
-                                    Stilleto
-                                  </h2>
+                                  <h2 className={classes.cardTitleWhite}>Stilleto</h2>
                                 </a>
                               </CardBody>
                             </Card>
@@ -84,18 +66,14 @@ const History: React.FC = ({ ...rest }) => {
                             <Card
                               background
                               style={{
-                                backgroundImage:
-                                  "url('/img/examples/clem-onojeghuo.jpg')",
-                              }}
-                            >
+                                backgroundImage: "url('/img/examples/clem-onojeghuo.jpg')",
+                              }}>
                               <CardBody background className={classes.cardBody}>
                                 <Badge color="info" className={classes.badge}>
                                   Spring 2016
                                 </Badge>
                                 <a href="#pablo">
-                                  <h2 className={classes.cardTitleWhite}>
-                                    High Heels
-                                  </h2>
+                                  <h2 className={classes.cardTitleWhite}>High Heels</h2>
                                 </a>
                               </CardBody>
                             </Card>
@@ -104,18 +82,14 @@ const History: React.FC = ({ ...rest }) => {
                             <Card
                               background
                               style={{
-                                backgroundImage:
-                                  "url('/img/examples/olu-eletu.jpg')",
-                              }}
-                            >
+                                backgroundImage: "url('/img/examples/olu-eletu.jpg')",
+                              }}>
                               <CardBody background className={classes.cardBody}>
                                 <Badge color="danger" className={classes.badge}>
                                   Summer 2016
                                 </Badge>
                                 <a href="#pablo">
-                                  <h2 className={classes.cardTitleWhite}>
-                                    Flats
-                                  </h2>
+                                  <h2 className={classes.cardTitleWhite}>Flats</h2>
                                 </a>
                               </CardBody>
                             </Card>
@@ -124,33 +98,21 @@ const History: React.FC = ({ ...rest }) => {
                             <Card
                               background
                               style={{
-                                backgroundImage:
-                                  "url('/img/examples/darren-coleshill.jpg')",
-                              }}
-                            >
+                                backgroundImage: "url('/img/examples/darren-coleshill.jpg')",
+                              }}>
                               <CardBody background className={classes.cardBody}>
-                                <Badge
-                                  color="success"
-                                  className={classes.badge}
-                                >
+                                <Badge color="success" className={classes.badge}>
                                   Winter 2016
                                 </Badge>
                                 <a href="#pablo">
-                                  <h2 className={classes.cardTitleWhite}>
-                                    Men{"'"}s Sneakers
-                                  </h2>
+                                  <h2 className={classes.cardTitleWhite}>Men{"'"}s Sneakers</h2>
                                 </a>
                               </CardBody>
                             </Card>
                           </GridItem>
                         </GridContainer>
                       </GridItem>
-                      <GridItem
-                        xs={12}
-                        sm={12}
-                        md={2}
-                        className={classes.gridItem}
-                      >
+                      <GridItem xs={12} sm={12} md={2} className={classes.gridItem}>
                         <h4 className={classes.title}>Stats</h4>
                         <ul className={classes.listUnstyled}>
                           <li>
@@ -169,9 +131,8 @@ const History: React.FC = ({ ...rest }) => {
                         <hr />
                         <h4 className={classes.title}>About this work</h4>
                         <p className={classes.description}>
-                          French luxury footwear and fashion. The footwear has
-                          incorporated shiny, red-lacquered soles that have
-                          become his signature.
+                          French luxury footwear and fashion. The footwear has incorporated shiny,
+                          red-lacquered soles that have become his signature.
                         </p>
                         <hr />
                         <h4 className={classes.title}>Focus</h4>
@@ -182,61 +143,44 @@ const History: React.FC = ({ ...rest }) => {
                   ),
                 },
                 {
-                  tabButton: "Connections",
+                  tabButton: 'Connections',
                   tabIcon: People,
                   tabContent: (
                     <div>
                       <GridContainer justify="center">
-                        <GridItem
-                          xs={12}
-                          sm={12}
-                          md={5}
-                          className={classes.gridItem}
-                        >
+                        <GridItem xs={12} sm={12} md={5} className={classes.gridItem}>
                           <Card profile plain className={classes.card}>
                             <GridContainer>
                               <GridItem xs={12} sm={12} md={5}>
                                 <CardHeader image plain>
                                   <a href="#pablo">
-                                    <img
-                                      src="/img/faces/avatar.jpg"
-                                      alt="..."
-                                    />
+                                    <img src="/img/faces/avatar.jpg" alt="..." />
                                   </a>
                                   <div
                                     className={classes.coloredShadow}
                                     style={{
-                                      backgroundImage:
-                                        "url('/img/faces/avatar.jpg')",
-                                      opacity: "1",
+                                      backgroundImage: "url('/img/faces/avatar.jpg')",
+                                      opacity: '1',
                                     }}
                                   />
                                 </CardHeader>
                               </GridItem>
                               <GridItem xs={12} sm={12} md={7}>
                                 <CardBody plain>
-                                  <h4 className={classes.cardTitle}>
-                                    Gigi Hadid
-                                  </h4>
+                                  <h4 className={classes.cardTitle}>Gigi Hadid</h4>
                                   <Muted>
                                     <h6>MODEL</h6>
                                   </Muted>
                                   <p className={classes.description}>
-                                    Don{"'"}t be scared of the truth because we
-                                    need to restart the human foundation in
-                                    truth...
+                                    Don{"'"}t be scared of the truth because we need to restart the
+                                    human foundation in truth...
                                   </p>
                                 </CardBody>
                               </GridItem>
                             </GridContainer>
                           </Card>
                         </GridItem>
-                        <GridItem
-                          xs={12}
-                          sm={12}
-                          md={5}
-                          className={classes.gridItem}
-                        >
+                        <GridItem xs={12} sm={12} md={5} className={classes.gridItem}>
                           <Card profile plain className={classes.card}>
                             <GridContainer>
                               <GridItem xs={12} sm={12} md={5}>
@@ -247,25 +191,21 @@ const History: React.FC = ({ ...rest }) => {
                                   <div
                                     className={classes.coloredShadow}
                                     style={{
-                                      backgroundImage:
-                                        "url('/img/faces/marc.jpg')",
-                                      opacity: "1",
+                                      backgroundImage: "url('/img/faces/marc.jpg')",
+                                      opacity: '1',
                                     }}
                                   />
                                 </CardHeader>
                               </GridItem>
                               <GridItem xs={12} sm={12} md={7}>
                                 <CardBody plain>
-                                  <h4 className={classes.cardTitle}>
-                                    Marc Jacobs
-                                  </h4>
+                                  <h4 className={classes.cardTitle}>Marc Jacobs</h4>
                                   <Muted>
                                     <h6>DESIGNER</h6>
                                   </Muted>
                                   <p className={classes.description}>
-                                    Don{"'"}t be scared of the truth because we
-                                    need to restart the human foundation in
-                                    truth...
+                                    Don{"'"}t be scared of the truth because we need to restart the
+                                    human foundation in truth...
                                   </p>
                                 </CardBody>
                               </GridItem>
@@ -274,37 +214,26 @@ const History: React.FC = ({ ...rest }) => {
                         </GridItem>
                       </GridContainer>
                       <GridContainer justify="center">
-                        <GridItem
-                          xs={12}
-                          sm={12}
-                          md={5}
-                          className={classes.gridItem}
-                        >
+                        <GridItem xs={12} sm={12} md={5} className={classes.gridItem}>
                           <Card profile plain className={classes.card}>
                             <GridContainer>
                               <GridItem xs={12} sm={12} md={5}>
                                 <CardHeader image plain>
                                   <a href="#pablo">
-                                    <img
-                                      src="/img/faces/kendall.jpg"
-                                      alt="..."
-                                    />
+                                    <img src="/img/faces/kendall.jpg" alt="..." />
                                   </a>
                                   <div
                                     className={classes.coloredShadow}
                                     style={{
-                                      backgroundImage:
-                                        "url('/img/faces/kendall.jpg')",
-                                      opacity: "1",
+                                      backgroundImage: "url('/img/faces/kendall.jpg')",
+                                      opacity: '1',
                                     }}
                                   />
                                 </CardHeader>
                               </GridItem>
                               <GridItem xs={12} sm={12} md={7}>
                                 <CardBody plain>
-                                  <h4 className={classes.cardTitle}>
-                                    Kendall Jenner
-                                  </h4>
+                                  <h4 className={classes.cardTitle}>Kendall Jenner</h4>
                                   <Muted>
                                     <h6>MODEL</h6>
                                   </Muted>
@@ -317,37 +246,26 @@ const History: React.FC = ({ ...rest }) => {
                             </GridContainer>
                           </Card>
                         </GridItem>
-                        <GridItem
-                          xs={12}
-                          sm={12}
-                          md={5}
-                          className={classes.gridItem}
-                        >
+                        <GridItem xs={12} sm={12} md={5} className={classes.gridItem}>
                           <Card profile plain className={classes.card}>
                             <GridContainer>
                               <GridItem xs={12} sm={12} md={5}>
                                 <CardHeader image plain>
                                   <a href="#pablo">
-                                    <img
-                                      src="/img/faces/card-profile2-square.jpg"
-                                      alt="..."
-                                    />
+                                    <img src="/img/faces/card-profile2-square.jpg" alt="..." />
                                   </a>
                                   <div
                                     className={classes.coloredShadow}
                                     style={{
-                                      backgroundImage:
-                                        "url('/img/faces/card-profile2-square.jpg')",
-                                      opacity: "1",
+                                      backgroundImage: "url('/img/faces/card-profile2-square.jpg')",
+                                      opacity: '1',
                                     }}
                                   />
                                 </CardHeader>
                               </GridItem>
                               <GridItem xs={12} sm={12} md={7}>
                                 <CardBody plain>
-                                  <h4 className={classes.cardTitle}>
-                                    George West
-                                  </h4>
+                                  <h4 className={classes.cardTitle}>George West</h4>
                                   <Muted>
                                     <h6>MODEL/DJ</h6>
                                   </Muted>
@@ -364,7 +282,7 @@ const History: React.FC = ({ ...rest }) => {
                   ),
                 },
                 {
-                  tabButton: "Media",
+                  tabButton: 'Media',
                   tabIcon: Camera,
                   tabContent: (
                     <GridContainer justify="center">
@@ -408,5 +326,5 @@ const History: React.FC = ({ ...rest }) => {
       </div>
     </div>
   );
-}
+};
 export default History;

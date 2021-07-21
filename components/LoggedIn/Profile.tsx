@@ -1,37 +1,31 @@
-/*eslint-disable*/
-import React from "react";
+import React from 'react';
 // nodejs library that concatenates classes
-import classNames from "classnames";
+import classNames from 'classnames';
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-import Tooltip from "@material-ui/core/Tooltip";
+import { makeStyles } from '@material-ui/core/styles';
+import Tooltip from '@material-ui/core/Tooltip';
 // @material-ui/icons
-import Add from "@material-ui/icons/Add";
+import Add from '@material-ui/icons/Add';
 // core components
-import Header from "components/Header/Header.js";
-import GridContainer from "components/lib/Grid/GridContainer.js";
-import GridItem from "components/lib/Grid/GridItem.js";
-import HeaderLinks from "components/Header/HeaderLinks.js";
-import Parallax from "components/lib/Parallax/Parallax.js";
-import Clearfix from "components/lib/Clearfix/Clearfix.js";
-import Button from "../lib/CustomButtons/Button";
+import Header from 'components/Header/Header.js';
+import GridContainer from 'components/lib/Grid/GridContainer.js';
+import GridItem from 'components/lib/Grid/GridItem.js';
+import HeaderLinks from 'components/Header/HeaderLinks.js';
+import Parallax from 'components/lib/Parallax/Parallax.js';
+import Clearfix from 'components/lib/Clearfix/Clearfix.js';
+import Button from '../lib/CustomButtons/Button';
 
-import profilePageStyle from "styles/jss/nextjs-material-kit-pro/pages/profilePageStyle.js";
+import profilePageStyle from 'styles/jss/nextjs-material-kit-pro/pages/profilePageStyle.js';
 
 const useStyles = makeStyles(profilePageStyle);
 
-const  Profile: React.FC = ({ ...rest }) => {
+const Profile: React.FC = ({ ...rest }) => {
   React.useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
   });
   const classes = useStyles();
-  const imageClasses = classNames(
-    classes.imgRaised,
-    classes.imgRoundedCircle,
-    classes.imgFluid
-  );
-  const navImageClasses = classNames(classes.imgRounded, classes.imgGallery);
+  const imageClasses = classNames(classes.imgRaised, classes.imgRoundedCircle, classes.imgFluid);
   return (
     <div>
       <Header
@@ -41,53 +35,30 @@ const  Profile: React.FC = ({ ...rest }) => {
         fixed
         changeColorOnScroll={{
           height: 200,
-          color: "info",
+          color: 'info',
         }}
         {...rest}
       />
-      <Parallax
-        image="/img/examples/city.jpg"
-        filter="dark"
-        className={classes.parallax}
-      />
+      <Parallax image="/img/examples/city.jpg" filter="dark" className={classes.parallax} />
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
           <GridContainer justify="center">
             <GridItem xs={12} sm={12} md={6}>
               <div className={classes.profile}>
                 <div>
-                  <img
-                    src="/img/faces/christian.jpg"
-                    alt="..."
-                    className={imageClasses}
-                  />
+                  <img src="/img/faces/christian.jpg" alt="..." className={imageClasses} />
                 </div>
                 <div className={classes.name}>
                   <h3 className={classes.title}>Christian Louboutin</h3>
                   <h6>DESIGNER</h6>
-                  <Button
-                    justIcon
-                    simple
-                    color="dribbble"
-                    className={classes.margin5}
-                  >
-                    <i className={classes.socials + " fab fa-dribbble"} />
+                  <Button justIcon simple color="dribbble" className={classes.margin5}>
+                    <i className={classes.socials + ' fab fa-dribbble'} />
                   </Button>
-                  <Button
-                    justIcon
-                    simple
-                    color="twitter"
-                    className={classes.margin5}
-                  >
-                    <i className={classes.socials + " fab fa-twitter"} />
+                  <Button justIcon simple color="twitter" className={classes.margin5}>
+                    <i className={classes.socials + ' fab fa-twitter'} />
                   </Button>
-                  <Button
-                    justIcon
-                    simple
-                    color="pinterest"
-                    className={classes.margin5}
-                  >
-                    <i className={classes.socials + " fab fa-pinterest"} />
+                  <Button justIcon simple color="pinterest" className={classes.margin5}>
+                    <i className={classes.socials + ' fab fa-pinterest'} />
                   </Button>
                 </div>
               </div>
@@ -96,14 +67,8 @@ const  Profile: React.FC = ({ ...rest }) => {
                   id="tooltip-top"
                   title="Follow this user"
                   placement="top"
-                  classes={{ tooltip: classes.tooltip }}
-                >
-                  <Button
-                    justIcon
-                    round
-                    color="primary"
-                    className={classes.followButton}
-                  >
+                  classes={{ tooltip: classes.tooltip }}>
+                  <Button justIcon round color="primary" className={classes.followButton}>
                     <Add className={classes.followIcon} />
                   </Button>
                 </Tooltip>
@@ -112,10 +77,9 @@ const  Profile: React.FC = ({ ...rest }) => {
           </GridContainer>
           <div className={classNames(classes.description, classes.textCenter)}>
             <p>
-              An artist of considerable range, Chet Faker — the name taken by
-              Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs
-              and records all of his own music, giving it a warm, intimate feel
-              with a solid groove structure.{" "}
+              An artist of considerable range, Chet Faker — the name taken by Melbourne-raised,
+              Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving
+              it a warm, intimate feel with a solid groove structure.{' '}
             </p>
           </div>
           <Clearfix />
@@ -123,6 +87,6 @@ const  Profile: React.FC = ({ ...rest }) => {
       </div>
     </div>
   );
-}
+};
 
 export default Profile;

@@ -114,13 +114,13 @@ export default function HeaderLinks(props) {
                 <ArtTrack className={classes.dropdownIcons} /> Qui somme nous
               </a>
             </Link>,
-            <Link href="/pricing">
+            <Link href="/become-ambassador">
               <a className={classes.dropdownLink}>
                 <PersonAdd className={classes.dropdownIcons} />
                    Devenir membre
                     </a>
             </Link>,
-             <Link href="/contactus">
+             <Link href="/contact-us">
              <a className={classes.dropdownLink}>
                <Call className={classes.dropdownIcons} />
                   Nous contacter
@@ -168,13 +168,13 @@ export default function HeaderLinks(props) {
           }}
           buttonIcon={Store}
           dropdownList={[
-            <Link href="/ticketoffice">
+            <Link href="/ticket-office">
               <a className={classes.dropdownLink}>
                 <LineStyle className={classes.dropdownIcons} />
                  Billeterie
               </a>
             </Link>,
-            <Link href="/ecommerce">
+            <Link href="/shop">
               <a className={classes.dropdownLink}>
                 <ShoppingBasket className={classes.dropdownIcons} />
                 Shop

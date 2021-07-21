@@ -1,21 +1,22 @@
 import React from 'react';
-// nodejs library that concatenates classes
 import classNames from 'classnames';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
 // core components
 import Header from 'components/Header/Header.js';
 import HeaderLinks from 'components/Header/HeaderLinks.js';
+import Parallax from 'components/lib/Parallax/Parallax.js';
 import GridContainer from 'components/lib/Grid/GridContainer.js';
 import GridItem from 'components/lib/Grid/GridItem.js';
-import Parallax from 'components/lib/Parallax/Parallax.js';
-import OrderHistory from './OrderHistory';
+// sections for this page
+import SectionPricing from 'pages-sections/pricing-page/SectionPricing.js';
+import SectionFeatures from 'pages-sections/pricing-page/SectionFeatures.js';
 
-import styles from 'styles/jss/nextjs-material-kit-pro/pages/ecommerceStyle.js';
+import pricingStyle from 'styles/jss/nextjs-material-kit-pro/pages/pricingStyle.js';
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles(pricingStyle);
 
-const Orders: React.FC = () => {
+const BecomeAmbassador: React.FC = () => {
   React.useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
@@ -33,23 +34,31 @@ const Orders: React.FC = () => {
           color: 'info',
         }}
       />
-      <Parallax image="/img/examples/clark-street-merc.jpg" filter="dark" small>
+
+      <Parallax image="/img/bg2.jpg" filter="dark" small>
         <div className={classes.container}>
           <GridContainer>
             <GridItem
               md={8}
               sm={8}
               className={classNames(classes.mlAuto, classes.mrAuto, classes.textCenter)}>
-              <div className={classes.brand}>
-                <h1 className={classes.title}>Vos achats</h1>
-                <h4>Retrouvez ici vos commandes et billets d&apos;entrés</h4>
-              </div>
+              <h1 className={classes.title}>Let{"'"}s get started</h1>
+              <h4>
+                To get started, you will need to choose a plan for your needs. You can opt in for
+                the monthly of annual options and go with one fo the three listed below.
+              </h4>
             </GridItem>
           </GridContainer>
         </div>
       </Parallax>
-      <OrderHistory />
+      <div className={classNames(classes.main, classes.mainRaised)}>
+        <div className={classes.container}>
+          <SectionPricing />
+          <hr />
+          <SectionFeatures />
+        </div>
+      </div>
     </div>
   );
 };
-export default Orders;
+export default BecomeAmbassador;

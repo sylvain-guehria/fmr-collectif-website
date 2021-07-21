@@ -43,7 +43,7 @@ const LoggedInLayout: React.FC = ({ children }): React.ReactElement => {
               </List>
             </div>
             <div className={classes.right}>
-              &copy; {1900 + new Date().getDate()} , made with <Favorite className={classes.icon} />{' '}
+              &copy; {2000 + new Date().getDate()} , made with <Favorite className={classes.icon} />{' '}
               by Sylvain
             </div>
           </div>

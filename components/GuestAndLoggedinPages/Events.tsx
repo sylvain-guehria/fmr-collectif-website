@@ -1,21 +1,18 @@
 import React from 'react';
-// nodejs library that concatenates classes
-import classNames from 'classnames';
-// @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
-// core components
 import Header from 'components/Header/Header.js';
 import HeaderLinks from 'components/Header/HeaderLinks.js';
 import GridContainer from 'components/lib/Grid/GridContainer.js';
 import GridItem from 'components/lib/Grid/GridItem.js';
 import Parallax from 'components/lib/Parallax/Parallax.js';
-import OrderHistory from './OrderHistory';
+import SectionImage from 'pages-sections/blog-posts/SectionImage.js';
+import SectionEvents from '../../pages-sections/sections-page/SectionEvents';
 
-import styles from 'styles/jss/nextjs-material-kit-pro/pages/ecommerceStyle.js';
+import blogPostsPageStyle from 'styles/jss/nextjs-material-kit-pro/pages/blogPostsPageStyle.js';
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles(blogPostsPageStyle);
 
-const Orders: React.FC = () => {
+const Events: React.FC = () => {
   React.useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
@@ -29,27 +26,28 @@ const Orders: React.FC = () => {
         fixed
         color="transparent"
         changeColorOnScroll={{
-          height: 300,
+          height: 400,
           color: 'info',
         }}
       />
-      <Parallax image="/img/examples/clark-street-merc.jpg" filter="dark" small>
+      <Parallax image="/img/bg10.jpg" filter="dark" small>
         <div className={classes.container}>
-          <GridContainer>
-            <GridItem
-              md={8}
-              sm={8}
-              className={classNames(classes.mlAuto, classes.mrAuto, classes.textCenter)}>
-              <div className={classes.brand}>
-                <h1 className={classes.title}>Vos achats</h1>
-                <h4>Retrouvez ici vos commandes et billets d&apos;entrés</h4>
-              </div>
+          <GridContainer justify="center">
+            <GridItem xs={12} sm={12} md={8} className={classes.textCenter}>
+              <h2 className={classes.title}>
+                A Place for Entrepreneurs to Share and Discover New Stories
+              </h2>
             </GridItem>
           </GridContainer>
         </div>
       </Parallax>
-      <OrderHistory />
+      <div className={classes.main}>
+        <div className={classes.container}>
+          <SectionEvents id="events" />
+        </div>
+        <SectionImage />
+      </div>
     </div>
   );
 };
-export default Orders;
+export default Events;

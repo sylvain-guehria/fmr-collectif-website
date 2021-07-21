@@ -5,7 +5,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import { makeStyles } from '@material-ui/core/styles';
 import Favorite from '@material-ui/icons/Favorite';
-
+import SocialMediaLinks from '../SocialMedia/SocialMediaIconLinks';
 import footerStyle from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/footerStyle.js';
 
 const useStyles = makeStyles(footerStyle);
@@ -16,13 +16,23 @@ const GuestOrLoggedInLayout: React.FC = ({ children }): React.ReactElement => {
     <>
       {children}
       <Footer
+        // theme="white"
         content={
           <div>
             <div className={classes.left}>
+              <a
+                href="https://www.creative-tim.com/product/nextjs-material-kit-pro?ref=njsmkp-presentation"
+                target="_blank"
+                className={classes.footerBrand}
+                rel="noreferrer">
+                FMR collectif, l&apos;association <Favorite color={'error'} />
+              </a>
+            </div>
+            <div className={classes.pullCenter}>
               <List className={classes.list}>
                 <ListItem className={classes.inlineBlock}>
                   <a href="#" target="_blank" className={classes.block} rel="noreferrer">
-                    Creative Tim
+                    guest or logged
                   </a>
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
@@ -31,8 +41,8 @@ const GuestOrLoggedInLayout: React.FC = ({ children }): React.ReactElement => {
                   </a>
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
-                  <a href="#" target="_blank" className={classes.block} rel="noreferrer">
-                    GestOrLoggedIn
+                  <a href="#" className={classes.block}>
+                    Blog
                   </a>
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
@@ -42,10 +52,7 @@ const GuestOrLoggedInLayout: React.FC = ({ children }): React.ReactElement => {
                 </ListItem>
               </List>
             </div>
-            <div className={classes.right}>
-              &copy; {1900 + new Date().getDate()} , made with <Favorite className={classes.icon} />{' '}
-              by Sylvain
-            </div>
+            <SocialMediaLinks />
           </div>
         }
       />
