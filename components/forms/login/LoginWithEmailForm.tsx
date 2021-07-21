@@ -25,7 +25,6 @@ import PersonAdd from '@material-ui/icons/PersonAdd';
 import CardBody from '../../lib/Card/CardBody';
 import { emailConnexionUseCase } from '../../../usecases';
 import ForgotPasswordButton from '../../modals/ForgotPasswordButton';
-// import LoadingLayer from 'components/LoadingLayer/LoadingLayer';
 
 const useStyles = makeStyles(signupPageStyle);
 
