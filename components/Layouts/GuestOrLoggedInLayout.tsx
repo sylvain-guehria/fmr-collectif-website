@@ -10,7 +10,7 @@ import footerStyle from 'styles/jss/nextjs-material-kit-pro/pages/componentsSect
 
 const useStyles = makeStyles(footerStyle);
 
-const DynamicPublicLayout: React.FC = ({ children }): React.ReactElement => {
+const GuestOrLoggedInLayout: React.FC = ({ children }): React.ReactElement => {
   const classes = useStyles();
   return (
     <>
@@ -21,30 +21,22 @@ const DynamicPublicLayout: React.FC = ({ children }): React.ReactElement => {
             <div className={classes.left}>
               <List className={classes.list}>
                 <ListItem className={classes.inlineBlock}>
-                  <a
-                    href="https://www.creative-tim.com/?ref=njsmkp-shopping-cart"
-                    target="_blank"
-                    className={classes.block}
-                    rel="noreferrer">
+                  <a href="#" target="_blank" className={classes.block} rel="noreferrer">
                     Creative Tim
                   </a>
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
-                  <a
-                    href="https://www.creative-tim.com/home?ref=njsmkp-shopping-cart"
-                    target="_blank"
-                    className={classes.block}
-                    rel="noreferrer">
+                  <a href="#" target="_blank" className={classes.block} rel="noreferrer">
                     About us
                   </a>
                 </ListItem>
-                <ListItem className={classes.inlineBlock}>Public Layout</ListItem>
                 <ListItem className={classes.inlineBlock}>
-                  <a
-                    href="https://www.creative-tim.com/license?ref=njsmkp-shopping-cart"
-                    target="_blank"
-                    className={classes.block}
-                    rel="noreferrer">
+                  <a href="#" target="_blank" className={classes.block} rel="noreferrer">
+                    GestOrLoggedIn
+                  </a>
+                </ListItem>
+                <ListItem className={classes.inlineBlock}>
+                  <a href="#" target="_blank" className={classes.block} rel="noreferrer">
                     Licenses
                   </a>
                 </ListItem>
@@ -60,8 +52,8 @@ const DynamicPublicLayout: React.FC = ({ children }): React.ReactElement => {
     </>
   );
 };
-DynamicPublicLayout.propTypes = {
+GuestOrLoggedInLayout.propTypes = {
   children: PropTypes.node,
 };
 
-export default DynamicPublicLayout;
+export default GuestOrLoggedInLayout;

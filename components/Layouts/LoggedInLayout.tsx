@@ -21,30 +21,22 @@ const LoggedInLayout: React.FC = ({ children }): React.ReactElement => {
             <div className={classes.left}>
               <List className={classes.list}>
                 <ListItem className={classes.inlineBlock}>
-                  <a
-                    href="https://www.creative-tim.com/?ref=njsmkp-shopping-cart"
-                    target="_blank"
-                    className={classes.block}
-                    rel="noreferrer">
+                  <a href="#" target="_blank" className={classes.block} rel="noreferrer">
                     Creative Tim
                   </a>
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
-                  <a
-                    href="https://www.creative-tim.com/home?ref=njsmkp-shopping-cart"
-                    target="_blank"
-                    className={classes.block}
-                    rel="noreferrer">
+                  <a href="#" target="_blank" className={classes.block} rel="noreferrer">
                     About us
                   </a>
                 </ListItem>
-                <ListItem className={classes.inlineBlock}>LoggedInLayout</ListItem>
                 <ListItem className={classes.inlineBlock}>
-                  <a
-                    href="https://www.creative-tim.com/license?ref=njsmkp-shopping-cart"
-                    target="_blank"
-                    className={classes.block}
-                    rel="noreferrer">
+                  <a href="#" target="_blank" className={classes.block} rel="noreferrer">
+                    LoggedIn
+                  </a>
+                </ListItem>
+                <ListItem className={classes.inlineBlock}>
+                  <a href="#" target="_blank" className={classes.block} rel="noreferrer">
                     Licenses
                   </a>
                 </ListItem>

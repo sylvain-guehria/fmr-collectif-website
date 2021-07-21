@@ -207,7 +207,7 @@ export default function HeaderLinks(props) {
                  Mon compte
               </a>
             </Link>,
-            <Link href="/ecommerce">
+            <Link href="/orders">
               <a className={classes.dropdownLink}>
                 <ShoppingBasket className={classes.dropdownIcons} />
                 Billets / achats
