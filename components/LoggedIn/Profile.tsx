@@ -6,31 +6,21 @@ import classNames from "classnames";
 import { makeStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
 // @material-ui/icons
-import Camera from "@material-ui/icons/Camera";
-import Palette from "@material-ui/icons/Palette";
-import People from "@material-ui/icons/People";
 import Add from "@material-ui/icons/Add";
-import Favorite from "@material-ui/icons/Favorite";
 // core components
 import Header from "components/Header/Header.js";
 import GridContainer from "components/lib/Grid/GridContainer.js";
 import GridItem from "components/lib/Grid/GridItem.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
-import NavPills from "components/lib/NavPills/NavPills.js";
-import Card from "components/lib/Card/Card.js";
-import CardBody from "components/lib/Card/CardBody.js";
-import CardHeader from "components/lib/Card/CardHeader.js";
-import Badge from "components/lib/Badge/Badge.js";
-import Muted from "components/lib/Typography/Muted.js";
 import Parallax from "components/lib/Parallax/Parallax.js";
 import Clearfix from "components/lib/Clearfix/Clearfix.js";
-import Button from "components/lib/CustomButtons/Button";
+import Button from "../lib/CustomButtons/Button";
 
 import profilePageStyle from "styles/jss/nextjs-material-kit-pro/pages/profilePageStyle.js";
 
 const useStyles = makeStyles(profilePageStyle);
 
-export default function Profile({ ...rest }) {
+const  Profile: React.FC = ({ ...rest }) => {
   React.useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
@@ -134,3 +124,5 @@ export default function Profile({ ...rest }) {
     </div>
   );
 }
+
+export default Profile;

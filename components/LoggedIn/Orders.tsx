@@ -16,7 +16,7 @@ import styles from "styles/jss/nextjs-material-kit-pro/pages/ecommerceStyle.js";
 
 const useStyles = makeStyles(styles);
 
-export default function Orders() {
+const Orders: React.FC =() => {
   React.useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
@@ -60,3 +60,4 @@ export default function Orders() {
     </div>
   );
 }
+export default Orders;

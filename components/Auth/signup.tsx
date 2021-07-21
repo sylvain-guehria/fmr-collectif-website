@@ -27,8 +27,7 @@ import LoginWithOtherAccount from '../forms/login/LoginWithOtherAccount';
 
 const useStyles = makeStyles(signupPageStyle);
 
-export default function SignUpComponent({ ...rest }) {
-
+const SignUpComponent: React.FC = ({ ...rest }) => {
   React.useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
@@ -48,11 +47,11 @@ export default function SignUpComponent({ ...rest }) {
       <div
         className={classes.pageHeader}
         style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1456949037425-4b097bbcc0e8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2089&q=80')",
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1456949037425-4b097bbcc0e8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2089&q=80')",
           backgroundSize: 'cover',
-          backgroundPosition: 'top center'
-        }}
-      >
+          backgroundPosition: 'top center',
+        }}>
         <div className={classes.container}>
           <GridContainer justify="center">
             <GridItem xs={12} sm={10} md={10}>
@@ -65,7 +64,6 @@ export default function SignUpComponent({ ...rest }) {
                   <GridContainer justify="center">
                     <GridItem xs={12} sm={5} md={5}>
                       <RegisterForm />
-
                     </GridItem>
                     <GridItem xs={12} sm={5} md={5}>
                       <InfoArea
@@ -105,8 +103,8 @@ export default function SignUpComponent({ ...rest }) {
                     <a
                       href="https://www.creative-tim.com/?ref=njsmkp-signup"
                       target="_blank"
-                      className={classes.block} rel="noreferrer"
-                    >
+                      className={classes.block}
+                      rel="noreferrer">
                       Creative Tim
                     </a>
                   </ListItem>
@@ -114,16 +112,15 @@ export default function SignUpComponent({ ...rest }) {
                     <a
                       href="https://www.creative-tim.com/home?ref=njsmkp-signup"
                       target="_blank"
-                      className={classes.block} rel="noreferrer"
-                    >
+                      className={classes.block}
+                      rel="noreferrer">
                       About us
                     </a>
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
                     <a
                       href="http://blog.creative-tim.com/?ref=njsmkp-signup"
-                      className={classes.block}
-                    >
+                      className={classes.block}>
                       Blog
                     </a>
                   </ListItem>
@@ -131,20 +128,20 @@ export default function SignUpComponent({ ...rest }) {
                     <a
                       href="https://www.creative-tim.com/license?ref=njsmkp-signup"
                       target="_blank"
-                      className={classes.block} rel="noreferrer"
-                    >
+                      className={classes.block}
+                      rel="noreferrer">
                       Licenses
                     </a>
                   </ListItem>
                 </List>
               </div>
               <div className={classes.right}>
-                &copy; {1900 + new Date().getYear()} , made with{' '}
-                <Favorite className={classes.icon} /> by{' '}
+                &copy; {2000 + new Date().getFullYear()} , made with
+                <Favorite className={classes.icon} /> by
                 <a
                   href="https://www.creative-tim.com?ref=njsmkp-signup"
-                  target="_blank" rel="noreferrer"
-                >
+                  target="_blank"
+                  rel="noreferrer">
                   Creative Tim
                 </a>{' '}
                 for a better web.
@@ -155,4 +152,6 @@ export default function SignUpComponent({ ...rest }) {
       </div>
     </div>
   );
-}
+};
+
+export default SignUpComponent;

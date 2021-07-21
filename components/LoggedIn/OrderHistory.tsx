@@ -23,7 +23,7 @@ import profilePageStyle from "styles/jss/nextjs-material-kit-pro/pages/profilePa
 
 const useStyles = makeStyles(profilePageStyle);
 
-export default function History({ ...rest }) {
+const History: React.FC = ({ ...rest }) => {
   React.useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
@@ -409,3 +409,4 @@ export default function History({ ...rest }) {
     </div>
   );
 }
+export default History;
