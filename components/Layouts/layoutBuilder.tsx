@@ -1,23 +1,24 @@
 import React from 'react';
 import LoggedInLayout from './LoggedInLayout';
 import AdminLayout from './AdminLayout';
-import PublicLayout from './PublicLayout';
+import PublicOnlyLayout from './PublicOnlyLayout';
+import GuestOrLoggedInLayout from './GuestOrLoggedInLayout';
 import { ForbiddenAddress } from './ForbiddenAddress';
 import UserEntity from '../../modules/user/UserEntity';
 import { EmptyLayout } from './EmptyLayout';
 
 export const buildGuestOrLoggedInLayout =
   () =>
-  (user: UserEntity, isUserLoading: boolean): React.FC => {
-    if (!user || isUserLoading) return EmptyLayout;
-    return isUserLoading ? LoggedInLayout : PublicLayout;
+  (_user: UserEntity, isUserLoading: boolean): React.FC => {
+    if (isUserLoading) return EmptyLayout;
+    return GuestOrLoggedInLayout;
   };
 
 export const buildGuestOnlyLayout =
-  (publicLayout = PublicLayout) =>
+  (publicLayout = PublicOnlyLayout) =>
   (user: UserEntity, isUserLoading: boolean): React.FC => {
-    if (!user || isUserLoading) return EmptyLayout;
-    if (isUserLoading) {
+    if (isUserLoading) return EmptyLayout;
+    if (user) {
       throw new ForbiddenAddress('/home');
     }
     return publicLayout;
@@ -26,8 +27,8 @@ export const buildGuestOnlyLayout =
 export const buildLoggedInOnlyLayout =
   (privateLayout = LoggedInLayout) =>
   (user: UserEntity, isUserLoading: boolean): React.FC => {
-    if (!user || isUserLoading) return EmptyLayout;
-    if (!isUserLoading) {
+    if (isUserLoading) return EmptyLayout;
+    if (!user) {
       throw new ForbiddenAddress('/home');
     }
     return privateLayout;

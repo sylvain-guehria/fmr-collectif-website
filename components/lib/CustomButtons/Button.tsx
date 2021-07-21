@@ -92,6 +92,7 @@ type ButtonProps = {
   onClick?: unknown;
   type?: string;
   target?: string;
+  href?: string;
 };
 
 export default RegularButton;

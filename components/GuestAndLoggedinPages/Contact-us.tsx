@@ -1,19 +1,20 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+// core components
 import Header from 'components/Header/Header.js';
 import HeaderLinks from 'components/Header/HeaderLinks.js';
 import SectionContacts from 'pages-sections/sections-page/SectionContacts.js';
 
-import sectionsPageStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsPageStyle.js';
+import contactUsStyle from 'styles/jss/nextjs-material-kit-pro/pages/contactUsStyle.js';
 
-const useStyles = makeStyles(sectionsPageStyle);
+const useStyles = makeStyles(contactUsStyle);
 
-export default function contactus() {
-  const classes = useStyles();
+const ContactUsPage: React.FC = () => {
   React.useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
   });
+  const classes = useStyles();
   return (
     <div>
       <Header
@@ -23,7 +24,7 @@ export default function contactus() {
         fixed
         changeColorOnScroll={{
           height: 300,
-          color: 'info'
+          color: 'info',
         }}
       />
       <div className={classes.main}>
@@ -31,4 +32,5 @@ export default function contactus() {
       </div>
     </div>
   );
-}
+};
+export default ContactUsPage;
