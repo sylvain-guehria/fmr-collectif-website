@@ -44,22 +44,27 @@ export const useAuth = () => {
 
 function useProvideAuth() {
   const [user, setUser] = useState(null);
+  const [isUserLoading, setIsUserLoading] = useState(true);
   const { addToast } = useToasts();
   const router = useRouter();
 
   const loginEmail = (email, password) => {
+    setIsUserLoading(true);
     return auth.signInWithEmailAndPassword(email, password).then(response => {
       return response.user;
-    }).catch(e => {
+    }).then(() => setIsUserLoading(false)).catch(e => {
       addToast(e.message, { appearance: 'error', autoDismiss: true });
+      setIsUserLoading(false);
     });
   };
 
   const loginGoogle = () => {
+    setIsUserLoading(true);
     const provider = new firebase.default.auth.GoogleAuthProvider();
     return auth
       .signInWithPopup(provider)
       .then(response => {
+        setIsUserLoading(false);
         return {
           uid: response.user?.uid,
           email: response.user?.email,
@@ -71,14 +76,17 @@ function useProvideAuth() {
       .catch(function (error) {
         addToast(error.message, { appearance: 'error', autoDismiss: true });
         logger.error(error);
+        setIsUserLoading(false);
       });
   };
 
   const loginFacebook = () => {
+    setIsUserLoading(true);
     const facebookProvider = new firebase.default.auth.FacebookAuthProvider();
     return auth
       .signInWithPopup(facebookProvider).
       then(response => {
+        setIsUserLoading(false);
         return {
           uid: response.user?.uid,
           email: response.user?.email,
@@ -90,14 +98,17 @@ function useProvideAuth() {
       .catch(error => {
         addToast(error.message, { appearance: 'error', autoDismiss: true });
         logger.info(error);
+        setIsUserLoading(false);
       });
   };
 
   const signUpEmail = (email, password) => {
+    setIsUserLoading(true);
     return firebase.default
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then(response => {
+        setIsUserLoading(false);
         return {
           uid: response.user?.uid,
           email: response.user?.email,
@@ -107,6 +118,7 @@ function useProvideAuth() {
       .catch(error => {
         addToast(error.message, { appearance: 'error', autoDismiss: true });
         logger.error({ error });
+        setIsUserLoading(false);
       });
   };
 
@@ -128,10 +140,10 @@ function useProvideAuth() {
     auth.sendPasswordResetEmail(email).then(() => {
       addToast('Un email pour vient de vous être envoyer', { appearance: 'info', autoDismiss: true });
     })
-    .catch(function (error) {
-      addToast(error.message, { appearance: 'error', autoDismiss: true });
-      logger.error(error);
-    });
+      .catch(function (error) {
+        addToast(error.message, { appearance: 'error', autoDismiss: true });
+        logger.error(error);
+      });
   };
 
   const confirmPasswordReset = (password, code) => {
@@ -144,6 +156,7 @@ function useProvideAuth() {
 
   useEffect(() => {
     const fetchUserInformation = async (uid) => {
+      setIsUserLoading(true);
       return await userRepository.getById(uid);
     };
 
@@ -156,9 +169,11 @@ function useProvideAuth() {
         const fullUser = await fetchUserInformation(user.uid);
         updateLastConnected(fullUser.updateLastLogin());
         setUser(fullUser.email ? fullUser : UserEntity.new({ ...user }));
+        setIsUserLoading(false);
         addToast(`Bonjour ${fullUser?.firstName} =)`, { appearance: 'success', autoDismiss: true });
       } else {
         setUser(false);
+        setIsUserLoading(false);
       }
     });
 
@@ -168,6 +183,7 @@ function useProvideAuth() {
   return {
     userId: user && user.uid,
     user: user,
+    isUserLoading,
     loginEmail,
     loginGoogle,
     loginFacebook,
