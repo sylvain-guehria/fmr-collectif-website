@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext, createContext } from 'react';
-// import queryString from 'query-string';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
@@ -8,29 +7,10 @@ import { useToasts } from 'react-toast-notifications';
 import firebaseUserRepository from '../modules/user/firebaseUserRepository';
 import UserEntity from '../modules/user/UserEntity';
 import { useRouter } from 'next/router';
+import { auth } from './fireauth';
 
-const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_PUBLIC_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.FIREBASE_storageBucket,
-  messagingSenderId: process.env.FIREBASE_messagingSenderId,
-  appId: process.env.FIREBASE_appId,
-  measurementId: process.env.FIREBASE_measurementId
-};
-
-let firebaseApp;
-
-if (!firebase.default.apps.length) {
-  firebaseApp = firebase.default.initializeApp(firebaseConfig);
-} else {
-  firebaseApp = firebase.default.app();
-}
-
-export const fs = firebaseApp.firestore();
-const authContext = createContext();
-export const auth = firebase.default.auth();
 const userRepository = new firebaseUserRepository();
+const authContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 export function ProvideAuth({ children }) {
