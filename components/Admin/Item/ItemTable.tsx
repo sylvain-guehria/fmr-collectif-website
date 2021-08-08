@@ -24,7 +24,7 @@ const ItemTable: React.FC<Props> = ({ items }) => {
 
   const emptyItem: ItemEntity = new ItemEntity({});
 
-  const [itemList, setItemList] = useState(items);
+  const [itemList, setItemList] = useState(items || []);
 
   const createItemAndUpdateState = async (): Promise<void> => {
     const item = await itemServiceDi.createItem(emptyItem);

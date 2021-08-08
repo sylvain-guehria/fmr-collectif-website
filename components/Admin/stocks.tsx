@@ -63,7 +63,7 @@ const Stocks: React.FC<Props> = ({ items = [] }) => {
               ) : (
                 <CardBody plain>
                   <h3 className={classes.cardTitle}>Produits</h3>
-                  {data && data.length && <ItemTable items={data} />}
+                  <ItemTable items={data} />
                 </CardBody>
               )}
             </div>
