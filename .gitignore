@@ -358,3 +358,6 @@ MigrationBackup/
 # local env files
 .env.local
 .env.development.local
+
+#used for emulate the firestore in local mode
+/emulatorData

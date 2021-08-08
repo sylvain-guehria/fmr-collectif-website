@@ -25,4 +25,11 @@ if (!admin.apps.length) {
     logger.error('Firebase admin initialization error', error.stack);
   }
 }
+
+if (process.env.ENV === 'local') {
+  // eslint-disable-next-line no-console
+  logger.info('using auth emulator on port 8080');
+  process.env['FIRESTORE_EMULATOR_HOST'] = 'localhost:8080';
+}
+
 export default admin.firestore();
