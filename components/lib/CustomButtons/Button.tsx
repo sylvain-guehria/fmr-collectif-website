@@ -54,7 +54,7 @@ const RegularButton: React.FC<ButtonProps> = React.forwardRef((props, ref) => {
   );
 });
 
-type ButtonProps = {
+export type ButtonProps = {
   color?:
     | 'primary'
     | 'secondary'

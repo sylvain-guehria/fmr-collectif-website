@@ -23,6 +23,7 @@ import Image from 'next/image';
 import tableStyles from 'styles/jss/nextjs-material-kit-pro/components/tableStyle.js';
 import { itemServiceDi } from '../../../di';
 import ConfirmDialog from '../../lib/ConfirmDialog/ConfirmDialog';
+import ImageUpload from '../../lib/CustomUpload/ImageUpload';
 
 const useStyles = makeStyles(adminStyle);
 const useTableStyles = makeStyles(tableStyles);
@@ -100,31 +101,22 @@ const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
       });
   };
 
+  const handleFileChange = (file: File): void => {
+    // eslint-disable-next-line no-console
+    console.log(file);
+  };
+
   return (
     <TableRow key={uid}>
       <TableCell className={tableClasses.tableCell} colSpan={8}>
         <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
           <div style={{ display: 'flex' }}>
             {isEditMode ? (
-              <CustomInput
-                formControlProps={{
-                  fullWidth: true,
-                }}
-                error={getError(errors, 'photoLink')}
-                inputProps={{
-                  ...register('photoLink'),
-                  placeholder: 'Lien vers photo',
-                  type: 'text',
-                  onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-                    setValue('photoLink', e?.target?.value),
-                  defaultValue: photoLink,
-                  disabled: !isEditMode,
-                  startAdornment: isEditMode ? (
-                    <InputAdornment position="start">
-                      <Edit fontSize="small" />
-                    </InputAdornment>
-                  ) : null,
-                }}
+              <ImageUpload
+                addButtonProps={{ round: true }}
+                changeButtonProps={{ round: true }}
+                removeButtonProps={{ round: true, color: 'danger' }}
+                callBackOnFileChange={handleFileChange}
               />
             ) : (
               <div style={{ width: '100%' }}>

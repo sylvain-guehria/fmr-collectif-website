@@ -2,6 +2,7 @@
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
+import 'firebase/firebase-storage';
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_PUBLIC_API_KEY,
@@ -23,3 +24,4 @@ if (!firebase.default.apps.length) {
 
 export const fs = firebaseApp.firestore();
 export const auth = firebase.default.auth();
+export const storage = firebase.default.storage();
