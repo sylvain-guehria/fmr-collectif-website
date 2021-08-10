@@ -2,7 +2,7 @@
 import React from 'react';
 
 import Link from 'next/link';
-import db from '../../auth/firestore/index';
+import db from '../../firebase/modules/index';
 
 const Posts = (props) => {
   const { entriesData } = props;

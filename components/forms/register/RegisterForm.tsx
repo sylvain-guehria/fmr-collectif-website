@@ -20,7 +20,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import signupPageStyle from '../../../styles/jss/nextjs-material-kit-pro/pages/signupPageStyle.js';
 
 import { getError } from '../formUtils';
-import { useAuth } from '../../../auth/useAuth';
+import { useAuth } from '../../../firebase/useAuth';
 import { useRouter } from 'next/router';
 import { registerWithEmailUseCase } from '../../../usecases';
 
