@@ -25,7 +25,7 @@ export const saveItem =
       numberTotalSell: number;
     },
     currentFile: File | null
-  ): Promise<void> => {
+  ): Promise<string> => {
     let downloadUrl = '';
 
     if (currentFile) {
@@ -47,4 +47,5 @@ export const saveItem =
     });
 
     await itemServiceDi.editItem(updatedItem);
+    return updatedItem.getPhotoLink();
   };

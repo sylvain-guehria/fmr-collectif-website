@@ -12,6 +12,7 @@ import tableStyles from 'styles/jss/nextjs-material-kit-pro/components/tableStyl
 import ItemEntity from '../../../modules/item/ItemEntity';
 import { Button } from '@material-ui/core';
 import { itemServiceDi } from '../../../di';
+import { handleDelete } from '../../../firebase/modules/storage';
 
 interface Props {
   items: ItemEntity[];
@@ -34,6 +35,9 @@ const ItemTable: React.FC<Props> = ({ items }) => {
 
   const deleteItemAndUpdateState = async (uid: string): Promise<void> => {
     await itemServiceDi.deleteItem(uid);
+    await itemServiceDi.deleteItem(uid);
+    await handleDelete('stocks', uid);
+
     const updatedItemList = itemList.filter(item => item.uid !== uid);
     setItemList(updatedItemList);
   };
@@ -42,7 +46,7 @@ const ItemTable: React.FC<Props> = ({ items }) => {
     <div className={classes.tableResponsive}>
       <Table className={classes.table}>
         {tableHead !== undefined ? (
-          <TableHead className={classes.tableHeadCell}>
+          <TableHead>
             <TableRow>
               {tableHead.map((prop, key) => {
                 return (

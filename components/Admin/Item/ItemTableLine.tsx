@@ -46,6 +46,7 @@ interface ItemFormType {
 const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
   const { uid, label, size, photoLink, color, quantity, price, numberTotalSell } = item;
   const [currentFile, setCurrentFile] = useState<File | null>(null);
+  const [currentImageDisplayedLink, setCurrentImageDisplayedLink] = useState<string>(photoLink);
   const originalPhotoLink: string = photoLink;
 
   const [isEditMode, setIsEditMode] = useState(false);
@@ -72,6 +73,8 @@ const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
     formState: { errors },
   } = useForm<ItemFormType>(formOptions);
 
+  register('photoLink');
+
   const onSubmit: SubmitHandler<ItemFormType> = async ({
     label,
     size,
@@ -94,8 +97,9 @@ const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
       },
       currentFile
     )
-      .then(() => {
+      .then(updatedPhotoLink => {
         setIsEditMode(false);
+        setCurrentImageDisplayedLink(updatedPhotoLink);
       })
       .catch((error: Error) => {
         addToast(error.message, { appearance: 'error', autoDismiss: true });
@@ -121,13 +125,12 @@ const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
                   removeButtonProps={{ round: true, color: 'danger' }}
                   callBackOnFileChange={handleFileChange}
                 />
-                <input type="hidden" {...register('photoLink')} value={photoLink} />
                 <p style={{ color: 'red' }}>{getError(errors, 'photoLink')}</p>
               </>
             ) : (
               <div style={{ width: '100%' }}>
                 <Image
-                  src={photoLink || '/img/defaultItem.jpg'}
+                  src={currentImageDisplayedLink || '/img/defaultItem.jpg'}
                   alt="Picture of the author"
                   width="100%"
                   height="100%"
