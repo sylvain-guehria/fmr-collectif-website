@@ -10,7 +10,6 @@ import Button from '../../lib/CustomButtons/Button';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import adminStyle from 'styles/jss/nextjs-material-kit-pro/pages/adminStyle.js';
-// import { formatTimeStamp } from '../../../utils/utils';
 import ItemEntity from '../../../modules/item/ItemEntity';
 import CustomInput from '../../lib/CustomInput/CustomInput';
 import { InputAdornment } from '@material-ui/core';
@@ -21,9 +20,9 @@ import { useToasts } from 'react-toast-notifications';
 import { validationSchema } from './ItemTableFormValidation';
 import Image from 'next/image';
 import tableStyles from 'styles/jss/nextjs-material-kit-pro/components/tableStyle.js';
-import { itemServiceDi } from '../../../di';
 import ConfirmDialog from '../../lib/ConfirmDialog/ConfirmDialog';
 import ImageUpload from '../../lib/CustomUpload/ImageUpload';
+import { saveItemUseCase } from '../../../usecases';
 
 const useStyles = makeStyles(adminStyle);
 const useTableStyles = makeStyles(tableStyles);
@@ -46,6 +45,8 @@ interface ItemFormType {
 
 const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
   const { uid, label, size, photoLink, color, quantity, price, numberTotalSell } = item;
+  const [currentFile, setCurrentFile] = useState<File | null>(null);
+  const originalPhotoLink: string = photoLink;
 
   const [isEditMode, setIsEditMode] = useState(false);
   const formOptions = {
@@ -80,19 +81,19 @@ const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
     price,
     numberTotalSell,
   }: ItemFormType) => {
-    await itemServiceDi
-      .editItem(
-        new ItemEntity({
-          uid,
-          label,
-          size,
-          photoLink,
-          color,
-          quantity,
-          price,
-          numberTotalSell,
-        })
-      )
+    saveItemUseCase(
+      {
+        uid,
+        label,
+        size,
+        photoLink,
+        color,
+        quantity,
+        price,
+        numberTotalSell,
+      },
+      currentFile
+    )
       .then(() => {
         setIsEditMode(false);
       })
@@ -102,8 +103,9 @@ const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
   };
 
   const handleFileChange = (file: File): void => {
-    // eslint-disable-next-line no-console
-    console.log(file);
+    if (!file) setValue('photoLink', originalPhotoLink);
+    if (file) setValue('photoLink', file.name);
+    setCurrentFile(file);
   };
 
   return (
@@ -112,12 +114,16 @@ const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
         <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
           <div style={{ display: 'flex' }}>
             {isEditMode ? (
-              <ImageUpload
-                addButtonProps={{ round: true }}
-                changeButtonProps={{ round: true }}
-                removeButtonProps={{ round: true, color: 'danger' }}
-                callBackOnFileChange={handleFileChange}
-              />
+              <>
+                <ImageUpload
+                  addButtonProps={{ round: true }}
+                  changeButtonProps={{ round: true }}
+                  removeButtonProps={{ round: true, color: 'danger' }}
+                  callBackOnFileChange={handleFileChange}
+                />
+                <input type="hidden" {...register('photoLink')} value={photoLink} />
+                <p style={{ color: 'red' }}>{getError(errors, 'photoLink')}</p>
+              </>
             ) : (
               <div style={{ width: '100%' }}>
                 <Image

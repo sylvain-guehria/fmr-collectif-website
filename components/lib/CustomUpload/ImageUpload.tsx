@@ -7,6 +7,7 @@ interface Props {
   changeButtonProps: ButtonProps;
   removeButtonProps: ButtonProps;
   callBackOnFileChange: (file: File) => void;
+  acceptedFormat?: string;
 }
 
 const ImageUpload: React.FC<Props> = ({
@@ -15,6 +16,7 @@ const ImageUpload: React.FC<Props> = ({
   changeButtonProps,
   removeButtonProps,
   callBackOnFileChange,
+  acceptedFormat = '.png, .jpg, .jpeg',
 }) => {
   const [file, setFile] = React.useState<File | null>(null);
   const [imagePreviewUrl, setImagePreviewUrl] = React.useState<string>(
@@ -33,12 +35,7 @@ const ImageUpload: React.FC<Props> = ({
     reader.readAsDataURL(file);
     callBackOnFileChange(file);
   };
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   // file is the file/image uploaded
-  //   // in this function you can save the image (file) on form submit
-  //   // you have to call it yourself
-  // };
+
   const handleClick = (): void => {
     fileInput?.current?.click();
   };
@@ -51,7 +48,7 @@ const ImageUpload: React.FC<Props> = ({
   };
   return (
     <div className="fileinput text-center">
-      <input type="file" onChange={handleImageChange} ref={fileInput} />
+      <input type="file" onChange={handleImageChange} ref={fileInput} accept={acceptedFormat} />
       <div className={'thumbnail' + (avatar ? ' img-circle' : '')}>
         <img src={imagePreviewUrl} alt="..." />
       </div>
