@@ -28,8 +28,13 @@ export const saveItem =
   ): Promise<void> => {
     let downloadUrl = '';
 
-    if (currentFile) downloadUrl = await storageFunctions.handleUpload('stocks', currentFile);
-
+    if (currentFile) {
+      Object.defineProperty(currentFile, 'name', {
+        writable: true,
+        value: uid,
+      });
+      downloadUrl = await storageFunctions.handleUpload('stocks', currentFile);
+    }
     const updatedItem = new ItemEntity({
       uid,
       label,
