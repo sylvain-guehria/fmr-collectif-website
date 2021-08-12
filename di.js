@@ -6,7 +6,7 @@ import storageFunctions from './firebase/modules/storage';
 const userRepository = new firebaseUserRepository();
 const itemRepository = new firebaseItemRepository();
 
-export const itemServiceDi = new itemService(itemRepository);
+export const itemServiceDi = new itemService(itemRepository, storageFunctions);
 
 export default {
     userRepository,
