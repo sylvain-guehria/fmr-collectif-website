@@ -35,16 +35,20 @@ export const saveItem =
       });
       downloadUrl = await storageFunctions.handleUpload('stocks', currentFile);
     }
+
     const updatedItem = new ItemEntity({
       uid,
       label,
       size,
-      photoLink: downloadUrl ?? photoLink,
+      photoLink: downloadUrl ? downloadUrl : photoLink,
       color,
       quantity,
       price,
       numberTotalSell,
     });
+
+    // eslint-disable-next-line no-console
+    console.log({ updatedItem });
 
     await itemServiceDi.editItem(updatedItem);
     return updatedItem.getPhotoLink();
