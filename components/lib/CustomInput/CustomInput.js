@@ -75,6 +75,7 @@ const CustomInput = ({
           underline: underlineClasses
         }}
         id={id}
+        hidden={true}
         {...inputProps}
         {...inputProps?.field}
       />

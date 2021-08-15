@@ -10,7 +10,6 @@ import Button from '../../lib/CustomButtons/Button';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import adminStyle from 'styles/jss/nextjs-material-kit-pro/pages/adminStyle.js';
-// import { formatTimeStamp } from '../../../utils/utils';
 import ItemEntity from '../../../modules/item/ItemEntity';
 import CustomInput from '../../lib/CustomInput/CustomInput';
 import { InputAdornment } from '@material-ui/core';
@@ -21,8 +20,9 @@ import { useToasts } from 'react-toast-notifications';
 import { validationSchema } from './ItemTableFormValidation';
 import Image from 'next/image';
 import tableStyles from 'styles/jss/nextjs-material-kit-pro/components/tableStyle.js';
-import { itemServiceDi } from '../../../di';
 import ConfirmDialog from '../../lib/ConfirmDialog/ConfirmDialog';
+import ImageUpload from '../../lib/CustomUpload/ImageUpload';
+import { saveItemUseCase } from '../../../usecases';
 
 const useStyles = makeStyles(adminStyle);
 const useTableStyles = makeStyles(tableStyles);
@@ -45,6 +45,9 @@ interface ItemFormType {
 
 const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
   const { uid, label, size, photoLink, color, quantity, price, numberTotalSell } = item;
+  const [currentFile, setCurrentFile] = useState<File | null>(null);
+  const [currentImageDisplayedLink, setCurrentImageDisplayedLink] = useState<string>(photoLink);
+  const originalPhotoLink: string = photoLink;
 
   const [isEditMode, setIsEditMode] = useState(false);
   const formOptions = {
@@ -70,6 +73,8 @@ const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
     formState: { errors },
   } = useForm<ItemFormType>(formOptions);
 
+  register('photoLink');
+
   const onSubmit: SubmitHandler<ItemFormType> = async ({
     label,
     size,
@@ -79,25 +84,32 @@ const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
     price,
     numberTotalSell,
   }: ItemFormType) => {
-    await itemServiceDi
-      .editItem(
-        new ItemEntity({
-          uid,
-          label,
-          size,
-          photoLink,
-          color,
-          quantity,
-          price,
-          numberTotalSell,
-        })
-      )
-      .then(() => {
+    saveItemUseCase(
+      {
+        uid,
+        label,
+        size,
+        photoLink,
+        color,
+        quantity,
+        price,
+        numberTotalSell,
+      },
+      currentFile
+    )
+      .then(updatedPhotoLink => {
         setIsEditMode(false);
+        setCurrentImageDisplayedLink(updatedPhotoLink);
       })
       .catch((error: Error) => {
         addToast(error.message, { appearance: 'error', autoDismiss: true });
       });
+  };
+
+  const handleFileChange = (file: File): void => {
+    if (!file) setValue('photoLink', originalPhotoLink);
+    if (file) setValue('photoLink', file.name);
+    setCurrentFile(file);
   };
 
   return (
@@ -106,30 +118,19 @@ const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
         <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
           <div style={{ display: 'flex' }}>
             {isEditMode ? (
-              <CustomInput
-                formControlProps={{
-                  fullWidth: true,
-                }}
-                error={getError(errors, 'photoLink')}
-                inputProps={{
-                  ...register('photoLink'),
-                  placeholder: 'Lien vers photo',
-                  type: 'text',
-                  onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-                    setValue('photoLink', e?.target?.value),
-                  defaultValue: photoLink,
-                  disabled: !isEditMode,
-                  startAdornment: isEditMode ? (
-                    <InputAdornment position="start">
-                      <Edit fontSize="small" />
-                    </InputAdornment>
-                  ) : null,
-                }}
-              />
+              <>
+                <ImageUpload
+                  addButtonProps={{ round: true }}
+                  changeButtonProps={{ round: true }}
+                  removeButtonProps={{ round: true, color: 'danger' }}
+                  callBackOnFileChange={handleFileChange}
+                />
+                <p style={{ color: 'red' }}>{getError(errors, 'photoLink')}</p>
+              </>
             ) : (
               <div style={{ width: '100%' }}>
                 <Image
-                  src={photoLink || '/img/defaultItem.jpg'}
+                  src={currentImageDisplayedLink || '/img/defaultItem.jpg'}
                   alt="Picture of the author"
                   width="100%"
                   height="100%"

@@ -42,7 +42,7 @@ const ItemTable: React.FC<Props> = ({ items }) => {
     <div className={classes.tableResponsive}>
       <Table className={classes.table}>
         {tableHead !== undefined ? (
-          <TableHead className={classes.tableHeadCell}>
+          <TableHead>
             <TableRow>
               {tableHead.map((prop, key) => {
                 return (

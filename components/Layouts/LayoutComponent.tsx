@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAuth } from '../../auth/useAuth';
+import { useAuth } from '../../firebase/useAuth';
 import { ForbiddenAddress } from './ForbiddenAddress';
 import { isInBrowser } from '../../utils/utils';
 import { useRouter } from 'next/router';

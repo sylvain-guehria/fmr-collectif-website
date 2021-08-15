@@ -1,12 +1,15 @@
 import ItemRepository from './itemRepository';
 import ItemEntity from './ItemEntity';
 import { Item } from './itemType';
+import { StorageInterface } from '../../firebase/modules/storage';
 
 class itemService {
   itemRepository;
+  storageFunctions;
 
-  constructor(itemRepository: ItemRepository) {
+  constructor(itemRepository: ItemRepository, storageFunctions: StorageInterface) {
     this.itemRepository = itemRepository;
+    this.storageFunctions = storageFunctions;
   }
 
   async editItem(item: ItemEntity): Promise<void> {
@@ -18,6 +21,7 @@ class itemService {
   }
 
   async deleteItem(uid: string): Promise<void> {
+    await this.storageFunctions.handleDelete('stocks', uid);
     return await this.itemRepository.deleteById(uid);
   }
 }
