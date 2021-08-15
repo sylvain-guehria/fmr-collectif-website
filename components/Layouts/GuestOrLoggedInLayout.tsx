@@ -20,11 +20,7 @@ const GuestOrLoggedInLayout: React.FC = ({ children }): React.ReactElement => {
         content={
           <div>
             <div className={classes.left}>
-              <a
-                href="https://www.creative-tim.com/product/nextjs-material-kit-pro?ref=njsmkp-presentation"
-                target="_blank"
-                className={classes.footerBrand}
-                rel="noreferrer">
+              <a href="#" target="_blank" className={classes.footerBrand} rel="noreferrer">
                 FMR collectif, l&apos;association <Favorite color={'error'} />
               </a>
             </div>

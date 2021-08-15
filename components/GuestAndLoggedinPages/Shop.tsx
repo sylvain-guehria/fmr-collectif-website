@@ -3,27 +3,28 @@ import React from 'react';
 import classNames from 'classnames';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import Mail from '@material-ui/icons/Mail';
 // core components
 import Header from 'components/Header/Header.js';
 import HeaderLinks from 'components/Header/HeaderLinks.js';
 import GridContainer from 'components/lib/Grid/GridContainer.js';
 import GridItem from 'components/lib/Grid/GridItem.js';
 import Parallax from 'components/lib/Parallax/Parallax.js';
-import Button from '../lib/CustomButtons/Button';
-import Card from 'components/lib/Card/Card.js';
-import CardBody from 'components/lib/Card/CardBody.js';
-import CustomInput from 'components/lib/CustomInput/CustomInput.js';
-// sections for this page
-import SectionLatestOffers from 'pages-sections/ecommerce/SectionLatestOffers.js';
-import SectionBlog from 'pages-sections/ecommerce/SectionBlog.js';
-
+// import SectionLatestOffers from 'pages-sections/ecommerce/SectionLatestOffers.js';
+import Favorite from '@material-ui/icons/Favorite';
+import Product from '../../components/Product/Product';
 import styles from 'styles/jss/nextjs-material-kit-pro/pages/ecommerceStyle.js';
+import ItemEntity from '../../modules/item/ItemEntity';
+import useSWR from 'swr';
 
 const useStyles = makeStyles(styles);
 
-const Shop: React.FC = () => {
+interface Props {
+  items: ItemEntity[];
+}
+
+const Shop: React.FC<Props> = ({ items = [] }) => {
+  const { data } = useSWR('/item/getAll', { initialData: items });
+
   React.useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
@@ -49,68 +50,29 @@ const Shop: React.FC = () => {
               sm={8}
               className={classNames(classes.mlAuto, classes.mrAuto, classes.textCenter)}>
               <div className={classes.brand}>
-                <h1 className={classes.title}>Ecommerce Page!</h1>
+                <h1 className={classes.title}>Nos articles</h1>
                 <h4>
-                  Free global delivery for all products. Use coupon <b>25summer</b> for an extra 25%
-                  Off
+                  En achetant nos tshirts, tu aide l&apos;asscociation et tu participe à la creation
+                  des futures évenements <Favorite />
                 </h4>
               </div>
             </GridItem>
           </GridContainer>
         </div>
       </Parallax>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <div>
+        <Product product={data} />
+      </div>
 
-      <div className={classNames(classes.main, classes.mainRaised)}>
+      {/* when there will be more than tshirt only to sell */}
+      {/* <div className={classNames(classes.main, classes.mainRaised)}>
         <SectionLatestOffers />
-      </div>
-      <SectionBlog />
-      <div
-        className={classNames(classes.subscribeLine, classes.subscribeLineImage)}
-        style={{ backgroundImage: "url('/img/examples/ecommerce-header.jpg')" }}>
-        <div className={classes.container}>
-          <GridContainer>
-            <GridItem xs={12} sm={6} md={6} className={classNames(classes.mlAuto, classes.mrAuto)}>
-              <div className={classes.textCenter}>
-                <h3 className={classes.title}>Subscribe to our Newsletter</h3>
-                <p className={classes.description}>
-                  Join our newsletter and get news in your inbox every week! We hate spam too, so no
-                  worries about this.
-                </p>
-              </div>
-              <Card raised className={classes.card}>
-                <CardBody className={classes.cardBody}>
-                  <form>
-                    <GridContainer>
-                      <GridItem xs={12} sm={6} md={6} lg={8}>
-                        <CustomInput
-                          id="emailPreFooter"
-                          formControlProps={{
-                            fullWidth: true,
-                            className: classes.cardForm,
-                          }}
-                          inputProps={{
-                            startAdornment: (
-                              <InputAdornment position="start">
-                                <Mail />
-                              </InputAdornment>
-                            ),
-                            placeholder: 'Your Email...',
-                          }}
-                        />
-                      </GridItem>
-                      <GridItem xs={12} sm={6} md={6} lg={4}>
-                        <Button color="rose" block className={classes.subscribeButton}>
-                          subscribe
-                        </Button>
-                      </GridItem>
-                    </GridContainer>
-                  </form>
-                </CardBody>
-              </Card>
-            </GridItem>
-          </GridContainer>
-        </div>
-      </div>
+      </div> */}
     </div>
   );
 };
