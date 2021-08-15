@@ -141,14 +141,18 @@ function useProvideAuth() {
     };
 
     const updateLastConnected = async (user) => {
-      return await userRepository.update(user);
+      await userRepository.update(user);
     };
 
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
       if (user) {
         const fullUser = await fetchUserInformation(user.uid);
-        updateLastConnected(fullUser.updateLastLogin());
-        setUser(fullUser.email ? fullUser : UserEntity.new({ ...user }));
+        if (fullUser.email) {
+          updateLastConnected(fullUser.updateLastLogin());
+          setUser(fullUser);
+        } else {
+          setUser(UserEntity.new({ ...user }));
+        }
         setIsUserLoading(false);
         addToast(`Bonjour ${fullUser?.firstName} =)`, { appearance: 'success', autoDismiss: true });
       } else {

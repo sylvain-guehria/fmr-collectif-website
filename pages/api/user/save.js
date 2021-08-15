@@ -1,4 +1,5 @@
 import db from '../../../firebase/firestore/index';
+import logger from '../../../modules/logger/logger';
 
 export default async (req, res) => {
   try {
@@ -12,9 +13,9 @@ export default async (req, res) => {
       phoneNumber,
       role,
       creationDate,
-      lastLogin
-    }
-      = req.body;
+      lastLogin,
+      provider
+    } = req.body;
     const users = await db.collection('users').get();
     const usersIds = users.docs.map(user => user.data().uid);
 
@@ -38,10 +39,12 @@ export default async (req, res) => {
       phoneNumber,
       role,
       creationDate,
-      lastLogin
+      lastLogin,
+      provider
     });
     res.status(200).json({ id });
   } catch (e) {
+    logger.error('error when saving user', e);
     res.status(400).end();
   }
 };

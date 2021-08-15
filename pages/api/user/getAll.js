@@ -1,4 +1,5 @@
 import db from '../../../firebase/firestore/index';
+import logger from '../../../modules/logger/logger';
 
 export default async (req, res) => {
   try {
@@ -9,6 +10,7 @@ export default async (req, res) => {
     }));
     res.status(200).json(usersData);
   } catch (e) {
+    logger.error('error when fetching users', e);
     res.status(400).end();
   }
 };

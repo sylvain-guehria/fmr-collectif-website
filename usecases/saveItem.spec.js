@@ -31,7 +31,7 @@ it('Does not update the item photoLink if there is no new file to upload', async
     expect(await saveItemUseCase(item, currentFile)).toBe('originalPhotoLink');
 });
 
-it('Update the item photoLink with the firebase storage link if there isa new file to upload', async function () {
+it('Update the item photoLink with the firebase storage link if there is a new file to upload', async function () {
     storageFunctions.handleUpload.mockResolvedValue('www.firestorageUrl.com');
     const currentFile = {name: 'fakefile'};
 
