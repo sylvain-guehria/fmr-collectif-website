@@ -11,15 +11,15 @@ import GridItem from 'components/lib/Grid/GridItem.js';
 import Parallax from 'components/lib/Parallax/Parallax.js';
 // import SectionLatestOffers from 'pages-sections/ecommerce/SectionLatestOffers.js';
 import Favorite from '@material-ui/icons/Favorite';
-import Product from '../../components/Product/Product';
+import ShopItemCard from '../../components/ShopItemCard/ShopItemCard';
 import styles from 'styles/jss/nextjs-material-kit-pro/pages/ecommerceStyle.js';
-import ItemEntity from '../../modules/item/ItemEntity';
+import { Item } from '../../modules/item/itemType';
 import useSWR from 'swr';
 
 const useStyles = makeStyles(styles);
 
 interface Props {
-  items: ItemEntity[];
+  items: Item[];
 }
 
 const Shop: React.FC<Props> = ({ items = [] }) => {
@@ -52,7 +52,7 @@ const Shop: React.FC<Props> = ({ items = [] }) => {
               <div className={classes.brand}>
                 <h1 className={classes.title}>Nos articles</h1>
                 <h4>
-                  En achetant nos tshirts, tu aide l&apos;asscociation et tu participe à la creation
+                  En achetant nos tshirts, tu aide l&apos;association et tu participe à la creation
                   des futures évenements <Favorite />
                 </h4>
               </div>
@@ -66,7 +66,7 @@ const Shop: React.FC<Props> = ({ items = [] }) => {
       <br />
       <br />
       <div>
-        <Product product={data} />
+        <ShopItemCard products={data || []} />
       </div>
 
       {/* when there will be more than tshirt only to sell */}

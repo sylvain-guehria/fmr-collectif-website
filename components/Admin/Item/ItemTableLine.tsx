@@ -12,7 +12,7 @@ import TableRow from '@material-ui/core/TableRow';
 import adminStyle from 'styles/jss/nextjs-material-kit-pro/pages/adminStyle.js';
 import ItemEntity from '../../../modules/item/ItemEntity';
 import CustomInput from '../../lib/CustomInput/CustomInput';
-import { InputAdornment } from '@material-ui/core';
+import { FormControl, MenuItem, Select } from '@material-ui/core';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { getError } from '../../forms/formUtils';
@@ -23,6 +23,7 @@ import tableStyles from 'styles/jss/nextjs-material-kit-pro/components/tableStyl
 import ConfirmDialog from '../../lib/ConfirmDialog/ConfirmDialog';
 import ImageUpload from '../../lib/CustomUpload/ImageUpload';
 import { saveItemUseCase } from '../../../usecases';
+import { Item, genderEnum } from '../../../modules/item/itemType';
 
 const useStyles = makeStyles(adminStyle);
 const useTableStyles = makeStyles(tableStyles);
@@ -32,19 +33,8 @@ interface Props {
   deleteItem: (uid: string) => Promise<void>;
 }
 
-interface ItemFormType {
-  label: string;
-  size: string;
-  photoLink: string;
-  color: string;
-  quantity: number;
-  price: number;
-  numberTotalSell: number;
-  lastBuyDate?: number;
-}
-
 const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
-  const { uid, label, size, photoLink, color, quantity, price, numberTotalSell } = item;
+  const { uid, label, size, photoLink, color, quantity, price, numberTotalSell, gender } = item;
   const [currentFile, setCurrentFile] = useState<File | null>(null);
   const [currentImageDisplayedLink, setCurrentImageDisplayedLink] = useState<string>(photoLink);
   const originalPhotoLink: string = photoLink;
@@ -53,7 +43,9 @@ const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
   const formOptions = {
     resolver: yupResolver(validationSchema),
     defaultValues: {
+      uid,
       label,
+      gender,
       size,
       photoLink,
       color,
@@ -71,32 +63,14 @@ const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm<ItemFormType>(formOptions);
+  } = useForm<Item>(formOptions);
 
   register('photoLink');
 
-  const onSubmit: SubmitHandler<ItemFormType> = async ({
-    label,
-    size,
-    photoLink,
-    color,
-    quantity,
-    price,
-    numberTotalSell,
-  }: ItemFormType) => {
-    saveItemUseCase(
-      {
-        uid,
-        label,
-        size,
-        photoLink,
-        color,
-        quantity,
-        price,
-        numberTotalSell,
-      },
-      currentFile
-    )
+  const onSubmit: SubmitHandler<Item> = async (item: Item) => {
+    // eslint-disable-next-line no-console
+    console.log('save item :************', item);
+    saveItemUseCase(item, currentFile)
       .then(updatedPhotoLink => {
         setIsEditMode(false);
         setCurrentImageDisplayedLink(updatedPhotoLink);
@@ -107,14 +81,17 @@ const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
   };
 
   const handleFileChange = (file: File): void => {
-    if (!file) setValue('photoLink', originalPhotoLink);
-    if (file) setValue('photoLink', file.name);
+    if (!file) {
+      setValue('photoLink', originalPhotoLink);
+    } else {
+      setValue('photoLink', file.name);
+    }
     setCurrentFile(file);
   };
 
   return (
     <TableRow key={uid}>
-      <TableCell className={tableClasses.tableCell} colSpan={8}>
+      <TableCell className={tableClasses.tableCell} colSpan={9}>
         <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
           <div style={{ display: 'flex' }}>
             {isEditMode ? (
@@ -151,13 +128,35 @@ const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
                   setValue('label', e?.target?.value),
                 defaultValue: label,
                 disabled: !isEditMode,
-                startAdornment: isEditMode ? (
-                  <InputAdornment position="start">
-                    <Edit fontSize="small" />
-                  </InputAdornment>
-                ) : null,
               }}
             />
+            <FormControl fullWidth className={classes.selectFormControl}>
+              <Select
+                MenuProps={{
+                  className: classes.selectMenu,
+                }}
+                classes={{
+                  select: classes.select,
+                }}
+                error={!!getError(errors, 'gender')}
+                inputProps={{
+                  id: 'gender-select',
+                  ...register('gender'),
+                  placeholder: 'Gender',
+                  type: 'text',
+                  onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+                    setValue('gender', e?.target?.value),
+                  defaultValue: gender,
+                  disabled: !isEditMode,
+                }}>
+                {Object.values(genderEnum).map(gender => (
+                  <MenuItem key={gender} value={gender}>
+                    {gender}
+                  </MenuItem>
+                ))}
+              </Select>
+              <p style={{ color: 'red' }}>{getError(errors, 'gender')}</p>
+            </FormControl>
             <CustomInput
               formControlProps={{
                 fullWidth: true,
@@ -171,11 +170,6 @@ const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
                   setValue('size', e?.target?.value),
                 defaultValue: size,
                 disabled: !isEditMode,
-                startAdornment: isEditMode ? (
-                  <InputAdornment position="start">
-                    <Edit fontSize="small" />
-                  </InputAdornment>
-                ) : null,
               }}
             />
 
@@ -192,11 +186,6 @@ const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
                   setValue('color', e?.target?.value),
                 defaultValue: color,
                 disabled: !isEditMode,
-                startAdornment: isEditMode ? (
-                  <InputAdornment position="start">
-                    <Edit fontSize="small" />
-                  </InputAdornment>
-                ) : null,
               }}
             />
 
@@ -213,11 +202,6 @@ const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
                   setValue('price', Number(e?.target?.value)),
                 defaultValue: price,
                 disabled: !isEditMode,
-                startAdornment: isEditMode ? (
-                  <InputAdornment position="start">
-                    <Edit fontSize="small" />
-                  </InputAdornment>
-                ) : null,
               }}
             />
 
@@ -234,14 +218,8 @@ const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
                   setValue('quantity', Number(e?.target?.value)),
                 defaultValue: quantity,
                 disabled: !isEditMode,
-                startAdornment: isEditMode ? (
-                  <InputAdornment position="start">
-                    <Edit fontSize="small" />
-                  </InputAdornment>
-                ) : null,
               }}
             />
-
             <CustomInput
               formControlProps={{
                 fullWidth: true,
@@ -255,11 +233,6 @@ const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
                   setValue('numberTotalSell', Number(e?.target?.value)),
                 defaultValue: numberTotalSell,
                 disabled: !isEditMode,
-                startAdornment: isEditMode ? (
-                  <InputAdornment position="start">
-                    <Edit fontSize="small" />
-                  </InputAdornment>
-                ) : null,
               }}
             />
             {isEditMode && (

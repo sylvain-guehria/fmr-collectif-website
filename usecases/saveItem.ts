@@ -1,31 +1,24 @@
+import { Item } from '../modules/item/itemType';
 import ItemEntity from '../modules/item/ItemEntity';
 import itemServiceDi from '../modules/item/itemService';
 import { StorageInterface } from '../firebase/modules/storage';
 
 export const saveItem =
   (itemServiceDi: itemServiceDi, storageFunctions: StorageInterface) =>
-  async (
-    {
+  async (item: Item, currentFile: File | null): Promise<string> => {
+    const {
       uid,
       label,
+      gender,
       size,
       photoLink,
       color,
       quantity,
       price,
       numberTotalSell,
-    }: {
-      uid: string;
-      label: string;
-      size: string;
-      photoLink: string;
-      color: string;
-      quantity: number;
-      price: number;
-      numberTotalSell: number;
-    },
-    currentFile: File | null
-  ): Promise<string> => {
+      lastBuyDate,
+      isDeleted,
+    } = item;
     let downloadUrl = '';
 
     if (currentFile) {
@@ -36,19 +29,19 @@ export const saveItem =
       downloadUrl = await storageFunctions.handleUpload('stocks', currentFile);
     }
 
-    const updatedItem = new ItemEntity({
+    const updatedItem = ItemEntity.new({
       uid,
       label,
+      gender,
       size,
       photoLink: downloadUrl ? downloadUrl : photoLink,
       color,
       quantity,
       price,
       numberTotalSell,
+      lastBuyDate,
+      isDeleted,
     });
-
-    // eslint-disable-next-line no-console
-    console.log({ updatedItem });
 
     await itemServiceDi.editItem(updatedItem);
     return updatedItem.getPhotoLink();

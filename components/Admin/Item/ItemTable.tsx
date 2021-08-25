@@ -18,11 +18,23 @@ interface Props {
 }
 
 const ItemTable: React.FC<Props> = ({ items }) => {
-  const tableHead = ['Photo', 'label', 'taille', 'couleur', 'prix', 'quantité', 'vendu'];
+  const tableHead = ['Photo', 'label', 'sex', 'taille', 'couleur', 'prix', 'quantité', 'vendu', ''];
   const useStyles = makeStyles(tableStyles);
   const classes = useStyles();
 
-  const emptyItem: ItemEntity = new ItemEntity({});
+  const emptyItem: ItemEntity = new ItemEntity({
+    uid: '',
+    label: '',
+    gender: '',
+    size: '',
+    photoLink: '',
+    color: '',
+    quantity: 0,
+    price: 0,
+    numberTotalSell: 0,
+    lastBuyDate: 0,
+    isDeleted: false,
+  });
 
   const [itemList, setItemList] = useState(items || []);
 
@@ -41,19 +53,18 @@ const ItemTable: React.FC<Props> = ({ items }) => {
   return (
     <div className={classes.tableResponsive}>
       <Table className={classes.table}>
-        {tableHead !== undefined ? (
-          <TableHead>
-            <TableRow>
-              {tableHead.map((prop, key) => {
+        <TableHead>
+          <TableRow>
+            {tableHead &&
+              tableHead.map((prop, key) => {
                 return (
-                  <TableCell align="left" key={key}>
+                  <TableCell width={100 / 7} key={key}>
                     {prop}
                   </TableCell>
                 );
               })}
-            </TableRow>
-          </TableHead>
-        ) : null}
+          </TableRow>
+        </TableHead>
         <TableBody>
           {itemList &&
             itemList.map((item: ItemEntity) => {
