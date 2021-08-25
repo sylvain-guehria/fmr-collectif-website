@@ -39,6 +39,7 @@ const images = [
 const SELECT_PRODUCT = 'Faite votre choix';
 const ADD_TO_CART = 'Ajouter au panier';
 const UNAVAILABLE = 'Indisponible';
+const CHOOSE_YOUR_TSHIRT = 'Selection ton tshirt';
 
 type Props = {
   products: Item[];
@@ -52,6 +53,8 @@ const ShopItemCard: React.FC<Props> = ({ products }) => {
 
   const [canAddToCart, setCanAddToCart] = useState(false);
   const [messageButton, setMessageButton] = useState(SELECT_PRODUCT);
+  const [currentLabel, setCurrentLabel] = useState(CHOOSE_YOUR_TSHIRT);
+  const [currentPrice, setCurrentPrice] = useState(0);
 
   useEffect(() => {
     setCanAddToCart(isItemAvailable());
@@ -62,16 +65,23 @@ const ShopItemCard: React.FC<Props> = ({ products }) => {
           : UNAVAILABLE
         : SELECT_PRODUCT
     );
+    const matchingItem = getMatchingItem();
+    setCurrentLabel(matchingItem ? matchingItem.label : CHOOSE_YOUR_TSHIRT);
+    setCurrentPrice(matchingItem ? matchingItem.price : 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [colorSelected, sizeSelected, genderSelected]);
 
-  const isItemAvailable = (): boolean => {
-    const matchingItem: Item | undefined = products.find(
+  const getMatchingItem = (): Item | undefined => {
+    return products.find(
       product =>
         product.color === colorSelected &&
         product.size === sizeSelected &&
         product.gender === genderSelected
     );
+  };
+
+  const isItemAvailable = (): boolean => {
+    const matchingItem: Item | undefined = getMatchingItem();
     return matchingItem && matchingItem.quantity ? matchingItem.quantity > 0 : false;
   };
 
@@ -110,8 +120,8 @@ const ShopItemCard: React.FC<Props> = ({ products }) => {
                   />
                 </GridItem>
                 <GridItem md={6} sm={6}>
-                  <h2 className={classes.title}>Becky Silk Blazer</h2>
-                  <h3 className={classes.mainPrice}>$335</h3>
+                  <h2 className={classes.title}>{currentLabel}</h2>
+                  <h3 className={classes.mainPrice}>{currentPrice}€</h3>
                   <Accordion
                     active={-1}
                     activeColor="rose"
