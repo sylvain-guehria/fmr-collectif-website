@@ -3,15 +3,18 @@ import { ToastProvider } from 'react-toast-notifications';
 import Axios from 'axios';
 import { SWRConfig } from 'swr';
 import LayoutComponent from '../components/Layouts/LayoutComponent';
+import { object } from 'prop-types';
 
-import App from 'next/app';
 import Head from 'next/head';
 import { ProvideAuth } from '../firebase/useAuth';
 
 import 'styles/scss/nextjs-material-kit-pro.scss?v=1.2.0';
 import 'styles/css/react-demo.css';
 import 'animate.css/animate.min.css';
-import '../listeners/routerListeners' ;
+import '../listeners/routerListeners';
+
+import { Provider } from 'react-redux';
+import { useStore } from '../store';
 
 Axios.defaults.baseURL = process.env.NEXT_PUBLIC_SERVER_BASE_URL + '/api';
 Axios.defaults.withCredentials = true;
@@ -25,29 +28,29 @@ const fetcher = async (url) => {
   }
 };
 
-export default class MyApp extends App {
+export default function App({ Component, pageProps }) {
 
-  static async getInitialProps({ Component, _router, ctx }) {
-    let pageProps = {};
+  // static async getInitialProps({ Component, _router, ctx }) {
+  //   let pageProps = {};
 
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
-    }
+  //   if (Component.getInitialProps) {
+  //     pageProps = await Component.getInitialProps(ctx);
+  //   }
 
-    return { pageProps };
-  }
-  render() {
-    const { Component, pageProps } = this.props;
-    const layoutProps = Component.getLayoutProps ? Component.getLayoutProps() : {};
+  //   return { pageProps };
+  // }
+  const layoutProps = Component.getLayoutProps ? Component.getLayoutProps() : {};
+  const store = useStore(pageProps.initialReduxState);
 
-    return (
-      <React.Fragment>
-        <SWRConfig
-          value={{
-            fetcher,
-            dedupingInterval: 10000
-          }}
-        >
+  return (
+    <React.Fragment>
+      <SWRConfig
+        value={{
+          fetcher,
+          dedupingInterval: 10000
+        }}
+      >
+        <Provider store={store}>
           <ToastProvider>
             <ProvideAuth>
               <Head>
@@ -59,12 +62,17 @@ export default class MyApp extends App {
                 <title>Fmr-collectif</title>
               </Head>
               <LayoutComponent component={Component} layoutProps={layoutProps}>
-              <Component {...pageProps} />
+                <Component {...pageProps} />
               </LayoutComponent>
             </ProvideAuth>
           </ToastProvider>
-        </SWRConfig>
-      </React.Fragment >
-    );
-  }
+        </Provider>
+      </SWRConfig>
+    </React.Fragment >
+  );
 }
+
+App.propTypes = {
+  Component: object,
+  pageProps: object
+};

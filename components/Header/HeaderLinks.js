@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-key */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuth } from '../../firebase/useAuth';
 
 import PropTypes from 'prop-types';
@@ -33,6 +33,7 @@ import Assignment from '@material-ui/icons/Assignment';
 import MonetizationOn from '@material-ui/icons/MonetizationOn';
 import Chat from '@material-ui/icons/Chat';
 import ViewCarousel from '@material-ui/icons/ViewCarousel';
+import { initializeStore } from '../../store';
 
 import ViewQuilt from '@material-ui/icons/ViewQuilt';
 import LocationOn from '@material-ui/icons/LocationOn';
@@ -55,6 +56,16 @@ export default function HeaderLinks(props) {
 
   const auth = useAuth();
   const AuthUser = auth?.user;
+  const reduxStore = initializeStore();
+  const [boutiqueNotifs, setBoutiqueNotifs] = useState(reduxStore.getState().notifications.boutique);
+
+  // eslint-disable-next-line no-console
+  console.log(reduxStore.getState());
+
+  useEffect(() => {
+    setBoutiqueNotifs(reduxStore.getState().notifications.boutique);
+  }, [reduxStore.getState().notifications]);
+
 
   const easeInOutQuad = (t, b, c, d) => {
     t /= d / 2;
@@ -120,12 +131,12 @@ export default function HeaderLinks(props) {
                    Devenir membre
                     </a>
             </Link>,
-             <Link href="/contact-us">
-             <a className={classes.dropdownLink}>
-               <Call className={classes.dropdownIcons} />
+            <Link href="/contact-us">
+              <a className={classes.dropdownLink}>
+                <Call className={classes.dropdownIcons} />
                   Nous contacter
                    </a>
-           </Link>
+            </Link>
           ]}
         />
       </ListItem>
@@ -180,10 +191,10 @@ export default function HeaderLinks(props) {
                 Shop
               </a>
             </Link>,
-              <Link href="/shopping-cart">
+            <Link href="/shopping-cart">
               <a className={classes.dropdownLink}>
-                <ShoppingCart className={classes.dropdownIcons} />
-                Panier
+                <ShoppingCart className={classes.dropdownIcons} color={boutiqueNotifs.shoppingCart !== 0 ? 'error' : ''} />
+                {`Panier ${boutiqueNotifs.shoppingCart !== 0 ? `(${boutiqueNotifs.shoppingCart})` : ''}`}
               </a>
             </Link>
           ]}
@@ -216,7 +227,7 @@ export default function HeaderLinks(props) {
           ]}
         />
       </ListItem>}
-      {(AuthUser && AuthUser.isAdmin())&& <ListItem className={classes.listItem}>
+      {(AuthUser && AuthUser.isAdmin()) && <ListItem className={classes.listItem}>
         <CustomDropdown
           noLiPadding
           navDropdown
@@ -234,17 +245,17 @@ export default function HeaderLinks(props) {
                  Utilisateurs
               </a>
             </Link>,
-             <Link href="/admin/stocks">
-             <a className={classes.dropdownLink}>
-               <People className={classes.dropdownIcons} />
+            <Link href="/admin/stocks">
+              <a className={classes.dropdownLink}>
+                <People className={classes.dropdownIcons} />
                 Stocks
              </a>
-           </Link>
+            </Link>
           ]}
         />
       </ListItem>}
       {/* delete */}
-       {/* <ListItem className={classes.listItem}>
+      {/* <ListItem className={classes.listItem}>
         <CustomDropdown
           noLiPadding
           navDropdown

@@ -10,6 +10,7 @@ import Accordion from 'components/lib/Accordion/Accordion.js';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import { useDispatch } from 'react-redux';
 
 // react component used to create nice image meadia player
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
@@ -55,6 +56,9 @@ const ShopItemCard: React.FC<Props> = ({ products }) => {
   const [messageButton, setMessageButton] = useState(SELECT_PRODUCT);
   const [currentLabel, setCurrentLabel] = useState(CHOOSE_YOUR_TSHIRT);
   const [currentPrice, setCurrentPrice] = useState(0);
+  const [currentUid, setCurrentUid] = useState('');
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setCanAddToCart(isItemAvailable());
@@ -68,6 +72,7 @@ const ShopItemCard: React.FC<Props> = ({ products }) => {
     const matchingItem = getMatchingItem();
     setCurrentLabel(matchingItem ? matchingItem.label : CHOOSE_YOUR_TSHIRT);
     setCurrentPrice(matchingItem ? matchingItem.price : 0);
+    setCurrentUid(matchingItem ? matchingItem.uid : '');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [colorSelected, sizeSelected, genderSelected]);
 
@@ -83,6 +88,18 @@ const ShopItemCard: React.FC<Props> = ({ products }) => {
   const isItemAvailable = (): boolean => {
     const matchingItem: Item | undefined = getMatchingItem();
     return matchingItem && matchingItem.quantity ? matchingItem.quantity > 0 : false;
+  };
+
+  const addToCart = (): void => {
+    dispatch({
+      type: 'INCREMENT_NOTIFICATION',
+      tab: 'boutique',
+      page: 'shoppingCart',
+    });
+    dispatch({
+      type: 'ADD_TO_CART',
+      uid: currentUid,
+    });
   };
 
   return (
@@ -263,6 +280,7 @@ const ShopItemCard: React.FC<Props> = ({ products }) => {
                   <GridContainer className={classes.pullRight}>
                     <Button
                       round
+                      onClick={() => addToCart()}
                       color={canAddToCart ? 'behance' : 'youtube'}
                       disabled={!canAddToCart}>
                       <>
