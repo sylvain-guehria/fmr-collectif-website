@@ -44,7 +44,7 @@ import CustomInput from "components/lib/CustomInput/CustomInput.js";
 import CustomFileInput from "components/lib/CustomFileInput/CustomFileInput.js";
 import InfoArea from "components/lib/InfoArea/InfoArea.js";
 import Accordion from "components/lib/Accordion/Accordion.js";
-import ImageUpload from "components/lib/CustomUpload/ImageUpload.js";
+import ImageUpload from "../../components/lib/CustomUpload/ImageUpload";
 
 import javascriptStyles from "styles/jss/nextjs-material-kit-pro/pages/componentsSections/javascriptStyles.js";
 
