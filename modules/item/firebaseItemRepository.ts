@@ -15,6 +15,7 @@ class FirebaseItemRepository extends ItemRepository {
     const response = await axios.get(`/item/${uid}`);
     const {
       label,
+      gender,
       size,
       photoLink,
       color,
@@ -28,6 +29,7 @@ class FirebaseItemRepository extends ItemRepository {
     return new ItemEntity({
       uid: uid,
       label,
+      gender,
       size,
       photoLink,
       color,
@@ -49,6 +51,7 @@ class FirebaseItemRepository extends ItemRepository {
     const res = await axios.post('/item/save', {
       uid: item.uid || uuidV4(),
       label: item.label || '',
+      gender: item.gender || '',
       size: item.size || '',
       photoLink: item.photoLink || '',
       color: item.color || '',
@@ -69,6 +72,7 @@ class FirebaseItemRepository extends ItemRepository {
         new ItemEntity({
           uid: item.uid,
           label: item.label,
+          gender: item.gender,
           size: item.size,
           photoLink: item.photoLink,
           color: item.color,
@@ -86,6 +90,7 @@ class FirebaseItemRepository extends ItemRepository {
     return await axios.put(`/item/${item.uid}`, {
       uid: item.getId(),
       label: item.getLabel(),
+      gender: item.getGender(),
       size: item.getSize(),
       photoLink: item.getPhotoLink(),
       color: item.getColor(),

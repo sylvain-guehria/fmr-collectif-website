@@ -1,4 +1,5 @@
-import db from '../../../auth/firestore/index';
+import db from '../../../firebase/firestore/index';
+import logger from '../../../modules/logger/logger';
 
 export default async (req, res) => {
   const { id } = req.query;
@@ -19,6 +20,7 @@ export default async (req, res) => {
     }
     res.status(200).end();
   } catch (e) {
+    logger.error(e);
     res.status(400).end();
   }
 };

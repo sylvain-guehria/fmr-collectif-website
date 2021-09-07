@@ -6,7 +6,7 @@ import LayoutComponent from '../components/Layouts/LayoutComponent';
 
 import App from 'next/app';
 import Head from 'next/head';
-import { ProvideAuth } from '../auth/useAuth';
+import { ProvideAuth } from '../firebase/useAuth';
 
 import 'styles/scss/nextjs-material-kit-pro.scss?v=1.2.0';
 import 'styles/css/react-demo.css';

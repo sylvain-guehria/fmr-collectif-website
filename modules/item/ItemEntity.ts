@@ -3,6 +3,7 @@ import { Item } from './itemType';
 class ItemEntity implements Item {
   uid;
   label;
+  gender;
   size;
   photoLink;
   color;
@@ -21,6 +22,7 @@ class ItemEntity implements Item {
   constructor(item: Item) {
     this.uid = item.uid || '';
     this.label = item.label || '';
+    this.gender = item.gender || '';
     this.size = item.size || '';
     this.photoLink = item.photoLink || '';
     this.color = item.color || '';
@@ -37,6 +39,10 @@ class ItemEntity implements Item {
 
   getLabel(): string {
     return this.label;
+  }
+
+  getGender(): string {
+    return this.gender;
   }
 
   isItemDeleted(): boolean {
