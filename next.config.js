@@ -11,5 +11,5 @@ module.exports = withPlugins([[withImages]], {
   future: { webpack5: true },
   images: {
     domains: ['assets.vercel.com', 'images.unsplash.com', 'firebasestorage.googleapis.com']
-  },
+  }
 });
