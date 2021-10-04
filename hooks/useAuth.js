@@ -7,7 +7,7 @@ import { useToasts } from 'react-toast-notifications';
 import firebaseUserRepository from '../modules/user/firebaseUserRepository';
 import UserEntity from '../modules/user/UserEntity';
 import { useRouter } from 'next/router';
-import { auth } from './modules';
+import { auth } from '../firebase/modules';
 
 const userRepository = new firebaseUserRepository();
 const authContext = createContext();

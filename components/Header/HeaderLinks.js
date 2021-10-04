@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-key */
 import React from 'react';
-import { useAuth } from '../../firebase/useAuth';
+import { useAuth } from '../../hooks/useAuth';
 
 import PropTypes from 'prop-types';
 // react components for routing our app without refresh
