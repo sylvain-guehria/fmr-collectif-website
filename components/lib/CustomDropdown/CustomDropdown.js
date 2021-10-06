@@ -45,6 +45,7 @@ export default function CustomDropdown(props) {
   const {
     buttonText,
     buttonIcon,
+    tabNotificationCounter,
     dropdownList,
     buttonProps,
     dropup,
@@ -128,6 +129,7 @@ export default function CustomDropdown(props) {
           {buttonIcon !== undefined ? (
             <props.buttonIcon className={classes.buttonIcon} />
           ) : null}
+          {tabNotificationCounter > 0 && tabNotificationCounter}
           {buttonText !== undefined ? buttonText : null}
           {caret ? <b className={caretClasses} /> : null}
         </Button>
@@ -189,6 +191,7 @@ CustomDropdown.propTypes = {
   ]),
   buttonText: PropTypes.node,
   buttonIcon: PropTypes.object,
+  tabNotificationCounter: PropTypes.number,
   dropdownList: PropTypes.array,
   buttonProps: PropTypes.object,
   dropup: PropTypes.bool,

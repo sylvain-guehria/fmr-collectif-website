@@ -10,10 +10,8 @@ interface ProviderProps {
 const notificationContext = createContext<Partial<ContextProps>>({});
 
 export const ProvideNotification: React.FC<ProviderProps> = ({ children }): React.ReactElement => {
-  const notifications = useProvideNotification();
-  return (
-    <notificationContext.Provider value={notifications}>{children}</notificationContext.Provider>
-  );
+  const notifs = useProvideNotification();
+  return <notificationContext.Provider value={notifs}>{children}</notificationContext.Provider>;
 };
 
 export const useNotification: unknown = () => {

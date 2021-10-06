@@ -2,6 +2,7 @@
 /* eslint-disable react/jsx-key */
 import React from 'react';
 import { useAuth } from '../../hooks/useAuth';
+import { useNotification } from '../../hooks/useNotification';
 
 import PropTypes from 'prop-types';
 // react components for routing our app without refresh
@@ -39,6 +40,15 @@ export default function HeaderLinks(props) {
 
   const auth = useAuth();
   const AuthUser = auth?.user;
+  const notifs = useNotification();
+  const notifications = notifs.notifications;
+
+  const countTabNotification = (tab) => {
+    const numberOfNotificationPerPages = Object.values(notifications[tab]);
+    const summerReducer = (accumulator, curr) => accumulator + curr;
+    return numberOfNotificationPerPages.reduce(summerReducer);
+  };
+
   const { dropdownHoverColor } = props;
   const classes = useStyles();
   return (
@@ -54,6 +64,7 @@ export default function HeaderLinks(props) {
             color: 'transparent'
           }}
           buttonIcon={AccountBalance}
+          tabNotificationCounter={countTabNotification('association')}
           dropdownList={[
             <Link href="/about-us">
               <a className={classes.dropdownLink}>
@@ -90,12 +101,10 @@ export default function HeaderLinks(props) {
             <Link href="/blog-posts">
               <a className={classes.dropdownLink}>
                 <ArtTrack className={classes.dropdownIcons} /> Le blog
-                {/* cliquer un blog ouvre blog-post */}
               </a>
             </Link>,
             <Link href="/events">
               <a className={classes.dropdownLink}>
-                {/* cliquer un event ouvre blog-post */}
                 <Dns className={classes.dropdownIcons} /> Les évènements
               </a>
             </Link>
