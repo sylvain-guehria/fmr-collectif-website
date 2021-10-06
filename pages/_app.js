@@ -7,11 +7,12 @@ import LayoutComponent from '../components/Layouts/LayoutComponent';
 import App from 'next/app';
 import Head from 'next/head';
 import { ProvideAuth } from '../hooks/useAuth';
+import { ProvideNotification } from '../hooks/useNotification';
 
 import 'styles/scss/nextjs-material-kit-pro.scss?v=1.2.0';
 import 'styles/css/react-demo.css';
 import 'animate.css/animate.min.css';
-import '../listeners/routerListeners' ;
+import '../listeners/routerListeners';
 
 Axios.defaults.baseURL = process.env.NEXT_PUBLIC_SERVER_BASE_URL + '/api';
 Axios.defaults.withCredentials = true;
@@ -50,17 +51,19 @@ export default class MyApp extends App {
         >
           <ToastProvider>
             <ProvideAuth>
-              <Head>
-                <meta
-                  name="viewport"
-                  content="width=device-width, initial-scale=1, shrink-to-fit=no"
-                />
-                <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-                <title>Fmr-collectif</title>
-              </Head>
-              <LayoutComponent component={Component} layoutProps={layoutProps}>
-              <Component {...pageProps} />
-              </LayoutComponent>
+              <ProvideNotification>
+                <Head>
+                  <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+                  />
+                  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+                  <title>Fmr-collectif</title>
+                </Head>
+                <LayoutComponent component={Component} layoutProps={layoutProps}>
+                  <Component {...pageProps} />
+                </LayoutComponent>
+              </ProvideNotification>
             </ProvideAuth>
           </ToastProvider>
         </SWRConfig>
