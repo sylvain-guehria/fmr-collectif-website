@@ -14,7 +14,7 @@ export const ProvideNotification: React.FC<ProviderProps> = ({ children }): Reac
   return <notificationContext.Provider value={notifs}>{children}</notificationContext.Provider>;
 };
 
-export const useNotification: unknown = () => {
+export const useNotification = (): Partial<ContextProps> => {
   return useContext(notificationContext);
 };
 

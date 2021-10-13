@@ -19,7 +19,7 @@ export const ProvideBoutique: React.FC<ProviderProps> = ({ children }): React.Re
   return <boutiqueContext.Provider value={boutique}>{children}</boutiqueContext.Provider>;
 };
 
-export const useBoutique: unknown = () => {
+export const useBoutique = (): Partial<ContextProps> => {
   return useContext(boutiqueContext);
 };
 

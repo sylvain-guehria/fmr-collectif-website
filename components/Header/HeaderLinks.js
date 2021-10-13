@@ -18,8 +18,7 @@ export default function HeaderLinks(props) {
 
   const auth = useAuth();
   const AuthUser = auth?.user;
-  const notifs = useNotification();
-  const notifications = notifs.notifications;
+  const { notifications } = useNotification();
 
   const { dropdownHoverColor } = props;
   const classes = useStyles();

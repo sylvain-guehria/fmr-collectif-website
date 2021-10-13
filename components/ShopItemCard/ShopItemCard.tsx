@@ -16,6 +16,9 @@ import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import productStyle from 'styles/jss/nextjs-material-kit-pro/pages/productStyle.js';
 import { Item } from '../../modules/item/itemType';
 
+import { useNotification } from '../../hooks/useNotification';
+import { useBoutique } from '../../hooks/useBoutique';
+
 const useStyles = makeStyles(productStyle);
 const images = [
   {
@@ -56,6 +59,9 @@ const ShopItemCard: React.FC<Props> = ({ products }) => {
   const [currentLabel, setCurrentLabel] = useState(CHOOSE_YOUR_TSHIRT);
   const [currentPrice, setCurrentPrice] = useState(0);
 
+  const { addNotification } = useNotification();
+  const { addItem } = useBoutique();
+
   useEffect(() => {
     setCanAddToCart(isItemAvailable());
     setMessageButton(
@@ -83,6 +89,12 @@ const ShopItemCard: React.FC<Props> = ({ products }) => {
   const isItemAvailable = (): boolean => {
     const matchingItem: Item | undefined = getMatchingItem();
     return matchingItem && matchingItem.quantity ? matchingItem.quantity > 0 : false;
+  };
+
+  const addToCart = (): void => {
+    const selectedItem: Item | undefined = getMatchingItem();
+    if (addNotification) addNotification('boutique', 'shoppingCart');
+    if (selectedItem && addItem) addItem(selectedItem);
   };
 
   return (
@@ -263,6 +275,7 @@ const ShopItemCard: React.FC<Props> = ({ products }) => {
                   <GridContainer className={classes.pullRight}>
                     <Button
                       round
+                      onClick={() => addToCart()}
                       color={canAddToCart ? 'behance' : 'youtube'}
                       disabled={!canAddToCart}>
                       <>
