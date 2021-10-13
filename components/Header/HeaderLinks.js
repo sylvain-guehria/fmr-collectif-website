@@ -10,6 +10,7 @@ import ListItem from '@material-ui/core/ListItem';
 import CustomDropdown from 'components/lib/CustomDropdown/CustomDropdown.js';
 import LoginButton from '../LoginButton/LoginButton';
 import styles from 'styles/jss/nextjs-material-kit-pro/components/headerLinksStyle.js';
+import { countTabNotification, fromHrefToCamelCase } from './headerUtils';
 
 const useStyles = makeStyles(styles);
 
@@ -20,11 +21,6 @@ export default function HeaderLinks(props) {
   const notifs = useNotification();
   const notifications = notifs.notifications;
 
-  const countTabNotification = (tab) => {
-    const numberOfNotificationPerPages = Object.values(notifications[tab]);
-    const summerReducer = (accumulator, curr) => accumulator + curr;
-    return numberOfNotificationPerPages.reduce(summerReducer);
-  };
   const { dropdownHoverColor } = props;
   const classes = useStyles();
   return (
@@ -43,12 +39,14 @@ export default function HeaderLinks(props) {
               color: 'transparent'
             }}
             buttonIcon={item.buttonIcon}
-            tabNotificationCounter={countTabNotification(item.notificationName)}
+            hasNotification={countTabNotification(item.tab, notifications) > 0}
             dropdownList={
               item.pages.map((page) => {
+                const numberNotification = notifications[item.tab][fromHrefToCamelCase(page.href)];
                 return <Link href={page.href} key={page.label}>
                   <a className={classes.dropdownLink}>
-                    <div className={classes.dropdownIcons} >{page.icon}</div>
+                    <div className={classes.dropdownIcons} >{page.icon} </div>
+                    <div className={classes.dropdownNotifications} > {numberNotification > 0 ? numberNotification : null}</div>
                     {page.label}
                   </a>
                 </Link>;

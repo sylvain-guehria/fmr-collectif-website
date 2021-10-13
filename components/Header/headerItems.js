@@ -18,7 +18,7 @@ const headerItems = [
   {
     label: "L'association",
     buttonIcon: AccountBalance,
-    notificationName: 'association',
+    tab: 'association',
     pages: [
       {
         href: '/about-us',
@@ -40,7 +40,7 @@ const headerItems = [
   {
     label: 'Evènements',
     buttonIcon: Apps,
-    notificationName: 'evenements',
+    tab: 'evenements',
     pages: [
       {
         href: '/blog-posts',
@@ -57,7 +57,7 @@ const headerItems = [
   {
     label: 'Boutique',
     buttonIcon: Store,
-    notificationName: 'boutique',
+    tab: 'boutique',
     pages: [
       {
         href: '/ticket-office',
@@ -80,7 +80,7 @@ const headerItems = [
     label: 'Compte',
     needsAuth: true,
     buttonIcon: AccountCircle,
-    notificationName: 'compte',
+    tab: 'compte',
     pages: [
       {
         href: '/profile',
@@ -99,7 +99,7 @@ const headerItems = [
     needsAuth: true,
     adminOnly: true,
     buttonIcon: Build,
-    notificationName: 'admin',
+    tab: 'admin',
     pages: [
       {
         href: '/admin/users',

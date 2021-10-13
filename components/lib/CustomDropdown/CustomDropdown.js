@@ -45,7 +45,7 @@ export default function CustomDropdown(props) {
   const {
     buttonText,
     buttonIcon,
-    tabNotificationCounter,
+    hasNotification,
     dropdownList,
     buttonProps,
     dropup,
@@ -63,7 +63,8 @@ export default function CustomDropdown(props) {
     [classes.caret]: true,
     [classes.caretDropup]: dropup && !anchorEl,
     [classes.caretActive]: Boolean(anchorEl) && !dropup,
-    [classes.caretRTL]: rtlActive
+    [classes.caretRTL]: rtlActive,
+    [classes.caretHasNotification]: hasNotification
   });
   const dropdownItem = classNames({
     [classes.dropdownItem]: true,
@@ -121,17 +122,15 @@ export default function CustomDropdown(props) {
       <div className={buttonText !== undefined ? '' : classes.target}>
         <Button
           aria-label="Notifications"
+          color='secondary'
           aria-owns={anchorEl ? 'menu-list' : null}
           aria-haspopup="true"
           {...buttonProps}
           onClick={handleClick}
         >
-          {buttonIcon !== undefined ? (
-            <props.buttonIcon className={classes.buttonIcon} />
-          ) : null}
-          {tabNotificationCounter > 0 && tabNotificationCounter}
-          {buttonText !== undefined ? buttonText : null}
-          {caret ? <b className={caretClasses} /> : null}
+          {buttonIcon && <props.buttonIcon className={classes.buttonIcon} />}
+          {buttonText && buttonText}
+          {caret && <b className={caretClasses} />}
         </Button>
       </div>
       <Popper
@@ -160,10 +159,10 @@ export default function CustomDropdown(props) {
               {innerDropDown ? (
                 dropDownMenu
               ) : (
-                <ClickAwayListener onClickAway={handleClose}>
-                  {dropDownMenu}
-                </ClickAwayListener>
-              )}
+                  <ClickAwayListener onClickAway={handleClose}>
+                    {dropDownMenu}
+                  </ClickAwayListener>
+                )}
             </Paper>
           </Grow>
         )}
@@ -191,7 +190,7 @@ CustomDropdown.propTypes = {
   ]),
   buttonText: PropTypes.node,
   buttonIcon: PropTypes.object,
-  tabNotificationCounter: PropTypes.number,
+  hasNotification: PropTypes.number,
   dropdownList: PropTypes.array,
   buttonProps: PropTypes.object,
   dropup: PropTypes.bool,
