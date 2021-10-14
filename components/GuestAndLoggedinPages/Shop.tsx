@@ -15,6 +15,7 @@ import ShopItemCard from '../ShopItemCard/ShopItemCard';
 import styles from 'styles/jss/nextjs-material-kit-pro/pages/ecommerceStyle.js';
 import { Item } from '../../modules/item/itemType';
 import useSWR from 'swr';
+import ItemEntity from '../../modules/item/ItemEntity';
 
 const useStyles = makeStyles(styles);
 
@@ -24,6 +25,8 @@ interface Props {
 
 const Shop: React.FC<Props> = ({ items = [] }) => {
   const { data } = useSWR('/item/getAll', { initialData: items });
+
+  const itemEntities: ItemEntity[] = Array.from(data || [], item => new ItemEntity(item));
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -66,7 +69,7 @@ const Shop: React.FC<Props> = ({ items = [] }) => {
       <br />
       <br />
       <div>
-        <ShopItemCard products={data || []} />
+        <ShopItemCard items={itemEntities} />
       </div>
 
       {/* when there will be more than tshirt only to sell */}

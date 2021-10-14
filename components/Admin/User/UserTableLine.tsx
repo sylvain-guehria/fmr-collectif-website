@@ -43,7 +43,7 @@ const UserTableLine: React.FC<Props> = ({ user }) => {
 
         <TableCell>
           <span key={1}>
-            <a href="#jacket" className={classes.tdNameAnchor}>
+            <a href="#" className={classes.tdNameAnchor}>
               {`${firstName} ${lastName}`}
             </a>
           </span>
@@ -51,7 +51,7 @@ const UserTableLine: React.FC<Props> = ({ user }) => {
 
         <TableCell>
           <span key={1}>
-            <a href="#jacket" className={classes.tdNameAnchor}>
+            <a href="#" className={classes.tdNameAnchor}>
               {email}
             </a>
             <br />
@@ -61,7 +61,7 @@ const UserTableLine: React.FC<Props> = ({ user }) => {
 
         <TableCell>
           <span key={1}>
-            <a href="#jacket" className={classes.tdNameAnchor}>
+            <a href="#" className={classes.tdNameAnchor}>
               {formatTimeStamp(creationDate)}
             </a>
           </span>
@@ -69,7 +69,7 @@ const UserTableLine: React.FC<Props> = ({ user }) => {
 
         <TableCell>
           <span key={1}>
-            <a href="#jacket" className={classes.tdNameAnchor}>
+            <a href="#" className={classes.tdNameAnchor}>
               {formatTimeStamp(lastLogin)}
             </a>
           </span>

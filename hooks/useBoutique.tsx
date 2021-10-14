@@ -1,10 +1,10 @@
 import React, { useState, useContext, createContext } from 'react';
-import { Item } from '../modules/item/itemType';
+import ItemEntity from '../modules/item/ItemEntity';
 import { Ticket } from '../modules/ticket/ticketType';
 
 type ContextProps = {
   boutiques: Boutiques;
-  addItem: (item: Item) => void;
+  addItem: (item: ItemEntity) => void;
   addTicket: (ticket: Ticket) => void;
   deleteItem: (itemUid: string) => void;
   deleteTicket: (ticketUid: string) => void;
@@ -24,9 +24,9 @@ export const useBoutique = (): Partial<ContextProps> => {
 };
 
 const useProvideBoutique = (): Partial<ContextProps> => {
-  const [boutiques, setBoutiques] = useState(defaultBoutiques);
+  const [boutiques, setBoutiques] = useState<Boutiques>(defaultBoutiques);
 
-  const addItem = (item: Item): void => {
+  const addItem = (item: ItemEntity): void => {
     const localBoutique = { ...boutiques };
     localBoutique.items.push(item);
     setBoutiques(localBoutique);
@@ -40,7 +40,7 @@ const useProvideBoutique = (): Partial<ContextProps> => {
 
   const deleteItem = (itemUid: string): void => {
     const localBoutique = { ...boutiques };
-    localBoutique.items = localBoutique.items.filter(item => item.uid !== itemUid);
+    localBoutique.items = localBoutique.items.filter(item => item.getId() !== itemUid);
     setBoutiques(localBoutique);
   };
 
@@ -65,6 +65,6 @@ const defaultBoutiques: Boutiques = {
 };
 
 type Boutiques = {
-  items: Item[];
+  items: ItemEntity[];
   tickets: Ticket[];
 };
