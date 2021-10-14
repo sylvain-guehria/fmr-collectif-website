@@ -12,6 +12,7 @@ import Remove from '@material-ui/icons/Remove';
 import Add from '@material-ui/icons/Add';
 import ItemEntity from '../../modules/item/ItemEntity';
 import { Ticket } from '../../modules/ticket/ticketType';
+import { useBoutique } from '../../hooks/useBoutique';
 
 const useStyles = makeStyles(adminStyle);
 
@@ -21,10 +22,11 @@ interface Props {
 }
 
 const ShoppingCartLine: React.FC<Props> = ({ item = {}, ticket = {} }) => {
-  const { label, size, photoLink, color, price } = item;
+  const { uid, label, size, photoLink, color, price } = item;
   ticket;
 
   const [quantityToBuy, setQuantityToBuy] = useState(1);
+  const { deleteItem } = useBoutique();
 
   const classes = useStyles();
   return (
@@ -92,7 +94,12 @@ const ShoppingCartLine: React.FC<Props> = ({ item = {}, ticket = {} }) => {
             title="Supprimer l'article"
             placement="right"
             classes={{ tooltip: classes.tooltip }}>
-            <Button link className={classes.actionButton}>
+            <Button
+              link
+              className={classes.actionButton}
+              onClick={() => {
+                if (uid) deleteItem(uid);
+              }}>
               <Close />
             </Button>
           </Tooltip>

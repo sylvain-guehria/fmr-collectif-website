@@ -12,14 +12,16 @@ type ContextProps = {
 interface ProviderProps {
   children?: React.ReactNode;
 }
-const boutiqueContext = createContext<Partial<ContextProps>>({});
+const boutiqueContext = createContext({});
 
 export const ProvideBoutique: React.FC<ProviderProps> = ({ children }): React.ReactElement => {
   const boutique = useProvideBoutique();
   return <boutiqueContext.Provider value={boutique}>{children}</boutiqueContext.Provider>;
 };
 
-export const useBoutique = (): Partial<ContextProps> => {
+export const useBoutique = (): ContextProps => {
+  // eslint-disable-next-line
+  // @ts-ignore
   return useContext(boutiqueContext);
 };
 
