@@ -203,6 +203,15 @@ const customDropdownStyle = (theme) => ({
   caretRTL: {
     marginRight: '4px'
   },
+  caretHasNotification: {
+    color: warningColor[3],
+    width: '10px',
+    height: '10px',
+    marginLeft: '4px',
+    borderRadius: '50%',
+    borderRight: '10px solid',
+    borderLeft: '0px solid'
+  },
   dropdownHeader: {
     display: 'block',
     padding: '0.1875rem 1.25rem',

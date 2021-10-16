@@ -2,6 +2,7 @@ import { grey } from '@material-ui/core/colors';
 import {
   grayColor,
   whiteColor,
+  warningColor,
   mlAuto,
   hexToRgb
 } from 'styles/jss/nextjs-material-kit-pro.js';
@@ -177,6 +178,16 @@ const headerLinksStyle = (theme) => ({
     verticalAlign: 'middle',
     fontSize: '24px',
     position: 'relative'
+  },
+  dropdownNotifications: {
+    width: '24px',
+    height: '24px',
+    marginRight: '5px',
+    marginTop: '-4px',
+    top: '10px',
+    fontSize: '16px',
+    position: 'relative',
+    color:  warningColor[0]
   },
   socialIcons: {
     position: 'relative',

@@ -14,7 +14,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 // react component used to create nice image meadia player
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import productStyle from 'styles/jss/nextjs-material-kit-pro/pages/productStyle.js';
-import { Item } from '../../modules/item/itemType';
+
+import { useBoutique } from '../../hooks/useBoutique';
+import ItemEntity from '../../modules/item/ItemEntity';
 
 const useStyles = makeStyles(productStyle);
 const images = [
@@ -42,10 +44,10 @@ const UNAVAILABLE = 'Indisponible';
 const CHOOSE_YOUR_TSHIRT = 'Selection ton tshirt';
 
 type Props = {
-  products: Item[];
+  items: ItemEntity[];
 };
 
-const ShopItemCard: React.FC<Props> = ({ products }) => {
+const ShopItemCard: React.FC<Props> = ({ items }) => {
   const classes = useStyles();
   const [colorSelected, setColorSelected] = useState<string>('');
   const [sizeSelected, setSizeSelected] = useState<string>('');
@@ -55,6 +57,8 @@ const ShopItemCard: React.FC<Props> = ({ products }) => {
   const [messageButton, setMessageButton] = useState(SELECT_PRODUCT);
   const [currentLabel, setCurrentLabel] = useState(CHOOSE_YOUR_TSHIRT);
   const [currentPrice, setCurrentPrice] = useState(0);
+
+  const { addItem } = useBoutique();
 
   useEffect(() => {
     setCanAddToCart(isItemAvailable());
@@ -71,8 +75,8 @@ const ShopItemCard: React.FC<Props> = ({ products }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [colorSelected, sizeSelected, genderSelected]);
 
-  const getMatchingItem = (): Item | undefined => {
-    return products.find(
+  const getMatchingItem = (): ItemEntity | undefined => {
+    return items.find(
       product =>
         product.color === colorSelected &&
         product.size === sizeSelected &&
@@ -81,12 +85,17 @@ const ShopItemCard: React.FC<Props> = ({ products }) => {
   };
 
   const isItemAvailable = (): boolean => {
-    const matchingItem: Item | undefined = getMatchingItem();
+    const matchingItem: ItemEntity | undefined = getMatchingItem();
     return matchingItem && matchingItem.quantity ? matchingItem.quantity > 0 : false;
   };
 
+  const addToCart = (): void => {
+    const selectedItem: ItemEntity | undefined = getMatchingItem();
+    if (selectedItem && addItem) addItem(selectedItem);
+  };
+
   return (
-    products && (
+    items && (
       <div className={classes.productPage}>
         <div className={classNames(classes.section, classes.sectionGray)}>
           <div className={classes.container}>
@@ -184,7 +193,7 @@ const ShopItemCard: React.FC<Props> = ({ products }) => {
                             name: 'genderSelected',
                             id: 'gender-select',
                           }}>
-                          {products.map((item, index) => (
+                          {items.map((item, index) => (
                             <MenuItem
                               key={item.uid || index}
                               onClick={() => setGenderSelected(item.gender || '')}
@@ -214,7 +223,7 @@ const ShopItemCard: React.FC<Props> = ({ products }) => {
                             name: 'colorSelected',
                             id: 'color-select',
                           }}>
-                          {products.map((item, index) => (
+                          {items.map((item, index) => (
                             <MenuItem
                               key={item.uid || index}
                               onClick={() => setColorSelected(item.color || '')}
@@ -244,7 +253,7 @@ const ShopItemCard: React.FC<Props> = ({ products }) => {
                             name: 'sizeSelected',
                             id: 'size-select',
                           }}>
-                          {products.map((item, index) => (
+                          {items.map((item, index) => (
                             <MenuItem
                               key={item.uid || index}
                               onClick={() => setSizeSelected(item.size || '')}
@@ -263,6 +272,7 @@ const ShopItemCard: React.FC<Props> = ({ products }) => {
                   <GridContainer className={classes.pullRight}>
                     <Button
                       round
+                      onClick={() => addToCart()}
                       color={canAddToCart ? 'behance' : 'youtube'}
                       disabled={!canAddToCart}>
                       <>

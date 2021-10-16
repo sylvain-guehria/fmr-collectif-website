@@ -22,6 +22,8 @@ interface Props {
 const Stocks: React.FC<Props> = ({ items = [] }) => {
   const { data } = useSWR('/item/getAll', { initialData: items });
 
+  const itemEntities: ItemEntity[] = Array.from(data || [], item => new ItemEntity(item));
+
   useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
@@ -58,12 +60,12 @@ const Stocks: React.FC<Props> = ({ items = [] }) => {
         <div className={classes.container}>
           <Card plain>
             <div>
-              {!data ? (
+              {!itemEntities ? (
                 <div> Loading </div>
               ) : (
                 <CardBody plain>
                   <h3 className={classes.cardTitle}>Produits</h3>
-                  <ItemTable items={data} />
+                  {itemEntities && itemEntities.length && <ItemTable items={itemEntities} />}
                 </CardBody>
               )}
             </div>

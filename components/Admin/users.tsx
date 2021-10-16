@@ -22,6 +22,8 @@ interface Props {
 const Users: React.FC<Props> = ({ users = [] }) => {
   const { data } = useSWR('/user/getAll', { initialData: users });
 
+  const userEntities: UserEntity[] = Array.from(data || [], user => new UserEntity(user));
+
   useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
@@ -57,12 +59,12 @@ const Users: React.FC<Props> = ({ users = [] }) => {
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
           <Card plain>
-            {!data ? (
+            {!userEntities ? (
               <div> Loading </div>
             ) : (
               <CardBody plain>
                 <h3 className={classes.cardTitle}>Utilisateurs</h3>
-                {data && data.length && <UserTable users={data} />}
+                {userEntities && userEntities.length && <UserTable users={userEntities} />}
               </CardBody>
             )}
           </Card>
