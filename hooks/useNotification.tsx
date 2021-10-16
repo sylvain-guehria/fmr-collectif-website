@@ -3,6 +3,7 @@ import React, { useState, useContext, createContext } from 'react';
 type ContextProps = {
   notifications: Notifications;
   addNotification: (tab: Tab, page: Page) => void;
+  setShoppingCartNotifications: (cartNotificationCount: number) => void;
 };
 interface ProviderProps {
   children?: React.ReactNode;
@@ -29,9 +30,16 @@ const useProvideNotification = (): Partial<ContextProps> => {
     setNotifications(localNotif);
   };
 
+  const setShoppingCartNotifications = (cartNotificationCount: number): void => {
+    const localNotif = { ...notifications };
+    localNotif['boutique']['shoppingCart'] = cartNotificationCount;
+    setNotifications(localNotif);
+  };
+
   return {
     notifications,
     addNotification,
+    setShoppingCartNotifications,
   };
 };
 

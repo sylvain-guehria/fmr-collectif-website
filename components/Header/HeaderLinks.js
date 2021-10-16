@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { useNotification } from '../../hooks/useNotification';
+import { useBoutique } from '../../hooks/useBoutique';
 import headerItems from './headerItems';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
@@ -18,10 +19,16 @@ export default function HeaderLinks(props) {
 
   const auth = useAuth();
   const AuthUser = auth?.user;
-  const { notifications } = useNotification();
+  const { notifications, setShoppingCartNotifications } = useNotification();
+  const { boutiques } = useBoutique();
 
   const { dropdownHoverColor } = props;
   const classes = useStyles();
+
+  useEffect(() => {
+    if (setShoppingCartNotifications) setShoppingCartNotifications(boutiques.items.length + boutiques.tickets.length);
+  }, [boutiques.items.length, boutiques.tickets.length]);
+
   return (
     <List className={classes.list + ' ' + classes.mlAuto}>
       {headerItems.map((item) => {

@@ -15,7 +15,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import productStyle from 'styles/jss/nextjs-material-kit-pro/pages/productStyle.js';
 
-import { useNotification } from '../../hooks/useNotification';
 import { useBoutique } from '../../hooks/useBoutique';
 import ItemEntity from '../../modules/item/ItemEntity';
 
@@ -59,7 +58,6 @@ const ShopItemCard: React.FC<Props> = ({ items }) => {
   const [currentLabel, setCurrentLabel] = useState(CHOOSE_YOUR_TSHIRT);
   const [currentPrice, setCurrentPrice] = useState(0);
 
-  const { addNotification } = useNotification();
   const { addItem } = useBoutique();
 
   useEffect(() => {
@@ -93,7 +91,6 @@ const ShopItemCard: React.FC<Props> = ({ items }) => {
 
   const addToCart = (): void => {
     const selectedItem: ItemEntity | undefined = getMatchingItem();
-    if (addNotification) addNotification('boutique', 'shoppingCart');
     if (selectedItem && addItem) addItem(selectedItem);
   };
 
