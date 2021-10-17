@@ -68,8 +68,6 @@ const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
   register('photoLink');
 
   const onSubmit: SubmitHandler<Item> = async (item: Item) => {
-    // eslint-disable-next-line no-console
-    console.log('save item :************', item);
     saveItemUseCase(item, currentFile)
       .then(updatedPhotoLink => {
         setIsEditMode(false);

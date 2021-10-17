@@ -10,9 +10,11 @@ import Accordion from 'components/lib/Accordion/Accordion.js';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import { useToasts } from 'react-toast-notifications';
 
 // react component used to create nice image meadia player
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
+import ShoppingBasket from '@material-ui/icons/ShoppingBasket';
 import productStyle from 'styles/jss/nextjs-material-kit-pro/pages/productStyle.js';
 
 import { useBoutique } from '../../hooks/useBoutique';
@@ -40,8 +42,10 @@ const images = [
 
 const SELECT_PRODUCT = 'Faite votre choix';
 const ADD_TO_CART = 'Ajouter au panier';
+const GO_TO_CART = 'Aller au panier';
 const UNAVAILABLE = 'Indisponible';
 const CHOOSE_YOUR_TSHIRT = 'Selection ton tshirt';
+const PRODUCT_ADDED_TO_CART = 'Produit ajouté au panier';
 
 type Props = {
   items: ItemEntity[];
@@ -58,7 +62,8 @@ const ShopItemCard: React.FC<Props> = ({ items }) => {
   const [currentLabel, setCurrentLabel] = useState(CHOOSE_YOUR_TSHIRT);
   const [currentPrice, setCurrentPrice] = useState(0);
 
-  const { addItem } = useBoutique();
+  const { addItem, boutiques } = useBoutique();
+  const { addToast } = useToasts();
 
   useEffect(() => {
     setCanAddToCart(isItemAvailable());
@@ -91,7 +96,10 @@ const ShopItemCard: React.FC<Props> = ({ items }) => {
 
   const addToCart = (): void => {
     const selectedItem: ItemEntity | undefined = getMatchingItem();
-    if (selectedItem && addItem) addItem(selectedItem);
+    if (selectedItem && addItem) {
+      addItem(selectedItem);
+      addToast(PRODUCT_ADDED_TO_CART, { appearance: 'success', autoDismiss: true });
+    }
   };
 
   return (
@@ -145,34 +153,6 @@ const ShopItemCard: React.FC<Props> = ({ items }) => {
                             flattering cutouts through the torso and back. Wear yours with mirrored
                             sunglasses on vacation.
                           </p>
-                        ),
-                      },
-                      {
-                        title: 'Designer Information',
-                        content: (
-                          <p>
-                            An infusion of West Coast cool and New York attitude, Rebecca Minkoff is
-                            synonymous with It girl style. Minkoff burst on the fashion scene with
-                            her best-selling {"'"}Morning After Bag{"'"} and later expanded her
-                            offering with the Rebecca Minkoff Collection - a range of luxe city
-                            staples with a {'"'}
-                            downtown romantic{'"'} theme.
-                          </p>
-                        ),
-                      },
-                      {
-                        title: 'Details and Care',
-                        content: (
-                          <ul>
-                            <li>Storm and midnight-blue stretch cotton-blend</li>
-                            <li>
-                              Notch lapels, functioning buttoned cuffs, two front flap pockets,
-                              single vent, internal pocket
-                            </li>
-                            <li>Two button fastening</li>
-                            <li>84% cotton, 14% nylon, 2% elastane</li>
-                            <li>Dry clean</li>
-                          </ul>
                         ),
                       },
                     ]}
@@ -276,9 +256,18 @@ const ShopItemCard: React.FC<Props> = ({ items }) => {
                       color={canAddToCart ? 'behance' : 'youtube'}
                       disabled={!canAddToCart}>
                       <>
-                        {messageButton} &nbsp; <ShoppingCart />
+                        {messageButton} &nbsp;
+                        <ShoppingCart />
                       </>
                     </Button>
+                    {boutiques.items.length > 0 && (
+                      <Button round onClick={() => addToCart()} color={'youtube'}>
+                        <>
+                          {GO_TO_CART} &nbsp;
+                          <ShoppingBasket />
+                        </>
+                      </Button>
+                    )}
                   </GridContainer>
                 </GridItem>
               </GridContainer>
