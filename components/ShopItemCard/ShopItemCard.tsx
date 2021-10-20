@@ -11,6 +11,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { useToasts } from 'react-toast-notifications';
+import Link from 'next/link';
 
 // react component used to create nice image meadia player
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
@@ -261,12 +262,14 @@ const ShopItemCard: React.FC<Props> = ({ items }) => {
                       </>
                     </Button>
                     {boutiques.items.length > 0 && (
-                      <Button round onClick={() => addToCart()} color={'youtube'}>
-                        <>
-                          {GO_TO_CART} &nbsp;
-                          <ShoppingBasket />
-                        </>
-                      </Button>
+                      <Link href="/shopping-cart">
+                        <Button round color={'youtube'}>
+                          <>
+                            {GO_TO_CART} &nbsp;
+                            <ShoppingBasket />
+                          </>
+                        </Button>
+                      </Link>
                     )}
                   </GridContainer>
                 </GridItem>
