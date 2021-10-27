@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 import Close from '@material-ui/icons/Close';
@@ -11,24 +11,20 @@ import adminStyle from 'styles/jss/nextjs-material-kit-pro/pages/adminStyle.js';
 import Remove from '@material-ui/icons/Remove';
 import Add from '@material-ui/icons/Add';
 import ItemEntity from '../../modules/item/ItemEntity';
-import { Ticket } from '../../modules/ticket/ticketType';
 import { useBoutique } from '../../hooks/useBoutique';
 
 const useStyles = makeStyles(adminStyle);
 
 interface Props {
-  item?: ItemEntity;
-  ticket?: Ticket;
+  item: ItemEntity;
 }
 
-const ShoppingCartLine: React.FC<Props> = ({ item = {}, ticket = {} }) => {
+const ShoppingCartLine: React.FC<Props> = ({ item }) => {
   const { uid, label, size, photoLink, color, price } = item;
-  ticket;
 
-  const [quantityToBuy, setQuantityToBuy] = useState(1);
-  const { deleteItem } = useBoutique();
-
+  const { deleteItem, updateItemQuantity, boutiques } = useBoutique();
   const classes = useStyles();
+
   return (
     <>
       <TableRow>
@@ -73,7 +69,7 @@ const ShoppingCartLine: React.FC<Props> = ({ item = {}, ticket = {} }) => {
               size="sm"
               round
               className={classes.firstButton}
-              onClick={() => setQuantityToBuy(quantityToBuy > 0 ? quantityToBuy - 1 : 0)}>
+              onClick={() => updateItemQuantity(uid, 'minus')}>
               <Remove />
             </Button>
             <Button
@@ -81,11 +77,11 @@ const ShoppingCartLine: React.FC<Props> = ({ item = {}, ticket = {} }) => {
               size="sm"
               round
               className={classes.lastButton}
-              onClick={() => setQuantityToBuy(quantityToBuy + 1)}>
+              onClick={() => updateItemQuantity(uid, 'add')}>
               <Add />
             </Button>
           </div>
-          {quantityToBuy}
+          {boutiques.itemsQuantity[uid]}
         </TableCell>
 
         <TableCell>

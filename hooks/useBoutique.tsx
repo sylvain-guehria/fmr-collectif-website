@@ -8,6 +8,7 @@ type ContextProps = {
   addTicket: (ticket: Ticket) => void;
   deleteItem: (itemUid: string) => void;
   deleteTicket: (ticketUid: string) => void;
+  updateItemQuantity: (itemUid: string, operation: 'add' | 'minus') => void;
 };
 interface ProviderProps {
   children?: React.ReactNode;
@@ -30,7 +31,12 @@ const useProvideBoutique = (): Partial<ContextProps> => {
 
   const addItem = (item: ItemEntity): void => {
     const localBoutique = { ...boutiques };
-    localBoutique.items.push(item);
+    if (localBoutique.itemsQuantity[item.getId()]) {
+      localBoutique.itemsQuantity[item.getId()] = localBoutique.itemsQuantity[item.getId()] + 1;
+    } else {
+      localBoutique.items.push(item);
+      localBoutique.itemsQuantity[item.getId()] = 1;
+    }
     setBoutiques(localBoutique);
   };
 
@@ -43,6 +49,21 @@ const useProvideBoutique = (): Partial<ContextProps> => {
   const deleteItem = (itemUid: string): void => {
     const localBoutique = { ...boutiques };
     localBoutique.items = localBoutique.items.filter(item => item.getId() !== itemUid);
+    delete localBoutique.itemsQuantity[itemUid];
+    setBoutiques(localBoutique);
+  };
+
+  const updateItemQuantity = (itemUid: string, operation: 'add' | 'minus'): void => {
+    const localBoutique = { ...boutiques };
+    let updatedQuantity = 1;
+    if (operation === 'add') {
+      updatedQuantity = localBoutique.itemsQuantity[itemUid] + 1;
+      localBoutique.itemsQuantity[itemUid] = updatedQuantity;
+    }
+    if (operation === 'minus' && localBoutique.itemsQuantity[itemUid] > 0) {
+      updatedQuantity = localBoutique.itemsQuantity[itemUid] - 1;
+      localBoutique.itemsQuantity[itemUid] = updatedQuantity;
+    }
     setBoutiques(localBoutique);
   };
 
@@ -58,15 +79,20 @@ const useProvideBoutique = (): Partial<ContextProps> => {
     addTicket,
     deleteItem,
     deleteTicket,
+    updateItemQuantity,
   };
 };
 
 const defaultBoutiques: Boutiques = {
   items: [],
+  itemsQuantity: {},
   tickets: [],
+  ticketsQuantity: {},
 };
 
-type Boutiques = {
+export type Boutiques = {
   items: ItemEntity[];
+  itemsQuantity: Record<string, number>;
   tickets: Ticket[];
+  ticketsQuantity: Record<string, number>;
 };

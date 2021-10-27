@@ -16,8 +16,8 @@ import Image from 'next/image';
 const useStyles = makeStyles(tableStyles);
 
 interface Props {
-  items?: ItemEntity[];
-  tickets?: Ticket[];
+  items: ItemEntity[];
+  tickets: Ticket[];
 }
 
 const ShoppingCartTable: React.FC<Props> = ({ items, tickets }) => {
@@ -46,12 +46,12 @@ const ShoppingCartTable: React.FC<Props> = ({ items, tickets }) => {
                   return item.uid && <ShoppingCartLine key={item.uid} item={item} />;
                 })}
             </TableBody>
-            <TableBody>
+            {/* <TableBody>
               {tickets &&
                 tickets.map(ticket => {
                   return ticket.uid && <ShoppingCartLine key={ticket.uid} ticket={ticket} />;
                 })}
-            </TableBody>
+            </TableBody> */}
           </Table>
           <div style={{ textAlign: 'right', margin: '10px' }}>
             <Button color="info" round>
