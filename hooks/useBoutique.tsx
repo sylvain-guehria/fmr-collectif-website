@@ -75,7 +75,11 @@ const useProvideBoutique = (): Partial<ContextProps> => {
   };
 
   const getTotalPrice = (): number => {
-    return 100;
+    let totalPrice = 0;
+    for (const item of boutiques.items) {
+      totalPrice = totalPrice + item.getPrice() * boutiques.itemsQuantity[item.getId()];
+    }
+    return totalPrice;
   };
 
   return {

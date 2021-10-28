@@ -37,10 +37,7 @@ const ShoppingCart: React.FC = () => {
       <Parallax image="/img/examples/bg2.jpg" filter="dark" small>
         <div className={classes.container}>
           <GridContainer>
-            <GridItem
-              md={8}
-              sm={8}
-              className={classNames(classes.mlAuto, classes.mrAuto, classes.textCenter)}>
+            <GridItem className={classNames(classes.mlAuto, classes.mrAuto, classes.textCenter)}>
               <h2 className={classes.title}>Panier</h2>
             </GridItem>
           </GridContainer>
