@@ -11,18 +11,24 @@ import adminStyle from 'styles/jss/nextjs-material-kit-pro/pages/adminStyle.js';
 import Remove from '@material-ui/icons/Remove';
 import Add from '@material-ui/icons/Add';
 import ItemEntity from '../../modules/item/ItemEntity';
-import { useBoutique } from '../../hooks/useBoutique';
 
 const useStyles = makeStyles(adminStyle);
 
 interface Props {
   item: ItemEntity;
+  deleteItem: (itemUid: string) => void;
+  updateItemQuantity: (itemUid: string, operation: 'add' | 'minus') => void;
+  itemsQuantity: Record<string, number>;
 }
 
-const ShoppingCartLine: React.FC<Props> = ({ item }) => {
+const ShoppingCartLine: React.FC<Props> = ({
+  item,
+  deleteItem,
+  updateItemQuantity,
+  itemsQuantity,
+}) => {
   const { uid, label, size, photoLink, color, price } = item;
 
-  const { deleteItem, updateItemQuantity, boutiques } = useBoutique();
   const classes = useStyles();
 
   return (
@@ -31,7 +37,7 @@ const ShoppingCartLine: React.FC<Props> = ({ item }) => {
         <TableCell />
         <TableCell>
           <div className={classes.imgContainer}>
-            <img src={photoLink || ''} alt="..." className={classes.img} />
+            <img src={photoLink || ''} alt="..." />
           </div>
         </TableCell>
         <TableCell>
@@ -57,7 +63,7 @@ const ShoppingCartLine: React.FC<Props> = ({ item }) => {
         <TableCell>
           <span>
             <a href="/shop" className={classes.tdNameAnchor}>
-              {price}
+              {price} €
             </a>
           </span>
         </TableCell>
@@ -81,7 +87,7 @@ const ShoppingCartLine: React.FC<Props> = ({ item }) => {
               <Add />
             </Button>
           </div>
-          {boutiques.itemsQuantity[uid]}
+          {itemsQuantity[uid]}
         </TableCell>
 
         <TableCell>

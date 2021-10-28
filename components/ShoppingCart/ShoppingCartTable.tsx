@@ -9,20 +9,20 @@ import Button from './../lib/CustomButtons/Button';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import ShoppingCartLine from './ShoppingCartLine';
 import tableStyles from 'styles/jss/nextjs-material-kit-pro/components/tableStyle.js';
-import { Ticket } from '../../modules/ticket/ticketType';
-import ItemEntity from '../../modules/item/ItemEntity';
 import Image from 'next/image';
+import { useBoutique } from '../../hooks/useBoutique';
 
 const useStyles = makeStyles(tableStyles);
 
-interface Props {
-  items: ItemEntity[];
-  tickets: Ticket[];
-}
-
-const ShoppingCartTable: React.FC<Props> = ({ items, tickets }) => {
+const ShoppingCartTable: React.FC = () => {
   const classes = useStyles();
-  const cartContainProduct = items?.length || tickets?.length;
+  const {
+    boutiques: { items, itemsQuantity },
+    deleteItem,
+    updateItemQuantity,
+    getTotalPrice,
+  } = useBoutique();
+  const cartContainProduct = items?.length;
 
   const tableHead = ['', '', 'Produit', 'Couleur', 'Taille', 'Prix', 'Quantité', ' ', ' '];
 
@@ -33,7 +33,7 @@ const ShoppingCartTable: React.FC<Props> = ({ items, tickets }) => {
           <Table className={classes.table}>
             {tableHead !== undefined ? (
               <TableHead>
-                <TableRow className={classes.tableRow}>
+                <TableRow>
                   {tableHead.map((prop, key) => {
                     return <TableCell key={key}>{prop}</TableCell>;
                   })}
@@ -43,7 +43,17 @@ const ShoppingCartTable: React.FC<Props> = ({ items, tickets }) => {
             <TableBody>
               {items &&
                 items.map(item => {
-                  return item.uid && <ShoppingCartLine key={item.uid} item={item} />;
+                  return (
+                    item.uid && (
+                      <ShoppingCartLine
+                        key={item.uid}
+                        item={item}
+                        deleteItem={deleteItem}
+                        updateItemQuantity={updateItemQuantity}
+                        itemsQuantity={itemsQuantity}
+                      />
+                    )
+                  );
                 })}
             </TableBody>
             {/* <TableBody>
@@ -54,6 +64,7 @@ const ShoppingCartTable: React.FC<Props> = ({ items, tickets }) => {
             </TableBody> */}
           </Table>
           <div style={{ textAlign: 'right', margin: '10px' }}>
+            Prix total : {getTotalPrice()} €
             <Button color="info" round>
               <>
                 Complete Purchase <KeyboardArrowRight />
@@ -62,8 +73,8 @@ const ShoppingCartTable: React.FC<Props> = ({ items, tickets }) => {
           </div>
         </>
       ) : (
-        <div style={{ textAlign: 'center', margin: '50px' }}>
-          <Image src={'/img/empty-cart.png'} alt="Empty cart" width="auto" height="auto" />
+        <div style={{ textAlign: 'center', margin: '25px' }}>
+          <Image src={'/img/empty-cart.png'} alt="Empty cart" width="250" height="125" />
           <br />
           votre panier est vide.
         </div>

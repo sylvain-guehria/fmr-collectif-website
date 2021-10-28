@@ -13,13 +13,9 @@ import GridItem from 'components/lib/Grid/GridItem.js';
 import shoppingCartStyle from 'styles/jss/nextjs-material-kit-pro/pages/shoppingCartStyle.js';
 import ShoppingCartTable from '../ShoppingCart/ShoppingCartTable';
 
-import { useBoutique } from '../../hooks/useBoutique';
-
 const useStyles = makeStyles(shoppingCartStyle);
 
 const ShoppingCart: React.FC = () => {
-  const { boutiques = { items: [], tickets: [] } } = useBoutique();
-
   React.useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
@@ -52,7 +48,7 @@ const ShoppingCart: React.FC = () => {
       </Parallax>
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
-          <ShoppingCartTable items={boutiques.items} tickets={boutiques.tickets} />
+          <ShoppingCartTable />
         </div>
       </div>
     </div>

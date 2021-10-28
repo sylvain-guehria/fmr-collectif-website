@@ -9,6 +9,7 @@ type ContextProps = {
   deleteItem: (itemUid: string) => void;
   deleteTicket: (ticketUid: string) => void;
   updateItemQuantity: (itemUid: string, operation: 'add' | 'minus') => void;
+  getTotalPrice: () => number;
 };
 interface ProviderProps {
   children?: React.ReactNode;
@@ -73,6 +74,10 @@ const useProvideBoutique = (): Partial<ContextProps> => {
     setBoutiques(localBoutique);
   };
 
+  const getTotalPrice = (): number => {
+    return 100;
+  };
+
   return {
     boutiques,
     addItem,
@@ -80,6 +85,7 @@ const useProvideBoutique = (): Partial<ContextProps> => {
     deleteItem,
     deleteTicket,
     updateItemQuantity,
+    getTotalPrice,
   };
 };
 
