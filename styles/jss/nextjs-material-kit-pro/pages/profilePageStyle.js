@@ -142,6 +142,17 @@ const profilePageStyle = {
   parallax: {
     height: '380px',
     backgroundPosition: 'top center'
+  },
+  label: {
+    cursor: 'pointer',
+    paddingLeft: '0',
+    color: grayColor[12],
+    fontSize: '14px',
+    lineHeight: '1.428571429',
+    fontWeight: '400',
+    display: 'inline-flex',
+    transition: '0.3s ease all',
+    letterSpacing: 'unset'
   }
 };
 

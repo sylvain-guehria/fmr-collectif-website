@@ -98,6 +98,7 @@ export type ButtonProps = {
   type?: string;
   target?: string;
   href?: string;
+  style?: Record<string, unknown>;
 };
 
 export default RegularButton;

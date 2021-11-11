@@ -71,7 +71,7 @@ const ShoppingCartTable: React.FC = () => {
             <Link href="/buy">
               <Button color="info" round>
                 <>
-                  Complete Purchase <KeyboardArrowRight />
+                  Terminé vos achats <KeyboardArrowRight />
                 </>
               </Button>
             </Link>
