@@ -6,7 +6,8 @@ import { useAuth } from '../../../hooks/useAuth';
 import { useRouter } from 'next/router';
 import { googleConnexionUseCase } from '../../../usecases';
 import { facebookConnexionUseCase } from '../../../usecases';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(signupPageStyle);
 
 const LoginWithOtherAccount: React.FC = (): React.ReactElement => {
@@ -20,16 +21,10 @@ const LoginWithOtherAccount: React.FC = (): React.ReactElement => {
         justIcon
         round
         color="facebook"
-        className={classes.iconButtons}
         onClick={() => facebookConnexionUseCase(auth, router)}>
         <i className={classes.socials + ' fab fa-facebook-f'} />
       </Button>
-      <Button
-        justIcon
-        round
-        color="google"
-        className={classes.iconButtons}
-        onClick={() => googleConnexionUseCase(auth, router)}>
+      <Button justIcon round color="google" onClick={() => googleConnexionUseCase(auth, router)}>
         <i className={classes.socials + ' fab fa-google'} />
       </Button>
     </div>

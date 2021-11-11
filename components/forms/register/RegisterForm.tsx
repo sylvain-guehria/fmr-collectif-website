@@ -23,7 +23,8 @@ import { getError } from '../formUtils';
 import { useAuth } from '../../../hooks/useAuth';
 import { useRouter } from 'next/router';
 import { registerWithEmailUseCase } from '../../../usecases';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(signupPageStyle);
 
 interface RegisterFormType {
@@ -70,7 +71,6 @@ const RegisterForm: React.FC = (): React.ReactElement => {
       <CustomInput
         formControlProps={{
           fullWidth: true,
-          className: classes.customFormControlClasses,
         }}
         error={getError(errors, 'firstName')}
         inputProps={{
@@ -86,7 +86,6 @@ const RegisterForm: React.FC = (): React.ReactElement => {
       <CustomInput
         formControlProps={{
           fullWidth: true,
-          className: classes.customFormControlClasses,
         }}
         error={getError(errors, 'lastName')}
         inputProps={{
@@ -102,7 +101,6 @@ const RegisterForm: React.FC = (): React.ReactElement => {
       <CustomInput
         formControlProps={{
           fullWidth: true,
-          className: classes.customFormControlClasses,
         }}
         error={getError(errors, 'email')}
         inputProps={{
@@ -119,7 +117,6 @@ const RegisterForm: React.FC = (): React.ReactElement => {
         error={getError(errors, 'password')}
         formControlProps={{
           fullWidth: true,
-          className: classes.customFormControlClasses,
         }}
         inputProps={{
           ...register('password'),
@@ -135,7 +132,6 @@ const RegisterForm: React.FC = (): React.ReactElement => {
         error={getError(errors, 'confirmPassword')}
         formControlProps={{
           fullWidth: true,
-          className: classes.customFormControlClasses,
         }}
         inputProps={{
           ...register('confirmPassword'),

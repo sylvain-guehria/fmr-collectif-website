@@ -17,6 +17,8 @@ import { Item } from '../../modules/item/itemType';
 import useSWR from 'swr';
 import ItemEntity from '../../modules/item/ItemEntity';
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(styles);
 
 interface Props {

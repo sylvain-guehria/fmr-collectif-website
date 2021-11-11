@@ -12,7 +12,8 @@ import UserTable from '../../components/Admin/User/UserTable';
 import shoppingCartStyle from 'styles/jss/nextjs-material-kit-pro/pages/shoppingCartStyle.js';
 import UserEntity from '../../modules/user/UserEntity';
 import useSWR from 'swr';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(shoppingCartStyle);
 
 interface Props {

@@ -12,7 +12,8 @@ import Parallax from 'components/lib/Parallax/Parallax.js';
 import BuyProcess from './BuyProcess';
 
 import styles from 'styles/jss/nextjs-material-kit-pro/pages/ecommerceStyle.js';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(styles);
 
 const Buy: React.FC = () => {
@@ -45,7 +46,9 @@ const Buy: React.FC = () => {
           </GridContainer>
         </div>
       </Parallax>
-      <BuyProcess />
+      <div className={classes.container}>
+        <BuyProcess />
+      </div>
     </div>
   );
 };

@@ -11,7 +11,8 @@ import CardBody from 'components/lib/Card/CardBody.js';
 import CustomInput from 'components/lib/CustomInput/CustomInput.js';
 
 import styles from 'styles/jss/nextjs-material-kit-pro/pages/ecommerceStyle.js';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(styles);
 
 const Newsletter: React.FC = () => {

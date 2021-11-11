@@ -17,7 +17,8 @@ import SectionComments from 'pages-sections/blog-post/SectionComments.js';
 import SectionSimilarStories from 'pages-sections/blog-post/SectionSimilarStories.js';
 
 import blogPostPageStyle from 'styles/jss/nextjs-material-kit-pro/pages/blogPostPageStyle.js';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(blogPostPageStyle);
 
 const Event: React.FC = () => {

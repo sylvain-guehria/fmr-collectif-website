@@ -9,7 +9,8 @@ import Button from '../../components/lib/CustomButtons/Button';
 import { useAuth } from '../../hooks/useAuth';
 
 import styles from 'styles/jss/nextjs-material-kit-pro/components/headerLinksStyle.js';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(styles);
 
 const LoginButton: React.FC<unknown> = () => {

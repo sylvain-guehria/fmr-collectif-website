@@ -20,7 +20,8 @@ import productStyle from 'styles/jss/nextjs-material-kit-pro/pages/productStyle.
 
 import { useBoutique } from '../../hooks/useBoutique';
 import ItemEntity from '../../modules/item/ItemEntity';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(productStyle);
 const images = [
   {
@@ -180,7 +181,6 @@ const ShopItemCard: React.FC<Props> = ({ items }) => {
                               onClick={() => setGenderSelected(item.gender || '')}
                               classes={{
                                 root: classes.selectMenuItem,
-                                selected: classes.clselectMenuItemSelected,
                               }}
                               value={item.gender || ''}>
                               {item.gender}

@@ -12,7 +12,8 @@ import GridItem from 'components/lib/Grid/GridItem.js';
 
 import shoppingCartStyle from 'styles/jss/nextjs-material-kit-pro/pages/shoppingCartStyle.js';
 import ShoppingCartTable from '../ShoppingCart/ShoppingCartTable';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(shoppingCartStyle);
 
 const ShoppingCart: React.FC = () => {

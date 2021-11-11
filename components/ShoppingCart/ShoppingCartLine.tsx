@@ -11,7 +11,8 @@ import adminStyle from 'styles/jss/nextjs-material-kit-pro/pages/adminStyle.js';
 import Remove from '@material-ui/icons/Remove';
 import Add from '@material-ui/icons/Add';
 import ItemEntity from '../../modules/item/ItemEntity';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(adminStyle);
 
 interface Props {

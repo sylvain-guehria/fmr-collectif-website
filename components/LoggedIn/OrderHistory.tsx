@@ -19,7 +19,8 @@ import Muted from 'components/lib/Typography/Muted.js';
 import Clearfix from 'components/lib/Clearfix/Clearfix.js';
 
 import profilePageStyle from 'styles/jss/nextjs-material-kit-pro/pages/profilePageStyle.js';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(profilePageStyle);
 
 const History: React.FC = () => {
@@ -157,7 +158,6 @@ const History: React.FC = () => {
                                     <img src="/img/faces/avatar.jpg" alt="..." />
                                   </a>
                                   <div
-                                    className={classes.coloredShadow}
                                     style={{
                                       backgroundImage: "url('/img/faces/avatar.jpg')",
                                       opacity: '1',
@@ -189,7 +189,6 @@ const History: React.FC = () => {
                                     <img src="/img/faces/marc.jpg" alt="..." />
                                   </a>
                                   <div
-                                    className={classes.coloredShadow}
                                     style={{
                                       backgroundImage: "url('/img/faces/marc.jpg')",
                                       opacity: '1',
@@ -223,7 +222,6 @@ const History: React.FC = () => {
                                     <img src="/img/faces/kendall.jpg" alt="..." />
                                   </a>
                                   <div
-                                    className={classes.coloredShadow}
                                     style={{
                                       backgroundImage: "url('/img/faces/kendall.jpg')",
                                       opacity: '1',
@@ -255,7 +253,6 @@ const History: React.FC = () => {
                                     <img src="/img/faces/card-profile2-square.jpg" alt="..." />
                                   </a>
                                   <div
-                                    className={classes.coloredShadow}
                                     style={{
                                       backgroundImage: "url('/img/faces/card-profile2-square.jpg')",
                                       opacity: '1',

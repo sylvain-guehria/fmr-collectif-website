@@ -12,7 +12,8 @@ import shoppingCartStyle from 'styles/jss/nextjs-material-kit-pro/pages/shopping
 import useSWR from 'swr';
 import ItemEntity from '../../modules/item/ItemEntity';
 import ItemTable from '../../components/Admin/Item/ItemTable';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(shoppingCartStyle);
 
 interface Props {

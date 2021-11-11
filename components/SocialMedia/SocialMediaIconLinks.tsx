@@ -4,7 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '../lib/CustomButtons/Button';
 
 import presentationStyle from 'styles/jss/nextjs-material-kit-pro/pages/presentationStyle.js';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(presentationStyle);
 
 const SocialMediaIconLinks: React.FC = () => {

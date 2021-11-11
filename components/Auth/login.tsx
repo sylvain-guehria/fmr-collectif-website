@@ -12,7 +12,8 @@ import LoginWithEmailForm from '../forms/login/LoginWithEmailForm';
 import LoginWithOtherAccount from '../forms/login/LoginWithOtherAccount';
 
 import loginPageStyle from 'styles/jss/nextjs-material-kit-pro/pages/loginPageStyle.js';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(loginPageStyle);
 
 const LoginComponent: React.FC = () => {

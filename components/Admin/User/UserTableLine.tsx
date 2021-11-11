@@ -8,7 +8,8 @@ import TableRow from '@material-ui/core/TableRow';
 import adminStyle from 'styles/jss/nextjs-material-kit-pro/pages/adminStyle.js';
 import { formatTimeStamp } from '../../../utils/utils';
 import UserEntity from '../../../modules/user/UserEntity';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(adminStyle);
 
 interface Props {
@@ -37,7 +38,7 @@ const UserTableLine: React.FC<Props> = ({ user }) => {
 
         <TableCell>
           <div className={classes.imgContainer} key={1}>
-            <img src="/img/defaultAvatar.png" alt="..." className={classes.img} />
+            <img src="/img/defaultAvatar.png" alt="..." />
           </div>
         </TableCell>
 

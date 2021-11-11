@@ -24,7 +24,8 @@ import signupPageStyle from 'styles/jss/nextjs-material-kit-pro/pages/signupPage
 
 import RegisterForm from '../forms/register/RegisterForm';
 import LoginWithOtherAccount from '../forms/login/LoginWithOtherAccount';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(signupPageStyle);
 
 const SignUpComponent: React.FC = ({ ...rest }) => {

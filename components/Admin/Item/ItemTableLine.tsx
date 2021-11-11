@@ -24,8 +24,11 @@ import ConfirmDialog from '../../lib/ConfirmDialog/ConfirmDialog';
 import ImageUpload from '../../lib/CustomUpload/ImageUpload';
 import { saveItemUseCase } from '../../../usecases';
 import { Item, genderEnum } from '../../../modules/item/itemType';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(adminStyle);
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useTableStyles = makeStyles(tableStyles);
 
 interface Props {
@@ -90,7 +93,7 @@ const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
   return (
     <TableRow key={uid}>
       <TableCell className={tableClasses.tableCell} colSpan={9}>
-        <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div style={{ display: 'flex' }}>
             {isEditMode ? (
               <>
@@ -128,14 +131,8 @@ const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
                 disabled: !isEditMode,
               }}
             />
-            <FormControl fullWidth className={classes.selectFormControl}>
+            <FormControl fullWidth>
               <Select
-                MenuProps={{
-                  className: classes.selectMenu,
-                }}
-                classes={{
-                  select: classes.select,
-                }}
                 error={!!getError(errors, 'gender')}
                 inputProps={{
                   id: 'gender-select',

@@ -13,7 +13,8 @@ import SectionPricing from 'pages-sections/pricing-page/SectionPricing.js';
 import SectionFeatures from 'pages-sections/pricing-page/SectionFeatures.js';
 
 import pricingStyle from 'styles/jss/nextjs-material-kit-pro/pages/pricingStyle.js';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(pricingStyle);
 
 const BecomeAmbassador: React.FC = () => {

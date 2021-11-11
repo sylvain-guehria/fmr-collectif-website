@@ -67,5 +67,6 @@ Card.propTypes = {
     'rose'
   ]),
   product: PropTypes.bool,
-  children: PropTypes.node
+  children: PropTypes.node,
+  style: PropTypes.object
 };

@@ -11,7 +11,10 @@ import ShoppingCartLine from './ShoppingCartLine';
 import tableStyles from 'styles/jss/nextjs-material-kit-pro/components/tableStyle.js';
 import Image from 'next/image';
 import { useBoutique } from '../../hooks/useBoutique';
+import Link from 'next/link';
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(tableStyles);
 
 const ShoppingCartTable: React.FC = () => {
@@ -65,11 +68,13 @@ const ShoppingCartTable: React.FC = () => {
           </Table>
           <div style={{ textAlign: 'right', margin: '10px' }}>
             Prix total : {getTotalPrice()} €
-            <Button color="info" round>
-              <>
-                Complete Purchase <KeyboardArrowRight />
-              </>
-            </Button>
+            <Link href="/buy">
+              <Button color="info" round>
+                <>
+                  Complete Purchase <KeyboardArrowRight />
+                </>
+              </Button>
+            </Link>
           </div>
         </>
       ) : (

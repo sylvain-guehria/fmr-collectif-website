@@ -9,7 +9,8 @@ import TableBody from '@material-ui/core/TableBody';
 import UserTableLine from './UserTableLine';
 import tableStyles from 'styles/jss/nextjs-material-kit-pro/components/tableStyle.js';
 import UserEntity from '../../../modules/user/UserEntity';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(tableStyles);
 
 interface Props {
@@ -35,7 +36,7 @@ const UserTable: React.FC<Props> = ({ users }) => {
       <Table className={classes.table}>
         {tableHead !== undefined ? (
           <TableHead>
-            <TableRow className={classes.tableRow}>
+            <TableRow>
               {tableHead.map((prop, key) => {
                 return <TableCell key={key}>{prop}</TableCell>;
               })}

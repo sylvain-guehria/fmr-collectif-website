@@ -12,7 +12,8 @@ import Parallax from 'components/lib/Parallax/Parallax.js';
 import OrderHistory from './OrderHistory';
 
 import styles from 'styles/jss/nextjs-material-kit-pro/pages/ecommerceStyle.js';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(styles);
 
 const Orders: React.FC = () => {
