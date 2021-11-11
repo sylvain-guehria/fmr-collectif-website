@@ -9,7 +9,7 @@ import HeaderLinks from 'components/Header/HeaderLinks.js';
 import GridContainer from 'components/lib/Grid/GridContainer.js';
 import GridItem from 'components/lib/Grid/GridItem.js';
 import Parallax from 'components/lib/Parallax/Parallax.js';
-import BuyProcess from './BuyProcess';
+import BuySteps from '../BuySteps/BuySteps';
 
 import styles from 'styles/jss/nextjs-material-kit-pro/pages/ecommerceStyle.js';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -17,10 +17,6 @@ import styles from 'styles/jss/nextjs-material-kit-pro/pages/ecommerceStyle.js';
 const useStyles = makeStyles(styles);
 
 const Buy: React.FC = () => {
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
-    document.body.scrollTop = 0;
-  });
   const classes = useStyles();
   return (
     <div>
@@ -47,7 +43,7 @@ const Buy: React.FC = () => {
         </div>
       </Parallax>
       <div className={classes.container}>
-        <BuyProcess />
+        <BuySteps />
       </div>
     </div>
   );
