@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classNames from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
 import CheckCircle from '@material-ui/icons/CheckCircle';
@@ -10,7 +10,7 @@ import Clearfix from 'components/lib/Clearfix/Clearfix.js';
 import LivraisonStep from './LivraisonStep';
 import ResumeStep from './ResumeStep';
 import PaiementStep from './PaiementStep';
-import { useBoutique } from '../../hooks/useBoutique';
+// import { useBoutique } from '../../hooks/useBoutique';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { validationSchema } from './BuyFormValidation';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -21,31 +21,35 @@ import profilePageStyle from 'styles/jss/nextjs-material-kit-pro/pages/profilePa
 const useStyles = makeStyles(profilePageStyle);
 
 export interface BuyFormType {
-  livraisonChecked: boolean;
   remiseEnMainProporeChecked: boolean;
-  fullName: string;
-  shippingAddress: string;
-  phone: string;
-  fullNameBilling: string;
+  livraisonChecked: boolean;
+  identicalShippingAddressChecked: boolean;
+  shouldSelectLivraisonOrRemiseEnMainPropre: boolean;
+  billingFullName: string;
   billingAddress: string;
   billingPhone: string;
+  shippingFullName: string;
+  shippingAddress: string;
+  shippingPhone: string;
 }
 
 const BuySteps: React.FC = () => {
   const classes = useStyles();
-  const { boutiques } = useBoutique();
+  // const { boutiques } = useBoutique();
 
   const formOptions = { resolver: yupResolver(validationSchema) };
 
   const {
     register,
     handleSubmit,
+    setValue,
+    clearErrors,
     formState: { errors },
   } = useForm<BuyFormType>(formOptions);
 
   const onSubmit: SubmitHandler<BuyFormType> = async (data: BuyFormType) => {
-    const { email, password, firstName, lastName } = data;
-    registerWithEmailUseCase(auth, router, { firstName, lastName, email, password });
+    // eslint-disable-next-line no-console
+    console.log('submit ---------', data);
   };
 
   return (
@@ -61,7 +65,14 @@ const BuySteps: React.FC = () => {
                   {
                     tabButton: 'Livraison',
                     tabIcon: Home,
-                    tabContent: <LivraisonStep register={register} />,
+                    tabContent: (
+                      <LivraisonStep
+                        register={register}
+                        errors={errors}
+                        setValue={setValue}
+                        clearErrors={clearErrors}
+                      />
+                    ),
                   },
                   {
                     tabButton: 'Resumé',

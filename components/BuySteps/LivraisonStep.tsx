@@ -9,8 +9,11 @@ import Button from './../lib/CustomButtons/Button';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 
 import profilePageStyle from 'styles/jss/nextjs-material-kit-pro/pages/profilePageStyle.js';
-import { UseFormRegister } from 'react-hook-form';
+import { UseFormRegister, UseFormSetValue, UseFormClearErrors } from 'react-hook-form';
 import { getError } from '../../components/forms/formUtils';
+import { FieldError } from 'react-hook-form';
+import InputLabel from '@material-ui/core/InputLabel';
+
 import { BuyFormType } from './BuySteps';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -18,9 +21,16 @@ const useStyles = makeStyles(profilePageStyle);
 
 type Props = {
   register: UseFormRegister<BuyFormType>;
+  errors: FormErrors;
+  setValue: UseFormSetValue<BuyFormType>;
+  clearErrors: UseFormClearErrors<BuyFormType>;
 };
 
-const LivraisonStep: React.FC<Props> = ({ register }) => {
+type FormErrors = {
+  [key: string]: FieldError | undefined;
+};
+
+const LivraisonStep: React.FC<Props> = ({ register, errors, setValue, clearErrors }) => {
   const classes = useStyles();
   const [remiseEnMainProporeChecked, setRemiseEnMainProporeChecked] = useState(false);
   const [livraisonChecked, setLivraisonChecked] = useState(false);
@@ -30,20 +40,26 @@ const LivraisonStep: React.FC<Props> = ({ register }) => {
     if (remiseEnMainProporeChecked) {
       setRemiseEnMainProporeChecked(false);
       setLivraisonChecked(true);
+      setValue('livraisonChecked', true);
     } else {
       setRemiseEnMainProporeChecked(true);
       setLivraisonChecked(false);
+      setValue('livraisonChecked', false);
     }
+    clearErrors('shouldSelectLivraisonOrRemiseEnMainPropre');
   };
 
   const handleClickLivraison = (): void => {
     if (livraisonChecked) {
       setLivraisonChecked(false);
       setRemiseEnMainProporeChecked(true);
+      setValue('remiseEnMainProporeChecked', true);
     } else {
       setLivraisonChecked(true);
       setRemiseEnMainProporeChecked(false);
+      setValue('remiseEnMainProporeChecked', false);
     }
+    clearErrors('shouldSelectLivraisonOrRemiseEnMainPropre');
   };
 
   const handleClickIdenticalShippingAddress = (): void => {
@@ -59,7 +75,6 @@ const LivraisonStep: React.FC<Props> = ({ register }) => {
       <GridContainer spacing={5}>
         <GridItem className={classes.gridItem}>
           <h4>Mode de livraison</h4>
-          &nbsp;
           <FormControlLabel
             classes={{
               label: classes.label,
@@ -69,7 +84,7 @@ const LivraisonStep: React.FC<Props> = ({ register }) => {
                 checked={remiseEnMainProporeChecked}
                 onClick={() => handleClickRemiseEnMainPropore()}
                 type="checkbox"
-                // {...register('remiseEnMainProporeChecked')}
+                {...register('remiseEnMainProporeChecked')}
                 id="remiseEnMainProporeChecked"
               />
             }
@@ -84,38 +99,51 @@ const LivraisonStep: React.FC<Props> = ({ register }) => {
                 checked={livraisonChecked}
                 onClick={() => handleClickLivraison()}
                 type="checkbox"
-                // {...register('livraisonChecked')}
+                {...register('livraisonChecked')}
                 id="livraisonChecked"
               />
             }
             label={<span>Colissimo. Frais de port 4,95 €</span>}
           />
+          <InputLabel error>
+            <br />
+            <p>{getError(errors, 'livraisonChecked')}</p>
+            <p>{getError(errors, 'remiseEnMainProporeChecked')}</p>
+            <p>{getError(errors, 'shouldSelectLivraisonOrRemiseEnMainPropre')}</p>
+          </InputLabel>
         </GridItem>
         <GridItem className={classes.gridItem}>
           <h4>Adresse de facturation</h4>
-          <form>
-            <CustomInput
-              labelText="Nom et prénom"
-              id="float"
-              formControlProps={{
-                fullWidth: true,
-              }}
-            />
-            <CustomInput
-              labelText="Adresse"
-              id="float"
-              formControlProps={{
-                fullWidth: true,
-              }}
-            />
-            <CustomInput
-              labelText="Phone"
-              id="float"
-              formControlProps={{
-                fullWidth: true,
-              }}
-            />
-          </form>
+          <CustomInput
+            formControlProps={{
+              fullWidth: true,
+            }}
+            error={getError(errors, 'billingFullName')}
+            inputProps={{
+              ...register('billingFullName'),
+              placeholder: 'Nom et prénom',
+            }}
+          />
+          <CustomInput
+            formControlProps={{
+              fullWidth: true,
+            }}
+            error={getError(errors, 'billingAddress')}
+            inputProps={{
+              ...register('billingAddress'),
+              placeholder: 'Adresse',
+            }}
+          />
+          <CustomInput
+            formControlProps={{
+              fullWidth: true,
+            }}
+            error={getError(errors, 'billingPhone')}
+            inputProps={{
+              ...register('billingPhone'),
+              placeholder: 'Téléphone',
+            }}
+          />
         </GridItem>
         {livraisonChecked && (
           <GridItem className={classes.gridItem}>
@@ -130,51 +158,55 @@ const LivraisonStep: React.FC<Props> = ({ register }) => {
                   checked={identicalShippingAddressChecked}
                   onClick={() => handleClickIdenticalShippingAddress()}
                   type="checkbox"
-                  // {...register('remiseEnMainProporeChecked')}
+                  {...register('identicalShippingAddressChecked')}
                   id="identicalShippingAddressChecked"
                 />
               }
               label={<span>Identique à l&apos;adresse de facturation.</span>}
             />
             {!identicalShippingAddressChecked && (
-              <form>
+              <>
                 <CustomInput
-                  labelText="Nom et prénom"
-                  id="float"
                   formControlProps={{
                     fullWidth: true,
                   }}
-                  // error={getError(errors, 'fullName')}
+                  error={getError(errors, 'shippingFullName')}
                   inputProps={{
-                    ...register('lastName'),
-                    // startAdornment: (
-                    //   <InputAdornment position="start" className={classes.inputAdornment}>
-                    //     <Face className={classes.inputAdornmentIcon} />
-                    //   </InputAdornment>
-                    // ),
-                    placeholder: 'Nom...',
+                    ...register('shippingFullName'),
+                    placeholder: 'Nom et prénom',
                   }}
                 />
                 <CustomInput
-                  labelText="Adresse"
-                  id="float"
                   formControlProps={{
                     fullWidth: true,
+                  }}
+                  error={getError(errors, 'shippingAddress')}
+                  inputProps={{
+                    ...register('shippingAddress'),
+                    placeholder: 'Adresse',
                   }}
                 />
                 <CustomInput
-                  labelText="Phone"
-                  id="float"
                   formControlProps={{
                     fullWidth: true,
                   }}
+                  error={getError(errors, 'shippingPhone')}
+                  inputProps={{
+                    ...register('shippingPhone'),
+                    placeholder: 'Téléphone',
+                  }}
                 />
-              </form>
+              </>
             )}
           </GridItem>
         )}
       </GridContainer>
-      <Button color="info" round style={{ position: 'absolute', bottom: 15, right: 15 }}>
+      &nbsp;
+      <Button
+        color="info"
+        round
+        style={{ position: 'absolute', bottom: 15, right: 15 }}
+        type="submit">
         <>
           Validé la livraison <KeyboardArrowRight />
         </>
