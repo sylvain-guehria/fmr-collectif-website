@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
 import CheckCircle from '@material-ui/icons/CheckCircle';
@@ -43,7 +43,9 @@ const BuySteps: React.FC = () => {
     register,
     handleSubmit,
     setValue,
+    getValues,
     clearErrors,
+    watch,
     formState: { errors },
   } = useForm<BuyFormType>(formOptions);
 
@@ -70,7 +72,9 @@ const BuySteps: React.FC = () => {
                         register={register}
                         errors={errors}
                         setValue={setValue}
+                        getValues={getValues}
                         clearErrors={clearErrors}
+                        watch={watch}
                       />
                     ),
                   },

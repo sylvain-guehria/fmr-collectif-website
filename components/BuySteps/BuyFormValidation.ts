@@ -10,27 +10,34 @@ export const validationSchema = Yup.object()
     ),
     billingAddress: Yup.string().required('Veuillez entrer votre adresse de facturation'),
     billingPhone: Yup.string().required('Veuillez entrer le numéro de téléphone de facturation'),
-    shippingFullName: Yup.string().when(
-      ['identicalShippingAddressChecked', 'remiseEnMainProporeChecked'],
-      {
-        is: false,
-        then: Yup.string().required('Veuillez entrer votre nom et prénom'),
-      }
-    ),
-    shippingAddress: Yup.string().when(
-      ['identicalShippingAddressChecked', 'remiseEnMainProporeChecked'],
-      {
-        is: false,
-        then: Yup.string().required('Veuillez entrer votre adresse de livraison'),
-      }
-    ),
-    shippingPhone: Yup.string().when(
-      ['identicalShippingAddressChecked', 'remiseEnMainProporeChecked'],
-      {
-        is: false,
-        then: Yup.string().required('Veuillez entrer votre numéro de téléphone'),
-      }
-    ),
+    shippingFullName: Yup.string(),
+    shippingAddress: Yup.string(),
+    shippingPhone: Yup.string(),
+  })
+  .test('shippingFullName', '', obj => {
+    return !obj.remiseEnMainProporeChecked &&
+      !obj.identicalShippingAddressChecked &&
+      !obj.shippingFullName
+      ? new Yup.ValidationError('Veuillez entrer votre nom et prénom', null, 'shippingFullName')
+      : true;
+  })
+  .test('shippingAddress', '', obj => {
+    return !obj.remiseEnMainProporeChecked &&
+      !obj.identicalShippingAddressChecked &&
+      !obj.shippingFullName
+      ? new Yup.ValidationError(
+          'Veuillez entrer votre adresse de livraison',
+          null,
+          'shippingAddress'
+        )
+      : true;
+  })
+  .test('shippingPhone', '', obj => {
+    return !obj.remiseEnMainProporeChecked &&
+      !obj.identicalShippingAddressChecked &&
+      !obj.shippingFullName
+      ? new Yup.ValidationError('Veuillez entrer votre numéro de téléphone', null, 'shippingPhone')
+      : true;
   })
   .test('shouldSelectLivraisonOrRemiseEnMainPropre', '', obj => {
     if (obj.remiseEnMainProporeChecked || obj.livraisonChecked) {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 // core components
 import GridContainer from 'components/lib/Grid/GridContainer.js';
@@ -7,9 +7,16 @@ import CustomInput from '../lib/CustomInput/CustomInput';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Button from './../lib/CustomButtons/Button';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+import Tooltip from '@material-ui/core/Tooltip';
 
 import profilePageStyle from 'styles/jss/nextjs-material-kit-pro/pages/profilePageStyle.js';
-import { UseFormRegister, UseFormSetValue, UseFormClearErrors } from 'react-hook-form';
+import {
+  UseFormRegister,
+  UseFormGetValues,
+  UseFormSetValue,
+  UseFormClearErrors,
+  UseFormWatch,
+} from 'react-hook-form';
 import { getError } from '../../components/forms/formUtils';
 import { FieldError } from 'react-hook-form';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -23,51 +30,41 @@ type Props = {
   register: UseFormRegister<BuyFormType>;
   errors: FormErrors;
   setValue: UseFormSetValue<BuyFormType>;
+  getValues: UseFormGetValues<BuyFormType>;
   clearErrors: UseFormClearErrors<BuyFormType>;
+  watch: UseFormWatch<BuyFormType>;
 };
 
 type FormErrors = {
   [key: string]: FieldError | undefined;
 };
 
-const LivraisonStep: React.FC<Props> = ({ register, errors, setValue, clearErrors }) => {
+const LivraisonStep: React.FC<Props> = ({
+  register,
+  errors,
+  setValue,
+  clearErrors,
+  getValues,
+  watch,
+}) => {
   const classes = useStyles();
-  const [remiseEnMainProporeChecked, setRemiseEnMainProporeChecked] = useState(false);
-  const [livraisonChecked, setLivraisonChecked] = useState(false);
-  const [identicalShippingAddressChecked, setIdenticalShippingAddressChecked] = useState(false);
+  const showShippingChoice = watch('livraisonChecked', false);
+  const showShippingInfo = watch('identicalShippingAddressChecked', false);
 
   const handleClickRemiseEnMainPropore = (): void => {
-    if (remiseEnMainProporeChecked) {
-      setRemiseEnMainProporeChecked(false);
-      setLivraisonChecked(true);
-      setValue('livraisonChecked', true);
-    } else {
-      setRemiseEnMainProporeChecked(true);
-      setLivraisonChecked(false);
-      setValue('livraisonChecked', false);
-    }
+    setValue('livraisonChecked', getValues('remiseEnMainProporeChecked'));
     clearErrors('shouldSelectLivraisonOrRemiseEnMainPropre');
   };
 
   const handleClickLivraison = (): void => {
-    if (livraisonChecked) {
-      setLivraisonChecked(false);
-      setRemiseEnMainProporeChecked(true);
-      setValue('remiseEnMainProporeChecked', true);
-    } else {
-      setLivraisonChecked(true);
-      setRemiseEnMainProporeChecked(false);
-      setValue('remiseEnMainProporeChecked', false);
-    }
+    setValue('remiseEnMainProporeChecked', getValues('livraisonChecked'));
     clearErrors('shouldSelectLivraisonOrRemiseEnMainPropre');
   };
 
   const handleClickIdenticalShippingAddress = (): void => {
-    if (identicalShippingAddressChecked) {
-      setIdenticalShippingAddressChecked(false);
-    } else {
-      setIdenticalShippingAddressChecked(true);
-    }
+    clearErrors('shippingPhone');
+    clearErrors('shippingAddress');
+    clearErrors('shippingFullName');
   };
 
   return (
@@ -75,32 +72,31 @@ const LivraisonStep: React.FC<Props> = ({ register, errors, setValue, clearError
       <GridContainer spacing={5}>
         <GridItem className={classes.gridItem}>
           <h4>Mode de livraison</h4>
+          <Tooltip title="A n'importe quel évènement FRM" classes={{ tooltip: classes.tooltip }}>
+            <FormControlLabel
+              classes={{
+                label: classes.label,
+              }}
+              control={
+                <input
+                  onClick={() => handleClickRemiseEnMainPropore()}
+                  type="checkbox"
+                  {...register('remiseEnMainProporeChecked')}
+                />
+              }
+              label={<span>Remise en main propre.</span>}
+            />
+          </Tooltip>
+
           <FormControlLabel
             classes={{
               label: classes.label,
             }}
             control={
               <input
-                checked={remiseEnMainProporeChecked}
-                onClick={() => handleClickRemiseEnMainPropore()}
-                type="checkbox"
-                {...register('remiseEnMainProporeChecked')}
-                id="remiseEnMainProporeChecked"
-              />
-            }
-            label={<span>Remise en main propre.</span>}
-          />
-          <FormControlLabel
-            classes={{
-              label: classes.label,
-            }}
-            control={
-              <input
-                checked={livraisonChecked}
                 onClick={() => handleClickLivraison()}
                 type="checkbox"
                 {...register('livraisonChecked')}
-                id="livraisonChecked"
               />
             }
             label={<span>Colissimo. Frais de port 4,95 €</span>}
@@ -145,7 +141,7 @@ const LivraisonStep: React.FC<Props> = ({ register, errors, setValue, clearError
             }}
           />
         </GridItem>
-        {livraisonChecked && (
+        {showShippingChoice && (
           <GridItem className={classes.gridItem}>
             <h4>Adresse de livraison</h4>
             &nbsp;
@@ -155,16 +151,14 @@ const LivraisonStep: React.FC<Props> = ({ register, errors, setValue, clearError
               }}
               control={
                 <input
-                  checked={identicalShippingAddressChecked}
                   onClick={() => handleClickIdenticalShippingAddress()}
                   type="checkbox"
                   {...register('identicalShippingAddressChecked')}
-                  id="identicalShippingAddressChecked"
                 />
               }
               label={<span>Identique à l&apos;adresse de facturation.</span>}
             />
-            {!identicalShippingAddressChecked && (
+            {!showShippingInfo && (
               <>
                 <CustomInput
                   formControlProps={{
