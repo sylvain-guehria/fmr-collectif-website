@@ -17,7 +17,11 @@ import Link from 'next/link';
 // @ts-ignore
 const useStyles = makeStyles(tableStyles);
 
-const ShoppingCartTable: React.FC = () => {
+type Props = {
+  readOnly?: boolean;
+};
+
+const ShoppingCartTable: React.FC<Props> = ({ readOnly }) => {
   const classes = useStyles();
   const {
     boutiques: { items, itemsQuantity },
@@ -68,13 +72,15 @@ const ShoppingCartTable: React.FC = () => {
           </Table>
           <div style={{ textAlign: 'right', margin: '10px' }}>
             Prix total : {getTotalPrice()} €
-            <Link href="/buy">
-              <Button color="info" round>
-                <>
-                  Terminé vos achats <KeyboardArrowRight />
-                </>
-              </Button>
-            </Link>
+            {!readOnly && (
+              <Link href="/buy">
+                <Button color="info" round>
+                  <>
+                    Terminé vos achats <KeyboardArrowRight />
+                  </>
+                </Button>
+              </Link>
+            )}
           </div>
         </>
       ) : (
