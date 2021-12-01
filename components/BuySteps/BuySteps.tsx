@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
 import CheckCircle from '@material-ui/icons/CheckCircle';
@@ -35,6 +35,7 @@ export interface BuyFormType {
 
 const BuySteps: React.FC = () => {
   const classes = useStyles();
+  const [forcedActive, setForcedActive] = useState(-1);
   // const { boutiques } = useBoutique();
 
   const formOptions = { resolver: yupResolver(validationSchema) };
@@ -46,12 +47,14 @@ const BuySteps: React.FC = () => {
     getValues,
     clearErrors,
     watch,
+    control,
     formState: { errors },
   } = useForm<BuyFormType>(formOptions);
 
   const onSubmit: SubmitHandler<BuyFormType> = async (data: BuyFormType) => {
     // eslint-disable-next-line no-console
     console.log('submit ---------', data);
+    setForcedActive(forcedActive + 1);
   };
 
   return (
@@ -63,6 +66,7 @@ const BuySteps: React.FC = () => {
               <NavPills
                 alignCenter
                 color="primary"
+                forcedActive={forcedActive}
                 tabs={[
                   {
                     tabButton: 'Livraison',
@@ -75,6 +79,7 @@ const BuySteps: React.FC = () => {
                         getValues={getValues}
                         clearErrors={clearErrors}
                         watch={watch}
+                        control={control}
                       />
                     ),
                   },

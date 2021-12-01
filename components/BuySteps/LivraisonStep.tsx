@@ -16,9 +16,11 @@ import {
   UseFormSetValue,
   UseFormClearErrors,
   UseFormWatch,
+  Control,
+  Controller,
+  FieldError,
 } from 'react-hook-form';
 import { getError } from '../../components/forms/formUtils';
-import { FieldError } from 'react-hook-form';
 import InputLabel from '@material-ui/core/InputLabel';
 
 import { BuyFormType } from './BuySteps';
@@ -33,6 +35,7 @@ type Props = {
   getValues: UseFormGetValues<BuyFormType>;
   clearErrors: UseFormClearErrors<BuyFormType>;
   watch: UseFormWatch<BuyFormType>;
+  control: Control<BuyFormType>;
 };
 
 type FormErrors = {
@@ -46,6 +49,7 @@ const LivraisonStep: React.FC<Props> = ({
   clearErrors,
   getValues,
   watch,
+  control,
 }) => {
   const classes = useStyles();
   const showShippingChoice = watch('livraisonChecked', false);
@@ -110,35 +114,56 @@ const LivraisonStep: React.FC<Props> = ({
         </GridItem>
         <GridItem className={classes.gridItem}>
           <h4>Adresse de facturation</h4>
-          <CustomInput
-            formControlProps={{
-              fullWidth: true,
-            }}
-            error={getError(errors, 'billingFullName')}
-            inputProps={{
-              ...register('billingFullName'),
-              placeholder: 'Nom et prénom',
-            }}
+          <Controller
+            render={({ field }) => (
+              <CustomInput
+                formControlProps={{
+                  fullWidth: true,
+                }}
+                error={getError(errors, 'billingFullName')}
+                inputProps={{
+                  ...register('billingFullName'),
+                  ...field,
+                  placeholder: getValues('billingFullName') || 'Nom et prénom',
+                }}
+              />
+            )}
+            name="billingFullName"
+            control={control}
           />
-          <CustomInput
-            formControlProps={{
-              fullWidth: true,
-            }}
-            error={getError(errors, 'billingAddress')}
-            inputProps={{
-              ...register('billingAddress'),
-              placeholder: 'Adresse',
-            }}
+          <Controller
+            render={({ field }) => (
+              <CustomInput
+                formControlProps={{
+                  fullWidth: true,
+                }}
+                error={getError(errors, 'billingAddress')}
+                inputProps={{
+                  ...register('billingAddress'),
+                  ...field,
+                  placeholder: getValues('billingAddress') || 'Adresse',
+                }}
+              />
+            )}
+            name="billingAddress"
+            control={control}
           />
-          <CustomInput
-            formControlProps={{
-              fullWidth: true,
-            }}
-            error={getError(errors, 'billingPhone')}
-            inputProps={{
-              ...register('billingPhone'),
-              placeholder: 'Téléphone',
-            }}
+          <Controller
+            render={({ field }) => (
+              <CustomInput
+                formControlProps={{
+                  fullWidth: true,
+                }}
+                error={getError(errors, 'billingPhone')}
+                inputProps={{
+                  ...register('billingPhone'),
+                  ...field,
+                  placeholder: getValues('billingPhone') || 'Téléphone',
+                }}
+              />
+            )}
+            name="billingPhone"
+            control={control}
           />
         </GridItem>
         {showShippingChoice && (
@@ -160,35 +185,56 @@ const LivraisonStep: React.FC<Props> = ({
             />
             {!showShippingInfo && (
               <>
-                <CustomInput
-                  formControlProps={{
-                    fullWidth: true,
-                  }}
-                  error={getError(errors, 'shippingFullName')}
-                  inputProps={{
-                    ...register('shippingFullName'),
-                    placeholder: 'Nom et prénom',
-                  }}
+                <Controller
+                  render={({ field }) => (
+                    <CustomInput
+                      formControlProps={{
+                        fullWidth: true,
+                      }}
+                      error={getError(errors, 'shippingFullName')}
+                      inputProps={{
+                        ...register('shippingFullName'),
+                        ...field,
+                        placeholder: getValues('shippingFullName') || 'Nom et prénom',
+                      }}
+                    />
+                  )}
+                  name="shippingFullName"
+                  control={control}
                 />
-                <CustomInput
-                  formControlProps={{
-                    fullWidth: true,
-                  }}
-                  error={getError(errors, 'shippingAddress')}
-                  inputProps={{
-                    ...register('shippingAddress'),
-                    placeholder: 'Adresse',
-                  }}
+                <Controller
+                  render={({ field }) => (
+                    <CustomInput
+                      formControlProps={{
+                        fullWidth: true,
+                      }}
+                      error={getError(errors, 'shippingAddress')}
+                      inputProps={{
+                        ...register('shippingAddress'),
+                        ...field,
+                        placeholder: getValues('shippingAddress') || 'Adresse',
+                      }}
+                    />
+                  )}
+                  name="shippingAddress"
+                  control={control}
                 />
-                <CustomInput
-                  formControlProps={{
-                    fullWidth: true,
-                  }}
-                  error={getError(errors, 'shippingPhone')}
-                  inputProps={{
-                    ...register('shippingPhone'),
-                    placeholder: 'Téléphone',
-                  }}
+                <Controller
+                  render={({ field }) => (
+                    <CustomInput
+                      formControlProps={{
+                        fullWidth: true,
+                      }}
+                      error={getError(errors, 'shippingPhone')}
+                      inputProps={{
+                        ...register('shippingPhone'),
+                        ...field,
+                        placeholder: getValues('shippingPhone') || 'Téléphone',
+                      }}
+                    />
+                  )}
+                  name="shippingPhone"
+                  control={control}
                 />
               </>
             )}
