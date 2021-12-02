@@ -7,6 +7,7 @@ import CardBody from 'components/lib/Card/CardBody.js';
 import CardHeader from 'components/lib/Card/CardHeader.js';
 import Muted from 'components/lib/Typography/Muted.js';
 import { BuyFormType } from './BuySteps';
+import Image from 'next/image';
 
 import profilePageStyle from 'styles/jss/nextjs-material-kit-pro/pages/profilePageStyle.js';
 import ShoppingCartTable from 'components/ShoppingCart/ShoppingCartTable';
@@ -20,7 +21,17 @@ type Props = {
 
 const ResumeStep: React.FC<Props> = ({ shippingData }) => {
   // eslint-disable-next-line no-console
-  console.log(shippingData);
+  const {
+    remiseEnMainProporeChecked,
+    identicalShippingAddressChecked,
+    billingFullName,
+    billingAddress,
+    billingPhone,
+    shippingFullName,
+    shippingAddress,
+    shippingPhone,
+  } = shippingData;
+
   const classes = useStyles();
   return (
     <>
@@ -30,18 +41,23 @@ const ResumeStep: React.FC<Props> = ({ shippingData }) => {
             <GridContainer>
               <GridItem xs={12} sm={12} md={5}>
                 <CardHeader image plain>
-                  <img src="/img/faces/avatar.jpg" alt="..." />
+                  <Image
+                    src="/img/facturation-noir.jpg"
+                    alt="facturation"
+                    width={500}
+                    height={500}
+                  />
                 </CardHeader>
               </GridItem>
               <GridItem xs={12} sm={12} md={7}>
                 <CardBody plain>
-                  <h4 className={classes.cardTitle}>Gigi Hadid</h4>
+                  <h4 className={classes.cardTitle}>Adresse de facturation</h4>
                   <Muted>
-                    <h6>MODEL</h6>
+                    <h6>{billingFullName}</h6>
                   </Muted>
                   <p className={classes.description}>
-                    Don{"'"}t be scared of the truth because we need to restart the human foundation
-                    in truth...
+                    {billingAddress} <br />
+                    {billingPhone}
                   </p>
                 </CardBody>
               </GridItem>
@@ -53,18 +69,32 @@ const ResumeStep: React.FC<Props> = ({ shippingData }) => {
             <GridContainer>
               <GridItem xs={12} sm={12} md={5}>
                 <CardHeader image plain>
-                  <img src="/img/faces/marc.jpg" alt="..." />
+                  <Image src="/img/livraison.jpg" alt="Livraison" width={500} height={500} />
                 </CardHeader>
               </GridItem>
               <GridItem xs={12} sm={12} md={7}>
                 <CardBody plain>
-                  <h4 className={classes.cardTitle}>Marc Jacobs</h4>
+                  <h4 className={classes.cardTitle}>Adresse de livraison</h4>
                   <Muted>
-                    <h6>DESIGNER</h6>
+                    <h6>
+                      {remiseEnMainProporeChecked
+                        ? 'Remise en main propre au prochain évènement Frm'
+                        : identicalShippingAddressChecked
+                        ? `Identique à l'adresse de facturation`
+                        : shippingFullName}
+                    </h6>
                   </Muted>
                   <p className={classes.description}>
-                    Don{"'"}t be scared of the truth because we need to restart the human foundation
-                    in truth...
+                    {remiseEnMainProporeChecked ? (
+                      ''
+                    ) : identicalShippingAddressChecked ? (
+                      ''
+                    ) : (
+                      <p className={classes.description}>
+                        {shippingAddress} <br />
+                        {shippingPhone}
+                      </p>
+                    )}
                   </p>
                 </CardBody>
               </GridItem>
