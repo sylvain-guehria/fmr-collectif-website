@@ -62,6 +62,10 @@ const BuySteps: React.FC = () => {
 
   const onSubmit: SubmitHandler<BuyFormType> = async (data: BuyFormType) => {
     setShippingData(data);
+    goNextTab();
+  };
+
+  const goNextTab = (): void => {
     setForcedActive(forcedActive + 1);
   };
 
@@ -93,7 +97,7 @@ const BuySteps: React.FC = () => {
                 {
                   tabButton: 'Resumé',
                   tabIcon: Visibility,
-                  tabContent: <ResumeStep shippingData={shippingData} />,
+                  tabContent: <ResumeStep shippingData={shippingData} goNextTab={goNextTab} />,
                 },
                 {
                   tabButton: 'Paiement',

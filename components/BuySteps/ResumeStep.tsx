@@ -8,6 +8,8 @@ import CardHeader from 'components/lib/Card/CardHeader.js';
 import Muted from 'components/lib/Typography/Muted.js';
 import { BuyFormType } from './BuySteps';
 import Image from 'next/image';
+import Button from './../lib/CustomButtons/Button';
+import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 
 import profilePageStyle from 'styles/jss/nextjs-material-kit-pro/pages/profilePageStyle.js';
 import ShoppingCartTable from 'components/ShoppingCart/ShoppingCartTable';
@@ -17,10 +19,10 @@ const useStyles = makeStyles(profilePageStyle);
 
 type Props = {
   shippingData: BuyFormType;
+  goNextTab: () => void;
 };
 
-const ResumeStep: React.FC<Props> = ({ shippingData }) => {
-  // eslint-disable-next-line no-console
+const ResumeStep: React.FC<Props> = ({ shippingData, goNextTab }) => {
   const {
     remiseEnMainProporeChecked,
     identicalShippingAddressChecked,
@@ -105,6 +107,16 @@ const ResumeStep: React.FC<Props> = ({ shippingData }) => {
       <GridContainer justify="center">
         <ShoppingCartTable readOnly />
       </GridContainer>
+      &nbsp;
+      <Button
+        onClick={goNextTab}
+        color="info"
+        round
+        style={{ position: 'absolute', bottom: 15, right: 15 }}>
+        <>
+          Aller au paiement <KeyboardArrowRight />
+        </>
+      </Button>
     </>
   );
 };
