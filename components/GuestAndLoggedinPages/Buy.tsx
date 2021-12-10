@@ -10,14 +10,19 @@ import GridContainer from 'components/lib/Grid/GridContainer.js';
 import GridItem from 'components/lib/Grid/GridItem.js';
 import Parallax from 'components/lib/Parallax/Parallax.js';
 import BuySteps from '../BuySteps/BuySteps';
+import { Elements } from '@stripe/react-stripe-js';
+import getStripe from '../../stripe/stripe';
 
 import styles from 'styles/jss/nextjs-material-kit-pro/pages/ecommerceStyle.js';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const useStyles = makeStyles(styles);
 
-const Buy: React.FC = () => {
+const Buy: React.FC<Props> = () => {
   const classes = useStyles();
+  const stripePromise = getStripe();
+  // eslint-disable-next-line no-console
+  console.log('stripePromise', stripePromise);
   return (
     <div>
       <Header
@@ -43,7 +48,11 @@ const Buy: React.FC = () => {
         </div>
       </Parallax>
       <div className={classes.container}>
-        <BuySteps />
+        {stripePromise && (
+          <Elements stripe={stripePromise}>
+            <BuySteps />
+          </Elements>
+        )}
       </div>
     </div>
   );
