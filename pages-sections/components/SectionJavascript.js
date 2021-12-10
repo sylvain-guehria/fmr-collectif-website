@@ -205,7 +205,7 @@ export default function SectionJavascript() {
                             href="https://www.creative-tim.com/?ref=njsmkp-javascript-components"
                             target="_blank"
                           >
-                            Creative Tim
+                            Fmr
                           </a>
                           . You can choose a social network or go for the
                           classic version, whatever works best for you.
@@ -224,7 +224,7 @@ export default function SectionJavascript() {
                             href="https://www.creative-tim.com/?ref=njsmkp-javascript-components"
                             target="_blank"
                           >
-                            Creative Tim
+                            Fmr
                           </a>
                           . You can choose a social network or go for the
                           classic version, whatever works best for you.

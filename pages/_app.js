@@ -54,17 +54,17 @@ export default class MyApp extends App {
             <ProvideAuth>
               <ProvideNotification>
                 <ProvideBoutique>
-                  <Head>
-                    <meta
-                      name="viewport"
-                      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-                    />
-                    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-                    <title>Fmr-collectif</title>
-                  </Head>
-                  <LayoutComponent component={Component} layoutProps={layoutProps}>
-                    <Component {...pageProps} />
-                  </LayoutComponent>
+                    <Head>
+                      <meta
+                        name="viewport"
+                        content="width=device-width, initial-scale=1, shrink-to-fit=no"
+                      />
+                      <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+                      <title>Fmr-collectif</title>
+                    </Head>
+                    <LayoutComponent component={Component} layoutProps={layoutProps}>
+                      <Component {...pageProps} />
+                    </LayoutComponent>
                 </ProvideBoutique>
               </ProvideNotification>
             </ProvideAuth>

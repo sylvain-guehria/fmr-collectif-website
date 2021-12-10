@@ -89,7 +89,7 @@ export default function LandingPage({ ...rest }) {
                     target="_blank"
                     className={classes.block}
                   >
-                    Creative Tim
+                    Fmr
                   </a>
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
@@ -127,7 +127,7 @@ export default function LandingPage({ ...rest }) {
                 href="https://www.creative-tim.com/?ref=njsmkp-landing"
                 target="_blank"
               >
-                Creative Tim
+                Fmr
               </a>{" "}
               for a better web.
             </div>

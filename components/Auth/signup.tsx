@@ -106,7 +106,7 @@ const SignUpComponent: React.FC = ({ ...rest }) => {
                       target="_blank"
                       className={classes.block}
                       rel="noreferrer">
-                      Creative Tim
+                      Fmr
                     </a>
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
@@ -143,7 +143,7 @@ const SignUpComponent: React.FC = ({ ...rest }) => {
                   href="https://www.creative-tim.com?ref=njsmkp-signup"
                   target="_blank"
                   rel="noreferrer">
-                  Creative Tim
+                  Fmr
                 </a>{' '}
                 for a better web.
               </div>

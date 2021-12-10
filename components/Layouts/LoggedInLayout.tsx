@@ -23,7 +23,7 @@ const LoggedInLayout: React.FC = ({ children }): React.ReactElement => {
               <List className={classes.list}>
                 <ListItem className={classes.inlineBlock}>
                   <a href="#" target="_blank" className={classes.block} rel="noreferrer">
-                    Creative Tim
+                    Fmr
                   </a>
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>

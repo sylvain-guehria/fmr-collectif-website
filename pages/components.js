@@ -293,7 +293,7 @@ export default function Components() {
                     target="_blank"
                     className={classes.block}
                   >
-                    Creative Tim
+                    Fmr
                   </a>
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
@@ -331,7 +331,7 @@ export default function Components() {
                 href="https://www.creative-tim.com?ref=njsmkp-components"
                 target="_blank"
               >
-                Creative Tim
+                Fmr
               </a>{" "}
               for a better web.
             </div>

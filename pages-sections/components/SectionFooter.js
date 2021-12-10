@@ -51,7 +51,7 @@ export default function SectionFooter() {
                       target="_blank"
                       className={classes.block}
                     >
-                      Creative Tim
+                      Fmr
                     </a>
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
@@ -135,7 +135,7 @@ export default function SectionFooter() {
                       target="_blank"
                       className={classes.block}
                     >
-                      Creative Tim
+                      Fmr
                     </a>
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
@@ -174,7 +174,7 @@ export default function SectionFooter() {
                   target="_blank"
                   className={classes.aClasses}
                 >
-                  Creative Tim
+                  Fmr
                 </a>{" "}
                 for a better web.
               </div>
@@ -347,7 +347,7 @@ export default function SectionFooter() {
                   target="_blank"
                   className={classes.aClasses}
                 >
-                  Creative Tim
+                  Fmr
                 </a>{" "}
                 All Rights Reserved.
               </div>
@@ -358,7 +358,7 @@ export default function SectionFooter() {
             <GridItem xs={12} sm={4} md={4}>
               <h5>About Us</h5>
               <p>
-                Creative Tim is a startup that creates design tools that make
+                Fmr is a startup that creates design tools that make
                 the web development process faster and easier.{" "}
               </p>
               <p>
@@ -477,7 +477,7 @@ export default function SectionFooter() {
                 href="https://www.creative-tim.com?ref=njsmkp-footer-components"
                 target="_blank"
               >
-                Creative Tim
+                Fmr
               </a>{" "}
               All Rights Reserved.
             </div>
@@ -630,7 +630,7 @@ export default function SectionFooter() {
                   href="https://www.creative-tim.com?ref=njsmkp-footer-components"
                   target="_blank"
                 >
-                  Creative Tim
+                  Fmr
                 </a>{" "}
                 All Rights Reserved.
               </div>

@@ -41,7 +41,7 @@ export default function SectionHeaders({ ...rest }) {
       <div>
         <Header
           absolute
-          brand="Creative Tim"
+          brand="Fmr"
           color="transparent"
           links={
             <div className={classes.collapse}>
@@ -168,7 +168,7 @@ export default function SectionHeaders({ ...rest }) {
       <div>
         <Header
           absolute
-          brand="Creative Tim"
+          brand="Fmr"
           color="transparent"
           links={
             <div className={classes.collapse}>
@@ -346,7 +346,7 @@ export default function SectionHeaders({ ...rest }) {
       <div>
         <Header
           absolute
-          brand="Creative Tim"
+          brand="Fmr"
           color="transparent"
           links={
             <List className={classes.list + ' ' + classes.mlAuto}>
