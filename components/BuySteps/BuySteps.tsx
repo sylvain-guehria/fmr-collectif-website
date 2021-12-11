@@ -76,7 +76,7 @@ const BuySteps: React.FC = () => {
           <div className={classes.profileTabs}>
             <NavPills
               alignCenter
-              color="primary"
+              color="info"
               forcedActive={forcedActive}
               tabs={[
                 {

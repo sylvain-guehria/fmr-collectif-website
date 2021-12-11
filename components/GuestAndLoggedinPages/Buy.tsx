@@ -18,11 +18,9 @@ import styles from 'styles/jss/nextjs-material-kit-pro/pages/ecommerceStyle.js';
 // @ts-ignore
 const useStyles = makeStyles(styles);
 
-const Buy: React.FC<Props> = () => {
+const Buy: React.FC = () => {
   const classes = useStyles();
   const stripePromise = getStripe();
-  // eslint-disable-next-line no-console
-  console.log('stripePromise', stripePromise);
   return (
     <div>
       <Header

@@ -1,23 +1,16 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { CURRENCY, MIN_AMOUNT, MAX_AMOUNT } from '../../../config';
-import { formatAmountForStripe } from '../../../utils/stripe-helpers';
+import { formatAmountForStripe } from '../../../../stripe/stripe-helpers';
 
 import Stripe from 'stripe';
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  // https://github.com/stripe/stripe-node#configuration
-  apiVersion: '2020-03-02',
-});
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: '2020-08-27' });
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     const amount: number = req.body.amount;
     try {
       // Validate the amount that was passed from the client.
-      if (!(amount >= MIN_AMOUNT && amount <= MAX_AMOUNT)) {
+      if (!(amount >= 0 && amount <= 500)) {
         throw new Error('Invalid amount.');
       }
       // Create Checkout Sessions from body params.
@@ -27,8 +20,8 @@ export default async function handler(
         line_items: [
           {
             name: 'Custom amount donation',
-            amount: formatAmountForStripe(amount, CURRENCY),
-            currency: CURRENCY,
+            amount: formatAmountForStripe(amount, 'eur'),
+            currency: 'eur',
             quantity: 1,
           },
         ],

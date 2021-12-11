@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 
-import PrintObject from './PrintObject';
-
 import { fetchPostJSON } from '../../../stripe/api-helpers';
 import { formatAmountForDisplay } from '../../../stripe/stripe-helpers';
+import Input from '@material-ui/core/Input';
 
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import Button from '../../lib/CustomButtons/Button';
+import { InputLabel } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import styles from 'styles/jss/nextjs-material-kit-pro/components/customInputStyle.js';
 
 const CARD_OPTIONS = {
   iconStyle: 'solid' as const,
@@ -72,22 +77,22 @@ const StripePaymentForm: React.FC = () => {
   const stripe = useStripe();
   const elements = useElements();
 
+  const useStyles = makeStyles(styles);
+  const classes = useStyles();
+
   const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = e =>
     setInput({
       ...input,
       [e.currentTarget.name]: e.currentTarget.value,
     });
 
-  const handleSubmit: React.FormEventHandler<HTMLFormElement> = async e => {
-    e.preventDefault();
-    // Abort if form isn't valid
-    if (!e.currentTarget.reportValidity()) return;
+  const handleClick: React.FormEventHandler<HTMLFormElement> = async () => {
     setPayment({ status: 'processing' });
-
     // Create a PaymentIntent with the specified amount.
     const response = await fetchPostJSON('/api/payment/payment_intents', {
       amount: 250,
     });
+
     setPayment(response);
 
     if (response.statusCode === 500) {
@@ -119,38 +124,45 @@ const StripePaymentForm: React.FC = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <fieldset className="elements-style">
-          <legend>Your payment details:</legend>
-          <input
-            placeholder="Cardholder name"
-            className="elements-style"
-            type="Text"
-            name="cardholderName"
-            onChange={handleInputChange}
-            required
-          />
-          <div className="FormRow elements-style">
-            <CardElement
-              options={CARD_OPTIONS}
-              onChange={e => {
-                if (e.error) {
-                  setPayment({ status: 'error' });
-                  setErrorMessage(e.error.message ?? 'An unknown error occured');
-                }
-              }}
+      <GridContainer justify="center">
+        <GridItem>
+          <fieldset>
+            <legend className={classes.legend}>Your payment details:</legend>
+            <Input
+              placeholder="Cardholder name"
+              type="Text"
+              name="cardholderName"
+              onChange={handleInputChange}
+              required
             />
-          </div>
-        </fieldset>
-        <button
-          className="elements-style-background"
-          type="submit"
-          disabled={!['initial', 'succeeded', 'error'].includes(payment.status) || !stripe}>
-          Donate {formatAmountForDisplay(input.customDonation, 'usd')}
-        </button>
-      </form>
-      <PaymentStatus status={payment.status} errorMessage={errorMessage} />
-      <PrintObject content={payment} />
+            <div>
+              <br />
+              <CardElement
+                options={CARD_OPTIONS}
+                onChange={e => {
+                  if (e.error) {
+                    setPayment({ status: 'error' });
+                    setErrorMessage(e.error.message ?? 'An unknown error occured');
+                  }
+                }}
+              />
+            </div>
+          </fieldset>
+          {errorMessage ? (
+            <InputLabel className={classes.labelRootError}>{errorMessage}</InputLabel>
+          ) : null}
+        </GridItem>
+        <GridItem>
+          <Button
+            color="info"
+            fullWidth={true}
+            onClick={() => handleClick()}
+            className={classes.payementButton}
+            disabled={!['initial', 'succeeded', 'error'].includes(payment.status) || !stripe}>
+            Payer {formatAmountForDisplay(input.customDonation, 'eur')}
+          </Button>
+        </GridItem>
+      </GridContainer>
     </>
   );
 };
