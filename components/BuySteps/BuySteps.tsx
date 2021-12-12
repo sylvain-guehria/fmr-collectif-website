@@ -102,7 +102,7 @@ const BuySteps: React.FC = () => {
                 {
                   tabButton: 'Paiement',
                   tabIcon: CheckCircle,
-                  tabContent: <PaiementStep />,
+                  tabContent: <PaiementStep shippingData={shippingData} />,
                 },
               ]}
             />

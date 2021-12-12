@@ -16,8 +16,8 @@ const CARD_OPTIONS = {
   iconStyle: 'solid' as const,
   style: {
     base: {
-      iconColor: '#6772e5',
-      color: '#6772e5',
+      iconColor: '#00acc1',
+      color: '#00acc1',
       fontWeight: '500',
       fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif',
       fontSize: '16px',
@@ -26,7 +26,7 @@ const CARD_OPTIONS = {
         color: '#fce883',
       },
       '::placeholder': {
-        color: '#6772e5',
+        color: '#00acc1',
       },
     },
     invalid: {
@@ -67,16 +67,20 @@ const PaymentStatus: React.FC<PaymentStatusProps> = ({ status, errorMessage }) =
   }
 };
 
-const StripePaymentForm: React.FC = () => {
+type StripePaymentFormProps = {
+  totalPrice: number;
+};
+
+const StripePaymentForm: React.FC<StripePaymentFormProps> = ({ totalPrice }) => {
   const [input, setInput] = useState({
-    customDonation: Math.round(500 / 1),
     cardholderName: '',
   });
   const [payment, setPayment] = useState({ status: 'initial' });
   const [errorMessage, setErrorMessage] = useState('');
   const stripe = useStripe();
   const elements = useElements();
-
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   const useStyles = makeStyles(styles);
   const classes = useStyles();
 
@@ -88,7 +92,7 @@ const StripePaymentForm: React.FC = () => {
 
   const handleClick: React.FormEventHandler<HTMLFormElement> = async () => {
     setPayment({ status: 'processing' });
-    // Create a PaymentIntent with the specified amount.
+
     const response = await fetchPostJSON('/api/payment/payment_intents', {
       amount: 250,
     });
@@ -101,12 +105,8 @@ const StripePaymentForm: React.FC = () => {
       return;
     }
 
-    // Get a reference to a mounted CardElement. Elements knows how
-    // to find your CardElement because there can only ever be one of
-    // each type of element.
     const cardElement = elements!.getElement(CardElement);
 
-    // Use your card Element with other Stripe.js APIs
     const { error, paymentIntent } = await stripe!.confirmCardPayment(response.client_secret, {
       payment_method: {
         card: cardElement!,
@@ -126,10 +126,10 @@ const StripePaymentForm: React.FC = () => {
     <>
       <GridContainer justify="center">
         <GridItem>
-          <fieldset>
-            <legend className={classes.legend}>Your payment details:</legend>
+          <fieldset style={{ borderRadius: '8px', padding: '16px' }}>
+            <legend className={classes.legend}>Détails du paiement:</legend>
             <Input
-              placeholder="Cardholder name"
+              placeholder="Nom sur la carte"
               type="Text"
               name="cardholderName"
               onChange={handleInputChange}
@@ -147,10 +147,10 @@ const StripePaymentForm: React.FC = () => {
                 }}
               />
             </div>
+            {errorMessage ? (
+              <InputLabel className={classes.labelRootError}>{errorMessage}</InputLabel>
+            ) : null}
           </fieldset>
-          {errorMessage ? (
-            <InputLabel className={classes.labelRootError}>{errorMessage}</InputLabel>
-          ) : null}
         </GridItem>
         <GridItem>
           <Button
@@ -159,7 +159,7 @@ const StripePaymentForm: React.FC = () => {
             onClick={() => handleClick()}
             className={classes.payementButton}
             disabled={!['initial', 'succeeded', 'error'].includes(payment.status) || !stripe}>
-            Payer {formatAmountForDisplay(input.customDonation, 'eur')}
+            Payer {formatAmountForDisplay(totalPrice, 'eur')}
           </Button>
         </GridItem>
       </GridContainer>
