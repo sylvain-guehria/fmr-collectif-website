@@ -22,10 +22,8 @@ export async function fetchPostJSON(url: string, data?: Record<string, unknown>)
       referrerPolicy: 'no-referrer',
       body: JSON.stringify(data || {}),
     });
-    console.log(response);
     return await response.json();
   } catch (err) {
-    console.log(err);
     throw new Error(err.message);
   }
 }

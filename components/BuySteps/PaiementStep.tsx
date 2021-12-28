@@ -10,19 +10,6 @@ type Props = {
   shippingData: BuyFormType;
 };
 
-// {
-//   remiseEnMainPropreChecked?: boolean;
-//   livraisonChecked?: boolean;
-//   identicalShippingAddressChecked?: boolean;
-//   shouldSelectLivraisonOrRemiseEnMainPropre?: boolean;
-//   billingFullName?: string;
-//   billingAddress?: string;
-//   billingPhone?: string;
-//   shippingFullName?: string;
-//   shippingAddress?: string;
-//   shippingPhone?: string;
-// }
-
 const PaiementStep: React.FC<Props> = ({ shippingData }) => {
   const { getTotalPrice } = useBoutique();
   const { user } = useAuth();
@@ -43,7 +30,6 @@ const PaiementStep: React.FC<Props> = ({ shippingData }) => {
   if (!remiseEnMainPropreChecked && !identicalShippingAddressChecked) {
     shippingDetails = {
       name: shippingData.shippingFullName,
-      email: user.getEmail(),
       phone: shippingData.shippingPhone,
       address: {
         line1: shippingData.shippingAddress,
@@ -52,7 +38,13 @@ const PaiementStep: React.FC<Props> = ({ shippingData }) => {
   }
 
   if (!remiseEnMainPropreChecked && identicalShippingAddressChecked) {
-    shippingDetails = billingDetails;
+    shippingDetails = {
+      name: shippingData.billingFullName,
+      phone: shippingData.billingPhone,
+      address: {
+        line1: shippingData.billingAddress,
+      },
+    };
   }
 
   return (

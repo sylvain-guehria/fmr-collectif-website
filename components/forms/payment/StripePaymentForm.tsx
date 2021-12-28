@@ -46,7 +46,6 @@ type StripePaymentFormProps = {
   userId: string;
   shippingDetails: {
     name: string;
-    email: string;
     phone: string;
     address: {
       line1: string;
@@ -91,7 +90,7 @@ const StripePaymentForm: React.FC<StripePaymentFormProps> = ({
   const handleClick = async (): Promise<void> => {
     setPayment({ status: 'processing' });
 
-    const response = await fetchPostJSON('/api/payment/billing_details', {
+    const response = await fetchPostJSON('/api/payment/payment_intents', {
       amount: totalPrice,
       userId: userId,
     });
@@ -112,7 +111,6 @@ const StripePaymentForm: React.FC<StripePaymentFormProps> = ({
         billing_details: billingDetails,
       },
       shipping: shippingDetails,
-      return_url: '/home',
       receipt_email: userEmail,
     });
 
