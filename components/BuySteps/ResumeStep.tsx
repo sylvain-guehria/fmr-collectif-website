@@ -24,7 +24,7 @@ type Props = {
 
 const ResumeStep: React.FC<Props> = ({ shippingData, goNextTab }) => {
   const {
-    remiseEnMainProporeChecked,
+    remiseEnMainPropreChecked,
     identicalShippingAddressChecked,
     billingFullName,
     billingAddress,
@@ -79,7 +79,7 @@ const ResumeStep: React.FC<Props> = ({ shippingData, goNextTab }) => {
                   <h4 className={classes.cardTitle}>Adresse de livraison</h4>
                   <Muted>
                     <h6>
-                      {remiseEnMainProporeChecked
+                      {remiseEnMainPropreChecked
                         ? 'Remise en main propre au prochain évènement Frm'
                         : identicalShippingAddressChecked
                         ? `Identique à l'adresse de facturation`
@@ -87,7 +87,7 @@ const ResumeStep: React.FC<Props> = ({ shippingData, goNextTab }) => {
                     </h6>
                   </Muted>
                   <p className={classes.description}>
-                    {remiseEnMainProporeChecked ? (
+                    {remiseEnMainPropreChecked ? (
                       ''
                     ) : identicalShippingAddressChecked ? (
                       ''

@@ -7,7 +7,6 @@ import GridContainer from 'components/lib/Grid/GridContainer.js';
 import GridItem from 'components/lib/Grid/GridItem.js';
 import Card from 'components/lib/Card/Card.js';
 import CardHeader from 'components/lib/Card/CardHeader.js';
-// import LoadingLayer from "components/LoadingLayer/LoadingLayer";
 import LoginWithEmailForm from '../forms/login/LoginWithEmailForm';
 import LoginWithOtherAccount from '../forms/login/LoginWithOtherAccount';
 

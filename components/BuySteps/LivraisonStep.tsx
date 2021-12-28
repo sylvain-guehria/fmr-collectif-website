@@ -56,12 +56,12 @@ const LivraisonStep: React.FC<Props> = ({
   const showShippingInfo = watch('identicalShippingAddressChecked', false);
 
   const handleClickRemiseEnMainPropore = (): void => {
-    setValue('livraisonChecked', getValues('remiseEnMainProporeChecked'));
+    setValue('livraisonChecked', getValues('remiseEnMainPropreChecked'));
     clearErrors('shouldSelectLivraisonOrRemiseEnMainPropre');
   };
 
   const handleClickLivraison = (): void => {
-    setValue('remiseEnMainProporeChecked', getValues('livraisonChecked'));
+    setValue('remiseEnMainPropreChecked', getValues('livraisonChecked'));
     clearErrors('shouldSelectLivraisonOrRemiseEnMainPropre');
   };
 
@@ -85,7 +85,7 @@ const LivraisonStep: React.FC<Props> = ({
                 <input
                   onClick={() => handleClickRemiseEnMainPropore()}
                   type="checkbox"
-                  {...register('remiseEnMainProporeChecked')}
+                  {...register('remiseEnMainPropreChecked')}
                 />
               }
               label={<span>Remise en main propre.</span>}
@@ -108,7 +108,7 @@ const LivraisonStep: React.FC<Props> = ({
           <InputLabel error>
             <br />
             <p>{getError(errors, 'livraisonChecked')}</p>
-            <p>{getError(errors, 'remiseEnMainProporeChecked')}</p>
+            <p>{getError(errors, 'remiseEnMainPropreChecked')}</p>
             <p>{getError(errors, 'shouldSelectLivraisonOrRemiseEnMainPropre')}</p>
           </InputLabel>
         </GridItem>

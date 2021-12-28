@@ -22,13 +22,13 @@ import profilePageStyle from 'styles/jss/nextjs-material-kit-pro/pages/profilePa
 const useStyles = makeStyles(profilePageStyle);
 
 export interface BuyFormType {
-  remiseEnMainProporeChecked?: boolean;
+  remiseEnMainPropreChecked?: boolean;
   livraisonChecked?: boolean;
   identicalShippingAddressChecked?: boolean;
   shouldSelectLivraisonOrRemiseEnMainPropre?: boolean;
-  billingFullName?: string;
-  billingAddress?: string;
-  billingPhone?: string;
+  billingFullName: string;
+  billingAddress: string;
+  billingPhone: string;
   shippingFullName?: string;
   shippingAddress?: string;
   shippingPhone?: string;
@@ -37,7 +37,11 @@ export interface BuyFormType {
 const BuySteps: React.FC = () => {
   const classes = useStyles();
   const [forcedActive, setForcedActive] = useState(-1);
-  const [shippingData, setShippingData] = useState({});
+  const [shippingData, setShippingData] = useState({
+    billingFullName: '',
+    billingAddress: '',
+    billingPhone: '',
+  });
   const { boutiques } = useBoutique();
   const router = useRouter();
 

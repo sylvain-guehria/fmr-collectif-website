@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import React, { useState } from 'react';
 
 import { fetchPostJSON } from '../../../stripe/api-helpers';
@@ -11,6 +13,8 @@ import Button from '../../lib/CustomButtons/Button';
 import { InputLabel } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import styles from 'styles/jss/nextjs-material-kit-pro/components/customInputStyle.js';
+import { StripeCardElementChangeEvent } from '@stripe/stripe-js';
+import PaymentStatus from './PaymentStatus';
 
 const CARD_OPTIONS = {
   iconStyle: 'solid' as const,
@@ -23,7 +27,7 @@ const CARD_OPTIONS = {
       fontSize: '16px',
       fontSmoothing: 'antialiased',
       ':-webkit-autofill': {
-        color: '#fce883',
+        color: 'black',
       },
       '::placeholder': {
         color: '#00acc1',
@@ -36,45 +40,36 @@ const CARD_OPTIONS = {
   },
 };
 
-type PaymentStatusProps = {
-  status: string;
-  errorMessage: string;
-};
-
-const PaymentStatus: React.FC<PaymentStatusProps> = ({ status, errorMessage }) => {
-  switch (status) {
-    case 'processing':
-    case 'requires_payment_method':
-    case 'requires_confirmation':
-      return <h2>Processing...</h2>;
-
-    case 'requires_action':
-      return <h2>Authenticating...</h2>;
-
-    case 'succeeded':
-      return <h2>Payment Succeeded 🥳</h2>;
-
-    case 'error':
-      return (
-        <>
-          <h2>Error 😭</h2>
-          <p className="error-message">{errorMessage}</p>
-        </>
-      );
-
-    default:
-      return null;
-  }
-};
-
 type StripePaymentFormProps = {
   totalPrice: number;
+  userEmail: string;
+  userId: string;
+  shippingDetails: {
+    name: string;
+    email: string;
+    phone: string;
+    address: {
+      line1: string;
+    };
+  };
+  billingDetails: {
+    name: string;
+    email: string;
+    phone: string;
+    address: {
+      line1: string;
+    };
+  };
 };
 
-const StripePaymentForm: React.FC<StripePaymentFormProps> = ({ totalPrice }) => {
-  const [input, setInput] = useState({
-    cardholderName: '',
-  });
+const StripePaymentForm: React.FC<StripePaymentFormProps> = ({
+  totalPrice,
+  userEmail,
+  userId,
+  shippingDetails,
+  billingDetails,
+}) => {
+  const [cardholderName, setCardholderName] = useState('');
   const [payment, setPayment] = useState({ status: 'initial' });
   const [errorMessage, setErrorMessage] = useState('');
   const stripe = useStripe();
@@ -84,17 +79,21 @@ const StripePaymentForm: React.FC<StripePaymentFormProps> = ({ totalPrice }) => 
   const useStyles = makeStyles(styles);
   const classes = useStyles();
 
-  const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = e =>
-    setInput({
-      ...input,
-      [e.currentTarget.name]: e.currentTarget.value,
-    });
+  const updateErrorDisplay = (e: StripeCardElementChangeEvent): void => {
+    if (e.error) {
+      setPayment({ status: 'error' });
+      setErrorMessage(e.error.message ?? 'An unknown error occured');
+    } else {
+      setErrorMessage('');
+    }
+  };
 
-  const handleClick: React.FormEventHandler<HTMLFormElement> = async () => {
+  const handleClick = async (): Promise<void> => {
     setPayment({ status: 'processing' });
 
-    const response = await fetchPostJSON('/api/payment/payment_intents', {
-      amount: 250,
+    const response = await fetchPostJSON('/api/payment/billing_details', {
+      amount: totalPrice,
+      userId: userId,
     });
 
     setPayment(response);
@@ -110,8 +109,11 @@ const StripePaymentForm: React.FC<StripePaymentFormProps> = ({ totalPrice }) => 
     const { error, paymentIntent } = await stripe!.confirmCardPayment(response.client_secret, {
       payment_method: {
         card: cardElement!,
-        billing_details: { name: input.cardholderName },
+        billing_details: billingDetails,
       },
+      shipping: shippingDetails,
+      return_url: '/home',
+      receipt_email: userEmail,
     });
 
     if (error) {
@@ -132,24 +134,17 @@ const StripePaymentForm: React.FC<StripePaymentFormProps> = ({ totalPrice }) => 
               placeholder="Nom sur la carte"
               type="Text"
               name="cardholderName"
-              onChange={handleInputChange}
+              onChange={e => setCardholderName(e.target.value)}
               required
             />
             <div>
               <br />
-              <CardElement
-                options={CARD_OPTIONS}
-                onChange={e => {
-                  if (e.error) {
-                    setPayment({ status: 'error' });
-                    setErrorMessage(e.error.message ?? 'An unknown error occured');
-                  }
-                }}
-              />
+              <CardElement options={CARD_OPTIONS} onChange={e => updateErrorDisplay(e)} />
             </div>
-            {errorMessage ? (
+            <br />
+            {errorMessage && (
               <InputLabel className={classes.labelRootError}>{errorMessage}</InputLabel>
-            ) : null}
+            )}
           </fieldset>
         </GridItem>
         <GridItem>
@@ -161,6 +156,7 @@ const StripePaymentForm: React.FC<StripePaymentFormProps> = ({ totalPrice }) => 
             disabled={!['initial', 'succeeded', 'error'].includes(payment.status) || !stripe}>
             Payer {formatAmountForDisplay(totalPrice, 'eur')}
           </Button>
+          <PaymentStatus status={payment.status} />
         </GridItem>
       </GridContainer>
     </>

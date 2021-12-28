@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import { formatAmountForStripe } from '../../../../stripe/stripe-helpers';
@@ -6,17 +7,14 @@ import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: '2020-08-27' });
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
   if (req.method === 'POST') {
-    const { amount }: { amount: number } = req.body;
+    const { amount, userId }: { amount: number; userId: string } = req.body;
     try {
-      // Validate the amount that was passed from the client.
-      if (!(amount >= 0 && amount <= 500)) {
-        throw new Error('Invalid amount.');
-      }
-      // Create PaymentIntent from body params.
       const params: Stripe.PaymentIntentCreateParams = {
         payment_method_types: ['card'],
+        confirm: true, //can be set to false,
+        customer: userId,
         amount: formatAmountForStripe(amount, 'eur'),
         currency: 'eur',
       };

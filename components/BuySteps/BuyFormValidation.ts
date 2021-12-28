@@ -2,7 +2,7 @@ import * as Yup from 'yup';
 
 export const validationSchema = Yup.object()
   .shape({
-    remiseEnMainProporeChecked: Yup.bool(),
+    remiseEnMainPropreChecked: Yup.bool(),
     livraisonChecked: Yup.bool(),
     identicalShippingAddressChecked: Yup.bool(),
     billingFullName: Yup.string().required(
@@ -15,14 +15,14 @@ export const validationSchema = Yup.object()
     shippingPhone: Yup.string(),
   })
   .test('shippingFullName', '', obj => {
-    return !obj.remiseEnMainProporeChecked &&
+    return !obj.remiseEnMainPropreChecked &&
       !obj.identicalShippingAddressChecked &&
       !obj.shippingFullName
       ? new Yup.ValidationError('Veuillez entrer votre nom et prénom', null, 'shippingFullName')
       : true;
   })
   .test('shippingAddress', '', obj => {
-    return !obj.remiseEnMainProporeChecked &&
+    return !obj.remiseEnMainPropreChecked &&
       !obj.identicalShippingAddressChecked &&
       !obj.shippingFullName
       ? new Yup.ValidationError(
@@ -33,14 +33,14 @@ export const validationSchema = Yup.object()
       : true;
   })
   .test('shippingPhone', '', obj => {
-    return !obj.remiseEnMainProporeChecked &&
+    return !obj.remiseEnMainPropreChecked &&
       !obj.identicalShippingAddressChecked &&
       !obj.shippingFullName
       ? new Yup.ValidationError('Veuillez entrer votre numéro de téléphone', null, 'shippingPhone')
       : true;
   })
   .test('shouldSelectLivraisonOrRemiseEnMainPropre', '', obj => {
-    if (obj.remiseEnMainProporeChecked || obj.livraisonChecked) {
+    if (obj.remiseEnMainPropreChecked || obj.livraisonChecked) {
       return true;
     }
     return new Yup.ValidationError(
