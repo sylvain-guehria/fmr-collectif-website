@@ -7,14 +7,9 @@ type Props = {
   clientSecret: string;
 };
 
-const BuyPage: React.FC<Props> = ({ clientSecret }) => {
-  return <Buy clientSecret={clientSecret} />;
+const BuyPage: React.FC<Props> = () => {
+  return <Buy />;
 };
-
-export async function getServerSideProps() {
-  const clientSecret = process.env.STRIPE_SECRET_KEY;
-  return { props: { clientSecret: clientSecret } };
-}
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore

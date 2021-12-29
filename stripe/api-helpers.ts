@@ -1,13 +1,15 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export async function fetchGetJSON(url: string): Promise<unknown> {
   try {
     const data = await fetch(url).then(res => res.json());
     return data;
-  } catch (err) {
+  } catch (err: any) {
     throw new Error(err.message);
   }
 }
 
-export async function fetchPostJSON(url: string, data?: Record<string, unknown>): Promise<unknown> {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function fetchPostJSON(url: string, data?: Record<string, unknown>): Promise<any> {
   try {
     const response = await fetch(url, {
       method: 'POST',
@@ -23,7 +25,7 @@ export async function fetchPostJSON(url: string, data?: Record<string, unknown>)
       body: JSON.stringify(data || {}),
     });
     return await response.json();
-  } catch (err) {
+  } catch (err: any) {
     throw new Error(err.message);
   }
 }

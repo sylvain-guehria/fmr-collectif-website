@@ -16,7 +16,13 @@ const PaiementStep: React.FC<Props> = ({ shippingData }) => {
 
   const { remiseEnMainPropreChecked, identicalShippingAddressChecked } = shippingData;
 
-  let shippingDetails;
+  let shippingDetails = {
+    name: '',
+    phone: '',
+    address: {
+      line1: '',
+    },
+  };
 
   const billingDetails = {
     name: shippingData.billingFullName,
@@ -29,10 +35,10 @@ const PaiementStep: React.FC<Props> = ({ shippingData }) => {
 
   if (!remiseEnMainPropreChecked && !identicalShippingAddressChecked) {
     shippingDetails = {
-      name: shippingData.shippingFullName,
-      phone: shippingData.shippingPhone,
+      name: shippingData.shippingFullName || '',
+      phone: shippingData.shippingPhone || '',
       address: {
-        line1: shippingData.shippingAddress,
+        line1: shippingData.shippingAddress || '',
       },
     };
   }
@@ -52,7 +58,6 @@ const PaiementStep: React.FC<Props> = ({ shippingData }) => {
       <StripePaymentForm
         totalPrice={getTotalPrice()}
         userEmail={user.getEmail()}
-        userId={user.getId()}
         shippingDetails={shippingDetails}
         billingDetails={billingDetails}
       />

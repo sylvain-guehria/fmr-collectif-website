@@ -101,4 +101,5 @@ export type ButtonProps = {
   style?: Record<string, unknown>;
 };
 
+RegularButton.displayName = 'RegularButton';
 export default RegularButton;
