@@ -71,10 +71,14 @@ const makeBuyPresenter = (): BuyPresenter => {
   return new BuyPresenter();
 };
 
-const useDynamicDependencies = (): { boutiques: Boutiques; userEmail: string } => {
-  const { boutiques } = useBoutique();
+const useDynamicDependencies = (): {
+  boutiques: Boutiques;
+  userEmail: string;
+  totalPrice: number;
+} => {
+  const { boutiques, getTotalPrice } = useBoutique();
   const { user } = useAuth();
-  return { boutiques: boutiques, userEmail: user.getEmail() };
+  return { boutiques: boutiques, userEmail: user.getEmail(), totalPrice: getTotalPrice() };
 };
 
 export default withMVP(makeBuyPresenter, useDynamicDependencies)(Buy);

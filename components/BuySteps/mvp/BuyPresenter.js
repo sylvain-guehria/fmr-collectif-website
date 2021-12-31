@@ -8,6 +8,13 @@ export default class BuyPresenter extends Presenter {
         remiseEnMainPropreChecked: false,
         livraisonChecked: false,
         identicalShippingAddressChecked: false,
+        goNextTab: -1,
+        userEmail: '',
+        totalPrice: 0,
+        boutiques: {
+          items: [],
+          tickets: []
+        },
         shippingDetailsDisplayed: {
           line1: '',
           line2: ''
@@ -25,22 +32,21 @@ export default class BuyPresenter extends Presenter {
           phone: '',
           address: {
             line1: ''
-          },
-          goNextTab: -1,
-          boutiques: {},
-          userEmail: ''
+          }
         }
       },
       onDependencyChange: changes => {
-        if (changes.boutiques || changes.userEmail) {
-          this._updateViewModel(this.dependency('boutiques'), this.dependency('userEmail'));
+        if (changes.boutiques) {
+          this.update({boutiques: this.dependency('boutiques')});
+        }
+        if (changes.userEmail) {
+          this.update({userEmail :this.dependency('userEmail')});
+        }
+        if (changes.totalPrice) {
+          this.update({totalPrice :this.dependency('totalPrice')});
         }
       }
     });
-  }
-
-  _updateViewModel(boutiques) {
-    this.update({ boutiques: boutiques });
   }
 
   goNextTab() {
@@ -97,8 +103,8 @@ export default class BuyPresenter extends Presenter {
         line1: remiseEnMainPropreChecked ? 'Remise en main propre au prochain évènement Frm' : identicalShippingAddressChecked
           ? 'Identique à l\'adresse de facturation' : shippingDetails.name,
         line2: remiseEnMainPropreChecked ? '' : identicalShippingAddressChecked
-        ? '' : `${shippingDetails.address.line1} ${shippingDetails.phone}`
-        }
+          ? '' : `${shippingDetails.address.line1} ${shippingDetails.phone}`
+      }
     });
 
     this.update({
