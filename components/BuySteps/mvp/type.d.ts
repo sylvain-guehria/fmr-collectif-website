@@ -8,6 +8,8 @@ export type BuyStepsViewModel = {
   goNextTab: number;
   totalPrice: number;
   boutiques: Boutiques;
+  paymentStatus: string;
+  paymentErrorMessage: string;
   shippingDetailsDisplayed: {
     line1: string;
     line2: string;

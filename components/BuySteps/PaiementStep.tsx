@@ -2,12 +2,14 @@ import React from 'react';
 import GridContainer from 'components/lib/Grid/GridContainer.js';
 import StripePaymentForm from './StripePaymentForm';
 import { BuyStepsViewModel } from './mvp/type';
+import BuyPresenter from './mvp/BuyPresenter';
 
 type Props = {
   viewModel: BuyStepsViewModel;
+  presenter: BuyPresenter;
 };
 
-const PaiementStep: React.FC<Props> = ({ viewModel }) => {
+const PaiementStep: React.FC<Props> = ({ viewModel, presenter }) => {
   return (
     <GridContainer justify="center">
       <StripePaymentForm
@@ -15,6 +17,9 @@ const PaiementStep: React.FC<Props> = ({ viewModel }) => {
         userEmail={viewModel.userEmail}
         shippingDetails={viewModel.shippingDetails}
         billingDetails={viewModel.billingDetails}
+        paymentErrorMessage={viewModel.paymentErrorMessage}
+        paymentStatus={viewModel.paymentStatus}
+        presenter={presenter}
       />
     </GridContainer>
   );

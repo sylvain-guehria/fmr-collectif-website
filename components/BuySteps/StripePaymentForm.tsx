@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import React, { useState } from 'react';
+import React from 'react';
 
 import { fetchPostJSON } from './../../stripe/api-helpers';
 import { formatAmountForDisplay } from './../../stripe/stripe-helpers';
@@ -15,6 +15,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import styles from 'styles/jss/nextjs-material-kit-pro/components/customInputStyle.js';
 import { StripeCardElementChangeEvent } from '@stripe/stripe-js';
 import PaymentStatus from './PaymentStatus';
+import BuyPresenter from './mvp/BuyPresenter';
 
 const CARD_OPTIONS = {
   iconStyle: 'solid' as const,
@@ -41,8 +42,11 @@ const CARD_OPTIONS = {
 };
 
 type StripePaymentFormProps = {
+  presenter: BuyPresenter;
   totalPrice: number;
   userEmail: string;
+  paymentStatus: string;
+  paymentErrorMessage: string;
   shippingDetails: {
     name: string;
     phone: string;
@@ -72,10 +76,11 @@ const StripePaymentForm: React.FC<StripePaymentFormProps> = ({
   userEmail,
   shippingDetails,
   billingDetails,
+  paymentErrorMessage,
+  paymentStatus,
+  presenter,
 }) => {
   // const [cardholderName, setCardholderName] = useState('');
-  const [paymentStatus, setPaymentStatus] = useState('initial');
-  const [errorMessage, setErrorMessage] = useState('');
   const stripe = useStripe();
   const elements = useElements();
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -85,23 +90,23 @@ const StripePaymentForm: React.FC<StripePaymentFormProps> = ({
 
   const updateErrorDisplay = (e: StripeCardElementChangeEvent): void => {
     if (e.error) {
-      setPaymentStatus('error');
-      setErrorMessage(e.error.message ?? 'An unknown error occured');
+      presenter.setPaymentStatus('error');
+      presenter.setPaymentErrorMessage(e.error.message ?? 'An unknown error occured');
     } else {
-      setErrorMessage('');
+      presenter.setPaymentErrorMessage('');
     }
   };
 
   const handleClick = async (): Promise<void> => {
-    setPaymentStatus('processing');
+    presenter.setPaymentStatus('processing');
 
     const response: PayementResType = await fetchPostJSON('/api/payment/payment_intents', {
       amount: totalPrice,
     });
 
     if (response.statusCode === 500) {
-      setPaymentStatus('error');
-      setErrorMessage(response.message || '');
+      presenter.setPaymentStatus('error');
+      presenter.setPaymentErrorMessage(response.message || '');
       return;
     }
 
@@ -117,10 +122,10 @@ const StripePaymentForm: React.FC<StripePaymentFormProps> = ({
     });
 
     if (error) {
-      setPaymentStatus('error');
-      setErrorMessage(error.message ?? 'An unknown error occured');
+      presenter.setPaymentStatus('error');
+      presenter.setPaymentErrorMessage(error.message ?? 'An unknown error occured');
     } else if (paymentIntent) {
-      setPaymentStatus(paymentIntent.status);
+      presenter.setPaymentStatus(paymentIntent.status);
     }
   };
 
@@ -142,8 +147,8 @@ const StripePaymentForm: React.FC<StripePaymentFormProps> = ({
               <CardElement options={CARD_OPTIONS} onChange={e => updateErrorDisplay(e)} />
             </div>
             <br />
-            {errorMessage && (
-              <InputLabel className={classes.labelRootError}>{errorMessage}</InputLabel>
+            {paymentErrorMessage && (
+              <InputLabel className={classes.labelRootError}>{paymentErrorMessage}</InputLabel>
             )}
           </fieldset>
         </GridItem>

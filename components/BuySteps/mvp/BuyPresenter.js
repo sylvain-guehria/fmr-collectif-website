@@ -11,6 +11,8 @@ export default class BuyPresenter extends Presenter {
         goNextTab: -1,
         userEmail: '',
         totalPrice: 0,
+        paymentStatus: 'initial',
+        paymentErrorMessage: '',
         boutiques: {
           items: [],
           tickets: []
@@ -37,13 +39,13 @@ export default class BuyPresenter extends Presenter {
       },
       onDependencyChange: changes => {
         if (changes.boutiques) {
-          this.update({boutiques: this.dependency('boutiques')});
+          this.update({ boutiques: this.dependency('boutiques') });
         }
         if (changes.userEmail) {
-          this.update({userEmail :this.dependency('userEmail')});
+          this.update({ userEmail: this.dependency('userEmail') });
         }
         if (changes.totalPrice) {
-          this.update({totalPrice :this.dependency('totalPrice')});
+          this.update({ totalPrice: this.dependency('totalPrice') });
         }
       }
     });
@@ -51,6 +53,23 @@ export default class BuyPresenter extends Presenter {
 
   goNextTab() {
     this.update({ goNextTab: this.viewModel().goNextTab > -1 ? this.viewModel().goNextTab + 1 : 1 });
+  }
+
+  /**
+   * @param {string} status
+   *
+   */
+  setPaymentStatus(status) {
+    this.update({ paymentStatus: status });
+  }
+
+
+  /**
+   * @param {string} errorMessage
+   *
+   */
+  setPaymentErrorMessage(errorMessage) {
+    this.update({ setPaymentErrorMessage: errorMessage });
   }
 
   /**

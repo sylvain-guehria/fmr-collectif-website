@@ -104,7 +104,7 @@ const BuySteps: React.FC<Props> = ({ presenter, viewModel }) => {
                 {
                   tabButton: 'Paiement',
                   tabIcon: CheckCircle,
-                  tabContent: <PaiementStep viewModel={viewModel} />,
+                  tabContent: <PaiementStep viewModel={viewModel} presenter={presenter} />,
                 },
               ]}
             />
