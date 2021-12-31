@@ -2,14 +2,14 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import React, { useState } from 'react';
 
-import { fetchPostJSON } from '../../../stripe/api-helpers';
-import { formatAmountForDisplay } from '../../../stripe/stripe-helpers';
+import { fetchPostJSON } from './../../stripe/api-helpers';
+import { formatAmountForDisplay } from './../../stripe/stripe-helpers';
 import Input from '@material-ui/core/Input';
 
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import GridContainer from 'components/lib/Grid/GridContainer';
 import GridItem from 'components/lib/Grid/GridItem';
-import Button from '../../lib/CustomButtons/Button';
+import Button from './../lib/CustomButtons/Button';
 import { InputLabel } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import styles from 'styles/jss/nextjs-material-kit-pro/components/customInputStyle.js';

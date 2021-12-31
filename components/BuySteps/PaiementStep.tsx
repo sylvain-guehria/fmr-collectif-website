@@ -1,20 +1,19 @@
 import React from 'react';
 import GridContainer from 'components/lib/Grid/GridContainer.js';
 import { useAuth } from '../../hooks/useAuth';
-import StripePaymentForm from '../forms/payment/StripePaymentForm';
+import StripePaymentForm from './StripePaymentForm';
 import { useBoutique } from '../../hooks/useBoutique';
-
-import { BuyFormType } from './BuySteps';
+import { BuyStepsViewModel } from './mvp/type';
 
 type Props = {
-  shippingData: BuyFormType;
+  viewModel: BuyStepsViewModel;
 };
 
-const PaiementStep: React.FC<Props> = ({ shippingData }) => {
+const PaiementStep: React.FC<Props> = ({ viewModel }) => {
   const { getTotalPrice } = useBoutique();
   const { user } = useAuth();
 
-  const { remiseEnMainPropreChecked, identicalShippingAddressChecked } = shippingData;
+  const { remiseEnMainPropreChecked, identicalShippingAddressChecked } = viewModel;
 
   let shippingDetails = {
     name: '',
@@ -25,30 +24,30 @@ const PaiementStep: React.FC<Props> = ({ shippingData }) => {
   };
 
   const billingDetails = {
-    name: shippingData.billingFullName,
+    name: viewModel.billingFullName,
     email: user.getEmail(),
-    phone: shippingData.billingPhone,
+    phone: viewModel.billingPhone,
     address: {
-      line1: shippingData.billingAddress,
+      line1: viewModel.billingAddress,
     },
   };
 
   if (!remiseEnMainPropreChecked && !identicalShippingAddressChecked) {
     shippingDetails = {
-      name: shippingData.shippingFullName || '',
-      phone: shippingData.shippingPhone || '',
+      name: viewModel.shippingFullName,
+      phone: viewModel.shippingPhone,
       address: {
-        line1: shippingData.shippingAddress || '',
+        line1: viewModel.shippingAddress,
       },
     };
   }
 
   if (!remiseEnMainPropreChecked && identicalShippingAddressChecked) {
     shippingDetails = {
-      name: shippingData.billingFullName,
-      phone: shippingData.billingPhone,
+      name: viewModel.billingFullName,
+      phone: viewModel.billingPhone,
       address: {
-        line1: shippingData.billingAddress,
+        line1: viewModel.billingAddress,
       },
     };
   }

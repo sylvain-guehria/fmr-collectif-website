@@ -73,7 +73,7 @@ const LivraisonStep: React.FC<Props> = ({
 
   return (
     <>
-      <GridContainer spacing={5}>
+      <GridContainer spacing={5} padding="50px">
         <GridItem className={classes.gridItem}>
           <h4>Mode de livraison</h4>
           <Tooltip title="A n'importe quel évènement FRM" classes={{ tooltip: classes.tooltip }}>

@@ -9,18 +9,28 @@ import HeaderLinks from 'components/Header/HeaderLinks.js';
 import GridContainer from 'components/lib/Grid/GridContainer.js';
 import GridItem from 'components/lib/Grid/GridItem.js';
 import Parallax from 'components/lib/Parallax/Parallax.js';
-import BuySteps from '../BuySteps/BuySteps';
+import BuySteps from './BuySteps';
 import { Elements } from '@stripe/react-stripe-js';
 import getStripe from '../../stripe/stripe';
+import BuyPresenter from './mvp/BuyPresenter';
+import { Boutiques, useBoutique } from '../../hooks/useBoutique';
+import withMVP from '../../sharedKernel/mvp/withMvp';
+import { BuyStepsViewModel } from './mvp/type';
 
 import styles from 'styles/jss/nextjs-material-kit-pro/pages/ecommerceStyle.js';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const useStyles = makeStyles(styles);
 
-const Buy: React.FC = () => {
+type Props = {
+  viewModel: BuyStepsViewModel;
+  presenter: BuyPresenter;
+};
+
+const Buy: React.FC<Props> = ({ presenter, viewModel }) => {
   const classes = useStyles();
   const stripePromise = getStripe();
+
   return (
     <div>
       <Header
@@ -48,11 +58,21 @@ const Buy: React.FC = () => {
       <div className={classes.container}>
         {stripePromise && (
           <Elements stripe={stripePromise}>
-            <BuySteps />
+            <BuySteps presenter={presenter} viewModel={viewModel} />
           </Elements>
         )}
       </div>
     </div>
   );
 };
-export default Buy;
+
+const makeBuyPresenter = (): BuyPresenter => {
+  return new BuyPresenter();
+};
+
+const useDynamicDependencies = (): { boutiques: Boutiques } => {
+  const { boutiques } = useBoutique();
+  return { boutiques: boutiques };
+};
+
+export default withMVP(makeBuyPresenter, useDynamicDependencies)(Buy);

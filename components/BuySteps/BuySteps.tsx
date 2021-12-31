@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import classNames from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
 import CheckCircle from '@material-ui/icons/CheckCircle';
@@ -11,12 +11,14 @@ import { useRouter } from 'next/router';
 import LivraisonStep from './LivraisonStep';
 import ResumeStep from './ResumeStep';
 import PaiementStep from './PaiementStep';
-import { useBoutique } from '../../hooks/useBoutique';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { validationSchema } from './BuyFormValidation';
 import { yupResolver } from '@hookform/resolvers/yup';
+import BuyPresenter from './mvp/BuyPresenter';
+import { BuyStepsViewModel } from './mvp/type';
 
 import profilePageStyle from 'styles/jss/nextjs-material-kit-pro/pages/profilePageStyle.js';
+
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const useStyles = makeStyles(profilePageStyle);
@@ -34,19 +36,17 @@ export interface BuyFormType {
   shippingPhone?: string;
 }
 
-const BuySteps: React.FC = () => {
+type Props = {
+  viewModel: BuyStepsViewModel;
+  presenter: BuyPresenter;
+};
+
+const BuySteps: React.FC<Props> = ({ presenter, viewModel }) => {
   const classes = useStyles();
-  const [forcedActive, setForcedActive] = useState(-1);
-  const [shippingData, setShippingData] = useState({
-    billingFullName: '',
-    billingAddress: '',
-    billingPhone: '',
-  });
-  const { boutiques } = useBoutique();
   const router = useRouter();
 
   useEffect(() => {
-    if (!boutiques.items.length && !boutiques.tickets.length) {
+    if (!viewModel.boutiques.items.length && !viewModel.boutiques.tickets.length) {
       router.push('/home');
     }
   });
@@ -65,12 +65,8 @@ const BuySteps: React.FC = () => {
   } = useForm<BuyFormType>(formOptions);
 
   const onSubmit: SubmitHandler<BuyFormType> = async (data: BuyFormType) => {
-    setShippingData(data);
-    goNextTab();
-  };
-
-  const goNextTab = (): void => {
-    setForcedActive(forcedActive + 1);
+    presenter.setShippingData(data);
+    presenter.goNextTab();
   };
 
   return (
@@ -81,7 +77,7 @@ const BuySteps: React.FC = () => {
             <NavPills
               alignCenter
               color="info"
-              forcedActive={forcedActive}
+              goNextTab={viewModel.goNextTab}
               tabs={[
                 {
                   tabButton: 'Livraison',
@@ -101,12 +97,14 @@ const BuySteps: React.FC = () => {
                 {
                   tabButton: 'Resumé',
                   tabIcon: Visibility,
-                  tabContent: <ResumeStep shippingData={shippingData} goNextTab={goNextTab} />,
+                  tabContent: (
+                    <ResumeStep viewModel={viewModel} goNextTab={() => presenter.goNextTab()} />
+                  ),
                 },
                 {
                   tabButton: 'Paiement',
                   tabIcon: CheckCircle,
-                  tabContent: <PaiementStep shippingData={shippingData} />,
+                  tabContent: <PaiementStep viewModel={viewModel} />,
                 },
               ]}
             />

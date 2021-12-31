@@ -6,23 +6,23 @@ import Card from 'components/lib/Card/Card.js';
 import CardBody from 'components/lib/Card/CardBody.js';
 import CardHeader from 'components/lib/Card/CardHeader.js';
 import Muted from 'components/lib/Typography/Muted.js';
-import { BuyFormType } from './BuySteps';
 import Image from 'next/image';
 import Button from './../lib/CustomButtons/Button';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 
 import profilePageStyle from 'styles/jss/nextjs-material-kit-pro/pages/profilePageStyle.js';
 import ShoppingCartTable from 'components/ShoppingCart/ShoppingCartTable';
+import { BuyStepsViewModel } from './mvp/type';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const useStyles = makeStyles(profilePageStyle);
 
 type Props = {
-  shippingData: BuyFormType;
   goNextTab: () => void;
+  viewModel: BuyStepsViewModel;
 };
 
-const ResumeStep: React.FC<Props> = ({ shippingData, goNextTab }) => {
+const ResumeStep: React.FC<Props> = ({ viewModel, goNextTab }) => {
   const {
     remiseEnMainPropreChecked,
     identicalShippingAddressChecked,
@@ -32,7 +32,7 @@ const ResumeStep: React.FC<Props> = ({ shippingData, goNextTab }) => {
     shippingFullName,
     shippingAddress,
     shippingPhone,
-  } = shippingData;
+  } = viewModel;
 
   const classes = useStyles();
   return (
