@@ -18,6 +18,7 @@ import withMVP from '../../sharedKernel/mvp/withMvp';
 import { BuyStepsViewModel } from './mvp/type';
 
 import styles from 'styles/jss/nextjs-material-kit-pro/pages/ecommerceStyle.js';
+import { useAuth } from 'hooks/useAuth';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const useStyles = makeStyles(styles);
@@ -70,9 +71,10 @@ const makeBuyPresenter = (): BuyPresenter => {
   return new BuyPresenter();
 };
 
-const useDynamicDependencies = (): { boutiques: Boutiques } => {
+const useDynamicDependencies = (): { boutiques: Boutiques; userEmail: string } => {
   const { boutiques } = useBoutique();
-  return { boutiques: boutiques };
+  const { user } = useAuth();
+  return { boutiques: boutiques, userEmail: user.getEmail() };
 };
 
 export default withMVP(makeBuyPresenter, useDynamicDependencies)(Buy);

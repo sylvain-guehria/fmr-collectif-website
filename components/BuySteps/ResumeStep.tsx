@@ -23,16 +23,7 @@ type Props = {
 };
 
 const ResumeStep: React.FC<Props> = ({ viewModel, goNextTab }) => {
-  const {
-    remiseEnMainPropreChecked,
-    identicalShippingAddressChecked,
-    billingFullName,
-    billingAddress,
-    billingPhone,
-    shippingFullName,
-    shippingAddress,
-    shippingPhone,
-  } = viewModel;
+  const { billingDetails, shippingDetailsDisplayed } = viewModel;
 
   const classes = useStyles();
   return (
@@ -55,11 +46,11 @@ const ResumeStep: React.FC<Props> = ({ viewModel, goNextTab }) => {
                 <CardBody plain>
                   <h4 className={classes.cardTitle}>Adresse de facturation</h4>
                   <Muted>
-                    <h6>{billingFullName}</h6>
+                    <h6>{billingDetails.name}</h6>
                   </Muted>
                   <p className={classes.description}>
-                    {billingAddress} <br />
-                    {billingPhone}
+                    {billingDetails.address.line1} <br />
+                    {billingDetails.phone}
                   </p>
                 </CardBody>
               </GridItem>
@@ -78,25 +69,10 @@ const ResumeStep: React.FC<Props> = ({ viewModel, goNextTab }) => {
                 <CardBody plain>
                   <h4 className={classes.cardTitle}>Adresse de livraison</h4>
                   <Muted>
-                    <h6>
-                      {remiseEnMainPropreChecked
-                        ? 'Remise en main propre au prochain évènement Frm'
-                        : identicalShippingAddressChecked
-                        ? `Identique à l'adresse de facturation`
-                        : shippingFullName}
-                    </h6>
+                    <h6>{shippingDetailsDisplayed.line1}</h6>
                   </Muted>
                   <p className={classes.description}>
-                    {remiseEnMainPropreChecked ? (
-                      ''
-                    ) : identicalShippingAddressChecked ? (
-                      ''
-                    ) : (
-                      <p className={classes.description}>
-                        {shippingAddress} <br />
-                        {shippingPhone}
-                      </p>
-                    )}
+                    <p className={classes.description}>{shippingDetailsDisplayed.line2}</p>
                   </p>
                 </CardBody>
               </GridItem>

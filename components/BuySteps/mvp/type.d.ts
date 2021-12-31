@@ -4,13 +4,25 @@ export type BuyStepsViewModel = {
   remiseEnMainPropreChecked: boolean;
   livraisonChecked: boolean;
   identicalShippingAddressChecked: boolean;
-  shouldSelectLivraisonOrRemiseEnMainPropre: boolean;
-  billingFullName: string;
-  billingAddress: string;
-  billingPhone: string;
-  shippingFullName: string;
-  shippingAddress: string;
-  shippingPhone: string;
+  shippingDetailsDisplayed: {
+    line1: string;
+    line2: string;
+  };
+  billingDetails: {
+    name: string;
+    email: string;
+    phone: string;
+    address: {
+      line1: string;
+    };
+  };
+  shippingDetails: {
+    name: string;
+    phone: string;
+    address: {
+      line1: string;
+    };
+  };
   goNextTab: number;
   boutiques: Boutiques;
 };

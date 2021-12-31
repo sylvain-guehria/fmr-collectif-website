@@ -13,52 +13,13 @@ const PaiementStep: React.FC<Props> = ({ viewModel }) => {
   const { getTotalPrice } = useBoutique();
   const { user } = useAuth();
 
-  const { remiseEnMainPropreChecked, identicalShippingAddressChecked } = viewModel;
-
-  let shippingDetails = {
-    name: '',
-    phone: '',
-    address: {
-      line1: '',
-    },
-  };
-
-  const billingDetails = {
-    name: viewModel.billingFullName,
-    email: user.getEmail(),
-    phone: viewModel.billingPhone,
-    address: {
-      line1: viewModel.billingAddress,
-    },
-  };
-
-  if (!remiseEnMainPropreChecked && !identicalShippingAddressChecked) {
-    shippingDetails = {
-      name: viewModel.shippingFullName,
-      phone: viewModel.shippingPhone,
-      address: {
-        line1: viewModel.shippingAddress,
-      },
-    };
-  }
-
-  if (!remiseEnMainPropreChecked && identicalShippingAddressChecked) {
-    shippingDetails = {
-      name: viewModel.billingFullName,
-      phone: viewModel.billingPhone,
-      address: {
-        line1: viewModel.billingAddress,
-      },
-    };
-  }
-
   return (
     <GridContainer justify="center">
       <StripePaymentForm
         totalPrice={getTotalPrice()}
         userEmail={user.getEmail()}
-        shippingDetails={shippingDetails}
-        billingDetails={billingDetails}
+        shippingDetails={viewModel.shippingDetails}
+        billingDetails={viewModel.billingDetails}
       />
     </GridContainer>
   );
