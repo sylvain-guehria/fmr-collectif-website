@@ -16,6 +16,7 @@ import styles from 'styles/jss/nextjs-material-kit-pro/components/customInputSty
 import { StripeCardElementChangeEvent } from '@stripe/stripe-js';
 import PaymentStatus from './PaymentStatus';
 import BuyPresenter from './mvp/BuyPresenter';
+import { BillingDetails, ShippingDetails } from './mvp/type';
 
 const CARD_OPTIONS = {
   iconStyle: 'solid' as const,
@@ -47,21 +48,8 @@ type StripePaymentFormProps = {
   userEmail: string;
   paymentStatus: string;
   paymentErrorMessage: string;
-  shippingDetails: {
-    name: string;
-    phone: string;
-    address: {
-      line1: string;
-    };
-  };
-  billingDetails: {
-    name: string;
-    email: string;
-    phone: string;
-    address: {
-      line1: string;
-    };
-  };
+  shippingDetails: ShippingDetails;
+  billingDetails: BillingDetails;
 };
 
 type PayementResType = {
@@ -123,7 +111,9 @@ const StripePaymentForm: React.FC<StripePaymentFormProps> = ({
 
     if (error) {
       presenter.setPaymentStatus('error');
-      presenter.setPaymentErrorMessage(error.message ?? 'An unknown error occured');
+      presenter.setPaymentErrorMessage(
+        error.message ?? 'Erreur inconnue, veuillez réessayer plus tard'
+      );
     } else if (paymentIntent) {
       presenter.setPaymentStatus(paymentIntent.status);
     }

@@ -77,6 +77,7 @@ export default class BuyPresenter extends Presenter {
    *
    */
   setShippingData(data) {
+
     const { remiseEnMainPropreChecked, identicalShippingAddressChecked } = data;
 
     let shippingDetails = {
