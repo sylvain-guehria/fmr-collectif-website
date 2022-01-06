@@ -128,9 +128,9 @@ export default class BuyPresenter extends Presenter {
     });
 
     this.update({
-      remiseEnMainPropreChecked: data.remiseEnMainPropreChecked,
-      livraisonChecked: data.livraisonChecked,
-      identicalShippingAddressChecked: data.identicalShippingAddressChecked,
+      remiseEnMainPropreChecked: data.remiseEnMainPropreChecked ?? false,
+      livraisonChecked: data.livraisonChecked ?? false,
+      identicalShippingAddressChecked: data.identicalShippingAddressChecked ?? false,
       billingDetails: billingDetails,
       shippingDetails: shippingDetails
     });
