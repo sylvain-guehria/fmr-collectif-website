@@ -4,7 +4,7 @@ export const validationSchema = Yup.object()
   .shape({
     remiseEnMainPropreChecked: Yup.bool().required(),
     livraisonChecked: Yup.bool().required(),
-    identicalShippingAddressChecked: Yup.bool().required(),
+    identicalShippingAddressChecked: Yup.bool(),
     billingFullName: Yup.string().required(
       'Veuillez entrer le nom et prénom qui apparaitront sur la facture'
     ),

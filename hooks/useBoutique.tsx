@@ -8,9 +8,15 @@ type ContextProps = {
   addTicket: (ticket: Ticket) => void;
   deleteItem: (itemUid: string) => void;
   deleteTicket: (ticketUid: string) => void;
-  updateItemQuantity: (itemUid: string, operation: 'add' | 'minus') => void;
+  updateItemQuantity: (itemUid: string, operation: Operation.ADD | Operation.MINUS) => void;
   getTotalPrice: () => number;
+  resetBoutiques: () => void;
 };
+
+export enum Operation {
+  ADD = 'add',
+  MINUS = 'minus',
+}
 interface ProviderProps {
   children?: React.ReactNode;
 }
@@ -54,14 +60,17 @@ const useProvideBoutique = (): Partial<ContextProps> => {
     setBoutiques(localBoutique);
   };
 
-  const updateItemQuantity = (itemUid: string, operation: 'add' | 'minus'): void => {
+  const updateItemQuantity = (
+    itemUid: string,
+    operation: Operation.ADD | Operation.MINUS
+  ): void => {
     const localBoutique = { ...boutiques };
     let updatedQuantity = 1;
-    if (operation === 'add') {
+    if (operation === Operation.ADD) {
       updatedQuantity = localBoutique.itemsQuantity[itemUid] + 1;
       localBoutique.itemsQuantity[itemUid] = updatedQuantity;
     }
-    if (operation === 'minus' && localBoutique.itemsQuantity[itemUid] > 0) {
+    if (operation === Operation.MINUS && localBoutique.itemsQuantity[itemUid] > 0) {
       updatedQuantity = localBoutique.itemsQuantity[itemUid] - 1;
       localBoutique.itemsQuantity[itemUid] = updatedQuantity;
     }
@@ -82,6 +91,10 @@ const useProvideBoutique = (): Partial<ContextProps> => {
     return totalPrice;
   };
 
+  const resetBoutiques = (): void => {
+    setBoutiques(defaultBoutiques);
+  };
+
   return {
     boutiques,
     addItem,
@@ -90,6 +103,7 @@ const useProvideBoutique = (): Partial<ContextProps> => {
     deleteTicket,
     updateItemQuantity,
     getTotalPrice,
+    resetBoutiques,
   };
 };
 

@@ -23,11 +23,11 @@ const userDataFromFirebase = {
     lastName: 'guehria'
 };
 
-it('if it the first connexion with google, the user is added to the database', async function () {
+it('if it the first connexion with google, the user is added to the database and the provider is added', async function () {
     auth.loginGoogle.mockResolvedValue({...userDataFromFirebase, isNewUser: true});
 
     await googleConnexion(userRepository)(auth, router);
-    expect(userRepository.add).toHaveBeenCalledWith(userDataFromFirebase);
+    expect(userRepository.add).toHaveBeenCalledWith({...userDataFromFirebase, provider: 'google' });
 });
 
 it('if it not he first connection with google, the user is not added to the database', async function () {

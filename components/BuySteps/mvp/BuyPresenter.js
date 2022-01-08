@@ -13,6 +13,7 @@ export default class BuyPresenter extends Presenter {
         totalPrice: 0,
         paymentStatus: 'initial',
         paymentErrorMessage: '',
+        isSucceededPayementModalOpen: false,
         boutiques: {
           items: [],
           tickets: []
@@ -134,5 +135,25 @@ export default class BuyPresenter extends Presenter {
       billingDetails: billingDetails,
       shippingDetails: shippingDetails
     });
+  }
+
+  payementSucceeded() {
+    //open modal
+    this._openSucceededPayementModal();
+    //empty boutiques
+    this._resetBoutiques();
+    //redirect when close modal
+    //save purchase in order history
+    //stock item - 1.
+  }
+
+  _openSucceededPayementModal() {
+    this.update({
+      isSucceededPayementModalOpen: true
+    });
+  }
+
+  _resetBoutiques() {
+    //reset boutique how ??
   }
 }

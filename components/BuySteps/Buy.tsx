@@ -78,7 +78,11 @@ const useDynamicDependencies = (): {
 } => {
   const { boutiques, getTotalPrice } = useBoutique();
   const { user } = useAuth();
-  return { boutiques: boutiques, userEmail: user.getEmail(), totalPrice: getTotalPrice() };
+  return {
+    boutiques: boutiques,
+    userEmail: user.getEmail(),
+    totalPrice: getTotalPrice(),
+  };
 };
 
 export default withMVP(makeBuyPresenter, useDynamicDependencies)(Buy);

@@ -116,6 +116,7 @@ const StripePaymentForm: React.FC<StripePaymentFormProps> = ({
       );
     } else if (paymentIntent) {
       presenter.setPaymentStatus(paymentIntent.status);
+      presenter.payementSucceeded();
     }
   };
 

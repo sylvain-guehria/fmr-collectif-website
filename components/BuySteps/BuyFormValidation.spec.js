@@ -72,13 +72,6 @@ describe('#identicalShippingAddressChecked ', () => {
     });
     expect(error).toContain('identicalShippingAddressChecked must be a `boolean` type');
   });
-  it('is required', async () => {
-    const error = await getFirstError({
-      ...validFormData,
-      identicalShippingAddressChecked: undefined
-    });
-    expect(error).toContain('identicalShippingAddressChecked is a required field');
-  });
 });
 
 describe('#billingFullName', () => {

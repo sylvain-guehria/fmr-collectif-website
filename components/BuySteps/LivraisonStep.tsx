@@ -248,7 +248,7 @@ const LivraisonStep: React.FC<Props> = ({
         style={{ position: 'absolute', bottom: 15, right: 15 }}
         type="submit">
         <>
-          Validé la livraison <KeyboardArrowRight />
+          Valider la livraison <KeyboardArrowRight />
         </>
       </Button>
     </>

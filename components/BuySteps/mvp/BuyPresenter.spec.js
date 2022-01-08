@@ -10,6 +10,7 @@ const defaultViewModel = {
   totalPrice: 0,
   paymentStatus: 'initial',
   paymentErrorMessage: '',
+  isSucceededPayementModalOpen: false,
   boutiques: {
     items: [],
     tickets: []
