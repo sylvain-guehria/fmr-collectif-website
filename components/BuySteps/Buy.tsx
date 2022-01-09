@@ -31,6 +31,9 @@ type Props = {
 const Buy: React.FC<Props> = ({ presenter, viewModel }) => {
   const classes = useStyles();
   const stripePromise = getStripe();
+  const { resetBoutiques } = useBoutique();
+
+  presenter.setEmptyBoutiques(resetBoutiques);
 
   return (
     <div>

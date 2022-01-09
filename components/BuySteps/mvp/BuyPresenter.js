@@ -64,6 +64,9 @@ export default class BuyPresenter extends Presenter {
     this.update({ paymentStatus: status });
   }
 
+  setEmptyBoutiques(emptyBoutiques) {
+    this.emptyBoutiques = emptyBoutiques;
+  }
 
   /**
    * @param {string} errorMessage
@@ -138,11 +141,7 @@ export default class BuyPresenter extends Presenter {
   }
 
   payementSucceeded() {
-    //open modal
     this._openSucceededPayementModal();
-    //empty boutiques
-    this._resetBoutiques();
-    //redirect when close modal
     //save purchase in order history
     //stock item - 1.
   }
@@ -153,7 +152,9 @@ export default class BuyPresenter extends Presenter {
     });
   }
 
-  _resetBoutiques() {
-    //reset boutique how ??
+  closeSucceededPayementModal() {
+    this.update({
+      isSucceededPayementModalOpen: false
+    });
   }
 }

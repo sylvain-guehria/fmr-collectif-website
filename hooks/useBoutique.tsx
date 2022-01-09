@@ -34,7 +34,12 @@ export const useBoutique = (): ContextProps => {
 };
 
 const useProvideBoutique = (): Partial<ContextProps> => {
-  const [boutiques, setBoutiques] = useState<Boutiques>(defaultBoutiques);
+  const [boutiques, setBoutiques] = useState<Boutiques>({
+    items: [],
+    itemsQuantity: {},
+    tickets: [],
+    ticketsQuantity: {},
+  });
 
   const addItem = (item: ItemEntity): void => {
     const localBoutique = { ...boutiques };
@@ -92,7 +97,12 @@ const useProvideBoutique = (): Partial<ContextProps> => {
   };
 
   const resetBoutiques = (): void => {
-    setBoutiques(defaultBoutiques);
+    setBoutiques({
+      items: [],
+      itemsQuantity: {},
+      tickets: [],
+      ticketsQuantity: {},
+    });
   };
 
   return {
@@ -105,13 +115,6 @@ const useProvideBoutique = (): Partial<ContextProps> => {
     getTotalPrice,
     resetBoutiques,
   };
-};
-
-const defaultBoutiques: Boutiques = {
-  items: [],
-  itemsQuantity: {},
-  tickets: [],
-  ticketsQuantity: {},
 };
 
 export type Boutiques = {

@@ -18,6 +18,7 @@ import BuyPresenter from './mvp/BuyPresenter';
 import { BuyStepsViewModel } from './mvp/type';
 
 import profilePageStyle from 'styles/jss/nextjs-material-kit-pro/pages/profilePageStyle.js';
+import PayementDoneModal from './PayementDoneModal';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -70,49 +71,59 @@ const BuySteps: React.FC<Props> = ({ presenter, viewModel }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className={classNames(classes.main, classes.mainRaised)}>
-        <div className={classes.container}>
-          <div className={classes.profileTabs}>
-            <NavPills
-              alignCenter
-              color="info"
-              goNextTab={viewModel.goNextTab}
-              tabs={[
-                {
-                  tabButton: 'Livraison',
-                  tabIcon: Home,
-                  tabContent: (
-                    <LivraisonStep
-                      register={register}
-                      errors={errors}
-                      setValue={setValue}
-                      getValues={getValues}
-                      clearErrors={clearErrors}
-                      watch={watch}
-                      control={control}
-                    />
-                  ),
-                },
-                {
-                  tabButton: 'Resumé',
-                  tabIcon: Visibility,
-                  tabContent: (
-                    <ResumeStep viewModel={viewModel} goNextTab={() => presenter.goNextTab()} />
-                  ),
-                },
-                {
-                  tabButton: 'Paiement',
-                  tabIcon: CheckCircle,
-                  tabContent: <PaiementStep viewModel={viewModel} presenter={presenter} />,
-                },
-              ]}
-            />
+    <>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className={classNames(classes.main, classes.mainRaised)}>
+          <div className={classes.container}>
+            <div className={classes.profileTabs}>
+              <NavPills
+                alignCenter
+                color="info"
+                goNextTab={viewModel.goNextTab}
+                tabs={[
+                  {
+                    tabButton: 'Livraison',
+                    tabIcon: Home,
+                    tabContent: (
+                      <LivraisonStep
+                        register={register}
+                        errors={errors}
+                        setValue={setValue}
+                        getValues={getValues}
+                        clearErrors={clearErrors}
+                        watch={watch}
+                        control={control}
+                      />
+                    ),
+                  },
+                  {
+                    tabButton: 'Resumé',
+                    tabIcon: Visibility,
+                    tabContent: (
+                      <ResumeStep viewModel={viewModel} goNextTab={() => presenter.goNextTab()} />
+                    ),
+                  },
+                  {
+                    tabButton: 'Paiement',
+                    tabIcon: CheckCircle,
+                    tabContent: <PaiementStep viewModel={viewModel} presenter={presenter} />,
+                  },
+                ]}
+              />
+            </div>
+            <Clearfix />
           </div>
-          <Clearfix />
         </div>
-      </div>
-    </form>
+      </form>
+      <PayementDoneModal
+        isOpen={viewModel.isSucceededPayementModalOpen}
+        onClose={() => presenter.emptyBoutiques()}
+        closeModal={() => presenter.closeSucceededPayementModal()}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description">
+        <div>fffffff</div>
+      </PayementDoneModal>
+    </>
   );
 };
 export default BuySteps;

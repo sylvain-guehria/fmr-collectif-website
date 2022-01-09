@@ -10,6 +10,7 @@ export type BuyStepsViewModel = {
   boutiques: Boutiques;
   paymentStatus: string;
   paymentErrorMessage: string;
+  isSucceededPayementModalOpen: boolean;
   shippingDetailsDisplayed: {
     line1: string;
     line2: string;

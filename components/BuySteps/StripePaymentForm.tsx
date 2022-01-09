@@ -115,7 +115,6 @@ const StripePaymentForm: React.FC<StripePaymentFormProps> = ({
         error.message ?? 'Erreur inconnue, veuillez réessayer plus tard'
       );
     } else if (paymentIntent) {
-      presenter.setPaymentStatus(paymentIntent.status);
       presenter.payementSucceeded();
     }
   };
