@@ -65,7 +65,7 @@ export default class BuyPresenter extends Presenter {
   }
 
   setEmptyBoutiques(emptyBoutiques) {
-    this.emptyBoutiques = emptyBoutiques;
+    this._emptyBoutiques = emptyBoutiques;
   }
 
   /**
@@ -142,6 +142,8 @@ export default class BuyPresenter extends Presenter {
 
   payementSucceeded() {
     this._openSucceededPayementModal();
+    this.setPaymentStatus('succeeded');
+
     //save purchase in order history
     //stock item - 1.
   }
@@ -156,5 +158,10 @@ export default class BuyPresenter extends Presenter {
     this.update({
       isSucceededPayementModalOpen: false
     });
+    this._emptyBoutiques();
+  }
+
+  onClosePayementModal(){
+    this.emptyBoutiques();
   }
 }

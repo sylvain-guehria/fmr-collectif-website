@@ -117,7 +117,7 @@ const BuySteps: React.FC<Props> = ({ presenter, viewModel }) => {
       </form>
       <PayementDoneModal
         isOpen={viewModel.isSucceededPayementModalOpen}
-        onClose={() => presenter.emptyBoutiques()}
+        onClose={() => presenter.onClosePayementModal()}
         closeModal={() => presenter.closeSucceededPayementModal()}
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description">
