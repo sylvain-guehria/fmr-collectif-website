@@ -2,7 +2,7 @@ import Presenter from '../../../sharedKernel/mvp/Presenter';
 
 export default class BuyPresenter extends Presenter {
 
-  constructor() {
+  constructor(buyNumberOfItems) {
     super({
       viewModel: {
         remiseEnMainPropreChecked: false,
@@ -50,6 +50,7 @@ export default class BuyPresenter extends Presenter {
         }
       }
     });
+    this.buyNumberOfItems = buyNumberOfItems;
   }
 
   goNextTab() {
@@ -146,6 +147,10 @@ export default class BuyPresenter extends Presenter {
 
     //save purchase in order history
     //stock item - 1.
+    const boughtItems =  this.viewModel().boutiques.items;
+    const quantityBoughtItems =  this.viewModel().boutiques.itemsQuantity;
+
+    boughtItems.map(item => this.buyNumberOfItems(item, quantityBoughtItems[item.getId()]));
   }
 
   _openSucceededPayementModal() {

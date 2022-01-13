@@ -76,6 +76,12 @@ class ItemEntity implements Item {
   getLastBuyDate(): number {
     return this.lastBuyDate;
   }
+
+  buyNumberOfItems(numberItemsBought: number): void {
+    this.quantity = this.quantity - numberItemsBought;
+    this.numberTotalSell = this.numberTotalSell + numberItemsBought;
+    this.lastBuyDate = Date.now();
+  }
 }
 
 export default ItemEntity;

@@ -24,6 +24,11 @@ class itemService {
     await this.storageFunctions.handleDelete('stocks', uid);
     return await this.itemRepository.deleteById(uid);
   }
+
+  async buyNumberOfItems(item: ItemEntity, quantityBought: number): Promise<void> {
+    item.buyNumberOfItems(quantityBought);
+    return await this.itemRepository.update(item);
+  }
 }
 
 export default itemService;
