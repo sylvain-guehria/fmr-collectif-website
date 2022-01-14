@@ -48,6 +48,7 @@ const GO_TO_CART = 'Aller au panier';
 const UNAVAILABLE = 'Indisponible';
 const CHOOSE_YOUR_TSHIRT = 'Selection ton tshirt';
 const PRODUCT_ADDED_TO_CART = 'Produit ajouté au panier';
+const ALREADY_IN_CART = 'Produit Déjà au panier';
 
 type Props = {
   items: ItemEntity[];
@@ -68,19 +69,21 @@ const ShopItemCard: React.FC<Props> = ({ items }) => {
   const { addToast } = useToasts();
 
   useEffect(() => {
-    setCanAddToCart(isItemAvailable());
-    setMessageButton(
-      colorSelected && sizeSelected && genderSelected
-        ? isItemAvailable()
-          ? ADD_TO_CART
-          : UNAVAILABLE
-        : SELECT_PRODUCT
-    );
+    setCanAddToCart(isItemAvailable() && !isItemInCart());
+    const areAllAttributesSelected = !!(colorSelected && sizeSelected && genderSelected);
+
+    if (!areAllAttributesSelected) setMessageButton(SELECT_PRODUCT);
+    if (areAllAttributesSelected) {
+      setMessageButton(
+        isItemAvailable() ? (isItemInCart() ? ALREADY_IN_CART : ADD_TO_CART) : UNAVAILABLE
+      );
+    }
+
     const matchingItem = getMatchingItem();
     setCurrentLabel(matchingItem ? matchingItem.label : CHOOSE_YOUR_TSHIRT);
     setCurrentPrice(matchingItem ? matchingItem.price : 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [colorSelected, sizeSelected, genderSelected]);
+  }, [colorSelected, sizeSelected, genderSelected, boutiques.items.length]);
 
   const getMatchingItem = (): ItemEntity | undefined => {
     return items.find(
@@ -94,6 +97,12 @@ const ShopItemCard: React.FC<Props> = ({ items }) => {
   const isItemAvailable = (): boolean => {
     const matchingItem: ItemEntity | undefined = getMatchingItem();
     return matchingItem && matchingItem.quantity ? matchingItem.quantity > 0 : false;
+  };
+
+  const isItemInCart = (): boolean => {
+    const matchingItem: ItemEntity | undefined = getMatchingItem();
+    const quantityInCart = matchingItem ? boutiques.itemsQuantity[matchingItem?.getId()] : 0;
+    return quantityInCart > 0;
   };
 
   const addToCart = (): void => {

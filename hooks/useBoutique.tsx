@@ -70,8 +70,13 @@ const useProvideBoutique = (): Partial<ContextProps> => {
     operation: Operation.ADD | Operation.MINUS
   ): void => {
     const localBoutique = { ...boutiques };
+    const currentItem = localBoutique.items.find(item => item.getId() === itemUid);
     let updatedQuantity = 1;
-    if (operation === Operation.ADD) {
+    if (
+      operation === Operation.ADD &&
+      currentItem &&
+      localBoutique.itemsQuantity[itemUid] < currentItem.getQuantity()
+    ) {
       updatedQuantity = localBoutique.itemsQuantity[itemUid] + 1;
       localBoutique.itemsQuantity[itemUid] = updatedQuantity;
     }
