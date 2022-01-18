@@ -90,6 +90,7 @@ const StripePaymentForm: React.FC<StripePaymentFormProps> = ({
 
     const response: PayementResType = await fetchPostJSON('/api/payment/payment_intents', {
       amount: totalPrice,
+      metadata: presenter.makeCleanListOfWhatUserBought(),
     });
 
     if (response.statusCode === 500) {

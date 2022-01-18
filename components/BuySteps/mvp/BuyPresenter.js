@@ -141,14 +141,24 @@ export default class BuyPresenter extends Presenter {
     });
   }
 
+  makeCleanListOfWhatUserBought() {
+    const boughtItems = this.viewModel().boutiques.items;
+    const quantityBoughtItems = this.viewModel().boutiques.itemsQuantity;
+    let items;
+    boughtItems.forEach(item => (
+      items = { ...items, [item.getId()]: `${item.getLabel()}, quantity : ${quantityBoughtItems[item.getId()]}` })
+    );
+    return items;
+  }
+
   payementSucceeded() {
     this._openSucceededPayementModal();
     this.setPaymentStatus('succeeded');
 
     //save purchase in order history
     //stock item - 1.
-    const boughtItems =  this.viewModel().boutiques.items;
-    const quantityBoughtItems =  this.viewModel().boutiques.itemsQuantity;
+    const boughtItems = this.viewModel().boutiques.items;
+    const quantityBoughtItems = this.viewModel().boutiques.itemsQuantity;
 
     boughtItems.map(item => this.buyNumberOfItems(item, quantityBoughtItems[item.getId()]));
   }
@@ -166,7 +176,7 @@ export default class BuyPresenter extends Presenter {
     this._emptyBoutiques();
   }
 
-  onClosePayementModal(){
+  onClosePayementModal() {
     this.emptyBoutiques();
   }
 }
