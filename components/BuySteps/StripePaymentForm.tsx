@@ -87,6 +87,10 @@ const StripePaymentForm: React.FC<StripePaymentFormProps> = ({
 
   const handleClick = async (): Promise<void> => {
     presenter.setPaymentStatus('processing');
+    if (!presenter.hasEnoughQuantityInStock()) {
+      presenter.setPaymentStatus('notEnoughQuantityInStock');
+      return;
+    }
 
     const response: PayementResType = await fetchPostJSON('/api/payment/payment_intents', {
       amount: totalPrice,

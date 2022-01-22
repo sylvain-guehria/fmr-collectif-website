@@ -77,6 +77,10 @@ class ItemEntity implements Item {
     return this.lastBuyDate;
   }
 
+  hasEnoughQuantityInStock(numberItemsBought: number): boolean {
+    return this.quantity - numberItemsBought >= 0;
+  }
+
   buyNumberOfItems(numberItemsBought: number): void {
     this.quantity = this.quantity - numberItemsBought;
     this.numberTotalSell = this.numberTotalSell + numberItemsBought;

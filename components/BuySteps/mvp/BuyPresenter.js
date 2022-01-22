@@ -151,12 +151,20 @@ export default class BuyPresenter extends Presenter {
     return items;
   }
 
+  hasEnoughQuantityInStock() {
+    const boughtItems = this.viewModel().boutiques.items;
+    const quantityBoughtItems = this.viewModel().boutiques.itemsQuantity;
+    for (const item of boughtItems) {
+      if (item.hasEnoughQuantityInStock(quantityBoughtItems[item.getId()])) return false;
+    }
+    return true;
+  }
+
   payementSucceeded() {
     this._openSucceededPayementModal();
     this.setPaymentStatus('succeeded');
 
     //save purchase in order history
-    //stock item - 1.
     const boughtItems = this.viewModel().boutiques.items;
     const quantityBoughtItems = this.viewModel().boutiques.itemsQuantity;
 
@@ -177,6 +185,6 @@ export default class BuyPresenter extends Presenter {
   }
 
   onClosePayementModal() {
-    this.emptyBoutiques();
+    this._emptyBoutiques();
   }
 }
