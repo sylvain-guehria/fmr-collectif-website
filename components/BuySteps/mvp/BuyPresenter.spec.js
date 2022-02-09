@@ -1,6 +1,5 @@
 import BuyPresenter from './BuyPresenter';
 
-let presenter;
 const defaultViewModel = {
   remiseEnMainPropreChecked: false,
   livraisonChecked: false,
@@ -36,10 +35,15 @@ const defaultViewModel = {
   }
 };
 
+let presenter;
+const buyNumberOfItems = jest.fn();
+
+beforeEach(() => {
+  presenter = new BuyPresenter(buyNumberOfItems);
+});
+
+
 describe('#useDynamicDependencies', () => {
-  beforeEach(() => {
-    presenter = new BuyPresenter();
-  });
   it('update the userEmail', async () => {
     presenter.updateDependencies({ userEmail: 'sylvainguehria@gmail.com' });
     expect(presenter.viewModel().userEmail).toBe('sylvainguehria@gmail.com');
@@ -70,7 +74,6 @@ describe('#setShippingData', () => {
     billingPhone: '+33664397053'
   };
   beforeEach(() => {
-    presenter = new BuyPresenter();
     presenter.updateDependencies({ userEmail: 'sylvainguehria@gmail.com' });
   });
   describe('the user checked the checkbox "remise en main propre"', () => {
@@ -184,5 +187,37 @@ describe('#setShippingData', () => {
       );
     });
   });
+});
+
+describe('The user make a payment', () => {
+  describe('The payment failed', () => {
+    presenter.updateDependencies({
+      boutiques: {
+        items: ['item1', 'item2'],
+        tickets: []
+      }
+    });
+    it('setPaymentStatus to notEnoughQuantityInStock if has not Enough Quantity In Stock', async () => {
+    });
+    it('setPaymentStatus to error', async () => {
+    });
+    it('setPaymentErrorMessage(response.message)', async () => {
+    });
+    it('Does not call payement succeed', async () => {
+    });
+  });
+  describe('The payment succeed', () => {
+    it('make a clean list for the metadat of stripe', async () => {
+    });
+    it('Open the payement suceeded modal', async () => {
+    });
+    it('setPaymentStatus to succeeded', async () => {
+    });
+    it('Save the purchase in order history', async () => {
+    });
+    it('buyNumberOfItems for each items', async () => {
+    });
+  });
+
 });
 

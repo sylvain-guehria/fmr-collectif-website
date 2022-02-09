@@ -14,9 +14,6 @@ const PaiementStep: React.FC<Props> = ({ viewModel, presenter }) => {
     <GridContainer justify="center">
       <StripePaymentForm
         totalPrice={viewModel.totalPrice}
-        userEmail={viewModel.userEmail}
-        shippingDetails={viewModel.shippingDetails}
-        billingDetails={viewModel.billingDetails}
         paymentErrorMessage={viewModel.paymentErrorMessage}
         paymentStatus={viewModel.paymentStatus}
         presenter={presenter}

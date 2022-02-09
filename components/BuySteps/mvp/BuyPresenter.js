@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+import { fetchPostJSON } from 'stripe/api-helpers';
 import Presenter from '../../../sharedKernel/mvp/Presenter';
 
 export default class BuyPresenter extends Presenter {
@@ -155,7 +157,7 @@ export default class BuyPresenter extends Presenter {
     const boughtItems = this.viewModel().boutiques.items;
     const quantityBoughtItems = this.viewModel().boutiques.itemsQuantity;
     for (const item of boughtItems) {
-      if (item.hasEnoughQuantityInStock(quantityBoughtItems[item.getId()])) return false;
+      if (!item.hasEnoughQuantityInStock(quantityBoughtItems[item.getId()])) return false;
     }
     return true;
   }
@@ -186,5 +188,49 @@ export default class BuyPresenter extends Presenter {
 
   onClosePayementModal() {
     this._emptyBoutiques();
+  }
+
+  async startStripePayement(stripe, elements, CardElement) {
+
+    if (!elements) throw Error('Erreur inconnue, veuillez réessayer plus tard');
+    if (!stripe) throw Error('Erreur inconnue, veuillez réessayer plus tard');
+
+    this.setPaymentStatus('processing');
+    if (!this.hasEnoughQuantityInStock()) {
+      this.setPaymentStatus('notEnoughQuantityInStock');
+      return;
+    }
+
+    const response = await fetchPostJSON('/api/payment/payment_intents', {
+      amount: this.viewModel().totalPrice,
+      metadata: this.makeCleanListOfWhatUserBought()
+    });
+
+    if (response.statusCode === 500) {
+      this.setPaymentStatus('error');
+      this.setPaymentErrorMessage(response.message || '');
+      return;
+    }
+
+    const cardElement = elements.getElement(CardElement);
+    if (!cardElement) throw Error('Erreur inconnue, veuillez réessayer plus tard');
+
+    const { error, paymentIntent } = await stripe.confirmCardPayment(response.client_secret, {
+      payment_method: {
+        card: cardElement,
+        billing_details: this.viewModel().billingDetails
+      },
+      shipping: this.viewModel().shippingDetails,
+      receipt_email: this.viewModel().userEmail
+    });
+
+    if (error) {
+      this.setPaymentStatus('error');
+      this.setPaymentErrorMessage(
+        error.message ?? 'Erreur inconnue, veuillez réessayer plus tard'
+      );
+    } else if (paymentIntent) {
+      this.payementSucceeded();
+    }
   }
 }
