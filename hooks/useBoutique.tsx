@@ -36,18 +36,19 @@ export const useBoutique = (): ContextProps => {
 const useProvideBoutique = (): Partial<ContextProps> => {
   const [boutiques, setBoutiques] = useState<Boutiques>({
     items: [],
-    itemsQuantity: {},
+    itemsQuantityBought: {},
     tickets: [],
     ticketsQuantity: {},
   });
 
   const addItem = (item: ItemEntity): void => {
     const localBoutique = { ...boutiques };
-    if (localBoutique.itemsQuantity[item.getId()]) {
-      localBoutique.itemsQuantity[item.getId()] = localBoutique.itemsQuantity[item.getId()] + 1;
+    if (localBoutique.itemsQuantityBought[item.getId()]) {
+      localBoutique.itemsQuantityBought[item.getId()] =
+        localBoutique.itemsQuantityBought[item.getId()] + 1;
     } else {
       localBoutique.items.push(item);
-      localBoutique.itemsQuantity[item.getId()] = 1;
+      localBoutique.itemsQuantityBought[item.getId()] = 1;
     }
     setBoutiques(localBoutique);
   };
@@ -61,7 +62,7 @@ const useProvideBoutique = (): Partial<ContextProps> => {
   const deleteItem = (itemUid: string): void => {
     const localBoutique = { ...boutiques };
     localBoutique.items = localBoutique.items.filter(item => item.getId() !== itemUid);
-    delete localBoutique.itemsQuantity[itemUid];
+    delete localBoutique.itemsQuantityBought[itemUid];
     setBoutiques(localBoutique);
   };
 
@@ -75,14 +76,14 @@ const useProvideBoutique = (): Partial<ContextProps> => {
     if (
       operation === Operation.ADD &&
       currentItem &&
-      localBoutique.itemsQuantity[itemUid] < currentItem.getQuantity()
+      localBoutique.itemsQuantityBought[itemUid] < currentItem.getQuantity()
     ) {
-      updatedQuantity = localBoutique.itemsQuantity[itemUid] + 1;
-      localBoutique.itemsQuantity[itemUid] = updatedQuantity;
+      updatedQuantity = localBoutique.itemsQuantityBought[itemUid] + 1;
+      localBoutique.itemsQuantityBought[itemUid] = updatedQuantity;
     }
-    if (operation === Operation.MINUS && localBoutique.itemsQuantity[itemUid] > 0) {
-      updatedQuantity = localBoutique.itemsQuantity[itemUid] - 1;
-      localBoutique.itemsQuantity[itemUid] = updatedQuantity;
+    if (operation === Operation.MINUS && localBoutique.itemsQuantityBought[itemUid] > 0) {
+      updatedQuantity = localBoutique.itemsQuantityBought[itemUid] - 1;
+      localBoutique.itemsQuantityBought[itemUid] = updatedQuantity;
     }
     setBoutiques(localBoutique);
   };
@@ -96,7 +97,7 @@ const useProvideBoutique = (): Partial<ContextProps> => {
   const getTotalPrice = (): number => {
     let totalPrice = 0;
     for (const item of boutiques.items) {
-      totalPrice = totalPrice + item.getPrice() * boutiques.itemsQuantity[item.getId()];
+      totalPrice = totalPrice + item.getPrice() * boutiques.itemsQuantityBought[item.getId()];
     }
     return totalPrice;
   };
@@ -104,7 +105,7 @@ const useProvideBoutique = (): Partial<ContextProps> => {
   const resetBoutiques = (): void => {
     setBoutiques({
       items: [],
-      itemsQuantity: {},
+      itemsQuantityBought: {},
       tickets: [],
       ticketsQuantity: {},
     });
@@ -124,7 +125,7 @@ const useProvideBoutique = (): Partial<ContextProps> => {
 
 export type Boutiques = {
   items: ItemEntity[];
-  itemsQuantity: Record<string, number>;
+  itemsQuantityBought: Record<string, number>;
   tickets: Ticket[];
   ticketsQuantity: Record<string, number>;
 };

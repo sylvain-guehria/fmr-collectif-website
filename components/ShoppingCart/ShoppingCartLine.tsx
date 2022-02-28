@@ -20,14 +20,14 @@ interface Props {
   item: ItemEntity;
   deleteItem: (itemUid: string) => void;
   updateItemQuantity: (itemUid: string, operation: Operation.ADD | Operation.MINUS) => void;
-  itemsQuantity: Record<string, number>;
+  itemsQuantityBought: Record<string, number>;
 }
 
 const ShoppingCartLine: React.FC<Props> = ({
   item,
   deleteItem,
   updateItemQuantity,
-  itemsQuantity,
+  itemsQuantityBought,
 }) => {
   const { uid, label, size, photoLink, color, price } = item;
 
@@ -89,7 +89,7 @@ const ShoppingCartLine: React.FC<Props> = ({
               <Add />
             </Button>
           </div>
-          {itemsQuantity[uid]}
+          {itemsQuantityBought[uid]}
         </TableCell>
 
         <TableCell>

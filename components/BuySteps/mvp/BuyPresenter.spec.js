@@ -1,4 +1,5 @@
 import BuyPresenter from './BuyPresenter';
+import ItemEntity from '../../../modules/item/ItemEntity';
 
 const defaultViewModel = {
   remiseEnMainPropreChecked: false,
@@ -37,11 +38,19 @@ const defaultViewModel = {
 
 let presenter;
 const buyNumberOfItems = jest.fn();
+const fetchPostJSON = jest.fn();
+
+const stripe = {
+  confirmCardPayment: jest.fn()
+};
+
+const elements = {
+  getElement: jest.fn()
+};
 
 beforeEach(() => {
-  presenter = new BuyPresenter(buyNumberOfItems);
+  presenter = new BuyPresenter({ buyNumberOfItems, fetchPostJSON });
 });
-
 
 describe('#useDynamicDependencies', () => {
   it('update the userEmail', async () => {
@@ -65,7 +74,6 @@ describe('#useDynamicDependencies', () => {
     });
   });
 });
-
 
 describe('#setShippingData', () => {
   const billingDetails = {
@@ -190,32 +198,129 @@ describe('#setShippingData', () => {
 });
 
 describe('The user make a payment', () => {
+  presenter = new BuyPresenter({ buyNumberOfItems, fetchPostJSON });
+  const item1 = new ItemEntity({ uid: 'uid1', quantity: 3, label: 'labelItem1' });
+  const item2 = new ItemEntity({ uid: 'uid2', quantity: 1, label: 'labelItem2' });
+
+  beforeEach(() => {
+    jest.resetAllMocks();
+  });
+
   describe('The payment failed', () => {
-    presenter.updateDependencies({
-      boutiques: {
-        items: ['item1', 'item2'],
-        tickets: []
-      }
+    it('Set paymentStatus to notEnoughQuantityInStock if has not Enough Quantity In Stock', async () => {
+      await presenter.updateDependencies({
+        boutiques: {
+          items: [item1, item2],
+          itemsQuantityBought: {
+            uid1: 5,
+            uid2: 0
+          },
+          tickets: []
+        }
+      });
+      await presenter.startStripePayement({}, {}, {});
+      expect(presenter.viewModel().paymentStatus).toBe('notEnoughQuantityInStock');
     });
-    it('setPaymentStatus to notEnoughQuantityInStock if has not Enough Quantity In Stock', async () => {
+    it('Set paymentStatus to error and gives an error message when the payement intent does not succeed', async () => {
+      await presenter.updateDependencies({
+        boutiques: {
+          items: [item1, item2],
+          itemsQuantityBought: {
+            uid1: 1,
+            uid2: 1
+          },
+          tickets: []
+        }
+      });
+      fetchPostJSON.mockResolvedValue({ statusCode: 500, message: 'sorry code 500' });
+      await presenter.startStripePayement({}, {}, {});
+      expect(presenter.viewModel().paymentStatus).toBe('error');
+      expect(presenter.viewModel().paymentErrorMessage).toBe('sorry code 500');
+      expect(buyNumberOfItems).toHaveBeenCalledTimes(0);
     });
-    it('setPaymentStatus to error', async () => {
-    });
-    it('setPaymentErrorMessage(response.message)', async () => {
-    });
-    it('Does not call payement succeed', async () => {
+    it('Set paymentStatus to error and gives an error message when the confirm card payement does not succeed', async () => {
+      await presenter.updateDependencies({
+        boutiques: {
+          items: [item1, item2],
+          itemsQuantityBought: {
+            uid1: 1,
+            uid2: 1
+          },
+          tickets: []
+        }
+      });
+      fetchPostJSON.mockResolvedValue({ statusCode: 200 });
+      elements.getElement.mockResolvedValue({});
+      stripe.confirmCardPayment.mockResolvedValue({ error: { message: 'confirmCardPayment error' }, paymentIntent: null });
+      await presenter.startStripePayement(stripe, elements, {});
+      expect(presenter.viewModel().paymentStatus).toBe('error');
+      expect(presenter.viewModel().paymentErrorMessage).toBe('confirmCardPayment error');
+      expect(buyNumberOfItems).toHaveBeenCalledTimes(0);
     });
   });
   describe('The payment succeed', () => {
-    it('make a clean list for the metadat of stripe', async () => {
+    it('Make a clean list for the metadata of stripe', async () => {
+      await presenter.updateDependencies({
+        boutiques: {
+          items: [item1, item2],
+          itemsQuantityBought: {
+            uid1: 2,
+            uid2: 1
+          },
+          tickets: []
+        }
+      });
+      fetchPostJSON.mockResolvedValue({ statusCode: 200 });
+      elements.getElement.mockResolvedValue({});
+      stripe.confirmCardPayment.mockResolvedValue({ error: null, paymentIntent: true });
+      await presenter.startStripePayement(stripe, elements, {});
+      expect(presenter.viewModel().paymentStatus).toBe('succeeded');
+      expect(presenter.viewModel().paymentErrorMessage).toBe('');
+      expect(buyNumberOfItems).toHaveBeenCalledTimes(2);
+      expect(presenter.makeCleanListOfWhatUserBought()).toStrictEqual(
+        {
+          uid1: 'labelItem1, quantity : 2',
+          uid2: 'labelItem2, quantity : 1'
+        });
     });
-    it('Open the payement suceeded modal', async () => {
-    });
-    it('setPaymentStatus to succeeded', async () => {
+    it('Open the payement suceeded modal and et paymentStatus to succeeded', async () => {
+      await presenter.updateDependencies({
+        boutiques: {
+          items: [item1, item2],
+          itemsQuantityBought: {
+            uid1: 2,
+            uid2: 1
+          },
+          tickets: []
+        }
+      });
+      fetchPostJSON.mockResolvedValue({ statusCode: 200 });
+      elements.getElement.mockResolvedValue({});
+      stripe.confirmCardPayment.mockResolvedValue({ error: null, paymentIntent: true });
+      await presenter.startStripePayement(stripe, elements, {});
+      expect(presenter.viewModel().isSucceededPayementModalOpen).toBe(true);
+      expect(presenter.viewModel().paymentStatus).toBe('succeeded');
     });
     it('Save the purchase in order history', async () => {
     });
-    it('buyNumberOfItems for each items', async () => {
+    it('BuyNumberOfItems for each items', async () => {
+      await presenter.updateDependencies({
+        boutiques: {
+          items: [item1, item2],
+          itemsQuantityBought: {
+            uid1: 2,
+            uid2: 1
+          },
+          tickets: []
+        }
+      });
+      fetchPostJSON.mockResolvedValue({ statusCode: 200 });
+      elements.getElement.mockResolvedValue({});
+      stripe.confirmCardPayment.mockResolvedValue({ error: null, paymentIntent: true });
+      await presenter.startStripePayement(stripe, elements, {});
+      expect(buyNumberOfItems).toHaveBeenCalledTimes(2);
+      expect(buyNumberOfItems).toHaveBeenCalledWith(item1, 2);
+      expect(buyNumberOfItems).toHaveBeenCalledWith(item2, 1);
     });
   });
 

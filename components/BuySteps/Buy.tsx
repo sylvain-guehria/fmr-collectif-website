@@ -21,6 +21,8 @@ import styles from 'styles/jss/nextjs-material-kit-pro/pages/ecommerceStyle.js';
 import { useAuth } from 'hooks/useAuth';
 import { itemServiceDi } from 'di';
 import ItemEntity from 'modules/item/ItemEntity';
+import { fetchPostJSON } from 'stripe/api-helpers';
+
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const useStyles = makeStyles(styles);
@@ -73,9 +75,11 @@ const Buy: React.FC<Props> = ({ presenter, viewModel }) => {
 };
 
 const makeBuyPresenter = (): BuyPresenter => {
-  return new BuyPresenter((item: ItemEntity, quantityBought: number) =>
-    itemServiceDi.buyNumberOfItems(item, quantityBought)
-  );
+  return new BuyPresenter({
+    buyNumberOfItems: (item: ItemEntity, quantityBought: number) =>
+      itemServiceDi.buyNumberOfItems(item, quantityBought),
+    fetchPostJSON: (path: string, params: Record<string, unknown>) => fetchPostJSON(path, params),
+  });
 };
 
 const useDynamicDependencies = (): {

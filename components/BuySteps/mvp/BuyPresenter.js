@@ -1,10 +1,9 @@
 /* eslint-disable camelcase */
-import { fetchPostJSON } from 'stripe/api-helpers';
 import Presenter from '../../../sharedKernel/mvp/Presenter';
 
 export default class BuyPresenter extends Presenter {
 
-  constructor(buyNumberOfItems) {
+  constructor({ buyNumberOfItems, fetchPostJSON }) {
     super({
       viewModel: {
         remiseEnMainPropreChecked: false,
@@ -53,6 +52,7 @@ export default class BuyPresenter extends Presenter {
       }
     });
     this.buyNumberOfItems = buyNumberOfItems;
+    this.fetchPostJSON = fetchPostJSON;
   }
 
   goNextTab() {
@@ -76,7 +76,7 @@ export default class BuyPresenter extends Presenter {
    *
    */
   setPaymentErrorMessage(errorMessage) {
-    this.update({ setPaymentErrorMessage: errorMessage });
+    this.update({ paymentErrorMessage: errorMessage });
   }
 
   /**
@@ -145,7 +145,7 @@ export default class BuyPresenter extends Presenter {
 
   makeCleanListOfWhatUserBought() {
     const boughtItems = this.viewModel().boutiques.items;
-    const quantityBoughtItems = this.viewModel().boutiques.itemsQuantity;
+    const quantityBoughtItems = this.viewModel().boutiques.itemsQuantityBought;
     let items;
     boughtItems.forEach(item => (
       items = { ...items, [item.getId()]: `${item.getLabel()}, quantity : ${quantityBoughtItems[item.getId()]}` })
@@ -155,7 +155,7 @@ export default class BuyPresenter extends Presenter {
 
   hasEnoughQuantityInStock() {
     const boughtItems = this.viewModel().boutiques.items;
-    const quantityBoughtItems = this.viewModel().boutiques.itemsQuantity;
+    const quantityBoughtItems = this.viewModel().boutiques.itemsQuantityBought;
     for (const item of boughtItems) {
       if (!item.hasEnoughQuantityInStock(quantityBoughtItems[item.getId()])) return false;
     }
@@ -168,7 +168,7 @@ export default class BuyPresenter extends Presenter {
 
     //save purchase in order history
     const boughtItems = this.viewModel().boutiques.items;
-    const quantityBoughtItems = this.viewModel().boutiques.itemsQuantity;
+    const quantityBoughtItems = this.viewModel().boutiques.itemsQuantityBought;
 
     boughtItems.map(item => this.buyNumberOfItems(item, quantityBoughtItems[item.getId()]));
   }
@@ -201,14 +201,14 @@ export default class BuyPresenter extends Presenter {
       return;
     }
 
-    const response = await fetchPostJSON('/api/payment/payment_intents', {
+    const response = await this.fetchPostJSON('/api/payment/payment_intents', {
       amount: this.viewModel().totalPrice,
       metadata: this.makeCleanListOfWhatUserBought()
     });
 
     if (response.statusCode === 500) {
       this.setPaymentStatus('error');
-      this.setPaymentErrorMessage(response.message || '');
+      this.setPaymentErrorMessage(response.message || 'Erreur inconnue, veuillez réessayer plus tard');
       return;
     }
 
@@ -227,7 +227,7 @@ export default class BuyPresenter extends Presenter {
     if (error) {
       this.setPaymentStatus('error');
       this.setPaymentErrorMessage(
-        error.message ?? 'Erreur inconnue, veuillez réessayer plus tard'
+        error.message || 'Erreur inconnue, veuillez réessayer plus tard'
       );
     } else if (paymentIntent) {
       this.payementSucceeded();

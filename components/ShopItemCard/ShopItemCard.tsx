@@ -101,7 +101,7 @@ const ShopItemCard: React.FC<Props> = ({ items }) => {
 
   const isItemInCart = (): boolean => {
     const matchingItem: ItemEntity | undefined = getMatchingItem();
-    const quantityInCart = matchingItem ? boutiques.itemsQuantity[matchingItem?.getId()] : 0;
+    const quantityInCart = matchingItem ? boutiques.itemsQuantityBought[matchingItem?.getId()] : 0;
     return quantityInCart > 0;
   };
 
