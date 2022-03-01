@@ -19,6 +19,8 @@ interface Props {
 
 const ItemTable: React.FC<Props> = ({ items }) => {
   const tableHead = ['Photo', 'label', 'sex', 'taille', 'couleur', 'prix', 'quantité', 'vendu', ''];
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   const useStyles = makeStyles(tableStyles);
   const classes = useStyles();
 

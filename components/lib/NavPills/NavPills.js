@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // nodejs library that concatenates classes
 import classNames from 'classnames';
 // nodejs library to set properties for components
@@ -22,7 +22,12 @@ export default function NavPills(props) {
   const handleChange = (event, active) => {
     setActive(active);
   };
-  const { tabs, color, horizontal, alignCenter } = props;
+  const { tabs, color, horizontal, alignCenter, goNextTab } = props;
+
+  useEffect(() => {
+    if (goNextTab > -1) setActive(active + 1);
+  }, [goNextTab]);
+
   const classes = useStyles();
   const flexContainerClasses = classNames({
     [classes.flexContainer]: true,
@@ -86,11 +91,11 @@ export default function NavPills(props) {
       <GridItem {...horizontal.contentGrid}>{tabContent}</GridItem>
     </GridContainer>
   ) : (
-    <div>
-      {tabButtons}
-      {tabContent}
-    </div>
-  );
+      <div>
+        {tabButtons}
+        {tabContent}
+      </div>
+    );
 }
 
 NavPills.defaultProps = {
@@ -101,6 +106,7 @@ NavPills.defaultProps = {
 NavPills.propTypes = {
   // index of the default active pill
   active: PropTypes.number,
+  goNextTab: PropTypes.number,
   tabs: PropTypes.arrayOf(
     PropTypes.shape({
       tabButton: PropTypes.string,

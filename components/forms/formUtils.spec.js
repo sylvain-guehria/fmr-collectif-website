@@ -2,7 +2,7 @@ import {
   getError
 } from './formUtils';
 
-describe('#getError', () => {
+it('#getError', () => {
   const errors = {
     firstName: {
       message: 'firstName error'

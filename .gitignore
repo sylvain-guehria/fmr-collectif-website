@@ -361,3 +361,6 @@ MigrationBackup/
 
 #used for emulate the firestore in local mode
 /emulatorData
+
+
+/tsconfig.tsbuildinfo

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 import Close from '@material-ui/icons/Close';
@@ -11,31 +11,35 @@ import adminStyle from 'styles/jss/nextjs-material-kit-pro/pages/adminStyle.js';
 import Remove from '@material-ui/icons/Remove';
 import Add from '@material-ui/icons/Add';
 import ItemEntity from '../../modules/item/ItemEntity';
-import { Ticket } from '../../modules/ticket/ticketType';
-import { useBoutique } from '../../hooks/useBoutique';
-
+import { Operation } from 'hooks/useBoutique';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(adminStyle);
 
 interface Props {
-  item?: ItemEntity;
-  ticket?: Ticket;
+  item: ItemEntity;
+  deleteItem: (itemUid: string) => void;
+  updateItemQuantity: (itemUid: string, operation: Operation.ADD | Operation.MINUS) => void;
+  itemsQuantityBought: Record<string, number>;
 }
 
-const ShoppingCartLine: React.FC<Props> = ({ item = {}, ticket = {} }) => {
+const ShoppingCartLine: React.FC<Props> = ({
+  item,
+  deleteItem,
+  updateItemQuantity,
+  itemsQuantityBought,
+}) => {
   const { uid, label, size, photoLink, color, price } = item;
-  ticket;
-
-  const [quantityToBuy, setQuantityToBuy] = useState(1);
-  const { deleteItem } = useBoutique();
 
   const classes = useStyles();
+
   return (
     <>
       <TableRow>
         <TableCell />
         <TableCell>
           <div className={classes.imgContainer}>
-            <img src={photoLink || ''} alt="..." className={classes.img} />
+            <img src={photoLink || ''} alt="..." />
           </div>
         </TableCell>
         <TableCell>
@@ -61,7 +65,7 @@ const ShoppingCartLine: React.FC<Props> = ({ item = {}, ticket = {} }) => {
         <TableCell>
           <span>
             <a href="/shop" className={classes.tdNameAnchor}>
-              {price}
+              {price} €
             </a>
           </span>
         </TableCell>
@@ -73,7 +77,7 @@ const ShoppingCartLine: React.FC<Props> = ({ item = {}, ticket = {} }) => {
               size="sm"
               round
               className={classes.firstButton}
-              onClick={() => setQuantityToBuy(quantityToBuy > 0 ? quantityToBuy - 1 : 0)}>
+              onClick={() => updateItemQuantity(uid, Operation.MINUS)}>
               <Remove />
             </Button>
             <Button
@@ -81,11 +85,11 @@ const ShoppingCartLine: React.FC<Props> = ({ item = {}, ticket = {} }) => {
               size="sm"
               round
               className={classes.lastButton}
-              onClick={() => setQuantityToBuy(quantityToBuy + 1)}>
+              onClick={() => updateItemQuantity(uid, Operation.ADD)}>
               <Add />
             </Button>
           </div>
-          {quantityToBuy}
+          {itemsQuantityBought[uid]}
         </TableCell>
 
         <TableCell>

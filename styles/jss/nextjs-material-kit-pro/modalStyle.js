@@ -1,4 +1,4 @@
-import { whiteColor, grayColor } from 'styles/jss/nextjs-material-kit-pro.js';
+import { whiteColor, grayColor, successColor } from 'styles/jss/nextjs-material-kit-pro.js';
 
 const modalStyle = (theme) => ({
   modalRoot: {
@@ -17,12 +17,16 @@ const modalStyle = (theme) => ({
     marginTop: '130px !important'
   },
   modalHeader: {
+    justifyContent: 'space-between',
     borderBottom: 'none',
     paddingTop: '24px',
     paddingRight: '24px',
     paddingBottom: '0',
     paddingLeft: '24px',
     minHeight: '16.43px'
+  },
+  flex: {
+    display: 'flex',
   },
   modalTitle: {
     margin: '0',
@@ -53,6 +57,7 @@ const modalStyle = (theme) => ({
     height: '16px'
   },
   modalBody: {
+    textAlign: 'center',
     paddingTop: '24px',
     paddingRight: '24px',
     paddingBottom: '16px',
@@ -154,7 +159,20 @@ const modalStyle = (theme) => ({
   modalSignupCard: {
     padding: '40px 0',
     margin: '0'
-  }
+  },
+  icon: {
+    top: '3px',
+    width: '18px',
+    height: '18px',
+    position: 'relative',
+    color: grayColor[0]
+  },
+  bigIconGreen: {
+    width: '60%',
+    height: 'auto',
+    position: 'relative',
+    color: successColor[3]
+  },
 });
 
 export default modalStyle;

@@ -25,7 +25,8 @@ import PersonAdd from '@material-ui/icons/PersonAdd';
 import CardBody from '../../lib/Card/CardBody';
 import { emailConnexionUseCase } from '../../../usecases';
 import ForgotPasswordButton from '../../modals/ForgotPasswordButton';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(signupPageStyle);
 
 interface LoginFormType {
@@ -68,7 +69,7 @@ const LoginWithEmailForm: React.FC = (): React.ReactElement => {
             type: 'email',
             startAdornment: (
               <InputAdornment position="start">
-                <Email className={classes.inputIconsColor} />
+                <Email />
               </InputAdornment>
             ),
           }}
@@ -85,7 +86,7 @@ const LoginWithEmailForm: React.FC = (): React.ReactElement => {
             type: 'password',
             startAdornment: (
               <InputAdornment position="start">
-                <Icon className={classes.inputIconsColor}>lock_utline</Icon>
+                <Icon>lock_utline</Icon>
               </InputAdornment>
             ),
             autoComplete: 'off',
@@ -103,14 +104,14 @@ const LoginWithEmailForm: React.FC = (): React.ReactElement => {
       <div className={classes.textCenter}>
         <Button simple color="danger" size="lg" type="submit">
           <>
-            <Fingerprint className={classes.dropdownIcons} /> Se connecter
+            <Fingerprint /> Se connecter
           </>
         </Button>
         <br />
         <Link href="/signup">
           <Button simple color="danger" size="lg">
             <>
-              <PersonAdd className={classes.dropdownIcons} /> S&lsquo;inscrire
+              <PersonAdd /> S&lsquo;inscrire
             </>
           </Button>
         </Link>

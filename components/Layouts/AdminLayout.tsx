@@ -6,7 +6,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Favorite from '@material-ui/icons/Favorite';
 
 import footerStyle from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/footerStyle.js';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(footerStyle);
 
 interface Props {
@@ -25,7 +26,7 @@ const LoggedInLayout: React.FC<Props> = ({ children }): React.ReactElement => {
               <List className={classes.list}>
                 <ListItem className={classes.inlineBlock}>
                   <a href="#" target="_blank" className={classes.block} rel="noreferrer">
-                    Creative Tim
+                    Fmr
                   </a>
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>

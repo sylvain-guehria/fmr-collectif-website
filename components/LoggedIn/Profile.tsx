@@ -16,7 +16,8 @@ import Clearfix from 'components/lib/Clearfix/Clearfix.js';
 import Button from '../lib/CustomButtons/Button';
 
 import profilePageStyle from 'styles/jss/nextjs-material-kit-pro/pages/profilePageStyle.js';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(profilePageStyle);
 
 const Profile: React.FC = ({ ...rest }) => {
@@ -51,14 +52,14 @@ const Profile: React.FC = ({ ...rest }) => {
                 <div className={classes.name}>
                   <h3 className={classes.title}>Christian Louboutin</h3>
                   <h6>DESIGNER</h6>
-                  <Button justIcon simple color="dribbble" className={classes.margin5}>
-                    <i className={classes.socials + ' fab fa-dribbble'} />
+                  <Button justIcon simple color="dribbble">
+                    <i className={' fab fa-dribbble'} />
                   </Button>
-                  <Button justIcon simple color="twitter" className={classes.margin5}>
-                    <i className={classes.socials + ' fab fa-twitter'} />
+                  <Button justIcon simple color="twitter">
+                    <i className={' fab fa-twitter'} />
                   </Button>
-                  <Button justIcon simple color="pinterest" className={classes.margin5}>
-                    <i className={classes.socials + ' fab fa-pinterest'} />
+                  <Button justIcon simple color="pinterest">
+                    <i className={' fab fa-pinterest'} />
                   </Button>
                 </div>
               </div>

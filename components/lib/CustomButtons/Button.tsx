@@ -7,7 +7,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
 import styles from 'styles/jss/nextjs-material-kit-pro/components/buttonStyle.js';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(styles);
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -33,7 +34,11 @@ const RegularButton: React.FC<ButtonProps> = React.forwardRef((props, ref) => {
   const classes = useStyles();
   const btnClasses = classNames({
     [classes.button]: true,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     [classes[size ? size : '']]: size,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     [classes[color ? color : '']]: color,
     [classes.round]: round,
     [classes.fullWidth]: fullWidth,
@@ -93,6 +98,8 @@ export type ButtonProps = {
   type?: string;
   target?: string;
   href?: string;
+  style?: Record<string, unknown>;
 };
 
+RegularButton.displayName = 'RegularButton';
 export default RegularButton;

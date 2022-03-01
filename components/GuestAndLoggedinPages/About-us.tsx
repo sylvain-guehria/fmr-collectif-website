@@ -17,7 +17,8 @@ import SectionOffice from 'pages-sections/about-us/SectionOffice.js';
 import SectionContact from 'pages-sections/about-us/SectionContact.js';
 
 import aboutUsStyle from 'styles/jss/nextjs-material-kit-pro/pages/aboutUsStyle.js';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(aboutUsStyle);
 
 const AboutUs: React.FC = () => {

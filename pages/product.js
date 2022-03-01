@@ -493,7 +493,7 @@ export default function ProductPage() {
                     target="_blank"
                     className={classes.block}
                   >
-                    Creative Tim
+                    Fmr
                   </a>
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
@@ -532,7 +532,7 @@ export default function ProductPage() {
                 target="_blank"
                 className={classes.aClasses}
               >
-                Creative Tim
+                Fmr
               </a>{" "}
               for a better web.
             </div>

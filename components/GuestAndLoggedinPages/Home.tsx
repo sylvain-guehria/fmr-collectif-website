@@ -21,7 +21,8 @@ import SectionOverview from 'pages-sections/presentation-page/SectionOverview.js
 import SectionPricing from 'pages-sections/presentation-page/SectionPricing.js';
 
 import presentationStyle from 'styles/jss/nextjs-material-kit-pro/pages/presentationStyle.js';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(presentationStyle);
 
 const Home: React.FC = () => {

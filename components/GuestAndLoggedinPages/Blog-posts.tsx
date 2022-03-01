@@ -9,7 +9,8 @@ import SectionImage from 'pages-sections/blog-posts/SectionImage.js';
 import SectionBlogs from 'pages-sections/sections-page/SectionBlogs.js';
 
 import blogPostsPageStyle from 'styles/jss/nextjs-material-kit-pro/pages/blogPostsPageStyle.js';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(blogPostsPageStyle);
 
 const BlogPosts: React.FC = () => {

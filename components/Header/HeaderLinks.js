@@ -17,8 +17,7 @@ const useStyles = makeStyles(styles);
 
 export default function HeaderLinks(props) {
 
-  const auth = useAuth();
-  const AuthUser = auth?.user;
+  const { user } = useAuth();
   const { notifications, setShoppingCartNotifications } = useNotification();
   const { boutiques } = useBoutique();
 
@@ -32,8 +31,8 @@ export default function HeaderLinks(props) {
   return (
     <List className={classes.list + ' ' + classes.mlAuto}>
       {headerItems.map((item) => {
-        if (item.needsAuth && !AuthUser) return null;
-        if (item.adminOnly && !AuthUser.isAdmin()) return null;
+        if (item.needsAuth && !user) return null;
+        if (item.adminOnly && !user.isAdmin()) return null;
         return <ListItem className={classes.listItem} key={item.label}>
           <CustomDropdown
             noLiPadding

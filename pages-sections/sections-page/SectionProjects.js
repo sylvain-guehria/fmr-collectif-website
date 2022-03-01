@@ -290,7 +290,7 @@ export default function SectionProjects({ ...rest }) {
                     className={classes.description + " " + classes.marginTop20}
                   >
                     Now UI Dashboard React is an admin dashboard template
-                    designed by Invision and coded by Creative Tim. It is built
+                    designed by Invision and coded by Fmr. It is built
                     on top of Reactstrap, using Now UI Dashboard and it is fully
                     responsive.
                   </p>

@@ -91,6 +91,32 @@ const customInputStyle = {
       color: grayColor[12]
     }
   },
+  legend: {
+    color: grayColor[13],
+    height: 'unset',
+    '&,&::placeholder': {
+      fontSize: '16px',
+      fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+      fontWeight: '400',
+      lineHeight: '1.42857',
+      opacity: '1'
+    },
+    '&::placeholder': {
+      color: grayColor[12]
+    }
+  },
+  payementButton: {
+    color: whiteColor[0],
+    marginTop:'10px',
+    height: 'unset',
+    '&,&::placeholder': {
+      fontSize: '14px',
+      fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+      fontWeight: '400',
+      lineHeight: '1.42857',
+      opacity: '1'
+    }
+  },
   whiteInput: {
     '&,&::placeholder': {
       color: whiteColor,

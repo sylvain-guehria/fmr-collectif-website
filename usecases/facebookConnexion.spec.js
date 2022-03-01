@@ -23,14 +23,14 @@ const userDataFromFirebase = {
     lastName: 'guehria'
 };
 
-it('if it the first connexion with google, the user is added to the database', async function () {
+it('if it the first connexion with facebook, the user is added to the database and the provider is added', async function () {
     auth.loginFacebook.mockResolvedValue({...userDataFromFirebase, isNewUser: true});
 
     await facebookConnexion(userRepository)(auth, router);
-    expect(userRepository.add).toHaveBeenCalledWith(userDataFromFirebase);
+    expect(userRepository.add).toHaveBeenCalledWith({...userDataFromFirebase, provider: 'facebook' });
 });
 
-it('if it not he first connection with google, the user is not added to the database', async function () {
+it('if it not he first connection with facebook, the user is not added to the database', async function () {
     auth.loginFacebook.mockResolvedValue({...userDataFromFirebase, isNewUser: false});
 
     await facebookConnexion(userRepository)(auth, router);

@@ -6,7 +6,8 @@ import HeaderLinks from 'components/Header/HeaderLinks.js';
 import SectionContacts from 'pages-sections/sections-page/SectionContacts.js';
 
 import contactUsStyle from 'styles/jss/nextjs-material-kit-pro/pages/contactUsStyle.js';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(contactUsStyle);
 
 const ContactUsPage: React.FC = () => {

@@ -190,7 +190,7 @@ CustomDropdown.propTypes = {
   ]),
   buttonText: PropTypes.node,
   buttonIcon: PropTypes.object,
-  hasNotification: PropTypes.number,
+  hasNotification: PropTypes.bool,
   dropdownList: PropTypes.array,
   buttonProps: PropTypes.object,
   dropup: PropTypes.bool,

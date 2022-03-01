@@ -154,7 +154,7 @@ function useProvideAuth() {
           setUser(UserEntity.new({ ...user }));
         }
         setIsUserLoading(false);
-        addToast(`Bonjour ${fullUser?.firstName} =)`, { appearance: 'success', autoDismiss: true });
+        // addToast(`Bonjour ${fullUser?.firstName} =)`, { appearance: 'success', autoDismiss: true });
       } else {
         setUser(false);
         setIsUserLoading(false);

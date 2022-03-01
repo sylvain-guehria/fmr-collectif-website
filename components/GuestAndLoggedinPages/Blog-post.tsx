@@ -16,7 +16,8 @@ import SectionSimilarStories from 'pages-sections/blog-post/SectionSimilarStorie
 import { makeStyles } from '@material-ui/core/styles';
 
 import blogPostPageStyle from 'styles/jss/nextjs-material-kit-pro/pages/blogPostPageStyle.js';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(blogPostPageStyle);
 
 const BlogPost: React.FC = () => {

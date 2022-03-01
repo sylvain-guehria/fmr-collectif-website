@@ -5,7 +5,8 @@ import HeaderLinks from 'components/Header/HeaderLinks.js';
 import SectionPricing from 'pages-sections/sections-page/SectionPricing.js';
 
 import sectionsPageStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsPageStyle.js';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(sectionsPageStyle);
 
 const Ticketoffice: React.FC = () => {

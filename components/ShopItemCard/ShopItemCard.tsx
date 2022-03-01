@@ -10,14 +10,18 @@ import Accordion from 'components/lib/Accordion/Accordion.js';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import { useToasts } from 'react-toast-notifications';
+import Link from 'next/link';
 
 // react component used to create nice image meadia player
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
+import ShoppingBasket from '@material-ui/icons/ShoppingBasket';
 import productStyle from 'styles/jss/nextjs-material-kit-pro/pages/productStyle.js';
 
 import { useBoutique } from '../../hooks/useBoutique';
 import ItemEntity from '../../modules/item/ItemEntity';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(productStyle);
 const images = [
   {
@@ -40,8 +44,11 @@ const images = [
 
 const SELECT_PRODUCT = 'Faite votre choix';
 const ADD_TO_CART = 'Ajouter au panier';
+const GO_TO_CART = 'Aller au panier';
 const UNAVAILABLE = 'Indisponible';
 const CHOOSE_YOUR_TSHIRT = 'Selection ton tshirt';
+const PRODUCT_ADDED_TO_CART = 'Produit ajouté au panier';
+const ALREADY_IN_CART = 'Produit Déjà au panier';
 
 type Props = {
   items: ItemEntity[];
@@ -58,22 +65,25 @@ const ShopItemCard: React.FC<Props> = ({ items }) => {
   const [currentLabel, setCurrentLabel] = useState(CHOOSE_YOUR_TSHIRT);
   const [currentPrice, setCurrentPrice] = useState(0);
 
-  const { addItem } = useBoutique();
+  const { addItem, boutiques } = useBoutique();
+  const { addToast } = useToasts();
 
   useEffect(() => {
-    setCanAddToCart(isItemAvailable());
-    setMessageButton(
-      colorSelected && sizeSelected && genderSelected
-        ? isItemAvailable()
-          ? ADD_TO_CART
-          : UNAVAILABLE
-        : SELECT_PRODUCT
-    );
+    setCanAddToCart(isItemAvailable() && !isItemInCart());
+    const areAllAttributesSelected = !!(colorSelected && sizeSelected && genderSelected);
+
+    if (!areAllAttributesSelected) setMessageButton(SELECT_PRODUCT);
+    if (areAllAttributesSelected) {
+      setMessageButton(
+        isItemAvailable() ? (isItemInCart() ? ALREADY_IN_CART : ADD_TO_CART) : UNAVAILABLE
+      );
+    }
+
     const matchingItem = getMatchingItem();
     setCurrentLabel(matchingItem ? matchingItem.label : CHOOSE_YOUR_TSHIRT);
     setCurrentPrice(matchingItem ? matchingItem.price : 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [colorSelected, sizeSelected, genderSelected]);
+  }, [colorSelected, sizeSelected, genderSelected, boutiques.items.length]);
 
   const getMatchingItem = (): ItemEntity | undefined => {
     return items.find(
@@ -89,9 +99,18 @@ const ShopItemCard: React.FC<Props> = ({ items }) => {
     return matchingItem && matchingItem.quantity ? matchingItem.quantity > 0 : false;
   };
 
+  const isItemInCart = (): boolean => {
+    const matchingItem: ItemEntity | undefined = getMatchingItem();
+    const quantityInCart = matchingItem ? boutiques.itemsQuantityBought[matchingItem?.getId()] : 0;
+    return quantityInCart > 0;
+  };
+
   const addToCart = (): void => {
     const selectedItem: ItemEntity | undefined = getMatchingItem();
-    if (selectedItem && addItem) addItem(selectedItem);
+    if (selectedItem && addItem) {
+      addItem(selectedItem);
+      addToast(PRODUCT_ADDED_TO_CART, { appearance: 'success', autoDismiss: true });
+    }
   };
 
   return (
@@ -147,34 +166,6 @@ const ShopItemCard: React.FC<Props> = ({ items }) => {
                           </p>
                         ),
                       },
-                      {
-                        title: 'Designer Information',
-                        content: (
-                          <p>
-                            An infusion of West Coast cool and New York attitude, Rebecca Minkoff is
-                            synonymous with It girl style. Minkoff burst on the fashion scene with
-                            her best-selling {"'"}Morning After Bag{"'"} and later expanded her
-                            offering with the Rebecca Minkoff Collection - a range of luxe city
-                            staples with a {'"'}
-                            downtown romantic{'"'} theme.
-                          </p>
-                        ),
-                      },
-                      {
-                        title: 'Details and Care',
-                        content: (
-                          <ul>
-                            <li>Storm and midnight-blue stretch cotton-blend</li>
-                            <li>
-                              Notch lapels, functioning buttoned cuffs, two front flap pockets,
-                              single vent, internal pocket
-                            </li>
-                            <li>Two button fastening</li>
-                            <li>84% cotton, 14% nylon, 2% elastane</li>
-                            <li>Dry clean</li>
-                          </ul>
-                        ),
-                      },
                     ]}
                   />
                   <GridContainer className={classes.pickSize}>
@@ -199,7 +190,6 @@ const ShopItemCard: React.FC<Props> = ({ items }) => {
                               onClick={() => setGenderSelected(item.gender || '')}
                               classes={{
                                 root: classes.selectMenuItem,
-                                selected: classes.clselectMenuItemSelected,
                               }}
                               value={item.gender || ''}>
                               {item.gender}
@@ -276,9 +266,20 @@ const ShopItemCard: React.FC<Props> = ({ items }) => {
                       color={canAddToCart ? 'behance' : 'youtube'}
                       disabled={!canAddToCart}>
                       <>
-                        {messageButton} &nbsp; <ShoppingCart />
+                        {messageButton} &nbsp;
+                        <ShoppingCart />
                       </>
                     </Button>
+                    {boutiques.items.length > 0 && (
+                      <Link href="/shopping-cart">
+                        <Button round color={'youtube'}>
+                          <>
+                            {GO_TO_CART} &nbsp;
+                            <ShoppingBasket />
+                          </>
+                        </Button>
+                      </Link>
+                    )}
                   </GridContainer>
                 </GridItem>
               </GridContainer>
