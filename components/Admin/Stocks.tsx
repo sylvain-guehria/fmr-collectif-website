@@ -8,23 +8,20 @@ import GridContainer from 'components/lib/Grid/GridContainer.js';
 import GridItem from 'components/lib/Grid/GridItem.js';
 import Card from 'components/lib/Card/Card.js';
 import CardBody from 'components/lib/Card/CardBody.js';
-import UserTable from '../../components/Admin/User/UserTable';
 import shoppingCartStyle from 'styles/jss/nextjs-material-kit-pro/pages/shoppingCartStyle.js';
-import UserEntity from '../../modules/user/UserEntity';
-import useSWR from 'swr';
+import ItemEntity from '../../modules/item/ItemEntity';
+import ItemTable from './Item/ItemTable';
+import { Item } from 'modules/item/itemType';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const useStyles = makeStyles(shoppingCartStyle);
 
 interface Props {
-  users: UserEntity[];
+  items: ItemEntity[];
 }
 
-const Users: React.FC<Props> = ({ users = [] }) => {
-  const { data } = useSWR('/user/getAll', { initialData: users });
-
-  const userEntities: UserEntity[] = Array.from(data || [], user => new UserEntity(user));
-
+const Stocks: React.FC<Props> = ({ items = [] }) => {
+  const itemEntities: ItemEntity[] = Array.from(items || [], (item: Item) => new ItemEntity(item));
   useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
@@ -52,7 +49,7 @@ const Users: React.FC<Props> = ({ users = [] }) => {
               md={8}
               sm={8}
               className={classNames(classes.mlAuto, classes.mrAuto, classes.textCenter)}>
-              <h2 className={classes.title}>Administration des utilisateurs</h2>
+              <h2 className={classes.title}>Gestion des stocks</h2>
             </GridItem>
           </GridContainer>
         </div>
@@ -60,14 +57,16 @@ const Users: React.FC<Props> = ({ users = [] }) => {
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
           <Card plain>
-            {!userEntities ? (
-              <div> Loading </div>
-            ) : (
-              <CardBody plain>
-                <h3 className={classes.cardTitle}>Utilisateurs</h3>
-                {userEntities && userEntities.length && <UserTable users={userEntities} />}
-              </CardBody>
-            )}
+            <div>
+              {!itemEntities ? (
+                <div> Loading </div>
+              ) : (
+                <CardBody plain>
+                  <h3 className={classes.cardTitle}>Produits</h3>
+                  {itemEntities && itemEntities.length && <ItemTable items={itemEntities} />}
+                </CardBody>
+              )}
+            </div>
           </Card>
         </div>
       </div>
@@ -75,4 +74,4 @@ const Users: React.FC<Props> = ({ users = [] }) => {
   );
 };
 
-export default Users;
+export default Stocks;

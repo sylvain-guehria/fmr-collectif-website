@@ -1,7 +1,7 @@
 import React from 'react';
 import firebaseUserRepository from '../../modules/user/firebaseUserRepository';
 import UserEntity from '../../modules/user/UserEntity';
-import UsersComponent from '../../components/Admin/users';
+import UsersComponent from '../../components/Admin/Users';
 import { buildAdminOnlyLayout } from '../../components/Layouts/layoutBuilder';
 
 const userRepository = new firebaseUserRepository();
