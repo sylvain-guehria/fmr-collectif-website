@@ -11,10 +11,11 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: '2020-08
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
   if (req.method === 'POST') {
-    const { amount }: { amount: number } = req.body;
+    const { amount, metadata }: { amount: number; metadata: Record<string, any> } = req.body;
     try {
       const params: Stripe.PaymentIntentCreateParams = {
         payment_method_types: ['card'],
+        metadata: metadata,
         confirm: false, //can be set to false,
         amount: formatAmountForStripe(amount, 'eur'),
         currency: 'eur',

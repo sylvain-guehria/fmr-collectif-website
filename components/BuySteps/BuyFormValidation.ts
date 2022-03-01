@@ -2,8 +2,8 @@ import * as Yup from 'yup';
 
 export const validationSchema = Yup.object()
   .shape({
-    remiseEnMainPropreChecked: Yup.bool(),
-    livraisonChecked: Yup.bool(),
+    remiseEnMainPropreChecked: Yup.bool().required(),
+    livraisonChecked: Yup.bool().required(),
     identicalShippingAddressChecked: Yup.bool(),
     billingFullName: Yup.string().required(
       'Veuillez entrer le nom et prénom qui apparaitront sur la facture'
@@ -14,17 +14,22 @@ export const validationSchema = Yup.object()
     shippingAddress: Yup.string(),
     shippingPhone: Yup.string(),
   })
-  .test('shippingFullName', '', obj => {
-    return !obj.remiseEnMainPropreChecked &&
-      !obj.identicalShippingAddressChecked &&
-      !obj.shippingFullName
-      ? new Yup.ValidationError('Veuillez entrer votre nom et prénom', null, 'shippingFullName')
-      : true;
+  .test('shouldSelectLivraisonOrRemiseEnMainPropre', '', obj => {
+    const oneIsSelected = obj.remiseEnMainPropreChecked || obj.livraisonChecked;
+    const bothAreSlected = obj.remiseEnMainPropreChecked && obj.livraisonChecked;
+    if (oneIsSelected && !bothAreSlected) {
+      return true;
+    }
+    return new Yup.ValidationError(
+      'Veuillez choisir le mode de livraison',
+      null,
+      'shouldSelectLivraisonOrRemiseEnMainPropre'
+    );
   })
   .test('shippingAddress', '', obj => {
     return !obj.remiseEnMainPropreChecked &&
       !obj.identicalShippingAddressChecked &&
-      !obj.shippingFullName
+      !obj.shippingAddress
       ? new Yup.ValidationError(
           'Veuillez entrer votre adresse de livraison',
           null,
@@ -35,17 +40,14 @@ export const validationSchema = Yup.object()
   .test('shippingPhone', '', obj => {
     return !obj.remiseEnMainPropreChecked &&
       !obj.identicalShippingAddressChecked &&
-      !obj.shippingFullName
+      !obj.shippingPhone
       ? new Yup.ValidationError('Veuillez entrer votre numéro de téléphone', null, 'shippingPhone')
       : true;
   })
-  .test('shouldSelectLivraisonOrRemiseEnMainPropre', '', obj => {
-    if (obj.remiseEnMainPropreChecked || obj.livraisonChecked) {
-      return true;
-    }
-    return new Yup.ValidationError(
-      'Veuillez choisir le mode de livraison',
-      null,
-      'shouldSelectLivraisonOrRemiseEnMainPropre'
-    );
+  .test('shippingFullName', '', obj => {
+    return !obj.remiseEnMainPropreChecked &&
+      !obj.identicalShippingAddressChecked &&
+      !obj.shippingFullName
+      ? new Yup.ValidationError('Veuillez entrer votre nom et prénom', null, 'shippingFullName')
+      : true;
   });

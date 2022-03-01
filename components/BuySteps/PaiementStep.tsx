@@ -1,65 +1,22 @@
 import React from 'react';
 import GridContainer from 'components/lib/Grid/GridContainer.js';
-import { useAuth } from '../../hooks/useAuth';
-import StripePaymentForm from '../forms/payment/StripePaymentForm';
-import { useBoutique } from '../../hooks/useBoutique';
-
-import { BuyFormType } from './BuySteps';
+import StripePaymentForm from './StripePaymentForm';
+import { BuyStepsViewModel } from './mvp/type';
+import BuyPresenter from './mvp/BuyPresenter';
 
 type Props = {
-  shippingData: BuyFormType;
+  viewModel: BuyStepsViewModel;
+  presenter: BuyPresenter;
 };
 
-const PaiementStep: React.FC<Props> = ({ shippingData }) => {
-  const { getTotalPrice } = useBoutique();
-  const { user } = useAuth();
-
-  const { remiseEnMainPropreChecked, identicalShippingAddressChecked } = shippingData;
-
-  let shippingDetails = {
-    name: '',
-    phone: '',
-    address: {
-      line1: '',
-    },
-  };
-
-  const billingDetails = {
-    name: shippingData.billingFullName,
-    email: user.getEmail(),
-    phone: shippingData.billingPhone,
-    address: {
-      line1: shippingData.billingAddress,
-    },
-  };
-
-  if (!remiseEnMainPropreChecked && !identicalShippingAddressChecked) {
-    shippingDetails = {
-      name: shippingData.shippingFullName || '',
-      phone: shippingData.shippingPhone || '',
-      address: {
-        line1: shippingData.shippingAddress || '',
-      },
-    };
-  }
-
-  if (!remiseEnMainPropreChecked && identicalShippingAddressChecked) {
-    shippingDetails = {
-      name: shippingData.billingFullName,
-      phone: shippingData.billingPhone,
-      address: {
-        line1: shippingData.billingAddress,
-      },
-    };
-  }
-
+const PaiementStep: React.FC<Props> = ({ viewModel, presenter }) => {
   return (
     <GridContainer justify="center">
       <StripePaymentForm
-        totalPrice={getTotalPrice()}
-        userEmail={user.getEmail()}
-        shippingDetails={shippingDetails}
-        billingDetails={billingDetails}
+        totalPrice={viewModel.totalPrice}
+        paymentErrorMessage={viewModel.paymentErrorMessage}
+        paymentStatus={viewModel.paymentStatus}
+        presenter={presenter}
       />
     </GridContainer>
   );

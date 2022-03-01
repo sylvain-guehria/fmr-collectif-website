@@ -11,7 +11,7 @@ const PaymentStatus: React.FC<PaymentStatusProps> = ({ status }) => {
     case 'requires_confirmation':
       return (
         <h2>
-          <CircularProgress /> Processing...
+          <CircularProgress /> Chargement...
         </h2>
       );
 
@@ -19,24 +19,29 @@ const PaymentStatus: React.FC<PaymentStatusProps> = ({ status }) => {
       return (
         <h2>
           <CircularProgress />
-          Authenticating...
+          En cours d&apos;authentification...
         </h2>
       );
 
     case 'succeeded':
       return (
         <h2>
-          <>Payment Succeeded 🥳</>
+          <>Paiement réussi 🥳</>
         </h2>
       );
 
     case 'error':
       return (
         <h2>
-          <>Error 😭</>
+          <>Erreur 😭</>
         </h2>
       );
-
+    case 'notEnoughQuantityInStock':
+      return (
+        <h2>
+          <>L&apos;un de vos article n&apos;est pas disponible en stock </>
+        </h2>
+      );
     default:
       return null;
   }

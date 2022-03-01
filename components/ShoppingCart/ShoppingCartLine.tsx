@@ -11,6 +11,7 @@ import adminStyle from 'styles/jss/nextjs-material-kit-pro/pages/adminStyle.js';
 import Remove from '@material-ui/icons/Remove';
 import Add from '@material-ui/icons/Add';
 import ItemEntity from '../../modules/item/ItemEntity';
+import { Operation } from 'hooks/useBoutique';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const useStyles = makeStyles(adminStyle);
@@ -18,15 +19,15 @@ const useStyles = makeStyles(adminStyle);
 interface Props {
   item: ItemEntity;
   deleteItem: (itemUid: string) => void;
-  updateItemQuantity: (itemUid: string, operation: 'add' | 'minus') => void;
-  itemsQuantity: Record<string, number>;
+  updateItemQuantity: (itemUid: string, operation: Operation.ADD | Operation.MINUS) => void;
+  itemsQuantityBought: Record<string, number>;
 }
 
 const ShoppingCartLine: React.FC<Props> = ({
   item,
   deleteItem,
   updateItemQuantity,
-  itemsQuantity,
+  itemsQuantityBought,
 }) => {
   const { uid, label, size, photoLink, color, price } = item;
 
@@ -76,7 +77,7 @@ const ShoppingCartLine: React.FC<Props> = ({
               size="sm"
               round
               className={classes.firstButton}
-              onClick={() => updateItemQuantity(uid, 'minus')}>
+              onClick={() => updateItemQuantity(uid, Operation.MINUS)}>
               <Remove />
             </Button>
             <Button
@@ -84,11 +85,11 @@ const ShoppingCartLine: React.FC<Props> = ({
               size="sm"
               round
               className={classes.lastButton}
-              onClick={() => updateItemQuantity(uid, 'add')}>
+              onClick={() => updateItemQuantity(uid, Operation.ADD)}>
               <Add />
             </Button>
           </div>
-          {itemsQuantity[uid]}
+          {itemsQuantityBought[uid]}
         </TableCell>
 
         <TableCell>

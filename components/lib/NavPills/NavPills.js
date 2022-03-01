@@ -22,11 +22,11 @@ export default function NavPills(props) {
   const handleChange = (event, active) => {
     setActive(active);
   };
-  const { tabs, color, horizontal, alignCenter, forcedActive } = props;
+  const { tabs, color, horizontal, alignCenter, goNextTab } = props;
 
   useEffect(() => {
-    if (forcedActive > -1) setActive(active + 1);
-  }, [forcedActive]);
+    if (goNextTab > -1) setActive(active + 1);
+  }, [goNextTab]);
 
   const classes = useStyles();
   const flexContainerClasses = classNames({
@@ -106,7 +106,7 @@ NavPills.defaultProps = {
 NavPills.propTypes = {
   // index of the default active pill
   active: PropTypes.number,
-  forcedActive: PropTypes.number,
+  goNextTab: PropTypes.number,
   tabs: PropTypes.arrayOf(
     PropTypes.shape({
       tabButton: PropTypes.string,

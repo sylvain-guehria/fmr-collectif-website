@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import classNames from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
 import CheckCircle from '@material-ui/icons/CheckCircle';
@@ -11,12 +11,15 @@ import { useRouter } from 'next/router';
 import LivraisonStep from './LivraisonStep';
 import ResumeStep from './ResumeStep';
 import PaiementStep from './PaiementStep';
-import { useBoutique } from '../../hooks/useBoutique';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { validationSchema } from './BuyFormValidation';
 import { yupResolver } from '@hookform/resolvers/yup';
+import BuyPresenter from './mvp/BuyPresenter';
+import { BuyStepsViewModel } from './mvp/type';
 
 import profilePageStyle from 'styles/jss/nextjs-material-kit-pro/pages/profilePageStyle.js';
+import PayementDoneModal from './PayementDoneModal';
+
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const useStyles = makeStyles(profilePageStyle);
@@ -34,19 +37,17 @@ export interface BuyFormType {
   shippingPhone?: string;
 }
 
-const BuySteps: React.FC = () => {
+type Props = {
+  viewModel: BuyStepsViewModel;
+  presenter: BuyPresenter;
+};
+
+const BuySteps: React.FC<Props> = ({ presenter, viewModel }) => {
   const classes = useStyles();
-  const [forcedActive, setForcedActive] = useState(-1);
-  const [shippingData, setShippingData] = useState({
-    billingFullName: '',
-    billingAddress: '',
-    billingPhone: '',
-  });
-  const { boutiques } = useBoutique();
   const router = useRouter();
 
   useEffect(() => {
-    if (!boutiques.items.length && !boutiques.tickets.length) {
+    if (!viewModel.boutiques.items.length && !viewModel.boutiques.tickets.length) {
       router.push('/home');
     }
   });
@@ -65,56 +66,62 @@ const BuySteps: React.FC = () => {
   } = useForm<BuyFormType>(formOptions);
 
   const onSubmit: SubmitHandler<BuyFormType> = async (data: BuyFormType) => {
-    setShippingData(data);
-    goNextTab();
-  };
-
-  const goNextTab = (): void => {
-    setForcedActive(forcedActive + 1);
+    presenter.setShippingData(data);
+    presenter.goNextTab();
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className={classNames(classes.main, classes.mainRaised)}>
-        <div className={classes.container}>
-          <div className={classes.profileTabs}>
-            <NavPills
-              alignCenter
-              color="info"
-              forcedActive={forcedActive}
-              tabs={[
-                {
-                  tabButton: 'Livraison',
-                  tabIcon: Home,
-                  tabContent: (
-                    <LivraisonStep
-                      register={register}
-                      errors={errors}
-                      setValue={setValue}
-                      getValues={getValues}
-                      clearErrors={clearErrors}
-                      watch={watch}
-                      control={control}
-                    />
-                  ),
-                },
-                {
-                  tabButton: 'Resumé',
-                  tabIcon: Visibility,
-                  tabContent: <ResumeStep shippingData={shippingData} goNextTab={goNextTab} />,
-                },
-                {
-                  tabButton: 'Paiement',
-                  tabIcon: CheckCircle,
-                  tabContent: <PaiementStep shippingData={shippingData} />,
-                },
-              ]}
-            />
+    <>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className={classNames(classes.main, classes.mainRaised)}>
+          <div className={classes.container}>
+            <div className={classes.profileTabs}>
+              <NavPills
+                alignCenter
+                color="info"
+                goNextTab={viewModel.goNextTab}
+                tabs={[
+                  {
+                    tabButton: 'Livraison',
+                    tabIcon: Home,
+                    tabContent: (
+                      <LivraisonStep
+                        register={register}
+                        errors={errors}
+                        setValue={setValue}
+                        getValues={getValues}
+                        clearErrors={clearErrors}
+                        watch={watch}
+                        control={control}
+                      />
+                    ),
+                  },
+                  {
+                    tabButton: 'Resumé',
+                    tabIcon: Visibility,
+                    tabContent: (
+                      <ResumeStep viewModel={viewModel} goNextTab={() => presenter.goNextTab()} />
+                    ),
+                  },
+                  {
+                    tabButton: 'Paiement',
+                    tabIcon: CheckCircle,
+                    tabContent: <PaiementStep viewModel={viewModel} presenter={presenter} />,
+                  },
+                ]}
+              />
+            </div>
+            <Clearfix />
           </div>
-          <Clearfix />
         </div>
-      </div>
-    </form>
+      </form>
+      <PayementDoneModal
+        isOpen={viewModel.isSucceededPayementModalOpen}
+        onClose={() => presenter.onClosePayementModal()}
+        closeModal={() => presenter.closeSucceededPayementModal()}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"></PayementDoneModal>
+    </>
   );
 };
 export default BuySteps;

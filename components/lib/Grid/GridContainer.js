@@ -6,18 +6,17 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
-const styles = {
-  grid: {
-    marginRight: '-15px',
-    marginLeft: '-15px',
-    width: 'auto'
-  }
-};
-
-const useStyles = makeStyles(styles);
-
 export default function GridContainer(props) {
-  const { children, className, ...rest } = props;
+  const { children, className, padding, ...rest } = props;
+  const styles = {
+    grid: {
+      marginRight: '-15px',
+      marginLeft: '-15px',
+      width: 'auto',
+      padding: padding
+    }
+  };
+  const useStyles = makeStyles(styles);
   const classes = useStyles();
   return (
     <Grid container {...rest} className={classes.grid + ' ' + className}>
@@ -34,5 +33,6 @@ GridContainer.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   justify: PropTypes.string,
-  spacing: PropTypes.number
+  spacing: PropTypes.number,
+  padding: PropTypes.string
 };

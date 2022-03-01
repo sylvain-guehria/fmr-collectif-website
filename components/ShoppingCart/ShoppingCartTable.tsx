@@ -24,7 +24,7 @@ type Props = {
 const ShoppingCartTable: React.FC<Props> = ({ readOnly }) => {
   const classes = useStyles();
   const {
-    boutiques: { items, itemsQuantity },
+    boutiques: { items, itemsQuantityBought },
     deleteItem,
     updateItemQuantity,
     getTotalPrice,
@@ -57,7 +57,7 @@ const ShoppingCartTable: React.FC<Props> = ({ readOnly }) => {
                         item={item}
                         deleteItem={deleteItem}
                         updateItemQuantity={updateItemQuantity}
-                        itemsQuantity={itemsQuantity}
+                        itemsQuantityBought={itemsQuantityBought}
                       />
                     )
                   );

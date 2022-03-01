@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Buy from '../components/GuestAndLoggedinPages/Buy';
+import Buy from '../components/BuySteps/Buy';
 import { buildLoggedInOnlyLayout } from '../components/Layouts/layoutBuilder';
 
 type Props = {
