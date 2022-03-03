@@ -13,7 +13,7 @@ import ResumeStep from './ResumeStep';
 import PaiementStep from './PaiementStep';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { validationSchema } from './BuyFormValidation';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
 import BuyPresenter from './mvp/BuyPresenter';
 import { BuyStepsViewModel } from './mvp/type';
 

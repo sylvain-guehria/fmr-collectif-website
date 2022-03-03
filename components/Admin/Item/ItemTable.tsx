@@ -60,7 +60,8 @@ const ItemTable: React.FC<Props> = ({ items }) => {
             {tableHead &&
               tableHead.map((prop, key) => {
                 return (
-                  <TableCell width={100 / 7} key={key}>
+                  <TableCell key={key}>
+                    {/* width={100 / 7} */}
                     {prop}
                   </TableCell>
                 );

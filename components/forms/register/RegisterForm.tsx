@@ -15,7 +15,7 @@ import CustomInput from '../../lib/CustomInput/CustomInput';
 import Button from '../../lib/CustomButtons/Button';
 
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
 
 import signupPageStyle from '../../../styles/jss/nextjs-material-kit-pro/pages/signupPageStyle.js';
 

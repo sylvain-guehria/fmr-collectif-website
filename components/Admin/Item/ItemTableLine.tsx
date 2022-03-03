@@ -14,7 +14,7 @@ import ItemEntity from '../../../modules/item/ItemEntity';
 import CustomInput from '../../lib/CustomInput/CustomInput';
 import { FormControl, MenuItem, Select } from '@material-ui/core';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
 import { getError } from '../../forms/formUtils';
 import { useToasts } from 'react-toast-notifications';
 import { validationSchema } from './ItemTableFormValidation';
