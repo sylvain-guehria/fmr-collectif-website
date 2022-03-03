@@ -33,7 +33,7 @@ export const useBoutique = (): ContextProps => {
   return useContext(boutiqueContext);
 };
 
-const useProvideBoutique = (): Partial<ContextProps> => {
+export const useProvideBoutique = (): Partial<ContextProps> => {
   const [boutiques, setBoutiques] = useState<Boutiques>({
     items: [],
     itemsQuantityBought: {},
