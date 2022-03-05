@@ -1,11 +1,11 @@
 import React, { useState, useContext, createContext } from 'react';
 import ItemEntity from '../modules/item/ItemEntity';
-import { Ticket } from '../modules/ticket/ticketType';
+import TicketEntity from 'modules/ticket/ticketEntity';
 
 type ContextProps = {
   boutiques: Boutiques;
   addItem: (item: ItemEntity) => void;
-  addTicket: (ticket: Ticket) => void;
+  addTicket: (ticket: TicketEntity) => void;
   deleteItem: (itemUid: string) => void;
   deleteTicket: (ticketUid: string) => void;
   updateItemQuantity: (itemUid: string, operation: Operation.ADD | Operation.MINUS) => void;
@@ -38,7 +38,7 @@ export const useProvideBoutique = (): Partial<ContextProps> => {
     items: [],
     itemsQuantityBought: {},
     tickets: [],
-    ticketsQuantity: {},
+    ticketsQuantityBought: {},
   });
 
   const addItem = (item: ItemEntity): void => {
@@ -53,9 +53,15 @@ export const useProvideBoutique = (): Partial<ContextProps> => {
     setBoutiques(localBoutique);
   };
 
-  const addTicket = (ticket: Ticket): void => {
+  const addTicket = (ticket: TicketEntity): void => {
     const localBoutique = { ...boutiques };
-    localBoutique.tickets.push(ticket);
+    if (localBoutique.ticketsQuantityBought[ticket.getId()]) {
+      localBoutique.ticketsQuantityBought[ticket.getId()] =
+        localBoutique.ticketsQuantityBought[ticket.getId()] + 1;
+    } else {
+      localBoutique.tickets.push(ticket);
+      localBoutique.ticketsQuantityBought[ticket.getId()] = 1;
+    }
     setBoutiques(localBoutique);
   };
 
@@ -63,6 +69,13 @@ export const useProvideBoutique = (): Partial<ContextProps> => {
     const localBoutique = { ...boutiques };
     localBoutique.items = localBoutique.items.filter(item => item.getId() !== itemUid);
     delete localBoutique.itemsQuantityBought[itemUid];
+    setBoutiques(localBoutique);
+  };
+
+  const deleteTicket = (ticketUid: string): void => {
+    const localBoutique = { ...boutiques };
+    localBoutique.tickets = localBoutique.tickets.filter(ticket => ticket.getId() !== ticketUid);
+    delete localBoutique.ticketsQuantityBought[ticketUid];
     setBoutiques(localBoutique);
   };
 
@@ -88,12 +101,6 @@ export const useProvideBoutique = (): Partial<ContextProps> => {
     setBoutiques(localBoutique);
   };
 
-  const deleteTicket = (ticketUid: string): void => {
-    const localBoutique = { ...boutiques };
-    localBoutique.tickets = localBoutique.tickets.filter(ticket => ticket.uid !== ticketUid);
-    setBoutiques(localBoutique);
-  };
-
   const getTotalPrice = (): number => {
     let totalPrice = 0;
     for (const item of boutiques.items) {
@@ -107,7 +114,7 @@ export const useProvideBoutique = (): Partial<ContextProps> => {
       items: [],
       itemsQuantityBought: {},
       tickets: [],
-      ticketsQuantity: {},
+      ticketsQuantityBought: {},
     });
   };
 
@@ -126,6 +133,6 @@ export const useProvideBoutique = (): Partial<ContextProps> => {
 export type Boutiques = {
   items: ItemEntity[];
   itemsQuantityBought: Record<string, number>;
-  tickets: Ticket[];
-  ticketsQuantity: Record<string, number>;
+  tickets: TicketEntity[];
+  ticketsQuantityBought: Record<string, number>;
 };
