@@ -104,7 +104,12 @@ export const useProvideBoutique = (): Partial<ContextProps> => {
   const getTotalPrice = (): number => {
     let totalPrice = 0;
     for (const item of boutiques.items) {
+      if (isNaN(boutiques.itemsQuantityBought[item.getId()])) continue;
       totalPrice = totalPrice + item.getPrice() * boutiques.itemsQuantityBought[item.getId()];
+    }
+    for (const ticket of boutiques.tickets) {
+      if (isNaN(boutiques.ticketsQuantityBought[ticket.getId()])) continue;
+      totalPrice = totalPrice + ticket.getPrice() * boutiques.ticketsQuantityBought[ticket.getId()];
     }
     return totalPrice;
   };
