@@ -16,7 +16,7 @@ import { FormControl, MenuItem, Select } from '@material-ui/core';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
 import { getError } from '../../forms/formUtils';
-import { useToasts } from 'react-toast-notifications';
+import { toast } from 'react-toastify';
 import { validationSchema } from './ItemTableFormValidation';
 import Image from 'next/image';
 import tableStyles from 'styles/jss/nextjs-material-kit-pro/components/tableStyle.js';
@@ -59,7 +59,6 @@ const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
   };
   const classes = useStyles();
   const tableClasses = useTableStyles();
-  const { addToast } = useToasts();
 
   const {
     register,
@@ -77,7 +76,7 @@ const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
         setCurrentImageDisplayedLink(updatedPhotoLink);
       })
       .catch((error: Error) => {
-        addToast(error.message, { appearance: 'error', autoDismiss: true });
+        toast.error(error.message);
       });
   };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ToastProvider } from 'react-toast-notifications';
+import { ToastContainer, Slide } from 'react-toastify';
 import Axios from 'axios';
 import LayoutComponent from '../components/Layouts/LayoutComponent';
 
@@ -11,6 +11,7 @@ import { ProvideBoutique } from '../hooks/useBoutique';
 import Script from 'next/script';
 
 import 'styles/scss/nextjs-material-kit-pro.scss?v=1.2.0';
+import 'react-toastify/dist/ReactToastify.min.css';
 import 'styles/css/react-demo.css';
 import 'animate.css/animate.min.css';
 import '../listeners/routerListeners';
@@ -35,7 +36,11 @@ export default class MyApp extends App {
 
     return (
       <React.Fragment>
-        <ToastProvider>
+        <ToastContainer
+          position="top-center"
+          autoClose={9000}
+          transition={Slide}
+          newestOnTop>
           <ProvideAuth>
             <ProvideNotification>
               <ProvideBoutique>
@@ -53,7 +58,7 @@ export default class MyApp extends App {
               </ProvideBoutique>
             </ProvideNotification>
           </ProvideAuth>
-        </ToastProvider>
+        </ToastContainer>
       </React.Fragment >
     );
   }

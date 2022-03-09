@@ -10,7 +10,7 @@ import Accordion from 'components/lib/Accordion/Accordion.js';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import { useToasts } from 'react-toast-notifications';
+import { toast } from 'react-toastify';
 import Link from 'next/link';
 
 // react component used to create nice image meadia player
@@ -66,7 +66,6 @@ const ShopItemCard: React.FC<Props> = ({ items }) => {
   const [currentPrice, setCurrentPrice] = useState(0);
 
   const { addItem, boutiques } = useBoutique();
-  const { addToast } = useToasts();
 
   useEffect(() => {
     setCanAddToCart(isItemAvailable() && !isItemInCart());
@@ -109,7 +108,7 @@ const ShopItemCard: React.FC<Props> = ({ items }) => {
     const selectedItem: ItemEntity | undefined = getMatchingItem();
     if (selectedItem && addItem) {
       addItem(selectedItem);
-      addToast(PRODUCT_ADDED_TO_CART, { appearance: 'success', autoDismiss: true });
+      toast.success(PRODUCT_ADDED_TO_CART);
     }
   };
 
