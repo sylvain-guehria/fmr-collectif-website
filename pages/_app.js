@@ -36,29 +36,28 @@ export default class MyApp extends App {
 
     return (
       <React.Fragment>
-        <ToastContainer
-          position="top-center"
-          autoClose={9000}
-          transition={Slide}
-          newestOnTop>
-          <ProvideAuth>
-            <ProvideNotification>
-              <ProvideBoutique>
-                <Head>
-                  <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1, shrink-to-fit=no"
-                  />
-                  <Script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></Script>
-                  <title>Fmr-collectif</title>
-                </Head>
-                <LayoutComponent component={Component} layoutProps={layoutProps}>
-                  <Component {...pageProps} />
-                </LayoutComponent>
-              </ProvideBoutique>
-            </ProvideNotification>
-          </ProvideAuth>
-        </ToastContainer>
+        <ProvideAuth>
+          <ProvideNotification>
+            <ProvideBoutique>
+              <ToastContainer
+                position="top-center"
+                autoClose={9000}
+                transition={Slide}
+                newestOnTop />
+              <Head>
+                <meta
+                  name="viewport"
+                  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+                />
+                <Script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></Script>
+                <title>Fmr-collectif</title>
+              </Head>
+              <LayoutComponent component={Component} layoutProps={layoutProps}>
+                <Component {...pageProps} />
+              </LayoutComponent>
+            </ProvideBoutique>
+          </ProvideNotification>
+        </ProvideAuth>
       </React.Fragment >
     );
   }
