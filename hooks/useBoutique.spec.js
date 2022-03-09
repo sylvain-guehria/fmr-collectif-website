@@ -120,3 +120,49 @@ describe('#Tickets', () => {
         }, 1000);
     });
 });
+
+describe('#updateItemQuantity', () => {
+    const item1 = new ItemEntity({ uid: 'uid1', label: 'label1', price: 25, quantity: 5 });
+    const item2 = new ItemEntity({ uid: 'uid2', label: 'label2', price: 15, quantity: 3 });
+    it('Add one to the quantity bought', () => {
+        testHook(() => {
+            hookResponse = useProvideBoutique();
+        });
+        act(() => {
+            hookResponse.addItem(item1);
+            hookResponse.addItem(item2);
+            hookResponse.addItem(item2);
+        });
+        expect(hookResponse.boutiques.items).toStrictEqual([item1, item2]);
+        expect(hookResponse.boutiques.itemsQuantityBought).toStrictEqual({ uid1: 1, uid2: 2 });
+        act(() => {
+            hookResponse.updateItemQuantity('uid1', 'add');
+            hookResponse.updateItemQuantity('uid2', 'add');
+        });
+        expect(hookResponse.boutiques.itemsQuantityBought).toStrictEqual({ uid1: 2, uid2: 3 });
+    });
+    it('Remove one to the quantity bought', () => {
+        act(() => {
+            hookResponse.updateItemQuantity('uid2', 'minus');
+        });
+        expect(hookResponse.boutiques.itemsQuantityBought).toStrictEqual({ uid1: 2, uid2: 2 });
+    });
+    it('Do not add one to the quantity bought if not enough quantity in stock', () => {
+        act(() => {
+            hookResponse.updateItemQuantity('uid2', 'add');
+            hookResponse.updateItemQuantity('uid2', 'add');
+            hookResponse.updateItemQuantity('uid2', 'add');
+            hookResponse.updateItemQuantity('uid2', 'add');
+        });
+        expect(hookResponse.boutiques.itemsQuantityBought).toStrictEqual({ uid1: 2, uid2: 3 });
+    });
+    it('Do not remove one to the quantity bought if it not greater than 1', () => {
+        act(() => {
+            hookResponse.updateItemQuantity('uid1', 'minus');
+            hookResponse.updateItemQuantity('uid1', 'minus');
+            hookResponse.updateItemQuantity('uid1', 'minus');
+            hookResponse.updateItemQuantity('uid1', 'minus');
+        });
+        expect(hookResponse.boutiques.itemsQuantityBought).toStrictEqual({ uid1: 0, uid2: 3 });
+    });
+});
