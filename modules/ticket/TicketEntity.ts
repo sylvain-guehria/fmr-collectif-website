@@ -37,6 +37,14 @@ class TicketEntity implements Ticket {
     return this.label;
   }
 
+  getPlace(): string {
+    return this.place;
+  }
+
+  getDate(): number {
+    return this.date;
+  }
+
   isTicketDeleted(): boolean {
     return this.isDeleted;
   }

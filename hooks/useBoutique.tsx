@@ -1,6 +1,6 @@
 import React, { useState, useContext, createContext } from 'react';
 import ItemEntity from '../modules/item/ItemEntity';
-import TicketEntity from 'modules/ticket/ticketEntity';
+import TicketEntity from 'modules/ticket/TicketEntity';
 
 type ContextProps = {
   boutiques: Boutiques;

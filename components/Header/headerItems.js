@@ -110,6 +110,11 @@ const headerItems = [
         href: '/admin/stocks',
         label: 'Stocks',
         icon: <Dns />
+      },
+      {
+        href: '/admin/tickets',
+        label: 'Tickets',
+        icon: <LineStyle />
       }
     ]
   }

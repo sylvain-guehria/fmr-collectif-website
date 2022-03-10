@@ -9,19 +9,22 @@ import GridItem from 'components/lib/Grid/GridItem.js';
 import Card from 'components/lib/Card/Card.js';
 import CardBody from 'components/lib/Card/CardBody.js';
 import shoppingCartStyle from 'styles/jss/nextjs-material-kit-pro/pages/shoppingCartStyle.js';
-import ItemEntity from '../../modules/item/ItemEntity';
-import ItemTable from './Item/ItemTable';
-import { Item } from 'modules/item/itemType';
+import TicketEntity from '../../modules/ticket/TicketEntity';
+import TicketTable from './Ticket/TicketTable';
+import { Ticket } from 'modules/ticket/ticketType';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const useStyles = makeStyles(shoppingCartStyle);
 
 interface Props {
-  items: ItemEntity[];
+  tickets: TicketEntity[];
 }
 
-const Stocks: React.FC<Props> = ({ items = [] }) => {
-  const itemEntities: ItemEntity[] = Array.from(items || [], (item: Item) => new ItemEntity(item));
+const Stocks: React.FC<Props> = ({ tickets = [] }) => {
+  const ticketEntities: TicketEntity[] = Array.from(
+    tickets || [],
+    (ticket: Ticket) => new TicketEntity(ticket)
+  );
   useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
@@ -49,7 +52,7 @@ const Stocks: React.FC<Props> = ({ items = [] }) => {
               md={8}
               sm={8}
               className={classNames(classes.mlAuto, classes.mrAuto, classes.textCenter)}>
-              <h2 className={classes.title}>Gestion des stocks</h2>
+              <h2 className={classes.title}>Gestion des tickets</h2>
             </GridItem>
           </GridContainer>
         </div>
@@ -58,12 +61,12 @@ const Stocks: React.FC<Props> = ({ items = [] }) => {
         <div className={classes.container}>
           <Card plain>
             <div>
-              {!itemEntities ? (
+              {!ticketEntities ? (
                 <div> Loading </div>
               ) : (
                 <CardBody plain>
-                  <h3 className={classes.cardTitle}>Produits</h3>
-                  <ItemTable items={itemEntities} />
+                  <h3 className={classes.cardTitle}>Tickets</h3>
+                  <TicketTable tickets={ticketEntities} />
                 </CardBody>
               )}
             </div>
