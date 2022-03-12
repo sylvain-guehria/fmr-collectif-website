@@ -10,6 +10,7 @@ class TicketEntity implements Ticket {
   numberTotalSell: number;
   lastBuyDate: number;
   isDeleted: boolean;
+  isActive: boolean;
 
   static new(ticket: Ticket): TicketEntity {
     return new TicketEntity({
@@ -27,6 +28,7 @@ class TicketEntity implements Ticket {
     this.numberTotalSell = ticket.numberTotalSell || 0;
     this.lastBuyDate = ticket.lastBuyDate || 0;
     this.isDeleted = ticket.isDeleted || false;
+    this.isActive = ticket.isActive || false;
   }
 
   getId(): string {
@@ -47,6 +49,10 @@ class TicketEntity implements Ticket {
 
   isTicketDeleted(): boolean {
     return this.isDeleted;
+  }
+
+  isTicketForSales(): boolean {
+    return this.isActive;
   }
 
   getQuantity(): number {

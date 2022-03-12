@@ -13,8 +13,17 @@ class FirebaseItemRepository extends ItemRepository {
   async getById(uid: string): Promise<TicketEntity> {
     logger.info('get ticket in db with uid: ', uid);
     const response = await axios.get(`/ticket/${uid}`);
-    const { date, place, label, quantity, price, numberTotalSell, lastBuyDate, isDeleted } =
-      response.data;
+    const {
+      date,
+      place,
+      label,
+      quantity,
+      price,
+      numberTotalSell,
+      lastBuyDate,
+      isDeleted,
+      isActive,
+    } = response.data;
 
     return new TicketEntity({
       uid: uid,
@@ -26,6 +35,7 @@ class FirebaseItemRepository extends ItemRepository {
       numberTotalSell,
       lastBuyDate,
       isDeleted,
+      isActive,
     });
   }
 
@@ -46,6 +56,7 @@ class FirebaseItemRepository extends ItemRepository {
       numberTotalSell: ticket.numberTotalSell || 0,
       lastBuyDate: ticket.lastBuyDate || 0,
       isDeleted: ticket.isDeleted || false,
+      isActive: ticket.isActive || false,
     });
     return new TicketEntity(res.data);
   }
@@ -65,6 +76,7 @@ class FirebaseItemRepository extends ItemRepository {
           numberTotalSell: ticket.numberTotalSell,
           lastBuyDate: ticket.lastBuyDate,
           isDeleted: ticket.isDeleted,
+          isActive: ticket.isActive,
         })
     );
   }
@@ -81,6 +93,7 @@ class FirebaseItemRepository extends ItemRepository {
       numberTotalSell: ticket.getNumberTotalSell(),
       lastBuyDate: ticket.getLastBuyDate(),
       isDeleted: ticket.isTicketDeleted(),
+      isActive: ticket.isTicketForSales(),
     });
   }
 }

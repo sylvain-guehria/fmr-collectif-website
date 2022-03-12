@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Header from 'components/Header/Header.js';
 import HeaderLinks from 'components/Header/HeaderLinks.js';
-import SectionPricing from 'pages-sections/sections-page/SectionPricing.js';
+import TicketCards from './TicketCards';
 
 import sectionsPageStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsPageStyle.js';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -18,7 +18,7 @@ const Ticketoffice: React.FC = () => {
   return (
     <div>
       <Header
-        color="transparent"
+        color="white"
         brand="Accueil Fmr"
         links={<HeaderLinks dropdownHoverColor="info" />}
         fixed
@@ -28,7 +28,7 @@ const Ticketoffice: React.FC = () => {
         }}
       />
       <div className={classes.main}>
-        <SectionPricing id="pricing" />
+        <TicketCards />
       </div>
     </div>
   );

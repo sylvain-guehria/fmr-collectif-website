@@ -5,8 +5,18 @@ import ticketServiceDi from '../modules/ticket/ticketService';
 export const saveTicket =
   (ticketServiceDi: ticketServiceDi) =>
   async (ticket: Ticket): Promise<void> => {
-    const { uid, date, place, label, quantity, price, numberTotalSell, lastBuyDate, isDeleted } =
-      ticket;
+    const {
+      uid,
+      date,
+      place,
+      label,
+      quantity,
+      price,
+      numberTotalSell,
+      lastBuyDate,
+      isDeleted,
+      isActive,
+    } = ticket;
 
     const updatedTicket = TicketEntity.new({
       uid,
@@ -18,6 +28,7 @@ export const saveTicket =
       numberTotalSell,
       lastBuyDate,
       isDeleted,
+      isActive,
     });
 
     return await ticketServiceDi.editTicket(updatedTicket);

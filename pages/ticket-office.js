@@ -1,6 +1,6 @@
 import React from 'react';
 
-import TicketOfficeComponent from '../components/GuestAndLoggedinPages/Ticket-office';
+import TicketOfficeComponent from '../components/TicketOffice/TicketsOffice.tsx';
 import { buildGuestOrLoggedInLayout } from '../components/Layouts/layoutBuilder';
 
 const TicketOffice = ()=> {

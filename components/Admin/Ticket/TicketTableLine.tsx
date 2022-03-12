@@ -12,7 +12,7 @@ import TableRow from '@material-ui/core/TableRow';
 import adminStyle from 'styles/jss/nextjs-material-kit-pro/pages/adminStyle.js';
 import TicketEntity from '../../../modules/ticket/TicketEntity';
 import CustomInput from '../../lib/CustomInput/CustomInput';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
 import { getError } from '../../forms/formUtils';
 import { toast } from 'react-toastify';
@@ -21,6 +21,9 @@ import tableStyles from 'styles/jss/nextjs-material-kit-pro/components/tableStyl
 import ConfirmDialog from '../../lib/ConfirmDialog/ConfirmDialog';
 import { saveTicketUseCase } from '../../../usecases';
 import { Ticket } from '../../../modules/ticket/ticketType';
+import { Checkbox } from '@material-ui/core';
+import Check from '@material-ui/icons/Check';
+
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const useStyles = makeStyles(adminStyle);
@@ -34,7 +37,7 @@ interface Props {
 }
 
 const TicketTableLine: React.FC<Props> = ({ ticket, deleteTicket }) => {
-  const { uid, label, date, place, quantity, price, numberTotalSell } = ticket;
+  const { uid, label, date, place, quantity, price, numberTotalSell, isActive } = ticket;
 
   const [isEditMode, setIsEditMode] = useState(false);
   const formOptions = {
@@ -47,6 +50,7 @@ const TicketTableLine: React.FC<Props> = ({ ticket, deleteTicket }) => {
       quantity,
       price,
       numberTotalSell,
+      isActive,
     },
   };
   const classes = useStyles();
@@ -56,6 +60,8 @@ const TicketTableLine: React.FC<Props> = ({ ticket, deleteTicket }) => {
     register,
     handleSubmit,
     setValue,
+    control,
+    getValues,
     formState: { errors },
   } = useForm<Ticket>(formOptions);
 
@@ -165,6 +171,21 @@ const TicketTableLine: React.FC<Props> = ({ ticket, deleteTicket }) => {
                 defaultValue: numberTotalSell,
                 disabled: !isEditMode,
               }}
+            />
+            <Controller
+              render={({ field }) => (
+                <Checkbox
+                  disabled={!isEditMode}
+                  defaultChecked={isActive}
+                  checked={getValues('isActive')}
+                  checkedIcon={<Check />}
+                  icon={<Close />}
+                  {...register('isActive')}
+                  {...field}
+                />
+              )}
+              name="isActive"
+              control={control}
             />
             {isEditMode && (
               <div>
