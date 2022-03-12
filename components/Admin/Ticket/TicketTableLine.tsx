@@ -96,10 +96,10 @@ const TicketTableLine: React.FC<Props> = ({ ticket, deleteTicket }) => {
               inputProps={{
                 ...register('date'),
                 placeholder: 'Date',
-                type: 'number',
+                type: 'date',
                 onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-                  setValue('date', parseInt(e?.target?.value)),
-                defaultValue: date,
+                  setValue('date', Date.parse(e?.target?.value)),
+                defaultValue: new Date(date).toISOString().split('T')[0],
                 disabled: !isEditMode,
               }}
             />
