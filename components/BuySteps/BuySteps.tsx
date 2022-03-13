@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import classNames from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
-import CheckCircle from '@material-ui/icons/CheckCircle';
-import Home from '@material-ui/icons/Home';
-import Visibility from '@material-ui/icons/Visibility';
+import CheckCircle from '@mui/icons-material/CheckCircle';
+import Home from '@mui/icons-material/Home';
+import Visibility from '@mui/icons-material/Visibility';
 import NavPills from 'components/lib/NavPills/NavPills.js';
 import Clearfix from 'components/lib/Clearfix/Clearfix.js';
 import { useRouter } from 'next/router';

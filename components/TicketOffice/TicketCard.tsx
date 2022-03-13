@@ -10,6 +10,7 @@ import Button from 'components/lib/CustomButtons/Button';
 
 import pricingStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsSections/pricingStyle.js';
 import TicketEntity from 'modules/ticket/TicketEntity';
+
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const useStyles = makeStyles(pricingStyle);

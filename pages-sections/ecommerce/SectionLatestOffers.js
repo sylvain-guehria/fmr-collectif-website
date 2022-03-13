@@ -13,7 +13,7 @@ import Button from 'components/lib/CustomButtons/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 // @material-ui icons
-import Favorite from '@material-ui/icons/Favorite';
+import Favorite from '@mui/icons-material/Favorite';
 import Link from 'next/link';
 
 import styles from 'styles/jss/nextjs-material-kit-pro/pages/ecommerceSections/latestOffersStyle.js';

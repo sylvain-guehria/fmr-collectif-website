@@ -4,22 +4,22 @@ import React from 'react';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
 import Icon from '@material-ui/core/Icon';
-// @material-ui/icons
-import Favorite from '@material-ui/icons/Favorite';
-import Share from '@material-ui/icons/Share';
-import ChatBubble from '@material-ui/icons/ChatBubble';
-import Schedule from '@material-ui/icons/Schedule';
-import TrendingUp from '@material-ui/icons/TrendingUp';
-import Subject from '@material-ui/icons/Subject';
-import WatchLater from '@material-ui/icons/WatchLater';
-import People from '@material-ui/icons/People';
-import Business from '@material-ui/icons/Business';
-import Check from '@material-ui/icons/Check';
-import Close from '@material-ui/icons/Close';
-import Delete from '@material-ui/icons/Delete';
-import Bookmark from '@material-ui/icons/Bookmark';
-import Refresh from '@material-ui/icons/Refresh';
-import Receipt from '@material-ui/icons/Receipt';
+// @mui/icons-material
+import Favorite from '@mui/icons-material/Favorite';
+import Share from '@mui/icons-material/Share';
+import ChatBubble from '@mui/icons-material/ChatBubble';
+import Schedule from '@mui/icons-material/Schedule';
+import TrendingUp from '@mui/icons-material/TrendingUp';
+import Subject from '@mui/icons-material/Subject';
+import WatchLater from '@mui/icons-material/WatchLater';
+import People from '@mui/icons-material/People';
+import Business from '@mui/icons-material/Business';
+import Check from '@mui/icons-material/Check';
+import Close from '@mui/icons-material/Close';
+import Delete from '@mui/icons-material/Delete';
+import Bookmark from '@mui/icons-material/Bookmark';
+import Refresh from '@mui/icons-material/Refresh';
+import Receipt from '@mui/icons-material/Receipt';
 // core components
 import GridContainer from 'components/lib/Grid/GridContainer.js';
 import GridItem from 'components/lib/Grid/GridItem.js';

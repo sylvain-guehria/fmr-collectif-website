@@ -2,10 +2,10 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
-import Edit from '@material-ui/icons/Edit';
-import Delete from '@material-ui/icons/Delete';
-import Close from '@material-ui/icons/Close';
-import SaveAlt from '@material-ui/icons/SaveAlt';
+import Edit from '@mui/icons-material/Edit';
+import Delete from '@mui/icons-material/Delete';
+import Close from '@mui/icons-material/Close';
+import SaveAlt from '@mui/icons-material/SaveAlt';
 import Button from '../../lib/CustomButtons/Button';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
@@ -22,7 +22,7 @@ import ConfirmDialog from '../../lib/ConfirmDialog/ConfirmDialog';
 import { saveTicketUseCase } from '../../../usecases';
 import { Ticket } from '../../../modules/ticket/ticketType';
 import { Checkbox } from '@material-ui/core';
-import Check from '@material-ui/icons/Check';
+import Check from '@mui/icons-material/Check';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore

@@ -6,9 +6,9 @@ import classNames from "classnames";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-// @material-ui/icons
-import Mail from "@material-ui/icons/Mail";
-import Favorite from "@material-ui/icons/Favorite";
+// @mui/icons-material
+import Mail from "@mui/icons-material/Mail";
+import Favorite from "@mui/icons-material/Favorite";
 // core components
 import GridContainer from "components/lib/Grid/GridContainer.js";
 import GridItem from "components/lib/Grid/GridItem.js";

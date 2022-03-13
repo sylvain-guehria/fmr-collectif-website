@@ -9,9 +9,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
-// @material-ui/icons
-import Clear from '@material-ui/icons/Clear';
-import Check from '@material-ui/icons/Check';
+// @mui/icons-material
+import Clear from '@mui/icons-material/Clear';
+import Check from '@mui/icons-material/Check';
 // core components
 
 import styles from 'styles/jss/nextjs-material-kit-pro/components/customInputStyle.js';

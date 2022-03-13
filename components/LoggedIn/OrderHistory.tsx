@@ -3,10 +3,10 @@ import React from 'react';
 import classNames from 'classnames';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
-// @material-ui/icons
-import Camera from '@material-ui/icons/Camera';
-import Palette from '@material-ui/icons/Palette';
-import People from '@material-ui/icons/People';
+// @mui/icons-material
+import Camera from '@mui/icons-material/Camera';
+import Palette from '@mui/icons-material/Palette';
+import People from '@mui/icons-material/People';
 // core components
 import GridContainer from 'components/lib/Grid/GridContainer.js';
 import GridItem from 'components/lib/Grid/GridItem.js';

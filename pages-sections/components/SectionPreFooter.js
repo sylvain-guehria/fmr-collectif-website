@@ -12,7 +12,7 @@ import CustomInput from 'components/lib/CustomInput/CustomInput.js';
 import { makeStyles } from '@material-ui/core/styles';
 import InputAdornment from '@material-ui/core/InputAdornment';
 // @material-ui icons
-import Mail from '@material-ui/icons/Mail';
+import Mail from '@mui/icons-material/Mail';
 
 import styles from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/preFooter.js';
 

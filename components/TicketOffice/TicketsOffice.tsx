@@ -10,11 +10,11 @@ import GridContainer from 'components/lib/Grid/GridContainer';
 import GridItem from 'components/lib/Grid/GridItem';
 import { Ticket } from 'modules/ticket/ticketType';
 import { getIdOfTheNextTicketEvent } from './ticketUtil';
-import Favorite from '@material-ui/icons/Favorite';
+import Favorite from '@mui/icons-material/Favorite';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Check from '@material-ui/icons/Check';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import Check from '@mui/icons-material/Check';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -89,7 +89,7 @@ const Ticketoffice: React.FC<Props> = ({ tickets = [] }) => {
                   tabIndex={-1}
                   onClick={() => handleHideTicketsCheckBox()}
                   checkedIcon={<Check />}
-                  icon={<VisibilityOff />}
+                  icon={<VisibilityOffIcon />}
                 />
               }
               label="Cacher les évènement passés"

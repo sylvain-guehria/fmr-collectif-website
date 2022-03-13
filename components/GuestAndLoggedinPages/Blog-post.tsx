@@ -1,6 +1,6 @@
 import React from 'react';
-// @material-ui/icons
-import FormatAlignLeft from '@material-ui/icons/FormatAlignLeft';
+// @mui/icons-material
+import FormatAlignLeft from '@mui/icons-material/FormatAlignLeft';
 // core components
 import Header from 'components/Header/Header.js';
 import HeaderLinks from 'components/Header/HeaderLinks.js';

@@ -3,10 +3,10 @@ import React from 'react';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
 
-// @material-ui/icons
-import Dashboard from '@material-ui/icons/Dashboard';
-import Schedule from '@material-ui/icons/Schedule';
-import List from '@material-ui/icons/List';
+// @mui/icons-material
+import Dashboard from '@mui/icons-material/Dashboard';
+import Schedule from '@mui/icons-material/Schedule';
+import List from '@mui/icons-material/List';
 
 // core components
 import GridContainer from 'components/lib/Grid/GridContainer.js';

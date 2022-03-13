@@ -3,7 +3,7 @@ import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import ResetPasswordForm from '../forms/login/ResetPasswordForm';
 import Button from '../lib/CustomButtons/Button';
-import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 
 function rand(): number {
   return Math.round(Math.random() * 20) - 10;

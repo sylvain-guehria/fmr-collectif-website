@@ -10,7 +10,7 @@ import GridContainer from 'components/lib/Grid/GridContainer.js';
 import GridItem from 'components/lib/Grid/GridItem.js';
 import Parallax from 'components/lib/Parallax/Parallax.js';
 // import SectionLatestOffers from 'pages-sections/ecommerce/SectionLatestOffers.js';
-import Favorite from '@material-ui/icons/Favorite';
+import Favorite from '@mui/icons-material/Favorite';
 import ShopItemCard from '../ShopItemCard/ShopItemCard';
 import styles from 'styles/jss/nextjs-material-kit-pro/pages/ecommerceStyle.js';
 import { Item } from '../../modules/item/itemType';

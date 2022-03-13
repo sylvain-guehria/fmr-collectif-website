@@ -6,7 +6,7 @@ import TableHead from '@material-ui/core/TableHead';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import Button from './../lib/CustomButtons/Button';
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import ShoppingCartLine from './ShoppingCartLine';
 import tableStyles from 'styles/jss/nextjs-material-kit-pro/components/tableStyle.js';
 import Image from 'next/image';

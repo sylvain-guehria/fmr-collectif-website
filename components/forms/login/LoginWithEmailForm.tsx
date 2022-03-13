@@ -5,7 +5,7 @@ import { validationSchema } from './LoginFormValidation';
 import { makeStyles } from '@material-ui/core/styles';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Icon from '@material-ui/core/Icon';
-import Email from '@material-ui/icons/Email';
+import Email from '@mui/icons-material/Email';
 import InputLabel from '@material-ui/core/InputLabel';
 
 import CustomInput from '../../lib/CustomInput/CustomInput.js';
@@ -20,8 +20,8 @@ import { getError } from '../formUtils';
 import { useAuth } from '../../../hooks/useAuth';
 import { useRouter } from 'next/router';
 
-import Fingerprint from '@material-ui/icons/Fingerprint';
-import PersonAdd from '@material-ui/icons/PersonAdd';
+import Fingerprint from '@mui/icons-material/Fingerprint';
+import PersonAdd from '@mui/icons-material/PersonAdd';
 import CardBody from '../../lib/Card/CardBody';
 import { emailConnexionUseCase } from '../../../usecases';
 import ForgotPasswordButton from '../../modals/ForgotPasswordButton';

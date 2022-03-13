@@ -4,13 +4,13 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-// @material-ui/icons
-import Search from '@material-ui/icons/Search';
-import Email from '@material-ui/icons/Email';
-import Face from '@material-ui/icons/Face';
-import Settings from '@material-ui/icons/Settings';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import Explore from '@material-ui/icons/Explore';
+// @mui/icons-material
+import Search from '@mui/icons-material/Search';
+import Email from '@mui/icons-material/Email';
+import Face from '@mui/icons-material/Face';
+import Settings from '@mui/icons-material/Settings';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import Explore from '@mui/icons-material/Explore';
 // core components
 import GridContainer from 'components/lib/Grid/GridContainer.js';
 import GridItem from 'components/lib/Grid/GridItem.js';

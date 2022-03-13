@@ -1,8 +1,8 @@
 import React from 'react';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
-// @material-ui/icons
-// import  from "@material-ui/icons/";
+// @mui/icons-material
+// import  from "@mui/icons-material/";
 // core components
 import GridContainer from 'components/lib/Grid/GridContainer.js';
 import GridItem from 'components/lib/Grid/GridItem.js';

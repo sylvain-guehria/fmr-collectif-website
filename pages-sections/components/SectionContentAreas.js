@@ -5,15 +5,15 @@ import { makeStyles } from '@material-ui/core/styles';
 import Checkbox from '@material-ui/core/Checkbox';
 import Tooltip from '@material-ui/core/Tooltip';
 // @material-ui/core icons
-import Person from '@material-ui/icons/Person';
-import Edit from '@material-ui/icons/Edit';
-import Close from '@material-ui/icons/Close';
-import Check from '@material-ui/icons/Check';
-import Remove from '@material-ui/icons/Remove';
-import Add from '@material-ui/icons/Add';
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
-import Reply from '@material-ui/icons/Reply';
-import Favorite from '@material-ui/icons/Favorite';
+import Person from '@mui/icons-material/Person';
+import Edit from '@mui/icons-material/Edit';
+import Close from '@mui/icons-material/Close';
+import Check from '@mui/icons-material/Check';
+import Remove from '@mui/icons-material/Remove';
+import Add from '@mui/icons-material/Add';
+import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+import Reply from '@mui/icons-material/Reply';
+import Favorite from '@mui/icons-material/Favorite';
 // core components
 import GridContainer from 'components/lib/Grid/GridContainer.js';
 import GridItem from 'components/lib/Grid/GridItem.js';

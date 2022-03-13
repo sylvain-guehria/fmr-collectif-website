@@ -14,8 +14,8 @@ import { toast } from 'react-toastify';
 import Link from 'next/link';
 
 // react component used to create nice image meadia player
-import ShoppingCart from '@material-ui/icons/ShoppingCart';
-import ShoppingBasket from '@material-ui/icons/ShoppingBasket';
+import ShoppingCart from '@mui/icons-material/ShoppingCart';
+import ShoppingBasket from '@mui/icons-material/ShoppingBasket';
 import productStyle from 'styles/jss/nextjs-material-kit-pro/pages/productStyle.js';
 
 import { useBoutique } from '../../hooks/useBoutique';

@@ -8,8 +8,8 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import Icon from '@material-ui/core/Icon';
 import InputLabel from '@material-ui/core/InputLabel';
 
-import Face from '@material-ui/icons/Face';
-import Email from '@material-ui/icons/Email';
+import Face from '@mui/icons-material/Face';
+import Email from '@mui/icons-material/Email';
 
 import CustomInput from '../../lib/CustomInput/CustomInput';
 import Button from '../../lib/CustomButtons/Button';

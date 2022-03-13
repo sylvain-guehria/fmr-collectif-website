@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import Mail from '@material-ui/icons/Mail';
+import Mail from '@mui/icons-material/Mail';
 import GridContainer from 'components/lib/Grid/GridContainer.js';
 import GridItem from 'components/lib/Grid/GridItem.js';
 import Button from '../lib/CustomButtons/Button';

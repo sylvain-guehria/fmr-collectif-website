@@ -17,21 +17,21 @@ import Tooltip from "@material-ui/core/Tooltip";
 import Popover from "@material-ui/core/Popover";
 import Checkbox from "@material-ui/core/Checkbox";
 import Icon from "@material-ui/core/Icon";
-// @material-ui/icons
-import LibraryBooks from "@material-ui/icons/LibraryBooks";
-import Close from "@material-ui/icons/Close";
-import Notifications from "@material-ui/icons/Notifications";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import Assignment from "@material-ui/icons/Assignment";
-import Mail from "@material-ui/icons/Mail";
-import Face from "@material-ui/icons/Face";
-import Timeline from "@material-ui/icons/Timeline";
-import Code from "@material-ui/icons/Code";
-import Group from "@material-ui/icons/Group";
-import Email from "@material-ui/icons/Email";
-import Check from "@material-ui/icons/Check";
-import AttachFile from "@material-ui/icons/AttachFile";
-import Layers from "@material-ui/icons/Layers";
+// @mui/icons-material
+import LibraryBooks from "@mui/icons-material/LibraryBooks";
+import Close from "@mui/icons-material/Close";
+import Notifications from "@mui/icons-material/Notifications";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import Assignment from "@mui/icons-material/Assignment";
+import Mail from "@mui/icons-material/Mail";
+import Face from "@mui/icons-material/Face";
+import Timeline from "@mui/icons-material/Timeline";
+import Code from "@mui/icons-material/Code";
+import Group from "@mui/icons-material/Group";
+import Email from "@mui/icons-material/Email";
+import Check from "@mui/icons-material/Check";
+import AttachFile from "@mui/icons-material/AttachFile";
+import Layers from "@mui/icons-material/Layers";
 // core components
 import GridContainer from "components/lib/Grid/GridContainer.js";
 import GridItem from "components/lib/Grid/GridItem.js";

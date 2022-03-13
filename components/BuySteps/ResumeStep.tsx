@@ -8,7 +8,7 @@ import CardHeader from 'components/lib/Card/CardHeader.js';
 import Muted from 'components/lib/Typography/Muted.js';
 import Image from 'next/image';
 import Button from './../lib/CustomButtons/Button';
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 
 import profilePageStyle from 'styles/jss/nextjs-material-kit-pro/pages/profilePageStyle.js';
 import ShoppingCartTable from 'components/ShoppingCart/ShoppingCartTable';

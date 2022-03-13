@@ -1,8 +1,8 @@
 import React from 'react';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
-// @material-ui/icons
-import TrendingUp from '@material-ui/icons/TrendingUp';
+// @mui/icons-material
+import TrendingUp from '@mui/icons-material/TrendingUp';
 // core components
 import GridContainer from 'components/lib/Grid/GridContainer.js';
 import GridItem from 'components/lib/Grid/GridItem.js';

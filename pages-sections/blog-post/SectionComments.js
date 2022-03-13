@@ -2,9 +2,9 @@ import React from 'react';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
-// @material-ui/icons
-import Reply from '@material-ui/icons/Reply';
-import Favorite from '@material-ui/icons/Favorite';
+// @mui/icons-material
+import Reply from '@mui/icons-material/Reply';
+import Favorite from '@mui/icons-material/Favorite';
 // core components
 import GridContainer from 'components/lib/Grid/GridContainer.js';
 import GridItem from 'components/lib/Grid/GridItem.js';

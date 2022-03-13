@@ -4,8 +4,8 @@ import classNames from 'classnames';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
-// @material-ui/icons
-import Add from '@material-ui/icons/Add';
+// @mui/icons-material
+import Add from '@mui/icons-material/Add';
 // core components
 import Header from 'components/Header/Header.js';
 import GridContainer from 'components/lib/Grid/GridContainer.js';

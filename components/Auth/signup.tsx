@@ -4,11 +4,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 
-// @material-ui/icons
-import Timeline from '@material-ui/icons/Timeline';
-import Code from '@material-ui/icons/Code';
-import Group from '@material-ui/icons/Group';
-import Favorite from '@material-ui/icons/Favorite';
+// @mui/icons-material
+import Timeline from '@mui/icons-material/Timeline';
+import Code from '@mui/icons-material/Code';
+import Group from '@mui/icons-material/Group';
+import Favorite from '@mui/icons-material/Favorite';
 
 // core components
 import Header from 'components/Header/Header.js';

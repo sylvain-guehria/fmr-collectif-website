@@ -3,8 +3,8 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { useAuth } from '../../../hooks/useAuth';
 
 import InputAdornment from '@material-ui/core/InputAdornment';
-import Email from '@material-ui/icons/Email';
-import RotateLeftIcon from '@material-ui/icons/RotateLeft';
+import Email from '@mui/icons-material/Email';
+import RotateLeftIcon from '@mui/icons-material/RotateLeft';
 import CustomInput from '../../lib/CustomInput/CustomInput.js';
 import Button from '../../lib/CustomButtons/Button';
 import CardBody from '../../lib/Card/CardBody';
