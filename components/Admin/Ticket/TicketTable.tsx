@@ -18,7 +18,7 @@ interface Props {
 }
 
 const TicketTable: React.FC<Props> = ({ tickets }) => {
-  const tableHead = ['label', 'date', 'lieu', 'prix', 'quantité', 'vendu', 'à vendre', ''];
+  const tableHead = ['label', 'date', 'lieu', 'prix', 'quantité', 'vendu', 'à vendre'];
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const useStyles = makeStyles(tableStyles);
@@ -58,7 +58,11 @@ const TicketTable: React.FC<Props> = ({ tickets }) => {
           <TableRow>
             {tableHead &&
               tableHead.map((prop, key) => {
-                return <TableCell key={key}>{prop}</TableCell>;
+                return (
+                  <TableCell key={key} align="center">
+                    {prop}
+                  </TableCell>
+                );
               })}
           </TableRow>
         </TableHead>
@@ -75,12 +79,12 @@ const TicketTable: React.FC<Props> = ({ tickets }) => {
                 )
               );
             })}
-          <Button className={classes.warning} onClick={() => createTicketAndUpdateState()}>
-            Ajouter un ticket
-            <Add />
-          </Button>
         </TableBody>
       </Table>
+      <Button className={classes.warning} onClick={() => createTicketAndUpdateState()}>
+        Ajouter un ticket
+        <Add />
+      </Button>
     </div>
   );
 };

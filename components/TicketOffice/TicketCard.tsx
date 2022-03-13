@@ -14,11 +14,10 @@ import pricingStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsSecti
 // @ts-ignore
 const useStyles = makeStyles(pricingStyle);
 
-const TicketCards: React.FC = ({ ...rest }) => {
+const TicketCard: React.FC = ({ ...rest }) => {
   const classes = useStyles();
   return (
     <div className="cd-section" {...rest}>
-      {/* Pricing 2 START */}
       <div className={classes.pricing}>
         <div className={classes.container}>
           <GridContainer>
@@ -132,4 +131,4 @@ const TicketCards: React.FC = ({ ...rest }) => {
   );
 };
 
-export default TicketCards;
+export default TicketCard;
