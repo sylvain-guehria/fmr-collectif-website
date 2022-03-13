@@ -18,7 +18,16 @@ interface Props {
 }
 
 const TicketTable: React.FC<Props> = ({ tickets }) => {
-  const tableHead = ['label', 'date', 'lieu', 'prix', 'quantité', 'vendu', 'à vendre'];
+  const tableHead = [
+    'label',
+    'date',
+    'lieu',
+    'prix',
+    'quantité',
+    'vendu',
+    'à vendre',
+    'description',
+  ];
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const useStyles = makeStyles(tableStyles);
@@ -35,6 +44,7 @@ const TicketTable: React.FC<Props> = ({ tickets }) => {
     lastBuyDate: 0,
     isDeleted: false,
     isActive: false,
+    description: '',
   });
 
   const [ticketList, setTicketList] = useState(tickets || []);

@@ -11,6 +11,7 @@ class TicketEntity implements Ticket {
   lastBuyDate: number;
   isDeleted: boolean;
   isActive: boolean;
+  description: string;
 
   static new(ticket: Ticket): TicketEntity {
     return new TicketEntity({
@@ -29,6 +30,7 @@ class TicketEntity implements Ticket {
     this.lastBuyDate = ticket.lastBuyDate || 0;
     this.isDeleted = ticket.isDeleted || false;
     this.isActive = ticket.isActive || false;
+    this.description = ticket.description || '';
   }
 
   getId(): string {
@@ -37,6 +39,10 @@ class TicketEntity implements Ticket {
 
   getLabel(): string {
     return this.label;
+  }
+
+  getDescription(): string {
+    return this.description;
   }
 
   getPlace(): string {

@@ -37,7 +37,8 @@ interface Props {
 }
 
 const TicketTableLine: React.FC<Props> = ({ ticket, deleteTicket }) => {
-  const { uid, label, date, place, quantity, price, numberTotalSell, isActive } = ticket;
+  const { uid, label, date, place, quantity, price, numberTotalSell, isActive, description } =
+    ticket;
 
   const [isEditMode, setIsEditMode] = useState(false);
   const formOptions = {
@@ -51,6 +52,7 @@ const TicketTableLine: React.FC<Props> = ({ ticket, deleteTicket }) => {
       price,
       numberTotalSell,
       isActive,
+      description,
     },
   };
   const classes = useStyles();
@@ -76,7 +78,7 @@ const TicketTableLine: React.FC<Props> = ({ ticket, deleteTicket }) => {
   };
   return (
     <TableRow key={uid}>
-      <TableCell className={tableClasses.tableCell} colSpan={9} align="center">
+      <TableCell className={tableClasses.tableCell} colSpan={9}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div style={{ display: 'flex' }}>
             <CustomInput
@@ -172,20 +174,37 @@ const TicketTableLine: React.FC<Props> = ({ ticket, deleteTicket }) => {
                 disabled: !isEditMode,
               }}
             />
-            <Controller
-              render={({ field }) => (
-                <Checkbox
-                  disabled={!isEditMode}
-                  defaultChecked={isActive}
-                  checked={getValues('isActive')}
-                  checkedIcon={<Check />}
-                  icon={<Close />}
-                  {...register('isActive')}
-                  {...field}
-                />
-              )}
-              name="isActive"
-              control={control}
+            <div style={{ width: '100%' }}>
+              <Controller
+                render={({ field }) => (
+                  <Checkbox
+                    disabled={!isEditMode}
+                    defaultChecked={isActive}
+                    checked={getValues('isActive')}
+                    checkedIcon={<Check />}
+                    icon={<Close />}
+                    {...register('isActive')}
+                    {...field}
+                  />
+                )}
+                name="isActive"
+                control={control}
+              />
+            </div>
+            <CustomInput
+              formControlProps={{
+                fullWidth: true,
+              }}
+              error={getError(errors, 'description')}
+              inputProps={{
+                ...register('description'),
+                placeholder: 'Description',
+                type: 'text',
+                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+                  setValue('description', e?.target?.value),
+                defaultValue: description,
+                disabled: !isEditMode,
+              }}
             />
             {isEditMode && (
               <div>

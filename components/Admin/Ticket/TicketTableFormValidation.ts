@@ -8,4 +8,5 @@ export const validationSchema = Yup.object().shape({
   price: Yup.number().required('Veuillez entrer un prix'),
   numberTotalSell: Yup.number().required('Veuillez entrer le nombre total de vente'),
   isActive: Yup.boolean().required('Veuillez définir si le ticket est en vente'),
+  description: Yup.string(),
 });

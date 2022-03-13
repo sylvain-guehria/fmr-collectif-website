@@ -16,6 +16,7 @@ export const saveTicket =
       lastBuyDate,
       isDeleted,
       isActive,
+      description,
     } = ticket;
 
     const updatedTicket = TicketEntity.new({
@@ -29,6 +30,7 @@ export const saveTicket =
       lastBuyDate,
       isDeleted,
       isActive,
+      description,
     });
 
     return await ticketServiceDi.editTicket(updatedTicket);

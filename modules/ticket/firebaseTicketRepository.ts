@@ -23,6 +23,7 @@ class FirebaseItemRepository extends ItemRepository {
       lastBuyDate,
       isDeleted,
       isActive,
+      description,
     } = response.data;
 
     return new TicketEntity({
@@ -36,6 +37,7 @@ class FirebaseItemRepository extends ItemRepository {
       lastBuyDate,
       isDeleted,
       isActive,
+      description,
     });
   }
 
@@ -57,6 +59,7 @@ class FirebaseItemRepository extends ItemRepository {
       lastBuyDate: ticket.lastBuyDate || 0,
       isDeleted: ticket.isDeleted || false,
       isActive: ticket.isActive || false,
+      description: ticket.description || '',
     });
     return new TicketEntity(res.data);
   }
@@ -77,6 +80,7 @@ class FirebaseItemRepository extends ItemRepository {
           lastBuyDate: ticket.lastBuyDate,
           isDeleted: ticket.isDeleted,
           isActive: ticket.isActive,
+          description: ticket.description,
         })
     );
   }
@@ -94,6 +98,7 @@ class FirebaseItemRepository extends ItemRepository {
       lastBuyDate: ticket.getLastBuyDate(),
       isDeleted: ticket.isTicketDeleted(),
       isActive: ticket.isTicketForSales(),
+      description: ticket.getDescription(),
     });
   }
 }

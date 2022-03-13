@@ -9,4 +9,5 @@ export interface Ticket {
   lastBuyDate: number;
   isDeleted: boolean;
   isActive: boolean;
+  description: string;
 }
