@@ -9,6 +9,7 @@ import TicketEntity from 'modules/ticket/TicketEntity';
 import GridContainer from 'components/lib/Grid/GridContainer';
 import GridItem from 'components/lib/Grid/GridItem';
 import { Ticket } from 'modules/ticket/ticketType';
+import { getIdOfTheNextTicketEvent } from './ticketUtil';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const useStyles = makeStyles(pricingStyle);
@@ -27,6 +28,15 @@ const Ticketoffice: React.FC<Props> = ({ tickets = [] }) => {
     document.body.scrollTop = 0;
   });
   const classes = useStyles();
+
+  ticketEntities.sort((a, b) => {
+    return a.date - b.date;
+  });
+
+  const ticketEntitiesMostRecentFirst = [...ticketEntities].reverse();
+
+  const idOfNextTicketEvent = getIdOfTheNextTicketEvent(ticketEntities);
+
   return (
     <div>
       <Header
@@ -53,9 +63,15 @@ const Ticketoffice: React.FC<Props> = ({ tickets = [] }) => {
               </GridItem>
             </GridContainer>
             <GridContainer>
-              {ticketEntities &&
-                ticketEntities.length &&
-                ticketEntities.map(ticket => <TicketCard key={ticket.getId()} ticket={ticket} />)}
+              {ticketEntitiesMostRecentFirst &&
+                ticketEntitiesMostRecentFirst.length &&
+                ticketEntitiesMostRecentFirst.map(ticket => (
+                  <TicketCard
+                    key={ticket.getId()}
+                    ticket={ticket}
+                    isNextEvent={ticket.getId() === idOfNextTicketEvent}
+                  />
+                ))}
             </GridContainer>
           </div>
         </div>
