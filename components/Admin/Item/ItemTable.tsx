@@ -18,7 +18,7 @@ interface Props {
 }
 
 const ItemTable: React.FC<Props> = ({ items }) => {
-  const tableHead = ['Photo', 'label', 'sex', 'taille', 'couleur', 'prix', 'quantité', 'vendu', ''];
+  const tableHead = ['Photo', 'label', 'sex', 'taille', 'couleur', 'prix', 'quantité', 'vendu'];
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const useStyles = makeStyles(tableStyles);
@@ -60,7 +60,7 @@ const ItemTable: React.FC<Props> = ({ items }) => {
             {tableHead &&
               tableHead.map((prop, key) => {
                 return (
-                  <TableCell key={key}>
+                  <TableCell key={key} align="center">
                     {/* width={100 / 7} */}
                     {prop}
                   </TableCell>
@@ -77,12 +77,12 @@ const ItemTable: React.FC<Props> = ({ items }) => {
                 )
               );
             })}
-          <Button className={classes.warning} onClick={() => createItemAndUpdateState()}>
-            Ajouter un produit
-            <Add />
-          </Button>
         </TableBody>
       </Table>
+      <Button className={classes.warning} onClick={() => createItemAndUpdateState()}>
+        Ajouter un produit
+        <Add />
+      </Button>
     </div>
   );
 };
