@@ -86,6 +86,10 @@ class TicketEntity implements Ticket {
     this.numberTotalSell = this.numberTotalSell + numberTicketsBought;
     this.lastBuyDate = Date.now();
   }
+
+  isPast(): boolean {
+    return this.date < Date.now();
+  }
 }
 
 export default TicketEntity;

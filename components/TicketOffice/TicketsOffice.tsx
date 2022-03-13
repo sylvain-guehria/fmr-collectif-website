@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Header from 'components/Header/Header.js';
 import HeaderLinks from 'components/Header/HeaderLinks.js';
@@ -10,6 +10,12 @@ import GridContainer from 'components/lib/Grid/GridContainer';
 import GridItem from 'components/lib/Grid/GridItem';
 import { Ticket } from 'modules/ticket/ticketType';
 import { getIdOfTheNextTicketEvent } from './ticketUtil';
+import Favorite from '@material-ui/icons/Favorite';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Check from '@material-ui/icons/Check';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const useStyles = makeStyles(pricingStyle);
@@ -19,23 +25,34 @@ interface Props {
 }
 
 const Ticketoffice: React.FC<Props> = ({ tickets = [] }) => {
+  const [showFullListOfTicket, setShowFullListOfTicket] = useState(true);
   const ticketEntities: TicketEntity[] = Array.from(
     tickets || [],
     (ticket: Ticket) => new TicketEntity(ticket)
   );
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
-    document.body.scrollTop = 0;
-  });
   const classes = useStyles();
 
   ticketEntities.sort((a, b) => {
     return a.date - b.date;
   });
 
-  const ticketEntitiesMostRecentFirst = [...ticketEntities].reverse();
+  const allTicketEntitiesMostRecentFirst = [...ticketEntities].reverse();
+  const futureTicketEntitiesMostRecentFirst = allTicketEntitiesMostRecentFirst.filter(
+    ticket => !ticket.isPast()
+  );
+
+  const [listOfTicketsToDisplay, setListOfTicketsToDisplay] = useState(
+    allTicketEntitiesMostRecentFirst
+  );
 
   const idOfNextTicketEvent = getIdOfTheNextTicketEvent(ticketEntities);
+
+  const handleHideTicketsCheckBox = (): void => {
+    setListOfTicketsToDisplay(
+      showFullListOfTicket ? futureTicketEntitiesMostRecentFirst : allTicketEntitiesMostRecentFirst
+    );
+    setShowFullListOfTicket(!showFullListOfTicket);
+  };
 
   return (
     <div>
@@ -58,14 +75,29 @@ const Ticketoffice: React.FC<Props> = ({ tickets = [] }) => {
                 sm={6}
                 md={6}
                 className={classes.mlAuto + ' ' + classes.mrAuto + ' ' + classes.textCenter}>
-                <h2 className={classes.title}>Achète ton ticket d&apos;entré</h2>
+                <h2 className={classes.title}>
+                  Achète ton ticket d&apos;entré et viens t&apos;éclater avec FMR
+                  <Favorite />
+                </h2>
                 <div className={classes.sectionSpace} />
               </GridItem>
             </GridContainer>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  disableRipple
+                  tabIndex={-1}
+                  onClick={() => handleHideTicketsCheckBox()}
+                  checkedIcon={<Check />}
+                  icon={<VisibilityOff />}
+                />
+              }
+              label="Cacher les évènement passés"
+            />
             <GridContainer>
-              {ticketEntitiesMostRecentFirst &&
-                ticketEntitiesMostRecentFirst.length &&
-                ticketEntitiesMostRecentFirst.map(ticket => (
+              {listOfTicketsToDisplay &&
+                listOfTicketsToDisplay.length &&
+                listOfTicketsToDisplay.map(ticket => (
                   <TicketCard
                     key={ticket.getId()}
                     ticket={ticket}

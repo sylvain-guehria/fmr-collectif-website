@@ -24,7 +24,7 @@ const TicketCard: React.FC<Props> = ({ ticket, isNextEvent }) => {
   const canAddToCart = ticket.isTicketForSales() && ticket.getDate() > Date.now();
   const backgroundImageUrl = isNextEvent
     ? "url('https://images.unsplash.com/photo-1536940385103-c729049165e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=732&q=80"
-    : '';
+    : "url('https://images.unsplash.com/photo-1571811404701-50d168d30555?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80";
   return (
     <GridItem xs={12} sm={4} md={4}>
       <Card
