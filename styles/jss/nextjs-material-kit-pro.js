@@ -173,6 +173,14 @@ const container = {
   }
 };
 
+const containerAdmin = {
+  paddingRight: '40px',
+  paddingLeft: '40px',
+  marginRight: 'auto',
+  marginLeft: 'auto',
+  width: '100%'
+};
+
 const card = {
   display: 'inline-block',
   position: 'relative',
@@ -458,6 +466,7 @@ export {
   transition,
   container,
   containerFluid,
+  containerAdmin,
   boxShadow,
   card,
   defaultFont,

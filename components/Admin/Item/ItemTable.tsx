@@ -54,6 +54,13 @@ const ItemTable: React.FC<Props> = ({ items }) => {
 
   return (
     <div className={classes.tableResponsive}>
+      <Button
+        className={classes.warning}
+        onClick={() => createItemAndUpdateState()}
+        style={{ position: 'absolute', right: '10px', top: '10px' }}>
+        Ajouter un produit
+        <Add />
+      </Button>
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
@@ -79,10 +86,6 @@ const ItemTable: React.FC<Props> = ({ items }) => {
             })}
         </TableBody>
       </Table>
-      <Button className={classes.warning} onClick={() => createItemAndUpdateState()}>
-        Ajouter un produit
-        <Add />
-      </Button>
     </div>
   );
 };

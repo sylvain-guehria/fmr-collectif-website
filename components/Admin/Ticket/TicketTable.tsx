@@ -63,6 +63,13 @@ const TicketTable: React.FC<Props> = ({ tickets }) => {
 
   return (
     <div className={classes.tableResponsive}>
+      <Button
+        className={classes.warning}
+        onClick={() => createTicketAndUpdateState()}
+        style={{ position: 'absolute', right: '10px', top: '10px' }}>
+        Ajouter un ticket
+        <Add />
+      </Button>
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
@@ -91,10 +98,6 @@ const TicketTable: React.FC<Props> = ({ tickets }) => {
             })}
         </TableBody>
       </Table>
-      <Button className={classes.warning} onClick={() => createTicketAndUpdateState()}>
-        Ajouter un ticket
-        <Add />
-      </Button>
     </div>
   );
 };

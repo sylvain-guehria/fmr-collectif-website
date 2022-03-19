@@ -55,7 +55,7 @@ const Stocks: React.FC<Props> = ({ items = [] }) => {
         </div>
       </Parallax>
       <div className={classNames(classes.main, classes.mainRaised)}>
-        <div className={classes.container}>
+        <div className={classes.containerAdmin}>
           <Card plain>
             <div>
               {!itemEntities ? (

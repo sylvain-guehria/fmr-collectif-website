@@ -44,7 +44,6 @@ const Stocks: React.FC<Props> = ({ tickets = [] }) => {
           color: 'info',
         }}
       />
-
       <Parallax image="/img/examples/bg2.jpg" filter="dark" small>
         <div className={classes.container}>
           <GridContainer>
@@ -58,7 +57,7 @@ const Stocks: React.FC<Props> = ({ tickets = [] }) => {
         </div>
       </Parallax>
       <div className={classNames(classes.main, classes.mainRaised)}>
-        <div className={classes.container}>
+        <div className={classes.containerAdmin}>
           <Card plain>
             <div>
               {!ticketEntities ? (

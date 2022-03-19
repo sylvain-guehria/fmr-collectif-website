@@ -7,7 +7,8 @@ import {
   mrAuto,
   whiteColor,
   grayColor,
-  mlAuto
+  mlAuto,
+  containerAdmin
 } from 'styles/jss/nextjs-material-kit-pro.js';
 
 import buttonGroup from 'styles/jss/nextjs-material-kit-pro/buttonGroupStyle.js';
@@ -25,6 +26,7 @@ const styles = {
     ...container,
     zIndex: 1
   },
+  containerAdmin,
   title: {
     ...title,
     '&, & + h4': {

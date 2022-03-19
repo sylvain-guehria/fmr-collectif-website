@@ -21,8 +21,10 @@ import tableStyles from 'styles/jss/nextjs-material-kit-pro/components/tableStyl
 import ConfirmDialog from '../../lib/ConfirmDialog/ConfirmDialog';
 import { saveTicketUseCase } from '../../../usecases';
 import { Ticket } from '../../../modules/ticket/ticketType';
-import { Checkbox } from '@material-ui/core';
+import { Checkbox, FormControl } from '@material-ui/core';
 import Check from '@mui/icons-material/Check';
+import Datetime from 'react-datetime';
+import moment from 'moment';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -96,22 +98,23 @@ const TicketTableLine: React.FC<Props> = ({ ticket, deleteTicket }) => {
                 disabled: !isEditMode,
               }}
             />
-            <CustomInput
-              formControlProps={{
-                fullWidth: true,
-              }}
-              error={getError(errors, 'date')}
-              inputProps={{
-                ...register('date'),
-                placeholder: 'Date',
-                type: 'date',
-                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-                  setValue('date', Date.parse(e?.target?.value)),
-                defaultValue: new Date(date).toISOString().split('T')[0],
-                disabled: !isEditMode,
-              }}
-            />
-
+            <FormControl fullWidth style={{ margin: 'auto' }}>
+              <Datetime
+                initialValue={new Date(date)}
+                onChange={date => {
+                  setValue(
+                    'date',
+                    typeof date !== 'string' && moment.isMoment(date)
+                      ? parseInt(moment(date).format('x'))
+                      : 0
+                  );
+                }}
+                inputProps={{
+                  placeholder: 'Date et heure',
+                  disabled: !isEditMode,
+                }}
+              />
+            </FormControl>
             <CustomInput
               formControlProps={{
                 fullWidth: true,

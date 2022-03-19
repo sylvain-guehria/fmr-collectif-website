@@ -95,7 +95,7 @@ const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div style={{ display: 'flex' }}>
             {isEditMode ? (
-              <>
+              <div>
                 <ImageUpload
                   addButtonProps={{ round: true }}
                   changeButtonProps={{ round: true }}
@@ -103,7 +103,7 @@ const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
                   callBackOnFileChange={handleFileChange}
                 />
                 <p style={{ color: 'red' }}>{getError(errors, 'photoLink')}</p>
-              </>
+              </div>
             ) : (
               <div style={{ width: '100%' }}>
                 <Image
@@ -130,7 +130,7 @@ const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
                 disabled: !isEditMode,
               }}
             />
-            <FormControl fullWidth>
+            <FormControl fullWidth style={{ margin: 'auto' }}>
               <Select
                 error={!!getError(errors, 'gender')}
                 inputProps={{
