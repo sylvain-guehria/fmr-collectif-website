@@ -16,6 +16,10 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Check from '@mui/icons-material/Check';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { useBoutique } from '../../hooks/useBoutique';
+import Link from 'next/link';
+import Button from './../lib/CustomButtons/Button';
+import ShoppingCart from '@mui/icons-material/ShoppingCart';
+import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -28,7 +32,7 @@ interface Props {
 const Ticketoffice: React.FC<Props> = ({ tickets = [] }) => {
   const [showFullListOfTicket, setShowFullListOfTicket] = useState(true);
   const {
-    boutiques: { ticketsQuantityBought },
+    boutiques: { tickets: ticketsInCart, ticketsQuantityBought },
     addTicket,
     deleteTicket,
   } = useBoutique();
@@ -101,6 +105,17 @@ const Ticketoffice: React.FC<Props> = ({ tickets = [] }) => {
               }
               label="Cacher les évènement passés"
             />
+            {ticketsInCart && !!ticketsInCart.length && (
+              <Link href="/shopping-cart">
+                <Button color="transparent" round>
+                  <>
+                    <KeyboardArrowRight />
+                    <ShoppingCart />
+                    Aller au panier
+                  </>
+                </Button>
+              </Link>
+            )}
             <GridContainer>
               {listOfTicketsToDisplay &&
                 !!listOfTicketsToDisplay.length &&

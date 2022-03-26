@@ -10,64 +10,47 @@ import Link from 'next/link';
 import adminStyle from 'styles/jss/nextjs-material-kit-pro/pages/adminStyle.js';
 import Remove from '@mui/icons-material/Remove';
 import Add from '@mui/icons-material/Add';
-import ItemEntity from '../../modules/item/ItemEntity';
+import TicketEntity from '../../modules/ticket/TicketEntity';
 import { Operation } from 'hooks/useBoutique';
+import { formatTicketDate } from 'components/TicketOffice/ticketUtil';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const useStyles = makeStyles(adminStyle);
 
 interface Props {
-  item: ItemEntity;
-  deleteItem: (itemUid: string) => void;
-  updateItemQuantity: (itemUid: string, operation: Operation.ADD | Operation.MINUS) => void;
-  itemsQuantityBought: Record<string, number>;
+  ticket: TicketEntity;
+  deleteTicket: (ticketUid: string) => void;
+  updateTicketQuantity: (ticketUid: string, operation: Operation.ADD | Operation.MINUS) => void;
+  ticketsQuantityBought: Record<string, number>;
 }
 
-const ShoppingCartLine: React.FC<Props> = ({
-  item,
-  deleteItem,
-  updateItemQuantity,
-  itemsQuantityBought,
+const ShoppingTicketCartLine: React.FC<Props> = ({
+  ticket,
+  deleteTicket,
+  updateTicketQuantity,
+  ticketsQuantityBought,
 }) => {
-  const { uid, label, size, photoLink, color, price } = item;
-
   const classes = useStyles();
 
   return (
     <>
       <TableRow>
-        <TableCell />
-        <TableCell>
-          <div className={classes.imgContainer}>
-            <img src={photoLink || ''} alt="..." />
-          </div>
-        </TableCell>
         <TableCell>
           <span>
-            <Link href="/shop">{`${label}`}</Link>
+            <Link href="/ticket-office">{`${ticket.getLabel()}`}</Link>
           </span>
         </TableCell>
         <TableCell>
           <span>
-            <a href="" className={classes.tdNameAnchor}>
-              {color}
-            </a>
+            {formatTicketDate(ticket.getDate())}
             <br />
           </span>
         </TableCell>
         <TableCell>
-          <span>
-            <a href="/shop" className={classes.tdNameAnchor}>
-              {size}
-            </a>
-          </span>
+          <span>{ticket.getPlace()}</span>
         </TableCell>
         <TableCell>
-          <span>
-            <a href="/shop" className={classes.tdNameAnchor}>
-              {price} €
-            </a>
-          </span>
+          <span>{ticket.getPrice()} €</span>
         </TableCell>
 
         <TableCell>
@@ -77,7 +60,7 @@ const ShoppingCartLine: React.FC<Props> = ({
               size="sm"
               round
               className={classes.firstButton}
-              onClick={() => updateItemQuantity(uid, Operation.MINUS)}>
+              onClick={() => updateTicketQuantity(ticket.getId(), Operation.MINUS)}>
               <Remove />
             </Button>
             <Button
@@ -85,11 +68,11 @@ const ShoppingCartLine: React.FC<Props> = ({
               size="sm"
               round
               className={classes.lastButton}
-              onClick={() => updateItemQuantity(uid, Operation.ADD)}>
+              onClick={() => updateTicketQuantity(ticket.getId(), Operation.ADD)}>
               <Add />
             </Button>
           </div>
-          {itemsQuantityBought[uid]}
+          {ticketsQuantityBought[ticket.getId()]}
         </TableCell>
 
         <TableCell>
@@ -102,7 +85,7 @@ const ShoppingCartLine: React.FC<Props> = ({
               link
               className={classes.actionButton}
               onClick={() => {
-                if (uid) deleteItem(uid);
+                if (ticket.getId()) deleteTicket(ticket.getId());
               }}>
               <Close />
             </Button>
@@ -113,4 +96,4 @@ const ShoppingCartLine: React.FC<Props> = ({
   );
 };
 
-export default ShoppingCartLine;
+export default ShoppingTicketCartLine;

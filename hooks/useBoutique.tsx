@@ -9,6 +9,7 @@ type ContextProps = {
   deleteItem: (itemUid: string) => void;
   deleteTicket: (ticketUid: string) => void;
   updateItemQuantity: (itemUid: string, operation: Operation.ADD | Operation.MINUS) => void;
+  updateTicketQuantity: (ticketUid: string, operation: Operation.ADD | Operation.MINUS) => void;
   getTotalPrice: () => number;
   resetBoutiques: () => void;
 };
@@ -101,6 +102,28 @@ export const useProvideBoutique = (): Partial<ContextProps> => {
     setBoutiques(localBoutique);
   };
 
+  const updateTicketQuantity = (
+    ticketUid: string,
+    operation: Operation.ADD | Operation.MINUS
+  ): void => {
+    const localBoutique = { ...boutiques };
+    const currentTicket = localBoutique.tickets.find(item => item.getId() === ticketUid);
+    let updatedQuantity = 1;
+    if (
+      operation === Operation.ADD &&
+      currentTicket &&
+      localBoutique.ticketsQuantityBought[ticketUid] < currentTicket.getQuantity()
+    ) {
+      updatedQuantity = localBoutique.ticketsQuantityBought[ticketUid] + 1;
+      localBoutique.ticketsQuantityBought[ticketUid] = updatedQuantity;
+    }
+    if (operation === Operation.MINUS && localBoutique.ticketsQuantityBought[ticketUid] > 0) {
+      updatedQuantity = localBoutique.ticketsQuantityBought[ticketUid] - 1;
+      localBoutique.ticketsQuantityBought[ticketUid] = updatedQuantity;
+    }
+    setBoutiques(localBoutique);
+  };
+
   const getTotalPrice = (): number => {
     let totalPrice = 0;
     for (const item of boutiques.items) {
@@ -130,6 +153,7 @@ export const useProvideBoutique = (): Partial<ContextProps> => {
     deleteItem,
     deleteTicket,
     updateItemQuantity,
+    updateTicketQuantity,
     getTotalPrice,
     resetBoutiques,
   };

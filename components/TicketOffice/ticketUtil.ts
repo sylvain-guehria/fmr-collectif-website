@@ -13,12 +13,12 @@ export const getIdOfTheNextTicketEvent = (tickets: TicketEntity[]): string => {
   return idsOfTickets && idsOfTickets.length ? idsOfTickets[0] : '';
 };
 
-export const getTicketDate = (timestamp: number): string => {
+export const formatTicketDate = (timestamp: number): string => {
   if (!_isNumber(timestamp)) return '';
   return new Date(timestamp).toLocaleDateString('fr').split('T')[0];
 };
 
-export const getTicketHour = (timestamp: number): string => {
+export const formatTicketHour = (timestamp: number): string => {
   if (!_isNumber(timestamp)) return '';
   const fullDate = new Date(timestamp);
   const hour = fullDate.getHours() < 10 ? `0${fullDate.getHours()}` : fullDate.getHours();

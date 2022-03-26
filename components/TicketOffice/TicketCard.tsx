@@ -10,7 +10,7 @@ import Button from 'components/lib/CustomButtons/Button';
 
 import pricingStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsSections/pricingStyle.js';
 import TicketEntity from 'modules/ticket/TicketEntity';
-import { getTicketDate, getTicketHour } from './ticketUtil';
+import { formatTicketDate, formatTicketHour } from './ticketUtil';
 import { Tooltip } from '@material-ui/core';
 import Delete from '@mui/icons-material/Delete';
 
@@ -49,7 +49,7 @@ const TicketCard: React.FC<Props> = ({
         }}>
         <CardBody pricing background>
           {isNextEvent && 'Notre prochaine évènement :'}
-          <h6 className={classes.cardCategoryWhite}>{getTicketDate(ticket.getDate())}</h6>
+          <h6 className={classes.cardCategoryWhite}>{formatTicketDate(ticket.getDate())}</h6>
           <h1 className={classes.cardTitleWhite}>
             <small>€</small> {ticket.getPrice()}
           </h1>
@@ -59,7 +59,7 @@ const TicketCard: React.FC<Props> = ({
               <b>Lieu :</b> {ticket.getPlace()}
             </li>
             <li>
-              <b>RDV dès</b> {getTicketHour(ticket.getDate())}
+              <b>RDV dès</b> {formatTicketHour(ticket.getDate())}
             </li>
             <li>{ticket.getDescription()}</li>
           </ul>
