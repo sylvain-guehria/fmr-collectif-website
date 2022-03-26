@@ -96,7 +96,7 @@ const Ticketoffice: React.FC<Props> = ({ tickets = [] }) => {
             />
             <GridContainer>
               {listOfTicketsToDisplay &&
-                listOfTicketsToDisplay.length &&
+                !!listOfTicketsToDisplay.length &&
                 listOfTicketsToDisplay.map(ticket => (
                   <TicketCard
                     key={ticket.getId()}

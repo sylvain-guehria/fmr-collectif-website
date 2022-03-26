@@ -10,6 +10,7 @@ import Button from 'components/lib/CustomButtons/Button';
 
 import pricingStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsSections/pricingStyle.js';
 import TicketEntity from 'modules/ticket/TicketEntity';
+import { getTicketDate, getTicketHour } from './ticketUtil';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -37,9 +38,7 @@ const TicketCard: React.FC<Props> = ({ ticket, isNextEvent }) => {
         }}>
         <CardBody pricing background>
           {isNextEvent && 'Notre prochaine évènement :'}
-          <h6 className={classes.cardCategoryWhite}>
-            {new Date(ticket.getDate()).toLocaleDateString().split('T')[0]}
-          </h6>
+          <h6 className={classes.cardCategoryWhite}>{getTicketDate(ticket.getDate())}</h6>
           <h1 className={classes.cardTitleWhite}>
             <small>€</small> {ticket.getPrice()}
           </h1>
@@ -49,7 +48,7 @@ const TicketCard: React.FC<Props> = ({ ticket, isNextEvent }) => {
               <b>Lieu :</b> {ticket.getPlace()}
             </li>
             <li>
-              <b>RDV dès</b> {new Date(ticket.getDate()).toISOString().split('T')[1]}
+              <b>RDV dès</b> {getTicketHour(ticket.getDate())}
             </li>
             <li>{ticket.getDescription()}</li>
           </ul>
