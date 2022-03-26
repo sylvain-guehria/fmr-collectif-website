@@ -15,6 +15,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Check from '@mui/icons-material/Check';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { useBoutique } from '../../hooks/useBoutique';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -26,6 +27,12 @@ interface Props {
 
 const Ticketoffice: React.FC<Props> = ({ tickets = [] }) => {
   const [showFullListOfTicket, setShowFullListOfTicket] = useState(true);
+  const {
+    boutiques: { ticketsQuantityBought },
+    addTicket,
+    deleteTicket,
+  } = useBoutique();
+
   const ticketEntities: TicketEntity[] = Array.from(
     tickets || [],
     (ticket: Ticket) => new TicketEntity(ticket)
@@ -102,6 +109,9 @@ const Ticketoffice: React.FC<Props> = ({ tickets = [] }) => {
                     key={ticket.getId()}
                     ticket={ticket}
                     isNextEvent={ticket.getId() === idOfNextTicketEvent}
+                    addTicketToCart={addTicket}
+                    deleteTicketFromCart={deleteTicket}
+                    isInCart={!!ticketsQuantityBought[ticket.getId()]}
                   />
                 ))}
             </GridContainer>

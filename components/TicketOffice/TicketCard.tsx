@@ -11,6 +11,8 @@ import Button from 'components/lib/CustomButtons/Button';
 import pricingStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsSections/pricingStyle.js';
 import TicketEntity from 'modules/ticket/TicketEntity';
 import { getTicketDate, getTicketHour } from './ticketUtil';
+import { Tooltip } from '@material-ui/core';
+import Delete from '@mui/icons-material/Delete';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -19,9 +21,18 @@ const useStyles = makeStyles(pricingStyle);
 interface Props {
   ticket: TicketEntity;
   isNextEvent: boolean;
+  addTicketToCart: (ticket: TicketEntity) => void;
+  deleteTicketFromCart: (ticketId: string) => void;
+  isInCart: boolean;
 }
 
-const TicketCard: React.FC<Props> = ({ ticket, isNextEvent }) => {
+const TicketCard: React.FC<Props> = ({
+  ticket,
+  isNextEvent,
+  addTicketToCart,
+  deleteTicketFromCart,
+  isInCart,
+}) => {
   const classes = useStyles();
   const canAddToCart = ticket.isTicketForSales() && ticket.getDate() > Date.now();
   const backgroundImageUrl = isNextEvent
@@ -54,9 +65,20 @@ const TicketCard: React.FC<Props> = ({ ticket, isNextEvent }) => {
           </ul>
         </CardBody>
         <CardFooter pricing className={classes.justifyContentCenter}>
-          <Button color="white" round disabled={!canAddToCart}>
+          <Button
+            color="white"
+            round
+            disabled={!canAddToCart}
+            onClick={() => addTicketToCart(ticket)}>
             Ajouter au panier
           </Button>
+          {isInCart && (
+            <Tooltip id="delete" title={'Supprimer du panier'} placement="left">
+              <Button link onClick={() => deleteTicketFromCart(ticket.getId())}>
+                <Delete color={'error'} />
+              </Button>
+            </Tooltip>
+          )}
         </CardFooter>
       </Card>
     </GridItem>
