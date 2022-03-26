@@ -1,7 +1,7 @@
 import { useProvideBoutique } from './useBoutique';
 import { testHook } from '../jest/testHook';
 import ItemEntity from '../modules/item/ItemEntity';
-import TicketEntity from '../modules/ticket/ticketEntity';
+import TicketEntity from '../modules/ticket/TicketEntity';
 import { act } from '@testing-library/react';
 
 let hookResponse;
@@ -26,10 +26,20 @@ describe('#Items', () => {
         hookResponse = useProvideBoutique();
     });
     it('Add an item to the item boutique', async () => {
+        let success;
         act(() => {
-            hookResponse.addItem(item1);
+            success = hookResponse.addItem(item1);
         });
         expect(hookResponse.boutiques.items).toStrictEqual([item1]);
+        expect(success).toBe(true);
+    });
+    it('Do not add an item to the item boutique if it is not an item entity', async () => {
+        let success;
+        act(() => {
+            success = hookResponse2.addItem({id: 'id'});
+        });
+        expect(hookResponse.boutiques.items).toStrictEqual([item1]);
+        expect(success).toBe(false);
     });
     it('Add the quantity in the itemsQuantityBought object with the item id as attribute', async () => {
         expect(hookResponse.boutiques.itemsQuantityBought).toStrictEqual({ uid1: 1 });
@@ -77,10 +87,20 @@ describe('#Tickets', () => {
         hookResponse2 = useProvideBoutique();
     });
     it('Add a ticket to the ticket boutique', async () => {
+        let success;
         act(() => {
-            hookResponse2.addTicket(ticket1);
+            success = hookResponse2.addTicket(ticket1);
         });
         expect(hookResponse2.boutiques.tickets).toStrictEqual([ticket1]);
+        expect(success).toBe(true);
+    });
+    it('Do not add a ticket to the ticket boutique if it is not a ticket entity', async () => {
+        let success;
+        act(() => {
+            success = hookResponse2.addTicket({id: 'id'});
+        });
+        expect(hookResponse2.boutiques.tickets).toStrictEqual([ticket1]);
+        expect(success).toBe(false);
     });
     it('Add the quantity in the ticketsQuantityBought object with the ticket id as attribute', async () => {
         expect(hookResponse2.boutiques.ticketsQuantityBought).toStrictEqual({ uid1: 1 });

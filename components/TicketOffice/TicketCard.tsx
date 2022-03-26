@@ -13,6 +13,7 @@ import TicketEntity from 'modules/ticket/TicketEntity';
 import { formatTicketDate, formatTicketHour } from './ticketUtil';
 import { Tooltip } from '@material-ui/core';
 import Delete from '@mui/icons-material/Delete';
+import { toast } from 'react-toastify';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -21,7 +22,7 @@ const useStyles = makeStyles(pricingStyle);
 interface Props {
   ticket: TicketEntity;
   isNextEvent: boolean;
-  addTicketToCart: (ticket: TicketEntity) => void;
+  addTicketToCart: (ticket: TicketEntity) => boolean;
   deleteTicketFromCart: (ticketId: string) => void;
   isInCart: boolean;
 }
@@ -35,6 +36,12 @@ const TicketCard: React.FC<Props> = ({
 }) => {
   const classes = useStyles();
   const canAddToCart = ticket.isTicketForSales() && ticket.getDate() > Date.now();
+
+  const addTicketToCartAndToast = (): void => {
+    const success = addTicketToCart(ticket);
+    if (success) toast.success('Ticket ajouté au panier');
+  };
+
   const backgroundImageUrl = isNextEvent
     ? "url('https://images.unsplash.com/photo-1536940385103-c729049165e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=732&q=80"
     : "url('https://images.unsplash.com/photo-1571811404701-50d168d30555?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80";
@@ -65,11 +72,7 @@ const TicketCard: React.FC<Props> = ({
           </ul>
         </CardBody>
         <CardFooter pricing className={classes.justifyContentCenter}>
-          <Button
-            color="white"
-            round
-            disabled={!canAddToCart}
-            onClick={() => addTicketToCart(ticket)}>
+          <Button color="white" round disabled={!canAddToCart} onClick={addTicketToCartAndToast}>
             Ajouter au panier
           </Button>
           {isInCart && (

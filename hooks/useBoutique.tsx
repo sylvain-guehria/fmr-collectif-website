@@ -1,11 +1,11 @@
 import React, { useState, useContext, createContext } from 'react';
 import ItemEntity from '../modules/item/ItemEntity';
-import TicketEntity from 'modules/ticket/TicketEntity';
+import TicketEntity from '../modules/ticket/TicketEntity';
 
 type ContextProps = {
   boutiques: Boutiques;
-  addItem: (item: ItemEntity) => void;
-  addTicket: (ticket: TicketEntity) => void;
+  addItem: (item: ItemEntity) => boolean;
+  addTicket: (ticket: TicketEntity) => boolean;
   deleteItem: (itemUid: string) => void;
   deleteTicket: (ticketUid: string) => void;
   updateItemQuantity: (itemUid: string, operation: Operation.ADD | Operation.MINUS) => void;
@@ -42,7 +42,8 @@ export const useProvideBoutique = (): Partial<ContextProps> => {
     ticketsQuantityBought: {},
   });
 
-  const addItem = (item: ItemEntity): void => {
+  const addItem = (item: ItemEntity): boolean => {
+    if (!(item instanceof ItemEntity)) return false;
     const localBoutique = { ...boutiques };
     if (localBoutique.itemsQuantityBought[item.getId()]) {
       localBoutique.itemsQuantityBought[item.getId()] =
@@ -52,9 +53,11 @@ export const useProvideBoutique = (): Partial<ContextProps> => {
       localBoutique.itemsQuantityBought[item.getId()] = 1;
     }
     setBoutiques(localBoutique);
+    return true;
   };
 
-  const addTicket = (ticket: TicketEntity): void => {
+  const addTicket = (ticket: TicketEntity): boolean => {
+    if (!(ticket instanceof TicketEntity)) return false;
     const localBoutique = { ...boutiques };
     if (localBoutique.ticketsQuantityBought[ticket.getId()]) {
       localBoutique.ticketsQuantityBought[ticket.getId()] =
@@ -64,6 +67,7 @@ export const useProvideBoutique = (): Partial<ContextProps> => {
       localBoutique.ticketsQuantityBought[ticket.getId()] = 1;
     }
     setBoutiques(localBoutique);
+    return true;
   };
 
   const deleteItem = (itemUid: string): void => {
