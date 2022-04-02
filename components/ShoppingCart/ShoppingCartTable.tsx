@@ -33,18 +33,18 @@ const ShoppingCartTable: React.FC<Props> = ({ readOnly }) => {
     getTotalPrice,
   } = useBoutique();
 
-  const cartContainItem = !!items.length;
-  const cartContainTicket = !!tickets.length;
-  const cartContainProduct = cartContainItem || cartContainTicket;
+  const cartContainsItem = !!items.length;
+  const cartContainsTicket = !!tickets.length;
+  const cartContainsProduct = cartContainsItem || cartContainsTicket;
 
   const tableItemHead = ['', '', 'Produit', 'Couleur', 'Taille', 'Prix', 'Quantité', ' ', ' '];
   const tableTicketHead = ['Ticket', 'Date', 'Lieu', 'Prix', 'Quantité', ' ', ' '];
 
   return (
-    <div className={classes.tableResponsive}>
-      {cartContainProduct ? (
+    <div className={`${classes.tableResponsive} ${classes.padding}`}>
+      {cartContainsProduct ? (
         <>
-          {cartContainItem && (
+          {cartContainsItem && (
             <Table className={classes.table}>
               <TableHead>
                 <TableRow>
@@ -72,7 +72,7 @@ const ShoppingCartTable: React.FC<Props> = ({ readOnly }) => {
               </TableBody>
             </Table>
           )}
-          {cartContainTicket && (
+          {cartContainsTicket && (
             <Table className={classes.table}>
               <TableHead>
                 <TableRow>
