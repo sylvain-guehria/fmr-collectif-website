@@ -7,8 +7,8 @@ import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 
-// @material-ui/icons
-import ExpandMore from '@material-ui/icons/ExpandMore';
+// @mui/icons-material
+import ExpandMore from '@mui/icons-material/ExpandMore';
 
 import styles from 'styles/jss/nextjs-material-kit-pro/components/accordionStyle.js';
 

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { makeStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
 import Hidden from '@material-ui/core/Hidden';
-import Fingerprint from '@material-ui/icons/Fingerprint';
+import Fingerprint from '@mui/icons-material/Fingerprint';
 import Button from '../../components/lib/CustomButtons/Button';
 import { useAuth } from '../../hooks/useAuth';
 

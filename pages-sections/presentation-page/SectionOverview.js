@@ -9,10 +9,10 @@ import Card from 'components/lib/Card/Card.js';
 import CardHeader from 'components/lib/Card/CardHeader.js';
 import CardBody from 'components/lib/Card/CardBody.js';
 // @material-ui icons
-import Grid from '@material-ui/icons/GridOn';
-import PhoneLink from '@material-ui/icons/Phonelink';
-import AccessTime from '@material-ui/icons/AccessTime';
-import AttachMoney from '@material-ui/icons/AttachMoney';
+import Grid from '@mui/icons-material/GridOn';
+import PhoneLink from '@mui/icons-material/Phonelink';
+import AccessTime from '@mui/icons-material/AccessTime';
+import AttachMoney from '@mui/icons-material/AttachMoney';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
 

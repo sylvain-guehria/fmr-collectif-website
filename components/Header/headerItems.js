@@ -1,18 +1,18 @@
 import React from 'react';
 
-import Apps from '@material-ui/icons/Apps';
-import ShoppingCart from '@material-ui/icons/ShoppingCart';
-import ShoppingBasket from '@material-ui/icons/ShoppingBasket';
-import LineStyle from '@material-ui/icons/LineStyle';
-import AccountBalance from '@material-ui/icons/AccountBalance';
-import ArtTrack from '@material-ui/icons/ArtTrack';
-import Store from '@material-ui/icons/Store';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import PersonAdd from '@material-ui/icons/PersonAdd';
-import Call from '@material-ui/icons/Call';
-import Dns from '@material-ui/icons/Dns';
-import Build from '@material-ui/icons/Build';
-import People from '@material-ui/icons/People';
+import Apps from '@mui/icons-material/Apps';
+import ShoppingCart from '@mui/icons-material/ShoppingCart';
+import ShoppingBasket from '@mui/icons-material/ShoppingBasket';
+import LineStyle from '@mui/icons-material/LineStyle';
+import AccountBalance from '@mui/icons-material/AccountBalance';
+import ArtTrack from '@mui/icons-material/ArtTrack';
+import Store from '@mui/icons-material/Store';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import PersonAdd from '@mui/icons-material/PersonAdd';
+import Call from '@mui/icons-material/Call';
+import Dns from '@mui/icons-material/Dns';
+import Build from '@mui/icons-material/Build';
+import People from '@mui/icons-material/People';
 
 const headerItems = [
   {
@@ -110,6 +110,11 @@ const headerItems = [
         href: '/admin/stocks',
         label: 'Stocks',
         icon: <Dns />
+      },
+      {
+        href: '/admin/tickets',
+        label: 'Tickets',
+        icon: <LineStyle />
       }
     ]
   }

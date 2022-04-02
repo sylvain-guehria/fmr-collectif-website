@@ -3,7 +3,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import logger from '../modules/logger/logger';
-import { useToasts } from 'react-toast-notifications';
+import { toast } from 'react-toastify';
 import firebaseUserRepository from '../modules/user/firebaseUserRepository';
 import UserEntity from '../modules/user/UserEntity';
 import { useRouter } from 'next/router';
@@ -25,7 +25,6 @@ export const useAuth = () => {
 function useProvideAuth() {
   const [user, setUser] = useState(null);
   const [isUserLoading, setIsUserLoading] = useState(true);
-  const { addToast } = useToasts();
   const router = useRouter();
 
   const loginEmail = (email, password) => {
@@ -33,7 +32,7 @@ function useProvideAuth() {
     return auth.signInWithEmailAndPassword(email, password).then(response => {
       return response.user;
     }).then(() => setIsUserLoading(false)).catch(e => {
-      addToast(e.message, { appearance: 'error', autoDismiss: true });
+      toast.error(e.message);
       setIsUserLoading(false);
     });
   };
@@ -54,7 +53,7 @@ function useProvideAuth() {
         };
       })
       .catch(function (error) {
-        addToast(error.message, { appearance: 'error', autoDismiss: true });
+        toast.error(error.message);
         logger.error(error);
         setIsUserLoading(false);
       });
@@ -76,7 +75,7 @@ function useProvideAuth() {
         };
       })
       .catch(error => {
-        addToast(error.message, { appearance: 'error', autoDismiss: true });
+        toast.error(error.message);
         logger.info(error);
         setIsUserLoading(false);
       });
@@ -96,7 +95,7 @@ function useProvideAuth() {
         };
       })
       .catch(error => {
-        addToast(error.message, { appearance: 'error', autoDismiss: true });
+        toast.error(error.message);
         logger.error({ error });
         setIsUserLoading(false);
       });
@@ -106,22 +105,22 @@ function useProvideAuth() {
     return auth
       .signOut()
       .then(() => {
-        addToast('Aurevoir =)', { appearance: 'info', autoDismiss: true });
+        toast.info('Aurevoir =)');
         setUser(false);
         router.push('/');
       })
       .catch(function (error) {
-        addToast(error.message, { appearance: 'error', autoDismiss: true });
+        toast.error(error.message);
         logger.error(error);
       });
   };
 
   const sendPasswordResetEmail = async (email) => {
     auth.sendPasswordResetEmail(email).then(() => {
-      addToast('Un email pour vient de vous être envoyer', { appearance: 'info', autoDismiss: true });
+      toast.info('Un email pour vient de vous être envoyer');
     })
       .catch(function (error) {
-        addToast(error.message, { appearance: 'error', autoDismiss: true });
+        toast.error(error.message);
         logger.error(error);
       });
   };
@@ -154,7 +153,6 @@ function useProvideAuth() {
           setUser(UserEntity.new({ ...user }));
         }
         setIsUserLoading(false);
-        // addToast(`Bonjour ${fullUser?.firstName} =)`, { appearance: 'success', autoDismiss: true });
       } else {
         setUser(false);
         setIsUserLoading(false);

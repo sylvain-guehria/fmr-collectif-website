@@ -7,9 +7,9 @@ import Carousel from 'react-slick';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-// @material-ui/icons
-import Share from '@material-ui/icons/Share';
-import ShoppingCart from '@material-ui/icons/ShoppingCart';
+// @mui/icons-material
+import Share from '@mui/icons-material/Share';
+import ShoppingCart from '@mui/icons-material/ShoppingCart';
 // core components
 import Header from 'components/Header/Header.js';
 import Button from 'components/lib/CustomButtons/Button';

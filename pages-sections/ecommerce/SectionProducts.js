@@ -10,11 +10,11 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Tooltip from '@material-ui/core/Tooltip';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 // @material-ui icons
-import Favorite from '@material-ui/icons/Favorite';
-import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
-import Cached from '@material-ui/icons/Cached';
-import Subject from '@material-ui/icons/Subject';
-import Check from '@material-ui/icons/Check';
+import Favorite from '@mui/icons-material/Favorite';
+import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
+import Cached from '@mui/icons-material/Cached';
+import Subject from '@mui/icons-material/Subject';
+import Check from '@mui/icons-material/Check';
 // core components
 import Accordion from 'components/lib/Accordion/Accordion.js';
 import GridContainer from 'components/lib/Grid/GridContainer.js';

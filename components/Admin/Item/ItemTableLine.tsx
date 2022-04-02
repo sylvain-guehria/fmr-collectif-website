@@ -2,10 +2,10 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
-import Edit from '@material-ui/icons/Edit';
-import Delete from '@material-ui/icons/Delete';
-import Close from '@material-ui/icons/Close';
-import SaveAlt from '@material-ui/icons/SaveAlt';
+import Edit from '@mui/icons-material/Edit';
+import Delete from '@mui/icons-material/Delete';
+import Close from '@mui/icons-material/Close';
+import SaveAlt from '@mui/icons-material/SaveAlt';
 import Button from '../../lib/CustomButtons/Button';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
@@ -14,9 +14,9 @@ import ItemEntity from '../../../modules/item/ItemEntity';
 import CustomInput from '../../lib/CustomInput/CustomInput';
 import { FormControl, MenuItem, Select } from '@material-ui/core';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
 import { getError } from '../../forms/formUtils';
-import { useToasts } from 'react-toast-notifications';
+import { toast } from 'react-toastify';
 import { validationSchema } from './ItemTableFormValidation';
 import Image from 'next/image';
 import tableStyles from 'styles/jss/nextjs-material-kit-pro/components/tableStyle.js';
@@ -59,7 +59,6 @@ const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
   };
   const classes = useStyles();
   const tableClasses = useTableStyles();
-  const { addToast } = useToasts();
 
   const {
     register,
@@ -77,7 +76,7 @@ const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
         setCurrentImageDisplayedLink(updatedPhotoLink);
       })
       .catch((error: Error) => {
-        addToast(error.message, { appearance: 'error', autoDismiss: true });
+        toast.error(error.message);
       });
   };
 
@@ -96,7 +95,7 @@ const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div style={{ display: 'flex' }}>
             {isEditMode ? (
-              <>
+              <div>
                 <ImageUpload
                   addButtonProps={{ round: true }}
                   changeButtonProps={{ round: true }}
@@ -104,7 +103,7 @@ const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
                   callBackOnFileChange={handleFileChange}
                 />
                 <p style={{ color: 'red' }}>{getError(errors, 'photoLink')}</p>
-              </>
+              </div>
             ) : (
               <div style={{ width: '100%' }}>
                 <Image
@@ -131,7 +130,7 @@ const ItemTableLine: React.FC<Props> = ({ item, deleteItem }) => {
                 disabled: !isEditMode,
               }}
             />
-            <FormControl fullWidth>
+            <FormControl fullWidth style={{ margin: 'auto' }}>
               <Select
                 error={!!getError(errors, 'gender')}
                 inputProps={{

@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
-// @material-ui/icons
+// @mui/icons-material
 // core components
 
 import styles from 'styles/jss/nextjs-material-kit-pro/components/mediaStyle.js';

@@ -10,6 +10,9 @@ import {
 } from 'styles/jss/nextjs-material-kit-pro.js';
 
 const tableStyle = {
+  padding : {
+    padding: '20px',
+  },
   warning: {
     color: warningColor[0]
   },

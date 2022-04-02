@@ -1,22 +1,22 @@
 import React from 'react';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
-// @material-ui/icons
-import Chat from '@material-ui/icons/Chat';
-import VerifiedUser from '@material-ui/icons/VerifiedUser';
-import Fingerprint from '@material-ui/icons/Fingerprint';
-import GroupWork from '@material-ui/icons/GroupWork';
-import Airplay from '@material-ui/icons/Airplay';
-import LocationOn from '@material-ui/icons/LocationOn';
-import Extension from '@material-ui/icons/Extension';
-import ChildFriendly from '@material-ui/icons/ChildFriendly';
-import WatchLater from '@material-ui/icons/WatchLater';
-import Code from '@material-ui/icons/Code';
-import FormatPaint from '@material-ui/icons/FormatPaint';
-import Dashboard from '@material-ui/icons/Dashboard';
-import ViewCarousel from '@material-ui/icons/ViewCarousel';
-import AccessTime from '@material-ui/icons/AccessTime';
-import AttachMoney from '@material-ui/icons/AttachMoney';
+// @mui/icons-material
+import Chat from '@mui/icons-material/Chat';
+import VerifiedUser from '@mui/icons-material/VerifiedUser';
+import Fingerprint from '@mui/icons-material/Fingerprint';
+import GroupWork from '@mui/icons-material/GroupWork';
+import Airplay from '@mui/icons-material/Airplay';
+import LocationOn from '@mui/icons-material/LocationOn';
+import Extension from '@mui/icons-material/Extension';
+import ChildFriendly from '@mui/icons-material/ChildFriendly';
+import WatchLater from '@mui/icons-material/WatchLater';
+import Code from '@mui/icons-material/Code';
+import FormatPaint from '@mui/icons-material/FormatPaint';
+import Dashboard from '@mui/icons-material/Dashboard';
+import ViewCarousel from '@mui/icons-material/ViewCarousel';
+import AccessTime from '@mui/icons-material/AccessTime';
+import AttachMoney from '@mui/icons-material/AttachMoney';
 // core components
 import GridContainer from 'components/lib/Grid/GridContainer.js';
 import GridItem from 'components/lib/Grid/GridItem.js';

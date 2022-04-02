@@ -10,11 +10,10 @@ import GridContainer from 'components/lib/Grid/GridContainer.js';
 import GridItem from 'components/lib/Grid/GridItem.js';
 import Parallax from 'components/lib/Parallax/Parallax.js';
 // import SectionLatestOffers from 'pages-sections/ecommerce/SectionLatestOffers.js';
-import Favorite from '@material-ui/icons/Favorite';
+import Favorite from '@mui/icons-material/Favorite';
 import ShopItemCard from '../ShopItemCard/ShopItemCard';
 import styles from 'styles/jss/nextjs-material-kit-pro/pages/ecommerceStyle.js';
 import { Item } from '../../modules/item/itemType';
-import useSWR from 'swr';
 import ItemEntity from '../../modules/item/ItemEntity';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -26,10 +25,7 @@ interface Props {
 }
 
 const Shop: React.FC<Props> = ({ items = [] }) => {
-  const { data } = useSWR('/item/getAll', { initialData: items });
-
-  const itemEntities: ItemEntity[] = Array.from(data || [], item => new ItemEntity(item));
-
+  const itemEntities: ItemEntity[] = Array.from(items, item => new ItemEntity(item));
   React.useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;

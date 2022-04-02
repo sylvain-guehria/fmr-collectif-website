@@ -3,9 +3,9 @@ import React from 'react';
 import Carousel from 'react-slick';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
-// @material-ui/icons
-import FormatQuote from '@material-ui/icons/FormatQuote';
-import Star from '@material-ui/icons/Star';
+// @mui/icons-material
+import FormatQuote from '@mui/icons-material/FormatQuote';
+import Star from '@mui/icons-material/Star';
 // core components
 import GridContainer from 'components/lib/Grid/GridContainer.js';
 import GridItem from 'components/lib/Grid/GridItem.js';

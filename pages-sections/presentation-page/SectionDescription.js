@@ -5,9 +5,9 @@ import GridItem from 'components/lib/Grid/GridItem.js';
 import InfoArea from 'components/lib/InfoArea/InfoArea.js';
 
 // @material-ui icons
-import Apps from '@material-ui/icons/Apps';
-import ViewDay from '@material-ui/icons/ViewDay';
-import ViewCarousel from '@material-ui/icons/ViewCarousel';
+import Apps from '@mui/icons-material/Apps';
+import ViewDay from '@mui/icons-material/ViewDay';
+import ViewCarousel from '@mui/icons-material/ViewCarousel';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
 

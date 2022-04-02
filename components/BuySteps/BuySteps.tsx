@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import classNames from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
-import CheckCircle from '@material-ui/icons/CheckCircle';
-import Home from '@material-ui/icons/Home';
-import Visibility from '@material-ui/icons/Visibility';
+import CheckCircle from '@mui/icons-material/CheckCircle';
+import Home from '@mui/icons-material/Home';
+import Visibility from '@mui/icons-material/Visibility';
 import NavPills from 'components/lib/NavPills/NavPills.js';
 import Clearfix from 'components/lib/Clearfix/Clearfix.js';
 import { useRouter } from 'next/router';
@@ -13,7 +13,7 @@ import ResumeStep from './ResumeStep';
 import PaiementStep from './PaiementStep';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { validationSchema } from './BuyFormValidation';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
 import BuyPresenter from './mvp/BuyPresenter';
 import { BuyStepsViewModel } from './mvp/type';
 

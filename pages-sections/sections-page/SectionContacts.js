@@ -3,10 +3,10 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-// @material-ui/icons
-import PinDrop from '@material-ui/icons/PinDrop';
-import Phone from '@material-ui/icons/Phone';
-import Check from '@material-ui/icons/Check';
+// @mui/icons-material
+import PinDrop from '@mui/icons-material/PinDrop';
+import Phone from '@mui/icons-material/Phone';
+import Check from '@mui/icons-material/Check';
 // core components
 import GridContainer from 'components/lib/Grid/GridContainer.js';
 import GridItem from 'components/lib/Grid/GridItem.js';

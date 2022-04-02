@@ -7,8 +7,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import Button from 'components/lib/CustomButtons/Button';
 import javascriptStyles from 'styles/jss/nextjs-material-kit-pro/modalStyle.js';
 import Image from 'next/image';
-import Favorite from '@material-ui/icons/Favorite';
-import CheckCircleOutline from '@material-ui/icons/CheckCircleOutline';
+import Favorite from '@mui/icons-material/Favorite';
+import CheckCircleOutline from '@mui/icons-material/CheckCircleOutline';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore

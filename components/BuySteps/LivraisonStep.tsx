@@ -6,7 +6,7 @@ import GridItem from 'components/lib/Grid/GridItem.js';
 import CustomInput from '../lib/CustomInput/CustomInput';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Button from './../lib/CustomButtons/Button';
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import Tooltip from '@material-ui/core/Tooltip';
 
 import profilePageStyle from 'styles/jss/nextjs-material-kit-pro/pages/profilePageStyle.js';

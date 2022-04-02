@@ -7,9 +7,9 @@ import GridItem from 'components/lib/Grid/GridItem.js';
 import Button from 'components/lib/CustomButtons/Button';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
-// @material-ui/icons
-import ShoppingCart from '@material-ui/icons/ShoppingCart';
-import Store from '@material-ui/icons/Store';
+// @mui/icons-material
+import ShoppingCart from '@mui/icons-material/ShoppingCart';
+import Store from '@mui/icons-material/Store';
 
 import pricingStyle from 'styles/jss/nextjs-material-kit-pro/pages/presentationSections/pricingStyle.js';
 

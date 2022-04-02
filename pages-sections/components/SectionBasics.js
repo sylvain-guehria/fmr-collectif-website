@@ -16,11 +16,11 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import Hidden from '@material-ui/core/Hidden';
-// @material-ui/icons
-import Favorite from '@material-ui/icons/Favorite';
-import People from '@material-ui/icons/People';
-import Check from '@material-ui/icons/Check';
-import FiberManualRecord from '@material-ui/icons/FiberManualRecord';
+// @mui/icons-material
+import Favorite from '@mui/icons-material/Favorite';
+import People from '@mui/icons-material/People';
+import Check from '@mui/icons-material/Check';
+import FiberManualRecord from '@mui/icons-material/FiberManualRecord';
 // core components
 import GridContainer from 'components/lib/Grid/GridContainer.js';
 import GridItem from 'components/lib/Grid/GridItem.js';

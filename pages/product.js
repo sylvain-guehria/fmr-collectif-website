@@ -11,11 +11,11 @@ import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-// @material-ui/icons
-import ShoppingCart from "@material-ui/icons/ShoppingCart";
-import LocalShipping from "@material-ui/icons/LocalShipping";
-import VerifiedUser from "@material-ui/icons/VerifiedUser";
-import Favorite from "@material-ui/icons/Favorite";
+// @mui/icons-material
+import ShoppingCart from "@mui/icons-material/ShoppingCart";
+import LocalShipping from "@mui/icons-material/LocalShipping";
+import VerifiedUser from "@mui/icons-material/VerifiedUser";
+import Favorite from "@mui/icons-material/Favorite";
 // core components
 import Header from "components/Header/Header.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";

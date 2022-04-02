@@ -11,9 +11,9 @@ import IconButton from '@material-ui/core/IconButton';
 import Button from '../../components/lib/CustomButtons/Button';
 import Hidden from '@material-ui/core/Hidden';
 import Drawer from '@material-ui/core/Drawer';
-// @material-ui/icons
-import Menu from '@material-ui/icons/Menu';
-import Close from '@material-ui/icons/Close';
+// @mui/icons-material
+import Menu from '@mui/icons-material/Menu';
+import Close from '@mui/icons-material/Close';
 // core components
 import styles from 'styles/jss/nextjs-material-kit-pro/components/headerStyle.js';
 

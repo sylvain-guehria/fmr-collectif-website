@@ -5,7 +5,7 @@ import TableRow from '@material-ui/core/TableRow';
 import TableHead from '@material-ui/core/TableHead';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
-import Add from '@material-ui/icons/Add';
+import Add from '@mui/icons-material/Add';
 
 import ItemTableLine from './ItemTableLine';
 import tableStyles from 'styles/jss/nextjs-material-kit-pro/components/tableStyle.js';
@@ -18,7 +18,7 @@ interface Props {
 }
 
 const ItemTable: React.FC<Props> = ({ items }) => {
-  const tableHead = ['Photo', 'label', 'sex', 'taille', 'couleur', 'prix', 'quantité', 'vendu', ''];
+  const tableHead = ['Photo', 'label', 'sex', 'taille', 'couleur', 'prix', 'quantité', 'vendu'];
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const useStyles = makeStyles(tableStyles);
@@ -54,13 +54,21 @@ const ItemTable: React.FC<Props> = ({ items }) => {
 
   return (
     <div className={classes.tableResponsive}>
+      <Button
+        className={classes.warning}
+        onClick={() => createItemAndUpdateState()}
+        style={{ position: 'absolute', right: '10px', top: '10px' }}>
+        Ajouter un produit
+        <Add />
+      </Button>
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
             {tableHead &&
               tableHead.map((prop, key) => {
                 return (
-                  <TableCell width={100 / 7} key={key}>
+                  <TableCell key={key} align="center">
+                    {/* width={100 / 7} */}
                     {prop}
                   </TableCell>
                 );
@@ -76,10 +84,6 @@ const ItemTable: React.FC<Props> = ({ items }) => {
                 )
               );
             })}
-          <Button className={classes.warning} onClick={() => createItemAndUpdateState()}>
-            Ajouter un produit
-            <Add />
-          </Button>
         </TableBody>
       </Table>
     </div>

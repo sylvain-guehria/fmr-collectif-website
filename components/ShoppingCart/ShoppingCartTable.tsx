@@ -6,12 +6,14 @@ import TableHead from '@material-ui/core/TableHead';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import Button from './../lib/CustomButtons/Button';
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
-import ShoppingCartLine from './ShoppingCartLine';
+import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+import ShoppingItemCartLine from './ShoppingItemCartLine';
+import ShoppingTicketCartLine from './ShoppingTicketCartLine';
 import tableStyles from 'styles/jss/nextjs-material-kit-pro/components/tableStyle.js';
 import Image from 'next/image';
 import { useBoutique } from '../../hooks/useBoutique';
 import Link from 'next/link';
+import MultiTab from 'components/lib/Tabs/Tabs';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -24,52 +26,95 @@ type Props = {
 const ShoppingCartTable: React.FC<Props> = ({ readOnly }) => {
   const classes = useStyles();
   const {
-    boutiques: { items, itemsQuantityBought },
+    boutiques: { items, itemsQuantityBought, tickets, ticketsQuantityBought },
     deleteItem,
+    deleteTicket,
     updateItemQuantity,
+    updateTicketQuantity,
     getTotalPrice,
   } = useBoutique();
-  const cartContainProduct = items?.length;
 
-  const tableHead = ['', '', 'Produit', 'Couleur', 'Taille', 'Prix', 'Quantité', ' ', ' '];
+  const cartContainsItem = !!items.length;
+  const cartContainsTicket = !!tickets.length;
+  const cartContainsProduct = cartContainsItem || cartContainsTicket;
+
+  const tableItemHead = ['', '', 'Produit', 'Couleur', 'Taille', 'Prix', 'Quantité', ' ', ' '];
+  const tableTicketHead = ['Ticket', 'Date', 'Lieu', 'Prix', 'Quantité', ' ', ' '];
+  const tabs = [];
+
+  if (cartContainsItem) {
+    tabs.push({
+      tabLabel: 'Produits',
+      tabContent: (
+        <Table className={classes.table}>
+          <TableHead>
+            <TableRow>
+              {tableItemHead.map((prop, key) => {
+                return <TableCell key={key}>{prop}</TableCell>;
+              })}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {items &&
+              !!items.length &&
+              items.map(item => {
+                return (
+                  item.uid && (
+                    <ShoppingItemCartLine
+                      key={item.uid}
+                      item={item}
+                      deleteItem={deleteItem}
+                      updateItemQuantity={updateItemQuantity}
+                      itemsQuantityBought={itemsQuantityBought}
+                    />
+                  )
+                );
+              })}
+          </TableBody>
+        </Table>
+      ),
+    });
+  }
+
+  if (cartContainsTicket) {
+    tabs.push({
+      tabLabel: 'Tickets',
+      tabContent: (
+        <Table className={classes.table}>
+          <TableHead>
+            <TableRow>
+              {tableTicketHead.map((prop, key) => {
+                return <TableCell key={key}>{prop}</TableCell>;
+              })}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {tickets &&
+              !!tickets.length &&
+              tickets.map(ticket => {
+                return (
+                  ticket.uid && (
+                    <ShoppingTicketCartLine
+                      key={ticket.uid}
+                      ticket={ticket}
+                      deleteTicket={deleteTicket}
+                      updateTicketQuantity={updateTicketQuantity}
+                      ticketsQuantityBought={ticketsQuantityBought}
+                    />
+                  )
+                );
+              })}
+          </TableBody>
+        </Table>
+      ),
+    });
+  }
 
   return (
-    <div className={classes.tableResponsive}>
-      {cartContainProduct ? (
+    <div className={`${classes.tableResponsive} ${classes.padding}`}>
+      {cartContainsProduct ? (
         <>
-          <Table className={classes.table}>
-            {tableHead !== undefined ? (
-              <TableHead>
-                <TableRow>
-                  {tableHead.map((prop, key) => {
-                    return <TableCell key={key}>{prop}</TableCell>;
-                  })}
-                </TableRow>
-              </TableHead>
-            ) : null}
-            <TableBody>
-              {items &&
-                items.map(item => {
-                  return (
-                    item.uid && (
-                      <ShoppingCartLine
-                        key={item.uid}
-                        item={item}
-                        deleteItem={deleteItem}
-                        updateItemQuantity={updateItemQuantity}
-                        itemsQuantityBought={itemsQuantityBought}
-                      />
-                    )
-                  );
-                })}
-            </TableBody>
-            {/* <TableBody>
-              {tickets &&
-                tickets.map(ticket => {
-                  return ticket.uid && <ShoppingCartLine key={ticket.uid} ticket={ticket} />;
-                })}
-            </TableBody> */}
-          </Table>
+          <MultiTab tabs={tabs} />
           <div style={{ textAlign: 'right', margin: '10px' }}>
             Prix total : {getTotalPrice()} €
             {!readOnly && (

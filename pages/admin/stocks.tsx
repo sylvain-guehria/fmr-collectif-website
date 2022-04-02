@@ -1,7 +1,7 @@
 import React from 'react';
 import ItemEntity from '../../modules/item/ItemEntity';
 import firebaseItemRepository from '../../modules/item/firebaseItemRepository';
-import StocksComponent from '../../components/Admin/stocks';
+import StocksComponent from '../../components/Admin/Stocks';
 import { buildAdminOnlyLayout } from '../../components/Layouts/layoutBuilder';
 
 const itemRepository = new firebaseItemRepository();

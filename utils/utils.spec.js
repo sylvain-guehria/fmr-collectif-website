@@ -1,6 +1,4 @@
-import {
-  truncateText
-} from './utils';
+import { truncateText } from './utils';
 
 describe('#truncateText', () => {
   describe('there is a text and a maxLength', () => {
@@ -14,13 +12,13 @@ describe('#truncateText', () => {
   });
   describe('Writte nothing', () => {
     it('the maxLength is not a number > 0', () => {
-      expect(truncateText('I am a text to truncate', null )).toBe('');
-      expect(truncateText('I am a text to truncate', 0 )).toBe('');
-      expect(truncateText('I am a text to truncate', 'random string' )).toBe('');
+      expect(truncateText('I am a text to truncate', null)).toBe('');
+      expect(truncateText('I am a text to truncate', 0)).toBe('');
+      expect(truncateText('I am a text to truncate', 'random string')).toBe('');
     });
     it('the text is not a string', () => {
-      expect(truncateText(445454, 14 )).toBe('');
-      expect(truncateText(null, 14 )).toBe('');
+      expect(truncateText(445454, 14)).toBe('');
+      expect(truncateText(null, 14)).toBe('');
     });
   });
 });

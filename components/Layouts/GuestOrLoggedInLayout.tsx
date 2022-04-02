@@ -4,7 +4,7 @@ import Footer from '../Footer/Footer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import { makeStyles } from '@material-ui/core/styles';
-import Favorite from '@material-ui/icons/Favorite';
+import Favorite from '@mui/icons-material/Favorite';
 import SocialMediaLinks from '../SocialMedia/SocialMediaIconLinks';
 import footerStyle from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/footerStyle.js';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
