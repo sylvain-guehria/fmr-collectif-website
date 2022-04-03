@@ -39,7 +39,7 @@ const ShoppingCartTable: React.FC<Props> = ({ readOnly }) => {
   const cartContainsProduct = cartContainsItem || cartContainsTicket;
 
   const tableItemHead = ['', '', 'Produit', 'Couleur', 'Taille', 'Prix', 'Quantité', ' ', ' '];
-  const tableTicketHead = ['Ticket', 'Date', 'Lieu', 'Prix', 'Quantité', ' ', ' '];
+  const tableTicketHead = ['', '', 'Ticket', 'Date', 'Lieu', 'Prix', 'Quantité', ' ', ' '];
   const tabs = [];
 
   if (cartContainsItem) {

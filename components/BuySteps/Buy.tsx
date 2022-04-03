@@ -19,9 +19,10 @@ import { BuyStepsViewModel } from './mvp/type';
 
 import styles from 'styles/jss/nextjs-material-kit-pro/pages/ecommerceStyle.js';
 import { useAuth } from 'hooks/useAuth';
-import { itemServiceDi } from 'di';
+import { itemServiceDi, ticketServiceDi } from 'di';
 import ItemEntity from 'modules/item/ItemEntity';
 import { fetchPostJSON } from 'stripe/api-helpers';
+import TicketEntity from 'modules/ticket/TicketEntity';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -78,6 +79,8 @@ const makeBuyPresenter = (): BuyPresenter => {
   return new BuyPresenter({
     buyNumberOfItems: (item: ItemEntity, quantityBought: number) =>
       itemServiceDi.buyNumberOfItems(item, quantityBought),
+    buyNumberOfTickets: (ticket: TicketEntity, quantityBought: number) =>
+      ticketServiceDi.buyNumberOfTickets(ticket, quantityBought),
     fetchPostJSON: (path: string, params: Record<string, unknown>) => fetchPostJSON(path, params),
   });
 };

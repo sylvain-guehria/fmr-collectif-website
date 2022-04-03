@@ -70,8 +70,9 @@ const styles = {
     position: 'relative'
   },
   imgContainer: {
-    width: '120px',
-    maxHeight: '160px',
+    borderRadius: '50%',
+    maxWidth: '60px',
+    maxHeight: '60px',
     overflow: 'hidden',
     display: 'block',
     '& img': {

@@ -1,5 +1,6 @@
 import BuyPresenter from './BuyPresenter';
 import ItemEntity from '../../../modules/item/ItemEntity';
+import TicketEntity from '../../../modules/ticket/TicketEntity';
 
 const defaultViewModel = {
   remiseEnMainPropreChecked: false,
@@ -38,6 +39,7 @@ const defaultViewModel = {
 
 let presenter;
 const buyNumberOfItems = jest.fn();
+const buyNumberOfTickets = jest.fn();
 const fetchPostJSON = jest.fn();
 
 const stripe = {
@@ -49,7 +51,7 @@ const elements = {
 };
 
 beforeEach(() => {
-  presenter = new BuyPresenter({ buyNumberOfItems, fetchPostJSON });
+  presenter = new BuyPresenter({ buyNumberOfItems, buyNumberOfTickets, fetchPostJSON });
 });
 
 describe('#useDynamicDependencies', () => {
@@ -65,12 +67,12 @@ describe('#useDynamicDependencies', () => {
     presenter.updateDependencies({
       boutiques: {
         items: ['item1', 'item2'],
-        tickets: []
+        tickets: ['ticket1']
       }
     });
     expect(presenter.viewModel().boutiques).toStrictEqual({
       items: ['item1', 'item2'],
-      tickets: []
+      tickets: ['ticket1']
     });
   });
 });
@@ -198,16 +200,20 @@ describe('#setShippingData', () => {
 });
 
 describe('The user make a payment', () => {
-  presenter = new BuyPresenter({ buyNumberOfItems, fetchPostJSON });
+  presenter = new BuyPresenter({ buyNumberOfItems, buyNumberOfTickets, fetchPostJSON });
   const item1 = new ItemEntity({ uid: 'uid1', quantity: 3, label: 'labelItem1' });
   const item2 = new ItemEntity({ uid: 'uid2', quantity: 1, label: 'labelItem2' });
+
+  const ticket1 = new TicketEntity({ uid: 'ticketId1', quantity: 50, label: 'labelTicket1' });
+  const ticket2 = new TicketEntity({ uid: 'ticketId2', quantity: 30, label: 'labelTicket2' });
+
 
   beforeEach(() => {
     jest.resetAllMocks();
   });
 
   describe('The payment failed', () => {
-    it('Set paymentStatus to notEnoughQuantityInStock if has not Enough Quantity In Stock', async () => {
+    it('Set paymentStatus to notEnoughQuantityInStock if has not Enough item Quantity In Stock', async () => {
       await presenter.updateDependencies({
         boutiques: {
           items: [item1, item2],
@@ -216,6 +222,20 @@ describe('The user make a payment', () => {
             uid2: 0
           },
           tickets: []
+        }
+      });
+      await presenter.startStripePayement({}, {}, {});
+      expect(presenter.viewModel().paymentStatus).toBe('notEnoughQuantityInStock');
+    });
+    it('Set paymentStatus to notEnoughQuantityInStock if has not Enough tickets Quantity In Stock', async () => {
+      await presenter.updateDependencies({
+        boutiques: {
+          items: [],
+          tickets: [ticket1, ticket2],
+          ticketsQuantityBought: {
+            ticketId1: 5,
+            ticketId2: 31
+          }
         }
       });
       await presenter.startStripePayement({}, {}, {});
@@ -267,7 +287,11 @@ describe('The user make a payment', () => {
             uid1: 2,
             uid2: 1
           },
-          tickets: []
+          tickets: [ticket1, ticket2],
+          ticketsQuantityBought: {
+            ticketId1: 12,
+            ticketId2: 4
+          }
         }
       });
       fetchPostJSON.mockResolvedValue({ statusCode: 200 });
@@ -276,11 +300,12 @@ describe('The user make a payment', () => {
       await presenter.startStripePayement(stripe, elements, {});
       expect(presenter.viewModel().paymentStatus).toBe('succeeded');
       expect(presenter.viewModel().paymentErrorMessage).toBe('');
-      expect(buyNumberOfItems).toHaveBeenCalledTimes(2);
       expect(presenter.makeCleanListOfWhatUserBought()).toStrictEqual(
         {
           uid1: 'labelItem1, quantity : 2',
-          uid2: 'labelItem2, quantity : 1'
+          uid2: 'labelItem2, quantity : 1',
+          ticketId1: 'labelTicket1, quantity : 12',
+          ticketId2: 'labelTicket2, quantity : 4'
         });
     });
     it('Open the payement suceeded modal and et paymentStatus to succeeded', async () => {
@@ -321,6 +346,25 @@ describe('The user make a payment', () => {
       expect(buyNumberOfItems).toHaveBeenCalledTimes(2);
       expect(buyNumberOfItems).toHaveBeenCalledWith(item1, 2);
       expect(buyNumberOfItems).toHaveBeenCalledWith(item2, 1);
+    });
+    it('BuyNumberOfTickets for each tickets', async () => {
+      await presenter.updateDependencies({
+        boutiques: {
+          items: [],
+          tickets: [ticket1, ticket2],
+          ticketsQuantityBought: {
+            ticketId1: 12,
+            ticketId2: 4
+          }
+        }
+      });
+      fetchPostJSON.mockResolvedValue({ statusCode: 200 });
+      elements.getElement.mockResolvedValue({});
+      stripe.confirmCardPayment.mockResolvedValue({ error: null, paymentIntent: true });
+      await presenter.startStripePayement(stripe, elements, {});
+      expect(buyNumberOfTickets).toHaveBeenCalledTimes(2);
+      expect(buyNumberOfTickets).toHaveBeenCalledWith(ticket1, 12);
+      expect(buyNumberOfTickets).toHaveBeenCalledWith(ticket2, 4);
     });
   });
 
