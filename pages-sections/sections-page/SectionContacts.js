@@ -26,6 +26,7 @@ const RegularMap = () => {
   const mapRef = React.useRef(null);
   React.useEffect(() => {
     let google = window.google;
+    if(!google)return;
     let map = mapRef.current;
     let lat = '44.43353';
     let lng = '26.093928';

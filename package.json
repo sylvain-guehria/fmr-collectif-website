@@ -89,7 +89,6 @@
     "development": []
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.14.4",
     "@typescript-eslint/eslint-plugin": "^4.25.0",
     "@typescript-eslint/parser": "^4.25.0",
     "babel-eslint": "^10.1.0",
