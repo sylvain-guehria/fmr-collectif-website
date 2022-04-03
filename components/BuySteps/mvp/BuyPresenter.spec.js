@@ -300,12 +300,6 @@ describe('The user make a payment', () => {
       await presenter.startStripePayement(stripe, elements, {});
       expect(presenter.viewModel().paymentStatus).toBe('succeeded');
       expect(presenter.viewModel().paymentErrorMessage).toBe('');
-      expect(buyNumberOfItems).toHaveBeenCalledTimes(2);
-      expect(buyNumberOfItems).toHaveBeenCalledWith(item1, 2);
-      expect(buyNumberOfItems).toHaveBeenCalledWith(item2, 1);
-      expect(buyNumberOfTickets).toHaveBeenCalledTimes(2);
-      expect(buyNumberOfTickets).toHaveBeenCalledWith(ticket1, 12);
-      expect(buyNumberOfTickets).toHaveBeenCalledWith(ticket2, 4);
       expect(presenter.makeCleanListOfWhatUserBought()).toStrictEqual(
         {
           uid1: 'labelItem1, quantity : 2',
@@ -352,6 +346,25 @@ describe('The user make a payment', () => {
       expect(buyNumberOfItems).toHaveBeenCalledTimes(2);
       expect(buyNumberOfItems).toHaveBeenCalledWith(item1, 2);
       expect(buyNumberOfItems).toHaveBeenCalledWith(item2, 1);
+    });
+    it('BuyNumberOfTickets for each tickets', async () => {
+      await presenter.updateDependencies({
+        boutiques: {
+          items: [],
+          tickets: [ticket1, ticket2],
+          ticketsQuantityBought: {
+            ticketId1: 12,
+            ticketId2: 4
+          }
+        }
+      });
+      fetchPostJSON.mockResolvedValue({ statusCode: 200 });
+      elements.getElement.mockResolvedValue({});
+      stripe.confirmCardPayment.mockResolvedValue({ error: null, paymentIntent: true });
+      await presenter.startStripePayement(stripe, elements, {});
+      expect(buyNumberOfTickets).toHaveBeenCalledTimes(2);
+      expect(buyNumberOfTickets).toHaveBeenCalledWith(ticket1, 12);
+      expect(buyNumberOfTickets).toHaveBeenCalledWith(ticket2, 4);
     });
   });
 
