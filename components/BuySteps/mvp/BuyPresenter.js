@@ -3,7 +3,7 @@ import Presenter from '../../../sharedKernel/mvp/Presenter';
 
 export default class BuyPresenter extends Presenter {
 
-  constructor({ buyNumberOfItems, fetchPostJSON }) {
+  constructor({ buyNumberOfItems, buyNumberOfTickets, fetchPostJSON }) {
     super({
       viewModel: {
         remiseEnMainPropreChecked: false,
@@ -52,6 +52,7 @@ export default class BuyPresenter extends Presenter {
       }
     });
     this.buyNumberOfItems = buyNumberOfItems;
+    this.buyNumberOfTickets = buyNumberOfTickets;
     this.fetchPostJSON = fetchPostJSON;
   }
 
@@ -150,10 +151,18 @@ export default class BuyPresenter extends Presenter {
     boughtItems.forEach(item => (
       items = { ...items, [item.getId()]: `${item.getLabel()}, quantity : ${quantityBoughtItems[item.getId()]}` })
     );
-    return items;
+
+    const boughtTickets = this.viewModel().boutiques.tickets;
+    const quantityBoughtTickets = this.viewModel().boutiques.ticketsQuantityBought;
+    let tickets;
+    boughtTickets.forEach(ticket => (
+      tickets = { ...tickets, [ticket.getId()]: `${ticket.getLabel()}, quantity : ${quantityBoughtTickets[ticket.getId()]}` })
+    );
+
+    return { ...items, ...tickets };
   }
 
-  hasEnoughQuantityInStock() {
+  hasEnoughItemQuantityInStock() {
     const boughtItems = this.viewModel().boutiques.items;
     const quantityBoughtItems = this.viewModel().boutiques.itemsQuantityBought;
     for (const item of boughtItems) {
@@ -162,15 +171,39 @@ export default class BuyPresenter extends Presenter {
     return true;
   }
 
+  hasEnoughTicketQuantityInStock() {
+    const boughtTickets = this.viewModel().boutiques.tickets;
+    const quantityBoughtTickets = this.viewModel().boutiques.ticketsQuantityBought;
+    for (const ticket of boughtTickets) {
+      if (!ticket.hasEnoughQuantityInStock(quantityBoughtTickets[ticket.getId()])) return false;
+    }
+    return true;
+  }
+
   payementSucceeded() {
     this._openSucceededPayementModal();
     this.setPaymentStatus('succeeded');
 
-    //save purchase in order history
+    this.updateItemEntitiesAndSaveThem();
+    this.updateTicketEntitiesAndSaveThem();
+
+    this.addInHistory();
+  }
+
+  updateItemEntitiesAndSaveThem() {
     const boughtItems = this.viewModel().boutiques.items;
     const quantityBoughtItems = this.viewModel().boutiques.itemsQuantityBought;
-
     boughtItems.map(item => this.buyNumberOfItems(item, quantityBoughtItems[item.getId()]));
+  }
+
+  updateTicketEntitiesAndSaveThem() {
+    const boughtTickets = this.viewModel().boutiques.tickets;
+    const quantityBoughtTickets = this.viewModel().boutiques.ticketsQuantityBought;
+    boughtTickets.map(ticket => this.buyNumberOfTickets(ticket, quantityBoughtTickets[ticket.getId()]));
+  }
+
+  addInHistory() {
+    //TODO save what user bought in history
   }
 
   _openSucceededPayementModal() {
@@ -196,7 +229,7 @@ export default class BuyPresenter extends Presenter {
     if (!stripe) throw Error('Erreur inconnue, veuillez réessayer plus tard');
 
     this.setPaymentStatus('processing');
-    if (!this.hasEnoughQuantityInStock()) {
+    if (!this.hasEnoughItemQuantityInStock() || !this.hasEnoughTicketQuantityInStock()) {
       this.setPaymentStatus('notEnoughQuantityInStock');
       return;
     }
