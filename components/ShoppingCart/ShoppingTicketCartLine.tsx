@@ -35,6 +35,8 @@ const ShoppingTicketCartLine: React.FC<Props> = ({
   return (
     <>
       <TableRow>
+        <TableCell />
+        <TableCell />
         <TableCell>
           <span>
             <Link href="/ticket-office">{`${ticket.getLabel()}`}</Link>
