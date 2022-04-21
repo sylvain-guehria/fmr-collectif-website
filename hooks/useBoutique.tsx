@@ -12,6 +12,7 @@ type ContextProps = {
   updateTicketQuantity: (ticketUid: string, operation: Operation.ADD | Operation.MINUS) => void;
   getTotalPrice: () => number;
   resetBoutiques: () => void;
+  addModificationPrice: (modification: PriceModificationKeys, value: number) => void;
 };
 
 export enum Operation {
@@ -40,6 +41,7 @@ export const useProvideBoutique = (): Partial<ContextProps> => {
     itemsQuantityBought: {},
     tickets: [],
     ticketsQuantityBought: {},
+    priceModifications: {},
   });
 
   const addItem = (item: ItemEntity): boolean => {
@@ -141,12 +143,22 @@ export const useProvideBoutique = (): Partial<ContextProps> => {
     return totalPrice;
   };
 
+  const addModificationPrice = (modification: PriceModificationKeys, value: number): void => {
+    const localBoutique = { ...boutiques };
+    localBoutique.priceModifications = {
+      ...localBoutique.priceModifications,
+      [modification]: value,
+    };
+    setBoutiques(localBoutique);
+  };
+
   const resetBoutiques = (): void => {
     setBoutiques({
       items: [],
       itemsQuantityBought: {},
       tickets: [],
       ticketsQuantityBought: {},
+      priceModifications: {},
     });
   };
 
@@ -160,6 +172,7 @@ export const useProvideBoutique = (): Partial<ContextProps> => {
     updateTicketQuantity,
     getTotalPrice,
     resetBoutiques,
+    addModificationPrice,
   };
 };
 
@@ -168,4 +181,13 @@ export type Boutiques = {
   itemsQuantityBought: Record<string, number>;
   tickets: TicketEntity[];
   ticketsQuantityBought: Record<string, number>;
+  priceModifications?: PriceModifications;
 };
+
+export type PriceModifications = {
+  shipping?: number;
+  coupon?: number;
+  discount?: number;
+};
+
+type PriceModificationKeys = keyof PriceModifications;
