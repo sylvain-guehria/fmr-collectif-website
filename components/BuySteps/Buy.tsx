@@ -36,9 +36,10 @@ type Props = {
 const Buy: React.FC<Props> = ({ presenter, viewModel }) => {
   const classes = useStyles();
   const stripePromise = getStripe();
-  const { resetBoutiques } = useBoutique();
+  const { resetBoutiques, addModificationPrice } = useBoutique();
 
   presenter.setEmptyBoutiques(resetBoutiques);
+  presenter.setAddModificationPrice(addModificationPrice);
 
   return (
     <div>
@@ -85,11 +86,7 @@ const makeBuyPresenter = (): BuyPresenter => {
   });
 };
 
-const useDynamicDependencies = (): {
-  boutiques: Boutiques;
-  userEmail: string;
-  totalPrice: number;
-} => {
+const useDynamicDependencies = (): BuyPresenterDynamicDependenciesType => {
   const { boutiques, getTotalPrice } = useBoutique();
   const { user } = useAuth();
   return {
@@ -100,3 +97,9 @@ const useDynamicDependencies = (): {
 };
 
 export default withMVP(makeBuyPresenter, useDynamicDependencies)(Buy);
+
+type BuyPresenterDynamicDependenciesType = {
+  boutiques: Boutiques;
+  userEmail: string;
+  totalPrice: number;
+};

@@ -67,6 +67,11 @@ const BuySteps: React.FC<Props> = ({ presenter, viewModel }) => {
 
   const onSubmit: SubmitHandler<BuyFormType> = async (data: BuyFormType) => {
     presenter.setShippingData(data);
+    if (data.livraisonChecked) {
+      presenter.addShippingToPrice();
+    } else {
+      presenter.removeShippingToPrice();
+    }
     presenter.goNextTab();
   };
 

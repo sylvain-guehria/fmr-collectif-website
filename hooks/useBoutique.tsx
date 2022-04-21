@@ -140,6 +140,15 @@ export const useProvideBoutique = (): Partial<ContextProps> => {
       if (isNaN(boutiques.ticketsQuantityBought[ticket.getId()])) continue;
       totalPrice = totalPrice + ticket.getPrice() * boutiques.ticketsQuantityBought[ticket.getId()];
     }
+    if (boutiques.priceModifications?.shipping)
+      totalPrice = totalPrice + boutiques.priceModifications.shipping;
+
+    if (boutiques.priceModifications?.discount)
+      totalPrice = totalPrice + boutiques.priceModifications.discount;
+
+    if (boutiques.priceModifications?.discountInPercentage)
+      totalPrice = totalPrice * (1 - boutiques.priceModifications.discountInPercentage / 100);
+
     return totalPrice;
   };
 
@@ -186,8 +195,8 @@ export type Boutiques = {
 
 export type PriceModifications = {
   shipping?: number;
-  coupon?: number;
   discount?: number;
+  discountInPercentage?: number;
 };
 
-type PriceModificationKeys = keyof PriceModifications;
+export type PriceModificationKeys = keyof PriceModifications;

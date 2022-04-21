@@ -28,6 +28,8 @@ import { BuyFormType } from './BuySteps';
 // @ts-ignore
 const useStyles = makeStyles(profilePageStyle);
 
+export const SHIPPING_PRICE = 4.95;
+
 type Props = {
   register: UseFormRegister<BuyFormType>;
   errors: FormErrors;
@@ -103,7 +105,7 @@ const LivraisonStep: React.FC<Props> = ({
                 {...register('livraisonChecked')}
               />
             }
-            label={<span>Colissimo. Frais de port 4,95 €</span>}
+            label={<span>Colissimo. Frais de port {SHIPPING_PRICE} €</span>}
           />
           <InputLabel error>
             <br />

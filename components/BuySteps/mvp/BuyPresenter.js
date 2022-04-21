@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 import Presenter from '../../../sharedKernel/mvp/Presenter';
+import { SHIPPING_PRICE } from '../LivraisonStep';
 
 export default class BuyPresenter extends Presenter {
 
@@ -70,6 +71,10 @@ export default class BuyPresenter extends Presenter {
 
   setEmptyBoutiques(emptyBoutiques) {
     this._emptyBoutiques = emptyBoutiques;
+  }
+
+  setAddModificationPrice(addModificationPrice) {
+    this._addModificationPrice = addModificationPrice;
   }
 
   /**
@@ -160,6 +165,14 @@ export default class BuyPresenter extends Presenter {
     );
 
     return { ...items, ...tickets };
+  }
+
+  addShippingToPrice(){
+    this._addModificationPrice('shipping', SHIPPING_PRICE);
+  }
+
+  removeShippingToPrice(){
+    this._addModificationPrice('shipping', 0);
   }
 
   hasEnoughItemQuantityInStock() {

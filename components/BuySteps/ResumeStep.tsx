@@ -13,6 +13,7 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import profilePageStyle from 'styles/jss/nextjs-material-kit-pro/pages/profilePageStyle.js';
 import ShoppingCartTable from 'components/ShoppingCart/ShoppingCartTable';
 import { BuyStepsViewModel } from './mvp/type';
+import { SHIPPING_PRICE } from './LivraisonStep';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const useStyles = makeStyles(profilePageStyle);
@@ -70,6 +71,7 @@ const ResumeStep: React.FC<Props> = ({ viewModel, goNextTab }) => {
                   <h4 className={classes.cardTitle}>Adresse de livraison</h4>
                   <Muted>
                     <h6>{shippingDetailsDisplayed.line1}</h6>
+                    <h6>{viewModel.livraisonChecked && <> {SHIPPING_PRICE} € </>}</h6>
                   </Muted>
                   <p className={classes.description}>
                     <p className={classes.description}>{shippingDetailsDisplayed.line2}</p>
