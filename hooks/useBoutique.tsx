@@ -113,7 +113,7 @@ export const useProvideBoutique = (): Partial<ContextProps> => {
     operation: Operation.ADD | Operation.MINUS
   ): void => {
     const localBoutique = { ...boutiques };
-    const currentTicket = localBoutique.tickets.find(item => item.getId() === ticketUid);
+    const currentTicket = localBoutique.tickets.find(ticket => ticket.getId() === ticketUid);
     let updatedQuantity = 1;
     if (
       operation === Operation.ADD &&
@@ -144,11 +144,10 @@ export const useProvideBoutique = (): Partial<ContextProps> => {
       totalPrice = totalPrice + boutiques.priceModifications.shipping;
 
     if (boutiques.priceModifications?.discount)
-      totalPrice = totalPrice + boutiques.priceModifications.discount;
+      totalPrice = totalPrice - boutiques.priceModifications.discount;
 
     if (boutiques.priceModifications?.discountInPercentage)
       totalPrice = totalPrice * (1 - boutiques.priceModifications.discountInPercentage / 100);
-
     return totalPrice;
   };
 
