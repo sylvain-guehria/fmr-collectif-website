@@ -11,14 +11,14 @@ import GridContainer from 'components/lib/Grid/GridContainer';
 import GridItem from 'components/lib/Grid/GridItem';
 // sections for this page
 import SectionDescription from 'pages-sections/presentation-page/SectionDescription';
-import SectionComponents from 'pages-sections/presentation-page/SectionComponents';
-import SectionCards from 'pages-sections/presentation-page/SectionCards';
-import SectionContent from 'pages-sections/presentation-page/SectionContent';
-import SectionSections from 'pages-sections/presentation-page/SectionSections';
-import SectionExamples from 'pages-sections/presentation-page/SectionExamples';
-import SectionFreeDemo from 'pages-sections/presentation-page/SectionFreeDemo';
-import SectionOverview from 'pages-sections/presentation-page/SectionOverview';
-import SectionPricing from 'pages-sections/presentation-page/SectionPricing';
+import SectionCommunaute from 'pages-sections/presentation-page/SectionCommunaute';
+// import SectionCards from 'pages-sections/presentation-page/SectionCards';
+// import SectionContent from 'pages-sections/presentation-page/SectionContent';
+// import SectionSections from 'pages-sections/presentation-page/SectionSections';
+// import SectionExamples from 'pages-sections/presentation-page/SectionExamples';
+// import SectionFreeDemo from 'pages-sections/presentation-page/SectionFreeDemo';
+// import SectionOverview from 'pages-sections/presentation-page/SectionOverview';
+// import SectionPricing from 'pages-sections/presentation-page/SectionPricing';
 
 import presentationStyle from 'styles/jss/nextjs-material-kit-pro/pages/presentationStyle';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -52,7 +52,8 @@ const Home: React.FC = () => {
               <div className={classes.brand}>
                 <Image src="/img/fmr-logo.webp" alt="fmr logo" width={225} height={178} />
                 {/* <span className={classes.proBadge}>Collectif</span> */}
-                <h3 className={classes.title}>Organisateur de soirée et d&apos;évènement.</h3>
+                <h3 className={classes.title}>Organisateur de soirée et d&apos;évènement</h3>
+                <h3 className={classes.title}>Friends Make us Real</h3>
               </div>
             </GridItem>
           </GridContainer>
@@ -60,15 +61,15 @@ const Home: React.FC = () => {
       </Parallax>
       <div className={classNames(classes.main, classes.mainRaised)}>
         <SectionDescription />
-        <SectionComponents />
-        <SectionCards />
+        <SectionCommunaute />
+        {/* <SectionCards />
         <SectionContent />
         <SectionSections />
         <SectionExamples />
-        <SectionFreeDemo />
-        <SectionOverview />
+        <SectionFreeDemo /> */}
+        {/* <SectionOverview /> */}
       </div>
-      <SectionPricing />
+      {/* <SectionPricing /> */}
     </div>
   );
 };

@@ -3,7 +3,7 @@ import {
   mrAuto,
   mlAuto,
   description
-} from 'styles/jss/nextjs-material-kit-pro';
+} from 'styles/jss/nextjs-material-kit-pro.js';
 
 const descriptionStyle = {
   container,
