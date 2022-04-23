@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
-import styles from 'styles/jss/nextjs-material-kit-pro/components/buttonStyle.js';
+import styles from 'styles/jss/nextjs-material-kit-pro/components/buttonStyle';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const useStyles = makeStyles(styles);

@@ -4,19 +4,19 @@ import classNames from 'classnames';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
 // core components
-import Header from 'components/Header/Header.js';
-import HeaderLinks from 'components/Header/HeaderLinks.js';
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import Parallax from 'components/lib/Parallax/Parallax.js';
+import Header from 'components/Header/Header';
+import HeaderLinks from 'components/Header/HeaderLinks';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import Parallax from 'components/lib/Parallax/Parallax';
 // sections for this page
-import SectionDescription from 'pages-sections/about-us/SectionDescription.js';
-import SectionTeam from 'pages-sections/about-us/SectionTeam.js';
-import SectionServices from 'pages-sections/about-us/SectionServices.js';
-import SectionOffice from 'pages-sections/about-us/SectionOffice.js';
-import SectionContact from 'pages-sections/about-us/SectionContact.js';
+import SectionDescription from 'pages-sections/about-us/SectionDescription';
+import SectionTeam from 'pages-sections/about-us/SectionTeam';
+import SectionServices from 'pages-sections/about-us/SectionServices';
+import SectionOffice from 'pages-sections/about-us/SectionOffice';
+import SectionContact from 'pages-sections/about-us/SectionContact';
 
-import aboutUsStyle from 'styles/jss/nextjs-material-kit-pro/pages/aboutUsStyle.js';
+import aboutUsStyle from 'styles/jss/nextjs-material-kit-pro/pages/aboutUsStyle';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const useStyles = makeStyles(aboutUsStyle);

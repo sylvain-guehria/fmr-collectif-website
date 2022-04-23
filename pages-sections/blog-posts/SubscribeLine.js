@@ -5,14 +5,14 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 // @mui/icons-material
 import Mail from '@mui/icons-material/Mail';
 // core components
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import Card from 'components/lib/Card/Card.js';
-import CardBody from 'components/lib/Card/CardBody.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import Card from 'components/lib/Card/Card';
+import CardBody from 'components/lib/Card/CardBody';
 import Button from 'components/lib/CustomButtons/Button';
-import CustomInput from 'components/lib/CustomInput/CustomInput.js';
+import CustomInput from 'components/lib/CustomInput/CustomInput';
 
-import sectionSubscribeLineStyle from 'styles/jss/nextjs-material-kit-pro/pages/blogPostsSections/sectionSubscribeLineStyle.js';
+import sectionSubscribeLineStyle from 'styles/jss/nextjs-material-kit-pro/pages/blogPostsSections/sectionSubscribeLineStyle';
 
 const useStyles = makeStyles(sectionSubscribeLineStyle);
 

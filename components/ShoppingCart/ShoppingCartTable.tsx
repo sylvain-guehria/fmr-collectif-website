@@ -9,7 +9,7 @@ import Button from './../lib/CustomButtons/Button';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import ShoppingItemCartLine from './ShoppingItemCartLine';
 import ShoppingTicketCartLine from './ShoppingTicketCartLine';
-import tableStyles from 'styles/jss/nextjs-material-kit-pro/components/tableStyle.js';
+import tableStyles from 'styles/jss/nextjs-material-kit-pro/components/tableStyle';
 import Image from 'next/image';
 import { useBoutique } from '../../hooks/useBoutique';
 import Link from 'next/link';

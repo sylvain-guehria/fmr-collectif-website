@@ -1,14 +1,14 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Header from 'components/Header/Header.js';
-import HeaderLinks from 'components/Header/HeaderLinks.js';
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import Parallax from 'components/lib/Parallax/Parallax.js';
-import SectionImage from 'pages-sections/blog-posts/SectionImage.js';
+import Header from 'components/Header/Header';
+import HeaderLinks from 'components/Header/HeaderLinks';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import Parallax from 'components/lib/Parallax/Parallax';
+import SectionImage from 'pages-sections/blog-posts/SectionImage';
 import SectionEvents from '../../pages-sections/sections-page/SectionEvents';
 
-import blogPostsPageStyle from 'styles/jss/nextjs-material-kit-pro/pages/blogPostsPageStyle.js';
+import blogPostsPageStyle from 'styles/jss/nextjs-material-kit-pro/pages/blogPostsPageStyle';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const useStyles = makeStyles(blogPostsPageStyle);

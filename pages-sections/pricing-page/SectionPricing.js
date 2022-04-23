@@ -3,16 +3,16 @@ import React from 'react';
 // nodejs library that concatenates classes
 import classNames from 'classnames';
 // core components
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import NavPills from 'components/lib/NavPills/NavPills.js';// eslint-disable-line no-unused-vars
-import Card from 'components/lib/Card/Card.js';// eslint-disable-line no-unused-vars
-import CardBody from 'components/lib/Card/CardBody.js';// eslint-disable-line no-unused-vars
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import NavPills from 'components/lib/NavPills/NavPills';// eslint-disable-line no-unused-vars
+import Card from 'components/lib/Card/Card';// eslint-disable-line no-unused-vars
+import CardBody from 'components/lib/Card/CardBody';// eslint-disable-line no-unused-vars
 import Button from 'components/lib/CustomButtons/Button';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
 
-import pricingStyle from 'styles/jss/nextjs-material-kit-pro/pages/pricingSections/pricingStyle.js';
+import pricingStyle from 'styles/jss/nextjs-material-kit-pro/pages/pricingSections/pricingStyle';
 
 const useStyles = makeStyles(pricingStyle);
 

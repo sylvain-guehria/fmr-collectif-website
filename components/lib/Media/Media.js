@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 // @mui/icons-material
 // core components
 
-import styles from 'styles/jss/nextjs-material-kit-pro/components/mediaStyle.js';
+import styles from 'styles/jss/nextjs-material-kit-pro/components/mediaStyle';
 
 const useStyles = makeStyles(styles);
 

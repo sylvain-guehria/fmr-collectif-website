@@ -3,16 +3,16 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 // @mui/icons-material
 // core components
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import Card from 'components/lib/Card/Card.js';
-import CardHeader from 'components/lib/Card/CardHeader.js';
-import CardBody from 'components/lib/Card/CardBody.js';
-import CardFooter from 'components/lib/Card/CardFooter.js';
-import Muted from 'components/lib/Typography/Muted.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import Card from 'components/lib/Card/Card';
+import CardHeader from 'components/lib/Card/CardHeader';
+import CardBody from 'components/lib/Card/CardBody';
+import CardFooter from 'components/lib/Card/CardFooter';
+import Muted from 'components/lib/Typography/Muted';
 import Button from 'components/lib/CustomButtons/Button';
 
-import sectionImageStyle from 'styles/jss/nextjs-material-kit-pro/pages/blogPostsSections/sectionImageStyle.js';
+import sectionImageStyle from 'styles/jss/nextjs-material-kit-pro/pages/blogPostsSections/sectionImageStyle';
 
 const useStyles = makeStyles(sectionImageStyle);
 

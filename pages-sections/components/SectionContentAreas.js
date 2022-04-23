@@ -15,15 +15,15 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import Reply from '@mui/icons-material/Reply';
 import Favorite from '@mui/icons-material/Favorite';
 // core components
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import Table from 'components/lib/Table/Table.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import Table from 'components/lib/Table/Table';
 import Button from 'components/lib/CustomButtons/Button';
-import Media from 'components/lib/Media/Media.js';
-import CustomInput from 'components/lib/CustomInput/CustomInput.js';
-import Paginations from 'components/lib/Pagination/Pagination.js';
+import Media from 'components/lib/Media/Media';
+import CustomInput from 'components/lib/CustomInput/CustomInput';
+import Paginations from 'components/lib/Pagination/Pagination';
 
-import style from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/contentAreas.js';
+import style from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/contentAreas';
 
 const useStyles = makeStyles(style);
 

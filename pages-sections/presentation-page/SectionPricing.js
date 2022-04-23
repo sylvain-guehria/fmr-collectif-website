@@ -2,8 +2,8 @@ import React from 'react';
 // nodejs library that concatenates classes
 import classNames from 'classnames';
 // core components
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
 import Button from 'components/lib/CustomButtons/Button';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
@@ -11,7 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import ShoppingCart from '@mui/icons-material/ShoppingCart';
 import Store from '@mui/icons-material/Store';
 
-import pricingStyle from 'styles/jss/nextjs-material-kit-pro/pages/presentationSections/pricingStyle.js';
+import pricingStyle from 'styles/jss/nextjs-material-kit-pro/pages/presentationSections/pricingStyle';
 
 const useStyles = makeStyles(pricingStyle);
 

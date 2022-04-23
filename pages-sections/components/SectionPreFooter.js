@@ -2,19 +2,19 @@ import React from 'react';
 // nodejs library that concatenates classes
 import classNames from 'classnames';
 // core components
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
 import Button from 'components/lib/CustomButtons/Button';
-import Card from 'components/lib/Card/Card.js';
-import CardBody from 'components/lib/Card/CardBody.js';
-import CustomInput from 'components/lib/CustomInput/CustomInput.js';
+import Card from 'components/lib/Card/Card';
+import CardBody from 'components/lib/Card/CardBody';
+import CustomInput from 'components/lib/CustomInput/CustomInput';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
 import InputAdornment from '@material-ui/core/InputAdornment';
 // @material-ui icons
 import Mail from '@mui/icons-material/Mail';
 
-import styles from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/preFooter.js';
+import styles from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/preFooter';
 
 const useStyles = makeStyles(styles);
 

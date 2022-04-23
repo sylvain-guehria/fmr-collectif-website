@@ -8,7 +8,7 @@ import {
   grayCardHeader,
   blackColor,
   hexToRgb
-} from 'styles/jss/nextjs-material-kit-pro.js';
+} from 'styles/jss/nextjs-material-kit-pro';
 
 const cardHeaderStyle = {
   cardHeader: {

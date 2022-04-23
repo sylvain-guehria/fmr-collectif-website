@@ -4,14 +4,14 @@ import Link from 'next/link';
 // nodejs library that concatenates classes
 import classNames from 'classnames';
 // core components
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import Card from 'components/lib/Card/Card.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import Card from 'components/lib/Card/Card';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
 
-import examplesStyle from 'styles/jss/nextjs-material-kit-pro/pages/presentationSections/examplesStyle.js';
-import imagesStyles from 'styles/jss/nextjs-material-kit-pro/imagesStyles.js';
+import examplesStyle from 'styles/jss/nextjs-material-kit-pro/pages/presentationSections/examplesStyle';
+import imagesStyles from 'styles/jss/nextjs-material-kit-pro/imagesStyles';
 
 const styles = {
   ...examplesStyle,

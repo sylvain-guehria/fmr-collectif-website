@@ -2,9 +2,9 @@ import {
   whiteColor,
   hexToRgb,
   cardTitle
-} from 'styles/jss/nextjs-material-kit-pro.js';
+} from 'styles/jss/nextjs-material-kit-pro';
 
-import tooltipsStyle from 'styles/jss/nextjs-material-kit-pro/tooltipsStyle.js';
+import tooltipsStyle from 'styles/jss/nextjs-material-kit-pro/tooltipsStyle';
 
 const sectionPillsStyle = {
   ...tooltipsStyle,

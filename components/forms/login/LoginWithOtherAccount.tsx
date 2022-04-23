@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '../../lib/CustomButtons/Button';
 import { makeStyles } from '@material-ui/core/styles';
-import signupPageStyle from '../../../styles/jss/nextjs-material-kit-pro/pages/signupPageStyle.js';
+import signupPageStyle from '../../../styles/jss/nextjs-material-kit-pro/pages/signupPageStyle';
 import { useAuth } from '../../../hooks/useAuth';
 import { useRouter } from 'next/router';
 import { googleConnexionUseCase } from '../../../usecases';

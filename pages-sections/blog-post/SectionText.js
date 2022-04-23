@@ -4,12 +4,12 @@ import classNames from 'classnames';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
 // @mui/icons-material
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import Quote from 'components/lib/Typography/Quote.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import Quote from 'components/lib/Typography/Quote';
 // core components
 
-import sectionTextStyle from 'styles/jss/nextjs-material-kit-pro/pages/blogPostSections/sectionTextStyle.js';
+import sectionTextStyle from 'styles/jss/nextjs-material-kit-pro/pages/blogPostSections/sectionTextStyle';
 
 const useStyles = makeStyles(sectionTextStyle);
 

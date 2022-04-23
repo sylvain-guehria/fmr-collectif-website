@@ -4,8 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import CheckCircle from '@mui/icons-material/CheckCircle';
 import Home from '@mui/icons-material/Home';
 import Visibility from '@mui/icons-material/Visibility';
-import NavPills from 'components/lib/NavPills/NavPills.js';
-import Clearfix from 'components/lib/Clearfix/Clearfix.js';
+import NavPills from 'components/lib/NavPills/NavPills';
+import Clearfix from 'components/lib/Clearfix/Clearfix';
 import { useRouter } from 'next/router';
 
 import LivraisonStep from './LivraisonStep';
@@ -17,7 +17,7 @@ import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
 import BuyPresenter from './mvp/BuyPresenter';
 import { BuyStepsViewModel } from './mvp/type';
 
-import profilePageStyle from 'styles/jss/nextjs-material-kit-pro/pages/profilePageStyle.js';
+import profilePageStyle from 'styles/jss/nextjs-material-kit-pro/pages/profilePageStyle';
 import PayementDoneModal from './PayementDoneModal';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment

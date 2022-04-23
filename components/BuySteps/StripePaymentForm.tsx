@@ -10,7 +10,7 @@ import GridItem from 'components/lib/Grid/GridItem';
 import Button from './../lib/CustomButtons/Button';
 import { InputLabel } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import styles from 'styles/jss/nextjs-material-kit-pro/components/customInputStyle.js';
+import styles from 'styles/jss/nextjs-material-kit-pro/components/customInputStyle';
 import { StripeCardElementChangeEvent } from '@stripe/stripe-js';
 import PaymentStatus from './PaymentStatus';
 import BuyPresenter from './mvp/BuyPresenter';

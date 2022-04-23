@@ -8,7 +8,7 @@ import {
   dangerColor,
   successColor,
   hexToRgb
-} from 'styles/jss/nextjs-material-kit-pro.js';
+} from 'styles/jss/nextjs-material-kit-pro';
 
 const style = {
   rotatingCardContainer: {

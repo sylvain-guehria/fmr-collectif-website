@@ -8,10 +8,10 @@ import Face from '@mui/icons-material/Face';
 import Chat from '@mui/icons-material/Chat';
 import Build from '@mui/icons-material/Build';
 // core components
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import CustomTabs from 'components/lib/CustomTabs/CustomTabs.js';
-import tabsStyle from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/tabsStyle.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import CustomTabs from 'components/lib/CustomTabs/CustomTabs';
+import tabsStyle from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/tabsStyle';
 
 const useStyles = makeStyles(tabsStyle);
 

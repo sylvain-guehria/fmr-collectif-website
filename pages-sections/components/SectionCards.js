@@ -21,21 +21,21 @@ import Bookmark from '@mui/icons-material/Bookmark';
 import Refresh from '@mui/icons-material/Refresh';
 import Receipt from '@mui/icons-material/Receipt';
 // core components
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import Card from 'components/lib/Card/Card.js';
-import CardHeader from 'components/lib/Card/CardHeader.js';
-import CardBody from 'components/lib/Card/CardBody.js';
-import CardFooter from 'components/lib/Card/CardFooter.js';
-import CardAvatar from 'components/lib/Card/CardAvatar.js';
-import Info from 'components/lib/Typography/Info.js';
-import Danger from 'components/lib/Typography/Danger.js';
-import Success from 'components/lib/Typography/Success.js';
-import Warning from 'components/lib/Typography/Warning.js';
-import Rose from 'components/lib/Typography/Rose.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import Card from 'components/lib/Card/Card';
+import CardHeader from 'components/lib/Card/CardHeader';
+import CardBody from 'components/lib/Card/CardBody';
+import CardFooter from 'components/lib/Card/CardFooter';
+import CardAvatar from 'components/lib/Card/CardAvatar';
+import Info from 'components/lib/Typography/Info';
+import Danger from 'components/lib/Typography/Danger';
+import Success from 'components/lib/Typography/Success';
+import Warning from 'components/lib/Typography/Warning';
+import Rose from 'components/lib/Typography/Rose';
 import Button from 'components/lib/CustomButtons/Button';
 
-import styles from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/sectionCards.js';
+import styles from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/sectionCards';
 
 const useStyles = makeStyles(styles);
 

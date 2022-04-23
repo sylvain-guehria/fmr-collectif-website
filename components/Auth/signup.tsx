@@ -11,16 +11,16 @@ import Group from '@mui/icons-material/Group';
 import Favorite from '@mui/icons-material/Favorite';
 
 // core components
-import Header from 'components/Header/Header.js';
-import HeaderLinks from 'components/Header/HeaderLinks.js';
-import Footer from 'components/Footer/Footer.js';
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import Card from 'components/lib/Card/Card.js';
-import CardBody from 'components/lib/Card/CardBody.js';
-import InfoArea from 'components/lib/InfoArea/InfoArea.js';
+import Header from 'components/Header/Header';
+import HeaderLinks from 'components/Header/HeaderLinks';
+import Footer from 'components/Footer/Footer';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import Card from 'components/lib/Card/Card';
+import CardBody from 'components/lib/Card/CardBody';
+import InfoArea from 'components/lib/InfoArea/InfoArea';
 
-import signupPageStyle from 'styles/jss/nextjs-material-kit-pro/pages/signupPageStyle.js';
+import signupPageStyle from 'styles/jss/nextjs-material-kit-pro/pages/signupPageStyle';
 
 import RegisterForm from '../forms/register/RegisterForm';
 import LoginWithOtherAccount from '../forms/login/LoginWithOtherAccount';

@@ -3,14 +3,14 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 // @mui/icons-material
 // core components
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import Badge from 'components/lib/Badge/Badge.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import Badge from 'components/lib/Badge/Badge';
 import Button from 'components/lib/CustomButtons/Button';
-import Card from 'components/lib/Card/Card.js';
-import CardAvatar from 'components/lib/Card/CardAvatar.js';
+import Card from 'components/lib/Card/Card';
+import CardAvatar from 'components/lib/Card/CardAvatar';
 
-import sectionBlogInfoStyle from 'styles/jss/nextjs-material-kit-pro/pages/blogPostSections/sectionBlogInfoStyle.js';
+import sectionBlogInfoStyle from 'styles/jss/nextjs-material-kit-pro/pages/blogPostSections/sectionBlogInfoStyle';
 
 const useStyles = makeStyles(sectionBlogInfoStyle);
 

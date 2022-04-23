@@ -4,23 +4,23 @@ import classNames from 'classnames';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
 // core components
-import Header from 'components/Header/Header.js';
-import HeaderLinks from 'components/Header/HeaderLinks.js';
-import Parallax from 'components/lib/Parallax/Parallax.js';
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
+import Header from 'components/Header/Header';
+import HeaderLinks from 'components/Header/HeaderLinks';
+import Parallax from 'components/lib/Parallax/Parallax';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
 // sections for this page
-import SectionDescription from 'pages-sections/presentation-page/SectionDescription.js';
-import SectionComponents from 'pages-sections/presentation-page/SectionComponents.js';
-import SectionCards from 'pages-sections/presentation-page/SectionCards.js';
-import SectionContent from 'pages-sections/presentation-page/SectionContent.js';
-import SectionSections from 'pages-sections/presentation-page/SectionSections.js';
-import SectionExamples from 'pages-sections/presentation-page/SectionExamples.js';
-import SectionFreeDemo from 'pages-sections/presentation-page/SectionFreeDemo.js';
-import SectionOverview from 'pages-sections/presentation-page/SectionOverview.js';
-import SectionPricing from 'pages-sections/presentation-page/SectionPricing.js';
+import SectionDescription from 'pages-sections/presentation-page/SectionDescription';
+import SectionComponents from 'pages-sections/presentation-page/SectionComponents';
+import SectionCards from 'pages-sections/presentation-page/SectionCards';
+import SectionContent from 'pages-sections/presentation-page/SectionContent';
+import SectionSections from 'pages-sections/presentation-page/SectionSections';
+import SectionExamples from 'pages-sections/presentation-page/SectionExamples';
+import SectionFreeDemo from 'pages-sections/presentation-page/SectionFreeDemo';
+import SectionOverview from 'pages-sections/presentation-page/SectionOverview';
+import SectionPricing from 'pages-sections/presentation-page/SectionPricing';
 
-import presentationStyle from 'styles/jss/nextjs-material-kit-pro/pages/presentationStyle.js';
+import presentationStyle from 'styles/jss/nextjs-material-kit-pro/pages/presentationStyle';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const useStyles = makeStyles(presentationStyle);

@@ -1,16 +1,16 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import Card from 'components/lib/Card/Card.js';
-import CardBody from 'components/lib/Card/CardBody.js';
-import CardHeader from 'components/lib/Card/CardHeader.js';
-import Info from 'components/lib/Typography/Info.js';
-import Success from 'components/lib/Typography/Success.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import Card from 'components/lib/Card/Card';
+import CardBody from 'components/lib/Card/CardBody';
+import CardHeader from 'components/lib/Card/CardHeader';
+import Info from 'components/lib/Typography/Info';
+import Success from 'components/lib/Typography/Success';
 import Button from 'components/lib/CustomButtons/Button';
 import Link from 'next/link';
 
-import blogsStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsSections/blogsStyle.js';
+import blogsStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsSections/blogsStyle';
 
 const useStyles = makeStyles(blogsStyle);
 

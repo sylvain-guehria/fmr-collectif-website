@@ -12,14 +12,14 @@ import Settings from '@mui/icons-material/Settings';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import Explore from '@mui/icons-material/Explore';
 // core components
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import Header from 'components/Header/Header.js';
-import CustomInput from 'components/lib/CustomInput/CustomInput.js';
-import CustomDropdown from 'components/lib/CustomDropdown/CustomDropdown.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import Header from 'components/Header/Header';
+import CustomInput from 'components/lib/CustomInput/CustomInput';
+import CustomDropdown from 'components/lib/CustomDropdown/CustomDropdown';
 import Button from 'components/lib/CustomButtons/Button';
 
-import navbarsStyle from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/navbarsStyle.js';
+import navbarsStyle from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/navbarsStyle';
 
 const useStyles = makeStyles(navbarsStyle);
 

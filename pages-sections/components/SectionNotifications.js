@@ -6,9 +6,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Check from '@mui/icons-material/Check';
 import Warning from '@mui/icons-material/Warning';
 // core components
-import SnackbarContent from 'components/lib/Snackbar/SnackbarContent.js';
-import Clearfix from 'components/lib/Clearfix/Clearfix.js';
-import notificationsStyles from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/notificationsStyles.js';
+import SnackbarContent from 'components/lib/Snackbar/SnackbarContent';
+import Clearfix from 'components/lib/Clearfix/Clearfix';
+import notificationsStyles from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/notificationsStyles';
 
 const useStyles = makeStyles(notificationsStyles);
 

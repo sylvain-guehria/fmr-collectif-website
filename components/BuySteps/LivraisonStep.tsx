@@ -1,15 +1,15 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 // core components
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
+import GridContainer from '../lib/Grid/GridContainer';
+import GridItem from '../lib/Grid/GridItem';
 import CustomInput from '../lib/CustomInput/CustomInput';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Button from './../lib/CustomButtons/Button';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import Tooltip from '@material-ui/core/Tooltip';
 
-import profilePageStyle from 'styles/jss/nextjs-material-kit-pro/pages/profilePageStyle.js';
+import profilePageStyle from 'styles/jss/nextjs-material-kit-pro/pages/profilePageStyle';
 import {
   UseFormRegister,
   UseFormGetValues,

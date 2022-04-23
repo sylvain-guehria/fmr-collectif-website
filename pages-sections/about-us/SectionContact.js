@@ -8,12 +8,12 @@ import Select from '@material-ui/core/Select';
 import { makeStyles } from '@material-ui/core/styles';
 // @mui/icons-material
 // core components
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import CustomInput from 'components/lib/CustomInput/CustomInput.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import CustomInput from 'components/lib/CustomInput/CustomInput';
 import Button from 'components/lib/CustomButtons/Button';
 
-import contactStyle from 'styles/jss/nextjs-material-kit-pro/pages/aboutUsSections/contactStyle.js';
+import contactStyle from 'styles/jss/nextjs-material-kit-pro/pages/aboutUsSections/contactStyle';
 
 const useStyles = makeStyles(contactStyle);
 

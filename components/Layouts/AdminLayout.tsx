@@ -5,7 +5,7 @@ import ListItem from '@material-ui/core/ListItem';
 import { makeStyles } from '@material-ui/core/styles';
 import Favorite from '@mui/icons-material/Favorite';
 
-import footerStyle from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/footerStyle.js';
+import footerStyle from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/footerStyle';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const useStyles = makeStyles(footerStyle);

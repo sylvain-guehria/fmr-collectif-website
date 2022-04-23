@@ -7,15 +7,15 @@ import Tooltip from '@material-ui/core/Tooltip';
 // @mui/icons-material
 import Add from '@mui/icons-material/Add';
 // core components
-import Header from 'components/Header/Header.js';
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import HeaderLinks from 'components/Header/HeaderLinks.js';
-import Parallax from 'components/lib/Parallax/Parallax.js';
-import Clearfix from 'components/lib/Clearfix/Clearfix.js';
+import Header from 'components/Header/Header';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import HeaderLinks from 'components/Header/HeaderLinks';
+import Parallax from 'components/lib/Parallax/Parallax';
+import Clearfix from 'components/lib/Clearfix/Clearfix';
 import Button from '../lib/CustomButtons/Button';
 
-import profilePageStyle from 'styles/jss/nextjs-material-kit-pro/pages/profilePageStyle.js';
+import profilePageStyle from 'styles/jss/nextjs-material-kit-pro/pages/profilePageStyle';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const useStyles = makeStyles(profilePageStyle);

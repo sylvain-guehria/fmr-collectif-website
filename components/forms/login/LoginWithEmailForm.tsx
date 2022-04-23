@@ -8,13 +8,13 @@ import Icon from '@material-ui/core/Icon';
 import Email from '@mui/icons-material/Email';
 import InputLabel from '@material-ui/core/InputLabel';
 
-import CustomInput from '../../lib/CustomInput/CustomInput.js';
+import CustomInput from '../../lib/CustomInput/CustomInput';
 import Button from '../../lib/CustomButtons/Button';
 
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
 
-import signupPageStyle from '../../../styles/jss/nextjs-material-kit-pro/pages/signupPageStyle.js';
+import signupPageStyle from '../../../styles/jss/nextjs-material-kit-pro/pages/signupPageStyle';
 
 import { getError } from '../formUtils';
 import { useAuth } from '../../../hooks/useAuth';

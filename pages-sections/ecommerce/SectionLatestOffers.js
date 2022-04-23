@@ -2,12 +2,12 @@ import React from 'react';
 // nodejs library that concatenates classes
 import classNames from 'classnames';
 // core components
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import Card from 'components/lib/Card/Card.js';
-import CardHeader from 'components/lib/Card/CardHeader.js';
-import CardBody from 'components/lib/Card/CardBody.js';
-import CardFooter from 'components/lib/Card/CardFooter.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import Card from 'components/lib/Card/Card';
+import CardHeader from 'components/lib/Card/CardHeader';
+import CardBody from 'components/lib/Card/CardBody';
+import CardFooter from 'components/lib/Card/CardFooter';
 import Button from 'components/lib/CustomButtons/Button';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
@@ -16,7 +16,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Favorite from '@mui/icons-material/Favorite';
 import Link from 'next/link';
 
-import styles from 'styles/jss/nextjs-material-kit-pro/pages/ecommerceSections/latestOffersStyle.js';
+import styles from 'styles/jss/nextjs-material-kit-pro/pages/ecommerceSections/latestOffersStyle';
 
 const useStyles = makeStyles(styles);
 

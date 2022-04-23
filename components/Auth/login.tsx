@@ -1,16 +1,16 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 // core components
-import Header from 'components/Header/Header.js';
-import HeaderLinks from 'components/Header/HeaderLinks.js';
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import Card from 'components/lib/Card/Card.js';
-import CardHeader from 'components/lib/Card/CardHeader.js';
+import Header from 'components/Header/Header';
+import HeaderLinks from 'components/Header/HeaderLinks';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import Card from 'components/lib/Card/Card';
+import CardHeader from 'components/lib/Card/CardHeader';
 import LoginWithEmailForm from '../forms/login/LoginWithEmailForm';
 import LoginWithOtherAccount from '../forms/login/LoginWithOtherAccount';
 
-import loginPageStyle from 'styles/jss/nextjs-material-kit-pro/pages/loginPageStyle.js';
+import loginPageStyle from 'styles/jss/nextjs-material-kit-pro/pages/loginPageStyle';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const useStyles = makeStyles(loginPageStyle);

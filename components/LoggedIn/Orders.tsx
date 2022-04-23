@@ -4,14 +4,14 @@ import classNames from 'classnames';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
 // core components
-import Header from 'components/Header/Header.js';
-import HeaderLinks from 'components/Header/HeaderLinks.js';
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import Parallax from 'components/lib/Parallax/Parallax.js';
+import Header from 'components/Header/Header';
+import HeaderLinks from 'components/Header/HeaderLinks';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import Parallax from 'components/lib/Parallax/Parallax';
 import OrderHistory from './OrderHistory';
 
-import styles from 'styles/jss/nextjs-material-kit-pro/pages/ecommerceStyle.js';
+import styles from 'styles/jss/nextjs-material-kit-pro/pages/ecommerceStyle';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const useStyles = makeStyles(styles);

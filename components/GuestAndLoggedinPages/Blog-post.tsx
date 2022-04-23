@@ -2,20 +2,20 @@ import React from 'react';
 // @mui/icons-material
 import FormatAlignLeft from '@mui/icons-material/FormatAlignLeft';
 // core components
-import Header from 'components/Header/Header.js';
-import HeaderLinks from 'components/Header/HeaderLinks.js';
-import Parallax from 'components/lib/Parallax/Parallax.js';
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
+import Header from 'components/Header/Header';
+import HeaderLinks from 'components/Header/HeaderLinks';
+import Parallax from 'components/lib/Parallax/Parallax';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
 import Button from '../lib/CustomButtons/Button';
 // sections for this page
-import SectionText from 'pages-sections/blog-post/SectionText.js';
-import SectionBlogInfo from 'pages-sections/blog-post/SectionBlogInfo.js';
-import SectionComments from 'pages-sections/blog-post/SectionComments.js';
-import SectionSimilarStories from 'pages-sections/blog-post/SectionSimilarStories.js';
+import SectionText from 'pages-sections/blog-post/SectionText';
+import SectionBlogInfo from 'pages-sections/blog-post/SectionBlogInfo';
+import SectionComments from 'pages-sections/blog-post/SectionComments';
+import SectionSimilarStories from 'pages-sections/blog-post/SectionSimilarStories';
 import { makeStyles } from '@material-ui/core/styles';
 
-import blogPostPageStyle from 'styles/jss/nextjs-material-kit-pro/pages/blogPostPageStyle.js';
+import blogPostPageStyle from 'styles/jss/nextjs-material-kit-pro/pages/blogPostPageStyle';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const useStyles = makeStyles(blogPostPageStyle);

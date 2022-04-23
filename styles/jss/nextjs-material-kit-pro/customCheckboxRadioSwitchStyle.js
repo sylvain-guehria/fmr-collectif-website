@@ -6,7 +6,7 @@ import {
   blackColor,
   whiteColor,
   hexToRgb
-} from 'styles/jss/nextjs-material-kit-pro.js';
+} from 'styles/jss/nextjs-material-kit-pro';
 
 const customCheckboxRadioSwitch = {
   checkRoot: {

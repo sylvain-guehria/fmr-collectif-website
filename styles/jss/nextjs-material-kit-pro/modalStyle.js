@@ -1,4 +1,4 @@
-import { whiteColor, grayColor, successColor } from 'styles/jss/nextjs-material-kit-pro.js';
+import { whiteColor, grayColor, successColor } from 'styles/jss/nextjs-material-kit-pro';
 
 const modalStyle = (theme) => ({
   modalRoot: {

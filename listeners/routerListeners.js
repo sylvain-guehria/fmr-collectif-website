@@ -2,7 +2,7 @@ import React from 'react';
 
 import Router from 'next/router';
 
-import PageChange from 'components/lib/PageChange/PageChange.js';
+import PageChange from 'components/lib/PageChange/PageChange';
 import ReactDOM from 'react-dom';
 import logger from '../modules/logger/logger';
 

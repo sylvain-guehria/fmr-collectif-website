@@ -2,8 +2,8 @@ import {
   cardTitle,
   title,
   grayColor
-} from 'styles/jss/nextjs-material-kit-pro.js';
-import imagesStyle from 'styles/jss/nextjs-material-kit-pro/imagesStyles.js';
+} from 'styles/jss/nextjs-material-kit-pro';
+import imagesStyle from 'styles/jss/nextjs-material-kit-pro/imagesStyles';
 
 const teamStyle = {
   section: {

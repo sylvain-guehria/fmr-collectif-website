@@ -7,16 +7,16 @@ import { makeStyles } from '@material-ui/core/styles';
 import FormatQuote from '@mui/icons-material/FormatQuote';
 import Star from '@mui/icons-material/Star';
 // core components
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import Card from 'components/lib/Card/Card.js';
-import CardBody from 'components/lib/Card/CardBody.js';
-import CardFooter from 'components/lib/Card/CardFooter.js';
-import CardAvatar from 'components/lib/Card/CardAvatar.js';
-import Muted from 'components/lib/Typography/Muted.js';
-import Warning from 'components/lib/Typography/Warning.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import Card from 'components/lib/Card/Card';
+import CardBody from 'components/lib/Card/CardBody';
+import CardFooter from 'components/lib/Card/CardFooter';
+import CardAvatar from 'components/lib/Card/CardAvatar';
+import Muted from 'components/lib/Typography/Muted';
+import Warning from 'components/lib/Typography/Warning';
 
-import testimonialsStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsSections/testimonialsStyle.js';
+import testimonialsStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsSections/testimonialsStyle';
 
 const useStyles = makeStyles(testimonialsStyle);
 

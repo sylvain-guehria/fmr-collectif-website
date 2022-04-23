@@ -9,10 +9,10 @@ import Schedule from '@mui/icons-material/Schedule';
 import List from '@mui/icons-material/List';
 
 // core components
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import NavPills from 'components/lib/NavPills/NavPills.js';
-import pillsStyle from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/pillsStyle.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import NavPills from 'components/lib/NavPills/NavPills';
+import pillsStyle from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/pillsStyle';
 
 const useStyles = makeStyles(pillsStyle);
 

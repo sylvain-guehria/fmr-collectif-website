@@ -16,5 +16,14 @@ module.exports = {
       // Use babel-jest to transpile tests with the next/babel preset
       '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { presets: ['next/babel'] }]
     },
-    transformIgnorePatterns: ['/node_modules/', '^.+\\.module\\.(css|sass|scss)$']
+    transformIgnorePatterns: ['/node_modules/', '^.+\\.module\\.(css|sass|scss)$'],
+    roots: [
+      '<rootDir>'
+    ],
+    modulePaths: [
+      '<rootDir>'
+    ],
+    moduleDirectories: [
+      'node_modules'
+    ]
   };

@@ -1,8 +1,8 @@
 import React from 'react';
 // core components
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import InfoArea from 'components/lib/InfoArea/InfoArea.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import InfoArea from 'components/lib/InfoArea/InfoArea';
 
 // @material-ui icons
 import Apps from '@mui/icons-material/Apps';
@@ -11,7 +11,7 @@ import ViewCarousel from '@mui/icons-material/ViewCarousel';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
 
-import descriptionStyle from 'styles/jss/nextjs-material-kit-pro/pages/presentationSections/descriptionStyle.js';
+import descriptionStyle from 'styles/jss/nextjs-material-kit-pro/pages/presentationSections/descriptionStyle';
 
 const useStyles = makeStyles(descriptionStyle);
 

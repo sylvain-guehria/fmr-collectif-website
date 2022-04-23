@@ -1,11 +1,11 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 // core components
-import Header from 'components/Header/Header.js';
-import HeaderLinks from 'components/Header/HeaderLinks.js';
-import SectionContacts from 'pages-sections/sections-page/SectionContacts.js';
+import Header from 'components/Header/Header';
+import HeaderLinks from 'components/Header/HeaderLinks';
+import SectionContacts from 'pages-sections/sections-page/SectionContacts';
 
-import contactUsStyle from 'styles/jss/nextjs-material-kit-pro/pages/contactUsStyle.js';
+import contactUsStyle from 'styles/jss/nextjs-material-kit-pro/pages/contactUsStyle';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const useStyles = makeStyles(contactUsStyle);

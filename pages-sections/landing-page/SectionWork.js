@@ -5,12 +5,12 @@ import { makeStyles } from '@material-ui/core/styles';
 // @mui/icons-material
 
 // core components
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import CustomInput from 'components/lib/CustomInput/CustomInput.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import CustomInput from 'components/lib/CustomInput/CustomInput';
 import Button from 'components/lib/CustomButtons/Button';
 
-import workStyle from 'styles/jss/nextjs-material-kit-pro/pages/landingPageSections/workStyle.js';
+import workStyle from 'styles/jss/nextjs-material-kit-pro/pages/landingPageSections/workStyle';
 
 const useStyles = makeStyles(workStyle);
 

@@ -6,11 +6,11 @@ import {
   mlAuto,
   mrAuto,
   grayColor
-} from 'styles/jss/nextjs-material-kit-pro.js';
+} from 'styles/jss/nextjs-material-kit-pro';
 
-import customCheckboxRadioSwitch from 'styles/jss/nextjs-material-kit-pro/customCheckboxRadioSwitchStyle.js';
+import customCheckboxRadioSwitch from 'styles/jss/nextjs-material-kit-pro/customCheckboxRadioSwitchStyle';
 
-import tooltipsStyle from 'styles/jss/nextjs-material-kit-pro/tooltipsStyle.js';
+import tooltipsStyle from 'styles/jss/nextjs-material-kit-pro/tooltipsStyle';
 
 const styles = {
   ...customCheckboxRadioSwitch,

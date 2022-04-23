@@ -3,19 +3,19 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 // @mui/icons-material
 // core components
-import Header from 'components/Header/Header.js';
-import HeaderLinks from 'components/Header/HeaderLinks.js';
+import Header from 'components/Header/Header';
+import HeaderLinks from 'components/Header/HeaderLinks';
 // sections of this Page
-import SectionHeaders from 'pages-sections/sections-page/SectionHeaders.js';
-import SectionFeatures from 'pages-sections/sections-page/SectionFeatures.js';
-import SectionBlogs from 'pages-sections/sections-page/SectionBlogs.js';
-import SectionTeams from 'pages-sections/sections-page/SectionTeams.js';
-import SectionProjects from 'pages-sections/sections-page/SectionProjects.js';
-import SectionPricing from 'pages-sections/sections-page/SectionPricing.js';
-import SectionTestimonials from 'pages-sections/sections-page/SectionTestimonials.js';
-import SectionContacts from 'pages-sections/sections-page/SectionContacts.js';
+import SectionHeaders from 'pages-sections/sections-page/SectionHeaders';
+import SectionFeatures from 'pages-sections/sections-page/SectionFeatures';
+import SectionBlogs from 'pages-sections/sections-page/SectionBlogs';
+import SectionTeams from 'pages-sections/sections-page/SectionTeams';
+import SectionProjects from 'pages-sections/sections-page/SectionProjects';
+import SectionPricing from 'pages-sections/sections-page/SectionPricing';
+import SectionTestimonials from 'pages-sections/sections-page/SectionTestimonials';
+import SectionContacts from 'pages-sections/sections-page/SectionContacts';
 
-import sectionsPageStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsPageStyle.js';
+import sectionsPageStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsPageStyle';
 
 const useStyles = makeStyles(sectionsPageStyle);
 

@@ -2,11 +2,11 @@
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
 import Button from '../lib/CustomButtons/Button';
 import ImageGallery from 'react-image-gallery';
-import Accordion from 'components/lib/Accordion/Accordion.js';
+import Accordion from 'components/lib/Accordion/Accordion';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -16,7 +16,7 @@ import Link from 'next/link';
 // react component used to create nice image meadia player
 import ShoppingCart from '@mui/icons-material/ShoppingCart';
 import ShoppingBasket from '@mui/icons-material/ShoppingBasket';
-import productStyle from 'styles/jss/nextjs-material-kit-pro/pages/productStyle.js';
+import productStyle from 'styles/jss/nextjs-material-kit-pro/pages/productStyle';
 
 import { useBoutique } from '../../hooks/useBoutique';
 import ItemEntity from '../../modules/item/ItemEntity';
