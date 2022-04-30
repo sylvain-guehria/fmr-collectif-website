@@ -10,11 +10,9 @@ import GridContainer from 'components/lib/Grid/GridContainer';
 import GridItem from 'components/lib/Grid/GridItem';
 import Parallax from 'components/lib/Parallax/Parallax';
 // sections for this page
-import SectionDescription from 'pages-sections/about-us/SectionDescription';
-import SectionTeam from 'pages-sections/about-us/SectionTeam';
-import SectionServices from 'pages-sections/about-us/SectionServices';
-import SectionOffice from 'pages-sections/about-us/SectionOffice';
-import SectionContact from 'pages-sections/about-us/SectionContact';
+import Description from './Description';
+import OurTeam from './OurTeam';
+import SectionContact from './SectionContact';
 
 import aboutUsStyle from 'styles/jss/nextjs-material-kit-pro/pages/aboutUsStyle';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -40,7 +38,7 @@ const AboutUs: React.FC = () => {
         }}
       />
       <Parallax
-        image="https://images.unsplash.com/photo-1605270012917-bf157c5a9541?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1349&q=80"
+        image="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
         filter="dark"
         small>
         <div className={classes.container}>
@@ -49,20 +47,15 @@ const AboutUs: React.FC = () => {
               md={8}
               sm={8}
               className={classNames(classes.mlAuto, classes.mrAuto, classes.textCenter)}>
-              <h1 className={classes.title}>About Us</h1>
-              <h4>
-                Meet the amazing team behind this project and find out more about how we work.
-              </h4>
+              <h1 className={classes.title}>Qui sommes nous ?</h1>
             </GridItem>
           </GridContainer>
         </div>
       </Parallax>
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
-          <SectionDescription />
-          <SectionTeam />
-          <SectionServices />
-          <SectionOffice />
+          <Description />
+          <OurTeam />
           <SectionContact />
         </div>
       </div>

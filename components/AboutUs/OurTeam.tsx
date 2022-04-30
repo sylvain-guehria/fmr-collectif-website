@@ -1,7 +1,5 @@
 import React from 'react';
-// nodejs library that concatenates classes
 import classNames from 'classnames';
-// core components
 import GridContainer from 'components/lib/Grid/GridContainer';
 import GridItem from 'components/lib/Grid/GridItem';
 import Card from 'components/lib/Card/Card';
@@ -9,14 +7,14 @@ import CardAvatar from 'components/lib/Card/CardAvatar';
 import CardBody from 'components/lib/Card/CardBody';
 import CardFooter from 'components/lib/Card/CardFooter';
 import Button from 'components/lib/CustomButtons/Button';
-// @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
 
 import teamStyle from 'styles/jss/nextjs-material-kit-pro/pages/aboutUsSections/teamStyle';
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(teamStyle);
 
-export default function SectionTeam() {
+const OurTeam: React.FC = () => {
   const classes = useStyles();
   return (
     <div className={classes.team}>
@@ -24,16 +22,11 @@ export default function SectionTeam() {
         <GridItem
           md={8}
           sm={8}
-          className={classNames(
-            classes.mrAuto,
-            classes.mlAuto,
-            classes.textCenter
-          )}
-        >
+          className={classNames(classes.mrAuto, classes.mlAuto, classes.textCenter)}>
           <h2 className={classes.title}>We are nerd rockstars</h2>
           <h5 className={classes.description}>
-            This is the paragraph where you can write more details about your
-            team. Keep you user engaged by providing meaningful information.
+            This is the paragraph where you can write more details about your team. Keep you user
+            engaged by providing meaningful information.
           </h5>
         </GridItem>
       </GridContainer>
@@ -42,19 +35,13 @@ export default function SectionTeam() {
           <Card profile plain>
             <CardAvatar profile plain>
               <a href="#pablo">
-                <img
-                  src="/img/faces/marc.jpg"
-                  alt="profile-pic"
-                  className={classes.img}
-                />
+                <img src="/img/faces/marc.jpg" alt="profile-pic" className={classes.img} />
               </a>
             </CardAvatar>
             <CardBody plain>
               <h4 className={classes.cardTitle}>Thbaut Gervasoni</h4>
               <h6 className={classes.textMuted}>CEO</h6>
-              <p className={classes.cardDescription}>
-                Blablabla.
-              </p>
+              <p className={classes.cardDescription}>Blablabla.</p>
             </CardBody>
             <CardFooter className={classes.justifyContent}>
               <Button href="#pablo" justIcon simple color="twitter">
@@ -73,19 +60,13 @@ export default function SectionTeam() {
           <Card profile plain>
             <CardAvatar profile plain>
               <a href="#pablo">
-                <img
-                  src="/img/faces/kendall.jpg"
-                  alt="profile-pic"
-                  className={classes.img}
-                />
+                <img src="/img/faces/kendall.jpg" alt="profile-pic" className={classes.img} />
               </a>
             </CardAvatar>
             <CardBody plain>
               <h4 className={classes.cardTitle}>Joris Sandon</h4>
               <h6 className={classes.textMuted}>???</h6>
-              <p className={classes.cardDescription}>
-               blablabla.
-              </p>
+              <p className={classes.cardDescription}>blablabla.</p>
             </CardBody>
             <CardFooter className={classes.justifyContent}>
               <Button href="#pablo" justIcon simple color="twitter">
@@ -104,19 +85,13 @@ export default function SectionTeam() {
           <Card profile plain>
             <CardAvatar profile plain>
               <a href="#pablo">
-                <img
-                  src="/img/faces/christian.jpg"
-                  alt="profile-pic"
-                  className={classes.img}
-                />
+                <img src="/img/faces/christian.jpg" alt="profile-pic" className={classes.img} />
               </a>
             </CardAvatar>
             <CardBody plain>
               <h4 className={classes.cardTitle}>Maud Paviet</h4>
               <h6 className={classes.textMuted}>Trésorière</h6>
-              <p className={classes.cardDescription}>
-                blablabla
-              </p>
+              <p className={classes.cardDescription}>blablabla</p>
             </CardBody>
             <CardFooter className={classes.justifyContent}>
               <Button href="#pablo" justIcon simple color="facebook">
@@ -132,19 +107,13 @@ export default function SectionTeam() {
           <Card profile plain>
             <CardAvatar profile plain>
               <a href="#pablo">
-                <img
-                  src="/img/faces/avatar.jpg"
-                  alt="profile-pic"
-                  className={classes.img}
-                />
+                <img src="/img/faces/avatar.jpg" alt="profile-pic" className={classes.img} />
               </a>
             </CardAvatar>
             <CardBody plain>
               <h4 className={classes.cardTitle}>Sylvain Guehria</h4>
               <h6 className={classes.textMuted}>Software ingénieur</h6>
-              <p className={classes.cardDescription}>
-                Blablabla
-              </p>
+              <p className={classes.cardDescription}>Blablabla</p>
             </CardBody>
             <CardFooter className={classes.justifyContent}>
               <Button href="#pablo" justIcon simple color="google">
@@ -162,4 +131,6 @@ export default function SectionTeam() {
       </GridContainer>
     </div>
   );
-}
+};
+
+export default OurTeam;

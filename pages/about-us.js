@@ -1,6 +1,6 @@
 import React from 'react';
 
-import AboutUsComponent from '../components/GuestAndLoggedinPages/About-us';
+import AboutUsComponent from '../components/AboutUs/About-us';
 import { buildGuestOrLoggedInLayout } from '../components/Layouts/layoutBuilder';
 
 const About = ()=> {
