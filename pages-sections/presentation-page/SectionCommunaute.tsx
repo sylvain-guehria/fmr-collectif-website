@@ -30,11 +30,7 @@ const SectionCommunaute: React.FC = () => {
           </GridItem>
           <GridItem xs={12} sm={12} md={6} lg={6} className={classes.mlAuto}>
             <div className={classes.imageContainer}>
-              <img
-                src="/img/assets-for-demo/presentationViewSectionComponent/laptop-basics.png"
-                alt="macbook"
-                className={classes.componentsMacbook}
-              />
+              <img src="/img/home/fmr_1.jpg" alt="macbook" className={classes.componentsMacbook} />
               <img
                 src="/img/assets-for-demo/presentationViewSectionComponent/table.jpg"
                 alt="macbook"

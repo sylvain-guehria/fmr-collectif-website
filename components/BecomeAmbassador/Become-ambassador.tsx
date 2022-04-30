@@ -9,8 +9,8 @@ import Parallax from 'components/lib/Parallax/Parallax';
 import GridContainer from 'components/lib/Grid/GridContainer';
 import GridItem from 'components/lib/Grid/GridItem';
 // sections for this page
-import SectionPricing from 'pages-sections/pricing-page/SectionPricing';
-import SectionFeatures from 'pages-sections/pricing-page/SectionFeatures';
+import SubscriptionsPricing from './SubscriptionsPricing';
+import OurSubscriptions from './OurSubscriptions';
 
 import pricingStyle from 'styles/jss/nextjs-material-kit-pro/pages/pricingStyle';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -43,10 +43,9 @@ const BecomeAmbassador: React.FC = () => {
               md={8}
               sm={8}
               className={classNames(classes.mlAuto, classes.mrAuto, classes.textCenter)}>
-              <h1 className={classes.title}>Let{"'"}s get started</h1>
+              <h1 className={classes.title}>Le concept te plait ? Rejoins nous !</h1>
               <h4>
-                To get started, you will need to choose a plan for your needs. You can opt in for
-                the monthly of annual options and go with one fo the three listed below.
+                Découvre notre abonnement gratuit ainsi que notre abonnement privilège ci dessous
               </h4>
             </GridItem>
           </GridContainer>
@@ -54,9 +53,9 @@ const BecomeAmbassador: React.FC = () => {
       </Parallax>
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
-          <SectionPricing />
+          <SubscriptionsPricing />
           <hr />
-          <SectionFeatures />
+          <OurSubscriptions />
         </div>
       </div>
     </div>
