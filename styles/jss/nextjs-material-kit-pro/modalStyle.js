@@ -1,4 +1,4 @@
-import { whiteColor, grayColor, successColor } from 'styles/jss/nextjs-material-kit-pro';
+import { whiteColor, grayColor, successColor, dangerColor } from 'styles/jss/nextjs-material-kit-pro';
 
 const modalStyle = (theme) => ({
   modalRoot: {
@@ -172,6 +172,12 @@ const modalStyle = (theme) => ({
     height: 'auto',
     position: 'relative',
     color: successColor[3]
+  },
+  bigIconRed: {
+    width: '60%',
+    height: 'auto',
+    position: 'relative',
+    color: dangerColor[1]
   },
 });
 

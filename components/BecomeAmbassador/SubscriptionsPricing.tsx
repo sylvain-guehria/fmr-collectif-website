@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames';
 
 import GridContainer from 'components/lib/Grid/GridContainer';
@@ -9,12 +9,41 @@ import Button from 'components/lib/CustomButtons/Button';
 import { makeStyles } from '@material-ui/core/styles';
 
 import pricingStyle from 'styles/jss/nextjs-material-kit-pro/pages/pricingSections/pricingStyle';
+import PayementDoneModal from './PayementDoneModal';
+import { useRouter } from 'next/router';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const useStyles = makeStyles(pricingStyle);
 
 const SubscriptionsPricing: React.FC = () => {
   const classes = useStyles();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [hasPayementSucceeded, setHasPayementSucceeded] = useState(false);
+  const router = useRouter();
+
+  React.useEffect(() => {
+    // Check to see if this is a redirect back from Checkout
+    const query = new URLSearchParams(window.location.search);
+    if (query.get('success')) {
+      setIsModalOpen(true);
+      setHasPayementSucceeded(true);
+    }
+
+    if (query.get('canceled')) {
+      setIsModalOpen(true);
+      setHasPayementSucceeded(false);
+    }
+  }, []);
+
+  const closeModalAndRedirectHome = (): void => {
+    setHasPayementSucceeded(false);
+    router.push('/home');
+  };
+
+  const closeModal = (): void => {
+    setHasPayementSucceeded(false);
+  };
+
   return (
     <div className={classNames(classes.pricingSection, classes.textCenter)}>
       <GridContainer>
@@ -44,13 +73,22 @@ const SubscriptionsPricing: React.FC = () => {
                 <li>Soirées réservées</li>
                 <li>Réduction sur les tshirts</li>
               </ul>
-              <Button color="white" round>
-                S&apos;abonner
-              </Button>
+              <form action="/api/products/checkout_sessions_abo_premium" method="POST">
+                <Button color="white" type="submit" round>
+                  S&apos;abonner
+                </Button>
+              </form>
             </CardBody>
           </Card>
         </GridItem>
       </GridContainer>
+      <PayementDoneModal
+        isOpen={isModalOpen}
+        hasPayementSucceeded={hasPayementSucceeded}
+        closeModalAndRedirectHome={() => closeModalAndRedirectHome()}
+        closeModal={() => closeModal()}
+        onClose={() => closeModal()}
+      />
     </div>
   );
 };
