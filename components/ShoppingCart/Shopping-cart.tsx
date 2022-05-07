@@ -11,7 +11,7 @@ import GridContainer from 'components/lib/Grid/GridContainer';
 import GridItem from 'components/lib/Grid/GridItem';
 
 import shoppingCartStyle from 'styles/jss/nextjs-material-kit-pro/pages/shoppingCartStyle';
-import ShoppingCartTable from '../ShoppingCart/ShoppingCartTable';
+import ShoppingCartTable from './ShoppingCartTable';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const useStyles = makeStyles(shoppingCartStyle);

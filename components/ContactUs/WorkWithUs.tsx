@@ -15,29 +15,25 @@ import Button from 'components/lib/CustomButtons/Button';
 
 import contactStyle from 'styles/jss/nextjs-material-kit-pro/pages/aboutUsSections/contactStyle';
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(contactStyle);
 
-const  WorkWithUs = () => {
+const WorkWithUs: React.FC = () => {
   const [specialitySelect, setSpecialitySelect] = React.useState('1');
-  const handleSpeciality = (event) => {
+  const handleSpeciality = event => {
     setSpecialitySelect(event.target.value);
   };
   const classes = useStyles();
   return (
     <div className={classes.aboutUs}>
       <GridContainer>
-        <GridItem
-          md={8}
-          sm={8}
-          className={classNames(classes.mrAuto, classes.mlAuto)}
-        >
-          <h2 className={classNames(classes.title, classes.textCenter)}>
-            Want to work with us?
-          </h2>
+        <GridItem md={8} sm={8} className={classNames(classes.mrAuto, classes.mlAuto)}>
+          <h2 className={classNames(classes.title, classes.textCenter)}>Want to work with us?</h2>
           <h4 className={classNames(classes.description, classes.textCenter)}>
-            Divide details about your product or agency work into parts. Write a
-            few lines about each one and contact us about any further
-            collaboration. We will get back to you in a couple of hours.
+            Divide details about your product or agency work into parts. Write a few lines about
+            each one and contact us about any further collaboration. We will get back to you in a
+            couple of hours.
           </h4>
           <form>
             <GridContainer>
@@ -45,7 +41,7 @@ const  WorkWithUs = () => {
                 <CustomInput
                   labelText="Your name"
                   formControlProps={{
-                    fullWidth: true
+                    fullWidth: true,
                   }}
                 />
               </GridItem>
@@ -53,66 +49,56 @@ const  WorkWithUs = () => {
                 <CustomInput
                   labelText="Your email"
                   formControlProps={{
-                    fullWidth: true
+                    fullWidth: true,
                   }}
                 />
               </GridItem>
               <GridItem md={4} sm={4}>
                 <FormControl
                   fullWidth
-                  className={
-                    classes.selectFormControl +
-                    ' ' +
-                    classes.selectUnderlineRoot
-                  }
-                >
+                  className={classes.selectFormControl + ' ' + classes.selectUnderlineRoot}>
                   <Select
                     MenuProps={{
-                      className: classes.selectMenu
+                      className: classes.selectMenu,
                     }}
                     classes={{
-                      select: classes.select
+                      select: classes.select,
                     }}
                     value={specialitySelect}
                     onChange={handleSpeciality}
                     inputProps={{
                       name: 'specialitySelect',
-                      id: 'speciality-select'
-                    }}
-                  >
+                      id: 'speciality-select',
+                    }}>
                     <MenuItem
                       disabled
                       classes={{
-                        root: classes.selectMenuItem
-                      }}
-                    >
+                        root: classes.selectMenuItem,
+                      }}>
                       Speciality
                     </MenuItem>
                     <MenuItem
                       classes={{
                         root: classes.selectMenuItem,
-                        selected: classes.selectMenuItemSelected
+                        selected: classes.selectMenuItemSelected,
                       }}
-                      value="1"
-                    >
+                      value="1">
                       I{"'"}m a Designer
                     </MenuItem>
                     <MenuItem
                       classes={{
                         root: classes.selectMenuItem,
-                        selected: classes.selectMenuItemSelected
+                        selected: classes.selectMenuItemSelected,
                       }}
-                      value="2"
-                    >
+                      value="2">
                       I{"'"}m a Developer
                     </MenuItem>
                     <MenuItem
                       classes={{
                         root: classes.selectMenuItem,
-                        selected: classes.selectMenuItemSelected
+                        selected: classes.selectMenuItemSelected,
                       }}
-                      value="3"
-                    >
+                      value="3">
                       I{"'"}m a Hero
                     </MenuItem>
                   </Select>
@@ -123,12 +109,7 @@ const  WorkWithUs = () => {
               <GridItem
                 md={4}
                 sm={4}
-                className={classNames(
-                  classes.mrAuto,
-                  classes.mlAuto,
-                  classes.textCenter
-                )}
-              >
+                className={classNames(classes.mrAuto, classes.mlAuto, classes.textCenter)}>
                 <Button color="primary" round>
                   Let{"'"}s talk
                 </Button>

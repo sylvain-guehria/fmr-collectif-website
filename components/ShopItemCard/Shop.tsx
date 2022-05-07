@@ -11,7 +11,7 @@ import GridItem from 'components/lib/Grid/GridItem';
 import Parallax from 'components/lib/Parallax/Parallax';
 // import SectionLatestOffers from 'pages-sections/ecommerce/SectionLatestOffers';
 import Favorite from '@mui/icons-material/Favorite';
-import ShopItemCard from '../ShopItemCard/ShopItemCard';
+import ShopItemCard from './ShopItemCard';
 import styles from 'styles/jss/nextjs-material-kit-pro/pages/ecommerceStyle';
 import { Item } from '../../modules/item/itemType';
 import ItemEntity from '../../modules/item/ItemEntity';

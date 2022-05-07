@@ -20,119 +20,13 @@ import Button from 'components/lib/CustomButtons/Button';
 
 import contactsStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsSections/contactsStyle';
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const useStyles = makeStyles(contactsStyle);
 
-// eslint-disable-next-line no-unused-vars
-const RegularMap = () => {
-  const mapRef = React.useRef(null);
-  React.useEffect(() => {
-    let google = window.google;
-    if(!google)return;
-    let map = mapRef.current;
-    let lat = '44.43353';
-    let lng = '26.093928';
-    const myLatlng = new google.maps.LatLng(lat, lng);
-    const mapOptions = {
-      zoom: 14,
-      center: myLatlng,
-      scrollwheel: false,
-      zoomControl: true,
-      styles: [
-        {
-          featureType: 'water',
-          stylers: [{ saturation: 43 }, { lightness: -11 }, { hue: '#0088ff' }]
-        },
-        {
-          featureType: 'road',
-          elementType: 'geometry.fill',
-          stylers: [
-            { hue: '#ff0000' },
-            { saturation: -100 },
-            { lightness: 99 }
-          ]
-        },
-        {
-          featureType: 'road',
-          elementType: 'geometry.stroke',
-          stylers: [{ color: '#808080' }, { lightness: 54 }]
-        },
-        {
-          featureType: 'landscape.man_made',
-          elementType: 'geometry.fill',
-          stylers: [{ color: '#ece2d9' }]
-        },
-        {
-          featureType: 'poi.park',
-          elementType: 'geometry.fill',
-          stylers: [{ color: '#ccdca1' }]
-        },
-        {
-          featureType: 'road',
-          elementType: 'labels.text.fill',
-          stylers: [{ color: '#767676' }]
-        },
-        {
-          featureType: 'road',
-          elementType: 'labels.text.stroke',
-          stylers: [{ color: '#ffffff' }]
-        },
-        { featureType: 'poi', stylers: [{ visibility: 'off' }] },
-        {
-          featureType: 'landscape.natural',
-          elementType: 'geometry.fill',
-          stylers: [{ visibility: 'on' }, { color: '#b8cb93' }]
-        },
-        { featureType: 'poi.park', stylers: [{ visibility: 'on' }] },
-        {
-          featureType: 'poi.sports_complex',
-          stylers: [{ visibility: 'on' }]
-        },
-        { featureType: 'poi.medical', stylers: [{ visibility: 'on' }] },
-        {
-          featureType: 'poi.business',
-          stylers: [{ visibility: 'simplified' }]
-        }
-      ]
-    };
-
-    map = new google.maps.Map(map, mapOptions);
-
-    const marker = new google.maps.Marker({
-      position: myLatlng,
-      map: map,
-      animation: google.maps.Animation.DROP,
-      title: 'NextJS Material Kit PRO!'
-    });
-
-    const contentString =
-      '<div class="info-window-content"><h2>NextJS Material Kit PRO</h2>' +
-      '<p>A premium Admin for React, Material-UI, and React Hooks.</p></div>';
-
-    const infowindow = new google.maps.InfoWindow({
-      content: contentString
-    });
-
-    google.maps.event.addListener(marker, 'click', function () {
-      infowindow.open(map, marker);
-    });
-  });
-  return (
-    <>
-      <div
-        style={{
-          height: '100%',
-          borderRadius: '6px',
-          overflow: 'hidden'
-        }}
-        ref={mapRef}
-      ></div>
-    </>
-  );
-};
-
-export default function SectionContacts({ ...rest }) {
+const Contacts: React.FC = ({ ...rest }) => {
   const [checked, setChecked] = React.useState([]);
-  const handleToggle = (value) => {
+  const handleToggle = value => {
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
     if (currentIndex === -1) {
@@ -147,15 +41,14 @@ export default function SectionContacts({ ...rest }) {
     <div className="cd-section" {...rest}>
       <div
         className={classes.contacts + ' ' + classes.section}
-        style={{ backgroundImage: "url('/img/examples/city.jpg')" }}
-      >
+        style={{ backgroundImage: "url('/img/examples/city.jpg')" }}>
         <div className={classes.container}>
           <GridContainer>
             <GridItem xs={12} sm={5} md={5}>
               <h2 className={classes.title}>Get in Touch</h2>
               <h5 className={classes.description}>
-                You need more information? Check what other persons are saying
-                about our product. They are very happy with their purchase.
+                You need more information? Check what other persons are saying about our product.
+                They are very happy with their purchase.
               </h5>
               <InfoArea
                 className={classes.infoArea}
@@ -185,11 +78,7 @@ export default function SectionContacts({ ...rest }) {
             <GridItem xs={12} sm={5} md={5} className={classes.mlAuto}>
               <Card className={classes.card1}>
                 <form>
-                  <CardHeader
-                    contact
-                    color="primary"
-                    className={classes.textCenter}
-                  >
+                  <CardHeader contact color="primary" className={classes.textCenter}>
                     <h4 className={classes.cardTitle}>Contact Us</h4>
                   </CardHeader>
                   <CardBody>
@@ -199,7 +88,7 @@ export default function SectionContacts({ ...rest }) {
                           labelText="First Name"
                           id="first"
                           formControlProps={{
-                            fullWidth: true
+                            fullWidth: true,
                           }}
                         />
                       </GridItem>
@@ -208,7 +97,7 @@ export default function SectionContacts({ ...rest }) {
                           labelText="Last Name"
                           id="last"
                           formControlProps={{
-                            fullWidth: true
+                            fullWidth: true,
                           }}
                         />
                       </GridItem>
@@ -217,18 +106,18 @@ export default function SectionContacts({ ...rest }) {
                       labelText="Email Address"
                       id="email-address"
                       formControlProps={{
-                        fullWidth: true
+                        fullWidth: true,
                       }}
                     />
                     <CustomInput
                       labelText="Your Message"
                       id="message"
                       formControlProps={{
-                        fullWidth: true
+                        fullWidth: true,
                       }}
                       inputProps={{
                         multiline: true,
-                        rows: 5
+                        rows: 5,
                       }}
                     />
                   </CardBody>
@@ -238,13 +127,11 @@ export default function SectionContacts({ ...rest }) {
                         <Checkbox
                           tabIndex={-1}
                           onClick={() => handleToggle(1)}
-                          checkedIcon={
-                            <Check className={classes.checkedIcon} />
-                          }
+                          checkedIcon={<Check className={classes.checkedIcon} />}
                           icon={<Check className={classes.uncheckedIcon} />}
                           classes={{
                             checked: classes.checked,
-                            root: classes.checkRoot
+                            root: classes.checkRoot,
                           }}
                         />
                       }
@@ -263,4 +150,6 @@ export default function SectionContacts({ ...rest }) {
       </div>
     </div>
   );
-}
+};
+
+export default Contacts;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import EventComponent from '../components/GuestAndLoggedinPages/Event';
+import EventComponent from '../components/Event/Event';
 import { buildGuestOrLoggedInLayout } from '../components/Layouts/layoutBuilder';
 
 const Event = ()=> {

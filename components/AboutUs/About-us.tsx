@@ -10,8 +10,8 @@ import GridContainer from 'components/lib/Grid/GridContainer';
 import GridItem from 'components/lib/Grid/GridItem';
 import Parallax from 'components/lib/Parallax/Parallax';
 // sections for this page
-import Description from '../AboutUs/Description';
-import OurTeam from '../AboutUs/OurTeam';
+import Description from './Description';
+import OurTeam from './OurTeam';
 
 import aboutUsStyle from 'styles/jss/nextjs-material-kit-pro/pages/aboutUsStyle';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment

@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 // core components
 import Header from 'components/Header/Header';
 import HeaderLinks from 'components/Header/HeaderLinks';
-import SectionContacts from 'components/ContactUs/Contacts';
+import Contacts from 'components/ContactUs/Contacts';
 import WorkWithUs from 'components/ContactUs/WorkWithUs';
 
 import contactUsStyle from 'styles/jss/nextjs-material-kit-pro/pages/contactUsStyle';
@@ -30,7 +30,7 @@ const ContactUsPage: React.FC = () => {
         }}
       />
       <div className={classes.main}>
-        <SectionContacts id="contacts" />
+        <Contacts id="contacts" />
       </div>
       <WorkWithUs />
     </div>
