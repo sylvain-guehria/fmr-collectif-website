@@ -47,6 +47,10 @@ const BecomeAmbassador: React.FC = () => {
               <h4>
                 Découvre notre abonnement gratuit ainsi que notre abonnement privilège ci dessous
               </h4>
+              <h5 style={{ color: 'white' }}>
+                * Clic sur &quot;s&apos;abonner&quot;, paye ton abonnement et reçois ta carte
+                membre. Elle te donnera accès à des tas d&apos;avantages.
+              </h5>
             </GridItem>
           </GridContainer>
         </div>

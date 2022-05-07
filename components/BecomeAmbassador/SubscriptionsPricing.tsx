@@ -50,7 +50,7 @@ const SubscriptionsPricing: React.FC = () => {
         <GridItem md={4} sm={4}>
           <Card plain pricing>
             <CardBody pricing>
-              <h6 className={classes.textInfo}>Free</h6>
+              <h6 className={classes.textInfo}>Classic</h6>
               <h1 className={classes.cardTitle}>
                 <small>€</small>0 <small>/an</small>
               </h1>
@@ -63,7 +63,7 @@ const SubscriptionsPricing: React.FC = () => {
         <GridItem md={4} sm={4}>
           <Card raised pricing color="primary">
             <CardBody pricing>
-              <h6>Premium</h6>
+              <h6>Privilège</h6>
               <h1 className={classes.cardTitleWhite}>
                 <small>€</small>50 <small>/an</small>
               </h1>
