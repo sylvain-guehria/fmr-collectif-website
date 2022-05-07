@@ -6,16 +6,41 @@ import Card from 'components/lib/Card/Card';
 import CardAvatar from 'components/lib/Card/CardAvatar';
 import CardBody from 'components/lib/Card/CardBody';
 import CardFooter from 'components/lib/Card/CardFooter';
-import Button from 'components/lib/CustomButtons/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import Favorite from '@mui/icons-material/Favorite';
 
 import teamStyle from 'styles/jss/nextjs-material-kit-pro/pages/aboutUsSections/teamStyle';
+import SocialMediaIconLinks, { SocialMedia } from 'components/SocialMedia/SocialMediaIconLinks';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const useStyles = makeStyles(teamStyle);
 
 const OurTeam: React.FC = () => {
   const classes = useStyles();
+  const socialMediasSylvain: SocialMedia[] = [
+    {
+      name: 'linkedin',
+      link: 'https://www.linkedin.com/in/sylvain-guehria-ab9737134/',
+      color: 'linkedin',
+    },
+    {
+      name: 'github',
+      link: 'https://github.com/sylvain-guehria',
+      color: 'github',
+    },
+  ];
+  const socialMediasTiti: SocialMedia[] = [
+    {
+      name: 'linkedin',
+      link: '',
+      color: 'linkedin',
+    },
+    {
+      name: 'facebook',
+      link: '',
+      color: 'facebook',
+    },
+  ];
   return (
     <div className={classes.team}>
       <GridContainer>
@@ -23,10 +48,11 @@ const OurTeam: React.FC = () => {
           md={8}
           sm={8}
           className={classNames(classes.mrAuto, classes.mlAuto, classes.textCenter)}>
-          <h2 className={classes.title}>We are nerd rockstars</h2>
+          <h2 className={classes.title}>Votre staff</h2>
           <h5 className={classes.description}>
-            This is the paragraph where you can write more details about your team. Keep you user
-            engaged by providing meaningful information.
+            Vous retrouverez cette équipe à chaque évènements, n&apos;hésitez pas à venir nous voir
+            que ce soit pour une demande ou juste pour boire un verre
+            <Favorite color={'error'} style={{ paddingTop: '10px' }} />
           </h5>
         </GridItem>
       </GridContainer>
@@ -44,15 +70,7 @@ const OurTeam: React.FC = () => {
               <p className={classes.cardDescription}>Blablabla.</p>
             </CardBody>
             <CardFooter className={classes.justifyContent}>
-              <Button href="#pablo" justIcon simple color="twitter">
-                <i className="fab fa-twitter" />
-              </Button>
-              <Button href="#pablo" justIcon simple color="facebook">
-                <i className="fab fa-facebook" />
-              </Button>
-              <Button href="#pablo" justIcon simple color="google">
-                <i className="fab fa-google" />
-              </Button>
+              <SocialMediaIconLinks socialMedias={socialMediasTiti} />
             </CardFooter>
           </Card>
         </GridItem>
@@ -68,17 +86,6 @@ const OurTeam: React.FC = () => {
               <h6 className={classes.textMuted}>???</h6>
               <p className={classes.cardDescription}>blablabla.</p>
             </CardBody>
-            <CardFooter className={classes.justifyContent}>
-              <Button href="#pablo" justIcon simple color="twitter">
-                <i className="fab fa-twitter" />
-              </Button>
-              <Button href="#pablo" justIcon simple color="dribbble">
-                <i className="fab fa-dribbble" />
-              </Button>
-              <Button href="#pablo" justIcon simple color="linkedin">
-                <i className="fab fa-linkedin-in" />
-              </Button>
-            </CardFooter>
           </Card>
         </GridItem>
         <GridItem md={3} sm={3}>
@@ -93,14 +100,6 @@ const OurTeam: React.FC = () => {
               <h6 className={classes.textMuted}>Trésorière</h6>
               <p className={classes.cardDescription}>blablabla</p>
             </CardBody>
-            <CardFooter className={classes.justifyContent}>
-              <Button href="#pablo" justIcon simple color="facebook">
-                <i className="fab fa-facebook" />
-              </Button>
-              <Button href="#pablo" justIcon simple color="dribbble">
-                <i className="fab fa-dribbble" />
-              </Button>
-            </CardFooter>
           </Card>
         </GridItem>
         <GridItem md={3} sm={3}>
@@ -116,15 +115,7 @@ const OurTeam: React.FC = () => {
               <p className={classes.cardDescription}>Blablabla</p>
             </CardBody>
             <CardFooter className={classes.justifyContent}>
-              <Button href="#pablo" justIcon simple color="google">
-                <i className="fab fa-google" />
-              </Button>
-              <Button href="#pablo" justIcon simple color="twitter">
-                <i className="fab fa-twitter" />
-              </Button>
-              <Button href="#pablo" justIcon simple color="dribbble">
-                <i className="fab fa-dribbble" />
-              </Button>
+              <SocialMediaIconLinks socialMedias={socialMediasSylvain} />
             </CardFooter>
           </Card>
         </GridItem>

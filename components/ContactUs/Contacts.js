@@ -22,6 +22,7 @@ import contactsStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsSect
 
 const useStyles = makeStyles(contactsStyle);
 
+// eslint-disable-next-line no-unused-vars
 const RegularMap = () => {
   const mapRef = React.useRef(null);
   React.useEffect(() => {
@@ -144,7 +145,6 @@ export default function SectionContacts({ ...rest }) {
   const classes = useStyles();
   return (
     <div className="cd-section" {...rest}>
-      {/* Contact us 1 START */}
       <div
         className={classes.contacts + ' ' + classes.section}
         style={{ backgroundImage: "url('/img/examples/city.jpg')" }}
@@ -261,109 +261,6 @@ export default function SectionContacts({ ...rest }) {
           </GridContainer>
         </div>
       </div>
-      {/* Contact us 1 END */}
-      {/* Contact us 2 START */}
-      <div className={classes.contacts2}>
-        <div className={classes.map}>
-          <RegularMap />
-        </div>
-        <GridItem xs={12} sm={6} md={6}>
-          <Card className={classes.card2}>
-            <form>
-              <CardHeader contact color="rose" className={classes.textCenter}>
-                <h4 className={classes.cardTitle}>Contact Us</h4>
-              </CardHeader>
-              <CardBody>
-                <GridContainer>
-                  <GridItem xs={12} sm={6} md={6}>
-                    <InfoArea
-                      className={classes.infoArea2}
-                      title="Give us a ring"
-                      description={
-                        <span>
-                          Michael Jordan
-                          <br /> +40 762 321 762
-                          <br /> Mon - Fri, 8:00-22:00
-                        </span>
-                      }
-                      icon={Phone}
-                      iconColor="rose"
-                    />
-                  </GridItem>
-                  <GridItem xs={12} sm={6} md={6}>
-                    <InfoArea
-                      className={classes.infoArea2}
-                      title="Find us at the office"
-                      description={
-                        <span>
-                          Bld Mihail Kogalniceanu, nr. 8,
-                          <br /> 7652 Bucharest,
-                          <br /> Romania
-                        </span>
-                      }
-                      icon={PinDrop}
-                      iconColor="rose"
-                    />
-                  </GridItem>
-                </GridContainer>
-                <GridContainer>
-                  <GridItem xs={12} sm={6} md={6}>
-                    <CustomInput
-                      labelText="Full Name"
-                      id="first2"
-                      formControlProps={{
-                        fullWidth: true
-                      }}
-                    />
-                  </GridItem>
-                  <GridItem xs={12} sm={6} md={6}>
-                    <CustomInput
-                      labelText="Email Address"
-                      id="email-address2"
-                      formControlProps={{
-                        fullWidth: true
-                      }}
-                    />
-                  </GridItem>
-                </GridContainer>
-                <CustomInput
-                  labelText="Your Message"
-                  id="message2"
-                  formControlProps={{
-                    fullWidth: true
-                  }}
-                  inputProps={{
-                    multiline: true,
-                    rows: 5
-                  }}
-                />
-              </CardBody>
-              <CardFooter className={classes.justifyContentBetween}>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      tabIndex={-1}
-                      onClick={() => handleToggle(2)}
-                      checkedIcon={<Check className={classes.checkedIcon} />}
-                      icon={<Check className={classes.uncheckedIcon} />}
-                      classes={{
-                        checked: classes.checked,
-                        root: classes.checkRoot
-                      }}
-                    />
-                  }
-                  classes={{ label: classes.label }}
-                  label="I'm not a robot"
-                />
-                <Button color="rose" className={classes.pullRight}>
-                  Send Message
-                </Button>
-              </CardFooter>
-            </form>
-          </Card>
-        </GridItem>
-      </div>
-      {/* Contact us 2 END */}
     </div>
   );
 }

@@ -60,28 +60,7 @@ const RegularButton: React.FC<ButtonProps> = React.forwardRef((props, ref) => {
 });
 
 export type ButtonProps = {
-  color?:
-    | 'primary'
-    | 'secondary'
-    | 'info'
-    | 'success'
-    | 'warning'
-    | 'danger'
-    | 'rose'
-    | 'white'
-    | 'twitter'
-    | 'facebook'
-    | 'google'
-    | 'linkedin'
-    | 'pinterest'
-    | 'youtube'
-    | 'tumblr'
-    | 'github'
-    | 'behance'
-    | 'dribbble'
-    | 'reddit'
-    | 'instagram'
-    | 'transparent';
+  color?: Color;
 
   size?: 'sm' | 'lg';
   simple?: boolean;
@@ -100,6 +79,29 @@ export type ButtonProps = {
   href?: string;
   style?: Record<string, unknown>;
 };
+
+export type Color =
+  | 'primary'
+  | 'secondary'
+  | 'info'
+  | 'success'
+  | 'warning'
+  | 'danger'
+  | 'rose'
+  | 'white'
+  | 'twitter'
+  | 'facebook'
+  | 'google'
+  | 'linkedin'
+  | 'pinterest'
+  | 'youtube'
+  | 'tumblr'
+  | 'github'
+  | 'behance'
+  | 'dribbble'
+  | 'reddit'
+  | 'instagram'
+  | 'transparent';
 
 RegularButton.displayName = 'RegularButton';
 export default RegularButton;

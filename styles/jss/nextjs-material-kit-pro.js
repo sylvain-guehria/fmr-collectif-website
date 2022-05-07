@@ -144,7 +144,7 @@ const tumblrColor = '#35465c';
 const behanceColor = '#1769ff';
 const dribbbleColor = '#ea4c89';
 const redditColor = '#ff4500';
-const instagramColor = '#125688';
+const instagramColor = '#E4405F';
 
 const transition = {
   transition: 'all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1)'

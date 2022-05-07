@@ -10,9 +10,8 @@ import GridContainer from 'components/lib/Grid/GridContainer';
 import GridItem from 'components/lib/Grid/GridItem';
 import Parallax from 'components/lib/Parallax/Parallax';
 // sections for this page
-import Description from './Description';
-import OurTeam from './OurTeam';
-import SectionContact from './SectionContact';
+import Description from '../AboutUs/Description';
+import OurTeam from '../AboutUs/OurTeam';
 
 import aboutUsStyle from 'styles/jss/nextjs-material-kit-pro/pages/aboutUsStyle';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -56,7 +55,6 @@ const AboutUs: React.FC = () => {
         <div className={classes.container}>
           <Description />
           <OurTeam />
-          <SectionContact />
         </div>
       </div>
     </div>

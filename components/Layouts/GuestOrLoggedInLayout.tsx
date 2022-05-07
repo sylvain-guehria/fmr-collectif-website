@@ -6,7 +6,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import { makeStyles } from '@material-ui/core/styles';
 import Favorite from '@mui/icons-material/Favorite';
-import SocialMediaLinks from '../SocialMedia/SocialMediaIconLinks';
+import SocialMediaLinks, { SocialMedia } from '../SocialMedia/SocialMediaIconLinks';
 import footerStyle from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/footerStyle';
 import Button from './../lib/CustomButtons/Button';
 
@@ -16,6 +16,19 @@ const useStyles = makeStyles(footerStyle);
 
 const GuestOrLoggedInLayout: React.FC = ({ children }): React.ReactElement => {
   const classes = useStyles();
+  const socialMedias: SocialMedia[] = [
+    {
+      name: 'facebook',
+      link: 'https://www.facebook.com/FMRcollectif/',
+      color: 'facebook',
+    },
+    {
+      name: 'instagram',
+      link: 'https://instagram.com/fmrcollectif?igshid=YmMyMTA2M2Y=',
+      color: 'instagram',
+    },
+  ];
+
   return (
     <>
       {children}
@@ -51,7 +64,9 @@ const GuestOrLoggedInLayout: React.FC = ({ children }): React.ReactElement => {
                 </ListItem>
               </List>
             </div>
-            <SocialMediaLinks />
+            <div style={{ margin: '0', float: 'right' }}>
+              <SocialMediaLinks socialMedias={socialMedias} />
+            </div>
           </div>
         }
       />

@@ -17,7 +17,7 @@ import contactStyle from 'styles/jss/nextjs-material-kit-pro/pages/aboutUsSectio
 
 const useStyles = makeStyles(contactStyle);
 
-export default function SectionContact() {
+const  WorkWithUs = () => {
   const [specialitySelect, setSpecialitySelect] = React.useState('1');
   const handleSpeciality = (event) => {
     setSpecialitySelect(event.target.value);
@@ -139,4 +139,6 @@ export default function SectionContact() {
       </GridContainer>
     </div>
   );
-}
+};
+
+export default WorkWithUs;
