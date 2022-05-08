@@ -4,7 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Header from 'components/Header/Header';
 import HeaderLinks from 'components/Header/HeaderLinks';
 import Contacts from 'components/ContactUs/Contacts';
-import WorkWithUs from 'components/ContactUs/WorkWithUs';
 
 import contactUsStyle from 'styles/jss/nextjs-material-kit-pro/pages/contactUsStyle';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -30,9 +29,8 @@ const ContactUsPage: React.FC = () => {
         }}
       />
       <div className={classes.main}>
-        <Contacts id="contacts" />
+        <Contacts />
       </div>
-      <WorkWithUs />
     </div>
   );
 };
