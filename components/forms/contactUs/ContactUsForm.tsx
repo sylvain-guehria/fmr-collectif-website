@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
@@ -37,18 +37,6 @@ interface ContactUsFormType {
 
 const ContactUsForm: React.FC = (): React.ReactElement => {
   const classes = useStyles();
-  const [checked, setChecked] = useState([0]);
-
-  const handleToggle = (value: number): void => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-    setChecked(newChecked);
-  };
 
   const formOptions = { resolver: yupResolver(validationSchema) };
 
@@ -149,14 +137,7 @@ const ContactUsForm: React.FC = (): React.ReactElement => {
               classes={{
                 label: classes.label,
               }}
-              control={
-                <input
-                  checked={checked.indexOf(1) !== -1 ? true : false}
-                  onClick={() => handleToggle(1)}
-                  type="checkbox"
-                  {...register('notARobot')}
-                />
-              }
+              control={<input type="checkbox" {...register('notARobot')} />}
               label={<span>Je ne suis pas un robot</span>}
             />
             <br />
