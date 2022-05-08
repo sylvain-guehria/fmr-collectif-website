@@ -7,5 +7,5 @@ export const validationSchema = Yup.object().shape({
   message: Yup.string()
     .min(30, 'Votre message doit contenir au moins 30 caractères')
     .required('Vous devez écrire un message'),
-  notARobot: Yup.bool().oneOf([true], 'Veuillez accepter les termes'),
+  notARobot: Yup.bool().required().oneOf([true], 'Veuillez accepter les termes'),
 });

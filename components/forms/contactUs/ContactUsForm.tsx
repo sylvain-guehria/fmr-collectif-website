@@ -21,6 +21,7 @@ import { getError } from '../formUtils';
 
 import contactsStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsSections/contactsStyle';
 import { sendContactUsEmail } from 'sendinblue/sender';
+import { toast } from 'react-toastify';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -54,20 +55,36 @@ const ContactUsForm: React.FC = (): React.ReactElement => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<ContactUsFormType>(formOptions);
 
   const onSubmit: SubmitHandler<ContactUsFormType> = async (data: ContactUsFormType) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { firstName, lastName, email, message } = data;
-    sendContactUsEmail({
+    await sendContactUsEmail({
       sender: {
         firstName,
         lastName,
         email,
       },
       message,
-    });
+    })
+      .then(success => {
+        if (success) {
+          reset();
+          toast.success(
+            'Votre email à été envoyé, nous vous répondrons aussi vite que possible =)'
+          );
+        } else {
+          toast.error(
+            "Il semblerait qu'il y ai un problème dans l'envoie du mail. Veuillez rééssayer plus tard"
+          );
+        }
+      })
+      .catch((error: Error) => {
+        toast.error(error.message);
+      });
   };
 
   return (
@@ -127,20 +144,26 @@ const ContactUsForm: React.FC = (): React.ReactElement => {
           />
         </CardBody>
         <CardFooter className={classes.justifyContentBetween}>
-          <FormControlLabel
-            classes={{
-              label: classes.label,
-            }}
-            control={
-              <input
-                checked={checked.indexOf(1) !== -1 ? true : false}
-                onClick={() => handleToggle(1)}
-                type="checkbox"
-                {...register('notARobot')}
-              />
-            }
-            label={<span>Je ne suis pas un robot</span>}
-          />
+          <div>
+            <FormControlLabel
+              classes={{
+                label: classes.label,
+              }}
+              control={
+                <input
+                  checked={checked.indexOf(1) !== -1 ? true : false}
+                  onClick={() => handleToggle(1)}
+                  type="checkbox"
+                  {...register('notARobot')}
+                />
+              }
+              label={<span>Je ne suis pas un robot</span>}
+            />
+            <br />
+            <p style={{ color: '#f44336', fontWeight: 'bolder', fontSize: '14px' }}>
+              {getError(errors, 'notARobot')}
+            </p>
+          </div>
           <Button color="primary" type="submit" className={classes.pullRight}>
             Envoyer
           </Button>

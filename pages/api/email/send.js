@@ -2,7 +2,7 @@ import logger from '../../../modules/logger/logger';
 import sendinblue from '../../../sendinblue';
 
 export default async (req, res) => {
-    const { sender, receiver, message, templateId } = req.query;
+    const { sender, receiver, message, templateId } = req.body;
     let sendSmtpEmail = {
         to: [{
             email: receiver.email
