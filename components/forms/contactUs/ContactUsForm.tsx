@@ -20,6 +20,7 @@ import Button from '../../lib/CustomButtons/Button';
 import { getError } from '../formUtils';
 
 import contactsStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsSections/contactsStyle';
+import { sendContactUsEmail } from 'sendinblue/sender';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -58,8 +59,15 @@ const ContactUsForm: React.FC = (): React.ReactElement => {
 
   const onSubmit: SubmitHandler<ContactUsFormType> = async (data: ContactUsFormType) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { firstName, lastName, email, message, notARobot } = data;
-    // registerWithEmailUseCase({ firstName, lastName, email, message, notARobot });
+    const { firstName, lastName, email, message } = data;
+    sendContactUsEmail({
+      sender: {
+        firstName,
+        lastName,
+        email,
+      },
+      message,
+    });
   };
 
   return (

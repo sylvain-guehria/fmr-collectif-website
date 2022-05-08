@@ -61,6 +61,7 @@
     "react-slick": "0.28.1",
     "react-tagsinput": "3.19.0",
     "react-toastify": "^8.2.0",
+    "sib-api-v3-sdk": "^8.3.0",
     "stripe": "^8.193.0",
     "uuidv4": "^6.2.10",
     "webpack": "4.46.0",
