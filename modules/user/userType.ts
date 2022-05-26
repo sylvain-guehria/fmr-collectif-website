@@ -12,6 +12,7 @@ export interface User {
   role?: string;
   creationDate?: number;
   lastLogin?: number;
+  history?: History;
 }
 
 export interface Users {
@@ -40,3 +41,32 @@ export enum PROVIDERS {
   GOOGLE = 'google',
   EMAIL = 'email',
 }
+
+export enum HISTORY_TYPE {
+  ITEMS = 'items',
+  TICKETS = 'tickets',
+  SUBSCRIBTIONS = 'subscriptions',
+}
+
+export type History = {
+  [HISTORY_TYPE.ITEMS]?: ItemHistory[];
+  [HISTORY_TYPE.TICKETS]?: TicketHistory[];
+  [HISTORY_TYPE.SUBSCRIBTIONS]?: SubscriptionHistory[];
+};
+
+type ItemHistory = {
+  itemId: string;
+  date: number;
+  quantity: number;
+};
+
+type TicketHistory = {
+  ticketId: string;
+  date: number;
+  quantity: number;
+};
+
+type SubscriptionHistory = {
+  subscriptionId: string;
+  date: number;
+};

@@ -1,10 +1,11 @@
 import { Boutiques } from 'hooks/useBoutique';
+import UserEntity from 'modules/user/UserEntity';
 
 export type BuyStepsViewModel = {
+  user: UserEntity;
   remiseEnMainPropreChecked: boolean;
   livraisonChecked: boolean;
   identicalShippingAddressChecked: boolean;
-  userEmail: string;
   goNextTab: number;
   totalPrice: number;
   boutiques: Boutiques;

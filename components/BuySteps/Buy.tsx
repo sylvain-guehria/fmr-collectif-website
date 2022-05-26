@@ -19,10 +19,11 @@ import { BuyStepsViewModel } from './mvp/type';
 
 import styles from 'styles/jss/nextjs-material-kit-pro/pages/ecommerceStyle';
 import { useAuth } from 'hooks/useAuth';
-import { itemServiceDi, ticketServiceDi } from 'di';
+import { itemServiceDi, ticketServiceDi, userServiceDi } from 'di';
 import ItemEntity from 'modules/item/ItemEntity';
 import { fetchPostJSON } from 'stripe/api-helpers';
 import TicketEntity from 'modules/ticket/TicketEntity';
+import UserEntity from 'modules/user/UserEntity';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -83,6 +84,8 @@ const makeBuyPresenter = (): BuyPresenter => {
     buyNumberOfTickets: (ticket: TicketEntity, quantityBought: number) =>
       ticketServiceDi.buyNumberOfTickets(ticket, quantityBought),
     fetchPostJSON: (path: string, params: Record<string, unknown>) => fetchPostJSON(path, params),
+    addInUserHistory: (idsAndQuantitiesAndUser: addInUserHistoryParamsType) =>
+      userServiceDi.addInUserHistory(idsAndQuantitiesAndUser),
   });
 };
 
@@ -91,15 +94,21 @@ const useDynamicDependencies = (): BuyPresenterDynamicDependenciesType => {
   const { user } = useAuth();
   return {
     boutiques: boutiques,
-    userEmail: user.getEmail(),
+    user: user,
     totalPrice: getTotalPrice(),
   };
 };
 
 export default withMVP(makeBuyPresenter, useDynamicDependencies)(Buy);
 
+type addInUserHistoryParamsType = {
+  itemsQuantityBought: Record<string, number>;
+  ticketsQuantityBought: Record<string, number>;
+  user: UserEntity;
+};
+
 type BuyPresenterDynamicDependenciesType = {
   boutiques: Boutiques;
-  userEmail: string;
+  user: UserEntity;
   totalPrice: number;
 };

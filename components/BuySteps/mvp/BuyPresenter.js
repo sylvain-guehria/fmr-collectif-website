@@ -4,13 +4,14 @@ import { SHIPPING_PRICE } from '../LivraisonStep';
 
 export default class BuyPresenter extends Presenter {
 
-  constructor({ buyNumberOfItems, buyNumberOfTickets, fetchPostJSON }) {
+  constructor({ buyNumberOfItems, buyNumberOfTickets, fetchPostJSON, addInUserHistory }) {
     super({
       viewModel: {
         remiseEnMainPropreChecked: false,
         livraisonChecked: false,
         identicalShippingAddressChecked: false,
         goNextTab: -1,
+        user: null,
         userEmail: '',
         totalPrice: 0,
         paymentStatus: 'initial',
@@ -44,8 +45,11 @@ export default class BuyPresenter extends Presenter {
         if (changes.boutiques) {
           this.update({ boutiques: this.dependency('boutiques') });
         }
-        if (changes.userEmail) {
-          this.update({ userEmail: this.dependency('userEmail') });
+        if (changes.user) {
+          this.update({
+            userEmail: this.dependency('user').getEmail(),
+            user: this.dependency('user')
+          });
         }
         if (changes.totalPrice) {
           this.update({ totalPrice: this.dependency('totalPrice') });
@@ -55,6 +59,7 @@ export default class BuyPresenter extends Presenter {
     this.buyNumberOfItems = buyNumberOfItems;
     this.buyNumberOfTickets = buyNumberOfTickets;
     this.fetchPostJSON = fetchPostJSON;
+    this.addInUserHistory = addInUserHistory;
   }
 
   goNextTab() {
@@ -158,37 +163,37 @@ export default class BuyPresenter extends Presenter {
     );
 
     const boughtTickets = this.viewModel().boutiques.tickets;
-    const quantityBoughtTickets = this.viewModel().boutiques.ticketsQuantityBought;
+    const ticketsQuantityBought = this.viewModel().boutiques.ticketsQuantityBought;
     let tickets;
     boughtTickets.forEach(ticket => (
-      tickets = { ...tickets, [ticket.getId()]: `${ticket.getLabel()}, quantity : ${quantityBoughtTickets[ticket.getId()]}` })
+      tickets = { ...tickets, [ticket.getId()]: `${ticket.getLabel()}, quantity : ${ticketsQuantityBought[ticket.getId()]}` })
     );
 
     return { ...items, ...tickets };
   }
 
-  addShippingToPrice(){
+  addShippingToPrice() {
     this._addModificationPrice('shipping', SHIPPING_PRICE);
   }
 
-  removeShippingToPrice(){
+  removeShippingToPrice() {
     this._addModificationPrice('shipping', 0);
   }
 
   hasEnoughItemQuantityInStock() {
     const boughtItems = this.viewModel().boutiques.items;
-    const quantityBoughtItems = this.viewModel().boutiques.itemsQuantityBought;
+    const itemsQuantityBought = this.viewModel().boutiques.itemsQuantityBought;
     for (const item of boughtItems) {
-      if (!item.hasEnoughQuantityInStock(quantityBoughtItems[item.getId()])) return false;
+      if (!item.hasEnoughQuantityInStock(itemsQuantityBought[item.getId()])) return false;
     }
     return true;
   }
 
   hasEnoughTicketQuantityInStock() {
     const boughtTickets = this.viewModel().boutiques.tickets;
-    const quantityBoughtTickets = this.viewModel().boutiques.ticketsQuantityBought;
+    const ticketsQuantityBought = this.viewModel().boutiques.ticketsQuantityBought;
     for (const ticket of boughtTickets) {
-      if (!ticket.hasEnoughQuantityInStock(quantityBoughtTickets[ticket.getId()])) return false;
+      if (!ticket.hasEnoughQuantityInStock(ticketsQuantityBought[ticket.getId()])) return false;
     }
     return true;
   }
@@ -200,23 +205,28 @@ export default class BuyPresenter extends Presenter {
     this.updateItemEntitiesAndSaveThem();
     this.updateTicketEntitiesAndSaveThem();
 
-    this.addInHistory();
+    const itemsQuantityBought = this.viewModel().boutiques.itemsQuantityBought;
+    const ticketsQuantityBought = this.viewModel().boutiques.ticketsQuantityBought;
+
+    const user = this.viewModel().user;
+
+    this.addInUserHistory({
+      itemsQuantityBought,
+      ticketsQuantityBought,
+      user
+    });
   }
 
   updateItemEntitiesAndSaveThem() {
     const boughtItems = this.viewModel().boutiques.items;
-    const quantityBoughtItems = this.viewModel().boutiques.itemsQuantityBought;
-    boughtItems.map(item => this.buyNumberOfItems(item, quantityBoughtItems[item.getId()]));
+    const itemsQuantityBought = this.viewModel().boutiques.itemsQuantityBought;
+    boughtItems.map(item => this.buyNumberOfItems(item, itemsQuantityBought[item.getId()]));
   }
 
   updateTicketEntitiesAndSaveThem() {
     const boughtTickets = this.viewModel().boutiques.tickets;
-    const quantityBoughtTickets = this.viewModel().boutiques.ticketsQuantityBought;
-    boughtTickets.map(ticket => this.buyNumberOfTickets(ticket, quantityBoughtTickets[ticket.getId()]));
-  }
-
-  addInHistory() {
-    //TODO save what user bought in history
+    const ticketsQuantityBought = this.viewModel().boutiques.ticketsQuantityBought;
+    boughtTickets.map(ticket => this.buyNumberOfTickets(ticket, ticketsQuantityBought[ticket.getId()]));
   }
 
   _openSucceededPayementModal() {
