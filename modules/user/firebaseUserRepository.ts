@@ -2,7 +2,7 @@ import UserRepository from './userRepository';
 import { ROLES, User } from './userType';
 import axios from 'axios';
 import logger from '../logger/logger';
-import UserEntity from './UserEntity';
+import UserEntity, { defaultHistory } from './UserEntity';
 import { v4 as uuidV4 } from 'uuid';
 
 class FirebaseUserRepository extends UserRepository {
@@ -24,6 +24,7 @@ class FirebaseUserRepository extends UserRepository {
       creationDate,
       lastLogin,
       provider,
+      history,
     } = response.data;
 
     return new UserEntity({
@@ -38,6 +39,7 @@ class FirebaseUserRepository extends UserRepository {
       creationDate: creationDate,
       lastLogin: lastLogin,
       provider: provider,
+      history: history,
     });
   }
 
@@ -55,6 +57,7 @@ class FirebaseUserRepository extends UserRepository {
       role: user.role || ROLES.USER,
       creationDate: Date.now(),
       lastLogin: Date.now(),
+      history: user.history || defaultHistory,
     });
     return res;
   }
@@ -76,6 +79,7 @@ class FirebaseUserRepository extends UserRepository {
           role: user.role,
           creationDate: user.creationDate,
           lastLogin: user.lastLogin,
+          history: user.history,
         })
     );
   }
@@ -94,6 +98,7 @@ class FirebaseUserRepository extends UserRepository {
       role: user.getRole(),
       creationDate: user.getCreationDate(),
       lastLogin: user.getLastLogin(),
+      history: user.getHistory(),
     });
   }
 }

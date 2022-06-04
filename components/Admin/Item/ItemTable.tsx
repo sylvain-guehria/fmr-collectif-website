@@ -8,7 +8,7 @@ import TableBody from '@material-ui/core/TableBody';
 import Add from '@mui/icons-material/Add';
 
 import ItemTableLine from './ItemTableLine';
-import tableStyles from 'styles/jss/nextjs-material-kit-pro/components/tableStyle.js';
+import tableStyles from 'styles/jss/nextjs-material-kit-pro/components/tableStyle';
 import ItemEntity from '../../../modules/item/ItemEntity';
 import { Button } from '@material-ui/core';
 import { itemServiceDi } from '../../../di';

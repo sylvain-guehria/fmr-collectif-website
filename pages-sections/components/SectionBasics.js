@@ -22,16 +22,16 @@ import People from '@mui/icons-material/People';
 import Check from '@mui/icons-material/Check';
 import FiberManualRecord from '@mui/icons-material/FiberManualRecord';
 // core components
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
 import Button from 'components/lib/CustomButtons/Button';
-import CustomInput from 'components/lib/CustomInput/CustomInput.js';
-import CustomLinearProgress from 'components/lib/CustomLinearProgress/CustomLinearProgress.js';
-import Paginations from 'components/lib/Pagination/Pagination.js';
-import Badge from 'components/lib/Badge/Badge.js';
-import CustomDropdown from 'components/lib/CustomDropdown/CustomDropdown.js';
+import CustomInput from 'components/lib/CustomInput/CustomInput';
+import CustomLinearProgress from 'components/lib/CustomLinearProgress/CustomLinearProgress';
+import Paginations from 'components/lib/Pagination/Pagination';
+import Badge from 'components/lib/Badge/Badge';
+import CustomDropdown from 'components/lib/CustomDropdown/CustomDropdown';
 
-import basicsStyle from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/basicsStyle.js';
+import basicsStyle from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/basicsStyle';
 
 const useStyles = makeStyles(basicsStyle);
 

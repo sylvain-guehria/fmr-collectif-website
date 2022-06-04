@@ -2,13 +2,13 @@ import React from 'react';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
 // core components
-import GridItem from 'components/lib/Grid/GridItem.js';
-import Card from 'components/lib/Card/Card.js';
-import CardBody from 'components/lib/Card/CardBody.js';
-import CardFooter from 'components/lib/Card/CardFooter.js';
+import GridItem from 'components/lib/Grid/GridItem';
+import Card from 'components/lib/Card/Card';
+import CardBody from 'components/lib/Card/CardBody';
+import CardFooter from 'components/lib/Card/CardFooter';
 import Button from 'components/lib/CustomButtons/Button';
 
-import pricingStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsSections/pricingStyle.js';
+import pricingStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsSections/pricingStyle';
 import TicketEntity from 'modules/ticket/TicketEntity';
 import { formatTicketDate, formatTicketHour } from './ticketUtil';
 import { Tooltip } from '@material-ui/core';

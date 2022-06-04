@@ -6,13 +6,13 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Reply from '@mui/icons-material/Reply';
 import Favorite from '@mui/icons-material/Favorite';
 // core components
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import Media from 'components/lib/Media/Media.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import Media from 'components/lib/Media/Media';
 import Button from 'components/lib/CustomButtons/Button';
-import CustomInput from 'components/lib/CustomInput/CustomInput.js';
+import CustomInput from 'components/lib/CustomInput/CustomInput';
 
-import sectionCommentsStyle from 'styles/jss/nextjs-material-kit-pro/pages/blogPostSections/sectionCommentsStyle.js';
+import sectionCommentsStyle from 'styles/jss/nextjs-material-kit-pro/pages/blogPostSections/sectionCommentsStyle';
 
 const useStyles = makeStyles(sectionCommentsStyle);
 

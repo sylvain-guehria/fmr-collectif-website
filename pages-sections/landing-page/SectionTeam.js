@@ -4,17 +4,17 @@ import { makeStyles } from '@material-ui/core/styles';
 // @mui/icons-material
 // import  from "@mui/icons-material/";
 // core components
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import Card from 'components/lib/Card/Card.js';
-import CardHeader from 'components/lib/Card/CardHeader.js';
-import CardBody from 'components/lib/Card/CardBody.js';
-import CardFooter from 'components/lib/Card/CardFooter.js';
-import Muted from 'components/lib/Typography/Muted.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import Card from 'components/lib/Card/Card';
+import CardHeader from 'components/lib/Card/CardHeader';
+import CardBody from 'components/lib/Card/CardBody';
+import CardFooter from 'components/lib/Card/CardFooter';
+import Muted from 'components/lib/Typography/Muted';
 import Button from 'components/lib/CustomButtons/Button';
 
-import teamsStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsSections/teamsStyle.js';
-import teamStyle from 'styles/jss/nextjs-material-kit-pro/pages/landingPageSections/teamStyle.js';
+import teamsStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsSections/teamsStyle';
+import teamStyle from 'styles/jss/nextjs-material-kit-pro/pages/landingPageSections/teamStyle';
 
 const style = {
   ...teamsStyle,

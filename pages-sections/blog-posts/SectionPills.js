@@ -5,14 +5,14 @@ import Tooltip from '@material-ui/core/Tooltip';
 // @mui/icons-material
 import FormatAlignLeft from '@mui/icons-material/FormatAlignLeft';
 // core components
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import NavPills from 'components/lib/NavPills/NavPills.js';
-import Card from 'components/lib/Card/Card.js';
-import CardBody from 'components/lib/Card/CardBody.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import NavPills from 'components/lib/NavPills/NavPills';
+import Card from 'components/lib/Card/Card';
+import CardBody from 'components/lib/Card/CardBody';
 import Button from 'components/lib/CustomButtons/Button';
 
-import sectionPillsStyle from 'styles/jss/nextjs-material-kit-pro/pages/blogPostsSections/sectionPillsStyle.js';
+import sectionPillsStyle from 'styles/jss/nextjs-material-kit-pro/pages/blogPostsSections/sectionPillsStyle';
 
 const useStyles = makeStyles(sectionPillsStyle);
 

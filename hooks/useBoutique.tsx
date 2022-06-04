@@ -12,6 +12,7 @@ type ContextProps = {
   updateTicketQuantity: (ticketUid: string, operation: Operation.ADD | Operation.MINUS) => void;
   getTotalPrice: () => number;
   resetBoutiques: () => void;
+  addModificationPrice: (modification: PriceModificationKeys, value: number) => void;
 };
 
 export enum Operation {
@@ -40,6 +41,7 @@ export const useProvideBoutique = (): Partial<ContextProps> => {
     itemsQuantityBought: {},
     tickets: [],
     ticketsQuantityBought: {},
+    priceModifications: {},
   });
 
   const addItem = (item: ItemEntity): boolean => {
@@ -111,7 +113,7 @@ export const useProvideBoutique = (): Partial<ContextProps> => {
     operation: Operation.ADD | Operation.MINUS
   ): void => {
     const localBoutique = { ...boutiques };
-    const currentTicket = localBoutique.tickets.find(item => item.getId() === ticketUid);
+    const currentTicket = localBoutique.tickets.find(ticket => ticket.getId() === ticketUid);
     let updatedQuantity = 1;
     if (
       operation === Operation.ADD &&
@@ -138,7 +140,24 @@ export const useProvideBoutique = (): Partial<ContextProps> => {
       if (isNaN(boutiques.ticketsQuantityBought[ticket.getId()])) continue;
       totalPrice = totalPrice + ticket.getPrice() * boutiques.ticketsQuantityBought[ticket.getId()];
     }
+    if (boutiques.priceModifications?.shipping)
+      totalPrice = totalPrice + boutiques.priceModifications.shipping;
+
+    if (boutiques.priceModifications?.discount)
+      totalPrice = totalPrice - boutiques.priceModifications.discount;
+
+    if (boutiques.priceModifications?.discountInPercentage)
+      totalPrice = totalPrice * (1 - boutiques.priceModifications.discountInPercentage / 100);
     return totalPrice;
+  };
+
+  const addModificationPrice = (modification: PriceModificationKeys, value: number): void => {
+    const localBoutique = { ...boutiques };
+    localBoutique.priceModifications = {
+      ...localBoutique.priceModifications,
+      [modification]: value,
+    };
+    setBoutiques(localBoutique);
   };
 
   const resetBoutiques = (): void => {
@@ -147,6 +166,7 @@ export const useProvideBoutique = (): Partial<ContextProps> => {
       itemsQuantityBought: {},
       tickets: [],
       ticketsQuantityBought: {},
+      priceModifications: {},
     });
   };
 
@@ -160,6 +180,7 @@ export const useProvideBoutique = (): Partial<ContextProps> => {
     updateTicketQuantity,
     getTotalPrice,
     resetBoutiques,
+    addModificationPrice,
   };
 };
 
@@ -168,4 +189,13 @@ export type Boutiques = {
   itemsQuantityBought: Record<string, number>;
   tickets: TicketEntity[];
   ticketsQuantityBought: Record<string, number>;
+  priceModifications?: PriceModifications;
 };
+
+export type PriceModifications = {
+  shipping?: number;
+  discount?: number;
+  discountInPercentage?: number;
+};
+
+export type PriceModificationKeys = keyof PriceModifications;

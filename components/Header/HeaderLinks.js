@@ -8,9 +8,9 @@ import Link from 'next/link';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import CustomDropdown from 'components/lib/CustomDropdown/CustomDropdown.js';
+import CustomDropdown from 'components/lib/CustomDropdown/CustomDropdown';
 import LoginButton from '../LoginButton/LoginButton';
-import styles from 'styles/jss/nextjs-material-kit-pro/components/headerLinksStyle.js';
+import styles from 'styles/jss/nextjs-material-kit-pro/components/headerLinksStyle';
 import { countTabNotification, fromHrefToCamelCase } from './headerUtils';
 
 const useStyles = makeStyles(styles);

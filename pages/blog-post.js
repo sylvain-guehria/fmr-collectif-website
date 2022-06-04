@@ -1,6 +1,6 @@
 import React from 'react';
 
-import BlogPostComponent from '../components/GuestAndLoggedinPages/Blog-post';
+import BlogPostComponent from '../components/Blog/Blog-post';
 import { buildGuestOrLoggedInLayout } from '../components/Layouts/layoutBuilder';
 
 const BlogPost = ()=> {

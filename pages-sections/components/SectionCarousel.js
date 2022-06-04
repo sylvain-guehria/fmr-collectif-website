@@ -6,11 +6,11 @@ import { makeStyles } from '@material-ui/core/styles';
 // @mui/icons-material
 import LocationOn from '@mui/icons-material/LocationOn';
 // core components
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import Card from 'components/lib/Card/Card.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import Card from 'components/lib/Card/Card';
 
-import carouselStyle from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/carouselStyle.js';
+import carouselStyle from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/carouselStyle';
 
 const useStyles = makeStyles(carouselStyle);
 

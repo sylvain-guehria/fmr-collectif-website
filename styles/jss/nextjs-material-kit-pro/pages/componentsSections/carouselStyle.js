@@ -1,4 +1,4 @@
-import { container } from 'styles/jss/nextjs-material-kit-pro.js';
+import { container } from 'styles/jss/nextjs-material-kit-pro';
 
 const carouselStyle = {
   section: {

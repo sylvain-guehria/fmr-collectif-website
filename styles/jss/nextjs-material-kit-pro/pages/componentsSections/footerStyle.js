@@ -8,9 +8,9 @@ import {
   dribbbleColor,
   instagramColor,
   grayColor
-} from 'styles/jss/nextjs-material-kit-pro.js';
+} from 'styles/jss/nextjs-material-kit-pro';
 
-import imagesStyles from 'styles/jss/nextjs-material-kit-pro/imagesStyles.js';
+import imagesStyles from 'styles/jss/nextjs-material-kit-pro/imagesStyles';
 
 const style = {
   ...imagesStyles,

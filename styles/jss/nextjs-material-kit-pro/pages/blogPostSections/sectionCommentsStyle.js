@@ -1,6 +1,6 @@
-import { grayColor, title } from 'styles/jss/nextjs-material-kit-pro.js';
+import { grayColor, title } from 'styles/jss/nextjs-material-kit-pro';
 
-import tooltipsStyle from 'styles/jss/nextjs-material-kit-pro/tooltipsStyle.js';
+import tooltipsStyle from 'styles/jss/nextjs-material-kit-pro/tooltipsStyle';
 
 const sectionCommentsStyle = {
   ...tooltipsStyle,

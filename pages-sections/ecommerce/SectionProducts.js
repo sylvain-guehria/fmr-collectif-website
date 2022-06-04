@@ -16,17 +16,17 @@ import Cached from '@mui/icons-material/Cached';
 import Subject from '@mui/icons-material/Subject';
 import Check from '@mui/icons-material/Check';
 // core components
-import Accordion from 'components/lib/Accordion/Accordion.js';
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import Card from 'components/lib/Card/Card.js';
-import CardHeader from 'components/lib/Card/CardHeader.js';
-import CardBody from 'components/lib/Card/CardBody.js';
-import CardFooter from 'components/lib/Card/CardFooter.js';
+import Accordion from 'components/lib/Accordion/Accordion';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import Card from 'components/lib/Card/Card';
+import CardHeader from 'components/lib/Card/CardHeader';
+import CardBody from 'components/lib/Card/CardBody';
+import CardFooter from 'components/lib/Card/CardFooter';
 import Button from 'components/lib/CustomButtons/Button';
-import Clearfix from 'components/lib/Clearfix/Clearfix.js';
+import Clearfix from 'components/lib/Clearfix/Clearfix';
 
-import styles from 'styles/jss/nextjs-material-kit-pro/pages/ecommerceSections/productsStyle.js';
+import styles from 'styles/jss/nextjs-material-kit-pro/pages/ecommerceSections/productsStyle';
 
 const useStyles = makeStyles(styles);
 

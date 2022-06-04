@@ -10,8 +10,8 @@ import {
   whiteColor,
   grayColor,
   hexToRgb
-} from 'styles/jss/nextjs-material-kit-pro.js';
-import imagesStyles from 'styles/jss/nextjs-material-kit-pro/imagesStyles.js';
+} from 'styles/jss/nextjs-material-kit-pro';
+import imagesStyles from 'styles/jss/nextjs-material-kit-pro/imagesStyles';
 
 const styles = {
   ...imagesStyles,

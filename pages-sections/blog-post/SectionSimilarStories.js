@@ -4,16 +4,16 @@ import { makeStyles } from '@material-ui/core/styles';
 // @mui/icons-material
 import TrendingUp from '@mui/icons-material/TrendingUp';
 // core components
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import Card from 'components/lib/Card/Card.js';
-import CardHeader from 'components/lib/Card/CardHeader.js';
-import CardBody from 'components/lib/Card/CardBody.js';
-import Info from 'components/lib/Typography/Info.js';
-import Success from 'components/lib/Typography/Success.js';
-import Danger from 'components/lib/Typography/Danger.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import Card from 'components/lib/Card/Card';
+import CardHeader from 'components/lib/Card/CardHeader';
+import CardBody from 'components/lib/Card/CardBody';
+import Info from 'components/lib/Typography/Info';
+import Success from 'components/lib/Typography/Success';
+import Danger from 'components/lib/Typography/Danger';
 
-import sectionSimilarStoriesStyle from 'styles/jss/nextjs-material-kit-pro/pages/blogPostSections/sectionSimilarStoriesStyle.js';
+import sectionSimilarStoriesStyle from 'styles/jss/nextjs-material-kit-pro/pages/blogPostSections/sectionSimilarStoriesStyle';
 
 const useStyles = makeStyles(sectionSimilarStoriesStyle);
 

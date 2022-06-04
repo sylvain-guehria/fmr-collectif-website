@@ -8,7 +8,7 @@ import TableBody from '@material-ui/core/TableBody';
 import Add from '@mui/icons-material/Add';
 
 import TicketTableLine from './TicketTableLine';
-import tableStyles from 'styles/jss/nextjs-material-kit-pro/components/tableStyle.js';
+import tableStyles from 'styles/jss/nextjs-material-kit-pro/components/tableStyle';
 import TicketEntity from '../../../modules/ticket/TicketEntity';
 import { Button } from '@material-ui/core';
 import { ticketServiceDi } from '../../../di';

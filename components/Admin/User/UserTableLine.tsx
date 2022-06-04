@@ -5,7 +5,7 @@ import Close from '@mui/icons-material/Close';
 import Button from '../../lib/CustomButtons/Button';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
-import adminStyle from 'styles/jss/nextjs-material-kit-pro/pages/adminStyle.js';
+import adminStyle from 'styles/jss/nextjs-material-kit-pro/pages/adminStyle';
 import { formatTimeStamp } from '../../../utils/utils';
 import UserEntity from '../../../modules/user/UserEntity';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment

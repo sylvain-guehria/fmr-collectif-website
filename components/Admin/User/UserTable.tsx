@@ -7,7 +7,7 @@ import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 
 import UserTableLine from './UserTableLine';
-import tableStyles from 'styles/jss/nextjs-material-kit-pro/components/tableStyle.js';
+import tableStyles from 'styles/jss/nextjs-material-kit-pro/components/tableStyle';
 import UserEntity from '../../../modules/user/UserEntity';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore

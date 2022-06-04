@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { validationSchema } from './RegisterFormValidation';
 
@@ -17,7 +17,7 @@ import Button from '../../lib/CustomButtons/Button';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
 
-import signupPageStyle from '../../../styles/jss/nextjs-material-kit-pro/pages/signupPageStyle.js';
+import signupPageStyle from '../../../styles/jss/nextjs-material-kit-pro/pages/signupPageStyle';
 
 import { getError } from '../formUtils';
 import { useAuth } from '../../../hooks/useAuth';
@@ -38,20 +38,8 @@ interface RegisterFormType {
 
 const RegisterForm: React.FC = (): React.ReactElement => {
   const classes = useStyles();
-  const [checked, setChecked] = useState([0]);
   const auth = useAuth();
   const router = useRouter();
-
-  const handleToggle = (value: number): void => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-    setChecked(newChecked);
-  };
 
   const formOptions = { resolver: yupResolver(validationSchema) };
 
@@ -147,15 +135,7 @@ const RegisterForm: React.FC = (): React.ReactElement => {
         classes={{
           label: classes.label,
         }}
-        control={
-          <input
-            checked={checked.indexOf(1) !== -1 ? true : false}
-            onClick={() => handleToggle(1)}
-            type="checkbox"
-            {...register('acceptTerms')}
-            id="acceptTerms"
-          />
-        }
+        control={<input type="checkbox" {...register('acceptTerms')} id="acceptTerms" />}
         label={
           <span>
             J&apos;accepte les <a href="#pablo">termes et conditions</a>.

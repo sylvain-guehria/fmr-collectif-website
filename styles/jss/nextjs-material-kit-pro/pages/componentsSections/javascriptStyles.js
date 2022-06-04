@@ -9,12 +9,12 @@ import {
   whiteColor,
   grayColor,
   hexToRgb
-} from 'styles/jss/nextjs-material-kit-pro.js';
+} from 'styles/jss/nextjs-material-kit-pro';
 
-import modalStyle from 'styles/jss/nextjs-material-kit-pro/modalStyle.js';
-import tooltipsStyle from 'styles/jss/nextjs-material-kit-pro/tooltipsStyle.js';
-import popoverStyles from 'styles/jss/nextjs-material-kit-pro/popoverStyles.js';
-import customCheckboxRadioSwitch from 'styles/jss/nextjs-material-kit-pro/customCheckboxRadioSwitchStyle.js';
+import modalStyle from 'styles/jss/nextjs-material-kit-pro/modalStyle';
+import tooltipsStyle from 'styles/jss/nextjs-material-kit-pro/tooltipsStyle';
+import popoverStyles from 'styles/jss/nextjs-material-kit-pro/popoverStyles';
+import customCheckboxRadioSwitch from 'styles/jss/nextjs-material-kit-pro/customCheckboxRadioSwitchStyle';
 
 const javascriptStyles = (theme) => ({
   container,

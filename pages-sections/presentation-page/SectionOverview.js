@@ -2,12 +2,12 @@ import React from 'react';
 // nodejs library that concatenates classes
 import classNames from 'classnames';
 // core components
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import InfoArea from 'components/lib/InfoArea/InfoArea.js';
-import Card from 'components/lib/Card/Card.js';
-import CardHeader from 'components/lib/Card/CardHeader.js';
-import CardBody from 'components/lib/Card/CardBody.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import InfoArea from 'components/lib/InfoArea/InfoArea';
+import Card from 'components/lib/Card/Card';
+import CardHeader from 'components/lib/Card/CardHeader';
+import CardBody from 'components/lib/Card/CardBody';
 // @material-ui icons
 import Grid from '@mui/icons-material/GridOn';
 import PhoneLink from '@mui/icons-material/Phonelink';
@@ -16,7 +16,7 @@ import AttachMoney from '@mui/icons-material/AttachMoney';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
 
-import overviewStyle from 'styles/jss/nextjs-material-kit-pro/pages/presentationSections/overviewStyle.js';
+import overviewStyle from 'styles/jss/nextjs-material-kit-pro/pages/presentationSections/overviewStyle';
 
 const useStyles = makeStyles(overviewStyle);
 

@@ -1,4 +1,4 @@
-import { grayColor, cardTitle } from 'styles/jss/nextjs-material-kit-pro.js';
+import { grayColor, cardTitle } from 'styles/jss/nextjs-material-kit-pro';
 const sectionBlogInfoStyle = {
   section: {
     paddingTop: '30px',

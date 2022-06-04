@@ -2,12 +2,12 @@ import React from 'react';
 // nodejs library that concatenates classes
 import classNames from 'classnames';
 // core components
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
 
-import cardsStyle from 'styles/jss/nextjs-material-kit-pro/pages/presentationSections/cardsStyle.js';
+import cardsStyle from 'styles/jss/nextjs-material-kit-pro/pages/presentationSections/cardsStyle';
 
 const useStyles = makeStyles(cardsStyle);
 

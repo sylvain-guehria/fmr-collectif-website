@@ -11,15 +11,15 @@ import ListItem from '@material-ui/core/ListItem';
 import Share from '@mui/icons-material/Share';
 import ShoppingCart from '@mui/icons-material/ShoppingCart';
 // core components
-import Header from 'components/Header/Header.js';
+import Header from 'components/Header/Header';
 import Button from 'components/lib/CustomButtons/Button';
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import Card from 'components/lib/Card/Card.js';
-import CardBody from 'components/lib/Card/CardBody.js';
-import CustomInput from 'components/lib/CustomInput/CustomInput.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import Card from 'components/lib/Card/Card';
+import CardBody from 'components/lib/Card/CardBody';
+import CustomInput from 'components/lib/CustomInput/CustomInput';
 
-import headersStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsSections/headersStyle.js';
+import headersStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsSections/headersStyle';
 
 const useStyles = makeStyles(headersStyle);
 

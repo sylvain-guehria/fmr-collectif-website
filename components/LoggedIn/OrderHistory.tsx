@@ -8,17 +8,17 @@ import Camera from '@mui/icons-material/Camera';
 import Palette from '@mui/icons-material/Palette';
 import People from '@mui/icons-material/People';
 // core components
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import NavPills from 'components/lib/NavPills/NavPills.js';
-import Card from 'components/lib/Card/Card.js';
-import CardBody from 'components/lib/Card/CardBody.js';
-import CardHeader from 'components/lib/Card/CardHeader.js';
-import Badge from 'components/lib/Badge/Badge.js';
-import Muted from 'components/lib/Typography/Muted.js';
-import Clearfix from 'components/lib/Clearfix/Clearfix.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import NavPills from 'components/lib/NavPills/NavPills';
+import Card from 'components/lib/Card/Card';
+import CardBody from 'components/lib/Card/CardBody';
+import CardHeader from 'components/lib/Card/CardHeader';
+import Badge from 'components/lib/Badge/Badge';
+import Muted from 'components/lib/Typography/Muted';
+import Clearfix from 'components/lib/Clearfix/Clearfix';
 
-import profilePageStyle from 'styles/jss/nextjs-material-kit-pro/pages/profilePageStyle.js';
+import profilePageStyle from 'styles/jss/nextjs-material-kit-pro/pages/profilePageStyle';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const useStyles = makeStyles(profilePageStyle);

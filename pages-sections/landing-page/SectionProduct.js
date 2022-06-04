@@ -7,11 +7,11 @@ import Chat from '@mui/icons-material/Chat';
 import VerifiedUser from '@mui/icons-material/VerifiedUser';
 import Fingerprint from '@mui/icons-material/Fingerprint';
 // core components
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import InfoArea from 'components/lib/InfoArea/InfoArea.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import InfoArea from 'components/lib/InfoArea/InfoArea';
 
-import productStyle from 'styles/jss/nextjs-material-kit-pro/pages/landingPageSections/productStyle.js';
+import productStyle from 'styles/jss/nextjs-material-kit-pro/pages/landingPageSections/productStyle';
 
 const useStyles = makeStyles(productStyle);
 

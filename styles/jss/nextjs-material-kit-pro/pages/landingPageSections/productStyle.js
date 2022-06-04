@@ -1,4 +1,4 @@
-import { title, grayColor } from 'styles/jss/nextjs-material-kit-pro.js';
+import { title, grayColor } from 'styles/jss/nextjs-material-kit-pro';
 
 const productStyle = {
   section: {

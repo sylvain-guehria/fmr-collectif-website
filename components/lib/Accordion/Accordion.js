@@ -10,7 +10,7 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 // @mui/icons-material
 import ExpandMore from '@mui/icons-material/ExpandMore';
 
-import styles from 'styles/jss/nextjs-material-kit-pro/components/accordionStyle.js';
+import styles from 'styles/jss/nextjs-material-kit-pro/components/accordionStyle';
 
 const useStyles = makeStyles(styles);
 

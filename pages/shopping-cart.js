@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ShoppingCartComponent from '../components/GuestAndLoggedinPages/Shopping-cart';
+import ShoppingCartComponent from '../components/ShoppingCart/Shopping-cart';
 import { buildGuestOrLoggedInLayout } from '../components/Layouts/layoutBuilder';
 
 const ShoppingCart = ()=> {

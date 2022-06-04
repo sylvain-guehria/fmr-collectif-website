@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ShopComponent from '../components/GuestAndLoggedinPages/Shop';
+import ShopComponent from '../components/ShopItemCard/Shop';
 import { buildGuestOrLoggedInLayout } from '../components/Layouts/layoutBuilder';
 import firebaseItemRepository from '../modules/item/firebaseItemRepository';
 import ItemEntity from '../modules/item/ItemEntity';

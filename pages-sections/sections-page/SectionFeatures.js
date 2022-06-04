@@ -18,11 +18,11 @@ import ViewCarousel from '@mui/icons-material/ViewCarousel';
 import AccessTime from '@mui/icons-material/AccessTime';
 import AttachMoney from '@mui/icons-material/AttachMoney';
 // core components
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import InfoArea from 'components/lib/InfoArea/InfoArea.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import InfoArea from 'components/lib/InfoArea/InfoArea';
 
-import featuresStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsSections/featuresStyle.js';
+import featuresStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsSections/featuresStyle';
 
 const useStyles = makeStyles(featuresStyle);
 

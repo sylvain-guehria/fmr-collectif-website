@@ -8,7 +8,7 @@ import Fingerprint from '@mui/icons-material/Fingerprint';
 import Button from '../../components/lib/CustomButtons/Button';
 import { useAuth } from '../../hooks/useAuth';
 
-import styles from 'styles/jss/nextjs-material-kit-pro/components/headerLinksStyle.js';
+import styles from 'styles/jss/nextjs-material-kit-pro/components/headerLinksStyle';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const useStyles = makeStyles(styles);

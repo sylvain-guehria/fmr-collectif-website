@@ -9,10 +9,10 @@ import {
   grayColor,
   mlAuto,
   containerAdmin
-} from 'styles/jss/nextjs-material-kit-pro.js';
+} from 'styles/jss/nextjs-material-kit-pro';
 
-import buttonGroup from 'styles/jss/nextjs-material-kit-pro/buttonGroupStyle.js';
-import tooltips from 'styles/jss/nextjs-material-kit-pro/tooltipsStyle.js';
+import buttonGroup from 'styles/jss/nextjs-material-kit-pro/buttonGroupStyle';
+import tooltips from 'styles/jss/nextjs-material-kit-pro/tooltipsStyle';
 
 const styles = {
   main,

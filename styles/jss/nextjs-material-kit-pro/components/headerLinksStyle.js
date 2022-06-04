@@ -5,9 +5,9 @@ import {
   warningColor,
   mlAuto,
   hexToRgb
-} from 'styles/jss/nextjs-material-kit-pro.js';
+} from 'styles/jss/nextjs-material-kit-pro';
 
-import tooltip from 'styles/jss/nextjs-material-kit-pro/tooltipsStyle.js';
+import tooltip from 'styles/jss/nextjs-material-kit-pro/tooltipsStyle';
 
 const headerLinksStyle = (theme) => ({
   list: {

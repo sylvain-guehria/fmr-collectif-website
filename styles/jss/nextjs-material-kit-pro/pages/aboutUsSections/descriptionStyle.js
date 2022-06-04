@@ -10,6 +10,9 @@ const descriptionStyle = {
   textCenter: {
     textAlign: 'center'
   },
+  textLeft: {
+    textAlign: 'left'
+  },
   aboutDescription: {
     padding: '70px 0 0 0'
   },

@@ -1,5 +1,5 @@
 /* eslint-disable complexity */
-import { ROLES, User } from './userType';
+import { History, HISTORY_TYPE, ROLES, User } from './userType';
 
 class UserEntity implements User {
   loggedIn;
@@ -15,10 +15,10 @@ class UserEntity implements User {
   creationDate;
   lastLogin;
   provider;
+  history;
 
   static new(user: User): UserEntity {
     return new UserEntity({
-      creationDate: Date.now(),
       lastLogin: Date.now(),
       ...user,
     });
@@ -38,6 +38,7 @@ class UserEntity implements User {
     this.role = user.role || '';
     this.creationDate = user.creationDate || 0;
     this.lastLogin = user.lastLogin || 0;
+    this.history = user.history || defaultHistory;
   }
 
   getId(): string {
@@ -138,6 +139,58 @@ class UserEntity implements User {
   isSuperAdmin(): boolean {
     return this.getRole() === ROLES.SUPERADMIN;
   }
+
+  getHistory(): History {
+    return this.history || defaultHistory;
+  }
+
+  addInUserHistory(historyType: HISTORY_TYPE, id: string, quantity: number): UserEntity {
+    if (historyType === HISTORY_TYPE.ITEMS) this._addItemsInUserHistory(id, quantity);
+    if (historyType === HISTORY_TYPE.TICKETS) this._addTicketsInUserHistory(id, quantity);
+    return this;
+  }
+
+  _addTicketsInUserHistory(ticketId: string, quantity: number): void {
+    if (!this.history?.tickets) {
+      this.history.tickets = [
+        {
+          date: Date.now(),
+          ticketId: ticketId,
+          quantity: quantity,
+        },
+      ];
+    } else {
+      this.history.tickets.push({
+        date: Date.now(),
+        ticketId: ticketId,
+        quantity: quantity,
+      });
+    }
+  }
+
+  _addItemsInUserHistory(itemId: string, quantity: number): void {
+    if (!this.history?.items) {
+      this.history.items = [
+        {
+          date: Date.now(),
+          itemId: itemId,
+          quantity: quantity,
+        },
+      ];
+    } else {
+      this.history.items.push({
+        date: Date.now(),
+        itemId: itemId,
+        quantity: quantity,
+      });
+    }
+  }
 }
 
 export default UserEntity;
+
+export const defaultHistory = {
+  [HISTORY_TYPE.ITEMS]: [],
+  [HISTORY_TYPE.TICKETS]: [],
+  [HISTORY_TYPE.SUBSCRIBTIONS]: [],
+};

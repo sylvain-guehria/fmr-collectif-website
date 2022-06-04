@@ -6,8 +6,8 @@ import {
   grayColor,
   mainRaised,
   hexToRgb
-} from 'styles/jss/nextjs-material-kit-pro.js';
-import footerStyle from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/footerStyle.js';
+} from 'styles/jss/nextjs-material-kit-pro';
+import footerStyle from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/footerStyle';
 
 const presentationStyle = {
   ...footerStyle,

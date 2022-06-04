@@ -5,7 +5,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
 import Button from 'components/lib/CustomButtons/Button';
-import javascriptStyles from 'styles/jss/nextjs-material-kit-pro/modalStyle.js';
+import javascriptStyles from 'styles/jss/nextjs-material-kit-pro/modalStyle';
 import Image from 'next/image';
 import Favorite from '@mui/icons-material/Favorite';
 import CheckCircleOutline from '@mui/icons-material/CheckCircleOutline';

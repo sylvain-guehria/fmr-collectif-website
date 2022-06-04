@@ -4,17 +4,17 @@ import Link from 'next/link';
 // nodejs library that concatenates classes
 import classNames from 'classnames';
 // core components
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
 // core components
 import Button from 'components/lib/CustomButtons/Button';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
 
-import sectionsStyle from 'styles/jss/nextjs-material-kit-pro/pages/presentationSections/sectionsStyle.js';
+import sectionsStyle from 'styles/jss/nextjs-material-kit-pro/pages/presentationSections/sectionsStyle';
 
 // images array used in rendering a function for this section
-import imgs from 'public/img/assets-for-demo/sections/imgs.js';
+import imgs from 'public/img/assets-for-demo/sections/imgs';
 
 const useStyles = makeStyles(sectionsStyle);
 

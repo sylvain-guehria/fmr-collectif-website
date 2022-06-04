@@ -4,17 +4,17 @@ import { makeStyles } from '@material-ui/core/styles';
 // @mui/icons-material
 // import  from "@mui/icons-material/";
 // core components
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import Card from 'components/lib/Card/Card.js';
-import CardAvatar from 'components/lib/Card/CardAvatar.js';
-import CardHeader from 'components/lib/Card/CardHeader.js';
-import CardBody from 'components/lib/Card/CardBody.js';
-import CardFooter from 'components/lib/Card/CardFooter.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import Card from 'components/lib/Card/Card';
+import CardAvatar from 'components/lib/Card/CardAvatar';
+import CardHeader from 'components/lib/Card/CardHeader';
+import CardBody from 'components/lib/Card/CardBody';
+import CardFooter from 'components/lib/Card/CardFooter';
 import Button from 'components/lib/CustomButtons/Button';
-import Muted from 'components/lib/Typography/Muted.js';
+import Muted from 'components/lib/Typography/Muted';
 
-import teamsStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsSections/teamsStyle.js';
+import teamsStyle from 'styles/jss/nextjs-material-kit-pro/pages/sectionsSections/teamsStyle';
 
 const useStyles = makeStyles(teamsStyle);
 

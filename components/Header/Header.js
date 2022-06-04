@@ -15,7 +15,7 @@ import Drawer from '@material-ui/core/Drawer';
 import Menu from '@mui/icons-material/Menu';
 import Close from '@mui/icons-material/Close';
 // core components
-import styles from 'styles/jss/nextjs-material-kit-pro/components/headerStyle.js';
+import styles from 'styles/jss/nextjs-material-kit-pro/components/headerStyle';
 
 const useStyles = makeStyles(styles);
 

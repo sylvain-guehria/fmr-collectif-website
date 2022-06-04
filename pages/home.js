@@ -1,6 +1,6 @@
 import React from 'react';
 
-import HomepageComponent from '../components/GuestAndLoggedinPages/Home';
+import HomepageComponent from '../components/HomePage/Home';
 import { buildGuestOrLoggedInLayout } from '../components/Layouts/layoutBuilder';
 
 const HomePage = ()=> {

@@ -6,19 +6,19 @@ import { makeStyles } from '@material-ui/core/styles';
 // @mui/icons-material
 
 // core components
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
-import Small from 'components/lib/Typography/Small.js';
-import Danger from 'components/lib/Typography/Danger.js';
-import Warning from 'components/lib/Typography/Warning.js';
-import Success from 'components/lib/Typography/Success.js';
-import Info from 'components/lib/Typography/Info.js';
-import Primary from 'components/lib/Typography/Primary.js';
-import Muted from 'components/lib/Typography/Muted.js';
-import Quote from 'components/lib/Typography/Quote.js';
-import SectionContentAreas from './SectionContentAreas.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
+import Small from 'components/lib/Typography/Small';
+import Danger from 'components/lib/Typography/Danger';
+import Warning from 'components/lib/Typography/Warning';
+import Success from 'components/lib/Typography/Success';
+import Info from 'components/lib/Typography/Info';
+import Primary from 'components/lib/Typography/Primary';
+import Muted from 'components/lib/Typography/Muted';
+import Quote from 'components/lib/Typography/Quote';
+import SectionContentAreas from './SectionContentAreas';
 
-import typographyStyle from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/typographyStyle.js';
+import typographyStyle from 'styles/jss/nextjs-material-kit-pro/pages/componentsSections/typographyStyle';
 
 const useStyles = makeStyles(typographyStyle);
 

@@ -10,7 +10,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
-import styles from 'styles/jss/nextjs-material-kit-pro/components/tableStyle.js';
+import styles from 'styles/jss/nextjs-material-kit-pro/components/tableStyle';
 
 const useStyles = makeStyles(styles);
 

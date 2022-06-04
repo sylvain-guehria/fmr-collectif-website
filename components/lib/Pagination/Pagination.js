@@ -8,7 +8,7 @@ import classNames from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
-import styles from 'styles/jss/nextjs-material-kit-pro/components/paginationStyle.js';
+import styles from 'styles/jss/nextjs-material-kit-pro/components/paginationStyle';
 
 const useStyles = makeStyles(styles);
 

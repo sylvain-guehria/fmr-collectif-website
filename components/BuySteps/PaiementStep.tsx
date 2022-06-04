@@ -1,5 +1,5 @@
 import React from 'react';
-import GridContainer from 'components/lib/Grid/GridContainer.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
 import StripePaymentForm from './StripePaymentForm';
 import { BuyStepsViewModel } from './mvp/type';
 import BuyPresenter from './mvp/BuyPresenter';

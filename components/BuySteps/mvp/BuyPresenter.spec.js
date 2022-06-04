@@ -1,12 +1,14 @@
 import BuyPresenter from './BuyPresenter';
 import ItemEntity from '../../../modules/item/ItemEntity';
 import TicketEntity from '../../../modules/ticket/TicketEntity';
+import UserEntity from '../../../modules/user/UserEntity';
 
 const defaultViewModel = {
   remiseEnMainPropreChecked: false,
   livraisonChecked: false,
   identicalShippingAddressChecked: false,
   goNextTab: -1,
+  user: null,
   userEmail: '',
   totalPrice: 0,
   paymentStatus: 'initial',
@@ -41,6 +43,7 @@ let presenter;
 const buyNumberOfItems = jest.fn();
 const buyNumberOfTickets = jest.fn();
 const fetchPostJSON = jest.fn();
+const addInUserHistory = jest.fn();
 
 const stripe = {
   confirmCardPayment: jest.fn()
@@ -51,12 +54,15 @@ const elements = {
 };
 
 beforeEach(() => {
-  presenter = new BuyPresenter({ buyNumberOfItems, buyNumberOfTickets, fetchPostJSON });
+  presenter = new BuyPresenter({ buyNumberOfItems, buyNumberOfTickets, fetchPostJSON, addInUserHistory });
 });
 
+const user = UserEntity.new({ email: 'sylvainguehria@gmail.com', uid: 'userID' });
+
 describe('#useDynamicDependencies', () => {
-  it('update the userEmail', async () => {
-    presenter.updateDependencies({ userEmail: 'sylvainguehria@gmail.com' });
+  it('update the user', async () => {
+    presenter.updateDependencies({ user: user });
+    expect(presenter.viewModel().user).toBe(user);
     expect(presenter.viewModel().userEmail).toBe('sylvainguehria@gmail.com');
   });
   it('update the totalPrice', async () => {
@@ -67,12 +73,12 @@ describe('#useDynamicDependencies', () => {
     presenter.updateDependencies({
       boutiques: {
         items: ['item1', 'item2'],
-        tickets: ['ticket1']
+        tickets: ['Ticket1']
       }
     });
     expect(presenter.viewModel().boutiques).toStrictEqual({
       items: ['item1', 'item2'],
-      tickets: ['ticket1']
+      tickets: ['Ticket1']
     });
   });
 });
@@ -84,16 +90,17 @@ describe('#setShippingData', () => {
     billingPhone: '+33664397053'
   };
   beforeEach(() => {
-    presenter.updateDependencies({ userEmail: 'sylvainguehria@gmail.com' });
+    presenter.updateDependencies({ user: user });
   });
-  describe('the user checked the checkbox "remise en main propre"', () => {
-    it('display "Remise en main propre au prochain évènement Frm" and fullfill the billing details', async () => {
+  describe('The user checked the checkbox "remise en main propre"', () => {
+    it('Display "Remise en main propre au prochain évènement Frm" and fullfill the billing details', async () => {
 
       presenter.setShippingData({ ...billingDetails, remiseEnMainPropreChecked: true });
 
       expect(presenter.viewModel()).toStrictEqual(
         {
           ...defaultViewModel,
+          user,
           userEmail: 'sylvainguehria@gmail.com',
           remiseEnMainPropreChecked: true,
           livraisonChecked: false,
@@ -121,14 +128,15 @@ describe('#setShippingData', () => {
       );
     });
   });
-  describe('the user checked the checkbox "shipping" and the checkbox "identical Shipping Address"', () => {
-    it('display "Identique à l\'adresse de facturation" as shipping address and fullfill the billing & shipping details ', async () => {
+  describe('The user checked the checkbox "shipping" and the checkbox "identical Shipping Address"', () => {
+    it('Display "Identique à l\'adresse de facturation" as shipping address and fullfill the billing & shipping details ', async () => {
 
       presenter.setShippingData({ ...billingDetails, livraisonChecked: true, identicalShippingAddressChecked: true });
 
       expect(presenter.viewModel()).toStrictEqual(
         {
           ...defaultViewModel,
+          user,
           userEmail: 'sylvainguehria@gmail.com',
           remiseEnMainPropreChecked: false,
           livraisonChecked: true,
@@ -156,8 +164,8 @@ describe('#setShippingData', () => {
       );
     });
   });
-  describe('the user checked the checkbox "shipping" and gave a Shipping Address', () => {
-    it('display the shipping address and fullfill the billing & shipping details ', async () => {
+  describe('The user checked the checkbox "shipping" and gave a Shipping Address', () => {
+    it('Display the shipping address and fullfill the billing & shipping details ', async () => {
 
       const shippingDetails = {
         shippingAddress: 'my shipping adress',
@@ -170,6 +178,7 @@ describe('#setShippingData', () => {
       expect(presenter.viewModel()).toStrictEqual(
         {
           ...defaultViewModel,
+          user,
           userEmail: 'sylvainguehria@gmail.com',
           remiseEnMainPropreChecked: false,
           livraisonChecked: true,
@@ -204,8 +213,8 @@ describe('The user make a payment', () => {
   const item1 = new ItemEntity({ uid: 'uid1', quantity: 3, label: 'labelItem1' });
   const item2 = new ItemEntity({ uid: 'uid2', quantity: 1, label: 'labelItem2' });
 
-  const ticket1 = new TicketEntity({ uid: 'ticketId1', quantity: 50, label: 'labelTicket1' });
-  const ticket2 = new TicketEntity({ uid: 'ticketId2', quantity: 30, label: 'labelTicket2' });
+  const ticket1 = new TicketEntity({ uid: 'TicketId1', quantity: 50, label: 'labelTicket1' });
+  const ticket2 = new TicketEntity({ uid: 'TicketId2', quantity: 30, label: 'labelTicket2' });
 
 
   beforeEach(() => {
@@ -308,7 +317,7 @@ describe('The user make a payment', () => {
           ticketId2: 'labelTicket2, quantity : 4'
         });
     });
-    it('Open the payement suceeded modal and et paymentStatus to succeeded', async () => {
+    it('Open the payement suceeded modal and update paymentStatus to succeeded', async () => {
       await presenter.updateDependencies({
         boutiques: {
           items: [item1, item2],
@@ -327,6 +336,36 @@ describe('The user make a payment', () => {
       expect(presenter.viewModel().paymentStatus).toBe('succeeded');
     });
     it('Save the purchase in order history', async () => {
+      await presenter.updateDependencies({
+        boutiques: {
+          items: [item1, item2],
+          itemsQuantityBought: {
+            uid1: 2,
+            uid2: 1
+          },
+          tickets: [ticket1, ticket2],
+          ticketsQuantityBought: {
+            ticketId1: 12,
+            ticketId2: 4
+          }
+        }
+      });
+      fetchPostJSON.mockResolvedValue({ statusCode: 200 });
+      elements.getElement.mockResolvedValue({});
+      stripe.confirmCardPayment.mockResolvedValue({ error: null, paymentIntent: true });
+      await presenter.startStripePayement(stripe, elements, {});
+      expect(presenter.addInUserHistory()).toHaveBeenCalledTimes(1);
+      expect(presenter.addInUserHistory()).toHaveBeenCalledWith({
+        itemsQuantityBought: {
+          uid1: 2,
+          uid2: 1
+        },
+        ticketsQuantityBought: {
+          ticketId1: 12,
+          ticketId2: 4
+        },
+        user
+      });
     });
     it('BuyNumberOfItems for each items', async () => {
       await presenter.updateDependencies({

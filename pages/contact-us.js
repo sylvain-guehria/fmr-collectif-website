@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ContactUsComponent from '../components/GuestAndLoggedinPages/Contact-us';
+import ContactUsComponent from '../components/ContactUs/Contact-us';
 import { buildGuestOrLoggedInLayout } from '../components/Layouts/layoutBuilder';
 
 const ContactUs = ()=> {

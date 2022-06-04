@@ -3,14 +3,14 @@ import classNames from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Mail from '@mui/icons-material/Mail';
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
 import Button from '../lib/CustomButtons/Button';
-import Card from 'components/lib/Card/Card.js';
-import CardBody from 'components/lib/Card/CardBody.js';
-import CustomInput from 'components/lib/CustomInput/CustomInput.js';
+import Card from 'components/lib/Card/Card';
+import CardBody from 'components/lib/Card/CardBody';
+import CustomInput from 'components/lib/CustomInput/CustomInput';
 
-import styles from 'styles/jss/nextjs-material-kit-pro/pages/ecommerceStyle.js';
+import styles from 'styles/jss/nextjs-material-kit-pro/pages/ecommerceStyle';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const useStyles = makeStyles(styles);

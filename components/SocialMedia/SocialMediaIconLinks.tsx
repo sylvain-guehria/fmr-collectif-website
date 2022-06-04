@@ -1,34 +1,25 @@
 import React from 'react';
 // @material-ui/core components
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '../lib/CustomButtons/Button';
+import Button, { Color } from '../lib/CustomButtons/Button';
 
-import presentationStyle from 'styles/jss/nextjs-material-kit-pro/pages/presentationStyle.js';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-const useStyles = makeStyles(presentationStyle);
+type Props = {
+  socialMedias: SocialMedia[];
+};
 
-const SocialMediaIconLinks: React.FC = () => {
-  const classes = useStyles();
+export type SocialMedia = {
+  name: string;
+  link: string;
+  color: Color;
+};
+
+const SocialMediaIconLinks: React.FC<Props> = ({ socialMedias = [] }) => {
   return (
-    <div className={classes.rightLinks}>
-      <ul>
-        <li>
-          <Button href="#" target="_blank" color="twitter" justIcon simple>
-            <i className="fab fa-twitter" />
-          </Button>
-        </li>
-        <li>
-          <Button href="#" target="_blank" color="facebook" justIcon simple>
-            <i className="fab fa-facebook" />
-          </Button>
-        </li>
-        <li>
-          <Button href="#" target="_blank" color="dribbble" justIcon simple>
-            <i className="fab fa-instagram" />
-          </Button>
-        </li>
-      </ul>
+    <div>
+      {socialMedias.map(({ color, link, name }, index) => (
+        <Button href={link} target="_blank" justIcon simple color={color} key={name + index}>
+          <i className={`fab fa-${name}`} />
+        </Button>
+      ))}
     </div>
   );
 };

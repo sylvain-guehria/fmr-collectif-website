@@ -6,10 +6,6 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-// @mui/icons-material
-import Favorite from "@mui/icons-material/Favorite";
 
 import styles from "styles/jss/nextjs-material-kit-pro/components/footerStyle.js";
 

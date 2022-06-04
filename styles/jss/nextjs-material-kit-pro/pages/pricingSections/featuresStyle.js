@@ -1,4 +1,4 @@
-import { title, mlAuto, mrAuto } from 'styles/jss/nextjs-material-kit-pro.js';
+import { title, mlAuto, mrAuto } from 'styles/jss/nextjs-material-kit-pro';
 
 const featuresStyle = {
   featuresSection: {

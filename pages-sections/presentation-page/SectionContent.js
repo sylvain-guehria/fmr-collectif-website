@@ -1,13 +1,13 @@
 import React from 'react';
 // core components
-import GridContainer from 'components/lib/Grid/GridContainer.js';
-import GridItem from 'components/lib/Grid/GridItem.js';
+import GridContainer from 'components/lib/Grid/GridContainer';
+import GridItem from 'components/lib/Grid/GridItem';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
 // library used for cool animations
 import ScrollAnimation from 'react-animate-on-scroll';
 
-import contentStyle from 'styles/jss/nextjs-material-kit-pro/pages/presentationSections/contentStyle.js';
+import contentStyle from 'styles/jss/nextjs-material-kit-pro/pages/presentationSections/contentStyle';
 
 const useStyles = makeStyles(contentStyle);
 
