@@ -65,6 +65,11 @@ class TicketEntity implements Ticket {
     return this.quantity;
   }
 
+  setQuantity(quantity: number): TicketEntity {
+    this.quantity = quantity;
+    return this;
+  }
+
   getPrice(): number {
     return this.price;
   }
