@@ -56,6 +56,8 @@ const MultiTab: React.FC<Props> = ({ tabs }) => {
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           {tabs.map((tab, index) => (
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             <Tab key={`${tab.tabLabel}-${index}`} label={tab.tabLabel} {...a11yProps(index)} />
           ))}
         </Tabs>
