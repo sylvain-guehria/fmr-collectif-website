@@ -65,6 +65,11 @@ class ItemEntity implements Item {
     return this.quantity;
   }
 
+  setQuantity(quantity: number): ItemEntity {
+    this.quantity = quantity;
+    return this;
+  }
+
   getPrice(): number {
     return this.price;
   }

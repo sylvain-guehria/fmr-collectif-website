@@ -209,25 +209,34 @@ describe('#setShippingData', () => {
 });
 
 describe('The user make a payment', () => {
-  presenter = new BuyPresenter({ buyNumberOfItems, buyNumberOfTickets, fetchPostJSON });
-  const item1 = new ItemEntity({ uid: 'uid1', quantity: 3, label: 'labelItem1' });
-  const item2 = new ItemEntity({ uid: 'uid2', quantity: 1, label: 'labelItem2' });
+  presenter = new BuyPresenter({ buyNumberOfItems, buyNumberOfTickets, fetchPostJSON, addInUserHistory });
 
-  const ticket1 = new TicketEntity({ uid: 'TicketId1', quantity: 50, label: 'labelTicket1' });
-  const ticket2 = new TicketEntity({ uid: 'TicketId2', quantity: 30, label: 'labelTicket2' });
+  let item1;
+  let item2;
 
-
-  beforeEach(() => {
-    jest.resetAllMocks();
-  });
+  let ticket1;
+  let ticket2;
 
   describe('The payment failed', () => {
-    it('Set paymentStatus to notEnoughQuantityInStock if has not Enough item Quantity In Stock', async () => {
+
+    beforeEach(() => {
+      item1 = new ItemEntity({ uid: 'uid1', label: 'labelItem1' });
+      item2 = new ItemEntity({ uid: 'uid2', label: 'labelItem2' });
+      ticket1 = new TicketEntity({ uid: 'TicketId1', label: 'labelTicket1' });
+      ticket2 = new TicketEntity({ uid: 'TicketId2', label: 'labelTicket2' });
+
+      item1.setQuantity(1);
+      item2.setQuantity(1);
+
+      jest.resetAllMocks();
+    });
+
+    it('Set paymentStatus to notEnoughQuantityInStock if one item quantity in stock is not enough', async () => {
       await presenter.updateDependencies({
         boutiques: {
           items: [item1, item2],
           itemsQuantityBought: {
-            uid1: 5,
+            uid1: 2,
             uid2: 0
           },
           tickets: []
@@ -236,14 +245,16 @@ describe('The user make a payment', () => {
       await presenter.startStripePayement({}, {}, {});
       expect(presenter.viewModel().paymentStatus).toBe('notEnoughQuantityInStock');
     });
-    it('Set paymentStatus to notEnoughQuantityInStock if has not Enough tickets Quantity In Stock', async () => {
+    it('Set paymentStatus to notEnoughQuantityInStock if one ticket quantity in stock is not enough', async () => {
+      ticket1.setQuantity(1);
+      ticket2.setQuantity(1);
       await presenter.updateDependencies({
         boutiques: {
           items: [],
           tickets: [ticket1, ticket2],
           ticketsQuantityBought: {
-            ticketId1: 5,
-            ticketId2: 31
+            ticketId1: 2,
+            ticketId2: 0
           }
         }
       });
@@ -288,6 +299,22 @@ describe('The user make a payment', () => {
     });
   });
   describe('The payment succeed', () => {
+
+    beforeEach(() => {
+      jest.resetAllMocks();
+      presenter.updateDependencies({ user: user });
+      item1 = new ItemEntity({ uid: 'uid1', label: 'labelItem1' });
+      item2 = new ItemEntity({ uid: 'uid2', label: 'labelItem2' });
+      ticket1 = new TicketEntity({ uid: 'ticketId1', label: 'labelTicket1' });
+      ticket2 = new TicketEntity({ uid: 'ticketId2', label: 'labelTicket2' });
+
+      item1.setQuantity(99);
+      item2.setQuantity(99);
+
+      ticket1.setQuantity(99);
+      ticket2.setQuantity(99);
+
+    });
     it('Make a clean list for the metadata of stripe', async () => {
       await presenter.updateDependencies({
         boutiques: {
@@ -354,8 +381,8 @@ describe('The user make a payment', () => {
       elements.getElement.mockResolvedValue({});
       stripe.confirmCardPayment.mockResolvedValue({ error: null, paymentIntent: true });
       await presenter.startStripePayement(stripe, elements, {});
-      expect(presenter.addInUserHistory()).toHaveBeenCalledTimes(1);
-      expect(presenter.addInUserHistory()).toHaveBeenCalledWith({
+      expect(presenter.addInUserHistory).toHaveBeenCalledTimes(1);
+      expect(presenter.addInUserHistory).toHaveBeenCalledWith({
         itemsQuantityBought: {
           uid1: 2,
           uid2: 1
