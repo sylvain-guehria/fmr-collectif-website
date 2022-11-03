@@ -8,9 +8,12 @@ import firebaseUserRepository from '../modules/user/firebaseUserRepository';
 import UserEntity from '../modules/user/UserEntity';
 import { useRouter } from 'next/router';
 import { auth } from '../firebase/modules';
+import cookie from 'js-cookie';
 
 const userRepository = new firebaseUserRepository();
-const authContext = createContext();
+const authContext = createContext<{ user: firebaseClient.User | null }>({
+  user: null,
+});
 
 // eslint-disable-next-line react/prop-types
 export function ProvideAuth({ children }) {
@@ -26,6 +29,7 @@ function useProvideAuth() {
   const [user, setUser] = useState(null);
   const [isUserLoading, setIsUserLoading] = useState(true);
   const router = useRouter();
+  const tokenName = 'firebaseToken'
 
   const loginEmail = (email, password) => {
     setIsUserLoading(true);
@@ -145,6 +149,8 @@ function useProvideAuth() {
 
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
       if (user) {
+        const token = await user.getIdToken();
+        cookie.set(tokenName, token, { expires: 14 });
         const fullUser = await fetchUserInformation(user.uid);
         if (fullUser.email) {
           updateLastConnected(fullUser.updateLastLogin());
@@ -154,6 +160,7 @@ function useProvideAuth() {
         }
         setIsUserLoading(false);
       } else {
+        cookie.remove(tokenName);
         setUser(false);
         setIsUserLoading(false);
       }
